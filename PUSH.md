@@ -37,8 +37,8 @@ git push -u origin main
 ## 3. 另一台设备安装
 
 ```powershell
-git clone https://github.com/YOUR_USER/ai-global-config.git
-cd ai-global-config
+git clone https://github.com/Metroids048/skills.git
+cd skills
 powershell -ExecutionPolicy Bypass -File install.ps1
 ```
 
