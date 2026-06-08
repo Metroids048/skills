@@ -1,0 +1,4 @@
+interface:
+  display_name: "Figma Product Report"
+  short_description: "Turn Figma prototypes into PM product analysis reports."
+  default_prompt: "Analyze this Figma prototype link from a product manager perspective and produce a structured product analysis report."

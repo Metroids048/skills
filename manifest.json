@@ -1,0 +1,16 @@
+{
+    "name":  "ai-global-config",
+    "version":  "1.0.0",
+    "exportedFrom":  "Windows",
+    "compatibleTools":  [
+                            "cursor",
+                            "claude-code",
+                            "codex"
+                        ],
+    "skillsSource":  "skills/cursor",
+    "scriptsDir":  "ai-workspace/scripts",
+    "notes":  "Run install.ps1 after clone. Fill secrets in secrets/README.md before MCP works.",
+    "exportedAt":  "2026-06-08",
+    "skillCount":  267,
+    "ruleCount":  128
+}

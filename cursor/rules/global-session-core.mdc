@@ -1,0 +1,46 @@
+---
+description: ALWAYS apply — skill routing, lean token habits, verification before claiming done. Session-start core workflow for all Cursor conversations.
+alwaysApply: true
+---
+
+# Global Session Core
+
+## Always-on (every task)
+
+Read `requirement-clarifier` + `karpathy-guidelines` SKILL.md with `global-session-core` before tools (unless user said 直接执行 or pasted full spec).
+
+## Global memory (coding tasks)
+
+Before coding: Read `~/.ai-workspace/memory/user-memory.md` and recent `global-task-history.md`.
+Project overlay: `.github/agent/memory/project-memory.md` when present.
+After tasks: append global-task-history per `ai-coding-ok` Mode C.
+
+## Skill routing
+
+1. Match user requests to skill descriptions in `~/.cursor/skills/` (index: `~/.claude/global-skills-index.md`).
+2. Read full `SKILL.md` for each applicable skill before other tools.
+3. Reply start: `Skills: name-a, name-b` (include `global-session-core` when relevant).
+4. Priority: user instruction > matched skill > built-in > default.
+5. **0→1 strict**: 新模块/大范围「帮我做…」→ Read `zero-to-one-gate` + `brainstorming` before Write/Edit; user approve before code. See `zero-to-one-gate.mdc`.
+
+## Lean token habits
+
+- Short phase-based updates; no long command dumps unless asked.
+- One session per task; compact around 50% context.
+- Never skip tests, verification, or safety checks to save tokens.
+
+## Verification before completion
+
+Before claiming done/fixed/PASS: follow **`global-delivery-gate`** skill (auto-detect verify command).
+Capture fresh output. If skipped → **"Task is NOT fully verified."**
+
+## Maximum permission scope
+
+「最大权限」= 少确认、修当前问题 — **不是**删 CC Switch / 清配置目录 / 跑 `_remove-*` 的授权。破坏性操作须先说明影响并获确认。见 `maximum-permission-scope.mdc` 与 `~/.claude/AGENTS.md`。
+
+## Project gates (when applicable)
+
+- Repo `AGENTS.md` overrides global `~/.claude/AGENTS.md`.
+- **`prototype/scripts/verify-all.js`** → `ai-delivery-gate` + all 5 steps incl. navigation-journey.
+
+Full skill body: `~/.cursor/skills/global-session-core/SKILL.md`.

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": {
+      "matcher": "Write|Edit",
+      "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"{{USERPROFILE}}\\.ai-workspace\\scripts\\clarification-hard-gate.ps1\" -OutputFormat Cursor",
+      "timeout": 15
+    },
+    "sessionStart": [
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"{{USERPROFILE}}\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Cursor -HookEvent SessionStart",
+        "timeout": 45
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"{{USERPROFILE}}\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Cursor -HookEvent UserPromptSubmit",
+        "timeout": 45
+      }
+    ]
+  }
+}

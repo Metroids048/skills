@@ -1,0 +1,38 @@
+{
+  "PreToolUse": {
+    "hooks": [
+      {
+        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"{{USERPROFILE}}\\.ai-workspace\\scripts\\clarification-hard-gate.ps1\" -OutputFormat Claude",
+        "timeout": 15,
+        "type": "command",
+        "statusMessage": "Clarification hard gate"
+      }
+    ],
+    "matcher": "Write|Edit|MultiEdit|StrReplace|apply_patch"
+  },
+  "SessionStart": [
+    {
+      "hooks": [
+        {
+          "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"{{USERPROFILE}}\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Claude -HookEvent SessionStart",
+          "timeout": 45,
+          "type": "command",
+          "statusMessage": "Load global skills"
+        }
+      ],
+      "matcher": "startup|resume|clear|compact"
+    }
+  ],
+  "UserPromptSubmit": [
+    {
+      "hooks": [
+        {
+          "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"{{USERPROFILE}}\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Claude -HookEvent UserPromptSubmit",
+          "timeout": 45,
+          "type": "command",
+          "statusMessage": "Match global skills"
+        }
+      ]
+    }
+  ]
+}

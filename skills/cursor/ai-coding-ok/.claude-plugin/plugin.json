@@ -1,0 +1,21 @@
+{
+  "name": "ai-coding-ok",
+  "description": "PDCA memory loop for Claude Code. Reads three-tier project memory (project-memory, decisions-log, task-history) before every task and writes back after, so iteration 50 has the same context quality as iteration 1. Pairs with superpowers — discipline + memory.",
+  "version": "3.0.0",
+  "author": {
+    "name": "Mark7766",
+    "email": "wangliang540541@gmail.com"
+  },
+  "homepage": "https://github.com/Mark7766/ai-coding-ok",
+  "repository": "https://github.com/Mark7766/ai-coding-ok",
+  "license": "MIT",
+  "keywords": [
+    "memory",
+    "pdca",
+    "context",
+    "guardrails",
+    "multi-session",
+    "skills",
+    "agents-md"
+  ]
+}

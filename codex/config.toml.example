@@ -1,0 +1,110 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+# Repaired 2026-06-03: removed macOS notify, stale node_repl paths, and startup-heavy MCP set.
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "live"
+persistent_instructions = "Follow project AGENTS.md. Fuzzy/vibe coding: Read requirement-clarifier + skill-chain-map.md + vibe-coding-bridge.md; ultra-vague use interview-protocol (one Q+GUESS); output Mini-Spec S4.5 + S7 before Write/Edit; multi-file risk use clarification-guardrails.md. User must confirm before execute unless 直接执行. Use MCP when helpful."
+model = "gpt-5.5"
+model_reasoning_effort = "high"
+
+# Lean MCP set — add more only when needed (each npx server costs memory at app-server boot).
+[mcp_servers.github]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-github"]
+startup_timeout_sec = 30
+
+[mcp_servers.context7]
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]
+startup_timeout_sec = 30
+
+[mcp_servers.codegraph]
+command = "codegraph"
+args = ["serve", "--mcp"]
+
+[mcp_servers.vibearound]
+url = "http://127.0.0.1:12358/va/mcp?token=YOUR_VIBEAROUND_TOKEN"
+
+[mcp_servers.agentmemory]
+command = "npx"
+args = ["-y", "@agentmemory/mcp"]
+startup_timeout_sec = 45
+
+[mcp_servers.agentmemory.env]
+AGENTMEMORY_URL = "http://localhost:3111"
+
+[mcp_servers.headroom]
+command = "{{HEADROOM_EXE}}"
+args = ["mcp", "serve"]
+startup_timeout_sec = 45
+
+[features]
+multi_agent = true
+
+[profiles.strict]
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+web_search = "cached"
+
+[profiles.yolo]
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+web_search = "live"
+
+[model_providers.hcai]
+name = "HCAI"
+base_url = "https://ai.hctopup.com/v1"
+env_key = "HCAI_API_KEY"
+wire_api = "responses"
+requires_openai_auth = false
+
+[profiles.hcai]
+model_provider = "hcai"
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+
+[agents]
+max_threads = 3
+max_depth = 1
+
+[agents.explorer]
+description = "Read-only codebase explorer for gathering evidence before changes are proposed."
+config_file = "agents/explorer.toml"
+
+[agents.reviewer]
+description = "PR reviewer focused on correctness, security, and missing tests."
+config_file = "agents/reviewer.toml"
+
+[agents.docs_researcher]
+description = "Documentation specialist that verifies APIs, framework behavior, and release notes."
+config_file = "agents/docs-researcher.toml"
+
+[windows]
+sandbox = "elevated"
+
+
+
+
+
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."figma@openai-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."superpowers@openai-curated"]
+enabled = true
+
+[plugins."hyperframes@openai-curated"]
+enabled = true

@@ -1,0 +1,353 @@
+{
+  "excludeNames": [
+    "planning-with-files-ar",
+    "planning-with-files-de",
+    "planning-with-files-es",
+    "planning-with-files-zht",
+    "tdd-mastery",
+    "styleseed",
+    "space-image2proto",
+    "space-analytics",
+    "space-experiment-designer",
+    "space-prd-writer",
+    "space-prioritization-engine",
+    "space-review-board",
+    "space-roadmap-planner",
+    "space-survey-designer",
+    "tracking-spec-writer",
+    "verification",
+    "verify-security",
+    "verify-patterns",
+    "verify-quality",
+    "verify-language",
+    "devops-automation",
+    "claude-memory-kit",
+    "apple-mail",
+    "apple-notes",
+    "tmux-control",
+    "ballot",
+    "bye",
+    "dossier",
+    "lab-notes",
+    "pandoc",
+    "pdf-zine",
+    "private-podcast-feed",
+    "text-to-speech",
+    "tracer-bullets"
+  ],
+  "excludePathPatterns": [
+    "skills/space-url2proto/",
+    "skills/space-image2proto/",
+    "skills/superpowers-main/skills/receiving-code-review/",
+    "skills/rtk-develop/",
+    "skills/ui-ux-pro-max-skill-main/"
+  ],
+  "alwaysOnSkills": [
+    "global-session-core",
+    "requirement-clarifier",
+    "karpathy-guidelines"
+  ],
+  "conditionalAlwaysOnSkills": [
+    {
+      "skill": "ai-coding-ok",
+      "trigger": "projectCodingGuardrails",
+      "note": "Repo has AGENTS.md or .github/agent/memory/ — load PDCA memory loop before coding."
+    }
+  ],
+  "intentProfilesFile": "intent-profiles.json",
+  "intentMatchMinScore": 3,
+  "intentSkillBoostFloor": 20,
+  "pruneCodexDuplicates": true,
+  "codexDuplicateNames": [
+    "figma-product-report",
+    "frontend-design",
+    "mcp-builder",
+    "pm-competitor-deconstructor",
+    "pm-postmortem-writer",
+    "pptx",
+    "receiving-code-review",
+    "skill-creator",
+    "space-image2proto",
+    "webapp-testing",
+    "tdd-mastery",
+    "styleseed",
+    "tracking-spec-writer",
+    "verification",
+    "verify-security",
+    "verify-patterns",
+    "verify-quality",
+    "verify-language",
+    "devops-automation",
+    "claude-memory-kit"
+  ],
+  "descriptionOverrides": {
+    "using-superpowers": "Cursor 技能路由：匹配 description；0→1/vibe coding 须 Read zero-to-one-gate + brainstorming。见 refinements/using-superpowers.md。",
+    "pm-prd-writer": "把模糊需求转化为可评审的产品需求文档（PRD）。当用户说写PRD、需求文档、功能说明书时使用。不适用于：纯技术方案与模块架构（用 zero-to-one-gate）、纯 UI 标注（用 design-handoff）。",
+    "requirement-clarifier": "ALWAYS apply at session start and before execution. Converts fuzzy vibe-coding input into Mini-Spec (S4.5) + structured S1-S12 + Agent execution Prompt. Read vibe-coding-bridge.md for B-class coding. Use for 帮我做/优化一下/vibe coding/agent实现 before Write/Edit.",
+    "design-taste-frontend": "Anti-slop 前端审美（Leonxlnx/taste-skill v2）。Landing/作品集/改版；先读 brief 再定设计方向。用户说 UI 丑、要设计感、落地页、portfolio、anti-slop 时使用。",
+    "gpt-taste": "Codex/GPT 向 stricter taste-skill：更高 layout variance + GSAP ScrollTrigger。高动效 landing 时用。",
+    "redesign-existing-projects": "Use when auditing or improving an existing site's UI (spacing, hierarchy, typography). Not for greenfield landing pages (use design-taste-frontend).",
+    "figma2code": "Use when implementing HTML/CSS/JS from a Figma URL, file key, node id, or mockup — frame extraction, interactions, and project integration. Triggers: 按 Figma 实现, Figma 转代码, 设计稿转代码, 对照 Figma.",
+    "figma-workflow": "Use when Agent Platform Figma work needs figma.config.json — implement from Figma, sync HTML to Figma, or create design files. Triggers: 按 Figma 实现, 同步到 Figma, 对照设计稿.",
+    "ouro-loop": "Use when a task needs MAP-PLAN-BUILD-VERIFY-REMEDIATE autonomous loops with multiple verification gates.",
+    "deep-research": "Use when the user needs multi-source research with citations, fact-check, or 深度研究/文献回顾 before conclusions — not for quick one-line answers.",
+    "brainstorming": "Use when creating features, modifying behavior, or any creative implementation work before writing code or scaffolds.",
+    "systematic-debugging": "Use when encountering bugs, test failures, unexpected behavior, or performance issues — before proposing fixes.",
+    "ai-coding-ok": "Use FIRST on coding tasks when the repo has AGENTS.md or .github/agent/memory/. Triggers: 新功能, 修复, 重构, implement, fix, refactor.",
+    "zero-to-one-gate": "Use when work is greenfield, a new module/page/workflow, or 帮我做… without ADR coverage — before Write/Edit on implementation files.",
+    "writing-plans": "Use when there is an approved spec or requirements for a multi-step task, before touching code.",
+    "ai-delivery-gate": "Use before claiming prototype delivery done in Agent Platform — after editing prototype/assets/*.js or when user asks for sign-off.",
+    "global-delivery-gate": "Use before claiming done/fixed/PASS on any repo — run detected verify commands with fresh evidence.",
+    "diagnose": "Use when the user says diagnose this, debug this, or reports a bug/performance regression needing structured reproduction.",
+    "writing-skills": "Use when creating, editing, or verifying Agent Skills (SKILL.md) before deployment.",
+    "skill-stocktake": "Use when auditing skills inventory for Keep/Improve/Retire/Merge verdicts.",
+    "agent-sort": "Use when trimming ECC/skills to DAILY vs LIBRARY buckets for a specific repo.",
+    "planning-with-files-zh": "Use when the user asks in Chinese for multi-step planning with task_plan.md, findings.md, progress.md, or 规划/拆解/进度跟踪.",
+    "verification-before-completion": "Use before claiming done, fixed, or PASS — re-read acceptance criteria and run fresh verify output.",
+    "agent-verifier": "Use before PR or when user asks to verify/audit agent-generated code for security, patterns, and quality.",
+    "memory-handoff": "Use when user says resume, handoff, where were we, or picks up a session without fresh context.",
+    "image-to-code": "Use when implementing a website from reference images or screenshots with section-by-section visual fidelity.",
+    "tdd-workflow": "Use when implementing features or bugfixes with test-driven development across unit, integration, and E2E layers.",
+    "pm-image2proto": "Use when converting a screenshot or reference image into an HTML prototype with iterative refinement."
+  },
+  "promptKeywordBoosts": {
+    "requirement-clarifier": [
+      "帮我做",
+      "帮我",
+      "优化一下",
+      "整理需求",
+      "需求不清",
+      "不清楚",
+      "模糊",
+      "口语",
+      "整体优化",
+      "想做个",
+      "能不能",
+      "怎么弄",
+      "任务说明",
+      "执行 prompt",
+      "澄清",
+      "研究一下",
+      "配置",
+      "找出问题",
+      "解决掉"
+    ],
+    "zero-to-one-gate": [
+      "新功能",
+      "新模块",
+      "新页面",
+      "从0",
+      "从零",
+      "帮我做",
+      "做一个",
+      "架构",
+      "模块划分",
+      "技术方案",
+      "整体设计",
+      "greenfield",
+      "vibe",
+      "0→1",
+      "运营平台",
+      "子系统"
+    ],
+    "cursor-awesome-parallel-exploring": [
+      "并行探索",
+      "熟悉代码库",
+      "onboarding",
+      "架构梳理",
+      "explore subagent"
+    ],
+    "cursor-awesome-auditing-performance": [
+      "性能优化",
+      "Core Web Vitals",
+      "bundle",
+      "慢页面",
+      "性能审计"
+    ],
+    "cursor-awesome-building-skills-from-patterns": [
+      "沉淀 skill",
+      "重复流程",
+      "做成技能",
+      "workflow 固化"
+    ],
+    "rezvani-soc2-audit-prep": ["SOC2", "soc 2", "合规审计"],
+    "rezvani-gdpr-audit-prep": ["GDPR", "数据保护", "隐私合规审计"],
+    "rezvani-ai-act-readiness": ["AI Act", "欧盟 AI 法", "人工智能法案"],
+    "design-taste-frontend": [
+      "landing page",
+      "落地页",
+      "portfolio",
+      "作品集",
+      "anti-slop",
+      "好看一点",
+      "别那么丑",
+      "设计感",
+      "Awwwards",
+      "Linear风格",
+      "前端审美",
+      "UI太丑",
+      "generic UI",
+      "taste skill",
+      "tasteskill"
+    ],
+    "gpt-taste": [
+      "GSAP",
+      "scroll animation",
+      "Awwwards",
+      "motion rich",
+      "Codex前端",
+      "高动效"
+    ],
+    "redesign-existing-projects": [
+      "redesign",
+      "改版",
+      "UI audit",
+      "界面审计",
+      "现有页面优化",
+      "spacing fix",
+      "层次不对"
+    ],
+    "image-to-code": [
+      "image to code",
+      "图转代码",
+      "按设计稿实现",
+      "reference image",
+      "参考图实现"
+    ],
+    "imagegen-frontend-web": [
+      "生成网站设计图",
+      "web comp",
+      "设计稿生成",
+      "mockup"
+    ],
+    "minimalist-ui": ["minimalist", "极简", "Notion风", "Linear风", "editorial UI"],
+    "high-end-visual-design": ["premium UI", "高端UI", "soft UI", "calm design"],
+    "figma2code": [
+      "figma",
+      "设计稿",
+      "按 figma",
+      "figma转",
+      "设计稿转",
+      "file key",
+      "mockup",
+      "frame"
+    ],
+    "figma-workflow": [
+      "同步到 figma",
+      "写到 figma",
+      "figma.config",
+      "对照设计稿"
+    ],
+    "ouro-loop": [
+      "ouro",
+      "自主循环",
+      "多步验证",
+      "MAP-PLAN",
+      "remediate"
+    ],
+    "deep-research": [
+      "深度研究",
+      "文献回顾",
+      "fact-check",
+      "事实核查",
+      "多源研究"
+    ],
+    "writing-skills": [
+      "写 skill",
+      "skill.md",
+      "技能设计",
+      "触发设计",
+      "高质量 skill"
+    ],
+    "skill-stocktake": [
+      "skill 审计",
+      "技能审计",
+      "stocktake",
+      "inventory audit"
+    ],
+    "agent-sort": [
+      "daily library",
+      "agent sort",
+      "技能裁剪",
+      "ecc trim"
+    ],
+    "brainstorming": [
+      "brainstorm",
+      "方案对比",
+      "设计确认"
+    ],
+    "systematic-debugging": [
+      "root cause",
+      "根因",
+      "systematic debug"
+    ],
+    "ai-delivery-gate": [
+      "verify-all",
+      "delivery gate",
+      "交付验收"
+    ],
+    "global-delivery-gate": [
+      "claim done",
+      "声称完成",
+      "delivery sign-off"
+    ],
+    "verification-before-completion": [
+      "claim done",
+      "verification before completion",
+      "fresh evidence"
+    ],
+    "agent-verifier": [
+      "verify agent code",
+      "audit before PR"
+    ],
+    "memory-handoff": [
+      "where were we",
+      "resume session",
+      "handoff"
+    ],
+    "image-to-code": [
+      "screenshot to code",
+      "reference image site"
+    ],
+    "tdd-workflow": [
+      "tdd",
+      "test first",
+      "red green refactor"
+    ],
+    "pm-image2proto": [
+      "screenshot prototype",
+      "image2proto"
+    ],
+    "planning-with-files-zh": [
+      "task_plan.md",
+      "progress.md",
+      "中文规划"
+    ]
+  },
+  "refinementFiles": {
+    "using-superpowers": "refinements/using-superpowers.md"
+  },
+  "clarificationGate": {
+    "enabled": true,
+    "blockMessageTypes": ["B"],
+    "clearKeywords": [
+      "按澄清结果执行",
+      "确认执行",
+      "开始执行",
+      "直接做",
+      "直接执行",
+      "不用澄清",
+      "就改这一处",
+      "按默认建议",
+      "确认",
+      "可以执行"
+    ],
+    "intentDraftDir": "~/.ai-workspace/clarifications",
+    "allowedWritePaths": [
+      "clarifications/",
+      "docs/intent/",
+      "docs/ideas/",
+      ".github/agent/memory/"
+    ]
+  }
+}

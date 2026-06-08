@@ -1,0 +1,264 @@
+{
+  "version": 1,
+  "note": "Intent profiles for scan-global-skills.ps1 — match by meaning, not exact keywords.",
+  "profiles": [
+    {
+      "id": "fuzzy_requirement",
+      "label": "模糊/口语化需求",
+      "signals": [
+        "帮我", "帮忙", "优化", "改进", "整理", "不清楚", "模糊", "口语", "能不能", "怎么弄", "想做个", "想做一个", "帮我做", "研究一下", "看看怎么", "梳理", "拆解", "说明一下", "解释一下", "help me", "improve", "optimize", "unclear", "not sure", "vague", "clarify"
+      ],
+      "regexSignals": [
+        "帮.{0,4}(做|弄|搞|实现)",
+        "怎么(做|弄|搞|实现|优化)",
+        "有没有(办法|方式|方案)",
+        "(整体|全面).{0,4}(优化|改进|梳理)"
+      ],
+      "skillBoosts": {
+        "requirement-clarifier": 50,
+        "brainstorming": 18,
+        "idea-refine": 15,
+        "pm-prd-writer": 12
+      }
+    },
+    {
+      "id": "greenfield_build",
+      "label": "新功能/0→1/架构",
+      "signals": [
+        "新功能", "新模块", "新页面", "新子系统", "从零", "从0", "0→1", "0到1", "做一个", "帮我做", "架构", "模块划分", "技术方案", "整体设计", "greenfield", "vibe", "运营平台", "子系统", "新建", "搭建", "设计系统", "build from scratch", "new module", "new feature", "architecture"
+      ],
+      "regexSignals": [
+        "(新|全新).{0,6}(功能|模块|页面|系统)",
+        "(从|自).{0,2}(零|0).{0,4}(做|开始|搭建)",
+        "(整体|系统).{0,4}(架构|设计)"
+      ],
+      "skillBoosts": {
+        "zero-to-one-gate": 45,
+        "brainstorming": 35,
+        "planning-with-files-zh": 20,
+        "writing-plans": 18
+      }
+    },
+    {
+      "id": "bug_fix_debug",
+      "label": "修 bug/排错/回归",
+      "signals": [
+        "bug", "修复", "修好", "坏了", "报错", "失败", "不工作", "异常", "崩溃", "回归", "为什么", "找出问题", "解决掉", "排查", "诊断", "debug", "fix", "broken", "error", "failing", "regression", "root cause"
+      ],
+      "regexSignals": [
+        "(修|解决|修复|排查).{0,6}(问题|bug|错误|故障)",
+        "(为什么|咋).{0,4}(不|没|无法)",
+        "又(坏|挂|失败)了"
+      ],
+      "skillBoosts": {
+        "diagnose": 40,
+        "systematic-debugging": 30,
+        "tdd-workflow": 15,
+        "ai-regression-testing": 18
+      }
+    },
+    {
+      "id": "verify_delivery",
+      "label": "验证/交付/声称完成",
+      "signals": [
+        "验证", "验收", "交付", "完成", "搞定", "pass", "通过", "检查", "确认", "sign-off", "verify", "done", "fixed", "测试一下", "跑一下", "lint", "build"
+      ],
+      "regexSignals": [
+        "(是否|有没有).{0,4}(通过|完成|修好)",
+        "(跑|执行).{0,4}(测试|验证|verify)"
+      ],
+      "skillBoosts": {
+        "global-delivery-gate": 40,
+        "verification-before-completion": 38,
+        "ai-delivery-gate": 35,
+        "agent-verifier": 22
+      }
+    },
+    {
+      "id": "explore_codebase",
+      "label": "熟悉代码/探索架构",
+      "signals": [
+        "熟悉", "探索", "代码库", "架构", "怎么工作", "如何工作", "流程", "梳理", "onboarding", "walkthrough", "explain", "understand", "explore", "codebase", "how does", "where is", "trace"
+      ],
+      "regexSignals": [
+        "(这|该|这个).{0,6}(怎么|如何).{0,4}(工作|实现|跑)",
+        "(在哪|哪里).{0,4}(定义|处理|实现)",
+        "帮我(看|懂|理解).{0,6}(代码|项目|架构)"
+      ],
+      "skillBoosts": {
+        "cursor-awesome-parallel-exploring": 38,
+        "code-explorer": 30,
+        "understand": 28,
+        "code-tour": 22
+      }
+    },
+    {
+      "id": "plan_multistep",
+      "label": "规划/拆解/多步骤任务",
+      "signals": [
+        "规划", "计划", "拆解", "分步", "步骤", "进度", "里程碑", "roadmap", "plan", "break down", "phases", "sprint", "task plan"
+      ],
+      "regexSignals": [
+        "(拆|分).{0,4}(解|步骤|阶段)",
+        "(做|写).{0,4}(计划|规划)"
+      ],
+      "skillBoosts": {
+        "planning-with-files-zh": 40,
+        "writing-plans": 35,
+        "ouro-loop": 35
+      }
+    },
+    {
+      "id": "memory_session",
+      "label": "记忆/续接/历史会话",
+      "signals": [
+        "继续", "上次", "之前", "历史", "回忆", "记住", "resume", "handoff", "recall", "where were we", "pick up", "session history", "我们做过"
+      ],
+      "regexSignals": [
+        "(继续|接着).{0,4}(做|干|来)",
+        "(上次|之前|早些时候).{0,6}(说|做|改)"
+      ],
+      "skillBoosts": {
+        "memory-handoff": 40,
+        "recall": 35,
+        "session-history": 30,
+        "handoff": 25
+      }
+    },
+    {
+      "id": "config_infra",
+      "label": "配置/安装/环境/工具链",
+      "signals": [
+        "配置", "安装", "设置", "接入", "同步", "hook", "mcp", "环境", "工具链", "setup", "install", "configure", "deploy"
+      ],
+      "regexSignals": [
+        "(配|装|设).{0,4}(置|一下|好)",
+        "(三端|全局|cursor|codex|claude).{0,6}(配置|设置)"
+      ],
+      "skillBoosts": {
+        "configure-ecc": 25,
+        "ai-coding-ok": 20
+      }
+    },
+    {
+      "id": "performance",
+      "label": "性能/速度/体积",
+      "signals": [
+        "性能", "慢", "卡顿", "bundle", "体积", "加载", "vitals", "latency", "performance", "slow", "optimize speed"
+      ],
+      "skillBoosts": {
+        "cursor-awesome-auditing-performance": 40,
+        "performance-optimizer": 30
+      }
+    },
+    {
+      "id": "security",
+      "label": "安全/审计",
+      "signals": [
+        "安全", "漏洞", "xss", "注入", "secret", "审计", "security", "vulnerability", "owasp"
+      ],
+      "skillBoosts": {
+        "security-reviewer": 40,
+        "security-hardening": 30
+      }
+    },
+    {
+      "id": "prd_document",
+      "label": "PRD/需求文档",
+      "signals": [
+        "prd", "需求文档", "产品需求", "功能说明", "规格", "spec", "requirements doc"
+      ],
+      "skillBoosts": {
+        "pm-prd-writer": 40,
+        "create-prd": 35,
+        "requirement-clarifier": 15
+      }
+    },
+    {
+      "id": "vibe_coding",
+      "label": "Vibe coding / 口语化实现",
+      "signals": [
+        "vibe", "vibe coding", "帮我做", "做一个", "改一改", "优化一下", "整体弄", "弄好",
+        "看起来", "感觉", "不太行", "不够好", "帮我实现", "agent", "用agent", "口语"
+      ],
+      "regexSignals": [
+        "(帮|给).{0,4}(我|咱).{0,4}(做|弄|搞|实现)",
+        "(优化|改进|提升).{0,6}(一下|整体|界面|页面|看板)",
+        "用.{0,6}(agent|AI|cursor|codex).{0,4}(做|实现)"
+      ],
+      "skillBoosts": {
+        "requirement-clarifier": 50,
+        "brainstorming": 25,
+        "zero-to-one-gate": 20,
+        "idea-refine": 15
+      }
+    },
+    {
+      "id": "coding_task",
+      "label": "编码/实现/重构",
+      "signals": [
+        "实现", "编码", "写代码", "重构", "开发", "加上", "添加", "implement", "refactor", "code", "feature", "开发"
+      ],
+      "regexSignals": [
+        "(写|加|实现|补).{0,6}(功能|代码|逻辑|接口)"
+      ],
+      "skillBoosts": {
+        "requirement-clarifier": 35,
+        "ai-coding-ok": 30,
+        "karpathy-guidelines": 10
+      }
+    },
+    {
+      "id": "figma_design",
+      "label": "Figma/设计稿转前端",
+      "signals": [
+        "figma", "设计稿", "mockup", "frame", "按 figma", "对照设计", "原型转", "figma转", "设计稿转", "file key", "node id", "mcp figma", "视觉对比", "设计上下文"
+      ],
+      "regexSignals": [
+        "(按|对照|根据).{0,6}(figma|设计稿)",
+        "figma.{0,8}(实现|转|同步|链接)",
+        "(设计稿|原型).{0,6}(转|实现|写)"
+      ],
+      "skillBoosts": {
+        "figma-workflow": 45,
+        "figma2code": 40,
+        "pm-image2proto": 25,
+        "image-to-code": 18
+      }
+    },
+    {
+      "id": "skill_engineering",
+      "label": "Skill 工程/审计/触发",
+      "signals": [
+        "skill", "skills", "触发", "没调用", "未被调用", "routing", "description", "cso", "skill audit", "技能审计", "质量审计", "agent-sort", "stocktake", "writing-skills", "available_skills"
+      ],
+      "regexSignals": [
+        "(skill|技能).{0,8}(质量|审计|触发|没调用|设计)",
+        "(为什么|怎么).{0,6}(skill|技能).{0,6}(没|不).{0,4}(调用|触发)",
+        "高质量.{0,6}skill"
+      ],
+      "skillBoosts": {
+        "writing-skills": 40,
+        "skill-stocktake": 35,
+        "agent-sort": 30,
+        "cursor-awesome-building-skills-from-patterns": 22
+      }
+    },
+    {
+      "id": "research_general",
+      "label": "深度研究/事实核查（非学术流水线）",
+      "signals": [
+        "深度研究", "调研", "fact-check", "事实核查", "文献", "竞品分析", "market research", "deep research", "research brief", "多源", "cite", "引用"
+      ],
+      "regexSignals": [
+        "(帮|做).{0,4}(调研|研究|分析)",
+        "(深度|仔细).{0,4}(研究|调研)"
+      ],
+      "skillBoosts": {
+        "deep-research": 35,
+        "market-research": 25,
+        "deep-dive": 22
+      }
+    }
+  ]
+}

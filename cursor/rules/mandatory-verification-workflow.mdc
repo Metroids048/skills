@@ -1,0 +1,31 @@
+---
+description: 交付前 10 步强制验证流程 — 未完成不得声称 PASS。
+alwaysApply: true
+---
+
+# Mandatory Verification Workflow
+
+Before claiming **done**, **fixed**, or **PASS**:
+
+1. Re-read the user request and acceptance criteria.
+2. List what changed (files + behavior).
+3. Run available lint/typecheck/test/build commands.
+4. For `prototype/`: run `node prototype/scripts/verify-all.js` — **all 5 steps** including `navigation-journey-check.js` (index↔05 re-entry). grep/smoke PASS alone is insufficient (ADR-003).
+5. After shared JS edits: confirm `node --check` + full verify-all (not regression alone).
+6. **Navigation spot-check** (2 min): direct open 05 → index → re-enter 05 — must match. See `prototype/DELIVERY-CHECKLIST.md` steps 1–2.
+7. Search for TODO/FIXME/placeholder/mock left in changed files.
+8. Confirm no regressions in adjacent features (grep + runtime where needed).
+9. Capture **fresh command output** as evidence — no stale or assumed PASS.
+10. If any step fails or skipped → fix first OR state **"Task is NOT fully verified."**
+
+## Forbidden
+
+- Reporting PASS from grep-only checks when runtime or navigation may be broken.
+- Skipping verify-all (especially navigation-journey) after `proto.js` changes.
+- Reintroducing `window.__*Wired` skip flags or session-only Tab lock without `?new=1` (ADR-003).
+- Ending without Completed / Verified / Remaining Risks.
+
+## Reference
+
+- Postmortem: `.github/agent/memory/postmortem-navigation-2026-05-28.md`
+- Audit matrix: `prototype/scripts/journey-audit-matrix.json`

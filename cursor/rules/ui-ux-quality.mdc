@@ -1,0 +1,22 @@
+---
+description: UI/UX 质量门禁 — 布局、状态、响应式、可访问性。
+globs:
+  - app/**/*
+  - src/**/*
+  - prototype/**/*
+alwaysApply: false
+---
+
+# UI/UX Quality
+
+When changing UI files:
+
+1. **States**: loading, empty, error, success — no dead-end screens.
+2. **Consistency**: reuse existing tokens/classes; match surrounding patterns.
+3. **Responsive**: verify narrow + wide; no overflow/clipped controls.
+4. **Interaction**: buttons/links must do something real or show intentional placeholder toast.
+5. **Copy**: labels match PRD/user terms; no lorem or wrong entity names.
+6. **Navigation**: cross-links use correct IDs/query params; back flows preserve context.
+7. **Prototype**: after UI + `proto.js` changes → `node prototype/scripts/verify-all.js`.
+
+Details: `AGENTS.md` § UI/UX and `prototype/DELIVERY-CHECKLIST.md`.

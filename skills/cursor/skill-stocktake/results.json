@@ -1,0 +1,2460 @@
+﻿{
+    "evaluated_at":  "2026-06-05T09:52:33Z",
+    "mode":  "full",
+    "auditSource":  "C:\\Users\\win\\Desktop\\Agent Platform\\docs\\skills-audit\\2026-06-05-inventory.json",
+    "batch_progress":  {
+                           "total":  306,
+                           "evaluated":  306,
+                           "status":  "completed"
+                       },
+    "skills":  {
+                   "deep-dive":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\deep-dive\\SKILL.md",
+                                     "verdict":  "Improve",
+                                     "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                     "mtime":  "2026-06-03T06:15:26Z",
+                                     "auditVerdict":  "ROUTING_GAP",
+                                     "source":  "cursor"
+                                 },
+                   "planning-with-files-zh":  {
+                                                  "path":  "C:\\Users\\win\\.cursor\\skills\\planning-with-files-zh\\SKILL.md",
+                                                  "verdict":  "Improve",
+                                                  "reason":  "not-cso-compliant; rule-overlap; CSO: add Use when triggers",
+                                                  "mtime":  "2026-06-03T06:15:28Z",
+                                                  "auditVerdict":  "IMPROVE",
+                                                  "source":  "cursor"
+                                              },
+                   "pm-postmortem-writer":  {
+                                                "path":  "C:\\Users\\win\\.cursor\\skills\\pm-postmortem-writer\\SKILL.md",
+                                                "verdict":  "Improve",
+                                                "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                "mtime":  "2026-06-03T06:15:28Z",
+                                                "auditVerdict":  "ROUTING_GAP",
+                                                "source":  "cursor"
+                                            },
+                   "writing-plans":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\writing-plans\\SKILL.md",
+                                         "verdict":  "Keep",
+                                         "reason":  "rule-overlap",
+                                         "mtime":  "2026-06-03T06:15:33Z",
+                                         "auditVerdict":  "PASS",
+                                         "source":  "cursor"
+                                     },
+                   "recap":  {
+                                 "path":  "C:\\Users\\win\\.cursor\\skills\\recap\\SKILL.md",
+                                 "verdict":  "Improve",
+                                 "reason":  "routing-gap; add intent profile or keywordBoost",
+                                 "mtime":  "2026-06-03T05:19:22Z",
+                                 "auditVerdict":  "ROUTING_GAP",
+                                 "source":  "cursor"
+                             },
+                   "brainstorming":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\brainstorming\\SKILL.md",
+                                         "verdict":  "Keep",
+                                         "reason":  "rule-overlap",
+                                         "mtime":  "2026-06-03T06:15:22Z",
+                                         "auditVerdict":  "PASS",
+                                         "source":  "cursor"
+                                     },
+                   "test-driven-development":  {
+                                                   "path":  "C:\\Users\\win\\.cursor\\skills\\test-driven-development\\SKILL.md",
+                                                   "verdict":  "Improve",
+                                                   "reason":  "routing-gap; add intent profile or keywordBoost",
+                                                   "mtime":  "2026-06-03T06:15:31Z",
+                                                   "auditVerdict":  "ROUTING_GAP",
+                                                   "source":  "cursor"
+                                               },
+                   "SPACE-experiment-designer":  {
+                                                     "path":  "C:\\Users\\win\\.codex\\skills\\pm-experiment-designer\\SKILL.md",
+                                                     "verdict":  "Retire",
+                                                     "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                     "mtime":  "2026-06-03T10:00:14Z",
+                                                     "auditVerdict":  "RETIRE",
+                                                     "source":  "codex"
+                                                 },
+                   "gtm-strategy":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\gtm-strategy\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-06-03T06:15:26Z",
+                                        "auditVerdict":  "ROUTING_GAP",
+                                        "source":  "cursor"
+                                    },
+                   "systematic-debugging":  {
+                                                "path":  "C:\\Users\\win\\.cursor\\skills\\systematic-debugging\\SKILL.md",
+                                                "verdict":  "Keep",
+                                                "reason":  "",
+                                                "mtime":  "2026-06-03T06:15:31Z",
+                                                "auditVerdict":  "PASS",
+                                                "source":  "cursor"
+                                            },
+                   "zoom-out":  {
+                                    "path":  "C:\\Users\\win\\.cursor\\skills\\zoom-out\\SKILL.md",
+                                    "verdict":  "Improve",
+                                    "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                    "mtime":  "2026-05-30T18:08:36Z",
+                                    "auditVerdict":  "ROUTING_GAP",
+                                    "source":  "cursor"
+                                },
+                   "claude-memory-kit":  {
+                                             "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\awesome-claude-code-toolkit-main\\skills\\claude-memory-kit\\SKILL.md",
+                                             "verdict":  "Retire",
+                                             "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-05-27T10:28:18Z",
+                                             "auditVerdict":  "RETIRE",
+                                             "source":  "project"
+                                         },
+                   "karpathy-guidelines":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\karpathy-guidelines\\SKILL.md",
+                                               "verdict":  "Keep",
+                                               "reason":  "rule-overlap",
+                                               "mtime":  "2026-06-05T05:45:15Z",
+                                               "auditVerdict":  "PASS",
+                                               "source":  "cursor"
+                                           },
+                   "git-advanced":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\git-advanced\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-06-03T06:15:26Z",
+                                        "auditVerdict":  "ROUTING_GAP",
+                                        "source":  "cursor"
+                                    },
+                   "obsidian-vault":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\obsidian-vault\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "routing-gap; add intent profile or keywordBoost",
+                                          "mtime":  "2026-05-30T18:08:36Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "scaffold-exercises":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\scaffold-exercises\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "routing-gap; add intent profile or keywordBoost",
+                                              "mtime":  "2026-05-30T18:08:36Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "savethetokens":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\savethetokens\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:31Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "commit-context":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\commit-context\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "routing-gap; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T05:19:22Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "retro":  {
+                                 "path":  "C:\\Users\\win\\.cursor\\skills\\retro\\SKILL.md",
+                                 "verdict":  "Improve",
+                                 "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                 "mtime":  "2026-06-03T06:15:30Z",
+                                 "auditVerdict":  "ROUTING_GAP",
+                                 "source":  "cursor"
+                             },
+                   "setup-pre-commit":  {
+                                            "path":  "C:\\Users\\win\\.cursor\\skills\\setup-pre-commit\\SKILL.md",
+                                            "verdict":  "Improve",
+                                            "reason":  "routing-gap; add intent profile or keywordBoost",
+                                            "mtime":  "2026-05-30T18:08:36Z",
+                                            "auditVerdict":  "ROUTING_GAP",
+                                            "source":  "cursor"
+                                        },
+                   "academic-pipeline":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\academic-pipeline\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "workflow-in-description; description-too-long; body-too-long; routing-gap; CSO: workflow in description; add intent profile or keywordBoost; trim body (622 lines)",
+                                             "mtime":  "2026-06-03T13:07:18Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "north-star-metric":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\north-star-metric\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T06:15:27Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "to-prd":  {
+                                  "path":  "C:\\Users\\win\\.cursor\\skills\\to-prd\\SKILL.md",
+                                  "verdict":  "Improve",
+                                  "reason":  "routing-gap; add intent profile or keywordBoost",
+                                  "mtime":  "2026-05-30T18:08:36Z",
+                                  "auditVerdict":  "ROUTING_GAP",
+                                  "source":  "cursor"
+                              },
+                   "hookify-rules":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\hookify-rules\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "routing-gap; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-01T20:51:02Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "parallel-exploring":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\cursor-awesome-parallel-exploring\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                              "mtime":  "2026-04-27T22:24:56Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "api-design-patterns":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\api-design-patterns\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-03T06:15:21Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "windows-desktop-e2e":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\windows-desktop-e2e\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; body-too-long; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost; trim body (888 lines)",
+                                               "mtime":  "2026-06-01T20:51:02Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "session-history":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\session-history\\SKILL.md",
+                                           "verdict":  "Keep",
+                                           "reason":  "",
+                                           "mtime":  "2026-06-03T05:19:22Z",
+                                           "auditVerdict":  "PASS",
+                                           "source":  "cursor"
+                                       },
+                   "market-segments":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\market-segments\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:26Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "tdd-rust":  {
+                                    "path":  "C:\\Users\\win\\.cursor\\skills\\tdd-rust\\SKILL.md",
+                                    "verdict":  "Improve",
+                                    "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                    "mtime":  "2026-06-03T06:15:31Z",
+                                    "auditVerdict":  "ROUTING_GAP",
+                                    "source":  "cursor"
+                                },
+                   "ai-review":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\ai-review\\SKILL.md",
+                                     "verdict":  "Improve",
+                                     "reason":  "routing-gap; add intent profile or keywordBoost",
+                                     "mtime":  "2026-06-03T10:19:30Z",
+                                     "auditVerdict":  "ROUTING_GAP",
+                                     "source":  "cursor"
+                                 },
+                   "ai-regression-testing":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\ai-regression-testing\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "not-cso-compliant; CSO: add Use when triggers",
+                                                 "mtime":  "2026-06-01T20:51:02Z",
+                                                 "auditVerdict":  "IMPROVE",
+                                                 "source":  "cursor"
+                                             },
+                   "ckm:slides":  {
+                                      "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\ui-ux\\slides\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                      "mtime":  "2026-05-16T03:35:14Z",
+                                      "auditVerdict":  "ROUTING_GAP",
+                                      "source":  "project"
+                                  },
+                   "verification-before-completion":  {
+                                                          "path":  "C:\\Users\\win\\.cursor\\skills\\verification-before-completion\\SKILL.md",
+                                                          "verdict":  "Keep",
+                                                          "reason":  "rule-overlap",
+                                                          "mtime":  "2026-06-03T06:15:33Z",
+                                                          "auditVerdict":  "PASS",
+                                                          "source":  "cursor"
+                                                      },
+                   "wwas":  {
+                                "path":  "C:\\Users\\win\\.cursor\\skills\\wwas\\SKILL.md",
+                                "verdict":  "Improve",
+                                "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                "mtime":  "2026-06-03T06:15:33Z",
+                                "auditVerdict":  "ROUTING_GAP",
+                                "source":  "cursor"
+                            },
+                   "image2pencil":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\image2pencil\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-06-03T06:15:26Z",
+                                        "auditVerdict":  "ROUTING_GAP",
+                                        "source":  "cursor"
+                                    },
+                   "verify-security":  {
+                                           "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\agent-verifier\\skills\\verify-security\\SKILL.md",
+                                           "verdict":  "Retire",
+                                           "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-05-25T19:09:34Z",
+                                           "auditVerdict":  "RETIRE",
+                                           "source":  "project"
+                                       },
+                   "space-image2proto":  {
+                                             "path":  "C:\\Users\\win\\.codex\\skills\\pm-image2proto\\SKILL.md",
+                                             "verdict":  "Retire",
+                                             "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T10:00:14Z",
+                                             "auditVerdict":  "RETIRE",
+                                             "source":  "codex"
+                                         },
+                   "triage":  {
+                                  "path":  "C:\\Users\\win\\.cursor\\skills\\triage\\SKILL.md",
+                                  "verdict":  "Improve",
+                                  "reason":  "routing-gap; add intent profile or keywordBoost",
+                                  "mtime":  "2026-05-30T18:08:36Z",
+                                  "auditVerdict":  "ROUTING_GAP",
+                                  "source":  "cursor"
+                              },
+                   "pricing-strategy":  {
+                                            "path":  "C:\\Users\\win\\.cursor\\skills\\pricing-strategy\\SKILL.md",
+                                            "verdict":  "Improve",
+                                            "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                            "mtime":  "2026-06-03T06:15:29Z",
+                                            "auditVerdict":  "ROUTING_GAP",
+                                            "source":  "cursor"
+                                        },
+                   "summarize-interview":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\summarize-interview\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-03T06:15:31Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "django-patterns":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\django-patterns\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:26Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "ideal-customer-profile":  {
+                                                  "path":  "C:\\Users\\win\\.cursor\\skills\\ideal-customer-profile\\SKILL.md",
+                                                  "verdict":  "Improve",
+                                                  "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                  "mtime":  "2026-06-03T06:15:26Z",
+                                                  "auditVerdict":  "ROUTING_GAP",
+                                                  "source":  "cursor"
+                                              },
+                   "pr-triage":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\pr-triage\\SKILL.md",
+                                     "verdict":  "Retire",
+                                     "reason":  "broken-or-missing-description; not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                     "mtime":  "2026-06-03T06:15:29Z",
+                                     "auditVerdict":  "BROKEN",
+                                     "source":  "cursor"
+                                 },
+                   "forget":  {
+                                  "path":  "C:\\Users\\win\\.cursor\\skills\\forget\\SKILL.md",
+                                  "verdict":  "Improve",
+                                  "reason":  "routing-gap; add intent profile or keywordBoost",
+                                  "mtime":  "2026-06-03T05:19:22Z",
+                                  "auditVerdict":  "ROUTING_GAP",
+                                  "source":  "cursor"
+                              },
+                   "edit-article":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\edit-article\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "routing-gap; add intent profile or keywordBoost",
+                                        "mtime":  "2026-05-30T18:08:36Z",
+                                        "auditVerdict":  "ROUTING_GAP",
+                                        "source":  "cursor"
+                                    },
+                   "ansoff-matrix":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\ansoff-matrix\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:21Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "minimalist-ui":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\minimalist-ui\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; CSO: add Use when triggers",
+                                         "mtime":  "2026-05-26T04:31:36Z",
+                                         "auditVerdict":  "IMPROVE",
+                                         "source":  "cursor"
+                                     },
+                   "react-patterns":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\react-patterns\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:29Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "websocket-realtime":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\websocket-realtime\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                              "mtime":  "2026-06-03T06:15:33Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "pestle-analysis":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\pestle-analysis\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:28Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "outcome-roadmap":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\outcome-roadmap\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:27Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "production-audit":  {
+                                            "path":  "C:\\Users\\win\\.cursor\\skills\\production-audit\\SKILL.md",
+                                            "verdict":  "Improve",
+                                            "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                            "mtime":  "2026-06-01T20:51:02Z",
+                                            "auditVerdict":  "ROUTING_GAP",
+                                            "source":  "cursor"
+                                        },
+                   "golang-idioms":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\golang-idioms\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:26Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "webapp-testing":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\webapp-testing\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:33Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "ckm:banner-design":  {
+                                             "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\ui-ux\\banner-design\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-05-16T03:35:14Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "project"
+                                         },
+                   "monitoring-observability":  {
+                                                    "path":  "C:\\Users\\win\\.cursor\\skills\\monitoring-observability\\SKILL.md",
+                                                    "verdict":  "Improve",
+                                                    "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                    "mtime":  "2026-06-03T06:15:27Z",
+                                                    "auditVerdict":  "ROUTING_GAP",
+                                                    "source":  "cursor"
+                                                },
+                   "privacy-policy":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\privacy-policy\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:29Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "apple-mail":  {
+                                      "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\apple-mail\\SKILL.md",
+                                      "verdict":  "Retire",
+                                      "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                      "mtime":  "2026-05-03T05:44:28Z",
+                                      "auditVerdict":  "RETIRE",
+                                      "source":  "project"
+                                  },
+                   "understand-onboard":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\understand-onboard\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "routing-gap; add intent profile or keywordBoost",
+                                              "mtime":  "2026-06-01T18:49:02Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "zero-to-one-gate":  {
+                                            "path":  "C:\\Users\\win\\.cursor\\skills\\zero-to-one-gate\\SKILL.md",
+                                            "verdict":  "Keep",
+                                            "reason":  "rule-overlap",
+                                            "mtime":  "2026-06-03T09:58:08Z",
+                                            "auditVerdict":  "PASS",
+                                            "source":  "cursor"
+                                        },
+                   "ship":  {
+                                "path":  "C:\\Users\\win\\.cursor\\skills\\ship\\SKILL.md",
+                                "verdict":  "Improve",
+                                "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                "mtime":  "2026-06-03T06:15:31Z",
+                                "auditVerdict":  "ROUTING_GAP",
+                                "source":  "cursor"
+                            },
+                   "aws-cloud-patterns":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\aws-cloud-patterns\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                              "mtime":  "2026-06-03T06:15:21Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "figma-workflow":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\figma-workflow\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:26Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "content-engine":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\content-engine\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "routing-gap; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-01T20:51:02Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "prioritization-frameworks":  {
+                                                     "path":  "C:\\Users\\win\\.cursor\\skills\\prioritization-frameworks\\SKILL.md",
+                                                     "verdict":  "Improve",
+                                                     "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                     "mtime":  "2026-06-03T06:15:29Z",
+                                                     "auditVerdict":  "ROUTING_GAP",
+                                                     "source":  "cursor"
+                                                 },
+                   "brandkit":  {
+                                    "path":  "C:\\Users\\win\\.cursor\\skills\\brandkit\\SKILL.md",
+                                    "verdict":  "Improve",
+                                    "reason":  "not-cso-compliant; body-too-long; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost; trim body (799 lines)",
+                                    "mtime":  "2026-05-26T04:31:36Z",
+                                    "auditVerdict":  "ROUTING_GAP",
+                                    "source":  "cursor"
+                                },
+                   "dossier":  {
+                                   "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\dossier\\SKILL.md",
+                                   "verdict":  "Retire",
+                                   "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                   "mtime":  "2026-05-03T05:44:28Z",
+                                   "auditVerdict":  "RETIRE",
+                                   "source":  "project"
+                               },
+                   "code-simplifier":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\code-simplifier\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:25Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "job-stories":  {
+                                       "path":  "C:\\Users\\win\\.cursor\\skills\\job-stories\\SKILL.md",
+                                       "verdict":  "Improve",
+                                       "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                       "mtime":  "2026-06-03T06:15:26Z",
+                                       "auditVerdict":  "ROUTING_GAP",
+                                       "source":  "cursor"
+                                   },
+                   "planning-with-files-ar":  {
+                                                  "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\planning-with-files-master\\skills\\planning-with-files-ar\\SKILL.md",
+                                                  "verdict":  "Retire",
+                                                  "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                  "mtime":  "2026-05-16T03:34:38Z",
+                                                  "auditVerdict":  "RETIRE",
+                                                  "source":  "project"
+                                              },
+                   "frontend-slides":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\frontend-slides\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "routing-gap; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-01T20:51:02Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "rtk-tdd":  {
+                                   "path":  "C:\\Users\\win\\.cursor\\skills\\rtk-tdd\\SKILL.md",
+                                   "verdict":  "Retire",
+                                   "reason":  "broken-or-missing-description; not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                   "mtime":  "2026-06-03T06:15:30Z",
+                                   "auditVerdict":  "BROKEN",
+                                   "source":  "cursor"
+                               },
+                   "mobile-development":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\mobile-development\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                              "mtime":  "2026-06-03T06:15:27Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "springboot-patterns":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\springboot-patterns\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-03T06:15:31Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "pr-review":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\pr-review\\SKILL.md",
+                                     "verdict":  "Retire",
+                                     "reason":  "broken-or-missing-description; not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                     "mtime":  "2026-06-03T06:15:29Z",
+                                     "auditVerdict":  "BROKEN",
+                                     "source":  "cursor"
+                                 },
+                   "private-podcast-feed":  {
+                                                "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\private-podcast-feed\\SKILL.md",
+                                                "verdict":  "Retire",
+                                                "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                "mtime":  "2026-05-03T05:44:28Z",
+                                                "auditVerdict":  "RETIRE",
+                                                "source":  "project"
+                                            },
+                   "manage-skills":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\manage-skills\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:26Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "interview-script":  {
+                                            "path":  "C:\\Users\\win\\.cursor\\skills\\interview-script\\SKILL.md",
+                                            "verdict":  "Improve",
+                                            "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                            "mtime":  "2026-06-03T06:15:26Z",
+                                            "auditVerdict":  "ROUTING_GAP",
+                                            "source":  "cursor"
+                                        },
+                   "typescript-advanced":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\typescript-advanced\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-03T06:15:32Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "startup-canvas":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\startup-canvas\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:31Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "writing-beats":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\writing-beats\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "routing-gap; add intent profile or keywordBoost",
+                                         "mtime":  "2026-05-30T18:08:36Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "ouro-loop":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\ouro-loop\\SKILL.md",
+                                     "verdict":  "Keep",
+                                     "reason":  "rule-overlap",
+                                     "mtime":  "2026-06-03T06:15:27Z",
+                                     "auditVerdict":  "PASS",
+                                     "source":  "cursor"
+                                 },
+                   "anysearch":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\anysearch\\SKILL.md",
+                                     "verdict":  "Improve",
+                                     "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                     "mtime":  "2026-06-03T06:15:21Z",
+                                     "auditVerdict":  "ROUTING_GAP",
+                                     "source":  "cursor"
+                                 },
+                   "cohort-analysis":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\cohort-analysis\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:25Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "tdd-workflow":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\tdd-workflow\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "not-cso-compliant; CSO: add Use when triggers",
+                                        "mtime":  "2026-06-01T20:51:02Z",
+                                        "auditVerdict":  "IMPROVE",
+                                        "source":  "cursor"
+                                    },
+                   "positioning-ideas":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\positioning-ideas\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T06:15:28Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "review":  {
+                                  "path":  "C:\\Users\\win\\.cursor\\skills\\review\\SKILL.md",
+                                  "verdict":  "Improve",
+                                  "reason":  "routing-gap; add intent profile or keywordBoost",
+                                  "mtime":  "2026-05-30T18:08:36Z",
+                                  "auditVerdict":  "ROUTING_GAP",
+                                  "source":  "cursor"
+                              },
+                   "understand-dashboard":  {
+                                                "path":  "C:\\Users\\win\\.cursor\\skills\\understand-dashboard\\SKILL.md",
+                                                "verdict":  "Improve",
+                                                "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                "mtime":  "2026-06-01T18:49:02Z",
+                                                "auditVerdict":  "ROUTING_GAP",
+                                                "source":  "cursor"
+                                            },
+                   "tmux-control":  {
+                                        "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\tmux-control\\SKILL.md",
+                                        "verdict":  "Retire",
+                                        "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-05-03T05:44:28Z",
+                                        "auditVerdict":  "RETIRE",
+                                        "source":  "project"
+                                    },
+                   "setup-matt-pocock-skills":  {
+                                                    "path":  "C:\\Users\\win\\.cursor\\skills\\setup-matt-pocock-skills\\SKILL.md",
+                                                    "verdict":  "Improve",
+                                                    "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                    "mtime":  "2026-05-30T18:08:36Z",
+                                                    "auditVerdict":  "ROUTING_GAP",
+                                                    "source":  "cursor"
+                                                },
+                   "identify-assumptions-existing":  {
+                                                         "path":  "C:\\Users\\win\\.cursor\\skills\\identify-assumptions-existing\\SKILL.md",
+                                                         "verdict":  "Improve",
+                                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                         "mtime":  "2026-06-03T06:15:26Z",
+                                                         "auditVerdict":  "ROUTING_GAP",
+                                                         "source":  "cursor"
+                                                     },
+                   "market-research":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\market-research\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "routing-gap; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-01T20:51:02Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "tdd":  {
+                               "path":  "C:\\Users\\win\\.cursor\\skills\\tdd\\SKILL.md",
+                               "verdict":  "Improve",
+                               "reason":  "routing-gap; add intent profile or keywordBoost",
+                               "mtime":  "2026-05-30T18:08:36Z",
+                               "auditVerdict":  "ROUTING_GAP",
+                               "source":  "cursor"
+                           },
+                   "continuous-learning-v2":  {
+                                                  "path":  "C:\\Users\\win\\.cursor\\skills\\continuous-learning-v2\\SKILL.md",
+                                                  "verdict":  "Improve",
+                                                  "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                  "mtime":  "2026-06-01T20:51:02Z",
+                                                  "auditVerdict":  "ROUTING_GAP",
+                                                  "source":  "cursor"
+                                              },
+                   "teach":  {
+                                 "path":  "C:\\Users\\win\\.cursor\\skills\\teach\\SKILL.md",
+                                 "verdict":  "Improve",
+                                 "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                 "mtime":  "2026-05-30T18:08:36Z",
+                                 "auditVerdict":  "ROUTING_GAP",
+                                 "source":  "cursor"
+                             },
+                   "stakeholder-map":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\stakeholder-map\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:31Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "imagegen-frontend-web":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\imagegen-frontend-web\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "not-cso-compliant; workflow-in-description; description-too-long; body-too-long; CSO: workflow in description; CSO: add Use when triggers; trim body (988 lines)",
+                                                 "mtime":  "2026-05-26T04:31:36Z",
+                                                 "auditVerdict":  "IMPROVE",
+                                                 "source":  "cursor"
+                                             },
+                   "beachhead-segment":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\beachhead-segment\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T06:15:22Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "security-hardening":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\security-hardening\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "not-cso-compliant; CSO: add Use when triggers",
+                                              "mtime":  "2026-06-03T06:15:31Z",
+                                              "auditVerdict":  "IMPROVE",
+                                              "source":  "cursor"
+                                          },
+                   "code-tour":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\code-tour\\SKILL.md",
+                                     "verdict":  "Improve",
+                                     "reason":  "workflow-in-description; CSO: workflow in description",
+                                     "mtime":  "2026-06-01T20:51:02Z",
+                                     "auditVerdict":  "IMPROVE",
+                                     "source":  "cursor"
+                                 },
+                   "sprint-plan":  {
+                                       "path":  "C:\\Users\\win\\.cursor\\skills\\sprint-plan\\SKILL.md",
+                                       "verdict":  "Improve",
+                                       "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                       "mtime":  "2026-06-03T06:15:31Z",
+                                       "auditVerdict":  "ROUTING_GAP",
+                                       "source":  "cursor"
+                                   },
+                   "ckm-banner-design":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\ckm-banner-design\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T06:15:23Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "requirement-clarifier":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\requirement-clarifier\\SKILL.md",
+                                                 "verdict":  "Keep",
+                                                 "reason":  "rule-overlap",
+                                                 "mtime":  "2026-06-05T05:45:15Z",
+                                                 "auditVerdict":  "PASS",
+                                                 "source":  "cursor"
+                                             },
+                   "sql-queries":  {
+                                       "path":  "C:\\Users\\win\\.cursor\\skills\\sql-queries\\SKILL.md",
+                                       "verdict":  "Improve",
+                                       "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                       "mtime":  "2026-06-03T06:15:31Z",
+                                       "auditVerdict":  "ROUTING_GAP",
+                                       "source":  "cursor"
+                                   },
+                   "mcp-server-patterns":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\mcp-server-patterns\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-01T20:51:02Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "bun-runtime":  {
+                                       "path":  "C:\\Users\\win\\.cursor\\skills\\bun-runtime\\SKILL.md",
+                                       "verdict":  "Improve",
+                                       "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                       "mtime":  "2026-06-01T20:51:02Z",
+                                       "auditVerdict":  "ROUTING_GAP",
+                                       "source":  "cursor"
+                                   },
+                   "academic-paper-reviewer":  {
+                                                   "path":  "C:\\Users\\win\\.cursor\\skills\\academic-paper-reviewer\\SKILL.md",
+                                                   "verdict":  "Improve",
+                                                   "reason":  "workflow-in-description; description-too-long; routing-gap; CSO: workflow in description; add intent profile or keywordBoost",
+                                                   "mtime":  "2026-06-03T13:07:18Z",
+                                                   "auditVerdict":  "ROUTING_GAP",
+                                                   "source":  "cursor"
+                                               },
+                   "full-output-enforcement":  {
+                                                   "path":  "C:\\Users\\win\\.cursor\\skills\\full-output-enforcement\\SKILL.md",
+                                                   "verdict":  "Improve",
+                                                   "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                   "mtime":  "2026-05-26T04:31:36Z",
+                                                   "auditVerdict":  "ROUTING_GAP",
+                                                   "source":  "cursor"
+                                               },
+                   "ckm:ui-styling":  {
+                                          "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\ui-ux\\ui-styling\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-05-16T03:35:14Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "project"
+                                      },
+                   "nextjs-mastery":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\nextjs-mastery\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:27Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "imagegen-frontend-mobile":  {
+                                                    "path":  "C:\\Users\\win\\.cursor\\skills\\imagegen-frontend-mobile\\SKILL.md",
+                                                    "verdict":  "Improve",
+                                                    "reason":  "not-cso-compliant; workflow-in-description; description-too-long; body-too-long; routing-gap; CSO: workflow in description; CSO: add Use when triggers; add intent profile or keywordBoost; trim body (1466 lines)",
+                                                    "mtime":  "2026-05-26T04:31:36Z",
+                                                    "auditVerdict":  "ROUTING_GAP",
+                                                    "source":  "cursor"
+                                                },
+                   "ckm:brand":  {
+                                     "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\ui-ux\\brand\\SKILL.md",
+                                     "verdict":  "Improve",
+                                     "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                     "mtime":  "2026-05-16T03:35:14Z",
+                                     "auditVerdict":  "ROUTING_GAP",
+                                     "source":  "project"
+                                 },
+                   "draft-nda":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\draft-nda\\SKILL.md",
+                                     "verdict":  "Improve",
+                                     "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                     "mtime":  "2026-06-03T06:15:26Z",
+                                     "auditVerdict":  "ROUTING_GAP",
+                                     "source":  "cursor"
+                                 },
+                   "migrate-to-shoehorn":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\migrate-to-shoehorn\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "routing-gap; add intent profile or keywordBoost",
+                                               "mtime":  "2026-05-30T18:08:36Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "ckm-ui-styling":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\ckm-ui-styling\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:25Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "design-taste-frontend-v1":  {
+                                                    "path":  "C:\\Users\\win\\.cursor\\skills\\design-taste-frontend-v1\\SKILL.md",
+                                                    "verdict":  "Improve",
+                                                    "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                    "mtime":  "2026-05-26T04:31:36Z",
+                                                    "auditVerdict":  "ROUTING_GAP",
+                                                    "source":  "cursor"
+                                                },
+                   "frontend-design":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\frontend-design\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "routing-gap; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:26Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "redesign-existing-projects":  {
+                                                      "path":  "C:\\Users\\win\\.cursor\\skills\\redesign-existing-projects\\SKILL.md",
+                                                      "verdict":  "Improve",
+                                                      "reason":  "not-cso-compliant; CSO: add Use when triggers",
+                                                      "mtime":  "2026-05-26T04:31:36Z",
+                                                      "auditVerdict":  "IMPROVE",
+                                                      "source":  "cursor"
+                                                  },
+                   "release-notes":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\release-notes\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:30Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "gtm-motions":  {
+                                       "path":  "C:\\Users\\win\\.cursor\\skills\\gtm-motions\\SKILL.md",
+                                       "verdict":  "Improve",
+                                       "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                       "mtime":  "2026-06-03T06:15:26Z",
+                                       "auditVerdict":  "ROUTING_GAP",
+                                       "source":  "cursor"
+                                   },
+                   "remember":  {
+                                    "path":  "C:\\Users\\win\\.cursor\\skills\\remember\\SKILL.md",
+                                    "verdict":  "Improve",
+                                    "reason":  "routing-gap; add intent profile or keywordBoost",
+                                    "mtime":  "2026-06-03T05:19:22Z",
+                                    "auditVerdict":  "ROUTING_GAP",
+                                    "source":  "cursor"
+                                },
+                   "sentiment-analysis":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\sentiment-analysis\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                              "mtime":  "2026-06-03T06:15:31Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "gdpr-audit-prep":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\rezvani-gdpr-audit-prep\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-02T14:33:06Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "understand-domain":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\understand-domain\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-01T18:49:02Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "pptx":  {
+                                "path":  "C:\\Users\\win\\.cursor\\skills\\pptx\\SKILL.md",
+                                "verdict":  "Improve",
+                                "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                "mtime":  "2026-06-03T06:15:29Z",
+                                "auditVerdict":  "ROUTING_GAP",
+                                "source":  "cursor"
+                            },
+                   "text-to-speech":  {
+                                          "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\text-to-speech\\SKILL.md",
+                                          "verdict":  "Retire",
+                                          "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-05-03T05:44:28Z",
+                                          "auditVerdict":  "RETIRE",
+                                          "source":  "project"
+                                      },
+                   "apple-notes":  {
+                                       "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\apple-notes\\SKILL.md",
+                                       "verdict":  "Retire",
+                                       "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                       "mtime":  "2026-05-03T05:44:28Z",
+                                       "auditVerdict":  "RETIRE",
+                                       "source":  "project"
+                                   },
+                   "strategic-compact":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\strategic-compact\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-01T20:51:02Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "tracking-spec-writer":  {
+                                                "path":  "C:\\Users\\win\\.codex\\skills\\pm-tracking-spec-writer\\SKILL.md",
+                                                "verdict":  "Retire",
+                                                "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                "mtime":  "2026-06-03T10:00:14Z",
+                                                "auditVerdict":  "RETIRE",
+                                                "source":  "codex"
+                                            },
+                   "stitch-design-taste":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\stitch-design-taste\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-05-26T04:31:36Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "frontend-excellence":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\frontend-excellence\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-03T06:15:26Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "commit-history":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\commit-history\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "routing-gap; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T05:19:22Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "design-an-interface":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\design-an-interface\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "routing-gap; add intent profile or keywordBoost",
+                                               "mtime":  "2026-05-30T18:08:36Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "security-guardian":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\security-guardian\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; body-too-long; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost; trim body (506 lines)",
+                                             "mtime":  "2026-06-03T06:15:31Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "tracer-bullets":  {
+                                          "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\tracer-bullets\\SKILL.md",
+                                          "verdict":  "Retire",
+                                          "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-05-03T05:44:28Z",
+                                          "auditVerdict":  "RETIRE",
+                                          "source":  "project"
+                                      },
+                   "summarize-meeting":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\summarize-meeting\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T06:15:31Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "user-segmentation":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\user-segmentation\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T06:15:32Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "global-session-core":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\global-session-core\\SKILL.md",
+                                               "verdict":  "Keep",
+                                               "reason":  "rule-overlap",
+                                               "mtime":  "2026-06-05T05:45:15Z",
+                                               "auditVerdict":  "PASS",
+                                               "source":  "cursor"
+                                           },
+                   "customer-journey-map":  {
+                                                "path":  "C:\\Users\\win\\.cursor\\skills\\customer-journey-map\\SKILL.md",
+                                                "verdict":  "Improve",
+                                                "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                "mtime":  "2026-06-03T06:15:25Z",
+                                                "auditVerdict":  "ROUTING_GAP",
+                                                "source":  "cursor"
+                                            },
+                   "pre-mortem":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\pre-mortem\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                      "mtime":  "2026-06-03T06:15:29Z",
+                                      "auditVerdict":  "ROUTING_GAP",
+                                      "source":  "cursor"
+                                  },
+                   "test-scenarios":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\test-scenarios\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; workflow-in-description; routing-gap; CSO: workflow in description; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:32Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "recall":  {
+                                  "path":  "C:\\Users\\win\\.cursor\\skills\\recall\\SKILL.md",
+                                  "verdict":  "Keep",
+                                  "reason":  "",
+                                  "mtime":  "2026-06-03T05:19:22Z",
+                                  "auditVerdict":  "PASS",
+                                  "source":  "cursor"
+                              },
+                   "grill-with-docs":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\grill-with-docs\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "routing-gap; add intent profile or keywordBoost",
+                                           "mtime":  "2026-05-30T18:08:36Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "writing-skills":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\writing-skills\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "body-too-long; routing-gap; add intent profile or keywordBoost; trim body (657 lines)",
+                                          "mtime":  "2026-06-03T06:15:33Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "building-skills-from-patterns":  {
+                                                         "path":  "C:\\Users\\win\\.cursor\\skills\\cursor-awesome-building-skills-from-patterns\\SKILL.md",
+                                                         "verdict":  "Improve",
+                                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                         "mtime":  "2026-04-27T22:24:56Z",
+                                                         "auditVerdict":  "ROUTING_GAP",
+                                                         "source":  "cursor"
+                                                     },
+                   "ai-coding-ok":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\ai-coding-ok\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "workflow-in-description; description-too-long; rule-overlap; CSO: workflow in description",
+                                        "mtime":  "2026-06-03T06:15:21Z",
+                                        "auditVerdict":  "IMPROVE",
+                                        "source":  "cursor"
+                                    },
+                   "postgres-optimization":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\postgres-optimization\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-06-03T06:15:28Z",
+                                                 "auditVerdict":  "ROUTING_GAP",
+                                                 "source":  "cursor"
+                                             },
+                   "va-md-preview":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\va-md-preview\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-04T04:37:30Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "gpt-taste":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\gpt-taste\\SKILL.md",
+                                     "verdict":  "Improve",
+                                     "reason":  "not-cso-compliant; CSO: add Use when triggers",
+                                     "mtime":  "2026-05-26T04:31:36Z",
+                                     "auditVerdict":  "IMPROVE",
+                                     "source":  "cursor"
+                                 },
+                   "auditing-performance":  {
+                                                "path":  "C:\\Users\\win\\.cursor\\skills\\cursor-awesome-auditing-performance\\SKILL.md",
+                                                "verdict":  "Improve",
+                                                "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                "mtime":  "2026-04-27T22:24:56Z",
+                                                "auditVerdict":  "ROUTING_GAP",
+                                                "source":  "cursor"
+                                            },
+                   "product-vision":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\product-vision\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:29Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "subagent-driven-development":  {
+                                                       "path":  "C:\\Users\\win\\.cursor\\skills\\subagent-driven-development\\SKILL.md",
+                                                       "verdict":  "Improve",
+                                                       "reason":  "routing-gap; add intent profile or keywordBoost",
+                                                       "mtime":  "2026-06-03T06:15:31Z",
+                                                       "auditVerdict":  "ROUTING_GAP",
+                                                       "source":  "cursor"
+                                                   },
+                   "bye":  {
+                               "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\bye\\SKILL.md",
+                               "verdict":  "Retire",
+                               "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                               "mtime":  "2026-05-03T05:44:28Z",
+                               "auditVerdict":  "RETIRE",
+                               "source":  "project"
+                           },
+                   "value-proposition":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\value-proposition\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T06:15:32Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "pandoc":  {
+                                  "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\pandoc\\SKILL.md",
+                                  "verdict":  "Retire",
+                                  "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                  "mtime":  "2026-05-03T05:44:28Z",
+                                  "auditVerdict":  "RETIRE",
+                                  "source":  "project"
+                              },
+                   "metrics-dashboard":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\metrics-dashboard\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T06:15:27Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "grill-me":  {
+                                    "path":  "C:\\Users\\win\\.cursor\\skills\\grill-me\\SKILL.md",
+                                    "verdict":  "Improve",
+                                    "reason":  "routing-gap; add intent profile or keywordBoost",
+                                    "mtime":  "2026-05-30T18:08:36Z",
+                                    "auditVerdict":  "ROUTING_GAP",
+                                    "source":  "cursor"
+                                },
+                   "va-preview":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\va-preview\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                      "mtime":  "2026-06-04T04:37:30Z",
+                                      "auditVerdict":  "ROUTING_GAP",
+                                      "source":  "cursor"
+                                  },
+                   "handoff":  {
+                                   "path":  "C:\\Users\\win\\.cursor\\skills\\handoff\\SKILL.md",
+                                   "verdict":  "Improve",
+                                   "reason":  "not-cso-compliant; CSO: add Use when triggers",
+                                   "mtime":  "2026-05-30T18:08:36Z",
+                                   "auditVerdict":  "IMPROVE",
+                                   "source":  "cursor"
+                               },
+                   "database-optimization":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\database-optimization\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-06-03T06:15:25Z",
+                                                 "auditVerdict":  "ROUTING_GAP",
+                                                 "source":  "cursor"
+                                             },
+                   "opportunity-solution-tree":  {
+                                                     "path":  "C:\\Users\\win\\.cursor\\skills\\opportunity-solution-tree\\SKILL.md",
+                                                     "verdict":  "Improve",
+                                                     "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                     "mtime":  "2026-06-03T06:15:27Z",
+                                                     "auditVerdict":  "ROUTING_GAP",
+                                                     "source":  "cursor"
+                                                 },
+                   "brainstorm-ideas-new":  {
+                                                "path":  "C:\\Users\\win\\.cursor\\skills\\brainstorm-ideas-new\\SKILL.md",
+                                                "verdict":  "Improve",
+                                                "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                "mtime":  "2026-06-03T06:15:22Z",
+                                                "auditVerdict":  "ROUTING_GAP",
+                                                "source":  "cursor"
+                                            },
+                   "writing-shape":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\writing-shape\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "routing-gap; add intent profile or keywordBoost",
+                                         "mtime":  "2026-05-30T18:08:36Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "microservices-design":  {
+                                                "path":  "C:\\Users\\win\\.cursor\\skills\\microservices-design\\SKILL.md",
+                                                "verdict":  "Improve",
+                                                "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                "mtime":  "2026-06-03T06:15:27Z",
+                                                "auditVerdict":  "ROUTING_GAP",
+                                                "source":  "cursor"
+                                            },
+                   "issue-triage":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\issue-triage\\SKILL.md",
+                                        "verdict":  "Retire",
+                                        "reason":  "broken-or-missing-description; not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-06-03T06:15:26Z",
+                                        "auditVerdict":  "BROKEN",
+                                        "source":  "cursor"
+                                    },
+                   "e2e-testing":  {
+                                       "path":  "C:\\Users\\win\\.cursor\\skills\\e2e-testing\\SKILL.md",
+                                       "verdict":  "Improve",
+                                       "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                       "mtime":  "2026-06-01T20:51:02Z",
+                                       "auditVerdict":  "ROUTING_GAP",
+                                       "source":  "cursor"
+                                   },
+                   "verify-quality":  {
+                                          "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\agent-verifier\\skills\\verify-quality\\SKILL.md",
+                                          "verdict":  "Retire",
+                                          "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-05-25T19:09:34Z",
+                                          "auditVerdict":  "RETIRE",
+                                          "source":  "project"
+                                      },
+                   "mcp-builder":  {
+                                       "path":  "C:\\Users\\win\\.cursor\\skills\\mcp-builder\\SKILL.md",
+                                       "verdict":  "Improve",
+                                       "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                       "mtime":  "2026-06-03T06:15:27Z",
+                                       "auditVerdict":  "ROUTING_GAP",
+                                       "source":  "cursor"
+                                   },
+                   "SPACE-survey-designer":  {
+                                                 "path":  "C:\\Users\\win\\.codex\\skills\\pm-survey-designer\\SKILL.md",
+                                                 "verdict":  "Retire",
+                                                 "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-06-03T10:00:14Z",
+                                                 "auditVerdict":  "RETIRE",
+                                                 "source":  "codex"
+                                             },
+                   "memory-handoff":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\memory-handoff\\SKILL.md",
+                                          "verdict":  "Keep",
+                                          "reason":  "",
+                                          "mtime":  "2026-06-04T06:51:51Z",
+                                          "auditVerdict":  "PASS",
+                                          "source":  "cursor"
+                                      },
+                   "docker-best-practices":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\docker-best-practices\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-06-03T06:15:26Z",
+                                                 "auditVerdict":  "ROUTING_GAP",
+                                                 "source":  "cursor"
+                                             },
+                   "ckm:design-system":  {
+                                             "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\ui-ux\\design-system\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "routing-gap; add intent profile or keywordBoost",
+                                             "mtime":  "2026-05-16T03:35:14Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "project"
+                                         },
+                   "finishing-a-development-branch":  {
+                                                          "path":  "C:\\Users\\win\\.cursor\\skills\\finishing-a-development-branch\\SKILL.md",
+                                                          "verdict":  "Improve",
+                                                          "reason":  "routing-gap; add intent profile or keywordBoost",
+                                                          "mtime":  "2026-06-03T06:15:26Z",
+                                                          "auditVerdict":  "ROUTING_GAP",
+                                                          "source":  "cursor"
+                                                      },
+                   "using-git-worktrees":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\using-git-worktrees\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "routing-gap; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-03T06:15:32Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "business-model":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\business-model\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:22Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "data-engineering":  {
+                                            "path":  "C:\\Users\\win\\.cursor\\skills\\data-engineering\\SKILL.md",
+                                            "verdict":  "Improve",
+                                            "reason":  "not-cso-compliant; workflow-in-description; routing-gap; CSO: workflow in description; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                            "mtime":  "2026-06-03T06:15:25Z",
+                                            "auditVerdict":  "ROUTING_GAP",
+                                            "source":  "cursor"
+                                        },
+                   "understand-chat":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\understand-chat\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "routing-gap; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-01T18:49:02Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "ai-act-readiness":  {
+                                            "path":  "C:\\Users\\win\\.cursor\\skills\\rezvani-ai-act-readiness\\SKILL.md",
+                                            "verdict":  "Improve",
+                                            "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                            "mtime":  "2026-06-02T14:33:06Z",
+                                            "auditVerdict":  "ROUTING_GAP",
+                                            "source":  "cursor"
+                                        },
+                   "image-to-code":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\image-to-code\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; workflow-in-description; description-too-long; body-too-long; CSO: workflow in description; CSO: add Use when triggers; trim body (1229 lines)",
+                                         "mtime":  "2026-05-26T04:31:36Z",
+                                         "auditVerdict":  "IMPROVE",
+                                         "source":  "cursor"
+                                     },
+                   "rtk-triage":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\rtk-triage\\SKILL.md",
+                                      "verdict":  "Retire",
+                                      "reason":  "broken-or-missing-description; not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                      "mtime":  "2026-06-03T06:15:30Z",
+                                      "auditVerdict":  "BROKEN",
+                                      "source":  "cursor"
+                                  },
+                   "create-prd":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\create-prd\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "not-cso-compliant; CSO: add Use when triggers",
+                                      "mtime":  "2026-06-03T06:15:25Z",
+                                      "auditVerdict":  "IMPROVE",
+                                      "source":  "cursor"
+                                  },
+                   "executing-plans":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\executing-plans\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "routing-gap; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:26Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "ckm-design-system":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\ckm-design-system\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "routing-gap; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T06:15:24Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "understand-knowledge":  {
+                                                "path":  "C:\\Users\\win\\.cursor\\skills\\understand-knowledge\\SKILL.md",
+                                                "verdict":  "Improve",
+                                                "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                "mtime":  "2026-06-01T18:49:02Z",
+                                                "auditVerdict":  "ROUTING_GAP",
+                                                "source":  "cursor"
+                                            },
+                   "styleseed":  {
+                                     "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\awesome-claude-code-toolkit-main\\skills\\styleseed\\SKILL.md",
+                                     "verdict":  "Retire",
+                                     "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                     "mtime":  "2026-05-27T10:28:19Z",
+                                     "auditVerdict":  "RETIRE",
+                                     "source":  "project"
+                                 },
+                   "competitive-battlecard":  {
+                                                  "path":  "C:\\Users\\win\\.cursor\\skills\\competitive-battlecard\\SKILL.md",
+                                                  "verdict":  "Improve",
+                                                  "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                  "mtime":  "2026-06-03T06:15:25Z",
+                                                  "auditVerdict":  "ROUTING_GAP",
+                                                  "source":  "cursor"
+                                              },
+                   "investor-outreach":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\investor-outreach\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "routing-gap; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-01T20:51:02Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "python-best-practices":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\python-best-practices\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-06-03T06:15:29Z",
+                                                 "auditVerdict":  "ROUTING_GAP",
+                                                 "source":  "cursor"
+                                             },
+                   "redis-patterns":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\redis-patterns\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:30Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "caveman":  {
+                                   "path":  "C:\\Users\\win\\.cursor\\skills\\caveman\\SKILL.md",
+                                   "verdict":  "Retire",
+                                   "reason":  "broken-or-missing-description; not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                   "mtime":  "2026-05-30T18:08:36Z",
+                                   "auditVerdict":  "BROKEN",
+                                   "source":  "cursor"
+                               },
+                   "grammar-check":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\grammar-check\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:26Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "ckm-design":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\ckm-design\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "not-cso-compliant; workflow-in-description; description-too-long; routing-gap; CSO: workflow in description; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                      "mtime":  "2026-06-03T06:15:24Z",
+                                      "auditVerdict":  "ROUTING_GAP",
+                                      "source":  "cursor"
+                                  },
+                   "skill-stocktake":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\skill-stocktake\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "routing-gap; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-01T20:51:02Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "mcp-development":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\mcp-development\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:27Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "llm-integration":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\llm-integration\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; workflow-in-description; routing-gap; CSO: workflow in description; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:26Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "design-taste-frontend":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\design-taste-frontend\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "not-cso-compliant; body-too-long; CSO: add Use when triggers; trim body (1207 lines)",
+                                                 "mtime":  "2026-05-26T04:31:36Z",
+                                                 "auditVerdict":  "IMPROVE",
+                                                 "source":  "cursor"
+                                             },
+                   "planning-with-files":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\planning-with-files\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; rule-overlap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-03T06:15:28Z",
+                                               "auditVerdict":  "IMPROVE",
+                                               "source":  "cursor"
+                                           },
+                   "using-superpowers":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\using-superpowers\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T06:15:32Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "prioritize-assumptions":  {
+                                                  "path":  "C:\\Users\\win\\.cursor\\skills\\prioritize-assumptions\\SKILL.md",
+                                                  "verdict":  "Improve",
+                                                  "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                  "mtime":  "2026-06-03T06:15:29Z",
+                                                  "auditVerdict":  "ROUTING_GAP",
+                                                  "source":  "cursor"
+                                              },
+                   "kubernetes-operations":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\kubernetes-operations\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-06-03T06:15:26Z",
+                                                 "auditVerdict":  "ROUTING_GAP",
+                                                 "source":  "cursor"
+                                             },
+                   "planning-with-files-es":  {
+                                                  "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\planning-with-files-master\\skills\\planning-with-files-es\\SKILL.md",
+                                                  "verdict":  "Retire",
+                                                  "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                  "mtime":  "2026-05-16T03:34:38Z",
+                                                  "auditVerdict":  "RETIRE",
+                                                  "source":  "project"
+                                              },
+                   "prompt-engineering":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\prompt-engineering\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                              "mtime":  "2026-06-03T06:15:29Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "SPACE-prd-writer":  {
+                                            "path":  "C:\\Users\\win\\.codex\\skills\\pm-prd-writer\\SKILL.md",
+                                            "verdict":  "Retire",
+                                            "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                            "mtime":  "2026-06-03T10:00:14Z",
+                                            "auditVerdict":  "RETIRE",
+                                            "source":  "codex"
+                                        },
+                   "writing-fragments":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\writing-fragments\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "routing-gap; add intent profile or keywordBoost",
+                                             "mtime":  "2026-05-30T18:08:36Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "verify-language":  {
+                                           "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\agent-verifier\\skills\\verify-language\\SKILL.md",
+                                           "verdict":  "Retire",
+                                           "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-05-25T19:09:34Z",
+                                           "auditVerdict":  "RETIRE",
+                                           "source":  "project"
+                                       },
+                   "skill-scout":  {
+                                       "path":  "C:\\Users\\win\\.cursor\\skills\\skill-scout\\SKILL.md",
+                                       "verdict":  "Improve",
+                                       "reason":  "routing-gap; add intent profile or keywordBoost",
+                                       "mtime":  "2026-06-01T20:51:02Z",
+                                       "auditVerdict":  "ROUTING_GAP",
+                                       "source":  "cursor"
+                                   },
+                   "figma-product-report":  {
+                                                "path":  "C:\\Users\\win\\.cursor\\skills\\figma-product-report\\SKILL.md",
+                                                "verdict":  "Improve",
+                                                "reason":  "workflow-in-description; description-too-long; routing-gap; CSO: workflow in description; add intent profile or keywordBoost",
+                                                "mtime":  "2026-06-03T06:15:26Z",
+                                                "auditVerdict":  "ROUTING_GAP",
+                                                "source":  "cursor"
+                                            },
+                   "brainstorm-ideas-existing":  {
+                                                     "path":  "C:\\Users\\win\\.cursor\\skills\\brainstorm-ideas-existing\\SKILL.md",
+                                                     "verdict":  "Improve",
+                                                     "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                     "mtime":  "2026-06-03T06:15:22Z",
+                                                     "auditVerdict":  "ROUTING_GAP",
+                                                     "source":  "cursor"
+                                                 },
+                   "tdd-mastery":  {
+                                       "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\awesome-claude-code-toolkit-main\\skills\\tdd-mastery\\SKILL.md",
+                                       "verdict":  "Retire",
+                                       "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                       "mtime":  "2026-05-27T10:28:19Z",
+                                       "auditVerdict":  "RETIRE",
+                                       "source":  "project"
+                                   },
+                   "ckm:design":  {
+                                      "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\ui-ux\\design\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "not-cso-compliant; workflow-in-description; description-too-long; routing-gap; CSO: workflow in description; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                      "mtime":  "2026-05-16T03:35:14Z",
+                                      "auditVerdict":  "ROUTING_GAP",
+                                      "source":  "project"
+                                  },
+                   "vibearound":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\vibearound\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "routing-gap; add intent profile or keywordBoost",
+                                      "mtime":  "2026-06-04T04:37:30Z",
+                                      "auditVerdict":  "ROUTING_GAP",
+                                      "source":  "cursor"
+                                  },
+                   "lab-notes":  {
+                                     "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\lab-notes\\SKILL.md",
+                                     "verdict":  "Retire",
+                                     "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                     "mtime":  "2026-05-03T05:44:28Z",
+                                     "auditVerdict":  "RETIRE",
+                                     "source":  "project"
+                                 },
+                   "verification":  {
+                                        "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\agent-verifier\\skills\\verification\\SKILL.md",
+                                        "verdict":  "Retire",
+                                        "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-05-25T19:09:34Z",
+                                        "auditVerdict":  "RETIRE",
+                                        "source":  "project"
+                                    },
+                   "idea-refine":  {
+                                       "path":  "C:\\Users\\win\\.cursor\\skills\\idea-refine\\SKILL.md",
+                                       "verdict":  "Keep",
+                                       "reason":  "",
+                                       "mtime":  "2026-06-05T03:29:02Z",
+                                       "auditVerdict":  "PASS",
+                                       "source":  "cursor"
+                                   },
+                   "SPACE-prioritization-engine":  {
+                                                       "path":  "C:\\Users\\win\\.codex\\skills\\pm-prioritization-engine\\SKILL.md",
+                                                       "verdict":  "Retire",
+                                                       "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                       "mtime":  "2026-06-03T10:00:14Z",
+                                                       "auditVerdict":  "RETIRE",
+                                                       "source":  "codex"
+                                                   },
+                   "competitor-analysis":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\competitor-analysis\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-03T06:15:25Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "web-prototype":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\web-prototype\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "workflow-in-description; description-too-long; routing-gap; CSO: workflow in description; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:33Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "graphql-design":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\graphql-design\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:26Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "ballot":  {
+                                  "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\ballot\\SKILL.md",
+                                  "verdict":  "Retire",
+                                  "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                  "mtime":  "2026-05-03T05:44:28Z",
+                                  "auditVerdict":  "RETIRE",
+                                  "source":  "project"
+                              },
+                   "to-issues":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\to-issues\\SKILL.md",
+                                     "verdict":  "Improve",
+                                     "reason":  "routing-gap; add intent profile or keywordBoost",
+                                     "mtime":  "2026-05-30T18:08:36Z",
+                                     "auditVerdict":  "ROUTING_GAP",
+                                     "source":  "cursor"
+                                 },
+                   "git-guardrails-claude-code":  {
+                                                      "path":  "C:\\Users\\win\\.cursor\\skills\\git-guardrails-claude-code\\SKILL.md",
+                                                      "verdict":  "Improve",
+                                                      "reason":  "routing-gap; add intent profile or keywordBoost",
+                                                      "mtime":  "2026-05-30T18:08:36Z",
+                                                      "auditVerdict":  "ROUTING_GAP",
+                                                      "source":  "cursor"
+                                                  },
+                   "brainstorm-experiments-new":  {
+                                                      "path":  "C:\\Users\\win\\.cursor\\skills\\brainstorm-experiments-new\\SKILL.md",
+                                                      "verdict":  "Improve",
+                                                      "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                      "mtime":  "2026-06-03T06:15:22Z",
+                                                      "auditVerdict":  "ROUTING_GAP",
+                                                      "source":  "cursor"
+                                                  },
+                   "prioritize-features":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\prioritize-features\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-03T06:15:29Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "marketing-ideas":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\marketing-ideas\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:26Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "soc2-audit-prep":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\rezvani-soc2-audit-prep\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-02T14:33:06Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "verify-patterns":  {
+                                           "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\agent-verifier\\skills\\verify-patterns\\SKILL.md",
+                                           "verdict":  "Retire",
+                                           "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-05-25T19:09:34Z",
+                                           "auditVerdict":  "RETIRE",
+                                           "source":  "project"
+                                       },
+                   "chrome-browser":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\chrome-browser\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "routing-gap; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T06:15:23Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "ci-cd-pipelines":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\ci-cd-pipelines\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; workflow-in-description; routing-gap; CSO: workflow in description; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:23Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "configure-ecc":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\configure-ecc\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; CSO: add Use when triggers",
+                                         "mtime":  "2026-06-01T20:51:02Z",
+                                         "auditVerdict":  "IMPROVE",
+                                         "source":  "cursor"
+                                     },
+                   "brainstorm-experiments-existing":  {
+                                                           "path":  "C:\\Users\\win\\.cursor\\skills\\brainstorm-experiments-existing\\SKILL.md",
+                                                           "verdict":  "Improve",
+                                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                           "mtime":  "2026-06-03T06:15:22Z",
+                                                           "auditVerdict":  "ROUTING_GAP",
+                                                           "source":  "cursor"
+                                                       },
+                   "article-writing":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\article-writing\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "routing-gap; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-01T20:51:02Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "product-name":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\product-name\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-06-03T06:15:29Z",
+                                        "auditVerdict":  "ROUTING_GAP",
+                                        "source":  "cursor"
+                                    },
+                   "verification-loop":  {
+                                             "path":  "C:\\Users\\win\\.cursor\\skills\\verification-loop\\SKILL.md",
+                                             "verdict":  "Improve",
+                                             "reason":  "routing-gap; add intent profile or keywordBoost",
+                                             "mtime":  "2026-06-03T10:19:30Z",
+                                             "auditVerdict":  "ROUTING_GAP",
+                                             "source":  "cursor"
+                                         },
+                   "SPACE-roadmap-planner":  {
+                                                 "path":  "C:\\Users\\win\\.codex\\skills\\pm-roadmap-planner\\SKILL.md",
+                                                 "verdict":  "Retire",
+                                                 "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-06-03T10:00:14Z",
+                                                 "auditVerdict":  "RETIRE",
+                                                 "source":  "codex"
+                                             },
+                   "agent-introspection-debugging":  {
+                                                         "path":  "C:\\Users\\win\\.cursor\\skills\\agent-introspection-debugging\\SKILL.md",
+                                                         "verdict":  "Improve",
+                                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                         "mtime":  "2026-06-01T20:51:02Z",
+                                                         "auditVerdict":  "ROUTING_GAP",
+                                                         "source":  "cursor"
+                                                     },
+                   "analyze-feature-requests":  {
+                                                    "path":  "C:\\Users\\win\\.cursor\\skills\\analyze-feature-requests\\SKILL.md",
+                                                    "verdict":  "Improve",
+                                                    "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                    "mtime":  "2026-06-03T06:15:21Z",
+                                                    "auditVerdict":  "ROUTING_GAP",
+                                                    "source":  "cursor"
+                                                },
+                   "dummy-dataset":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\dummy-dataset\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:26Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "industrial-brutalist-ui":  {
+                                                   "path":  "C:\\Users\\win\\.cursor\\skills\\industrial-brutalist-ui\\SKILL.md",
+                                                   "verdict":  "Improve",
+                                                   "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                   "mtime":  "2026-05-26T04:31:36Z",
+                                                   "auditVerdict":  "ROUTING_GAP",
+                                                   "source":  "cursor"
+                                               },
+                   "investor-materials":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\investor-materials\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "routing-gap; add intent profile or keywordBoost",
+                                              "mtime":  "2026-06-01T20:51:02Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "devops-automation":  {
+                                             "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\awesome-claude-code-toolkit-main\\skills\\devops-automation\\SKILL.md",
+                                             "verdict":  "Retire",
+                                             "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                             "mtime":  "2026-05-27T10:28:18Z",
+                                             "auditVerdict":  "RETIRE",
+                                             "source":  "project"
+                                         },
+                   "understand-explain":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\understand-explain\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "routing-gap; add intent profile or keywordBoost",
+                                              "mtime":  "2026-06-01T18:49:02Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "agentkit-seo":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\agentkit-seo\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-06-03T06:15:20Z",
+                                        "auditVerdict":  "ROUTING_GAP",
+                                        "source":  "cursor"
+                                    },
+                   "SPACE-review-board":  {
+                                              "path":  "C:\\Users\\win\\.codex\\skills\\pm-review-board\\SKILL.md",
+                                              "verdict":  "Retire",
+                                              "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                              "mtime":  "2026-06-03T10:00:14Z",
+                                              "auditVerdict":  "RETIRE",
+                                              "source":  "codex"
+                                          },
+                   "planning-with-files-zht":  {
+                                                   "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\planning-with-files-master\\skills\\planning-with-files-zht\\SKILL.md",
+                                                   "verdict":  "Retire",
+                                                   "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                   "mtime":  "2026-05-16T03:34:38Z",
+                                                   "auditVerdict":  "RETIRE",
+                                                   "source":  "project"
+                                               },
+                   "prototype":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\prototype\\SKILL.md",
+                                     "verdict":  "Improve",
+                                     "reason":  "rule-overlap; add intent profile or keywordBoost",
+                                     "mtime":  "2026-05-30T18:08:36Z",
+                                     "auditVerdict":  "IMPROVE",
+                                     "source":  "cursor"
+                                 },
+                   "porters-five-forces":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\porters-five-forces\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-03T06:15:28Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "error-handling":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\error-handling\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-01T20:51:02Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "ckm-slides":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\ckm-slides\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                      "mtime":  "2026-06-03T06:15:24Z",
+                                      "auditVerdict":  "ROUTING_GAP",
+                                      "source":  "cursor"
+                                  },
+                   "monetization-strategy":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\monetization-strategy\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-06-03T06:15:27Z",
+                                                 "auditVerdict":  "ROUTING_GAP",
+                                                 "source":  "cursor"
+                                             },
+                   "ckm-brand":  {
+                                     "path":  "C:\\Users\\win\\.cursor\\skills\\ckm-brand\\SKILL.md",
+                                     "verdict":  "Improve",
+                                     "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                     "mtime":  "2026-06-03T06:15:23Z",
+                                     "auditVerdict":  "ROUTING_GAP",
+                                     "source":  "cursor"
+                                 },
+                   "skill-creator":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\skill-creator\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "routing-gap; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:31Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "review-resume":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\review-resume\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:30Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "vercel-react-best-practices":  {
+                                                       "path":  "C:\\Users\\win\\.cursor\\skills\\vercel-react-best-practices\\SKILL.md",
+                                                       "verdict":  "Improve",
+                                                       "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                       "mtime":  "2026-06-03T06:15:33Z",
+                                                       "auditVerdict":  "ROUTING_GAP",
+                                                       "source":  "cursor"
+                                                   },
+                   "ai-delivery-gate":  {
+                                            "path":  "C:\\Users\\win\\.cursor\\skills\\ai-delivery-gate\\SKILL.md",
+                                            "verdict":  "Keep",
+                                            "reason":  "rule-overlap",
+                                            "mtime":  "2026-06-03T06:15:21Z",
+                                            "auditVerdict":  "PASS",
+                                            "source":  "cursor"
+                                        },
+                   "authentication-patterns":  {
+                                                   "path":  "C:\\Users\\win\\.cursor\\skills\\authentication-patterns\\SKILL.md",
+                                                   "verdict":  "Improve",
+                                                   "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                   "mtime":  "2026-06-03T06:15:21Z",
+                                                   "auditVerdict":  "ROUTING_GAP",
+                                                   "source":  "cursor"
+                                               },
+                   "continuous-learning":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\continuous-learning\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-03T10:19:30Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "council":  {
+                                   "path":  "C:\\Users\\win\\.cursor\\skills\\council\\SKILL.md",
+                                   "verdict":  "Improve",
+                                   "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                   "mtime":  "2026-06-01T20:51:02Z",
+                                   "auditVerdict":  "ROUTING_GAP",
+                                   "source":  "cursor"
+                               },
+                   "planning-with-files-de":  {
+                                                  "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\planning-with-files-master\\skills\\planning-with-files-de\\SKILL.md",
+                                                  "verdict":  "Retire",
+                                                  "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                  "mtime":  "2026-05-16T03:34:38Z",
+                                                  "auditVerdict":  "RETIRE",
+                                                  "source":  "project"
+                                              },
+                   "va-session":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\va-session\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                      "mtime":  "2026-06-04T04:37:30Z",
+                                      "auditVerdict":  "ROUTING_GAP",
+                                      "source":  "cursor"
+                                  },
+                   "nextjs-turbopack":  {
+                                            "path":  "C:\\Users\\win\\.cursor\\skills\\nextjs-turbopack\\SKILL.md",
+                                            "verdict":  "Improve",
+                                            "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                            "mtime":  "2026-06-01T20:51:02Z",
+                                            "auditVerdict":  "ROUTING_GAP",
+                                            "source":  "cursor"
+                                        },
+                   "ubiquitous-language":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\ubiquitous-language\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "routing-gap; add intent profile or keywordBoost",
+                                               "mtime":  "2026-05-30T18:08:36Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "pdf-zine":  {
+                                    "path":  "C:\\Users\\win\\Desktop\\Agent Platform\\skills\\vendor\\eins78-agent-skills\\skills\\pdf-zine\\SKILL.md",
+                                    "verdict":  "Retire",
+                                    "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                    "mtime":  "2026-05-03T05:44:28Z",
+                                    "auditVerdict":  "RETIRE",
+                                    "source":  "project"
+                                },
+                   "receiving-code-review":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\receiving-code-review\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "routing-gap; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-06-03T06:15:30Z",
+                                                 "auditVerdict":  "ROUTING_GAP",
+                                                 "source":  "cursor"
+                                             },
+                   "high-end-visual-design":  {
+                                                  "path":  "C:\\Users\\win\\.cursor\\skills\\high-end-visual-design\\SKILL.md",
+                                                  "verdict":  "Improve",
+                                                  "reason":  "not-cso-compliant; CSO: add Use when triggers",
+                                                  "mtime":  "2026-05-26T04:31:36Z",
+                                                  "auditVerdict":  "IMPROVE",
+                                                  "source":  "cursor"
+                                              },
+                   "dispatching-parallel-agents":  {
+                                                       "path":  "C:\\Users\\win\\.cursor\\skills\\dispatching-parallel-agents\\SKILL.md",
+                                                       "verdict":  "Improve",
+                                                       "reason":  "routing-gap; add intent profile or keywordBoost",
+                                                       "mtime":  "2026-06-03T06:15:26Z",
+                                                       "auditVerdict":  "ROUTING_GAP",
+                                                       "source":  "cursor"
+                                                   },
+                   "request-refactor-plan":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\request-refactor-plan\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "routing-gap; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-05-30T18:08:36Z",
+                                                 "auditVerdict":  "ROUTING_GAP",
+                                                 "source":  "cursor"
+                                             },
+                   "typescript-strict-patterns":  {
+                                                      "path":  "C:\\Users\\win\\.cursor\\skills\\typescript-strict-patterns\\SKILL.md",
+                                                      "verdict":  "Improve",
+                                                      "reason":  "routing-gap; add intent profile or keywordBoost",
+                                                      "mtime":  "2026-06-03T06:15:32Z",
+                                                      "auditVerdict":  "ROUTING_GAP",
+                                                      "source":  "cursor"
+                                                  },
+                   "value-prop-statements":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\value-prop-statements\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-06-03T06:15:32Z",
+                                                 "auditVerdict":  "ROUTING_GAP",
+                                                 "source":  "cursor"
+                                             },
+                   "improve-codebase-architecture":  {
+                                                         "path":  "C:\\Users\\win\\.cursor\\skills\\improve-codebase-architecture\\SKILL.md",
+                                                         "verdict":  "Improve",
+                                                         "reason":  "routing-gap; add intent profile or keywordBoost",
+                                                         "mtime":  "2026-05-30T18:08:36Z",
+                                                         "auditVerdict":  "ROUTING_GAP",
+                                                         "source":  "cursor"
+                                                     },
+                   "product-strategy":  {
+                                            "path":  "C:\\Users\\win\\.cursor\\skills\\product-strategy\\SKILL.md",
+                                            "verdict":  "Improve",
+                                            "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                            "mtime":  "2026-06-03T06:15:29Z",
+                                            "auditVerdict":  "ROUTING_GAP",
+                                            "source":  "cursor"
+                                        },
+                   "figma2code":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\figma2code\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "routing-gap; add intent profile or keywordBoost",
+                                      "mtime":  "2026-06-03T10:20:45Z",
+                                      "auditVerdict":  "ROUTING_GAP",
+                                      "source":  "cursor"
+                                  },
+                   "deep-research":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\deep-research\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "workflow-in-description; description-too-long; body-too-long; routing-gap; CSO: workflow in description; add intent profile or keywordBoost; trim body (508 lines)",
+                                         "mtime":  "2026-06-03T13:07:18Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "rust-systems":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\rust-systems\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-06-03T06:15:30Z",
+                                        "auditVerdict":  "ROUTING_GAP",
+                                        "source":  "cursor"
+                                    },
+                   "eval-harness":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\eval-harness\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-06-01T20:51:02Z",
+                                        "auditVerdict":  "ROUTING_GAP",
+                                        "source":  "cursor"
+                                    },
+                   "plankton-code-quality":  {
+                                                 "path":  "C:\\Users\\win\\.cursor\\skills\\plankton-code-quality\\SKILL.md",
+                                                 "verdict":  "Improve",
+                                                 "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                 "mtime":  "2026-06-01T20:51:02Z",
+                                                 "auditVerdict":  "ROUTING_GAP",
+                                                 "source":  "cursor"
+                                             },
+                   "academic-paper":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\academic-paper\\SKILL.md",
+                                          "verdict":  "Improve",
+                                          "reason":  "workflow-in-description; routing-gap; CSO: workflow in description; add intent profile or keywordBoost",
+                                          "mtime":  "2026-06-03T13:07:18Z",
+                                          "auditVerdict":  "ROUTING_GAP",
+                                          "source":  "cursor"
+                                      },
+                   "ui-ux-pro-max":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\ui-ux-pro-max\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; workflow-in-description; description-too-long; body-too-long; routing-gap; CSO: workflow in description; CSO: add Use when triggers; add intent profile or keywordBoost; trim body (660 lines)",
+                                         "mtime":  "2026-06-03T06:15:32Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "iterative-retrieval":  {
+                                               "path":  "C:\\Users\\win\\.cursor\\skills\\iterative-retrieval\\SKILL.md",
+                                               "verdict":  "Improve",
+                                               "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                               "mtime":  "2026-06-01T20:51:02Z",
+                                               "auditVerdict":  "ROUTING_GAP",
+                                               "source":  "cursor"
+                                           },
+                   "diagnose":  {
+                                    "path":  "C:\\Users\\win\\.cursor\\skills\\diagnose\\SKILL.md",
+                                    "verdict":  "Keep",
+                                    "reason":  "",
+                                    "mtime":  "2026-05-30T18:08:36Z",
+                                    "auditVerdict":  "PASS",
+                                    "source":  "cursor"
+                                },
+                   "user-stories":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\user-stories\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-06-03T06:15:32Z",
+                                        "auditVerdict":  "ROUTING_GAP",
+                                        "source":  "cursor"
+                                    },
+                   "growth-loops":  {
+                                        "path":  "C:\\Users\\win\\.cursor\\skills\\growth-loops\\SKILL.md",
+                                        "verdict":  "Improve",
+                                        "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                        "mtime":  "2026-06-03T06:15:26Z",
+                                        "auditVerdict":  "ROUTING_GAP",
+                                        "source":  "cursor"
+                                    },
+                   "testing-strategies":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\testing-strategies\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                              "mtime":  "2026-06-03T06:15:32Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "design-patterns":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\design-patterns\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:26Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "user-personas":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\user-personas\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:32Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "ab-test-analysis":  {
+                                            "path":  "C:\\Users\\win\\.cursor\\skills\\ab-test-analysis\\SKILL.md",
+                                            "verdict":  "Improve",
+                                            "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                            "mtime":  "2026-06-03T06:15:20Z",
+                                            "auditVerdict":  "ROUTING_GAP",
+                                            "source":  "cursor"
+                                        },
+                   "accessibility-wcag":  {
+                                              "path":  "C:\\Users\\win\\.cursor\\skills\\accessibility-wcag\\SKILL.md",
+                                              "verdict":  "Improve",
+                                              "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                              "mtime":  "2026-06-03T06:15:20Z",
+                                              "auditVerdict":  "ROUTING_GAP",
+                                              "source":  "cursor"
+                                          },
+                   "market-sizing":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\market-sizing\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:27Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "understand":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\understand\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "not-cso-compliant; body-too-long; CSO: add Use when triggers; trim body (852 lines)",
+                                      "mtime":  "2026-06-01T18:49:02Z",
+                                      "auditVerdict":  "IMPROVE",
+                                      "source":  "cursor"
+                                  },
+                   "performance-optimization":  {
+                                                    "path":  "C:\\Users\\win\\.cursor\\skills\\performance-optimization\\SKILL.md",
+                                                    "verdict":  "Improve",
+                                                    "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                    "mtime":  "2026-06-03T06:15:27Z",
+                                                    "auditVerdict":  "ROUTING_GAP",
+                                                    "source":  "cursor"
+                                                },
+                   "brainstorm-okrs":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\brainstorm-okrs\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T06:15:22Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "pm-competitor-deconstructor":  {
+                                                       "path":  "C:\\Users\\win\\.cursor\\skills\\pm-competitor-deconstructor\\SKILL.md",
+                                                       "verdict":  "Improve",
+                                                       "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                       "mtime":  "2026-06-03T06:15:28Z",
+                                                       "auditVerdict":  "ROUTING_GAP",
+                                                       "source":  "cursor"
+                                                   },
+                   "write-a-skill":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\write-a-skill\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "routing-gap; add intent profile or keywordBoost",
+                                         "mtime":  "2026-05-30T18:08:36Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "swot-analysis":  {
+                                         "path":  "C:\\Users\\win\\.cursor\\skills\\swot-analysis\\SKILL.md",
+                                         "verdict":  "Improve",
+                                         "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                         "mtime":  "2026-06-03T06:15:31Z",
+                                         "auditVerdict":  "ROUTING_GAP",
+                                         "source":  "cursor"
+                                     },
+                   "global-delivery-gate":  {
+                                                "path":  "C:\\Users\\win\\.cursor\\skills\\global-delivery-gate\\SKILL.md",
+                                                "verdict":  "Improve",
+                                                "reason":  "not-cso-compliant; rule-overlap; CSO: add Use when triggers",
+                                                "mtime":  "2026-06-03T06:15:26Z",
+                                                "auditVerdict":  "IMPROVE",
+                                                "source":  "cursor"
+                                            },
+                   "lean-canvas":  {
+                                       "path":  "C:\\Users\\win\\.cursor\\skills\\lean-canvas\\SKILL.md",
+                                       "verdict":  "Improve",
+                                       "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                       "mtime":  "2026-06-03T06:15:26Z",
+                                       "auditVerdict":  "ROUTING_GAP",
+                                       "source":  "cursor"
+                                   },
+                   "understand-diff":  {
+                                           "path":  "C:\\Users\\win\\.cursor\\skills\\understand-diff\\SKILL.md",
+                                           "verdict":  "Improve",
+                                           "reason":  "routing-gap; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-01T18:49:02Z",
+                                           "auditVerdict":  "ROUTING_GAP",
+                                           "source":  "cursor"
+                                       },
+                   "performance":  {
+                                       "path":  "C:\\Users\\win\\.cursor\\skills\\performance\\SKILL.md",
+                                       "verdict":  "Improve",
+                                       "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                       "mtime":  "2026-06-03T06:15:27Z",
+                                       "auditVerdict":  "ROUTING_GAP",
+                                       "source":  "cursor"
+                                   },
+                   "repo-recap":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\repo-recap\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                      "mtime":  "2026-06-03T06:15:30Z",
+                                      "auditVerdict":  "ROUTING_GAP",
+                                      "source":  "cursor"
+                                  },
+                   "agent-verifier":  {
+                                          "path":  "C:\\Users\\win\\.cursor\\skills\\agent-verifier\\SKILL.md",
+                                          "verdict":  "Keep",
+                                          "reason":  "",
+                                          "mtime":  "2026-06-03T06:15:20Z",
+                                          "auditVerdict":  "PASS",
+                                          "source":  "cursor"
+                                      },
+                   "SPACE-analytics":  {
+                                           "path":  "C:\\Users\\win\\.codex\\skills\\pm-analytics\\SKILL.md",
+                                           "verdict":  "Retire",
+                                           "reason":  "excludeNames; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                           "mtime":  "2026-06-03T10:00:14Z",
+                                           "auditVerdict":  "RETIRE",
+                                           "source":  "codex"
+                                       },
+                   "identify-assumptions-new":  {
+                                                    "path":  "C:\\Users\\win\\.cursor\\skills\\identify-assumptions-new\\SKILL.md",
+                                                    "verdict":  "Improve",
+                                                    "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                                    "mtime":  "2026-06-03T06:15:26Z",
+                                                    "auditVerdict":  "ROUTING_GAP",
+                                                    "source":  "cursor"
+                                                },
+                   "agent-sort":  {
+                                      "path":  "C:\\Users\\win\\.cursor\\skills\\agent-sort\\SKILL.md",
+                                      "verdict":  "Improve",
+                                      "reason":  "not-cso-compliant; routing-gap; CSO: add Use when triggers; add intent profile or keywordBoost",
+                                      "mtime":  "2026-06-01T20:51:02Z",
+                                      "auditVerdict":  "ROUTING_GAP",
+                                      "source":  "cursor"
+                                  },
+                   "requesting-code-review":  {
+                                                  "path":  "C:\\Users\\win\\.cursor\\skills\\requesting-code-review\\SKILL.md",
+                                                  "verdict":  "Improve",
+                                                  "reason":  "routing-gap; add intent profile or keywordBoost",
+                                                  "mtime":  "2026-06-03T06:15:30Z",
+                                                  "auditVerdict":  "ROUTING_GAP",
+                                                  "source":  "cursor"
+                                              },
+                   "qa":  {
+                              "path":  "C:\\Users\\win\\.cursor\\skills\\qa\\SKILL.md",
+                              "verdict":  "Improve",
+                              "reason":  "routing-gap; add intent profile or keywordBoost",
+                              "mtime":  "2026-05-30T18:08:36Z",
+                              "auditVerdict":  "ROUTING_GAP",
+                              "source":  "cursor"
+                          },
+                   "documentation-lookup":  {
+                                                "path":  "C:\\Users\\win\\.cursor\\skills\\documentation-lookup\\SKILL.md",
+                                                "verdict":  "Improve",
+                                                "reason":  "routing-gap; add intent profile or keywordBoost",
+                                                "mtime":  "2026-06-01T20:51:02Z",
+                                                "auditVerdict":  "ROUTING_GAP",
+                                                "source":  "cursor"
+                                            }
+               }
+}

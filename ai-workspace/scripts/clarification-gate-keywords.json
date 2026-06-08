@@ -1,0 +1,26 @@
+{
+  "clearKeywords": [
+    "按澄清结果执行",
+    "确认执行",
+    "开始执行",
+    "直接做",
+    "直接执行",
+    "不用澄清",
+    "就改这一处",
+    "按默认建议",
+    "确认",
+    "可以执行",
+    "yes proceed",
+    "go ahead"
+  ],
+  "allowedPathFragments": [
+    "\\.ai-workspace\\clarifications\\",
+    "\\clarifications\\",
+    "\\docs\\intent\\",
+    "\\docs\\ideas\\",
+    "\\.github\\agent\\memory\\",
+    "\\decisions-log.md",
+    "\\task-history.md",
+    "\\project-memory.md"
+  ]
+}

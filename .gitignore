@@ -1,0 +1,25 @@
+# Runtime / machine-local (never commit)
+.env
+.env.*
+*.local.json
+secrets/
+auth.json
+gate-state.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.idea/
+.vscode/
+
+# Export temp
+.export-tmp/
+
+# Large vendor caches (re-fetch via install)
+vendor-cache/
+
+# User-specific memory overlays (templates are committed)
+ai-workspace/memory/local/

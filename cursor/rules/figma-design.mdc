@@ -1,0 +1,34 @@
+---
+description: Figma 设计稿与原型页双向工作流。做 UI/原型页或同步到 Figma 时遵循。
+globs:
+  - prototype/**/*.html
+  - prototype/assets/**
+  - design/**
+alwaysApply: false
+---
+
+# Figma 设计工作流
+
+## 开始前
+
+1. 读取 [design/figma.config.json](design/figma.config.json) 获取 `fileKey`、`nodeId` 与 HTML 镜像路径
+2. 确认 Cursor MCP 中 `figma` 服务已连接（Remote OAuth）
+3. 调用 `use_figma` 前必须先阅读 figma-use skill
+
+## Figma → 代码
+
+- 用 Figma MCP 获取设计上下文（`get_design_context` 或等价工具）
+- 更新 `design/figma.config.json` 中对应 screen 的 `htmlMirror` 文件
+- 复用 [prototype/assets/style.css](prototype/assets/style.css) 现有 token 与组件类名
+- Figma 返回 localhost 资产 URL 时**直接使用**，不要新建 icon 包或占位图
+
+## 代码 → Figma
+
+- 加载 figma-generate-design skill
+- 按 section 增量写入 Figma，使用设计系统 token 而非硬编码色值
+- 完成后更新 `figma.config.json` 中的 `nodeId`（如有变化）
+
+## 项目约定
+
+- 原型页位于 `prototype/`，共享逻辑在 `prototype/assets/proto.js`
+- 不要把 Figma OAuth 密钥或 PAT 写入仓库；仅放在本地 MCP 配置

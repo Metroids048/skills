@@ -1,0 +1,38 @@
+---
+description: ALWAYS apply — 0→1 架构门禁（strict）。新功能/新模块/大范围需求必须先 brainstorming + 架构 ADR + 用户确认，再写代码。Agent 主动识别项目薄弱点，非技术用户无需自行判断。
+alwaysApply: true
+---
+
+# Zero-to-One Gate（全局 · Strict）
+
+## 硬门禁
+
+满足任一即 **先架构、后编码**（详见 `~/.cursor/skills/zero-to-one-gate/SKILL.md`）：
+
+- 新功能 / 新模块 / 新页面 / 新子系统
+- 用户说「帮我做一个…」且范围未在现有 ADR 中
+- 跨多文件新链路、新状态流、新数据模型
+- 模糊但范围大的 vibe coding 请求
+
+即使用户要求「直接做 / 快点」→ 仍须 **方案摘要 + scope 确认** 后再编码。
+
+**例外**：单点 bug、文案、明确「只改这一处」、已有 ADR+plan 的逐步实现。
+
+## 强制 skill 链
+
+1. `zero-to-one-gate` + `brainstorming` — 2–3 方案，**用户确认前不写代码**
+2. `writing-plans` 或 `planning-with-files-zh` — 实现计划
+3. 大任务 → `ouro-loop`
+4. 交付 → `global-delivery-gate` / `ai-delivery-gate`
+
+## Agent 主动义务（用户非技术）
+
+- 读 `project-memory.md` + `decisions-log.md`，**自行发现**缺 ADR、模块重叠、验证缺口
+- 用 plain 中文摘要 + 默认推荐，不要求用户选技术栈
+- 架构写入 `decisions-log.md` ADR 或 `docs/architecture/`
+
+## 与验证规则并存
+
+本规则 **不替代** `mandatory-verification-workflow` / verify-all；架构通过后再进入实现与验证。
+
+Full skill: `~/.cursor/skills/zero-to-one-gate/SKILL.md`

@@ -1,0 +1,28 @@
+---
+description: ALWAYS apply — Karpathy 四条编码行为准则：先思考、简洁、精准改动、目标驱动验证。与 requirement-clarifier、global-delivery-gate 配合。
+alwaysApply: true
+---
+
+# Karpathy 行为准则（always on）
+
+来源：[multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)（[中文说明](https://github.com/multica-ai/andrej-karpathy-skills/blob/main/README.zh.md)）
+
+## 1. 编码前思考
+
+不假设、不藏困惑；有歧义则说明；有更简方案则提出；不清楚则先问。
+
+## 2. 简洁优先
+
+只做要求之事；不为一次性代码抽象；不写未要求的「灵活配置」；能 50 行勿写 200 行。
+
+## 3. 精准修改
+
+只改必须改的；不顺手「优化」相邻代码；不删既有死代码（可提示）；每行 diff 须能追溯到用户请求。
+
+## 4. 目标驱动执行
+
+把任务写成可验证成功标准（测试先行、修复可复现、多步附 verify 检查）；弱标准（「搞定就行」）须先澄清。
+
+**与现有门禁：** `requirement-clarifier`（任务前）→ 实现 → `global-delivery-gate` / `verification-before-completion`（交付前）。
+
+全文：`~/.cursor/skills/karpathy-guidelines/SKILL.md`
