@@ -57,6 +57,28 @@ Repo `AGENTS.md` + `.github/agent/memory/` 覆盖本产品细节。
 
 ---
 
+## UTF-8 与中文文件（硬门禁 · 三端）
+
+Cursor rule: `~/.cursor/rules/windows-utf8-chinese-files.mdc`（与复盘规则同级，编码场景优先于一般 Shell 写法）
+
+**读写默认 UTF-8**；改文件不得改变原有编码、换行与无关内容。
+
+**PowerShell 读中文前：** `chcp 65001` + `[Console]::OutputEncoding` / `$OutputEncoding` = UTF8；读文件用 `Get-Content -Raw -Encoding UTF8`。
+
+**禁止：** `Set-Content` / `Out-File` / 重定向 / here-string 管道写含中文源码、JSON、文档；`sed`/`awk` 处理中文。
+
+**写源码/文档：** 优先 apply_patch / 编辑器 API；批量用显式 UTF-8 的 Python 或 Node.js。
+
+**PS 5.1 坑：** `Set-Content -Encoding UTF8` = **带 BOM** → hooks/settings 须用 `~/.ai-workspace/scripts/Write-Utf8NoBom.ps1`。
+
+**Shell：** 含中文路径或 `$变量` → `powershell -File script.ps1`，禁止 `rtk powershell -Command` 内联；禁止把终端 CP936 乱码文件名当真实路径。
+
+**修编码：** 只改损坏行/字节，禁止整文件格式化。
+
+扫描：`powershell -File ~/.ai-workspace/scripts/scan-encoding-issues.ps1 -RepoPath .`
+
+---
+
 ## PDCA — Global memory (default)
 
 **Plan（任务开始前）**

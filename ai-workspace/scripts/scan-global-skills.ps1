@@ -12,6 +12,8 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'ensure-utf8-console.ps1')
+. (Join-Path $PSScriptRoot 'Write-Utf8NoBom.ps1')
 
 $gateCorePath = Join-Path $PSScriptRoot 'clarification-gate-core.ps1'
 if (-not (Test-Path $gateCorePath)) {
@@ -545,7 +547,7 @@ function Write-GlobalSkillsIndex {
         $desc = $item.Description -replace '\|', '\|' -replace "`r?`n", ' '
         $lines += "| $($item.Name) | $($item.Source) | $desc | $($item.SkillFile) |"
     }
-    Set-Content -LiteralPath $globalIndexPath -Value ($lines -join "`n") -Encoding UTF8
+    Write-Utf8NoBomFile -Path $globalIndexPath -Content ($lines -join "`n")
 }
 
 function Read-HookPayloadOnce {

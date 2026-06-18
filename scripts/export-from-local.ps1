@@ -8,6 +8,11 @@ param(
 $ErrorActionPreference = "Stop"
 $RepoRoot = Split-Path -Parent $PSScriptRoot
 $UserHome = $env:USERPROFILE
+$utf8Helpers = Join-Path $UserHome ".ai-workspace\scripts\Write-Utf8NoBom.ps1"
+if (-not (Test-Path -LiteralPath $utf8Helpers)) {
+    $utf8Helpers = Join-Path $RepoRoot "ai-workspace\scripts\Write-Utf8NoBom.ps1"
+}
+. $utf8Helpers
 
 function Sync-Tree {
     param(
@@ -74,13 +79,10 @@ if (Test-Path -LiteralPath (Join-Path $UserHome ".claude\hooks")) {
 Copy-FileIfExists -Source (Join-Path $UserHome ".codex\AGENTS.md") -Dest (Join-Path $RepoRoot "codex\AGENTS.md")
 Copy-FileIfExists -Source (Join-Path $UserHome ".codex\config.toml") -Dest (Join-Path $RepoRoot "codex\config.toml.example")
 
-# ai-workspace (scripts + memory templates, exclude runtime private state)
+# ai-workspace memory/docs from home; scripts stay repo SSOT (see end of script)
 $wsScripts = Join-Path $UserHome ".ai-workspace\scripts"
 $wsMemory = Join-Path $UserHome ".ai-workspace\memory"
 $wsDocs = Join-Path $UserHome ".ai-workspace\docs"
-if (Test-Path -LiteralPath $wsScripts) {
-    Sync-Tree -Source $wsScripts -Dest (Join-Path $RepoRoot "ai-workspace\scripts")
-}
 if (Test-Path -LiteralPath $wsMemory) {
     Sync-Tree -Source $wsMemory -Dest (Join-Path $RepoRoot "ai-workspace\memory")
 }
@@ -100,6 +102,28 @@ $manifest = @{
     skillCount = $skillCount
     sourceMachine = $env:COMPUTERNAME
 } | ConvertTo-Json -Depth 3
-Set-Content -LiteralPath (Join-Path $RepoRoot "manifest.json") -Value $manifest -Encoding UTF8
+Write-Utf8NoBomFile -Path (Join-Path $RepoRoot "manifest.json") -Content $manifest
+
+# Push repo SSOT scripts -> home (avoid stale home overwriting repo on next export)
+$repoScripts = Join-Path $RepoRoot "ai-workspace\scripts"
+if (Test-Path -LiteralPath $repoScripts) {
+    if (-not (Test-Path -LiteralPath $wsScripts)) {
+        New-Item -ItemType Directory -Path $wsScripts -Force | Out-Null
+    }
+    robocopy $repoScripts $wsScripts /E /NFL /NDL /NJH /NJS /NC /NS /NP | Out-Null
+    if ($LASTEXITCODE -ge 8) { throw "robocopy failed pushing scripts to home" }
+    Write-Host "Pushed repo scripts -> $wsScripts"
+}
+
+# Redact secrets in exported templates
+$settingsExample = Join-Path $RepoRoot "claude\settings.json.example"
+if (Test-Path -LiteralPath $settingsExample) {
+    $raw = Read-Utf8File -Path $settingsExample
+    $redacted = $raw -replace 'token=[^"&\s]+', 'token=YOUR_VIBE_AROUND_TOKEN'
+    if ($redacted -ne $raw) {
+        Write-Utf8NoBomFile -Path $settingsExample -Content $redacted
+        Write-Host "Redacted token in claude/settings.json.example"
+    }
+}
 
 Write-Host "Export complete. Skills: $skillCount"

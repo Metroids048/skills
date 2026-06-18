@@ -7,6 +7,8 @@ alwaysApply: true
 
 本机为 **Windows + PowerShell**。遵守以下契约，避免 spawn/RTK/Python 重复失败。
 
+**中文文件 / UTF-8 读写** → 必须先读 `windows-utf8-chinese-files.mdc`（与本规则同级，编码场景优先）。
+
 ## RTK 前缀
 
 - 原生 exe（`git`、`node`、`npm`、`python`、`cargo` 等）：`rtk <cmd>`
@@ -16,13 +18,22 @@ alwaysApply: true
 - 链式命令：每段都前缀 `rtk`，例如 `rtk git add . && rtk git commit -m "msg"`
 - 调试单条失败时可用裸命令；稳定后仍用 `rtk`
 
+### 含中文路径或 `$变量` 时（硬规则）
+
+| 场景 | 做法 |
+|------|------|
+| 脚本含 `$root`、`$UserHome`、中文路径 | **禁止** `rtk powershell -Command "..."` 内联 → 写成 `.ps1` 后 `powershell -File "path\script.ps1"` |
+| 列目录 / git status 中文文件名乱码 | 先 `chcp 65001` + OutputEncoding UTF8；勿把乱码当真实路径 |
+| 写 JSON/hooks/settings | UTF-8 **无 BOM**（见 `Write-Utf8NoBom.ps1`） |
+
 ## Shell 失败快速路径
 
 | 症状 | 先做 |
 |------|------|
 | `spawn ENOENT` / 找不到命令 | `where.exe <tool>` 确认 PATH |
 | `.ps1` 脚本 | `powershell -NoProfile -ExecutionPolicy Bypass -File "path\to\script.ps1"`（优先 `-File`，避免 `-Command` 嵌套引号） |
-| hook / JSON 解析失败 | 检查是否 PowerShell banner 污染 stdout |
+| hook / JSON 解析失败 | 检查 PowerShell banner 污染 stdout；检查 JSON 是否带 UTF-8 BOM |
+| `$变量` 被吞 / 语法莫名报错 | 改用 `-File` 脚本，勿嵌套 `-Command` |
 
 ## Python（禁止盲目 pip install）
 

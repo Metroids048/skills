@@ -54,7 +54,7 @@ startup_timeout_sec = 30
 
 [mcp_servers.filesystem-agent-platform]
 command = "npx"
-args = ["-y", "@modelcontextprotocol/server-filesystem", "C:\\Users\\win\\Desktop\\program1-main"]
+args = ["-y", "@modelcontextprotocol/server-filesystem", "C:\\Users\\win\\Desktop\\Agent Platform"]
 startup_timeout_sec = 30
 
 [mcp_servers.chrome-devtools]

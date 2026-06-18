@@ -1,0 +1,61 @@
+---
+description: UTF-8 与中文文件处理最高优先级 — 读写源码/文档/脚本/JSON 必须遵守（三端全局，与复盘规则同级）
+alwaysApply: true
+---
+
+# UTF-8 与中文文件处理（最高优先级）
+
+本节优先级极高，适用于所有涉及中文文件、脚本和文档的读写操作，与 `ai-delivery-anti-patterns.mdc` 同级执行。
+
+## 默认编码
+
+- 所有文件读写默认使用 **UTF-8**；修改文件时不得改变原有编码、换行风格和无关内容。
+- 代码注释使用中文时同样遵守 UTF-8。
+
+## PowerShell 读中文（必须先设控制台）
+
+在 PowerShell 中读取含中文文件或列含中文路径目录前，先执行：
+
+```powershell
+chcp 65001 | Out-Null
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
+```
+
+读取含中文文件时优先使用：
+
+```powershell
+Get-Content -LiteralPath $path -Raw -Encoding UTF8
+```
+
+## PowerShell 写中文（禁止危险方式）
+
+- **禁止**用 PowerShell 的 here-string 管道、重定向、`Set-Content`、`Out-File` 写入含中文源码、JSON 或文档。
+- PowerShell 5.1 的 `Set-Content -Encoding UTF8` 会写入 **UTF-8 BOM**，导致 Node.js 解析 JSON/JS 失败；hooks/settings 必须用 **UTF-8 无 BOM**。
+- 必须用 NoBom 写入时，使用 `~/.ai-workspace/scripts/Write-Utf8NoBom.ps1` 中的 `Write-Utf8NoBomFile`，或 `[System.IO.File]::WriteAllText($path, $content, (New-Object System.Text.UTF8Encoding $false))`。
+- **不要用** `sed`、`awk` 处理含中文文件；改用 Python 或 Node.js，并显式 UTF-8 读写。
+
+## 写源码与文档（Agent 工具）
+
+- 写 `.ts/.tsx/.js/.md/.css/.html/.json` 等：优先 Cursor **apply_patch** / 编辑器 API。
+- 批量改写只用显式 UTF-8 的 Python 或 Node.js 脚本。
+- **不要为了修编码**而整文件重写、全文件格式化或全文件字符串替换；只改损坏字节/行。
+
+## 终端乱码 ≠ 真实路径
+
+- **禁止**把 `git status` / `dir` 在 CP936 下显示的乱码文件名当作真实路径去 `Move-Item` / `git add`。
+- 先用 `Get-ChildItem -Filter '*关键词*'`、`chcp 65001` 后重列，或用 Node/Python 按 UTF-8 列目录。
+- 含中文路径或 `$变量` 的脚本：**禁止** `rtk powershell -Command "..."` 一行内联 → 必须 `powershell -File path\to\script.ps1`。
+- **禁止** `$Home = ...`（只读自动变量）；用 `$UserHome = $env:USERPROFILE`。
+
+## 与 Shell 规则关系
+
+RTK / Python / hook 契约见 `windows-agent-shell.mdc`；本规则在涉及中文或文件编码时 **优先于** 一般 Shell 便利写法。
+
+## 扫描与修复
+
+交付前可对仓库运行：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\scan-encoding-issues.ps1" -RepoPath "."
+```

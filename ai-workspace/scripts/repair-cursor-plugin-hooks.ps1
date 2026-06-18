@@ -6,6 +6,8 @@ param(
 )
 
 $ErrorActionPreference = 'SilentlyContinue'
+. (Join-Path $PSScriptRoot 'ensure-utf8-console.ps1')
+. (Join-Path $PSScriptRoot 'Write-Utf8NoBom.ps1')
 $fixed = @()
 
 function Write-RepairLog {
@@ -24,7 +26,7 @@ if (Test-Path $superpowersRoot) {
             if ($raw -match '\./hooks/session-start"' -and $raw -notmatch [regex]::Escape($expected)) {
                 $updated = $raw -replace '"\./hooks/session-start"', "`"$expected`""
                 if ($updated -ne $raw) {
-                    Set-Content -LiteralPath $hooksCursor -Value $updated -Encoding UTF8 -NoNewline
+                    Write-Utf8NoBomFile -Path $hooksCursor -Content $updated
                     Write-RepairLog "Fixed hooks-cursor.json -> $hooksCursor"
                 }
             }
@@ -37,7 +39,7 @@ if (Test-Path $superpowersRoot) {
             if ($text -notmatch '^#!') {
                 $clean = $text -replace '^[^#]*(?=#!/usr/bin/env bash)', ''
                 if ($clean -ne $text -and $clean -match '^#!/usr/bin/env bash') {
-                    Set-Content -LiteralPath $sessionStart -Value $clean -Encoding UTF8 -NoNewline
+                    Write-Utf8NoBomFile -Path $sessionStart -Content $clean
                     Write-RepairLog "Stripped garbage prefix from session-start -> $sessionStart"
                 }
             }
@@ -51,7 +53,7 @@ if (Test-Path $repoVendor) {
     $raw = Get-Content -LiteralPath $repoVendor -Raw -Encoding UTF8
     if ($raw -match '\./hooks/session-start"' -and $raw -notmatch 'run-hook\.cmd session-start') {
         $updated = $raw -replace '"\./hooks/session-start"', '"./hooks/run-hook.cmd session-start"'
-        Set-Content -LiteralPath $repoVendor -Value $updated -Encoding UTF8 -NoNewline
+        Write-Utf8NoBomFile -Path $repoVendor -Content $updated
         Write-RepairLog "Fixed vendor hooks-cursor.json -> $repoVendor"
     }
 }

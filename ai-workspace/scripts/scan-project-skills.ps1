@@ -8,6 +8,8 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'ensure-utf8-console.ps1')
+. (Join-Path $PSScriptRoot 'Write-Utf8NoBom.ps1')
 
 $excludePathPattern = '(\\|/)(agency-agents-main|\.claude|\.codex|\.gemini|\.continue|\.factory|\.hermes|\.kiro|\.mastracode|\.opencode|\.codebuddy|\.pi|\.cursor)(\\|/)'
 
@@ -102,7 +104,7 @@ function Write-SkillsIndex {
         $desc = $item.Description -replace '\|', '\|' -replace "`r?`n", ' '
         $lines += "| $($item.Name) | $desc | $($item.Path) |"
     }
-    Set-Content -LiteralPath $IndexPath -Value ($lines -join "`n") -Encoding UTF8
+    Write-Utf8NoBomFile -Path $IndexPath -Content ($lines -join "`n")
 }
 
 function Get-SkillSourceFiles {

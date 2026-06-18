@@ -4,6 +4,8 @@ param(
     [string]$OutputFormat = 'Cursor'
 )
 
+. (Join-Path $PSScriptRoot 'ensure-utf8-console.ps1')
+
 $format = if ($OutputFormat -eq 'Auto') { 'Cursor' } else { $OutputFormat }
 
 try {

@@ -1,17 +1,17 @@
 {
-  "version": 1,
-  "hooks": {
-    "preToolUse": [
-      {
-        "matcher": "Write|Edit|MultiEdit|StrReplace|apply_patch|Delete",
-        "command": "node \"C:\\Users\\win\\.ai-workspace\\scripts\\cursor-shell-allow.js\"",
-        "timeout": 5
-      },
-      {
-        "matcher": "Shell",
-        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\rtk-hook-cursor.ps1\" -OutputFormat Cursor",
-        "timeout": 15
-      }
-    ]
-  }
+    "version":  1,
+    "hooks":  {
+                  "preToolUse":  [
+                                     {
+                                         "matcher":  "Write|Edit|MultiEdit|StrReplace|apply_patch|Delete",
+                                         "command":  "node \"C:\\Users\\win\\.ai-workspace\\scripts\\cursor-shell-allow.js\"",
+                                         "timeout":  5
+                                     },
+                                     {
+                                         "matcher":  "Shell",
+                                         "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\rtk-hook-cursor.ps1\" -OutputFormat Cursor",
+                                         "timeout":  15
+                                     }
+                                 ]
+              }
 }
