@@ -21,7 +21,10 @@ alwaysApply: true
 
 - **A 咨询/解释**（为什么、有哪些、是不是、怎么回事）→ 轻量确认 1–2 句 + 直接回答；**不要**套完整 §1–§12；若含「顺便改」→ 按 B 处理
 - **B 模糊实施 / vibe coding** → Read `skill-chain-map.md` + `vibe-coding-bridge.md`；极模糊用 `interview-protocol.md`（单问+GUESS）；否则 **§4.5 Mini-Spec** + §7；多文件/高风险加 `clarification-guardrails.md`；**禁止 Write/Edit** 直到用户确认
-- **C 清晰实施**（目标+范围+验收齐全）→ §1 + §12 极简后可执行
+- **C 清晰实施**（目标+范围+验收齐全）→ **禁止完整 §1–§12**；仅复述 + 步骤 + §12 极简（≤15 行）后可执行
+- **用户说直接做/开始执行/就改这一处** → 跳过澄清流程，但首条回复须列出目标与验收（宪章硬门禁）
+
+遇到需求、流程、页面关系、验收口径不清时，必须及时提问或标注待确认；不要自行脑补关键业务决策后执行。
 
 Hooks remind only — Agent must self-enforce B/C gates. 「最大权限」≠ 跳过 §7。
 

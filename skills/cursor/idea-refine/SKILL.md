@@ -1,9 +1,8 @@
----
+﻿---
 name: idea-refine
 description: Refines vague ideas into actionable one-pagers with MVP scope and Not Doing list. Use after requirement-clarifier Mini-Spec when user needs divergent options or stress-test before commit. Triggers on ideate, refine idea, stress-test plan. Upstream addyosmani/agent-skills (MIT).
 disable-model-invocation: false
 ---
-
 # Idea Refine（本地化精简版）
 
 > 完整上游：[addyosmani/agent-skills idea-refine](https://github.com/addyosmani/agent-skills/tree/main/skills/idea-refine)
@@ -29,3 +28,4 @@ disable-model-invocation: false
 ## 下游
 
 确认方向 → `writing-plans` 或回到 `requirement-clarifier` §12。
+

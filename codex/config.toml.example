@@ -1,14 +1,18 @@
-#:schema https://developers.openai.com/codex/config-schema.json
-# Repaired 2026-06-03: removed macOS notify, stale node_repl paths, and startup-heavy MCP set.
-
-approval_policy = "on-request"
-sandbox_mode = "workspace-write"
-web_search = "live"
-persistent_instructions = "Follow project AGENTS.md. Fuzzy/vibe coding: Read requirement-clarifier + skill-chain-map.md + vibe-coding-bridge.md; ultra-vague use interview-protocol (one Q+GUESS); output Mini-Spec S4.5 + S7 before Write/Edit; multi-file risk use clarification-guardrails.md. User must confirm before execute unless 直接执行. Use MCP when helpful."
-model = "gpt-5.5"
+model_provider = "custom"
+model = "gpt-5.4"
 model_reasoning_effort = "high"
+disable_response_storage = true
 
-# Lean MCP set — add more only when needed (each npx server costs memory at app-server boot).
+[model_providers.custom]
+name = "HCAI"
+base_url = "http://127.0.0.1:15721/v1"
+wire_api = "responses"
+requires_openai_auth = true
+experimental_bearer_token = "PROXY_MANAGED"
+
+# Core MCP servers for coding / PM / vibe workflows.
+# Secrets are not stored here. Set Windows user environment variables as needed:
+# GITHUB_PERSONAL_ACCESS_TOKEN, EXA_API_KEY, FAL_KEY, FIGMA_API_KEY.
 [mcp_servers.github]
 command = "npx"
 args = ["-y", "@modelcontextprotocol/server-github"]
@@ -19,92 +23,65 @@ command = "npx"
 args = ["-y", "@upstash/context7-mcp@latest"]
 startup_timeout_sec = 30
 
-[mcp_servers.codegraph]
-command = "codegraph"
-args = ["serve", "--mcp"]
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+startup_timeout_sec = 30
 
-[mcp_servers.vibearound]
-url = "http://127.0.0.1:12358/va/mcp?token=YOUR_VIBEAROUND_TOKEN"
-
-[mcp_servers.agentmemory]
+[mcp_servers.memory]
 command = "npx"
-args = ["-y", "@agentmemory/mcp"]
-startup_timeout_sec = 45
+args = ["-y", "@modelcontextprotocol/server-memory"]
+startup_timeout_sec = 30
 
-[mcp_servers.agentmemory.env]
-AGENTMEMORY_URL = "http://localhost:3111"
+[mcp_servers.sequential-thinking]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+startup_timeout_sec = 30
 
-[mcp_servers.headroom]
-command = "{{HEADROOM_EXE}}"
-args = ["mcp", "serve"]
-startup_timeout_sec = 45
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp@latest", "--browser", "chrome"]
+startup_timeout_sec = 30
 
-[features]
-multi_agent = true
+[mcp_servers.exa]
+command = "npx"
+args = ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
+startup_timeout_sec = 30
 
-[profiles.strict]
-approval_policy = "on-request"
-sandbox_mode = "read-only"
-web_search = "cached"
+[mcp_servers.fal-ai]
+command = "npx"
+args = ["-y", "fal-ai-mcp-server"]
+startup_timeout_sec = 30
 
-[profiles.yolo]
-approval_policy = "never"
-sandbox_mode = "workspace-write"
-web_search = "live"
+[mcp_servers.filesystem-agent-platform]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", "C:\\Users\\win\\Desktop\\program1-main"]
+startup_timeout_sec = 30
 
-[model_providers.hcai]
-name = "HCAI"
-base_url = "https://ai.hctopup.com/v1"
-env_key = "HCAI_API_KEY"
-wire_api = "responses"
-requires_openai_auth = false
+[mcp_servers.chrome-devtools]
+command = "npx"
+args = ["-y", "chrome-devtools-mcp@latest"]
+startup_timeout_sec = 30
 
-[profiles.hcai]
-model_provider = "hcai"
-model = "gpt-5.5"
-model_reasoning_effort = "medium"
+[mcp_servers.node_repl]
+args = []
+command = 'C:\Users\win\AppData\Local\OpenAI\Codex\runtimes\cua_node\a89897d3d9baa117\bin\node_repl.exe'
+startup_timeout_sec = 120
 
-[agents]
-max_threads = 3
-max_depth = 1
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = 'C:\Users\win\AppData\Local\OpenAI\Codex\runtimes\cua_node\a89897d3d9baa117\bin\node_modules'
+NODE_REPL_NODE_PATH = 'C:\Users\win\AppData\Local\OpenAI\Codex\runtimes\cua_node\a89897d3d9baa117\bin\node.exe'
+NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\win\.codex'
+CODEX_HOME = 'C:\Users\win\.codex'
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "bdc61752e0f9d9b1e73e3cba25ca71d3d9fe54d335ed8196378106081474d7c1,eb55d24cf065cd5311af6f99b16bade2b7a670790ff2db9accf60d012dd55dd1"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.611.62324"
+SKY_CUA_NATIVE_PIPE = "1"
+SKY_CUA_NATIVE_PIPE_DIRECTORY = '\\.\pipe\codex-computer-use-b314f857-06c6-480f-9758-73cb0279fded'
+CODEX_CLI_PATH = 'C:\Users\win\AppData\Local\OpenAI\Codex\bin\330bd0cba6496126\codex.exe'
 
-[agents.explorer]
-description = "Read-only codebase explorer for gathering evidence before changes are proposed."
-config_file = "agents/explorer.toml"
-
-[agents.reviewer]
-description = "PR reviewer focused on correctness, security, and missing tests."
-config_file = "agents/reviewer.toml"
-
-[agents.docs_researcher]
-description = "Documentation specialist that verifies APIs, framework behavior, and release notes."
-config_file = "agents/docs-researcher.toml"
-
-[windows]
-sandbox = "elevated"
-
-
-
-
-
-
-[plugins."documents@openai-primary-runtime"]
-enabled = true
-
-[plugins."spreadsheets@openai-primary-runtime"]
-enabled = true
-
-[plugins."presentations@openai-primary-runtime"]
-enabled = true
-
-[plugins."figma@openai-curated"]
-enabled = true
-
-[plugins."github@openai-curated"]
-enabled = true
-
-[plugins."superpowers@openai-curated"]
-enabled = true
-
-[plugins."hyperframes@openai-curated"]
-enabled = true
+[projects.'c:\users\win\desktop\program1-main']
+trust_level = "trusted"

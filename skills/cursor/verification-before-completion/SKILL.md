@@ -1,6 +1,6 @@
----
+﻿---
 name: verification-before-completion
-description: Use before claiming done, fixed, or PASS — re-read acceptance criteria and run fresh verify output.
+description: Use before claiming done, fixed, or PASS — re-read acceptance criteria and run fresh verify output. NOT when: prototype-specific verify-all gate（用 ai-delivery-gate）。
 disable-model-invocation: true
 ---
 # Verification Before Completion

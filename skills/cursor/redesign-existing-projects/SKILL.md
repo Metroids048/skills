@@ -1,8 +1,8 @@
----
+﻿---
 name: redesign-existing-projects
 description: Use when auditing or improving an existing site's UI (spacing, hierarchy, typography). Not for greenfield landing pages (use design-taste-frontend).
+disable-model-invocation: true
 ---
-
 # Redesign Skill
 
 ## How This Works
@@ -176,3 +176,4 @@ Apply changes in this order for maximum visual impact with minimum risk:
 - If the project uses Tailwind, check the version (v3 vs v4) before modifying config.
 - If the project has no framework, use vanilla CSS.
 - Keep changes reviewable and focused. Small, targeted improvements over big rewrites.
+

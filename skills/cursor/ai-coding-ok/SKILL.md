@@ -1,4 +1,4 @@
----
+﻿---
 name: ai-coding-ok
 description: Use FIRST on coding tasks when the repo has AGENTS.md or .github/agent/memory/. Triggers: 新功能, 修复, 重构, implement, fix, refactor.
 disable-model-invocation: true

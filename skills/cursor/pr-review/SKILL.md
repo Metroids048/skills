@@ -1,6 +1,6 @@
 ﻿---
 name: pr-review
-description: Use when batch-reviewing pull requests one at a time with user confirmation before merge.
+description: >
 disable-model-invocation: true
 ---
 # /pr-review

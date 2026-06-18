@@ -1,4 +1,4 @@
----
+﻿---
 name: writing-plans
 description: Use when there is an approved spec or requirements for a multi-step task, before touching code.
 disable-model-invocation: true

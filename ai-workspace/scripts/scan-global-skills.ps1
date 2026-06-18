@@ -5,7 +5,8 @@ param(
     [string]$OutputFormat = 'Plain',
     [ValidateSet('SessionStart', 'UserPromptSubmit', 'Plain')]
     [string]$HookEvent = 'Plain',
-    [int]$TopMatches = 8,
+    [int]$TopMatches = 0,
+    [switch]$SkipIndexWrite,
     [string]$StartDir = '',
     [string]$UserPrompt = ''
 )
@@ -73,13 +74,18 @@ function Get-SkillsSyncConfig {
     $configPath = $candidates | Where-Object { Test-Path $_ } | Select-Object -First 1
     if (-not $configPath) {
         return [pscustomobject]@{
-            ConfigPath               = $null
-            alwaysOnSkills           = @('global-session-core')
-            conditionalAlwaysOnSkills = @()
-            promptKeywordBoosts    = @{}
-            intentProfilesFile     = 'intent-profiles.json'
-            intentMatchMinScore    = 3
-            intentSkillBoostFloor  = 20
+            ConfigPath                  = $null
+            alwaysOnSkills              = @('global-session-core')
+            conditionalAlwaysOnSkills   = @()
+            promptKeywordBoosts         = @{}
+            descriptionOverrides        = @{}
+            intentProfilesFile          = 'intent-profiles.json'
+            intentMatchMinScore         = 3
+            intentSkillBoostFloor       = 20
+            routingExcludeNames         = @()
+            routingExcludeNamePrefixes  = @()
+            exclusiveGroups             = @()
+            topMatches                  = 8
         }
     }
     $raw = Get-Content -LiteralPath $configPath -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -92,16 +98,33 @@ function Get-SkillsSyncConfig {
             $boosts[$_.Name] = @($_.Value)
         }
     }
+    $descOverrides = @{}
+    if ($raw.descriptionOverrides) {
+        $raw.descriptionOverrides.PSObject.Properties | ForEach-Object {
+            $descOverrides[$_.Name] = [string]$_.Value
+        }
+    }
+    $exclusiveGroups = @()
+    if ($raw.exclusiveGroups) {
+        foreach ($group in $raw.exclusiveGroups) {
+            $exclusiveGroups += ,@($group)
+        }
+    }
     $conditional = @()
     if ($raw.conditionalAlwaysOnSkills) { $conditional = @($raw.conditionalAlwaysOnSkills) }
     return [pscustomobject]@{
-        ConfigPath                = $configPath
-        alwaysOnSkills            = $alwaysOn
-        conditionalAlwaysOnSkills = $conditional
-        promptKeywordBoosts       = $boosts
-        intentProfilesFile        = if ($raw.intentProfilesFile) { [string]$raw.intentProfilesFile } else { 'intent-profiles.json' }
-        intentMatchMinScore       = if ($raw.intentMatchMinScore) { [int]$raw.intentMatchMinScore } else { 3 }
-        intentSkillBoostFloor     = if ($raw.intentSkillBoostFloor) { [int]$raw.intentSkillBoostFloor } else { 20 }
+        ConfigPath                  = $configPath
+        alwaysOnSkills              = $alwaysOn
+        conditionalAlwaysOnSkills   = $conditional
+        promptKeywordBoosts         = $boosts
+        descriptionOverrides        = $descOverrides
+        intentProfilesFile          = if ($raw.intentProfilesFile) { [string]$raw.intentProfilesFile } else { 'intent-profiles.json' }
+        intentMatchMinScore         = if ($raw.intentMatchMinScore) { [int]$raw.intentMatchMinScore } else { 3 }
+        intentSkillBoostFloor       = if ($raw.intentSkillBoostFloor) { [int]$raw.intentSkillBoostFloor } else { 20 }
+        routingExcludeNames         = if ($raw.routingExcludeNames) { @($raw.routingExcludeNames) } else { @() }
+        routingExcludeNamePrefixes  = if ($raw.routingExcludeNamePrefixes) { @($raw.routingExcludeNamePrefixes) } else { @() }
+        exclusiveGroups             = $exclusiveGroups
+        topMatches                  = if ($raw.topMatches) { [int]$raw.topMatches } else { 8 }
     }
 }
 
@@ -627,6 +650,97 @@ function Test-PartialTokenOverlap {
     return $false
 }
 
+function Test-SkillRoutable {
+    param(
+        [object]$Skill,
+        [object]$SyncConfig
+    )
+
+    if ($SyncConfig.routingExcludeNames -contains $Skill.Name) { return $false }
+    foreach ($prefix in $SyncConfig.routingExcludeNamePrefixes) {
+        if ($Skill.Name.StartsWith($prefix)) { return $false }
+    }
+    return $true
+}
+
+function Get-RoutableSkills {
+    param(
+        [array]$Skills,
+        [object]$SyncConfig
+    )
+
+    return @($Skills | Where-Object { Test-SkillRoutable -Skill $_ -SyncConfig $SyncConfig })
+}
+
+function Apply-DescriptionOverrides {
+    param(
+        [array]$Skills,
+        [hashtable]$Overrides
+    )
+
+    if (-not $Overrides -or $Overrides.Count -eq 0) { return $Skills }
+
+    return @($Skills | ForEach-Object {
+            if ($Overrides.ContainsKey($_.Name)) {
+                [pscustomobject]@{
+                    Name        = $_.Name
+                    Description = $Overrides[$_.Name]
+                    SkillFile   = $_.SkillFile
+                    Source      = $_.Source
+                }
+            }
+            else { $_ }
+        })
+}
+
+function Apply-ExclusiveGroups {
+    param(
+        [array]$ScoredMatches,
+        [array]$ExclusiveGroups
+    )
+
+    if (-not $ExclusiveGroups -or $ExclusiveGroups.Count -eq 0) { return $ScoredMatches }
+
+    $dropNames = @{}
+    foreach ($group in $ExclusiveGroups) {
+        $groupNames = @($group)
+        $groupMatches = @($ScoredMatches | Where-Object { $groupNames -contains $_.Name })
+        if ($groupMatches.Count -le 1) { continue }
+        $winner = $groupMatches | Sort-Object Score -Descending | Select-Object -First 1
+        foreach ($match in $groupMatches) {
+            if ($match.Name -ne $winner.Name) {
+                $dropNames[$match.Name] = $true
+            }
+        }
+    }
+
+    if ($dropNames.Count -eq 0) { return $ScoredMatches }
+    return @($ScoredMatches | Where-Object { -not $dropNames.ContainsKey($_.Name) } | Sort-Object Score -Descending)
+}
+
+function Invoke-GlobalSkillRouting {
+    param(
+        [array]$CatalogItems,
+        [object]$SyncConfig,
+        [string]$UserPrompt,
+        [array]$DetectedIntents = @(),
+        [int]$TopN = 0
+    )
+
+    $effectiveTop = if ($TopN -gt 0) { $TopN } else { $SyncConfig.topMatches }
+    $routable = Get-RoutableSkills -Skills $CatalogItems -SyncConfig $SyncConfig
+    $scoringItems = Apply-DescriptionOverrides -Skills $routable -Overrides $SyncConfig.descriptionOverrides
+    $scored = Score-SkillAgainstPrompt `
+        -Skills $scoringItems `
+        -UserPrompt $UserPrompt `
+        -PromptKeywordBoosts $SyncConfig.promptKeywordBoosts `
+        -DetectedIntents $DetectedIntents `
+        -MinScore $SyncConfig.intentMatchMinScore `
+        -IntentBoostFloor $SyncConfig.intentSkillBoostFloor `
+        -TopN $effectiveTop
+    return Apply-ExclusiveGroups -ScoredMatches $scored -ExclusiveGroups $SyncConfig.exclusiveGroups
+}
+
 function Score-SkillAgainstPrompt {
     param(
         [array]$Skills,
@@ -634,7 +748,8 @@ function Score-SkillAgainstPrompt {
         [hashtable]$PromptKeywordBoosts = @{},
         [array]$DetectedIntents = @(),
         [int]$MinScore = 5,
-        [int]$IntentBoostFloor = 20
+        [int]$IntentBoostFloor = 20,
+        [int]$TopN = 8
     )
 
     if ([string]::IsNullOrWhiteSpace($UserPrompt)) { return @() }
@@ -741,7 +856,7 @@ function Score-SkillAgainstPrompt {
         }
     }
 
-    return @($scored | Sort-Object Score -Descending | Select-Object -First $TopMatches)
+    return @($scored | Sort-Object Score -Descending | Select-Object -First $TopN)
 }
 
 function Build-SessionStartContext {
@@ -752,72 +867,37 @@ function Build-SessionStartContext {
         [object]$CodingGuardrails = $null
     )
 
-    $mem = Get-GlobalMemoryPaths
+    # Cache-stable minimal context: no dynamic counts, no memory paths that change every task.
     $lines = @(
-        '## Global Skills (SessionStart)',
+        '## Session bootstrap (cache-stable)',
         '',
-        "Total skills available: **$($Items.Count)** (scanned from ~/.cursor/skills and other global dirs).",
-        "Full index: ``$globalIndexPath``",
+        'Read these SKILL.md files before other tools when relevant:',
         ''
     )
 
-    if ($AlwaysOnItems.Count -gt 0) {
-        $lines += '**ALWAYS ON — Read these SKILL.md files before any other tools this session:**'
-        $lines += ''
-        foreach ($a in $AlwaysOnItems) {
+    $staticAlwaysOn = @(
+        [pscustomobject]@{ Name = 'global-session-core'; SkillFile = Join-Path $env:USERPROFILE '.cursor\skills\global-session-core\SKILL.md' },
+        [pscustomobject]@{ Name = 'requirement-clarifier'; SkillFile = Join-Path $env:USERPROFILE '.cursor\skills\requirement-clarifier\SKILL.md' },
+        [pscustomobject]@{ Name = 'karpathy-guidelines'; SkillFile = Join-Path $env:USERPROFILE '.codex\skills\karpathy-guidelines\SKILL.md' },
+        [pscustomobject]@{ Name = 'ai-coding-ok'; SkillFile = Join-Path $env:USERPROFILE '.cursor\skills\ai-coding-ok\SKILL.md' }
+    )
+
+    foreach ($a in $staticAlwaysOn) {
+        if (Test-Path $a.SkillFile) {
             $lines += "- **$($a.Name)**: ``$($a.SkillFile)``"
         }
-        $lines += ''
     }
-
-    if (Test-Path $mem.userMemory) {
-        $lines += '**Global memory (Read before coding tasks):**'
-        $lines += ''
-        $lines += "- **user-memory**: ``$($mem.userMemory)``"
-        if (Test-Path $mem.taskHistory) {
-            $lines += "- **global-task-history** (recent entries): ``$($mem.taskHistory)``"
-        }
-        if (Test-Path $mem.decisionsLog) {
-            $lines += "- **global-decisions-log**: ``$($mem.decisionsLog)``"
-        }
-        $lines += ''
-        $lines += 'PDCA: use `ai-coding-ok` — update global-task-history after every coding task.'
-        $lines += ''
-    }
-
-    if ($ProjectMemoryOverlay) {
-        $lines += "**Project overlay (team memory):** Read ``$ProjectMemoryOverlay`` if task touches this repo's conventions."
-        $lines += ''
-    }
-
-    if ($CodingGuardrails) {
-        $lines += "**Project coding guardrails detected** at ``$($CodingGuardrails.Root)`` — ``ai-coding-ok`` is in ALWAYS ON for this session (AGENTS.md / .github/agent/memory/)."
-        $lines += ''
-    }
-
-    $lines += '**Context hygiene:** Long sessions → Headroom MCP (`headroom_compress` / `retrieve`) or `/compact` at logical milestones; savethetokens Lean Mode is in `global-session-core`.'
     $lines += ''
 
-    $globalAgents = Join-Path $env:USERPROFILE '.claude\AGENTS.md'
-    if (Test-Path $globalAgents) {
-        $lines += "Default rules: ``$globalAgents`` (project AGENTS.md overrides if present)."
+    if ($CodingGuardrails) {
+        $lines += "Project guardrails: ``$($CodingGuardrails.Root)/AGENTS.md`` overrides global defaults."
         $lines += ''
     }
 
     $lines += @(
-        '**Zero-to-one gate (strict):** 新模块 / 大范围「帮我做…」→ Read ``~/.cursor/skills/zero-to-one-gate/SKILL.md`` + ``brainstorming`` before Write/Edit. Cursor: ``~/.cursor/rules/zero-to-one-gate.mdc``. Codex/Claude: ``~/.claude/AGENTS.md`` Zero-to-one section.',
-        '',
-        '**Maximum permission scope:** max permission / quan bu jie jue = fix current task only; do NOT delete CC Switch or run _remove-* without explicit user OK. Rule: ~/.cursor/rules/maximum-permission-scope.mdc ; ~/.claude/AGENTS.md Maximum permission section.',
-        '',
-        '**Required workflow for every task:**',
-        '1. Read always-on skills + global memory paths above first.',
-        '2. **Intent-first routing:** Match user meaning (not exact keywords) — hook intent profiles + skill descriptions + global index.',
-        '3. For each additional applicable skill, **Read** the absolute path to `SKILL.md` before using other tools.',
-        '4. Follow skill bodies strictly; mention enabled skill names in one short line at reply start (`Skills: ...`).',
-        '5. Before claiming done: follow `global-delivery-gate` skill for verification.',
-        '6. Priority: user instruction > matched global skill > built-in skill > default.',
-        '',
-        '**Vibe coding / fuzzy implementation:** B-class → requirement-clarifier + vibe-coding-bridge.md → Mini-Spec S4.5 → user confirm → S12 → execute.',
+        'Workflow: user instruction > matched skill > default. Verify before claiming done.',
+        'Fuzzy implementation: requirement-clarifier Mini-Spec before Write/Edit unless user says direct execute.',
+        'Prefer `/rewind` over new session; compact only between tasks.',
         ''
     )
     return ($lines -join "`n")
@@ -994,6 +1074,8 @@ function Emit-Output {
     }
 }
 
+if ($MyInvocation.InvocationName -ne '.') {
+
 $projectRoot = Find-ProjectRootWithSkills -SeedDir $StartDir
 $items = Build-GlobalCatalog -ProjectRoot $projectRoot
 
@@ -1002,9 +1084,13 @@ if ($items.Count -eq 0) {
     exit 0
 }
 
-Write-GlobalSkillsIndex -Items $items
-
 $syncConfig = Get-SkillsSyncConfig
+$effectiveTopMatches = if ($TopMatches -gt 0) { $TopMatches } else { $syncConfig.topMatches }
+
+if (-not $SkipIndexWrite) {
+    Write-GlobalSkillsIndex -Items $items
+}
+
 $codingGuardrails = Find-ProjectCodingGuardrails -SeedDir $StartDir
 $effectiveAlwaysOnNames = Resolve-EffectiveAlwaysOnNames `
     -BaseAlwaysOn $syncConfig.alwaysOnSkills `
@@ -1031,7 +1117,7 @@ elseif ($HookEvent -eq 'UserPromptSubmit') {
             -DetectedIntents $detectedIntents `
             -Cwd $hookCwd
     }
-    $matches = Score-SkillAgainstPrompt -Skills $items -UserPrompt $userPrompt -PromptKeywordBoosts $syncConfig.promptKeywordBoosts -DetectedIntents $detectedIntents -MinScore $syncConfig.intentMatchMinScore -IntentBoostFloor $syncConfig.intentSkillBoostFloor
+    $matches = Invoke-GlobalSkillRouting -CatalogItems $items -SyncConfig $syncConfig -UserPrompt $userPrompt -DetectedIntents $detectedIntents -TopN $effectiveTopMatches
     $context = Build-UserPromptContext -AllItems $items -Matches $matches -AlwaysOnItems $alwaysOnItems -UserPrompt $userPrompt -DetectedIntents $detectedIntents -MessageType $messageType
     if ($gateEntry) {
         $gateLines = @(
@@ -1056,9 +1142,41 @@ else {
     $userPrompt = if ($UserPrompt) { $UserPrompt } elseif ($args[0]) { $args[0] } else { '写 PRD' }
     $messageType = Classify-UserMessageType -UserPrompt $userPrompt -SyncConfig $syncConfig
     $detectedIntents = Detect-UserIntents -UserPrompt $userPrompt -IntentProfiles $intentProfiles
-    $matches = Score-SkillAgainstPrompt -Skills $items -UserPrompt $userPrompt -PromptKeywordBoosts $syncConfig.promptKeywordBoosts -DetectedIntents $detectedIntents -MinScore $syncConfig.intentMatchMinScore -IntentBoostFloor $syncConfig.intentSkillBoostFloor
+    $matches = Invoke-GlobalSkillRouting -CatalogItems $items -SyncConfig $syncConfig -UserPrompt $userPrompt -DetectedIntents $detectedIntents -TopN $effectiveTopMatches
     $context = Build-UserPromptContext -AllItems $items -Matches $matches -AlwaysOnItems $alwaysOnItems -UserPrompt $userPrompt -DetectedIntents $detectedIntents -MessageType $messageType
+}
+
+# SessionStart maintenance (tri-end global config)
+if ($HookEvent -eq 'SessionStart') {
+    $ensurePy = Join-Path $env:USERPROFILE '.ai-workspace\scripts\ensure-python-env.ps1'
+    if (-not (Test-Path $ensurePy)) {
+        $ensurePy = Join-Path $PSScriptRoot '..\global-workspace\ensure-python-env.ps1'
+        $ensurePy = (Resolve-Path $ensurePy -ErrorAction SilentlyContinue).Path
+    }
+    if ($ensurePy -and (Test-Path $ensurePy)) {
+        $startDir = if ($StartDir) { $StartDir } else { (Get-HookWorkingDirectory -StartDir '') }
+        & powershell -NoProfile -ExecutionPolicy Bypass -File $ensurePy -ProjectDir $startDir -Quiet 2>$null | Out-Null
+    }
+
+    $superRoot = Join-Path $env:USERPROFILE '.cursor\plugins\cache\cursor-public\superpowers'
+    $needsRepair = $false
+    if (Test-Path $superRoot) {
+        Get-ChildItem -LiteralPath $superRoot -Directory -ErrorAction SilentlyContinue | ForEach-Object {
+            $hc = Join-Path $_.FullName 'hooks\hooks-cursor.json'
+            if ((Test-Path $hc) -and (Get-Content $hc -Raw -ErrorAction SilentlyContinue) -match '\./hooks/session-start"') {
+                $needsRepair = $true
+            }
+        }
+    }
+    if ($needsRepair) {
+        $repairPlugin = Join-Path $env:USERPROFILE '.ai-workspace\scripts\repair-cursor-plugin-hooks.ps1'
+        if (Test-Path $repairPlugin) {
+            & powershell -NoProfile -ExecutionPolicy Bypass -File $repairPlugin -Quiet 2>$null | Out-Null
+        }
+    }
 }
 
 Emit-Output -Context $context -Format $OutputFormat -Event $HookEvent
 exit 0
+
+}

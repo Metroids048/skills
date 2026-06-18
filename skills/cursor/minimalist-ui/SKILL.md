@@ -1,8 +1,8 @@
----
+﻿---
 name: minimalist-ui
-description: Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy shadows.
+description: Clean editorial-style interfaces. Warm monochrome, typographic contrast, flat bento grids. NOT when: anti-slop landing/portfolio（用 design-taste-frontend）或 tactus style preset（用 tactus-design-style）。
+disable-model-invocation: true
 ---
-
 # Protocol: Premium Utilitarian Minimalism UI Architect
 
 ## 1. Protocol Overview
@@ -83,3 +83,4 @@ When tasked with writing frontend code (HTML, React, Tailwind, Vue) or designing
 5. Add scroll-entry animations to all major content blocks.
 6. Ensure sections have visual depth through imagery, ambient gradients, or subtle textures — no empty flat backgrounds.
 7. Provide code that reflects this high-end, uncluttered, editorial aesthetic natively without requiring manual adjustments.
+

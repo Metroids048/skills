@@ -1,6 +1,6 @@
 ---
 description: "Security: mandatory checks, secret management, response protocol"
-alwaysApply: true
+alwaysApply: false
 ---
 # Security Guidelines
 

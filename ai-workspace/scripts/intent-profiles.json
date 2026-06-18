@@ -18,7 +18,9 @@
         "requirement-clarifier": 50,
         "brainstorming": 18,
         "idea-refine": 15,
-        "pm-prd-writer": 12
+        "pm-prd-writer": 12,
+        "interview-me": 35,
+        "spec-driven-development": 20
       }
     },
     {
@@ -36,7 +38,10 @@
         "zero-to-one-gate": 45,
         "brainstorming": 35,
         "planning-with-files-zh": 20,
-        "writing-plans": 18
+        "writing-plans": 18,
+        "spec-driven-development": 45,
+        "interview-me": 35,
+        "planning-and-task-breakdown": 40
       }
     },
     {
@@ -54,7 +59,9 @@
         "diagnose": 40,
         "systematic-debugging": 30,
         "tdd-workflow": 15,
-        "ai-regression-testing": 18
+        "ai-regression-testing": 18,
+        "debugging-and-error-recovery": 38,
+        "doubt-driven-development": 22
       }
     },
     {
@@ -105,7 +112,10 @@
       "skillBoosts": {
         "planning-with-files-zh": 40,
         "writing-plans": 35,
-        "ouro-loop": 35
+        "ouro-loop": 35,
+        "planning-and-task-breakdown": 48,
+        "spec-driven-development": 32,
+        "incremental-implementation": 28
       }
     },
     {
@@ -205,7 +215,12 @@
       "skillBoosts": {
         "requirement-clarifier": 35,
         "ai-coding-ok": 30,
-        "karpathy-guidelines": 10
+        "karpathy-guidelines": 10,
+        "incremental-implementation": 38,
+        "source-driven-development": 32,
+        "doubt-driven-development": 25,
+        "context-engineering": 22,
+        "code-review-and-quality": 20
       }
     },
     {
@@ -258,6 +273,41 @@
         "deep-research": 35,
         "market-research": 25,
         "deep-dive": 22
+      }
+    }
+    {
+      "id": "ship_release",
+      "label": "发布/上线/版本管理",
+      "signals": [
+        "发布", "上线", "release", "ship", "launch", "部署", "deploy", "版本", "changelog", "迁移", "migration", "deprecated", "废弃"
+      ],
+      "regexSignals": [
+        "(准备|做好).{0,4}(上线|发布|release)",
+        "(版本|release).{0,4}(升级|迁移|管理)"
+      ],
+      "skillBoosts": {
+        "shipping-and-launch": 45,
+        "git-workflow-and-versioning": 38,
+        "ci-cd-and-automation": 32,
+        "deprecation-and-migration": 30,
+        "documentation-and-adrs": 22
+      }
+    },
+    {
+      "id": "api_design",
+      "label": "API/接口设计",
+      "signals": [
+        "api", "接口", "interface", "endpoint", "schema", "contract", "REST", "GraphQL", "openapi", "swagger", "接口规范", "设计接口"
+      ],
+      "regexSignals": [
+        "(设计|定义|规范).{0,6}(API|接口|endpoint)",
+        "(API|接口).{0,4}(版本|兼容|设计)"
+      ],
+      "skillBoosts": {
+        "api-and-interface-design": 45,
+        "api-design-patterns": 35,
+        "graphql-design": 25,
+        "documentation-and-adrs": 18
       }
     }
   ]

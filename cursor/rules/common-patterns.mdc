@@ -1,6 +1,6 @@
 ---
 description: "Common patterns: repository, API response, skeleton projects"
-alwaysApply: true
+alwaysApply: false
 ---
 # Common Patterns
 

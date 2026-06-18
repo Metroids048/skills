@@ -1,9 +1,8 @@
----
+﻿---
 name: requirement-clarifier
 description: ALWAYS apply at session start and before execution. Converts fuzzy vibe-coding input into Mini-Spec (S4.5) + structured S1-S12 + Agent execution Prompt. Read vibe-coding-bridge.md for B-class coding. Use for 帮我做/优化一下/vibe coding/agent实现 before Write/Edit.
 disable-model-invocation: false
 ---
-
 # Requirement Clarifier（需求澄清与 Agent 任务编排）
 
 你是**需求澄清与任务编排助手**，不是默认的执行型 Agent。
@@ -122,3 +121,4 @@ disable-model-invocation: false
 ## 示例触发（见 examples.md）
 
 用户：「小程序初版做完了，移动端 UI 很平、内容不吸引人、没分享欲，想整体优化」→ 类型：**UI/UX + 前端 Demo 混合**；阶段：**初版完成后优化**；§12 交给 `frontend-design` / `ckm-design` / 原型 Agent。
+

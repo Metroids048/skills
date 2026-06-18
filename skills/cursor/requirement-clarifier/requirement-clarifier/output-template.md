@@ -37,6 +37,15 @@
 
 ---
 
+## §4.5 Mini-Spec（结构化任务单 · vibe coding / Agent 实现必填）
+
+> 模板见 [mini-spec-template.md](mini-spec-template.md)。B 类 + 代码/原型类任务**不得省略**。  
+> 用户确认本节后，才允许写 §12 或执行。
+
+（按 mini-spec-template 填写 YAML 块 + ≤3 行 plain 中文摘要）
+
+---
+
 ## §5 任务拆解
 
 （按类型选填子项，见 SKILL.md 类型表）

@@ -33,19 +33,47 @@
     "pdf-zine",
     "private-podcast-feed",
     "text-to-speech",
-    "tracer-bullets"
+    "tracer-bullets",
+    "most-capable-agent-reference",
+    "claude-code-prompts-reference",
+    "design-style"
+  ],
+  "excludeNamePrefixes": [
+    "awesome-"
   ],
   "excludePathPatterns": [
     "skills/space-url2proto/",
     "skills/space-image2proto/",
     "skills/superpowers-main/skills/receiving-code-review/",
     "skills/rtk-develop/",
-    "skills/ui-ux-pro-max-skill-main/"
+    "skills/ui-ux-pro-max-skill-main/",
+    "skills/vendor/awesome-",
+    "skills/vendor/_cache/"
   ],
+  "routingExcludeNamePrefixes": [
+    "awesome-"
+  ],
+  "routingExcludeNames": [
+    "most-capable-agent-reference",
+    "claude-code-prompts-reference",
+    "design-style",
+    "frontend-design",
+    "prompt-engineering"
+  ],
+  "exclusiveGroups": [
+    ["design-taste-frontend", "tactus-design-style", "gpt-taste", "high-end-visual-design", "minimalist-ui", "frontend-design"],
+    ["figma-workflow", "figma2code"],
+    ["requirement-clarifier", "pm-prd-writer"],
+    ["systematic-debugging", "diagnose"],
+    ["ai-delivery-gate", "global-delivery-gate", "verification-before-completion"],
+    ["ai-prompt-engineering", "prompt-engineering"]
+  ],
+  "topMatches": 10,
   "alwaysOnSkills": [
     "global-session-core",
     "requirement-clarifier",
-    "karpathy-guidelines"
+    "karpathy-guidelines",
+    "workflow-gate"
   ],
   "conditionalAlwaysOnSkills": [
     {
@@ -84,31 +112,39 @@
     "using-superpowers": "Cursor 技能路由：匹配 description；0→1/vibe coding 须 Read zero-to-one-gate + brainstorming。见 refinements/using-superpowers.md。",
     "pm-prd-writer": "把模糊需求转化为可评审的产品需求文档（PRD）。当用户说写PRD、需求文档、功能说明书时使用。不适用于：纯技术方案与模块架构（用 zero-to-one-gate）、纯 UI 标注（用 design-handoff）。",
     "requirement-clarifier": "ALWAYS apply at session start and before execution. Converts fuzzy vibe-coding input into Mini-Spec (S4.5) + structured S1-S12 + Agent execution Prompt. Read vibe-coding-bridge.md for B-class coding. Use for 帮我做/优化一下/vibe coding/agent实现 before Write/Edit.",
-    "design-taste-frontend": "Anti-slop 前端审美（Leonxlnx/taste-skill v2）。Landing/作品集/改版；先读 brief 再定设计方向。用户说 UI 丑、要设计感、落地页、portfolio、anti-slop 时使用。",
-    "gpt-taste": "Codex/GPT 向 stricter taste-skill：更高 layout variance + GSAP ScrollTrigger。高动效 landing 时用。",
+    "design-taste-frontend": "Anti-slop 前端审美（Leonxlnx/taste-skill v2）。Landing/作品集/改版；先读 brief 再定设计方向。用户说 UI 丑、要设计感、落地页、portfolio、anti-slop 时使用。NOT when: tactus/风格映射/style preset（用 tactus-design-style）；仅审计现有站点（用 redesign-existing-projects）；高 GSAP 动效 landing（用 gpt-taste）。",
+    "gpt-taste": "Codex/GPT 向 stricter taste-skill：更高 layout variance + GSAP ScrollTrigger。高动效 landing 时用。NOT when: tactus 风格 token 映射（用 tactus-design-style）；低动效 editorial UI（用 minimalist-ui）。",
+    "minimalist-ui": "Clean editorial-style interfaces. Warm monochrome, typographic contrast, flat bento grids. NOT when: anti-slop landing/portfolio（用 design-taste-frontend）或 tactus style preset（用 tactus-design-style）。",
+    "high-end-visual-design": "Premium agency-grade UI tokens — fonts, spacing, shadows, card structures. NOT when: tactus preset mapping（用 tactus-design-style）或 taste-skill landing workflow（用 design-taste-frontend）。",
     "redesign-existing-projects": "Use when auditing or improving an existing site's UI (spacing, hierarchy, typography). Not for greenfield landing pages (use design-taste-frontend).",
-    "figma2code": "Use when implementing HTML/CSS/JS from a Figma URL, file key, node id, or mockup — frame extraction, interactions, and project integration. Triggers: 按 Figma 实现, Figma 转代码, 设计稿转代码, 对照 Figma.",
-    "figma-workflow": "Use when Agent Platform Figma work needs figma.config.json — implement from Figma, sync HTML to Figma, or create design files. Triggers: 按 Figma 实现, 同步到 Figma, 对照设计稿.",
+    "figma2code": "Use when implementing HTML/CSS/JS from a Figma URL, file key, node id, or mockup — frame extraction, interactions, and project integration. Triggers: 按 Figma 实现, Figma 转代码, 设计稿转代码, 对照 Figma. NOT when: Agent Platform figma.config sync workflow（用 figma-workflow）。",
+    "figma-workflow": "Use when Agent Platform Figma work needs figma.config.json — implement from Figma, sync HTML to Figma, or create design files. Triggers: 按 Figma 实现, 同步到 Figma, 对照设计稿. NOT when: pure Figma URL/frame-to-code without config sync（用 figma2code）。",
     "ouro-loop": "Use when a task needs MAP-PLAN-BUILD-VERIFY-REMEDIATE autonomous loops with multiple verification gates.",
     "deep-research": "Use when the user needs multi-source research with citations, fact-check, or 深度研究/文献回顾 before conclusions — not for quick one-line answers.",
     "brainstorming": "Use when creating features, modifying behavior, or any creative implementation work before writing code or scaffolds.",
-    "systematic-debugging": "Use when encountering bugs, test failures, unexpected behavior, or performance issues — before proposing fixes.",
+    "systematic-debugging": "Use when encountering bugs, test failures, unexpected behavior, or performance issues — before proposing fixes. NOT when: user only wants structured reproduction/diagnosis without fix yet（用 diagnose）。",
     "ai-coding-ok": "Use FIRST on coding tasks when the repo has AGENTS.md or .github/agent/memory/. Triggers: 新功能, 修复, 重构, implement, fix, refactor.",
     "zero-to-one-gate": "Use when work is greenfield, a new module/page/workflow, or 帮我做… without ADR coverage — before Write/Edit on implementation files.",
     "writing-plans": "Use when there is an approved spec or requirements for a multi-step task, before touching code.",
-    "ai-delivery-gate": "Use before claiming prototype delivery done in Agent Platform — after editing prototype/assets/*.js or when user asks for sign-off.",
-    "global-delivery-gate": "Use before claiming done/fixed/PASS on any repo — run detected verify commands with fresh evidence.",
-    "diagnose": "Use when the user says diagnose this, debug this, or reports a bug/performance regression needing structured reproduction.",
+    "ai-delivery-gate": "Use before claiming prototype delivery done in Agent Platform — after editing prototype/assets/*.js or when user asks for sign-off. NOT when: non-prototype repo delivery（用 global-delivery-gate）。",
+    "global-delivery-gate": "Use before claiming done/fixed/PASS on any repo — run detected verify commands with fresh evidence. NOT when: Agent Platform prototype verify-all only（用 ai-delivery-gate）。",
+    "diagnose": "Use when the user says diagnose this, debug this, or reports a bug/performance regression needing structured reproduction. NOT when: ready to fix after root-cause found（用 systematic-debugging）。",
     "writing-skills": "Use when creating, editing, or verifying Agent Skills (SKILL.md) before deployment.",
     "skill-stocktake": "Use when auditing skills inventory for Keep/Improve/Retire/Merge verdicts.",
     "agent-sort": "Use when trimming ECC/skills to DAILY vs LIBRARY buckets for a specific repo.",
     "planning-with-files-zh": "Use when the user asks in Chinese for multi-step planning with task_plan.md, findings.md, progress.md, or 规划/拆解/进度跟踪.",
-    "verification-before-completion": "Use before claiming done, fixed, or PASS — re-read acceptance criteria and run fresh verify output.",
+    "verification-before-completion": "Use before claiming done, fixed, or PASS — re-read acceptance criteria and run fresh verify output. NOT when: prototype-specific verify-all gate（用 ai-delivery-gate）。",
     "agent-verifier": "Use before PR or when user asks to verify/audit agent-generated code for security, patterns, and quality.",
     "memory-handoff": "Use when user says resume, handoff, where were we, or picks up a session without fresh context.",
     "image-to-code": "Use when implementing a website from reference images or screenshots with section-by-section visual fidelity.",
     "tdd-workflow": "Use when implementing features or bugfixes with test-driven development across unit, integration, and E2E layers.",
-    "pm-image2proto": "Use when converting a screenshot or reference image into an HTML prototype with iterative refinement."
+    "pm-image2proto": "Use when converting a screenshot or reference image into an HTML prototype with iterative refinement.",
+    "tactus-design-style": "Use when applying Castor6/tactus design-style mapping — pick visual style tokens, palettes, and typography from styles-mapping.json before UI work. Triggers: design style, 设计风格, tactus, 风格映射, style preset. NOT when: generic anti-slop landing without preset（用 design-taste-frontend）。",
+    "most-capable-agent-reference": "Read-only reference for fainir most-capable-agent system prompt patterns. Use when studying agent prompt architecture — not for routine coding.",
+    "claude-code-prompts-reference": "Read-only reference for repowise-dev claude-code-prompts patterns. Use when comparing Claude Code prompt structure — not for routine coding.",
+    "workflow-gate": "ALWAYS apply — six-phase workflow gate (P1 clarify → P2 arch → P3 interface → P4 build → P5 review → P6 verify). Tier A requires approval before P4.",
+    "context-engineering": "Context engineering — signal-to-noise, progressive discovery, just-in-time loading. Use for agent/prompt structure questions. NOT when: production prompt patterns（用 ai-prompt-engineering）。",
+    "ai-prompt-engineering": "Operational prompt engineering for production agents — structured outputs, RAG, tool planners, eval gates. NOT when: basic ECC templates（用 context-engineering for principles only）。"
   },
   "promptKeywordBoosts": {
     "requirement-clarifier": [
@@ -190,6 +226,15 @@
       "taste skill",
       "tasteskill"
     ],
+    "tactus-design-style": [
+      "design style",
+      "设计风格",
+      "tactus",
+      "风格映射",
+      "style preset",
+      "styles-mapping",
+      "视觉风格"
+    ],
     "gpt-taste": [
       "GSAP",
       "scroll animation",
@@ -230,7 +275,10 @@
       "设计稿转",
       "file key",
       "mockup",
-      "frame"
+      "frame",
+      "frame extraction",
+      "url to html",
+      "node id"
     ],
     "figma-workflow": [
       "同步到 figma",

@@ -1,6 +1,6 @@
 ---
 description: "Development workflow: plan, TDD, review, commit pipeline"
-alwaysApply: true
+alwaysApply: false
 ---
 # Development Workflow
 

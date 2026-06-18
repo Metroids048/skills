@@ -1,6 +1,6 @@
 ﻿---
 name: issue-triage
-description: Use when triaging GitHub issues, posting triage comments, or producing issue action tables for a repo.
+description: >
 disable-model-invocation: true
 ---
 # Issue Triage

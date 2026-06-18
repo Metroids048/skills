@@ -7,17 +7,7 @@ disable-model-invocation: false
 
 This skill applies to **every** conversation in Cursor, Claude Code, and Codex.
 
-## 0. Always-on behavior (every new task)
-
-After memory load, Read **`requirement-clarifier`** and **`karpathy-guidelines`** (rules + SKILL.md) with this skill.
-
-**requirement-clarifier:**
-
-- **Default:** clarify fuzzy requests → structured §1–§12 + copy-paste §12 execution Prompt; **do not** implement until user confirms or says 按澄清结果执行 / 直接做.
-- **Skip clarification:** full spec pasted, single-line explicit fix, or user says 不用澄清 / 开始执行.
-- **0→1:** clarify scope here first, then `zero-to-one-gate` + `brainstorming`.
-
-## 0.5 Global memory (every coding task)
+## 0. Global memory (every coding task)
 
 Before coding, Read (paths injected at SessionStart):
 
@@ -65,7 +55,18 @@ Before claiming **done**, **fixed**, or **PASS**:
 3. Capture **fresh command output** as evidence — no assumed PASS.
 4. If verification was skipped → state **"Task is NOT fully verified."**
 
-## 4. Project-specific gates (when detected)
+## 4. Maximum permission scope (never overstep)
+
+When the user says **「最大权限」「全部解决」「你看着办」**:
+
+- **Means:** fewer back-and-forth steps to fix **the stated problem** — not permission to expand scope or run destructive cleanup.
+- **Ask first** before: deleting/uninstalling tools or config dirs (CC Switch, backups, sync scripts), `Remove-Item -Recurse`, removal scripts (`_remove-*`), disabling unrelated auto-sync, or wiping registry env beyond the one key tied to the bug.
+- **Default:** minimal diff only (e.g. fix one CC Switch provider for Codex 401 — do **not** remove CC Switch).
+- **Protected unless explicit delete/uninstall:** `~/.cc-switch`, cc-sync/cc-watch, OAuth sessions, unrelated providers.
+
+Cursor: `~/.cursor/rules/maximum-permission-scope.mdc`. Global: `~/.claude/AGENTS.md` § Maximum permission scope.
+
+## 5. Project-specific gates (when detected)
 
 - **`prototype/scripts/verify-all.js`** present → use `ai-delivery-gate` skill (5 steps incl. navigation-journey).
 - **Project `AGENTS.md`** → overrides global `~/.claude/AGENTS.md` for that repo.

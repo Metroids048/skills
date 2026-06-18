@@ -19,6 +19,7 @@ function Get-SyncConfig {
     if (-not (Test-Path $configPath)) {
         return [pscustomobject]@{
             excludeNames          = @()
+            excludeNamePrefixes   = @()
             excludePathPatterns   = @()
             pruneCodexDuplicates  = $false
             codexDuplicateNames   = @()
@@ -37,6 +38,7 @@ function Get-SyncConfig {
     }
     return [pscustomobject]@{
         excludeNames          = @($raw.excludeNames)
+        excludeNamePrefixes   = if ($raw.excludeNamePrefixes) { @($raw.excludeNamePrefixes) } else { @() }
         excludePathPatterns   = @($raw.excludePathPatterns)
         pruneCodexDuplicates  = [bool]$raw.pruneCodexDuplicates
         codexDuplicateNames   = @($raw.codexDuplicateNames)
@@ -52,6 +54,9 @@ function Test-ExcludedSkill {
         $Config
     )
     if ($Config.excludeNames -contains $RawName) { return $true }
+    foreach ($prefix in $Config.excludeNamePrefixes) {
+        if ($RawName.StartsWith($prefix)) { return $true }
+    }
     foreach ($pat in $Config.excludePathPatterns) {
         $norm = $pat.Replace('/', '\')
         if ($RelativePath -like "*$norm*") { return $true }

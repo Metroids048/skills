@@ -1,8 +1,8 @@
----
+﻿---
 name: design-taste-frontend
-description: Anti-slop 前端审美（Leonxlnx/taste-skill v2）。Landing/作品集/改版；先读 brief 再定设计方向。用户说 UI 丑、要设计感、落地页、portfolio、anti-slop 时使用。
+description: Anti-slop 前端审美（Leonxlnx/taste-skill v2）。Landing/作品集/改版；先读 brief 再定设计方向。用户说 UI 丑、要设计感、落地页、portfolio、anti-slop 时使用。NOT when: tactus/风格映射/style preset（用 tactus-design-style）；仅审计现有站点（用 redesign-existing-projects）；高 GSAP 动效 landing（用 gpt-taste）。
+disable-model-invocation: true
 ---
-
 # tasteskill: Anti-Slop Frontend Skill
 
 > Landing pages, portfolios, and redesigns. Not dashboards, not data tables, not multi-step product UI.
@@ -1204,3 +1204,4 @@ But that is **web glassmorphism / frosted-glass approximation**, not official Ap
 ---
 
 **End of appendices.** Install commands above are reality anchors. The Apple Liquid Glass skeleton is a labeled approximation, not an Apple-issued package. For canonical docs per design system, consult the system's official docs (links in Section 2 plus Appendix B).
+

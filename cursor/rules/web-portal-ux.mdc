@@ -1,0 +1,23 @@
+---
+description: Web 用户端（prototype/web端/）截图对标与 composer/模型/笔记硬约束
+globs:
+  - prototype/web端/**
+  - prototype/assets/user-chat-portal.js
+  - prototype/assets/user-portal-bridge.js
+  - prototype/assets/user-personal-space.js
+  - prototype/assets/user-agent-square.js
+  - prototype/scripts/web-portal-check.js
+alwaysApply: false
+---
+
+# Web 用户端 UX Contract（薄层入口）
+
+**SSOT：** `AGENTS.md` § Web 用户端 UX Contract · ADR-015 v5 · `postmortem-user-portal-2026-06-10.md`
+
+## 硬约束
+
+1. **截图对标** — 改 UI 前对照用户截图或 Figma 376；plan「可选」须用户确认后才可写入 HTML/契约。
+2. **+ 菜单** — 仅「上传文件 + 引用笔记」；禁止擅自加语音输入。
+3. **模型下拉** — UI 显示 4 个 DeepSeek 全名；禁止 Flash/标准/深度/专家 tier 化名。
+4. **笔记 summary** — 卡片/chip/popover/选笔记预览 = 标题 + 短总结（≤120 字）；轮次/全文仅在 `#historySummaryModal`。
+5. **验证** — 改上述文件后必跑 `node prototype/scripts/verify-all.js`（含 web-portal-check）。

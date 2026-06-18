@@ -1,6 +1,6 @@
 ﻿---
 name: pr-triage
-description: Use when triaging open pull requests, summarizing PR backlog, or preparing merge order recommendations.
+description: >
 disable-model-invocation: true
 ---
 # PR Triage

@@ -1,6 +1,6 @@
----
+﻿---
 name: ai-delivery-gate
-description: Use before claiming prototype delivery done in Agent Platform — after editing prototype/assets/*.js or when user asks for sign-off.
+description: Use before claiming prototype delivery done in Agent Platform — after editing prototype/assets/*.js or when user asks for sign-off. NOT when: non-prototype repo delivery（用 global-delivery-gate）。
 disable-model-invocation: true
 ---
 # AI Delivery Gate (Agent Platform)

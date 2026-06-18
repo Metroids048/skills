@@ -1,6 +1,6 @@
----
+﻿---
 name: figma2code
-description: Use when implementing HTML/CSS/JS from a Figma URL, file key, node id, or mockup — frame extraction, interactions, and project integration. Triggers: 按 Figma 实现, Figma 转代码, 设计稿转代码, 对照 Figma.
+description: Use when implementing HTML/CSS/JS from a Figma URL, file key, node id, or mockup — frame extraction, interactions, and project integration. Triggers: 按 Figma 实现, Figma 转代码, 设计稿转代码, 对照 Figma. NOT when: Agent Platform figma.config sync workflow（用 figma-workflow）。
 disable-model-invocation: true
 ---
 # Figma → 前端代码 完整工作流
@@ -17,22 +17,21 @@ disable-model-invocation: true
 
 | 项目 | 检查方式 |
 |------|---------|
-| Figma PAT（Personal Access Token） | Figma Settings → Security → Personal access tokens |
+| Figma PAT（Personal Access Token） | 环境变量 `FIGMA_API_KEY`（Windows 用户级，不入仓） |
 | 文件 Key | 从 URL 提取：`figma.com/design/<FILE_KEY>/...` |
 | Node.js ≥ 18 | `node --version` |
 | 本地服务（视觉对比用） | `python -m http.server 8766`（在 prototype/ 目录） |
-| Figma Desktop MCP（推荐） | Desktop → Dev Mode → Enable MCP Server → 端口 3845 |
+| 三端 MCP 已同步 | `powershell scripts/sync-figma-mcp.ps1` + `verify-figma-mcp.ps1` |
+| Figma Desktop MCP（可选） | 仅付费 Dev Seat；Starter 用 PAT REST 代替 |
 
-**MCP 配置**（`~/.cursor/mcp.json`）：
+**三端 MCP**（`scripts/sync-figma-mcp.ps1` 写入 Cursor / Codex / Claude）：
 ```json
 {
-  "mcpServers": {
-    "figma-desktop": { "url": "http://127.0.0.1:3845/mcp" },
-    "figma": { "url": "https://mcp.figma.com/mcp" }
-  }
+  "figma": { "url": "https://mcp.figma.com/mcp" },
+  "figma-desktop": { "url": "http://127.0.0.1:3845/mcp" }
 }
 ```
-> 优先用 `figma-desktop`（无速率限制）；云端 `figma` 在 Starter 账号约 6 次/月。
+> **Starter 策略**：批量读用 PAT REST；单帧精修用 Remote MCP 读（≤6 次/月）；写 Figma 用 Remote MCP 写工具（免限额）。
 
 ---
 
@@ -484,3 +483,4 @@ Pages:       运营平台(241:250) / 智能体运营(0:1) / Skills配置(46:312)
 交互规格:    design/interaction-spec.json（待手工补充，Phase 3 产出）
 单帧提取:    node design/scripts/extract-frame.js "<frameId>"
 ```
+

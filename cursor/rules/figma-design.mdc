@@ -9,26 +9,35 @@ alwaysApply: false
 
 # Figma 设计工作流
 
-## 开始前
+## 开始前（无需用户重复配置）
 
-1. 读取 [design/figma.config.json](design/figma.config.json) 获取 `fileKey`、`nodeId` 与 HTML 镜像路径
-2. 确认 Cursor MCP 中 `figma` 服务已连接（Remote OAuth）
-3. 调用 `use_figma` 前必须先阅读 figma-use skill
+1. 读取 [design/figma.config.json](design/figma.config.json)：`fileKey`、`screens`、`mcp.agentRouting`
+2. 用 `node scripts/resolve-figma-screen.js --html <path>` 解析 nodeId
+3. 健康检查：`powershell scripts/verify-figma-mcp.ps1`（Desktop 未开时 WARN，不阻塞写操作）
+
+## MCP 选用（Starter 三端，见 `mcp.agentRouting`）
+
+| 操作 | 优先通道 | 说明 |
+|------|----------|------|
+| 读设计（批量） | **PAT REST** | `FIGMA_API_KEY` + Figma REST API，不限 MCP 6 次/月 |
+| 读设计（单帧精修） | figma Remote MCP | `get_design_context`，Starter ≤6 次/月 |
+| 读设计（链接） | `resolve-figma-screen.js` + Frame URL | 无需 MCP |
+| 读设计（付费可选） | figma-desktop | Dev Seat + Desktop 3845 |
+| 写 Figma `use_figma` | **figma Remote** 或 **plugin-figma-figma** | 写工具免限额；调用前必读 figma-use skill |
 
 ## Figma → 代码
 
-- 用 Figma MCP 获取设计上下文（`get_design_context` 或等价工具）
-- 更新 `design/figma.config.json` 中对应 screen 的 `htmlMirror` 文件
-- 复用 [prototype/assets/style.css](prototype/assets/style.css) 现有 token 与组件类名
-- Figma 返回 localhost 资产 URL 时**直接使用**，不要新建 icon 包或占位图
+- 拉取设计上下文后改 `screens.*.htmlMirror` 对应 HTML + `style.css`
+- 复用现有 token/类名；Figma localhost 资产 URL **直接用**，勿换占位图
+- 对照 `design/interaction-spec.json` 补交互
 
 ## 代码 → Figma
 
-- 加载 figma-generate-design skill
-- 按 section 增量写入 Figma，使用设计系统 token 而非硬编码色值
-- 完成后更新 `figma.config.json` 中的 `nodeId`（如有变化）
+- 读 figma-generate-design + figma-use skill
+- 按 section 增量 `use_figma`；新建 Frame 后回写 `figma.config.json` 的 `nodeId`
 
-## 项目约定
+## 禁止
 
-- 原型页位于 `prototype/`，共享逻辑在 `prototype/assets/proto.js`
-- 不要把 Figma OAuth 密钥或 PAT 写入仓库；仅放在本地 MCP 配置
+- PAT/OAuth token 入仓
+- 未读 figma-use 就调 `use_figma`
+- 跑已废弃的 `scripts/open-figma-captures.ps1`

@@ -1,6 +1,6 @@
 ﻿---
 name: ai-review
-description: Use when requesting a second AI review of code, diffs, or plans mid-session through an external CLI such as Gemini or Codex to validate risks, regressions, or blind spots.
+description: >-
 disable-model-invocation: true
 ---
 # AI Code Review
@@ -171,5 +171,4 @@ REVIEW_PROVIDER=codex ${CLAUDE_SKILL_DIR}/scripts/review.sh
 - Reviews are advisory — the second model may have false positives
 - Large diffs (>50KB) may be truncated. Split into smaller reviews if needed.
 - The review model runs in prompt mode (`-p`) and cannot browse the repo. Project context is auto-included to compensate — see "Auto-Context" above.
-
 

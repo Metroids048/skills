@@ -1,0 +1,28 @@
+---
+description: ALWAYS apply — six-phase workflow gate. Requirements → Architecture → Interface → Implementation → Self-review → Verify. Approval required before P4 on Tier A work.
+alwaysApply: true
+---
+
+# Workflow Gate（六阶段 · 全局）
+
+Full skill: `~/.cursor/skills/workflow-gate/SKILL.md`
+
+## Tier A（严格 · 0→1）
+
+P1 澄清 → P2 架构（`zero-to-one-gate`）→ **用户 approval** → P3 接口契约（`DESIGN.md`）→ **approval** → P4 实现 → P5 自检 → P6 验证交付
+
+## Tier B（快路径）
+
+用户说 **直接做 / 就改这一处 / 不用澄清** → P1 极简 → P4 → P5 → P6
+
+## 编码前（Project Brain）
+
+1. 模块边界  2. 数据流  3. 失败点  4. 架构计划
+
+**无设计 approval 不写实现**（Tier B 例外）。
+
+## Approval 关键词
+
+确认执行、开始执行、按默认建议、确认、可以执行、按澄清结果执行
+
+Repo `AGENTS.md` 优先于本规则。

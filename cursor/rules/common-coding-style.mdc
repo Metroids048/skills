@@ -1,6 +1,6 @@
 ---
 description: "ECC coding style: immutability, file organization, error handling, validation"
-alwaysApply: true
+alwaysApply: false
 ---
 # Coding Style
 

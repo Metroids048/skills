@@ -1,131 +1,142 @@
 ﻿---
 name: continuous-learning
-description: Use only when maintaining legacy continuous-learning-v1 installs; otherwise route continuous learning, session learning, and pattern extraction requests to `continuous-learning-v2`.
-origin: ECC
+description: Auto-extract patterns from coding sessions, track corrections, and build reusable knowledge with confidence scoring
+disable-model-invocation: true
 ---
-# Continuous Learning Skill - DEPRECATED
+# Continuous Learning
 
-> **DEPRECATED 2026-04-28.** Use `continuous-learning-v2` instead. v2 is a strict superset: stop-hook observation becomes PreToolUse/PostToolUse observation, full skills become atomic instincts with confidence scoring, and global-only storage becomes project-scoped plus global promotion.
->
-> This file is kept for archival reference and backward compatibility with existing installs.
+## Pattern Extraction Framework
 
----
+After every significant coding session, extract and categorize learnings into three buckets:
 
-## Original v1 Documentation (archival)
+1. **Corrections** - Mistakes caught during review or by the user
+2. **Successful Approaches** - Patterns that worked well and should be repeated
+3. **Anti-Patterns** - Approaches that caused problems and should be avoided
 
-Automatically evaluates Claude Code sessions on end to extract reusable patterns that can be saved as learned skills.
+## Learning Entry Format
 
-## When to Activate
-
-- Setting up automatic pattern extraction from Claude Code sessions
-- Configuring the Stop hook for session evaluation
-- Reviewing or curating learned skills in `~/.claude/skills/learned/`
-- Adjusting extraction thresholds or pattern categories
-- Comparing v1 (this) vs v2 (instinct-based) approaches
-
-## Status
-
-This v1 skill is still supported, but `continuous-learning-v2` is the preferred path for new installs. Keep v1 when you explicitly want the simpler Stop-hook extraction flow or need compatibility with older learned-skill workflows.
-
-## How It Works
-
-This skill runs as a **Stop hook** at the end of each session:
-
-1. **Session Evaluation**: Checks if session has enough messages (default: 10+)
-2. **Pattern Detection**: Identifies extractable patterns from the session
-3. **Skill Extraction**: Saves useful patterns to `~/.claude/skills/learned/`
-
-## Configuration
-
-Edit `config.json` to customize:
-
-```json
-{
-  "min_session_length": 10,
-  "extraction_threshold": "medium",
-  "auto_approve": false,
-  "learned_skills_path": "~/.claude/skills/learned/",
-  "patterns_to_detect": [
-    "error_resolution",
-    "user_corrections",
-    "workarounds",
-    "debugging_techniques",
-    "project_specific"
-  ],
-  "ignore_patterns": [
-    "simple_typos",
-    "one_time_fixes",
-    "external_api_issues"
-  ]
-}
+```yaml
+pattern:
+  id: "LEARN-2025-0042"
+  category: "error-handling"
+  type: "correction"         # correction | success | anti-pattern
+  confidence: 0.85           # 0.0 to 1.0
+  language: "typescript"
+  context: "API error responses"
+  observation: "Returning raw error messages from database exceptions exposes internals"
+  lesson: "Always map database errors to application-level error codes before returning"
+  example:
+    before: "catch (e) { res.status(500).json({ error: e.message }) }"
+    after: "catch (e) { logger.error(e); res.status(500).json({ error: 'INTERNAL_ERROR' }) }"
+  frequency: 3               # times this pattern has been observed
+  last_seen: "2025-06-15"
 ```
 
-## Pattern Types
+## Confidence Scoring
 
-| Pattern | Description |
-|---------|-------------|
-| `error_resolution` | How specific errors were resolved |
-| `user_corrections` | Patterns from user corrections |
-| `workarounds` | Solutions to framework/library quirks |
-| `debugging_techniques` | Effective debugging approaches |
-| `project_specific` | Project-specific conventions |
+| Score | Meaning | Action |
+|-------|---------|--------|
+| 0.95+ | Verified across multiple projects | Apply automatically |
+| 0.80-0.94 | Confirmed in this codebase | Apply and mention |
+| 0.60-0.79 | Observed but not fully validated | Suggest with caveat |
+| 0.40-0.59 | Hypothesis based on limited data | Ask before applying |
+| <0.40 | Speculative, needs validation | Document but do not apply |
 
-## Hook Setup
+Update confidence based on:
+- +0.10 when pattern is confirmed correct by user
+- +0.05 when pattern is observed again in a different context
+- -0.15 when pattern leads to a correction
+- -0.20 when pattern is explicitly rejected by user
 
-Add to your `~/.claude/settings.json`:
+## Session Wrap-Up Protocol
 
-```json
-{
-  "hooks": {
-    "Stop": [{
-      "matcher": "*",
-      "hooks": [{
-        "type": "command",
-        "command": "~/.claude/skills/continuous-learning/evaluate-session.sh"
-      }]
-    }]
-  }
-}
+At the end of each session or before context compaction:
+
+1. **Review changes made** - Scan diffs for patterns
+2. **Identify corrections** - What was changed after initial implementation?
+3. **Note successful first-attempts** - What worked without revision?
+4. **Record environment details** - Framework versions, config specifics
+5. **Update confidence scores** - Adjust based on session outcomes
+6. **Write to knowledge base** - Append new entries to CLAUDE.md or LEARNED.md
+
+```markdown
+## Session Learnings (2025-06-15)
+
+### Corrections Applied
+- [0.85] TypeScript: Use `satisfies` instead of `as` for type narrowing with object literals
+- [0.90] Next.js: Server Actions must be async functions, even for synchronous operations
+
+### Successful Patterns
+- [0.80] PostgreSQL: Partial indexes on status columns reduced query time by 60%
+- [0.75] React: Extracting data fetching into Server Components eliminated 3 useEffect hooks
+
+### Anti-Patterns Identified
+- [0.70] Avoid: Nesting more than 2 levels of Suspense boundaries (causes waterfall)
+- [0.65] Avoid: Using `any` to suppress TypeScript errors in catch blocks (use `unknown`)
 ```
 
-## Why Stop Hook?
+## Knowledge Base Organization
 
-- **Lightweight**: Runs once at session end
-- **Non-blocking**: Doesn't add latency to every message
-- **Complete context**: Has access to full session transcript
+Structure the knowledge base by domain:
 
-## Related
+```
+knowledge/
+  error-handling.md      # Error patterns across languages
+  testing.md             # Test patterns and anti-patterns
+  performance.md         # Optimization learnings
+  api-design.md          # API design decisions
+  deployment.md          # Infrastructure learnings
+  project-specific.md    # Current project conventions
+```
 
-- [The Longform Guide](https://x.com/affaanmustafa/status/2014040193557471352) - Section on continuous learning
-- `/learn` command - Manual pattern extraction mid-session
+Each file follows the same entry format. Deduplicate entries with matching `observation` fields by incrementing `frequency` and updating `confidence`.
 
----
+## Correction Tracking
 
-## Comparison Notes (Research: Jan 2025)
+When a user corrects code or approach:
 
-### vs Homunculus
+1. Record what was originally produced
+2. Record what the correction was
+3. Identify the root cause (wrong assumption, missing context, outdated pattern)
+4. Create or update a learning entry
+5. Search for similar patterns that might need the same correction
 
-Homunculus v2 takes a more sophisticated approach:
+```markdown
+### Correction Log
+- **Original**: Used `useEffect` to fetch data on mount
+- **Correction**: Moved data fetching to Server Component
+- **Root cause**: Applied client-side SPA pattern in Server Component context
+- **Generalization**: In Next.js App Router, prefer server-side data fetching for initial page data
+- **Confidence**: 0.90 (confirmed across 4 components)
+```
 
-| Feature | Our Approach | Homunculus v2 |
-|---------|--------------|---------------|
-| Observation | Stop hook (end of session) | PreToolUse/PostToolUse hooks (100% reliable) |
-| Analysis | Main context | Background agent (Haiku) |
-| Granularity | Full skills | Atomic "instincts" |
-| Confidence | None | 0.3-0.9 weighted |
-| Evolution | Direct to skill | Instincts 鈫?cluster 鈫?skill/command/agent |
-| Sharing | None | Export/import instincts |
+## Pattern Reinforcement
 
-**Key insight from homunculus:**
-> "v1 relied on skills to observe. Skills are probabilistic鈥攖hey fire ~50-80% of the time. v2 uses hooks for observation (100% reliable) and instincts as the atomic unit of learned behavior."
+Track how often patterns are applied and whether they hold:
 
-### Potential v2 Enhancements
+```
+Pattern: "Use zod for API input validation"
+  Applied: 12 times
+  Confirmed: 11 times
+  Corrected: 1 time (edge case with file uploads)
+  Confidence: 0.92
+  Status: ESTABLISHED
+```
 
-1. **Instinct-based learning** - Smaller, atomic behaviors with confidence scoring
-2. **Background observer** - Haiku agent analyzing in parallel
-3. **Confidence decay** - Instincts lose confidence if contradicted
-4. **Domain tagging** - code-style, testing, git, debugging, etc.
-5. **Evolution path** - Cluster related instincts into skills/commands
+Statuses:
+- **EMERGING** (frequency < 3) - New pattern, needs validation
+- **GROWING** (frequency 3-7) - Building evidence, apply with mention
+- **ESTABLISHED** (frequency 8+, confidence > 0.85) - Apply automatically
+- **DEPRECATED** - Once valid, now superseded by a better approach
 
-See: `docs/continuous-learning-v2-spec.md` for full spec.
+## Integration with Memory Files
+
+Store learnings in the project's memory file (CLAUDE.md or equivalent):
+
+- High-confidence learnings (>0.85) go in the main instructions section
+- Medium-confidence (0.60-0.84) go in a dedicated "Learnings" section
+- Low-confidence (<0.60) stay in session notes until validated
+- Deprecated patterns move to an archive section with reason for deprecation
+
+Review and prune the knowledge base monthly. Remove entries that have not been referenced in 90 days and have confidence below 0.70.
 

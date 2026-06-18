@@ -1,8 +1,19 @@
 # User Memory (Global)
 
-Last updated: 2026-06-08
+Last updated: 2026-06-18
 
 > Cross-project facts, preferences, and workflow conventions. **Do not commit to git** — lives in `~/.ai-workspace/memory/`.
+
+## Retrospective rules (Read on product/UI/AI tasks)
+
+**Full text:** `~/.ai-workspace/memory/ai-project-retrospective-rules-zh.md`  
+**Cursor rule:** `~/.cursor/rules/ai-delivery-anti-patterns.mdc`
+
+- 输入模糊（优化一下/改 UI/对标竞品/整体弄好）→ **必须提问**锁定主改动类型、版本目标、不动清单、验收方式；禁止脑补后直接改代码
+- 每轮**只选一个**主改动类型：产品主线 / IA / UI / AI·数据 — 禁止混改
+- 改页必须同步：共享样式、文案、状态、测试
+- 验收：完整用户故事先于单页截图；verify 通过才可 claim done
+- AI 求职台产品链路见 `program1-main/.github/agent/memory/project-memory.md`
 
 ## Preferences
 
@@ -10,10 +21,6 @@ Last updated: 2026-06-08
 - Skills: global library at `~/.cursor/skills/`; match by description, Read full SKILL.md when applicable
 - Token habits: short updates, no long log dumps; never skip verification to save tokens
 - Tools: Cursor + Claude Code + Codex share hooks via `~/.ai-workspace/scripts/`
-- **taste-skill** (2026-06-05): [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) 13 个 skill 已装三端；默认 `design-taste-frontend`（v2），Codex 高动效用 `gpt-taste`；重装 `scripts/hooks/install-taste-skills.ps1 -RefreshFromGitHub -Force`
-- **Headroom** (2026-06-04): `headroom-ai==0.20.15` @ `%APPDATA%\Python\Python312\Scripts\headroom.exe` — MCP 已接入三端；全流量 proxy 见 `~/.ai-workspace/docs/headroom-setup-zh.md`（勿自动覆盖 `ANTHROPIC_BASE_URL=15721`）
-- **requirement-clarifier** (2026-06-04): 运行时钩子读 `~/.ai-workspace/scripts/skills-sync.config.json`；`alwaysOnSkills` 须含 `requirement-clarifier`；`UserPromptSubmit` 也会注入 always-on（修复前仅 SessionStart 且配置缺项）
-- **需求澄清偏好** (2026-06-05): B 类必先 Mini-Spec + §7；极模糊用 interview-protocol；风险/多文件用 clarification-guardrails。精华链路见 `skill-chain-map.md`。**硬拦** (2026-06-05): Type B → PreToolUse deny Write/Edit 直至用户说「确认/按澄清结果执行/直接做」等（`clarification-gate-keywords.json`）；状态 `~/.ai-workspace/clarifications/gate-state.json`。不批量装重复高星 skills（ADR-006）。
 - **0→1 mode: strict** — 新模块/大范围「帮我做…」必须先方案+ADR+用户确认，再写代码；用户非技术，由 Agent 主动补 ADR/模块边界
 - **Maximum permission:** 「最大权限」「全部解决」= 少来回确认、把**当前问题**修完 — **不等于**可删 CC Switch、清配置目录、跑卸载脚本；破坏性操作须先说明并获确认
 
@@ -32,11 +39,11 @@ Last updated: 2026-06-08
 - Re-run `rtk init -g --auto-patch` after updating Claude hooks
 - Vibe coding「帮我做一个…」= 0→1 until proven otherwise — do not skip architecture for speed
 - **2026-06-03:** Agent 误删 CC Switch 配置（用户未授权）— 「最大权限」仅图省事，禁止越权破坏性操作；见 ADR-G003 + `maximum-permission-scope.mdc`
+- **2026-06-17 三端避坑（TASK-072）：** `windows-agent-shell.mdc` + `repair-tri-end-hooks.ps1` + `CLAUDE_CODE_ATTRIBUTION_HEADER=0`
+- **2026-06-17 交付门禁（TASK-073）：** `node-project-delivery.mdc` — Agent Platform 用 `verify-all`；`program1-main`/`demo1` 用 `npm run verify`；勿在平台根跑 `npm run lint`
+- **2026-06-17 DeepSeek 缓存二期：** 客户端 `15721` → CC Switch → `18789` `deepseek-cc-proxy`（tool 排序 + 剥 header）；playbook：`Agent Platform/docs/tri-end-deepseek-cache-playbook-zh.md`
+- **2026-06-18 AI 项目复盘（program1-main）：** 未锁「本轮改哪一层」就改页面 → 返工恶性循环；已沉淀为 `ai-project-retrospective-rules-zh.md` + `ai-delivery-anti-patterns.mdc` + ADR-G004；模糊输入必须提问，禁止跨层混改
 
 ## Active Projects
 
 See `projects-registry.md` for path → alias mapping.
-
-## Reference docs
-
-- **三端配置与避坑总览**（2026-05-28 ~ 2026-06-08）：`~/.ai-workspace/docs/tri-end-ai-config-inventory-zh.md`

@@ -63,13 +63,37 @@ if (Test-Path $memoryTemplates) {
     'scan-project-skills.ps1',
     'sync-cursor-global-skills.ps1',
     'install-global-skills-hooks.ps1',
-    'skills-sync.config.json'
+    'skills-sync.config.json',
+    'rtk-hook-cursor.ps1',
+    'repair-tri-end-hooks.ps1',
+    'cursor-shell-allow.js'
 ) | ForEach-Object {
     $src = Join-Path $hooksSrc $_
     if (Test-Path $src) {
         Copy-Item -LiteralPath $src -Destination (Join-Path $scriptsDir $_) -Force
         Write-Host "Script: $_"
     }
+}
+
+$globalWs = Join-Path $RepoRoot 'scripts\global-workspace'
+@(
+    'apply-tri-end-env.ps1',
+    'ensure-python-env.ps1',
+    'verify-tri-end-config.ps1'
+) | ForEach-Object {
+    $src = Join-Path $globalWs $_
+    if (Test-Path $src) {
+        Copy-Item -LiteralPath $src -Destination (Join-Path $scriptsDir $_) -Force
+        Write-Host "Script: $_"
+    }
+}
+
+$repairPluginSrc = Join-Path $env:USERPROFILE '.ai-workspace\scripts\repair-cursor-plugin-hooks.ps1'
+if (-not (Test-Path $repairPluginSrc)) {
+    $repairPluginSrc = Join-Path $scriptsDir 'repair-cursor-plugin-hooks.ps1'
+}
+if (Test-Path $repairPluginSrc) {
+    Copy-Item -LiteralPath $repairPluginSrc -Destination (Join-Path $scriptsDir 'repair-cursor-plugin-hooks.ps1') -Force -ErrorAction SilentlyContinue
 }
 
 Copy-Item -LiteralPath $PSCommandPath -Destination (Join-Path $scriptsDir 'install-global-workspace.ps1') -Force
@@ -110,12 +134,18 @@ if (Test-Path $rulesSrc) {
     Write-Host 'Cached rules templates to ~/.ai-workspace/templates/rules/'
 }
 
-# --- Install hooks (delegates to repo script with ai-workspace paths) ---
-$installHooks = Join-Path $hooksSrc 'install-global-skills-hooks.ps1'
-if (Test-Path $installHooks) {
+# --- Install hooks (RTK Shell only; no SessionStart/UserPromptSubmit — cache mode) ---
+$repairHooks = Join-Path $hooksSrc 'repair-tri-end-hooks.ps1'
+if (-not (Test-Path $repairHooks)) {
+    $repairHooks = Join-Path $scriptsDir 'repair-tri-end-hooks.ps1'
+}
+if (Test-Path $repairHooks) {
     Write-Host ''
-    Write-Host 'Installing global hooks...'
-    & $installHooks -UseJunctionForClaudeSkills -SkipSync -WorkspaceScriptsDir $scriptsDir -SkipAgentsUpdate
+    Write-Host 'Repairing tri-end hooks (RTK Shell only)...'
+    & $repairHooks -SkipGateOff
+}
+else {
+    Write-Host 'SKIP: repair-tri-end-hooks.ps1 not found — hooks not modified'
 }
 
 # --- Sync skills from repo ---
@@ -165,6 +195,26 @@ See also ``~/.codex/RTK.md`` if present.
 "@
 Write-Utf8NoBom -Path $codexMd -Content $codexContent
 Write-Host "Updated: $codexMd"
+
+# --- Tri-end env + hooks repair + verify ---
+$applyEnv = Join-Path $globalWs 'apply-tri-end-env.ps1'
+$repairHooks = Join-Path $hooksSrc 'repair-tri-end-hooks.ps1'
+$verify = Join-Path $globalWs 'verify-tri-end-config.ps1'
+
+if (Test-Path $applyEnv) {
+    Write-Host ''
+    Write-Host 'Applying tri-end environment...'
+    & $applyEnv
+}
+if (Test-Path $repairHooks) {
+    Write-Host ''
+    Write-Host 'Repairing tri-end hooks (gate bypass + RTK)...'
+    & $repairHooks
+}
+if (Test-Path $verify) {
+    Write-Host ''
+    & $verify
+}
 
 Write-Host ''
 Write-Host 'Done. Restart Cursor / Claude Code / Codex.'

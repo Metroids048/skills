@@ -1,18 +1,26 @@
 # Headroom 三端配置说明（Windows）
 
-> 安装版本：`headroom-ai==0.20.15`（Windows 上最后一个免编译 wheel；最新 0.22.x 需 Rust 编译，暂未装）
+> 安装版本：`headroom-ai==0.20.15`（Windows 免编译 wheel；全量升级需关 IDE 后重装或等官方 Windows wheel）
 
-## 已配置
+## 一键重装
 
-| 工具 | MCP 工具 | 配置位置 |
-|------|----------|----------|
-| **Claude Code** | `headroom_compress` / `headroom_retrieve` / `headroom_stats` | `~/.claude.json`（`claude mcp add`）+ `~/.claude/settings.json` |
-| **Cursor** | 同上 | `~/.cursor/mcp.json` |
-| **Codex** | 同上 | `~/.codex/config.toml` |
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\install-headroom-global.ps1"
+```
 
-可执行文件路径（未加入 PATH，配置里写绝对路径）：
+## 已配置（2026-06-11）
+
+| 工具 | MCP 工具 | Shell 压缩 | 配置位置 |
+|------|----------|------------|----------|
+| **Claude Code** | `headroom_compress` / `retrieve` / `stats` | `rtk hook claude`（PreToolUse Bash） | `~/.claude.json` + `settings.json` |
+| **Cursor** | 同上 | `rtk hook cursor`（`~/.cursor/hooks.json` Shell） | `~/.cursor/mcp.json` + 全局 rule `headroom-token-save.mdc` |
+| **Codex** | 同上（`--direct`） | `~/.codex/RTK.md` + `AGENTS.md` | `~/.codex/config.toml` |
+
+可执行文件（已加入用户 PATH）：
 
 `C:\Users\win\AppData\Roaming\Python\Python312\Scripts\headroom.exe`
+
+用户环境变量：`HEADROOM_REQUIRE_RUST_CORE=false`（Windows 0.20.x 无 Rust 扩展时 proxy 可启动）
 
 ## 两种用法
 
@@ -45,14 +53,23 @@ powershell -File "$env:USERPROFILE\.ai-workspace\scripts\start-headroom-proxy.ps
 & "$env:APPDATA\Python\Python312\Scripts\headroom.exe" wrap cursor
 ```
 
+## Cursor hooks 注意
+
+`~/.cursor/hooks.json` 里 **`preToolUse` 必须是数组**。若只有单个对象，`rtk init -g --agent cursor` 会报 `preToolUse value is not an array`。
+
+当前结构：一条 `Write|Edit`（澄清门禁）+ 一条 `Shell`（`rtk hook cursor`）。安装脚本会自动转换。
+
 ## 验证
 
 ```powershell
 $hr = "$env:APPDATA\Python\Python312\Scripts\headroom.exe"
 & $hr --version
 & $hr mcp status
-claude mcp list   # 应显示 headroom Connected
+rtk init -g --agent cursor   # 应显示 RTK preToolUse entry already present
+claude mcp list                # 应显示 headroom Connected
 ```
+
+在任意 git 仓库里试 Shell：`rtk git status`（输出应比裸 `git status` 更短）。
 
 ## 重装 / 升级
 

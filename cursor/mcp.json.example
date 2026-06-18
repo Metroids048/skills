@@ -10,28 +10,10 @@
       "command": "codegraph",
       "type": "stdio"
     },
-    "context7": {
-      "args": [
-        "-y",
-        "@upstash/context7-mcp@2.1.4"
-      ],
-      "command": "npx"
-    },
-    "exa": {
-      "type": "http",
-      "url": "https://mcp.exa.ai/mcp"
-    },
     "github": {
       "args": [
         "-y",
         "@modelcontextprotocol/server-github@2025.4.8"
-      ],
-      "command": "npx"
-    },
-    "memory": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-memory@2026.1.26"
       ],
       "command": "npx"
     },
@@ -43,26 +25,8 @@
       ],
       "command": "npx"
     },
-    "sequential-thinking": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking@2025.12.18"
-      ],
-      "command": "npx"
-    },
-    "vibearound": {
-      "url": "http://127.0.0.1:12358/va/mcp?token=YOUR_VIBEAROUND_TOKEN"
-    },
-    "agentmemory": {
-      "command": "npx",
-      "args": ["-y", "@agentmemory/mcp"],
-      "env": {
-        "AGENTMEMORY_URL": "http://localhost:3111"
-      }
-    },
-    "headroom": {
-      "command": "{{HEADROOM_EXE}}",
-      "args": ["mcp", "serve"]
+    "figma": {
+      "url": "https://mcp.figma.com/mcp"
     }
   }
 }

@@ -1,6 +1,6 @@
----
+﻿---
 name: global-delivery-gate
-description: Use before claiming done/fixed/PASS on any repo — run detected verify commands with fresh evidence.
+description: Use before claiming done/fixed/PASS on any repo — run detected verify commands with fresh evidence. NOT when: Agent Platform prototype verify-all only（用 ai-delivery-gate）。
 disable-model-invocation: true
 ---
 # Global Delivery Gate

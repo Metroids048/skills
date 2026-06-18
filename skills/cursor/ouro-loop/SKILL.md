@@ -1,4 +1,4 @@
----
+﻿---
 name: ouro-loop
 description: Use when a task needs MAP-PLAN-BUILD-VERIFY-REMEDIATE autonomous loops with multiple verification gates.
 disable-model-invocation: true

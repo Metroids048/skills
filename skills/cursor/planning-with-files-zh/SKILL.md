@@ -1,4 +1,4 @@
----
+﻿---
 name: planning-with-files-zh
 description: Use when the user asks in Chinese for multi-step planning with task_plan.md, findings.md, progress.md, or 规划/拆解/进度跟踪.
 disable-model-invocation: true

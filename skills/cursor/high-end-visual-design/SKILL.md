@@ -1,8 +1,8 @@
----
+﻿---
 name: high-end-visual-design
-description: Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animations that make a website feel expensive. Blocks all the common defaults that make AI designs look cheap or generic.
+description: Premium agency-grade UI tokens — fonts, spacing, shadows, card structures. NOT when: tactus preset mapping（用 tactus-design-style）或 taste-skill landing workflow（用 design-taste-frontend）。
+disable-model-invocation: true
 ---
-
 # Agent Skill: Principal UI/UX Architect & Motion Choreographer (Awwwards-Tier)
 
 ## 1. Meta Information & Core Directive
@@ -96,3 +96,4 @@ Evaluate your code against this matrix before delivering. This is the last filte
 - [ ] All animations use only `transform` and `opacity` — no layout-triggering properties
 - [ ] `backdrop-blur` is only applied to fixed/sticky elements, never to scrolling content
 - [ ] The overall impression reads as "$150k agency build", not "template with nice fonts"
+

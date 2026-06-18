@@ -7,8 +7,13 @@ if (-not (Test-Path $headroom)) {
     Write-Error "headroom.exe not found at $headroom. Install: pip install -i https://pypi.tuna.tsinghua.edu.cn/simple headroom-ai[mcp,proxy]==0.20.15"
 }
 
+# Windows wheel 0.20.x: no Rust _core — use Python-only proxy mode
+if (-not $env:HEADROOM_REQUIRE_RUST_CORE) {
+  $env:HEADROOM_REQUIRE_RUST_CORE = "false"
+}
+
 $port = if ($env:HEADROOM_PORT) { $env:HEADROOM_PORT } else { "8787" }
-Write-Host "Starting Headroom proxy on http://127.0.0.1:$port ..."
+Write-Host "Starting Headroom proxy on http://127.0.0.1:$port (HEADROOM_REQUIRE_RUST_CORE=$($env:HEADROOM_REQUIRE_RUST_CORE)) ..."
 Write-Host "Stats: http://127.0.0.1:$port/stats"
 Write-Host "Stop with Ctrl+C in this window."
 & $headroom proxy --host 127.0.0.1 --port $port

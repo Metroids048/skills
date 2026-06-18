@@ -1,6 +1,6 @@
 ﻿---
 name: rtk-triage
-description: Use when running combined RTK issue and PR triage with cross-analysis across a Rust repository.
+description: >
 disable-model-invocation: true
 ---
 # /rtk-triage

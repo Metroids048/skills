@@ -1,6 +1,6 @@
 ---
 description: "Performance: model selection, context management, build troubleshooting"
-alwaysApply: true
+alwaysApply: false
 ---
 # Performance Optimization
 

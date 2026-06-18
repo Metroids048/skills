@@ -1,4 +1,4 @@
----
+﻿---
 name: agent-verifier
 description: Use before PR or when user asks to verify/audit agent-generated code for security, patterns, and quality.
 disable-model-invocation: true

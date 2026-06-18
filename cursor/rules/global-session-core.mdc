@@ -5,9 +5,9 @@ alwaysApply: true
 
 # Global Session Core
 
-## Always-on (every task)
+## Requirement clarifier (every new task)
 
-Read `requirement-clarifier` + `karpathy-guidelines` SKILL.md with `global-session-core` before tools (unless user said 直接执行 or pasted full spec).
+Read `~/.cursor/skills/requirement-clarifier/SKILL.md` with this rule. Clarify fuzzy tasks before implementation; output §12 Agent Prompt unless user said 直接执行. See `requirement-clarifier.mdc`.
 
 ## Global memory (coding tasks)
 

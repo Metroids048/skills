@@ -1,6 +1,6 @@
----
+﻿---
 name: systematic-debugging
-description: Use when encountering bugs, test failures, unexpected behavior, or performance issues — before proposing fixes.
+description: Use when encountering bugs, test failures, unexpected behavior, or performance issues — before proposing fixes. NOT when: user only wants structured reproduction/diagnosis without fix yet（用 diagnose）。
 disable-model-invocation: true
 ---
 # Systematic Debugging

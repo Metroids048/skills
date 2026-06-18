@@ -1,4 +1,4 @@
----
+﻿---
 name: brainstorming
 description: Use when creating features, modifying behavior, or any creative implementation work before writing code or scaffolds.
 disable-model-invocation: true

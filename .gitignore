@@ -1,25 +1,17 @@
-# Runtime / machine-local (never commit)
-.env
-.env.*
-*.local.json
+# Secrets — do not commit real tokens
 secrets/
+*.local.json
 auth.json
-gate-state.json
+.env
+.env.local
+
+# Runtime / cache
+node_modules/
+__pycache__/
+.venv/
+*.sqlite
+*.sqlite-*
 
 # OS
-.DS_Store
 Thumbs.db
-desktop.ini
-
-# Editor
-.idea/
-.vscode/
-
-# Export temp
-.export-tmp/
-
-# Large vendor caches (re-fetch via install)
-vendor-cache/
-
-# User-specific memory overlays (templates are committed)
-ai-workspace/memory/local/
+.DS_Store

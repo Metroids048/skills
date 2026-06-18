@@ -3,10 +3,18 @@ param(
     [switch]$SkipSync,
     [switch]$UseJunctionForClaudeSkills,
     [string]$WorkspaceScriptsDir = '',
-    [switch]$SkipAgentsUpdate
+    [switch]$SkipAgentsUpdate,
+    [switch]$ForceInstallSkillsHooks
 )
 
 $ErrorActionPreference = 'Stop'
+
+if (-not $ForceInstallSkillsHooks) {
+    Write-Host 'SKIP: install-global-skills-hooks.ps1 is disabled (cache mode).'
+    Write-Host 'SessionStart/UserPromptSubmit hooks break DeepSeek prefix cache. Use repair-tri-end-hooks.ps1 instead.'
+    Write-Host 'To override: -ForceInstallSkillsHooks'
+    exit 0
+}
 
 function Write-Utf8NoBomFile {
     param([string]$Path, [string]$Content)
@@ -164,7 +172,7 @@ Write-Host "Installed: $scanGlobalDst"
 Write-Host "Installed: $(Join-Path $cursorHooks 'scan-global-skills.ps1')"
 
 # Clarification hard-gate scripts (PreToolUse)
-$gateScripts = @('clarification-gate-core.ps1', 'clarification-hard-gate.ps1', 'clarification-gate-keywords.json')
+$gateScripts = @('clarification-gate-core.ps1', 'clarification-hard-gate.ps1', 'clarification-gate-keywords.json', 'rtk-hook-cursor.ps1')
 foreach ($gateScript in $gateScripts) {
     $src = Join-Path $hooksDir $gateScript
     if (-not (Test-Path $src)) { continue }
@@ -337,6 +345,8 @@ $cursorHooksJson = Join-Path $cursorDir 'hooks.json'
 $cursorHookCmdSs = "powershell -NoProfile -ExecutionPolicy Bypass -File `"$cursorScanHookPath`" -OutputFormat Cursor -HookEvent SessionStart"
 $cursorHookCmdUp = "powershell -NoProfile -ExecutionPolicy Bypass -File `"$cursorScanHookPath`" -OutputFormat Cursor -HookEvent UserPromptSubmit"
 $gateCmdCursor = "powershell -NoProfile -ExecutionPolicy Bypass -File `"$hardGateHookPath`" -OutputFormat Cursor"
+$rtkHookPath = Join-Path $aiWorkspaceScripts 'rtk-hook-cursor.ps1'
+$shellHookCmdCursor = "powershell -NoProfile -ExecutionPolicy Bypass -File `"$rtkHookPath`" -OutputFormat Cursor"
 $cursorExistingPre = @()
 if (Test-Path $cursorHooksJson) {
     Copy-Item -LiteralPath $cursorHooksJson -Destination ($cursorHooksJson + '.bak') -Force
@@ -363,11 +373,15 @@ $cursorHookBody = @{
                 timeout = 45
             }
         )
-        preToolUse         = Merge-CursorPreToolUseEntries `
-            -ExistingEntries $cursorExistingPre `
-            -Matcher 'Write|Edit' `
-            -Command $gateCmdCursor `
-            -Timeout 15
+        preToolUse         = (Merge-CursorPreToolUseEntries `
+            -ExistingEntries (Merge-CursorPreToolUseEntries `
+                -ExistingEntries $cursorExistingPre `
+                -Matcher 'Write|Edit' `
+                -Command $gateCmdCursor `
+                -Timeout 15) `
+            -Matcher 'Shell' `
+            -Command $shellHookCmdCursor `
+            -Timeout 15)
     }
 }
 Write-Utf8NoBomFile -Path $cursorHooksJson -Content ($cursorHookBody | ConvertTo-Json -Depth 10)

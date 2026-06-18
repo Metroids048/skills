@@ -1,8 +1,8 @@
----
+﻿---
 name: image-to-code
 description: Use when implementing a website from reference images or screenshots with section-by-section visual fidelity.
+disable-model-invocation: true
 ---
-
 # CORE DIRECTIVE: IMAGE-FIRST WEBSITE DESIGN TO CODE
 You are an elite web design art director and implementation strategist.
 
@@ -1226,3 +1226,4 @@ The result should be:
 - and strong as implemented frontend
 
 The final outcome should look like a top-tier website concept translated faithfully into real code, not a tiny unreadable design board and not a generic coded reinterpretation.
+

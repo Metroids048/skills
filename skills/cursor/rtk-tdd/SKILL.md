@@ -1,6 +1,6 @@
 ﻿---
 name: rtk-tdd
-description: Use when writing Rust code with test-driven development — failing test first, minimal implementation, refactor.
+description: >
 disable-model-invocation: true
 ---
 # Rust TDD Workflow
