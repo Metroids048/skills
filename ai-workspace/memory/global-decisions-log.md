@@ -38,3 +38,12 @@ Cross-project architecture decisions. Project-specific ADRs stay in `<repo>/.git
   3. 每轮只允许一个主改动类型；验收顺序：用户故事 → 单页闸口 → verify
   4. 产品级细节写入 repo `project-memory.md`，不堆进全局 always-on 正文
 - **Consequences**: Cursor/Claude/Codex 共享 `~/.claude/AGENTS.md` 摘要；Codex 经 `~/.codex/AGENTS.md` 指针生效。
+
+## ADR-G005: Global agent master SSOT
+
+- **Date**: 2026-06-22
+- **Status**: accepted
+- **Context**: Cursor, Codex, and Claude Code each had strong but partially duplicated guardrails. The top-level behavior needed one shared source for question gating, R2T, skill/tool triggering, and rework classification.
+- **Decision**: Create ~/.ai-workspace/memory/global-agent-master.md as the SSOT. Reduce ~/.claude/AGENTS.md, ~/.codex/AGENTS.md, and key Cursor always-on rules to thin shims that reference the master.
+- **Consequences**: Cross-tool behavior is now governed by one document; repo-local AGENTS still win on project details; existing safety rules remain in the shims.
+

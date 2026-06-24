@@ -1,28 +1,50 @@
 {
-    "mcpServers":  {
-                       "vibearound":  {
-                                          "type":  "http",
-                                          "url":  "http://127.0.0.1:12358/va/mcp?token=YOUR_VIBE_AROUND_TOKEN"
-                                      }
-                   },
-    "includeCoAuthoredBy":  false,
-    "disableAllHooks":  true,
-    "model":  "sonnet",
-    "$schema":  "https://json.schemastore.org/claude-code-settings.json",
-    "env":  {
-                "PYTHONUTF8":  "1",
-                "ANTHROPIC_DEFAULT_OPUS_MODEL":  "claude-opus-4-8[1M]",
-                "ANTHROPIC_DEFAULT_FABLE_MODEL_NAME":  "deepseek-v4-pro",
-                "CLAUDE_CODE_ATTRIBUTION_HEADER":  "0",
-                "ENABLE_PROMPT_CACHING_1H":  "1",
-                "ANTHROPIC_BASE_URL":  "http://127.0.0.1:15721",
-                "ANTHROPIC_AUTH_TOKEN":  "PROXY_MANAGED",
-                "ANTHROPIC_DEFAULT_FABLE_MODEL":  "deepseek-v4-pro[1M]",
-                "ANTHROPIC_DEFAULT_HAIKU_MODEL":  "claude-haiku-4-5",
-                "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME":  "deepseek-v4-pro",
-                "ANTHROPIC_DEFAULT_HAIKU_MODEL_NAME":  "deepseek-v4-pro",
-                "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME":  "deepseek-v4-pro",
-                "ANTHROPIC_DEFAULT_SONNET_MODEL":  "claude-sonnet-4-6[1M]",
-                "HEADROOM_REQUIRE_RUST_CORE":  "false"
-            }
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "PROXY_MANAGED",
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:15721",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "deepseek-v4-pro[1M]",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL_NAME": "deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-haiku-4-5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL_NAME": "deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-8[1M]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL_NAME": "deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4-6[1M]",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL_NAME": "deepseek-v4-pro"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Claude -HookEvent SessionStart",
+            "statusMessage": "Load global skills",
+            "timeout": 45,
+            "type": "command"
+          }
+        ],
+        "matcher": "startup|resume|clear|compact"
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Claude -HookEvent UserPromptSubmit",
+            "statusMessage": "匹配全局 Skills",
+            "timeout": 45,
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  },
+  "includeCoAuthoredBy": false,
+  "mcpServers": {
+    "vibearound": {
+      "type": "http",
+      "url": "http://127.0.0.1:12358/va/mcp?token=YOUR_VIBE_AROUND_TOKEN"
+    }
+  },
+  "model": "sonnet"
 }

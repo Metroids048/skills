@@ -66,17 +66,6 @@ A well-structured PRD clearly communicates the what, why, and how of your produc
    - Avoid exact dates; use relative timeframes
 
 4. **Use Accessible Language**: Write for a primary school graduate. Avoid jargon. Use clear, short sentences.
-   - **Forbidden in PRD body**: code function names (`login()`, `fetchData()`), file paths (`src/`, `web端/`), CSS class names, API endpoint names, database keys, module dependency graphs — anything that belongs in a technical spec, not a product document.
-   - **Architecture/flow diagrams**: do NOT put Mermaid diagrams in the PRD markdown. Write "暂时无法在飞书文档外展示此内容" (placeholder for Feishu). The user will draw diagrams in Feishu directly.
-   - **Heading format**: use plain text numbering ("一、二、三"), NOT `#` Markdown heading syntax.
-   - **Screenshot placeholders**: use `[图片]` as a placeholder. The user pastes Figma screenshots themselves.
-   - **Interaction descriptions**: describe what users see and do (click → input → feedback), not what internal functions are called. Write "the system verifies the email and password" not "login() validates credentials".
-   - **Page layout**: reference Figma, mockups, or screenshots. Never use ASCII art or Mermaid to simulate layout. Use `[图片]` placeholder.
-   - **Writing style**: use short tables + bullet lists. Avoid long paragraphs. Field rules should focus on business logic, not implementation.
-   - **Must cover**: Skills selector (search/filter/multi-select/cap), deep thinking toggle, file upload limits, download button, source citations, message center (announcements/todos/feedback box).
-   - **Sections to omit**: non-functional requirements, appendices (browser compat, performance metrics, acceptance criteria lists) — these belong in tech specs, not PRD.
-   - **Business constraints**: label prototype limitations honestly — "pre-filled to match current system, actual list depends on deployment".
-   - **Data source annotation**: when describing fields, label data origins — "syncs with organizational structure", "connected to operations center".
 
 5. **Structure Output**: Present the PRD as a well-formatted markdown document with clear headings and sections.
 

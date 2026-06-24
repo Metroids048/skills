@@ -1,32 +1,35 @@
 {
-  "mcpServers": {
-    "codegraph": {
-      "args": [
-        "serve",
-        "--mcp",
-        "--path",
-        "${workspaceFolder}"
-      ],
-      "command": "codegraph",
-      "type": "stdio"
-    },
-    "github": {
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-github@2025.4.8"
-      ],
-      "command": "npx"
-    },
-    "playwright": {
-      "args": [
-        "-y",
-        "@playwright/mcp@0.0.69",
-        "--extension"
-      ],
-      "command": "npx"
-    },
-    "figma": {
-      "url": "https://mcp.figma.com/mcp"
-    }
-  }
+    "mcpServers":  {
+                       "codegraph":  {
+                                         "args":  [
+                                                      "serve",
+                                                      "--mcp",
+                                                      "--path",
+                                                      "${workspaceFolder}"
+                                                  ],
+                                         "command":  "codegraph",
+                                         "type":  "stdio"
+                                     },
+                       "github":  {
+                                      "args":  [
+                                                   "-y",
+                                                   "@modelcontextprotocol/server-github@2025.4.8"
+                                               ],
+                                      "command":  "npx"
+                                  },
+                       "playwright":  {
+                                          "args":  [
+                                                       "-y",
+                                                       "@playwright/mcp@0.0.69",
+                                                       "--extension"
+                                                   ],
+                                          "command":  "npx"
+                                      },
+                       "figma":  {
+                                     "url":  "https://mcp.figma.com/mcp"
+                                 },
+                       "figma-desktop":  {
+                                             "url":  "http://127.0.0.1:3845/mcp"
+                                         }
+                   }
 }

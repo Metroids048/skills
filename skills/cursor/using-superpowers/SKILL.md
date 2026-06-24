@@ -3,116 +3,46 @@ name: using-superpowers
 description: Cursor 技能路由：匹配 description；0→1/vibe coding 须 Read zero-to-one-gate + brainstorming。见 refinements/using-superpowers.md。
 disable-model-invocation: true
 ---
-<SUBAGENT-STOP>
-If you were dispatched as a subagent to execute a specific task, skip this skill.
-</SUBAGENT-STOP>
+# Using Skills (Cursor)
 
-<EXTREMELY-IMPORTANT>
-If you think there is even a 1% chance a skill might apply to what you are doing, you ABSOLUTELY MUST invoke the skill.
+## Rule
 
-IF A SKILL APPLIES TO YOUR TASK, YOU DO NOT HAVE A CHOICE. YOU MUST USE IT.
+Match the user request to skill **descriptions** in `~/.cursor/skills/`. **Read** the full `SKILL.md` when the task clearly fits **or** when `zero-to-one-gate` signals apply (see below).
 
-This is not negotiable. This is not optional. You cannot rationalize your way out of this.
-</EXTREMELY-IMPORTANT>
+Priority: **user instruction** > matched project/global skill > Cursor built-in skill > default behavior.
 
-## Instruction Priority
+**Conflict:** `zero-to-one-gate` (strict) overrides「直接做 / 快点」— still require scheme summary + approval before implementation.
 
-Superpowers skills override default system prompt behavior, but **user instructions always take precedence**:
+## When to load a skill
 
-1. **User's explicit instructions** (CLAUDE.md, GEMINI.md, AGENTS.md, direct requests) — highest priority
-2. **Superpowers skills** — override default system behavior where they conflict
-3. **Default system prompt** — lowest priority
+| Signal | Action |
+|--------|--------|
+| User names a skill or domain (PRD, Figma, TDD, 架构, 0→1…) | Read that skill |
+| Description clearly matches the task | Read that skill |
+| Vibe coding「帮我做一个…」「新模块」「从0」 | Read **zero-to-one-gate** first, then **brainstorming** |
+| Multiple skills fit | Pick the most specific; 0→1 chain (gate + brainstorm + plan) may load together |
+| No match | Proceed without skill files |
 
-If CLAUDE.md, GEMINI.md, or AGENTS.md says "don't use TDD" and a skill says "always use TDD," follow the user's instructions. The user is in control.
+## When NOT to load
 
-## How to Access Skills
+- Pure chit-chat, git status, or one-line factual questions
+- Already loaded the same skill this session for the same task type
 
-**In Claude Code:** Use the `Skill` tool. When you invoke a skill, its content is loaded and presented to you—follow it directly. Never use the Read tool on skill files.
+## Process skills (mandatory for 0→1)
 
-**In Copilot CLI:** Use the `skill` tool. Skills are auto-discovered from installed plugins. The `skill` tool works the same as Claude Code's `Skill` tool.
+- **zero-to-one-gate** — 新功能、新模块、新页面、大范围需求；Agent 主动识别，用户无需懂技术
+- **brainstorming** — **required** after zero-to-one-gate; 2–3 approaches before code
+- **writing-plans** / **planning-with-files-zh** — after user approves architecture
+- **systematic-debugging** — before fixing bugs or test failures
+- **verification-before-completion** / **global-delivery-gate** — before claiming done
 
-**In Gemini CLI:** Skills activate via the `activate_skill` tool. Gemini loads skill metadata at session start and activates the full content on demand.
+**Skip brainstorming only for:** typo, copy edit, single-file bug with explicit scope, or step within an existing approved plan+ADR.
 
-**In other environments:** Check your platform's documentation for how skills are loaded.
+## Announce
 
-## Platform Adaptation
+If you used skills, one short line at reply start: `Skills: name-a, name-b`.
 
-Skills use Claude Code tool names. Non-CC platforms: see `references/copilot-tools.md` (Copilot CLI), `references/codex-tools.md` (Codex) for tool equivalents. Gemini CLI users get the tool mapping loaded automatically via GEMINI.md.
+## Conflicts
 
-# Using Skills
-
-## The Rule
-
-**Invoke relevant or requested skills BEFORE any response or action.** Even a 1% chance a skill might apply means that you should invoke the skill to check. If an invoked skill turns out to be wrong for the situation, you don't need to use it.
-
-```dot
-digraph skill_flow {
-    "User message received" [shape=doublecircle];
-    "About to EnterPlanMode?" [shape=doublecircle];
-    "Already brainstormed?" [shape=diamond];
-    "Invoke brainstorming skill" [shape=box];
-    "Might any skill apply?" [shape=diamond];
-    "Invoke Skill tool" [shape=box];
-    "Announce: 'Using [skill] to [purpose]'" [shape=box];
-    "Has checklist?" [shape=diamond];
-    "Create TodoWrite todo per item" [shape=box];
-    "Follow skill exactly" [shape=box];
-    "Respond (including clarifications)" [shape=doublecircle];
-
-    "About to EnterPlanMode?" -> "Already brainstormed?";
-    "Already brainstormed?" -> "Invoke brainstorming skill" [label="no"];
-    "Already brainstormed?" -> "Might any skill apply?" [label="yes"];
-    "Invoke brainstorming skill" -> "Might any skill apply?";
-
-    "User message received" -> "Might any skill apply?";
-    "Might any skill apply?" -> "Invoke Skill tool" [label="yes, even 1%"];
-    "Might any skill apply?" -> "Respond (including clarifications)" [label="definitely not"];
-    "Invoke Skill tool" -> "Announce: 'Using [skill] to [purpose]'";
-    "Announce: 'Using [skill] to [purpose]'" -> "Has checklist?";
-    "Has checklist?" -> "Create TodoWrite todo per item" [label="yes"];
-    "Has checklist?" -> "Follow skill exactly" [label="no"];
-    "Create TodoWrite todo per item" -> "Follow skill exactly";
-}
-```
-
-## Red Flags
-
-These thoughts mean STOP—you're rationalizing:
-
-| Thought | Reality |
-|---------|---------|
-| "This is just a simple question" | Questions are tasks. Check for skills. |
-| "I need more context first" | Skill check comes BEFORE clarifying questions. |
-| "Let me explore the codebase first" | Skills tell you HOW to explore. Check first. |
-| "I can check git/files quickly" | Files lack conversation context. Check for skills. |
-| "Let me gather information first" | Skills tell you HOW to gather information. |
-| "This doesn't need a formal skill" | If a skill exists, use it. |
-| "I remember this skill" | Skills evolve. Read current version. |
-| "This doesn't count as a task" | Action = task. Check for skills. |
-| "The skill is overkill" | Simple things become complex. Use it. |
-| "I'll just do this one thing first" | Check BEFORE doing anything. |
-| "This feels productive" | Undisciplined action wastes time. Skills prevent this. |
-| "I know what that means" | Knowing the concept ≠ using the skill. Invoke it. |
-
-## Skill Priority
-
-When multiple skills could apply, use this order:
-
-1. **Process skills first** (brainstorming, debugging) - these determine HOW to approach the task
-2. **Implementation skills second** (frontend-design, mcp-builder) - these guide execution
-
-"Let's build X" → brainstorming first, then implementation skills.
-"Fix this bug" → debugging first, then domain-specific skills.
-
-## Skill Types
-
-**Rigid** (TDD, debugging): Follow exactly. Don't adapt away discipline.
-
-**Flexible** (patterns): Adapt principles to context.
-
-The skill itself tells you which.
-
-## User Instructions
-
-Instructions say WHAT, not HOW. "Add X" or "Fix Y" doesn't mean skip workflows.
+If two skills disagree, prefer the **more specific** skill. **zero-to-one-gate (strict)** wins over fast-delivery shortcuts.
 

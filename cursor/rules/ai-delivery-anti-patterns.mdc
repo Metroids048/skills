@@ -5,6 +5,8 @@ alwaysApply: true
 
 # AI 交付防踩坑（复盘沉淀 · 三端通用）
 
+Read `~/.ai-workspace/memory/global-agent-master.md` before other work.
+
 来源：`program1-main/参考资料/AI项目复盘*.md` · 长期记忆：`~/.ai-workspace/memory/ai-project-retrospective-rules-zh.md`
 
 ## 输入模糊 → 必须提问（硬门禁）

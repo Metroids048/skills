@@ -4,14 +4,26 @@
                   "preToolUse":  [
                                      {
                                          "matcher":  "Write|Edit|MultiEdit|StrReplace|apply_patch|Delete",
-                                         "command":  "node \"C:\\Users\\win\\.ai-workspace\\scripts\\cursor-shell-allow.js\"",
-                                         "timeout":  5
+                                         "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\clarification-hard-gate.ps1\" -OutputFormat Cursor",
+                                         "timeout":  15
                                      },
                                      {
                                          "matcher":  "Shell",
                                          "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\rtk-hook-cursor.ps1\" -OutputFormat Cursor",
                                          "timeout":  15
                                      }
-                                 ]
+                                 ],
+                  "sessionStart":  [
+                                       {
+                                           "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Cursor -HookEvent SessionStart",
+                                           "timeout":  45
+                                       }
+                                   ],
+                  "beforeSubmitPrompt":  [
+                                             {
+                                                 "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Cursor -HookEvent UserPromptSubmit",
+                                                 "timeout":  45
+                                             }
+                                         ]
               }
 }

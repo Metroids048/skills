@@ -5,6 +5,8 @@ alwaysApply: true
 
 # Workflow Gate（六阶段 · 全局）
 
+Read `~/.ai-workspace/memory/global-agent-master.md` before other work.
+
 Full skill: `~/.cursor/skills/workflow-gate/SKILL.md`
 
 ## Tier A（严格 · 0→1）
