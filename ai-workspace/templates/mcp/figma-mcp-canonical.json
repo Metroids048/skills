@@ -1,0 +1,33 @@
+{
+  "version": "2026-06",
+  "plan": "starter",
+  "env": {
+    "FIGMA_API_KEY": "YOUR_SECRET"
+  },
+  "servers": {
+    "figma": {
+      "url": "https://mcp.figma.com/mcp",
+      "transport": "http",
+      "role": "read-write",
+      "rateLimit": "读工具约 6 次/月（Starter）；写工具 use_figma / generate_figma_design 免限额"
+    },
+    "figma-desktop": {
+      "url": "http://127.0.0.1:3845/mcp",
+      "transport": "http",
+      "role": "read",
+      "optional": true,
+      "note": "Starter 无 Dev Seat，verify 仅 WARN 不 FAIL"
+    }
+  },
+  "agentRouting": {
+    "figmaToCode": ["pat-rest-api", "figma-link", "figma", "figma-desktop"],
+    "codeToFigma": ["figma", "plugin-figma-figma", "figma-desktop"]
+  },
+  "oauth": {
+    "cursor": "Cursor Settings → MCP → figma → Connect / Authorize",
+    "codex": "重启 Codex 后首次调用 figma MCP，或 codex mcp login figma",
+    "claude": "claude mcp add --transport http figma https://mcp.figma.com/mcp --scope user，然后在 Claude Code 内 Allow access"
+  },
+  "syncScript": "scripts/sync-figma-mcp.ps1",
+  "verifyScript": "scripts/verify-figma-mcp.ps1"
+}

@@ -4,13 +4,34 @@ secrets/
 auth.json
 .env
 .env.local
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*.json
+*token*.json
+*session*.json
 
 # Runtime / cache
 node_modules/
 __pycache__/
 .venv/
+venv/
+dist/
+build/
+cache/
+.cache/
+logs/
+log/
+sessions/
+archived_sessions/
+attachments/
+browser/
+telemetry/
 *.sqlite
 *.sqlite-*
+*.db
+*.log
 
 # OS
 Thumbs.db

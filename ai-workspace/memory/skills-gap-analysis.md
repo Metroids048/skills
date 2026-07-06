@@ -61,3 +61,30 @@
 2. **新增库先 `install-plan --dry-run` 或单文件 junction**
 3. **每月** 跑 `skill-stocktake`（ECC 自带）或扫重名目录
 4. **项目级** 放 repo `.cursor/skills/`，**全局** 只放跨项目通用
+
+---
+
+## 2026-07-02 用户请求库 — 安装与跳过记录
+
+脚本：[`install-requested-skills-batch.ps1`](../scripts/install-requested-skills-batch.ps1)、[`install-james-picks.cmd`](../scripts/install-james-picks.cmd)、[`install-awesome-ai-ppt.ps1`](../scripts/install-awesome-ai-ppt.ps1)
+
+| 源 | 结果 | 说明 |
+|----|------|------|
+| [jamesrochabrun/skills](https://github.com/jamesrochabrun/skills) | ✅ 8 项 junction 三端 | anthropic-architect, llm-router, engineer-expertise-extractor, design-brief-generator, content-brief-generator, query-expert, technical-launch-planner, qa-test-planner |
+| [ningzimu/awesome-ai-ppt](https://github.com/ningzimu/awesome-ai-ppt) | ✅ awesome-ai-ppt | meta 工具选型 skill |
+| [hugohe3/ppt-master](https://github.com/hugohe3/ppt-master) | ⏸ `[待确认]` | zip/git 超时；重跑 batch 或 `npx skills add hugohe3/ppt-master` |
+| [github/awesome-copilot](https://github.com/github/awesome-copilot) | ⏸ `[待确认]` | main.zip 下载超时；重跑 `install-awesome-copilot-cherry.ps1` |
+| [majiayu000/claude-skill-registry](https://github.com/majiayu000/claude-skill-registry) | ⏭ 索引 stub | vendor README，无 skills 树 |
+| [MingChao-king/SuperProgramming](https://github.com/MingChao-king/SuperProgramming) | ⏭ 跳过 | 与 brainstorming / writing-plans / ouro-loop / tdd-workflow 重复 |
+| [presenton/presenton](https://github.com/presenton/presenton) | ⏭ 跳过 | 完整应用；未部署 Docker/MCP |
+
+### 中文元数据层（同批）
+
+| 文件 | 作用 |
+|------|------|
+| [`skills-locale-zh.json`](../skills-locale-zh.json) | P0 中文 label/summary/triggers SSOT |
+| [`apply-skills-locale.ps1`](../scripts/apply-skills-locale.ps1) | 写回三端 SKILL.md description |
+| [`global-skills-index-zh.md`](file:///C:/Users/win/.claude/global-skills-index-zh.md) | 中文可读目录（scan 生成） |
+| [`skills-picker-cheatsheet-zh.md`](skills-picker-cheatsheet-zh.md) | 场景速查 |
+
+**UI 限制：** 列表标题仍为 slug 格式化英文名；副标题 description 中文优先。

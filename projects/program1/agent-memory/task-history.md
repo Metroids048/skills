@@ -1,6 +1,6 @@
 # Task History
 
-## [TASK-2026-06-24-disaster-iteration-recovery]
+## [TAsk-YOUR_SECRET]
 
 - Date: 2026-06-24
 - Type: fix
@@ -25,7 +25,7 @@
   - `server/index.test.ts` 两条 mock 主链路已恢复通过
   - `lint` 仍保留既有 `react-refresh/only-export-components` warnings，无新增 error
 
-## [TASK-2026-06-24-startup-cache-compat-fix]
+## [TAsk-YOUR_SECRET]
 
 - Date: 2026-06-24
 - Type: fix
@@ -41,7 +41,7 @@
   - 这是“真实本地缓存兼容性”问题，不是后端 500，也不是路由本身跳错
   - 结论来自本地复现脚本与新增回归测试，不依赖浏览器插件
 
-## [TASK-2026-06-19-public-mvp-closeout]
+## [TAsk-YOUR_SECRET]
 
 - Date: 2026-06-19
 - Type: feature
@@ -67,7 +67,7 @@
   - 停止把前端本地 `AppState` 当持久化真源
   - 文档口径已统一到“当前真实能力”
 
-## [TASK-2026-06-19-startup-stability-closeout]
+## [TAsk-YOUR_SECRET]
 
 - Date: 2026-06-19
 - Summary: 完成公开 MVP 本地启动收尾，修复 `一键启动.cmd` 成功即关窗导致的“像闪退”体验，并修复 `scripts/launch-experience.ps1` 在服务已运行时因日志文件占用误报失败的问题；确认本地前端 `http://127.0.0.1:5173/` 与后端健康检查 `http://127.0.0.1:8787/api/health` 可访问。
@@ -82,7 +82,7 @@
   - `http://127.0.0.1:5173/`
   - `http://127.0.0.1:8787/api/health`
 
-## [TASK-2026-06-19-public-mvp-architecture-docs]
+## [TAsk-YOUR_SECRET]
 
 - Date: 2026-06-19
 - Type: docs
@@ -99,7 +99,7 @@
   - 当前阶段先完成开发前方案，不直接进入实现
   - 技术方案以单机单用户、本地优先、SQLite FTS5 RAG 为准
 
-## [TASK-2026-06-19-public-mvp-p0-runtime-closure]
+## [TAsk-YOUR_SECRET]
 
 - Date: 2026-06-19
 - Type: feature
@@ -121,7 +121,7 @@
   - `verify` 通过，但 `src/components/shared.tsx` 仍保留既有 `react-refresh/only-export-components` warnings，当前未额外重构
   - 文件兜底存储已兼容新增 RAG 结构，避免 SQLite 不可用时直接断链
 
-## [TASK-2026-06-20-skill-visibility-and-plan-audit]
+## [TAsk-YOUR_SECRET]
 
 - Date: 2026-06-20
 - Type: chore
@@ -135,7 +135,7 @@
   - 发现本机磁盘 skill 数量与当前会话暴露 skill 集合存在平台层筛选差异
   - 发现上轮实现已完成，但 `update_plan` 未及时同步为 completed，已补齐
 
-## [TASK-2026-06-20-codex-browser-stability-guard]
+## [TAsk-YOUR_SECRET]
 
 - Date: 2026-06-20
 - Type: fix

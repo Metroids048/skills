@@ -25,7 +25,41 @@ function Write-Utf8NoBomFile {
 $triEndEnv = [ordered]@{
     CLAUDE_CODE_ATTRIBUTION_HEADER = '0'
     PYTHONUTF8                     = '1'
+    PYTHONIOENCODING               = 'utf-8'
     HEADROOM_REQUIRE_RUST_CORE     = 'false'
+}
+
+# --- Windows User env (Agent shells use -NoProfile; this is the durable UTF-8 fix) ---
+$shellUserEnv = [ordered]@{
+    PYTHONUTF8       = '1'
+    PYTHONIOENCODING = 'utf-8'
+}
+foreach ($name in $shellUserEnv.Keys) {
+    if ([Environment]::GetEnvironmentVariable($name, 'User') -ne $shellUserEnv[$name]) {
+        [Environment]::SetEnvironmentVariable($name, $shellUserEnv[$name], 'User')
+        Write-Info "User env: $name=$($shellUserEnv[$name])"
+    }
+}
+
+$profileDir = Join-Path $env:USERPROFILE 'Documents\WindowsPowerShell'
+$profilePath = Join-Path $profileDir 'Microsoft.PowerShell_profile.ps1'
+$profileMarker = 'ensure-utf8-console.ps1'
+if (-not (Test-Path -LiteralPath $profileDir)) {
+    New-Item -ItemType Directory -Path $profileDir -Force | Out-Null
+}
+if (-not (Test-Path -LiteralPath $profilePath) -or
+    (Get-Content -LiteralPath $profilePath -Raw -Encoding UTF8) -notmatch [regex]::Escape($profileMarker)) {
+    $profileBody = @"
+# Interactive PowerShell UTF-8 bootstrap.
+# Agent/Codex hooks use -NoProfile; they rely on User-level PYTHONUTF8 instead.
+`$utf8Script = Join-Path `$env:USERPROFILE '.ai-workspace\scripts\ensure-utf8-console.ps1'
+if (Test-Path -LiteralPath `$utf8Script) {
+    . `$utf8Script
+}
+
+"@
+    Write-Utf8NoBomFile -Path $profilePath -Content $profileBody
+    Write-Info "Profile ensured: $profilePath"
 }
 
 # --- Claude settings.json ---

@@ -1,0 +1,25 @@
+---
+description: ALWAYS apply — 三端工程助手宪章入口。准确理解、最小改动、一次做对。全文见 ~/.claude/AGENTS.md § Engineering Assistant Charter。
+alwaysApply: true
+---
+
+# Engineering Assistant Charter（薄层入口）
+
+**全文 SSOT：** `~/.claude/AGENTS.md` § Engineering Assistant Charter · 模板 `~/.ai-workspace/templates/engineering-charter.md`
+
+## 任务开始（Plan）
+
+1. 读宪章 + `~/.ai-workspace/memory/user-memory.md`
+2. 读项目 `AGENTS.md` + `.github/agent/memory/*`
+3. 若存在：项目根 `SESSION.md`、`TASK.md`
+
+## 硬门禁
+
+- **执行前**拆需求：目标、约束、输入、输出、验收标准；不清先标注
+- **C 类清晰任务**：复述 + 步骤 + 执行；禁止完整 §1–§12
+- **用户说直接做**：跳过澄清，首条仍列目标与验收
+- **禁止**无验证声称 done/fixed/PASS
+
+## 任务结束（Act）
+
+交付 **Completed / Verified / Remaining Risks**；更新 task-history +（若有）SESSION/TODO/REVIEW。

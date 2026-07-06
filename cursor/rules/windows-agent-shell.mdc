@@ -5,34 +5,58 @@ alwaysApply: true
 
 # Windows Agent Shell（全局）
 
-本机为 **Windows + PowerShell**。遵守以下契约，避免 spawn/RTK/Python 重复失败。
+本机默认 **PowerShell 7.6**（`C:\Program Files\PowerShell\7\pwsh.exe`）。Windows PowerShell 5.1 仍存在于 `System32`，Agent 应优先用 PS7。
 
-## RTK 前缀
+## RTK 前缀（仅原生 exe）
 
-- 原生 exe（`git`、`node`、`npm`、`python`、`cargo` 等）：`rtk <cmd>`
-- PowerShell **内建 cmdlet / 管道**（`Get-ChildItem`、`Select-Object` 等）：  
-  `rtk powershell -NoProfile -ExecutionPolicy Bypass -Command "..."`  
-  **禁止**裸跑 cmdlet（RTK 无法过滤内建命令）
-- 链式命令：每段都前缀 `rtk`，例如 `rtk git add . && rtk git commit -m "msg"`
-- 调试单条失败时可用裸命令；稳定后仍用 `rtk`
+- **可以** `rtk`：`git`、`node`、`npm`、`python`（跑 `.py` 文件）、`cargo` 等原生 exe
+- **禁止** `rtk Get-Content` / `rtk Select-Object` 等 PS 内建 cmdlet — RTK 包不住，会反复失败
+- **禁止** `rtk powershell -Command "..."` 嵌套引号读文件 — 改用下方固定命令
+- 读文件：**优先 Cursor Read 工具**；Shell 内用：
+  `python "$env:USERPROFILE\.ai-workspace\scripts\read-text-file.py" "路径"`
+- 跑 Python：**禁止** 多行/中文/Office 用 `python -c`；写 `.py` 后：
+  `powershell -NoProfile -File "$env:USERPROFILE\.ai-workspace\scripts\run-agent-python.ps1" "script.py"`
+- PS 内建 cmdlet 需要时：**裸跑**或写 `.ps1` 后 `-File`（不经 RTK）
+- 链式：PS 5.1 **无 `||`** — 拆两条命令，禁止 `rtk ... && rtk ...`
+
+## Office / PPT / Word（全局 Python — 换项目不变）
+
+- **禁止**用 Codex 自带 Python（`~/.cache/codex-runtimes/.../python.exe`）— **无 win32com**
+- **必须**用全局栈：`$env:AGENT_PYTHON` 或 `%USERPROFILE%\.ai-workspace\venv\Scripts\python.exe`
+- **禁止**每个项目审计 `.venv` 或写依赖检测 boilerplate — 见 `~/.ai-workspace/AGENT-GLOBAL-STACK.md`
+- 未装栈：`install-global-agent-python.ps1`（一次）；验证：`verify-global-agent-stack.ps1`
+- PPT 优先 `python-pptx`；COM 仅当 pptx 不够且 win32com 可用
 
 ## Shell 失败快速路径
 
 | 症状 | 先做 |
 |------|------|
+| Python 中文路径乱码 / `gbk` / cwd 乱码 | `verify-windows-shell-encoding.ps1`；FAIL → `repair-windows-shell-encoding.ps1` |
+| `.ps1` 中文乱码 / Unexpected token / 字符串语法炸 | `verify-ps1-script-encoding.ps1`；FAIL → **改 Python 重写**，禁止试编码；PASS → `invoke-agent-ps1.ps1` |
+- PS 7 支持 `&&` / `||`；仍优先写 `.ps1` + `-File`，避免嵌套 `-Command`
+| `$env` / `$_` 被外层吃掉 | **禁止** inline 命令里写 `$_`、`$var`；用 `rg`/Python/`.ps1 -File` |
 | `spawn ENOENT` / 找不到命令 | `where.exe <tool>` 确认 PATH |
 | `.ps1` 脚本 | `powershell -NoProfile -ExecutionPolicy Bypass -File "path\to\script.ps1"`（优先 `-File`，避免 `-Command` 嵌套引号） |
-| hook / JSON 解析失败 | 检查是否 PowerShell banner 污染 stdout |
+| RTK 包不住 Get-Content / cmdlet | **禁止** rtk 包 cmdlet；用 `read-text-file.py` 或 Read 工具 |
+| inline `python -c` BOM / 语法炸 | 写 `.py` → `run-agent-python.ps1` |
+| win32com / LibreOffice 不可用 | 先 `verify-agent-python.ps1`；勿用 Codex 自带 python |
 
-## Python（禁止盲目 pip install）
+## Shell 编码门禁（涉及 Python / 中文路径 / Office 文件前）
 
-探测顺序：
+1. 跑一次：`verify-windows-shell-encoding.ps1`（约 2 秒）
+2. FAIL → `repair-windows-shell-encoding.ps1`，然后**重启** Cursor/Codex/Claude Code 会话
+3. **禁止**在对话里反复试编码 workaround（浪费 token）
+4. 多行 Python / 读 Word·PPT·Excel：**写 `.py` 或 `.ps1` 文件**，不要 here-string 内联
 
-1. 项目 `.venv\Scripts\python.exe` — **仅当** `pyvenv.cfg` 的 `home` 指向现存路径
-2. `py -3` 或 `python`
-3. 先 `python -c "import <pkg>"` 或查 user-site；**仅当 import 失败**才 `pip install`
+## Python（全局 venv — 禁止每项目审计）
 
-运行时快照：`~/.ai-workspace/runtime/python-env.json`（SessionStart 更新）
+1. **默认**：`$env:AGENT_PYTHON` → `%USERPROFILE%\.ai-workspace\venv\Scripts\python.exe`
+2. 别名：`agent-python script.py`（`~/.local/bin/agent-python.cmd`）
+3. 快照：`~/.ai-workspace/runtime/python-env.json`（`ensure-python-env.ps1` 写入）
+4. **禁止**开工前扫项目 `.venv`；**禁止**写 500 行 `build_*_optimized.py` 做 pip 检测
+5. 栈缺失 → `install-global-agent-python.ps1`（一次，全项目共用）
+6. 仅当用户明确要求项目专用依赖：`ensure-python-env.ps1 -UseProjectVenv`
+7. import 失败才 `pip install` — 优先装进全局 venv，不是项目里重复装
 
 ## 禁止（即使「最大权限」）
 

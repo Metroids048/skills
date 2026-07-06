@@ -25,6 +25,8 @@ $script:HookPayloadCache = $null
 
 $excludePathPattern = '(\\|/)(agency-agents-main|\.claude|\.codex|\.gemini|\.continue|\.factory|\.hermes|\.kiro|\.mastracode|\.opencode|\.codebuddy|\.pi|\.cursor)(\\|/)'
 $globalIndexPath = Join-Path $env:USERPROFILE '.claude\global-skills-index.md'
+$globalIndexZhPath = Join-Path $env:USERPROFILE '.claude\global-skills-index-zh.md'
+$globalLocalePath = Join-Path $env:USERPROFILE '.ai-workspace\skills-locale-zh.json'
 $globalMemoryRoot = Join-Path $env:USERPROFILE '.ai-workspace\memory'
 $sourcePriority = @('cursor', 'claude', 'codex', 'project')
 
@@ -130,6 +132,27 @@ function Get-SkillsSyncConfig {
     }
 }
 
+function Get-SkillsLocaleZh {
+    $candidates = @(
+        $globalLocalePath,
+        (Join-Path $PSScriptRoot 'skills-locale-zh.json'),
+        (Join-Path $env:USERPROFILE '.ai-workspace\skills-locale-zh.json')
+    )
+    $path = $candidates | Where-Object { Test-Path $_ } | Select-Object -First 1
+    if (-not $path) { return @{} }
+    try {
+        $raw = Get-Content -LiteralPath $path -Raw -Encoding UTF8 | ConvertFrom-Json
+        $map = @{}
+        if ($raw.skills) {
+            $raw.skills.PSObject.Properties | ForEach-Object { $map[$_.Name] = $_.Value }
+        }
+        return $map
+    }
+    catch {
+        return @{}
+    }
+}
+
 function Find-ProjectCodingGuardrails {
     param([string]$SeedDir)
 
@@ -219,6 +242,50 @@ function Get-PromptTokens {
         if ($m.Value.Length -gt 1) { [void]$tokens.Add($m.Value) }
     }
     return @($tokens)
+}
+
+function Test-PromptHasCjk {
+    param([string]$Text)
+    if ([string]::IsNullOrWhiteSpace($Text)) { return $false }
+    return [regex]::IsMatch($Text, '[\p{IsCJKUnifiedIdeographs}]')
+}
+
+function Get-CjkSegments {
+    param([string]$Text)
+
+    if ([string]::IsNullOrWhiteSpace($Text)) { return @() }
+    $segments = [System.Collections.Generic.List[string]]::new()
+    foreach ($m in [regex]::Matches($Text, '[\p{IsCJKUnifiedIdeographs}]{2,8}')) {
+        [void]$segments.Add($m.Value)
+    }
+    return @($segments | Select-Object -Unique)
+}
+
+function Test-FuzzyLocaleTriggerHit {
+    param(
+        [string]$Prompt,
+        [string]$PromptLower,
+        [string]$Trigger
+    )
+
+    if ([string]::IsNullOrWhiteSpace($Trigger)) { return $false }
+    $trLower = $Trigger.ToLowerInvariant()
+    if ($promptLower.Contains($trLower) -or $Prompt.Contains($Trigger)) { return $true }
+
+    if (-not (Test-PromptHasCjk -Text $Prompt)) { return $false }
+    if ([regex]::IsMatch($Trigger, '[\p{IsCJKUnifiedIdeographs}]')) {
+        foreach ($seg in (Get-CjkSegments -Text $Prompt)) {
+            if ($seg.Length -ge 2 -and ($Trigger.Contains($seg) -or $seg.Contains($Trigger))) {
+                return $true
+            }
+        }
+        if ($Trigger.Length -ge 2) {
+            foreach ($seg in (Get-CjkSegments -Text $Trigger)) {
+                if ($Prompt.Contains($seg)) { return $true }
+            }
+        }
+    }
+    return $false
 }
 
 function Test-IntentSignalHit {
@@ -507,14 +574,18 @@ function Build-GlobalCatalog {
 
         foreach ($file in $files) {
             $content = Get-Content -LiteralPath $file.FullName -Raw -Encoding UTF8
-            $name = Get-FrontmatterField -Content $content -Field 'name'
-            if (-not $name) { $name = Split-Path $file.DirectoryName -Leaf }
+            $folderSlug = Split-Path $file.DirectoryName -Leaf
+            $slug = Get-FrontmatterField -Content $content -Field 'slug'
+            if (-not $slug) { $slug = $folderSlug }
+            $displayName = Get-FrontmatterField -Content $content -Field 'name'
+            if (-not $displayName) { $displayName = $slug }
             $description = Get-FrontmatterField -Content $content -Field 'description'
             if (-not $description) { $description = '(no description)' }
 
-            if (-not $allByName.ContainsKey($name)) {
-                $allByName[$name] = [pscustomobject]@{
-                    Name        = $name
+            if (-not $allByName.ContainsKey($slug)) {
+                $allByName[$slug] = [pscustomobject]@{
+                    Name        = $slug
+                    DisplayName = $displayName
                     Description = $description
                     SkillFile   = $file.FullName
                     Source      = $tag
@@ -548,6 +619,45 @@ function Write-GlobalSkillsIndex {
         $lines += "| $($item.Name) | $($item.Source) | $desc | $($item.SkillFile) |"
     }
     Write-Utf8NoBomFile -Path $globalIndexPath -Content ($lines -join "`n")
+}
+
+function Write-GlobalSkillsIndexZh {
+    param(
+        [array]$Items,
+        [hashtable]$LocaleMap
+    )
+
+    $indexDir = Split-Path $globalIndexZhPath -Parent
+    if (-not (Test-Path $indexDir)) {
+        New-Item -ItemType Directory -Path $indexDir -Force | Out-Null
+    }
+    $lines = @(
+        '# Global Skills Index (ZH)',
+        '',
+        '> Auto-generated by scan-global-skills.ps1. Do not edit by hand.',
+        "> Last updated: $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')",
+        "> Total: $($Items.Count) skills",
+        '',
+        '| label_zh | slug | category | triggers | path |',
+        '| --- | --- | --- | --- | --- |'
+    )
+    foreach ($item in ($Items | Sort-Object Name)) {
+        $label = if ($item.DisplayName) { [string]$item.DisplayName } else { $item.Name }
+        $cat = '-'
+        $triggers = '-'
+        if ($LocaleMap.ContainsKey($item.Name)) {
+            $loc = $LocaleMap[$item.Name]
+            if ($loc.label_zh) { $label = [string]$loc.label_zh }
+            if ($loc.category_zh) { $cat = [string]$loc.category_zh }
+            if ($loc.triggers_zh) {
+                $triggers = (@($loc.triggers_zh) -join ', ')
+                $triggers = $triggers.Replace('|', '\|')
+            }
+        }
+        $pathCell = $item.SkillFile.Replace('|', '\|')
+        $lines += "| $label | $($item.Name) | $cat | $triggers | $pathCell |"
+    }
+    Write-Utf8NoBomFile -Path $globalIndexZhPath -Content ($lines -join "`n")
 }
 
 function Read-HookPayloadOnce {
@@ -726,7 +836,8 @@ function Invoke-GlobalSkillRouting {
         [object]$SyncConfig,
         [string]$UserPrompt,
         [array]$DetectedIntents = @(),
-        [int]$TopN = 0
+        [int]$TopN = 0,
+        [hashtable]$LocaleMap = @{}
     )
 
     $effectiveTop = if ($TopN -gt 0) { $TopN } else { $SyncConfig.topMatches }
@@ -739,7 +850,8 @@ function Invoke-GlobalSkillRouting {
         -DetectedIntents $DetectedIntents `
         -MinScore $SyncConfig.intentMatchMinScore `
         -IntentBoostFloor $SyncConfig.intentSkillBoostFloor `
-        -TopN $effectiveTop
+        -TopN $effectiveTop `
+        -LocaleMap $LocaleMap
     return Apply-ExclusiveGroups -ScoredMatches $scored -ExclusiveGroups $SyncConfig.exclusiveGroups
 }
 
@@ -751,7 +863,8 @@ function Score-SkillAgainstPrompt {
         [array]$DetectedIntents = @(),
         [int]$MinScore = 5,
         [int]$IntentBoostFloor = 20,
-        [int]$TopN = 8
+        [int]$TopN = 8,
+        [hashtable]$LocaleMap = @{}
     )
 
     if ([string]::IsNullOrWhiteSpace($UserPrompt)) { return @() }
@@ -770,6 +883,10 @@ function Score-SkillAgainstPrompt {
     }
 
     $effectiveMin = if ($DetectedIntents.Count -gt 0) { [math]::Min($MinScore, 3) } else { $MinScore }
+    if ((Test-PromptHasCjk -Text $UserPrompt) -and $DetectedIntents.Count -gt 0) {
+        $effectiveMin = [math]::Min($effectiveMin, 2)
+    }
+    $cjkSegments = if (Test-PromptHasCjk -Text $UserPrompt) { Get-CjkSegments -Text $UserPrompt } else { @() }
 
     $scored = @()
     foreach ($skill in $Skills) {
@@ -826,10 +943,59 @@ function Score-SkillAgainstPrompt {
             foreach ($kw in $PromptKeywordBoosts[$skill.Name]) {
                 if ([string]::IsNullOrWhiteSpace($kw)) { continue }
                 $kwLower = $kw.ToLowerInvariant()
+                $kwHit = $false
                 if ($promptLower.Contains($kwLower) -or (Test-PartialTokenOverlap -PromptLower $promptLower -Token $kwLower)) {
+                    $kwHit = $true
+                }
+                elseif (Test-FuzzyLocaleTriggerHit -Prompt $UserPrompt -PromptLower $promptLower -Trigger $kw) {
+                    $kwHit = $true
+                }
+                if ($kwHit) {
                     $score += 25
                     [void]$reasons.Add('keyword')
                     break
+                }
+            }
+        }
+
+        if ($LocaleMap.ContainsKey($skill.Name)) {
+            $loc = $LocaleMap[$skill.Name]
+            if ($loc.label_zh) {
+                $label = [string]$loc.label_zh
+                if ($promptLower.Contains($label.ToLowerInvariant()) -or $UserPrompt.Contains($label)) {
+                    $score += 30
+                    [void]$reasons.Add('locale-label')
+                }
+            }
+            if ($loc.summary_zh) {
+                $summary = [string]$loc.summary_zh
+                foreach ($m in [regex]::Matches($summary, '[\p{L}\p{N}]{2,}')) {
+                    $tok = $m.Value
+                    if ($UserPrompt.Contains($tok) -or $promptLower.Contains($tok.ToLowerInvariant())) {
+                        $score += 4
+                        [void]$reasons.Add('locale-summary')
+                        break
+                    }
+                }
+            }
+            if ($loc.triggers_zh) {
+                foreach ($tr in @($loc.triggers_zh)) {
+                    if ([string]::IsNullOrWhiteSpace($tr)) { continue }
+                    if (Test-FuzzyLocaleTriggerHit -Prompt $UserPrompt -PromptLower $promptLower -Trigger $tr) {
+                        $score += 28
+                        [void]$reasons.Add('locale-trigger')
+                        break
+                    }
+                }
+            }
+            if ($loc.category_zh -and $cjkSegments.Count -gt 0) {
+                $cat = [string]$loc.category_zh
+                foreach ($seg in $cjkSegments) {
+                    if ($cat.Contains($seg)) {
+                        $score += 12
+                        [void]$reasons.Add('locale-category')
+                        break
+                    }
                 }
             }
         }
@@ -1090,7 +1256,9 @@ $syncConfig = Get-SkillsSyncConfig
 $effectiveTopMatches = if ($TopMatches -gt 0) { $TopMatches } else { $syncConfig.topMatches }
 
 if (-not $SkipIndexWrite) {
+    $localeMap = Get-SkillsLocaleZh
     Write-GlobalSkillsIndex -Items $items
+    Write-GlobalSkillsIndexZh -Items $items -LocaleMap $localeMap
 }
 
 $codingGuardrails = Find-ProjectCodingGuardrails -SeedDir $StartDir
@@ -1119,7 +1287,7 @@ elseif ($HookEvent -eq 'UserPromptSubmit') {
             -DetectedIntents $detectedIntents `
             -Cwd $hookCwd
     }
-    $matches = Invoke-GlobalSkillRouting -CatalogItems $items -SyncConfig $syncConfig -UserPrompt $userPrompt -DetectedIntents $detectedIntents -TopN $effectiveTopMatches
+    $matches = Invoke-GlobalSkillRouting -CatalogItems $items -SyncConfig $syncConfig -UserPrompt $userPrompt -DetectedIntents $detectedIntents -TopN $effectiveTopMatches -LocaleMap (Get-SkillsLocaleZh)
     $context = Build-UserPromptContext -AllItems $items -Matches $matches -AlwaysOnItems $alwaysOnItems -UserPrompt $userPrompt -DetectedIntents $detectedIntents -MessageType $messageType
     if ($gateEntry) {
         $gateLines = @(
@@ -1144,7 +1312,7 @@ else {
     $userPrompt = if ($UserPrompt) { $UserPrompt } elseif ($args[0]) { $args[0] } else { '写 PRD' }
     $messageType = Classify-UserMessageType -UserPrompt $userPrompt -SyncConfig $syncConfig
     $detectedIntents = Detect-UserIntents -UserPrompt $userPrompt -IntentProfiles $intentProfiles
-    $matches = Invoke-GlobalSkillRouting -CatalogItems $items -SyncConfig $syncConfig -UserPrompt $userPrompt -DetectedIntents $detectedIntents -TopN $effectiveTopMatches
+    $matches = Invoke-GlobalSkillRouting -CatalogItems $items -SyncConfig $syncConfig -UserPrompt $userPrompt -DetectedIntents $detectedIntents -TopN $effectiveTopMatches -LocaleMap (Get-SkillsLocaleZh)
     $context = Build-UserPromptContext -AllItems $items -Matches $matches -AlwaysOnItems $alwaysOnItems -UserPrompt $userPrompt -DetectedIntents $detectedIntents -MessageType $messageType
 }
 

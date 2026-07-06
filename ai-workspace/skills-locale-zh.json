@@ -1,0 +1,6336 @@
+{
+  "version": 2,
+  "note": "SSOT for tri-end skill Chinese metadata. Regenerate: node generate-skills-locale-stubs.js --refresh && apply-skills-locale.ps1",
+  "skills": {
+    "ai-product-ui-workflow": {
+      "label_zh": "AI 产品 UI 工作流",
+      "summary_zh": "产品设计、页面设计、UI设计、改版、dashboard、landing page、PRD转界面、AI产品工作流与产品/UI review 的三端工作流。",
+      "picker_zh": "AI Coding OS：产品设计、页面设计、UI设计、改版、dashboard、landing page、PRD转界面、AI产品工作流、产品/UI review。",
+      "en_desc": "Shared AI Coding OS workflow for product design, page design, UI design, redesign, dashboards, landing pages, PRD-to-UI, AI product workflows, and product/UI review.",
+      "triggers_zh": [
+        "产品设计",
+        "页面设计",
+        "UI设计",
+        "UI 设计",
+        "页面改版",
+        "改版",
+        "redesign",
+        "dashboard",
+        "landing page",
+        "落地页",
+        "PRD转界面",
+        "AI产品",
+        "AI 产品",
+        "产品/UI review",
+        "UI review",
+        "界面评审"
+      ],
+      "category_zh": "规划与规格",
+      "auto_generated": false
+    },
+    "ab-test-analysis": {
+      "label_zh": "AB 测试 分析",
+      "summary_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "picker_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "en_desc": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "triggers_zh": [
+        "ab-test-analysis",
+        "AB 测试 分析",
+        "无障碍合规",
+        "键盘导航与读屏适"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "academic-paper": {
+      "label_zh": "学术 论文 — 学术 论文 编写 Agent Team",
+      "summary_zh": "学术论文写作流水线：大纲、修订、引用、格式与质量检查",
+      "picker_zh": "学术论文写作流水线：大纲、修订、引用、格式与质量检查",
+      "en_desc": "学术论文写作流水线：大纲、修订、引用、格式与质量检查",
+      "triggers_zh": [
+        "写论文",
+        "学术论文",
+        "学术写作",
+        "academic-paper",
+        "学术 论文 — 学术 论文 编写 Agent Team",
+        "学术论文写作流水",
+        "大纲",
+        "修订",
+        "引用",
+        "格式与质量检查"
+      ],
+      "category_zh": "研究与文档",
+      "auto_generated": true
+    },
+    "academic-paper-reviewer": {
+      "label_zh": "学术 论文 审稿",
+      "summary_zh": "模拟多视角学术审稿，输出审稿意见与修订建议",
+      "picker_zh": "模拟多视角学术审稿，输出审稿意见与修订建议",
+      "en_desc": "模拟多视角学术审稿，输出审稿意见与修订建议",
+      "triggers_zh": [
+        "审稿",
+        "peer review",
+        "论文评审",
+        "academic-paper-reviewer",
+        "学术 论文 审稿",
+        "模拟多视角学术审",
+        "输出审稿意见与修",
+        "订建议"
+      ],
+      "category_zh": "研究与文档",
+      "auto_generated": true
+    },
+    "academic-pipeline": {
+      "label_zh": "学术 流水线 v3.10.0 — Full 学术 研究 工作流 Orche...",
+      "summary_zh": "学术论文写作流水线：大纲、修订、引用、格式与质量检查",
+      "picker_zh": "学术论文写作流水线：大纲、修订、引用、格式与质量检查",
+      "en_desc": "学术论文写作流水线：大纲、修订、引用、格式与质量检查",
+      "triggers_zh": [
+        "academic-pipeline",
+        "学术 流水线 v3.10.0 — Full 学术 研究 工作流 Orche...",
+        "学术论文写作流水",
+        "大纲",
+        "修订",
+        "引用",
+        "格式与质量检查"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "accessibility-wcag": {
+      "label_zh": "无障碍 & WCAG",
+      "summary_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "picker_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "en_desc": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "triggers_zh": [
+        "accessibility-wcag",
+        "无障碍 & WCAG",
+        "无障碍合规",
+        "键盘导航与读屏适"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "agent-introspection-debugging": {
+      "label_zh": "Agent 内省 调试",
+      "summary_zh": "Agent 内省 调试：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Agent 内省 调试：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Agent 内省 调试：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "agent-introspection-debugging",
+        "Agent 内省 调试",
+        "内省",
+        "调试",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "agent-sort": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "当 到 使用：适用于安装配置、技能管理等场景",
+      "picker_zh": "当 到 使用：适用于安装配置、技能管理等场景",
+      "en_desc": "当 到 使用：适用于安装配置、技能管理等场景",
+      "triggers_zh": [
+        "daily library",
+        "agent sort",
+        "技能裁剪",
+        "ecc trim",
+        "agent-sort",
+        "当 到 使用",
+        "使用",
+        "适用于安装配置",
+        "技能管理等场景",
+        "安装配置",
+        "技能管理"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "agent-verifier": {
+      "label_zh": "Agent-审计",
+      "summary_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "picker_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "en_desc": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "triggers_zh": [
+        "verify agent code",
+        "audit before PR",
+        "agent-verifier",
+        "Agent-审计",
+        "工程",
+        "编写",
+        "验证",
+        "与触发条件设计"
+      ],
+      "category_zh": "验证与审查",
+      "auto_generated": true
+    },
+    "agentic": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "agentic",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "agentkit-seo": {
+      "label_zh": "SEO 优化",
+      "summary_zh": "SEO 优化：技术审计、页面元数据与结构化数据",
+      "picker_zh": "SEO 优化：技术审计、页面元数据与结构化数据",
+      "en_desc": "SEO 优化：技术审计、页面元数据与结构化数据",
+      "triggers_zh": [
+        "agentkit-seo",
+        "SEO 优化",
+        "优化",
+        "技术审计",
+        "页面元数据与结构",
+        "化数据"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ai-coding-ok": {
+      "label_zh": "AI-编码-OK — PDCA 记忆 循环",
+      "summary_zh": "Use FIRST on coding tasks when the repo has AGENTS.md or .github/agent/memory/.",
+      "picker_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "en_desc": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "triggers_zh": [
+        "ai-coding-ok",
+        "AI-编码-OK — PDCA 记忆 循环"
+      ],
+      "category_zh": "核心门禁",
+      "auto_generated": true
+    },
+    "ai-delivery-gate": {
+      "label_zh": "AI 交付 门禁",
+      "summary_zh": "Use before claiming prototype delivery done in Agent Platform — after editing prototype/assets/*.js or when user asks for sign-off.",
+      "picker_zh": "AI 交付 门禁",
+      "en_desc": "AI 交付 门禁",
+      "triggers_zh": [
+        "verify-all",
+        "delivery gate",
+        "交付验收",
+        "ai-delivery-gate",
+        "AI 交付 门禁"
+      ],
+      "category_zh": "验证与审查",
+      "auto_generated": true
+    },
+    "ai-prompt-engineering": {
+      "label_zh": "AI Prompt 工程",
+      "summary_zh": "AI Prompt 工程：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "AI Prompt 工程：辅助完成相关分析、生成或审查任务",
+      "en_desc": "AI Prompt 工程：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "ai-prompt-engineering",
+        "AI Prompt 工程",
+        "工程",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ai-regression-testing": {
+      "label_zh": "AI 回归 测试",
+      "summary_zh": "数据库/SQL： schema 设计、查询优化与迁移。适用于缺陷排查",
+      "picker_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "en_desc": "数据库/SQL： schema 设计、查询优化与迁移",
+      "triggers_zh": [
+        "ai-regression-testing",
+        "AI 回归 测试",
+        "数据库",
+        "设计",
+        "查询优化与迁移",
+        "适用于缺陷排查",
+        "缺陷排查"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ai-review": {
+      "label_zh": "AI 代码 审查",
+      "summary_zh": "代码审查：质量、模式、安全与可维护性检查",
+      "picker_zh": "代码审查：质量、模式、安全与可维护性检查",
+      "en_desc": "代码审查：质量、模式、安全与可维护性检查",
+      "triggers_zh": [
+        "ai-review",
+        "AI 代码 审查",
+        "代码审查",
+        "质量",
+        "模式",
+        "安全与可维护性检"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "algorithmic-art": {
+      "label_zh": "性能分析与优化",
+      "summary_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "picker_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "en_desc": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "triggers_zh": [
+        "algorithmic-art",
+        "性能分析与优化",
+        "瓶颈定位",
+        "包体与运行时改进"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "analyze-feature-requests": {
+      "label_zh": "分析 功能 Requests",
+      "summary_zh": "分析 功能 Requests：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "分析 功能 Requests：辅助完成相关分析、生成或审查任务",
+      "en_desc": "分析 功能 Requests：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "analyze-feature-requests",
+        "分析 功能 Requests",
+        "分析",
+        "功能",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ansoff-matrix": {
+      "label_zh": "Ansoff Matrix",
+      "summary_zh": "Ansoff Matrix：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Ansoff Matrix：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Ansoff Matrix：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "ansoff-matrix",
+        "Ansoff Matrix",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ant": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "ant",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "anthropic-architect": {
+      "label_zh": "多 Agent 编排",
+      "summary_zh": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "picker_zh": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "en_desc": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "triggers_zh": [
+        "Anthropic架构",
+        "Skill还是Agent",
+        "架构选型",
+        "anthropic-architect",
+        "多 Agent 编排",
+        "编排",
+        "子任务分发",
+        "汇总与验证闭环"
+      ],
+      "category_zh": "工程",
+      "auto_generated": true
+    },
+    "anysearch": {
+      "label_zh": "SEO 优化",
+      "summary_zh": "SEO 优化：技术审计、页面元数据与结构化数据",
+      "picker_zh": "SEO 优化：技术审计、页面元数据与结构化数据",
+      "en_desc": "SEO 优化：技术审计、页面元数据与结构化数据",
+      "triggers_zh": [
+        "anysearch",
+        "SEO 优化",
+        "优化",
+        "技术审计",
+        "页面元数据与结构",
+        "化数据"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "api-and-interface-design": {
+      "label_zh": "API 与 接口 设计",
+      "summary_zh": "设计稳定 API/GraphQL 与模块公共契约、前后端边界。适用于新 API 设计",
+      "picker_zh": "设计稳定 API/GraphQL 与模块公共契约、前后端边界",
+      "en_desc": "设计稳定 API/GraphQL 与模块公共契约、前后端边界",
+      "triggers_zh": [
+        "api-and-interface-design",
+        "API 与 接口 设计",
+        "设计稳定",
+        "与模块公共契约",
+        "前后端边界",
+        "适用于新",
+        "设计",
+        "新 API 设计"
+      ],
+      "category_zh": "工程",
+      "auto_generated": true
+    },
+    "api-design-patterns": {
+      "label_zh": "API 设计 模式",
+      "summary_zh": "API 设计 模式：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "API 设计 模式：辅助完成相关分析、生成或审查任务",
+      "en_desc": "API 设计 模式：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "api-design-patterns",
+        "API 设计 模式",
+        "设计",
+        "模式",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "application": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "application",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "article-writing": {
+      "label_zh": "Article 编写",
+      "summary_zh": "Article 编写：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Article 编写：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Article 编写：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "article-writing",
+        "Article 编写",
+        "编写",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "artistic": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "artistic",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "authentication-patterns": {
+      "label_zh": "认证模式",
+      "summary_zh": "认证模式：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "认证模式：辅助完成相关分析、生成或审查任务",
+      "en_desc": "认证模式：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "authentication-patterns",
+        "认证模式",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "awesome-ai-ppt": {
+      "label_zh": "AI PPT 工具选型",
+      "summary_zh": "对比推荐 AI 演示/PPT 工具与使用场景",
+      "picker_zh": "对比推荐 AI 演示/PPT 工具与使用场景",
+      "en_desc": "对比推荐 AI 演示/PPT 工具与使用场景",
+      "triggers_zh": [
+        "AI PPT工具",
+        "PPT工具推荐",
+        "用什么做PPT",
+        "演示工具选型",
+        "awesome-ai-ppt",
+        "AI PPT 工具选型",
+        "对比推荐",
+        "演示",
+        "工具与使用场景"
+      ],
+      "category_zh": "演示与文档",
+      "auto_generated": true
+    },
+    "aws-cloud-patterns": {
+      "label_zh": "AWS 云模式",
+      "summary_zh": "AWS 云模式：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "AWS 云模式：辅助完成相关分析、生成或审查任务",
+      "en_desc": "AWS 云模式：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "aws-cloud-patterns",
+        "AWS 云模式",
+        "云模式",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "beachhead-segment": {
+      "label_zh": "滩头细分市场",
+      "summary_zh": "滩头细分市场：适用于规划拆解等场景",
+      "picker_zh": "滩头细分市场：适用于规划拆解等场景",
+      "en_desc": "滩头细分市场：适用于规划拆解等场景",
+      "triggers_zh": [
+        "beachhead-segment",
+        "滩头细分市场",
+        "适用于规划拆解等",
+        "场景",
+        "规划拆解"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "bento": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "bento",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "bold": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "bold",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "brainstorm-experiments-existing": {
+      "label_zh": "实验/分析",
+      "summary_zh": "实验/分析：A/B 测试解读与统计显著性判断",
+      "picker_zh": "实验/分析：A/B 测试解读与统计显著性判断",
+      "en_desc": "实验/分析：A/B 测试解读与统计显著性判断",
+      "triggers_zh": [
+        "brainstorm-experiments-existing",
+        "实验/分析",
+        "实验",
+        "分析",
+        "测试解读与统计显",
+        "著性判断"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "brainstorm-experiments-new": {
+      "label_zh": "营销/文案",
+      "summary_zh": "实验/分析：A/B 测试解读与统计显著性判断",
+      "picker_zh": "实验/分析：A/B 测试解读与统计显著性判断",
+      "en_desc": "实验/分析：A/B 测试解读与统计显著性判断",
+      "triggers_zh": [
+        "brainstorm-experiments-new",
+        "营销/文案",
+        "实验",
+        "分析",
+        "测试解读与统计显",
+        "著性判断"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "brainstorm-ideas-existing": {
+      "label_zh": "编码前脑暴",
+      "summary_zh": "编码前脑暴：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "编码前脑暴：辅助完成相关分析、生成或审查任务",
+      "en_desc": "编码前脑暴：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "brainstorm-ideas-existing",
+        "编码前脑暴",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "brainstorm-ideas-new": {
+      "label_zh": "编码前脑暴",
+      "summary_zh": "编码前脑暴：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "编码前脑暴：辅助完成相关分析、生成或审查任务",
+      "en_desc": "编码前脑暴：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "brainstorm-ideas-new",
+        "编码前脑暴",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "brainstorm-okrs": {
+      "label_zh": "编码前脑暴",
+      "summary_zh": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "picker_zh": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "en_desc": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "triggers_zh": [
+        "brainstorm-okrs",
+        "编码前脑暴",
+        "澄清需求",
+        "探索方案并确认设"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "brainstorming": {
+      "label_zh": "方案脑暴",
+      "summary_zh": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "picker_zh": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "en_desc": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "triggers_zh": [
+        "brainstorm",
+        "方案对比",
+        "设计确认",
+        "brainstorming",
+        "方案脑暴",
+        "编码前脑暴",
+        "澄清需求",
+        "探索方案并确认设"
+      ],
+      "category_zh": "规划与规格",
+      "auto_generated": true
+    },
+    "brand-guidelines": {
+      "label_zh": "Brand 准则",
+      "summary_zh": "Brand 准则：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Brand 准则：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Brand 准则：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "brand-guidelines",
+        "Brand 准则",
+        "准则",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "brandkit": {
+      "label_zh": "演示文稿处理",
+      "summary_zh": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "picker_zh": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "en_desc": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "triggers_zh": [
+        "brandkit",
+        "演示文稿处理",
+        "创建",
+        "编辑",
+        "幻灯片"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "browser-testing-with-devtools": {
+      "label_zh": "浏览器 测试 与 DevTools",
+      "summary_zh": "浏览器 测试 与 DevTools：适用于缺陷排查等场景",
+      "picker_zh": "浏览器 测试 与 DevTools：适用于缺陷排查等场景",
+      "en_desc": "浏览器 测试 与 DevTools：适用于缺陷排查等场景",
+      "triggers_zh": [
+        "browser-testing-with-devtools",
+        "浏览器 测试 与 DevTools",
+        "浏览器",
+        "测试",
+        "适用于缺陷排查等",
+        "场景",
+        "缺陷排查"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "bruce-pptx-generator": {
+      "label_zh": "Bruce PPTX 代码生成",
+      "summary_zh": "用 pptxgenjs 从零生成或编辑可编辑 PPTX，含多种商务风格预设。",
+      "picker_zh": "代码生成可编辑 PPTX：封面/目录/章节/内容页，支持编辑现有模板",
+      "en_desc": "Use this skill when the user explicitly wants to create, generate, export, compile, edit, revise, or restructure a PowerPoint / PPT / PPTX / slide deck artifact. Trigger when the request clearly targets slides, a deck, or a .ppt/.pptx file as the output or editing target, including Chinese equivalents such as 幻灯片、演示文稿、PPT、PPTX、路演 deck. Do not trigger for generic proposal writing, solution discussion, presentation speaking notes, or status-update wording unless the user is explicitly asking for slide files or deck generation.",
+      "triggers_zh": [
+        "做PPT",
+        "生成PPT",
+        "pptx",
+        "幻灯片",
+        "演示文稿",
+        "路演",
+        "可编辑pptx",
+        "bruce-pptx-generator"
+      ],
+      "category_zh": "演示与幻灯片",
+      "auto_generated": false
+    },
+    "brutalism": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "brutalism",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "bun-runtime": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "后端/Java：API、分层架构与持久化。适用于部署发布、安装配置",
+      "picker_zh": "后端/Java：API、分层架构与持久化",
+      "en_desc": "后端/Java：API、分层架构与持久化",
+      "triggers_zh": [
+        "bun-runtime",
+        "当 到 使用",
+        "后端",
+        "分层架构与持久化",
+        "适用于部署发布",
+        "安装配置",
+        "部署发布、安装配置"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "business-model": {
+      "label_zh": "Business 模型",
+      "summary_zh": "Business 模型：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Business 模型：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Business 模型：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "business-model",
+        "Business 模型",
+        "模型",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "cafe": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "cafe",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "canvas-design": {
+      "label_zh": "多 Agent 编排",
+      "summary_zh": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "picker_zh": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "en_desc": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "triggers_zh": [
+        "canvas-design",
+        "多 Agent 编排",
+        "编排",
+        "子任务分发",
+        "汇总与验证闭环"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "caveman": {
+      "label_zh": "Caveman",
+      "summary_zh": "Caveman：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Caveman：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Caveman：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "caveman",
+        "Caveman",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "chrome-browser": {
+      "label_zh": "Chrome 浏览器",
+      "summary_zh": "端到端测试：关键用户路径自动化与回归验证",
+      "picker_zh": "端到端测试：关键用户路径自动化与回归验证",
+      "en_desc": "端到端测试：关键用户路径自动化与回归验证",
+      "triggers_zh": [
+        "chrome-browser",
+        "Chrome 浏览器",
+        "端到端测试",
+        "关键用户路径自动",
+        "化与回归验证"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ci-cd-and-automation": {
+      "label_zh": "CI/CD 与 自动化",
+      "summary_zh": "DevOps/部署：容器、流水线与环境配置。适用于部署发布",
+      "picker_zh": "DevOps/部署：容器、流水线与环境配置",
+      "en_desc": "DevOps/部署：容器、流水线与环境配置",
+      "triggers_zh": [
+        "ci-cd-and-automation",
+        "CI/CD 与 自动化",
+        "部署",
+        "容器",
+        "流水线与环境配置",
+        "适用于部署发布",
+        "部署发布"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ci-cd-pipelines": {
+      "label_zh": "DevOps/部署",
+      "summary_zh": "DevOps/部署：容器、流水线与环境配置",
+      "picker_zh": "DevOps/部署：容器、流水线与环境配置",
+      "en_desc": "DevOps/部署：容器、流水线与环境配置",
+      "triggers_zh": [
+        "ci-cd-pipelines",
+        "DevOps/部署",
+        "部署",
+        "容器",
+        "流水线与环境配置"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ckm-banner-design": {
+      "label_zh": "前端工程",
+      "summary_zh": "前端工程：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "前端工程：辅助完成相关分析、生成或审查任务",
+      "en_desc": "前端工程：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "ckm-banner-design",
+        "前端工程",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ckm-brand": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "当 到 使用：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "当 到 使用：辅助完成相关分析、生成或审查任务",
+      "en_desc": "当 到 使用：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "ckm-brand",
+        "当 到 使用",
+        "使用",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ckm-design": {
+      "label_zh": "设计",
+      "summary_zh": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "picker_zh": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "en_desc": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "triggers_zh": [
+        "ckm-design",
+        "设计",
+        "演示文稿处理",
+        "创建",
+        "编辑",
+        "幻灯片"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ckm-design-system": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "picker_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "en_desc": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "triggers_zh": [
+        "ckm-design-system",
+        "当 到 使用",
+        "无障碍合规",
+        "键盘导航与读屏适"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ckm-slides": {
+      "label_zh": "幻灯片",
+      "summary_zh": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片。适用于演示文稿、营销文案、幻灯片",
+      "picker_zh": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "en_desc": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "triggers_zh": [
+        "ckm-slides",
+        "幻灯片",
+        "演示文稿处理",
+        "创建",
+        "编辑",
+        "适用于演示文稿",
+        "营销文案",
+        "演示文稿、营销文案"
+      ],
+      "category_zh": "演示与文档",
+      "auto_generated": true
+    },
+    "ckm-ui-styling": {
+      "label_zh": "参考",
+      "summary_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "picker_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "en_desc": "前端工程：组件、状态、构建与 UI 实现",
+      "triggers_zh": [
+        "ckm-ui-styling",
+        "参考",
+        "前端工程",
+        "组件",
+        "状态",
+        "构建与",
+        "实现"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "claude": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "claude",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "claude-api": {
+      "label_zh": "在You Start之前使用",
+      "summary_zh": "在You Start之前使用：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "在You Start之前使用：辅助完成相关分析、生成或审查任务",
+      "en_desc": "在You Start之前使用：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "claude-api",
+        "在You Start之前使用",
+        "之前使用",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "claymorphism": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "claymorphism",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "clean": {
+      "label_zh": "清理",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "clean",
+        "清理",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "code-review-and-quality": {
+      "label_zh": "代码 审查 与 质量",
+      "summary_zh": "代码审查：质量、模式、安全与可维护性检查",
+      "picker_zh": "代码审查：质量、模式、安全与可维护性检查",
+      "en_desc": "代码审查：质量、模式、安全与可维护性检查",
+      "triggers_zh": [
+        "code-review-and-quality",
+        "代码 审查 与 质量",
+        "代码审查",
+        "质量",
+        "模式",
+        "安全与可维护性检"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "code-simplification": {
+      "label_zh": "重构/清理",
+      "summary_zh": "重构/清理：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "重构/清理：辅助完成相关分析、生成或审查任务",
+      "en_desc": "重构/清理：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "code-simplification",
+        "重构/清理",
+        "重构",
+        "清理",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "code-simplifier": {
+      "label_zh": "Rust 工程",
+      "summary_zh": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "picker_zh": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "en_desc": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "triggers_zh": [
+        "code-simplifier",
+        "Rust 工程",
+        "工程",
+        "编译",
+        "所有权与",
+        "模式"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "code-tour": {
+      "label_zh": "代码 导览",
+      "summary_zh": "代码 导览：适用于新手引导优化等场景",
+      "picker_zh": "代码 导览：适用于新手引导优化等场景",
+      "en_desc": "代码 导览：适用于新手引导优化等场景",
+      "triggers_zh": [
+        "code-tour",
+        "代码 导览",
+        "代码",
+        "导览",
+        "适用于新手引导优",
+        "化等场景",
+        "新手引导优化"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "codex": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "codex",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "cohort-analysis": {
+      "label_zh": "Cohort 分析",
+      "summary_zh": "Cohort 分析：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Cohort 分析：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Cohort 分析：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "cohort-analysis",
+        "Cohort 分析",
+        "分析",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "colorful": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "colorful",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "commit-context": {
+      "label_zh": "提交上下文",
+      "summary_zh": "提交上下文：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "提交上下文：辅助完成相关分析、生成或审查任务",
+      "en_desc": "提交上下文：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "commit-context",
+        "提交上下文",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "commit-history": {
+      "label_zh": "提交 历史",
+      "summary_zh": "提交 历史：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "提交 历史：辅助完成相关分析、生成或审查任务",
+      "en_desc": "提交 历史：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "commit-history",
+        "提交 历史",
+        "提交",
+        "历史",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "competitive-battlecard": {
+      "label_zh": "Competitive Battlecard",
+      "summary_zh": "Competitive Battlecard：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Competitive Battlecard：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Competitive Battlecard：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "competitive-battlecard",
+        "Competitive Battlecard",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "competitor-analysis": {
+      "label_zh": "Competitor 分析",
+      "summary_zh": "Competitor 分析：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Competitor 分析：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Competitor 分析：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "competitor-analysis",
+        "Competitor 分析",
+        "分析",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "configure-ecc": {
+      "label_zh": "ECC 配置安装",
+      "summary_zh": "交互式安装向导：选择并安装技能/规则，校验路径并可优化已装内容。适用于安装配置、安装配置、技能管理",
+      "picker_zh": "交互式安装向导：选择并安装技能/规则，校验路径并可优化已装内容",
+      "en_desc": "交互式安装向导：选择并安装技能/规则，校验路径并可优化已装内容",
+      "triggers_zh": [
+        "configure-ecc",
+        "ECC 配置安装",
+        "交互式安装向导",
+        "选择并安装技能",
+        "规则",
+        "校验路径并可优化",
+        "已装内容",
+        "适用于安装配置",
+        "安装配置",
+        "技能管理",
+        "安装配置、技能管理"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "contemporary": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "contemporary",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "content-brief-generator": {
+      "label_zh": "内容 Brief 生成",
+      "summary_zh": "内容 Brief 生成：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "内容 Brief 生成：辅助完成相关分析、生成或审查任务",
+      "en_desc": "内容 Brief 生成：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "content-brief-generator",
+        "内容 Brief 生成",
+        "内容",
+        "生成",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "研究与文档",
+      "auto_generated": true
+    },
+    "content-engine": {
+      "label_zh": "内容 引擎",
+      "summary_zh": "内容 引擎：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "内容 引擎：辅助完成相关分析、生成或审查任务",
+      "en_desc": "内容 引擎：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "content-engine",
+        "内容 引擎",
+        "内容",
+        "引擎",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "context-engineering": {
+      "label_zh": "上下文工程",
+      "summary_zh": "Agent 上下文工程与 Prompt 结构标准：信噪比、渐进发现、按需加载。适用于Prompt 设计、上下文工程",
+      "picker_zh": "Agent 上下文工程与 Prompt 结构标准：信噪比、渐进发现、按需加载",
+      "en_desc": "Agent 上下文工程与 Prompt 结构标准：信噪比、渐进发现、按需加载",
+      "triggers_zh": [
+        "context-engineering",
+        "上下文工程",
+        "上下文工程与",
+        "结构标准",
+        "信噪比",
+        "渐进发现",
+        "按需加载",
+        "适用于",
+        "设计",
+        "Prompt 设计"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "continuous-learning": {
+      "label_zh": "持续学习（旧版）",
+      "summary_zh": "通过 Hook 观察会话，沉淀可复用直觉/技能模式",
+      "picker_zh": "通过 Hook 观察会话，沉淀可复用直觉/技能模式",
+      "en_desc": "通过 Hook 观察会话，沉淀可复用直觉/技能模式",
+      "triggers_zh": [
+        "continuous-learning",
+        "持续学习（旧版）",
+        "通过",
+        "观察会话",
+        "沉淀可复用直觉",
+        "技能模式"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "continuous-learning-v2": {
+      "label_zh": "持续学习 V2",
+      "summary_zh": "通过 Hook 观察会话，沉淀可复用直觉/技能模式",
+      "picker_zh": "通过 Hook 观察会话，沉淀可复用直觉/技能模式",
+      "en_desc": "通过 Hook 观察会话，沉淀可复用直觉/技能模式",
+      "triggers_zh": [
+        "continuous-learning-v2",
+        "持续学习 V2",
+        "通过",
+        "观察会话",
+        "沉淀可复用直觉",
+        "技能模式"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "corporate": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "corporate",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "cosmic": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "cosmic",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "council": {
+      "label_zh": "四视角合议决策",
+      "summary_zh": "四视角顾问合议：处理模糊决策、方案权衡与 go/no-go 判断。适用于权衡对比",
+      "picker_zh": "四视角顾问合议：处理模糊决策、方案权衡与 go/no-go 判断",
+      "en_desc": "四视角顾问合议：处理模糊决策、方案权衡与 go/no-go 判断",
+      "triggers_zh": [
+        "council",
+        "四视角合议决策",
+        "四视角顾问合议",
+        "处理模糊决策",
+        "方案权衡与",
+        "判断",
+        "适用于权衡对比",
+        "权衡对比"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "create-prd": {
+      "label_zh": "创建 PRD",
+      "summary_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "picker_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "en_desc": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "triggers_zh": [
+        "create-prd",
+        "创建 PRD",
+        "把模糊产品想法整",
+        "理为可评审的产品",
+        "需求文档"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "creative": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "creative",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "cursor-awesome-auditing-performance": {
+      "label_zh": "性能 审计",
+      "summary_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "picker_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "en_desc": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "triggers_zh": [
+        "性能优化",
+        "Core Web Vitals",
+        "bundle",
+        "慢页面",
+        "性能审计",
+        "cursor-awesome-auditing-performance",
+        "性能 审计",
+        "性能分析与优化",
+        "瓶颈定位",
+        "包体与运行时改进"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "cursor-awesome-building-skills-from-patterns": {
+      "label_zh": "Skill 工程",
+      "summary_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "picker_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "en_desc": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "triggers_zh": [
+        "沉淀 skill",
+        "重复流程",
+        "做成技能",
+        "workflow 固化",
+        "cursor-awesome-building-skills-from-patterns",
+        "Skill 工程",
+        "工程",
+        "编写",
+        "验证",
+        "与触发条件设计"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "cursor-awesome-parallel-exploring": {
+      "label_zh": "多 Agent 编排",
+      "summary_zh": "多 Agent 编排：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "多 Agent 编排：辅助完成相关分析、生成或审查任务",
+      "en_desc": "多 Agent 编排：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "并行探索",
+        "熟悉代码库",
+        "onboarding",
+        "架构梳理",
+        "explore subagent",
+        "cursor-awesome-parallel-exploring",
+        "多 Agent 编排",
+        "编排",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "customer-journey-map": {
+      "label_zh": "客户旅程地图",
+      "summary_zh": "绘制端到端客户旅程：阶段、触点、情绪、痛点与改进机会",
+      "picker_zh": "绘制端到端客户旅程：阶段、触点、情绪、痛点与改进机会",
+      "en_desc": "绘制端到端客户旅程：阶段、触点、情绪、痛点与改进机会",
+      "triggers_zh": [
+        "customer-journey-map",
+        "客户旅程地图",
+        "绘制端到端客户旅",
+        "阶段",
+        "触点",
+        "情绪",
+        "痛点与改进机会"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "dashboard": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "dashboard",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "data-engineering": {
+      "label_zh": "数据 工程",
+      "summary_zh": "数据 工程：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "数据 工程：辅助完成相关分析、生成或审查任务",
+      "en_desc": "数据 工程：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "data-engineering",
+        "数据 工程",
+        "数据",
+        "工程",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "database-optimization": {
+      "label_zh": "性能分析与优化",
+      "summary_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "picker_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "en_desc": "数据库/SQL： schema 设计、查询优化与迁移",
+      "triggers_zh": [
+        "database-optimization",
+        "性能分析与优化",
+        "数据库",
+        "设计",
+        "查询优化与迁移"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "debugging-and-error-recovery": {
+      "label_zh": "调试 与 错误 Recovery",
+      "summary_zh": "调试 与 错误 Recovery：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "调试 与 错误 Recovery：辅助完成相关分析、生成或审查任务",
+      "en_desc": "调试 与 错误 Recovery：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "debugging-and-error-recovery",
+        "调试 与 错误 Recovery",
+        "调试",
+        "错误",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "deep-dive": {
+      "label_zh": "深度 Dive",
+      "summary_zh": "多源深度研究：检索、引用与事实核查",
+      "picker_zh": "多源深度研究：检索、引用与事实核查",
+      "en_desc": "多源深度研究：检索、引用与事实核查",
+      "triggers_zh": [
+        "deep-dive",
+        "深度 Dive",
+        "多源深度研究",
+        "检索",
+        "引用与事实核查"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "deep-research": {
+      "label_zh": "深度研究",
+      "summary_zh": "Use when the user needs multi-source research with citations, fact-check, or 深度研究/文献回顾 before conclusions — not for quick one-line answers.",
+      "picker_zh": "多源深度研究：检索、引用与事实核查",
+      "en_desc": "多源深度研究：检索、引用与事实核查",
+      "triggers_zh": [
+        "深度研究",
+        "文献回顾",
+        "fact-check",
+        "事实核查",
+        "多源研究",
+        "deep-research"
+      ],
+      "category_zh": "研究与文档",
+      "auto_generated": true
+    },
+    "deprecation-and-migration": {
+      "label_zh": "弃用 与 迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "deprecation-and-migration",
+        "弃用 与 迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "design-an-interface": {
+      "label_zh": "设计 an 接口",
+      "summary_zh": "医疗信息系统：临床安全、CDSS 与 PHI 合规",
+      "picker_zh": "医疗信息系统：临床安全、CDSS 与 PHI 合规",
+      "en_desc": "医疗信息系统：临床安全、CDSS 与 PHI 合规",
+      "triggers_zh": [
+        "design-an-interface",
+        "设计 an 接口",
+        "医疗信息系统",
+        "临床安全",
+        "合规"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "design-brief-generator": {
+      "label_zh": "设计 Brief 生成",
+      "summary_zh": "设计 Brief 生成：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "设计 Brief 生成：辅助完成相关分析、生成或审查任务",
+      "en_desc": "设计 Brief 生成：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "design-brief-generator",
+        "设计 Brief 生成",
+        "设计",
+        "生成",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "UI 与设计",
+      "auto_generated": true
+    },
+    "design-patterns": {
+      "label_zh": "RTK Rust 设计 模式",
+      "summary_zh": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "picker_zh": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "en_desc": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "triggers_zh": [
+        "design-patterns",
+        "RTK Rust 设计 模式",
+        "工程",
+        "编译",
+        "所有权与",
+        "模式"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "design-taste-frontend": {
+      "label_zh": "设计 Taste 前端",
+      "summary_zh": "Anti-slop 前端审美（Leonxlnx/taste-skill v2）。Landing/作品集/改版；先读 brief 再定设计方向。用户说 UI 丑、要设计感、落地页、portfolio、anti-slop 时使用。",
+      "picker_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "en_desc": "前端工程：组件、状态、构建与 UI 实现",
+      "triggers_zh": [
+        "landing page",
+        "落地页",
+        "portfolio",
+        "作品集",
+        "anti-slop",
+        "好看一点",
+        "别那么丑",
+        "设计感",
+        "Awwwards",
+        "Linear风格",
+        "前端审美",
+        "UI太丑"
+      ],
+      "category_zh": "UI 与设计",
+      "auto_generated": true
+    },
+    "design-taste-frontend-v1": {
+      "label_zh": "设计 Taste 前端 V1",
+      "summary_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "picker_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "en_desc": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "triggers_zh": [
+        "design-taste-frontend-v1",
+        "设计 Taste 前端 V1",
+        "无障碍合规",
+        "键盘导航与读屏适"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "diagnose": {
+      "label_zh": "诊断",
+      "summary_zh": "Use when the user says diagnose this, debug this, or reports a bug/performance regression needing structured reproduction.",
+      "picker_zh": "结构化诊断：复现步骤、证据收集与问题定位",
+      "en_desc": "结构化诊断：复现步骤、证据收集与问题定位",
+      "triggers_zh": [
+        "diagnose",
+        "诊断"
+      ],
+      "category_zh": "调试",
+      "auto_generated": true
+    },
+    "dispatching-parallel-agents": {
+      "label_zh": "Dispatching 并行 Agents",
+      "summary_zh": "Dispatching 并行 Agents：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Dispatching 并行 Agents：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Dispatching 并行 Agents：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "dispatching-parallel-agents",
+        "Dispatching 并行 Agents",
+        "并行",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "dithered": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "dithered",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "django-patterns": {
+      "label_zh": "项目 结构",
+      "summary_zh": "Python 后端：框架、ORM、迁移与 API 设计",
+      "picker_zh": "Python 后端：框架、ORM、迁移与 API 设计",
+      "en_desc": "Python 后端：框架、ORM、迁移与 API 设计",
+      "triggers_zh": [
+        "django-patterns",
+        "项目 结构",
+        "后端",
+        "框架",
+        "迁移与",
+        "设计"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "doc-coauthoring": {
+      "label_zh": "文档 Co-Authoring 工作流",
+      "summary_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "picker_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "en_desc": "文档/ADR：架构决策记录与技术说明撰写",
+      "triggers_zh": [
+        "doc-coauthoring",
+        "文档 Co-Authoring 工作流",
+        "文档",
+        "架构决策记录与技",
+        "术说明撰写"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "docker-best-practices": {
+      "label_zh": "DevOps/部署",
+      "summary_zh": "DevOps/部署：容器、流水线与环境配置",
+      "picker_zh": "DevOps/部署：容器、流水线与环境配置",
+      "en_desc": "DevOps/部署：容器、流水线与环境配置",
+      "triggers_zh": [
+        "docker-best-practices",
+        "DevOps/部署",
+        "部署",
+        "容器",
+        "流水线与环境配置"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "documentation-and-adrs": {
+      "label_zh": "文档 与 ADRs",
+      "summary_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "picker_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "en_desc": "文档/ADR：架构决策记录与技术说明撰写",
+      "triggers_zh": [
+        "documentation-and-adrs",
+        "文档 与 ADRs",
+        "文档",
+        "架构决策记录与技",
+        "术说明撰写"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "documentation-lookup": {
+      "label_zh": "文档 查询",
+      "summary_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "picker_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "en_desc": "文档/ADR：架构决策记录与技术说明撰写",
+      "triggers_zh": [
+        "documentation-lookup",
+        "文档 查询",
+        "文档",
+        "架构决策记录与技",
+        "术说明撰写"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "docx": {
+      "label_zh": "Docx",
+      "summary_zh": "Docx：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Docx：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Docx：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "docx",
+        "Docx",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "doodle": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "doodle",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "doubt-driven-development": {
+      "label_zh": "无障碍合规（WCAG）",
+      "summary_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "picker_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "en_desc": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "triggers_zh": [
+        "doubt-driven-development",
+        "无障碍合规（WCAG）",
+        "无障碍合规",
+        "键盘导航与读屏适"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "draft-nda": {
+      "label_zh": "Draft Nda",
+      "summary_zh": "Draft Nda：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Draft Nda：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Draft Nda：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "draft-nda",
+        "Draft Nda",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "dramatic": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "dramatic",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "dummy-dataset": {
+      "label_zh": "数据库/SQL",
+      "summary_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "picker_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "en_desc": "数据库/SQL： schema 设计、查询优化与迁移",
+      "triggers_zh": [
+        "dummy-dataset",
+        "数据库/SQL",
+        "数据库",
+        "设计",
+        "查询优化与迁移"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "e2e-testing": {
+      "label_zh": "E2E 测试 模式",
+      "summary_zh": "端到端测试：关键用户路径自动化与回归验证",
+      "picker_zh": "端到端测试：关键用户路径自动化与回归验证",
+      "en_desc": "端到端测试：关键用户路径自动化与回归验证",
+      "triggers_zh": [
+        "e2e-testing",
+        "E2E 测试 模式",
+        "端到端测试",
+        "关键用户路径自动",
+        "化与回归验证"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "edit-article": {
+      "label_zh": "编辑 Article",
+      "summary_zh": "编辑 Article：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "编辑 Article：辅助完成相关分析、生成或审查任务",
+      "en_desc": "编辑 Article：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "edit-article",
+        "编辑 Article",
+        "编辑",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "editorial": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "editorial",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "elegant": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "elegant",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "energetic": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "energetic",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "engineer-expertise-extractor": {
+      "label_zh": "Engineer 经验 提取",
+      "summary_zh": "Engineer 经验 提取：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Engineer 经验 提取：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Engineer 经验 提取：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "engineer-expertise-extractor",
+        "Engineer 经验 提取",
+        "经验",
+        "提取",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "工程",
+      "auto_generated": true
+    },
+    "enterprise": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "enterprise",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "error-handling": {
+      "label_zh": "错误处理模式",
+      "summary_zh": "生产级错误处理：类型化错误、重试、熔断与用户可见提示",
+      "picker_zh": "生产级错误处理：类型化错误、重试、熔断与用户可见提示",
+      "en_desc": "生产级错误处理：类型化错误、重试、熔断与用户可见提示",
+      "triggers_zh": [
+        "error-handling",
+        "错误处理模式",
+        "生产级错误处理",
+        "类型化错误",
+        "重试",
+        "熔断与用户可见提"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "eval-harness": {
+      "label_zh": "评估测试框架",
+      "summary_zh": "正式评估框架：用例集、评分与回归门禁",
+      "picker_zh": "正式评估框架：用例集、评分与回归门禁",
+      "en_desc": "正式评估框架：用例集、评分与回归门禁",
+      "triggers_zh": [
+        "eval-harness",
+        "评估测试框架",
+        "正式评估框架",
+        "用例集",
+        "评分与回归门禁"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "executing-plans": {
+      "label_zh": "执行实施计划",
+      "summary_zh": "按已写好的实施计划分步执行，并在检查点复盘",
+      "picker_zh": "按已写好的实施计划分步执行，并在检查点复盘",
+      "en_desc": "按已写好的实施计划分步执行，并在检查点复盘",
+      "triggers_zh": [
+        "executing-plans",
+        "执行实施计划",
+        "按已写好的实施计",
+        "划分步执行",
+        "并在检查点复盘"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "expressive": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "expressive",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "fantasy": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "fantasy",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "fetch-linuxdo-post": {
+      "label_zh": "使用说明",
+      "summary_zh": "使用说明：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "使用说明：辅助完成相关分析、生成或审查任务",
+      "en_desc": "使用说明：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "fetch-linuxdo-post",
+        "使用说明",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "fiction": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "fiction",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "figma-product-report": {
+      "label_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "summary_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "picker_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "en_desc": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "triggers_zh": [
+        "figma-product-report",
+        "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+        "把模糊产品想法整",
+        "理为可评审的产品",
+        "需求文档"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "figma-workflow": {
+      "label_zh": "Figma 工作流",
+      "summary_zh": "Use when Agent Platform Figma work needs figma.config.json — implement from Figma, sync HTML to Figma, or create design files.",
+      "picker_zh": "Agent Platform Figma 双向同步：按 figma.config 实现页面并写回设计",
+      "en_desc": "Agent Platform Figma 双向同步：按 figma.config 实现页面并写回设计",
+      "triggers_zh": [
+        "同步到 figma",
+        "写到 figma",
+        "figma.config",
+        "对照设计稿",
+        "figma-workflow",
+        "Figma 工作流"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "figma2code": {
+      "label_zh": "Figma 转前端代码",
+      "summary_zh": "Use when implementing HTML/CSS/JS from a Figma URL, file key, node id, or mockup — frame extraction, interactions, and project integration.",
+      "picker_zh": "按 Figma 设计稿实现 HTML/CSS/JS，含节点提取与交互",
+      "en_desc": "按 Figma 设计稿实现 HTML/CSS/JS，含节点提取与交互",
+      "triggers_zh": [
+        "figma",
+        "设计稿",
+        "按 figma",
+        "figma转",
+        "设计稿转",
+        "file key",
+        "mockup",
+        "frame",
+        "frame extraction",
+        "url to html",
+        "node id",
+        "figma2code"
+      ],
+      "category_zh": "UI 与设计",
+      "auto_generated": true
+    },
+    "finishing-a-development-branch": {
+      "label_zh": "开发分支收尾",
+      "summary_zh": "开发分支收尾：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "开发分支收尾：辅助完成相关分析、生成或审查任务",
+      "en_desc": "开发分支收尾：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "finishing-a-development-branch",
+        "开发分支收尾",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "flat": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "flat",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "forget": {
+      "label_zh": "遗忘清理",
+      "summary_zh": "遗忘清理：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "遗忘清理：辅助完成相关分析、生成或审查任务",
+      "en_desc": "遗忘清理：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "forget",
+        "遗忘清理",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "friendly": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "friendly",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "frontend-design": {
+      "label_zh": "前端 设计",
+      "summary_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "picker_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "en_desc": "前端工程：组件、状态、构建与 UI 实现",
+      "triggers_zh": [
+        "frontend-design",
+        "前端 设计",
+        "前端工程",
+        "组件",
+        "状态",
+        "构建与",
+        "实现"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "frontend-excellence": {
+      "label_zh": "性能分析与优化",
+      "summary_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "picker_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "en_desc": "数据库/SQL： schema 设计、查询优化与迁移",
+      "triggers_zh": [
+        "frontend-excellence",
+        "性能分析与优化",
+        "数据库",
+        "设计",
+        "查询优化与迁移"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "frontend-slides": {
+      "label_zh": "Frontend Slides",
+      "summary_zh": "零依赖 HTML 幻灯片（View Transitions / 滚动叙事 / 可选 PPTX 导出）。",
+      "picker_zh": "现代 HTML 幻灯片：零依赖、View Transitions、可导出 PPTX",
+      "en_desc": "Create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files. Use when the user wants to build a presentation, convert a PPT/PPTX to web, or create slides for a talk/pitch. Helps non-designers discover their aesthetic through visual exploration rather than abstract choices.",
+      "triggers_zh": [
+        "HTML幻灯",
+        "网页演示",
+        "frontend-slides",
+        "View Transitions"
+      ],
+      "category_zh": "演示与幻灯片",
+      "auto_generated": false
+    },
+    "frontend-ui-engineering": {
+      "label_zh": "前端 UI 工程",
+      "summary_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "picker_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "en_desc": "前端工程：组件、状态、构建与 UI 实现",
+      "triggers_zh": [
+        "frontend-ui-engineering",
+        "前端 UI 工程",
+        "前端工程",
+        "组件",
+        "状态",
+        "构建与",
+        "实现"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "full-output-enforcement": {
+      "label_zh": "完整输出约束",
+      "summary_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "picker_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "en_desc": "前端工程：组件、状态、构建与 UI 实现",
+      "triggers_zh": [
+        "full-output-enforcement",
+        "完整输出约束",
+        "前端工程",
+        "组件",
+        "状态",
+        "构建与",
+        "实现"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "futuristic": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "futuristic",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "git-advanced": {
+      "label_zh": "Git 进阶操作",
+      "summary_zh": "Git 进阶操作：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Git 进阶操作：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Git 进阶操作：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "git-advanced",
+        "Git 进阶操作",
+        "进阶操作",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "git-guardrails-claude-code": {
+      "label_zh": "Hook/自动化",
+      "summary_zh": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "picker_zh": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "en_desc": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "triggers_zh": [
+        "git-guardrails-claude-code",
+        "Hook/自动化",
+        "自动化",
+        "提交前检查与",
+        "工作流钩子"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "git-workflow-and-versioning": {
+      "label_zh": "Git 工作流",
+      "summary_zh": "Git 工作流：分支、提交规范与 PR 流程",
+      "picker_zh": "Git 工作流：分支、提交规范与 PR 流程",
+      "en_desc": "Git 工作流：分支、提交规范与 PR 流程",
+      "triggers_zh": [
+        "git-workflow-and-versioning",
+        "Git 工作流",
+        "工作流",
+        "分支",
+        "提交规范与",
+        "流程"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "glassmorphism": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "glassmorphism",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "global-delivery-gate": {
+      "label_zh": "全局 交付 门禁",
+      "summary_zh": "Use before claiming done/fixed/PASS on any repo — run detected verify commands with fresh evidence.",
+      "picker_zh": "全局 交付 门禁",
+      "en_desc": "全局 交付 门禁",
+      "triggers_zh": [
+        "claim done",
+        "声称完成",
+        "delivery sign-off",
+        "global-delivery-gate",
+        "全局 交付 门禁"
+      ],
+      "category_zh": "验证与审查",
+      "auto_generated": true
+    },
+    "global-session-core": {
+      "label_zh": "全局 会话 核心",
+      "summary_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "picker_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "en_desc": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "triggers_zh": [
+        "global-session-core",
+        "全局 会话 核心",
+        "工程",
+        "编写",
+        "验证",
+        "与触发条件设计"
+      ],
+      "category_zh": "核心门禁",
+      "auto_generated": true
+    },
+    "golang-idioms": {
+      "label_zh": "Golang Idioms",
+      "summary_zh": "Golang Idioms：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Golang Idioms：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Golang Idioms：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "golang-idioms",
+        "Golang Idioms",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "gpt-taste": {
+      "label_zh": "无障碍合规（WCAG）",
+      "summary_zh": "Codex/GPT 向 stricter taste-skill：更高 layout variance + GSAP ScrollTrigger。高动效 landing 时用。",
+      "picker_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "en_desc": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "triggers_zh": [
+        "GSAP",
+        "scroll animation",
+        "Awwwards",
+        "motion rich",
+        "Codex前端",
+        "高动效",
+        "gpt-taste",
+        "无障碍合规（WCAG）",
+        "更高",
+        "时用"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "gradient": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "gradient",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "grammar-check": {
+      "label_zh": "Grammar 检查",
+      "summary_zh": "Grammar 检查：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Grammar 检查：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Grammar 检查：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "grammar-check",
+        "Grammar 检查",
+        "检查",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "graphql-design": {
+      "label_zh": "Graphql 设计",
+      "summary_zh": "Graphql 设计：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Graphql 设计：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Graphql 设计：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "graphql-design",
+        "Graphql 设计",
+        "设计",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "grill-me": {
+      "label_zh": "Grill Me",
+      "summary_zh": "Grill Me：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Grill Me：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Grill Me：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "grill-me",
+        "Grill Me",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "grill-with-docs": {
+      "label_zh": "Grill 文档",
+      "summary_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "picker_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "en_desc": "文档/ADR：架构决策记录与技术说明撰写",
+      "triggers_zh": [
+        "grill-with-docs",
+        "Grill 文档",
+        "文档",
+        "架构决策记录与技",
+        "术说明撰写"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "growth-loops": {
+      "label_zh": "增长 Loops",
+      "summary_zh": "增长 Loops：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "增长 Loops：辅助完成相关分析、生成或审查任务",
+      "en_desc": "增长 Loops：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "growth-loops",
+        "增长 Loops",
+        "增长",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "gtm-motions": {
+      "label_zh": "营销/文案",
+      "summary_zh": "营销/文案：落地页、活动与转化文案。适用于营销文案",
+      "picker_zh": "营销/文案：落地页、活动与转化文案",
+      "en_desc": "营销/文案：落地页、活动与转化文案",
+      "triggers_zh": [
+        "gtm-motions",
+        "营销/文案",
+        "营销",
+        "文案",
+        "落地页",
+        "活动与转化文案",
+        "适用于营销文案",
+        "营销文案"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "gtm-strategy": {
+      "label_zh": "GTM 策略",
+      "summary_zh": "营销/文案：落地页、活动与转化文案。适用于规划拆解",
+      "picker_zh": "营销/文案：落地页、活动与转化文案",
+      "en_desc": "营销/文案：落地页、活动与转化文案",
+      "triggers_zh": [
+        "gtm-strategy",
+        "GTM 策略",
+        "营销",
+        "文案",
+        "落地页",
+        "活动与转化文案",
+        "适用于规划拆解",
+        "规划拆解"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "guizang-ppt-skill": {
+      "label_zh": "归藏 · 网页杂志风 PPT",
+      "summary_zh": "单文件 HTML 横向翻页幻灯（杂志风/瑞士国际主义风）。",
+      "picker_zh": "网页横向翻页 PPT：WebGL 背景、章节幕封、杂志/瑞士两种风格",
+      "en_desc": "生成横向翻页网页 PPT（单 HTML 文件），含 WebGL 背景、章节幕封、数据大字报、图片网格等模板。提供两种风格：① \"电子杂志 × 电子墨水\"（衬线 + 流体背景 + 暖色） ② \"瑞士国际主义\"（无衬线 + 网格点阵 + IKB/柠檬黄/柠檬绿/安全橙高亮）。当用户需要制作分享 / 演讲 / 发布会风格的网页 PPT，或提到\"杂志风 PPT\"、\"瑞士风 PPT\"、\"Swiss Style\"、\"horizontal swipe deck\"时使用。",
+      "triggers_zh": [
+        "网页PPT",
+        "杂志风",
+        "瑞士风",
+        "横向翻页",
+        "HTML幻灯",
+        "guizang-ppt-skill"
+      ],
+      "category_zh": "演示与幻灯片",
+      "auto_generated": false
+    },
+    "handoff": {
+      "label_zh": "交接",
+      "summary_zh": "交接：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "交接：辅助完成相关分析、生成或审查任务",
+      "en_desc": "交接：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "handoff",
+        "交接",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "high-end-visual-design": {
+      "label_zh": "高 端 视觉 设计",
+      "summary_zh": "Premium agency-grade UI tokens — fonts, spacing, shadows, card structures.",
+      "picker_zh": "高 端 视觉 设计",
+      "en_desc": "高 端 视觉 设计",
+      "triggers_zh": [
+        "premium UI",
+        "高端UI",
+        "soft UI",
+        "calm design",
+        "high-end-visual-design",
+        "高 端 视觉 设计"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "hookify-rules": {
+      "label_zh": "编写 Hookify 规则",
+      "summary_zh": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "picker_zh": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "en_desc": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "triggers_zh": [
+        "hookify-rules",
+        "编写 Hookify 规则",
+        "自动化",
+        "提交前检查与",
+        "工作流钩子"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "html-slide-to-pptx": {
+      "label_zh": "HTML 幻灯转 PPTX",
+      "summary_zh": "HTML 幻灯片导出为可编辑 PPTX（dom-to-pptx 主路径，截图兜底）。",
+      "picker_zh": "HTML 幻灯 → 可编辑 PowerPoint；浏览器一键导出",
+      "en_desc": "|",
+      "triggers_zh": [
+        "html转ppt",
+        "HTML转PPTX",
+        "dom-to-pptx",
+        "网页幻灯",
+        "做一版ppt"
+      ],
+      "category_zh": "演示与幻灯片",
+      "auto_generated": false
+    },
+    "huashu-design": {
+      "label_zh": "花叔 Design",
+      "summary_zh": "HTML 高保真原型/幻灯片/动画 + 五维设计评审，可导出 MP4/GIF。",
+      "picker_zh": "用 HTML 做原型、幻灯、动画与设计评审（花叔风格）",
+      "en_desc": "花叔Design——用HTML做高保真原型、幻灯片、动画、可视化与专家评审，需求模糊时给设计方向。触发词：做原型、PPT、幻灯片、动画、设计风格、评审、做个HTML页面、UI mockup、导出MP4/GIF、做个好看的。生产级Web App/需后端的系统不适用。",
+      "triggers_zh": [
+        "花叔",
+        "高保真原型",
+        "设计风格",
+        "设计评审",
+        "导出MP4",
+        "UI mockup",
+        "huashu-design"
+      ],
+      "category_zh": "设计与原型",
+      "auto_generated": false
+    },
+    "idea-refine": {
+      "label_zh": "Idea Refine（本地化精简版）",
+      "summary_zh": "模糊需求澄清：整理 Mini-Spec 与可执行 Prompt",
+      "picker_zh": "模糊需求澄清：整理 Mini-Spec 与可执行 Prompt",
+      "en_desc": "模糊需求澄清：整理 Mini-Spec 与可执行 Prompt",
+      "triggers_zh": [
+        "idea-refine",
+        "Idea Refine（本地化精简版）",
+        "模糊需求澄清",
+        "整理",
+        "与可执行"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ideal-customer-profile": {
+      "label_zh": "Ideal 客户 画像",
+      "summary_zh": "医疗信息系统：临床安全、CDSS 与 PHI 合规",
+      "picker_zh": "医疗信息系统：临床安全、CDSS 与 PHI 合规",
+      "en_desc": "医疗信息系统：临床安全、CDSS 与 PHI 合规",
+      "triggers_zh": [
+        "ideal-customer-profile",
+        "Ideal 客户 画像",
+        "医疗信息系统",
+        "临床安全",
+        "合规"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "identify-assumptions-existing": {
+      "label_zh": "Identify Assumptions Existing",
+      "summary_zh": "Identify Assumptions Existing：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Identify Assumptions Existing：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Identify Assumptions Existing：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "identify-assumptions-existing",
+        "Identify Assumptions Existing",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "identify-assumptions-new": {
+      "label_zh": "Identify Assumptions New",
+      "summary_zh": "Identify Assumptions New：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Identify Assumptions New：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Identify Assumptions New：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "identify-assumptions-new",
+        "Identify Assumptions New",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "image-to-code": {
+      "label_zh": "图片 到 代码",
+      "summary_zh": "按 Figma 设计稿实现 HTML/CSS/JS，含节点提取与交互",
+      "picker_zh": "按 Figma 设计稿实现 HTML/CSS/JS，含节点提取与交互",
+      "en_desc": "按 Figma 设计稿实现 HTML/CSS/JS，含节点提取与交互",
+      "triggers_zh": [
+        "screenshot to code",
+        "reference image site",
+        "image-to-code",
+        "图片 到 代码",
+        "设计稿实现",
+        "含节点提取与交互"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "image2pencil": {
+      "label_zh": "核心原则",
+      "summary_zh": "核心原则：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "核心原则：辅助完成相关分析、生成或审查任务",
+      "en_desc": "核心原则：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "image2pencil",
+        "核心原则",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "imagegen-frontend-mobile": {
+      "label_zh": "Imagegen 前端 移动",
+      "summary_zh": "按 Figma 设计稿实现 HTML/CSS/JS，含节点提取与交互",
+      "picker_zh": "按 Figma 设计稿实现 HTML/CSS/JS，含节点提取与交互",
+      "en_desc": "按 Figma 设计稿实现 HTML/CSS/JS，含节点提取与交互",
+      "triggers_zh": [
+        "imagegen-frontend-mobile",
+        "Imagegen 前端 移动",
+        "设计稿实现",
+        "含节点提取与交互"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "imagegen-frontend-web": {
+      "label_zh": "前端工程",
+      "summary_zh": "前端工程：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "前端工程：辅助完成相关分析、生成或审查任务",
+      "en_desc": "前端工程：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "生成网站设计图",
+        "web comp",
+        "设计稿生成",
+        "mockup",
+        "imagegen-frontend-web",
+        "前端工程",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "immersive": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "immersive",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "impeccable": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "impeccable",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "improve-codebase-architecture": {
+      "label_zh": "重构/清理",
+      "summary_zh": "重构/清理：去重、删死代码与结构收敛",
+      "picker_zh": "重构/清理：去重、删死代码与结构收敛",
+      "en_desc": "重构/清理：去重、删死代码与结构收敛",
+      "triggers_zh": [
+        "improve-codebase-architecture",
+        "重构/清理",
+        "重构",
+        "清理",
+        "去重",
+        "删死代码与结构收"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "incremental-implementation": {
+      "label_zh": "增量 Implementation",
+      "summary_zh": "增量 Implementation：适用于重构等场景",
+      "picker_zh": "增量 Implementation：适用于重构等场景",
+      "en_desc": "增量 Implementation：适用于重构等场景",
+      "triggers_zh": [
+        "incremental-implementation",
+        "增量 Implementation",
+        "增量",
+        "适用于重构等场景",
+        "重构"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "industrial-brutalist-ui": {
+      "label_zh": "无障碍合规（WCAG）",
+      "summary_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "picker_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "en_desc": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "triggers_zh": [
+        "industrial-brutalist-ui",
+        "无障碍合规（WCAG）",
+        "无障碍合规",
+        "键盘导航与读屏适"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "intended-vs-implemented": {
+      "label_zh": "文档/ADR",
+      "summary_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "picker_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "en_desc": "文档/ADR：架构决策记录与技术说明撰写",
+      "triggers_zh": [
+        "intended-vs-implemented",
+        "文档/ADR",
+        "文档",
+        "架构决策记录与技",
+        "术说明撰写"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "internal-comms": {
+      "label_zh": "Internal Comms",
+      "summary_zh": "Internal Comms：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Internal Comms：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Internal Comms：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "internal-comms",
+        "Internal Comms",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "interview-me": {
+      "label_zh": "Interview Me",
+      "summary_zh": "Interview Me：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Interview Me：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Interview Me：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "interview-me",
+        "Interview Me",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "interview-script": {
+      "label_zh": "客户 Interview 脚本",
+      "summary_zh": "客户 Interview 脚本：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "客户 Interview 脚本：辅助完成相关分析、生成或审查任务",
+      "en_desc": "客户 Interview 脚本：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "interview-script",
+        "客户 Interview 脚本",
+        "客户",
+        "脚本",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "investor-materials": {
+      "label_zh": "融资/投资人材料",
+      "summary_zh": "融资/投资人材料：路演叙事与数据呈现",
+      "picker_zh": "融资/投资人材料：路演叙事与数据呈现",
+      "en_desc": "融资/投资人材料：路演叙事与数据呈现",
+      "triggers_zh": [
+        "investor-materials",
+        "融资/投资人材料",
+        "融资",
+        "投资人材料",
+        "路演叙事与数据呈"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "investor-outreach": {
+      "label_zh": "投资人 Outreach",
+      "summary_zh": "融资/投资人材料：路演叙事与数据呈现",
+      "picker_zh": "融资/投资人材料：路演叙事与数据呈现",
+      "en_desc": "融资/投资人材料：路演叙事与数据呈现",
+      "triggers_zh": [
+        "investor-outreach",
+        "投资人 Outreach",
+        "融资",
+        "投资人材料",
+        "路演叙事与数据呈"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "issue-triage": {
+      "label_zh": "Issue 分诊",
+      "summary_zh": "Issue 分诊：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Issue 分诊：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Issue 分诊：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "issue-triage",
+        "Issue 分诊",
+        "分诊",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "iterative-retrieval": {
+      "label_zh": "多 Agent 编排",
+      "summary_zh": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "picker_zh": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "en_desc": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "triggers_zh": [
+        "iterative-retrieval",
+        "多 Agent 编排",
+        "编排",
+        "子任务分发",
+        "汇总与验证闭环"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "job-stories": {
+      "label_zh": "Job Stories",
+      "summary_zh": "Job Stories：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Job Stories：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Job Stories：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "job-stories",
+        "Job Stories",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "karpathy-guidelines": {
+      "label_zh": "1. Think 在编码之前使用",
+      "summary_zh": "1. Think 在编码之前使用：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "1. Think 在编码之前使用：辅助完成相关分析、生成或审查任务",
+      "en_desc": "1. Think 在编码之前使用：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "karpathy-guidelines",
+        "1. Think 在编码之前使用",
+        "在编码之前使用",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "核心门禁",
+      "auto_generated": true
+    },
+    "kubernetes-operations": {
+      "label_zh": "DevOps/部署",
+      "summary_zh": "DevOps/部署：容器、流水线与环境配置",
+      "picker_zh": "DevOps/部署：容器、流水线与环境配置",
+      "en_desc": "DevOps/部署：容器、流水线与环境配置",
+      "triggers_zh": [
+        "kubernetes-operations",
+        "DevOps/部署",
+        "部署",
+        "容器",
+        "流水线与环境配置"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "last30days": {
+      "label_zh": "Last30days",
+      "summary_zh": "Last30days：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Last30days：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Last30days：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "last30days",
+        "Last30days",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "lean-canvas": {
+      "label_zh": "Lean Canvas",
+      "summary_zh": "Lean Canvas：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Lean Canvas：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Lean Canvas：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "lean-canvas",
+        "Lean Canvas",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "levels": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "levels",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "lingo": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "lingo",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "llm-integration": {
+      "label_zh": "LLM Integration",
+      "summary_zh": "LLM Integration：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "LLM Integration：辅助完成相关分析、生成或审查任务",
+      "en_desc": "LLM Integration：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "llm-integration",
+        "LLM Integration",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "llm-router": {
+      "label_zh": "LLM 路由",
+      "summary_zh": "LLM 路由：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "LLM 路由：辅助完成相关分析、生成或审查任务",
+      "en_desc": "LLM 路由：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "模型路由",
+        "LLM router",
+        "多提供商",
+        "llm-router",
+        "LLM 路由",
+        "路由",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "工程",
+      "auto_generated": true
+    },
+    "luxury": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "luxury",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "manage-skills": {
+      "label_zh": "Skill 工程",
+      "summary_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "picker_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "en_desc": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "triggers_zh": [
+        "manage-skills",
+        "Skill 工程",
+        "工程",
+        "编写",
+        "验证",
+        "与触发条件设计"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "market-research": {
+      "label_zh": "市场 研究",
+      "summary_zh": "市场 研究：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "市场 研究：辅助完成相关分析、生成或审查任务",
+      "en_desc": "市场 研究：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "market-research",
+        "市场 研究",
+        "市场",
+        "研究",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "market-segments": {
+      "label_zh": "医疗信息系统",
+      "summary_zh": "医疗信息系统：临床安全、CDSS 与 PHI 合规",
+      "picker_zh": "医疗信息系统：临床安全、CDSS 与 PHI 合规",
+      "en_desc": "医疗信息系统：临床安全、CDSS 与 PHI 合规",
+      "triggers_zh": [
+        "market-segments",
+        "医疗信息系统",
+        "临床安全",
+        "合规"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "market-sizing": {
+      "label_zh": "融资/投资人材料",
+      "summary_zh": "融资/投资人材料：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "融资/投资人材料：辅助完成相关分析、生成或审查任务",
+      "en_desc": "融资/投资人材料：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "market-sizing",
+        "融资/投资人材料",
+        "融资",
+        "投资人材料",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "marketing-ideas": {
+      "label_zh": "营销 Ideas",
+      "summary_zh": "编码前脑暴：澄清需求、探索方案并确认设计。适用于营销文案、规划拆解",
+      "picker_zh": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "en_desc": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "triggers_zh": [
+        "marketing-ideas",
+        "营销 Ideas",
+        "编码前脑暴",
+        "澄清需求",
+        "探索方案并确认设",
+        "适用于营销文案",
+        "规划拆解",
+        "营销文案"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "material": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "material",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "matrix": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "matrix",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "mcp-builder": {
+      "label_zh": "Python 后端",
+      "summary_zh": "Python 后端：框架、ORM、迁移与 API 设计",
+      "picker_zh": "Python 后端：框架、ORM、迁移与 API 设计",
+      "en_desc": "Python 后端：框架、ORM、迁移与 API 设计",
+      "triggers_zh": [
+        "mcp-builder",
+        "Python 后端",
+        "后端",
+        "框架",
+        "迁移与",
+        "设计"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "mcp-development": {
+      "label_zh": "MCP 服务端 与 Tools",
+      "summary_zh": "MCP 服务端 与 Tools：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "MCP 服务端 与 Tools：辅助完成相关分析、生成或审查任务",
+      "en_desc": "MCP 服务端 与 Tools：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "mcp-development",
+        "MCP 服务端 与 Tools",
+        "服务端",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "mcp-server-patterns": {
+      "label_zh": "MCP 服务端 模式",
+      "summary_zh": "MCP 服务：工具协议、集成模式与调试",
+      "picker_zh": "MCP 服务：工具协议、集成模式与调试",
+      "en_desc": "MCP 服务：工具协议、集成模式与调试",
+      "triggers_zh": [
+        "mcp-server-patterns",
+        "MCP 服务端 模式",
+        "服务",
+        "工具协议",
+        "集成模式与调试"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "memory-handoff": {
+      "label_zh": "记忆 交接",
+      "summary_zh": "记忆 交接：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "记忆 交接：辅助完成相关分析、生成或审查任务",
+      "en_desc": "记忆 交接：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "where were we",
+        "resume session",
+        "handoff",
+        "memory-handoff",
+        "记忆 交接",
+        "记忆",
+        "交接",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "metrics-dashboard": {
+      "label_zh": "实验/分析",
+      "summary_zh": "实验/分析：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "实验/分析：辅助完成相关分析、生成或审查任务",
+      "en_desc": "实验/分析：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "metrics-dashboard",
+        "实验/分析",
+        "实验",
+        "分析",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "microservices-design": {
+      "label_zh": "Microservices 设计",
+      "summary_zh": "Microservices 设计：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Microservices 设计：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Microservices 设计：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "microservices-design",
+        "Microservices 设计",
+        "设计",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "migrate-to-shoehorn": {
+      "label_zh": "迁移 到 Shoehorn",
+      "summary_zh": "迁移 到 Shoehorn：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "迁移 到 Shoehorn：辅助完成相关分析、生成或审查任务",
+      "en_desc": "迁移 到 Shoehorn：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "migrate-to-shoehorn",
+        "迁移 到 Shoehorn",
+        "迁移",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "minimal": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "minimal",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "minimalist-ui": {
+      "label_zh": "极简 UI",
+      "summary_zh": "Clean editorial-style interfaces. Warm monochrome, typographic contrast, flat bento grids.",
+      "picker_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "en_desc": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "triggers_zh": [
+        "minimalist",
+        "极简",
+        "Notion风",
+        "Linear风",
+        "editorial UI",
+        "minimalist-ui",
+        "极简 UI"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "mobile-development": {
+      "label_zh": "前端工程",
+      "summary_zh": "前端工程：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "前端工程：辅助完成相关分析、生成或审查任务",
+      "en_desc": "前端工程：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "mobile-development",
+        "前端工程",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "modern": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "modern",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "monetization-strategy": {
+      "label_zh": "编码前脑暴",
+      "summary_zh": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "picker_zh": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "en_desc": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "triggers_zh": [
+        "monetization-strategy",
+        "编码前脑暴",
+        "澄清需求",
+        "探索方案并确认设"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "monitoring-observability": {
+      "label_zh": "Monitoring 可观测",
+      "summary_zh": "Monitoring 可观测：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Monitoring 可观测：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Monitoring 可观测：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "monitoring-observability",
+        "Monitoring 可观测",
+        "可观测",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "mono": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "mono",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "neobrutalism": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "neobrutalism",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "neon": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "neon",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "neumorphism": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "neumorphism",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "nextjs-mastery": {
+      "label_zh": "应用 路由 结构",
+      "summary_zh": "应用 路由 结构：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "应用 路由 结构：辅助完成相关分析、生成或审查任务",
+      "en_desc": "应用 路由 结构：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "nextjs-mastery",
+        "应用 路由 结构",
+        "应用",
+        "路由",
+        "结构",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "nextjs-turbopack": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "Rust 工程：编译、所有权与 idiomatic 模式。适用于缺陷排查",
+      "picker_zh": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "en_desc": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "triggers_zh": [
+        "nextjs-turbopack",
+        "当 到 使用",
+        "工程",
+        "编译",
+        "所有权与",
+        "模式",
+        "适用于缺陷排查",
+        "缺陷排查"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "north-star-metric": {
+      "label_zh": "Domain 上下文",
+      "summary_zh": "Domain 上下文：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Domain 上下文：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Domain 上下文：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "north-star-metric",
+        "Domain 上下文",
+        "上下文",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "observability-and-instrumentation": {
+      "label_zh": "结构化诊断",
+      "summary_zh": "结构化诊断：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "结构化诊断：辅助完成相关分析、生成或审查任务",
+      "en_desc": "结构化诊断：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "observability-and-instrumentation",
+        "结构化诊断",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "obsidian-vault": {
+      "label_zh": "Obsidian Vault",
+      "summary_zh": "Obsidian Vault：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Obsidian Vault：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Obsidian Vault：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "obsidian-vault",
+        "Obsidian Vault",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "opportunity-solution-tree": {
+      "label_zh": "实验/分析",
+      "summary_zh": "实验/分析：A/B 测试解读与统计显著性判断",
+      "picker_zh": "实验/分析：A/B 测试解读与统计显著性判断",
+      "en_desc": "实验/分析：A/B 测试解读与统计显著性判断",
+      "triggers_zh": [
+        "opportunity-solution-tree",
+        "实验/分析",
+        "实验",
+        "分析",
+        "测试解读与统计显",
+        "著性判断"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ouro-loop": {
+      "label_zh": "Ouro-循环",
+      "summary_zh": "Ouro-循环：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Ouro-循环：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Ouro-循环：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "ouro",
+        "自主循环",
+        "多步验证",
+        "MAP-PLAN",
+        "remediate",
+        "ouro-loop",
+        "Ouro-循环",
+        "循环",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "规划与规格",
+      "auto_generated": true
+    },
+    "outcome-roadmap": {
+      "label_zh": "Outcome Roadmap",
+      "summary_zh": "Outcome Roadmap：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Outcome Roadmap：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Outcome Roadmap：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "outcome-roadmap",
+        "Outcome Roadmap",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pacman": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "pacman",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "paper": {
+      "label_zh": "论文 设计 设计 System Skill",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "paper",
+        "论文 设计 设计 System Skill",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pdf": {
+      "label_zh": "Pdf",
+      "summary_zh": "Pdf：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Pdf：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Pdf：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pdf",
+        "Pdf",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "performance": {
+      "label_zh": "性能",
+      "summary_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "picker_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "en_desc": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "triggers_zh": [
+        "performance",
+        "性能",
+        "性能分析与优化",
+        "瓶颈定位",
+        "包体与运行时改进"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "performance-optimization": {
+      "label_zh": "打包 分析 与 代码 Splitting",
+      "summary_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "picker_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "en_desc": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "triggers_zh": [
+        "performance-optimization",
+        "打包 分析 与 代码 Splitting",
+        "性能分析与优化",
+        "瓶颈定位",
+        "包体与运行时改进"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "perspective": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "perspective",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pestle-analysis": {
+      "label_zh": "Pestle 分析",
+      "summary_zh": "Pestle 分析：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Pestle 分析：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Pestle 分析：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pestle-analysis",
+        "Pestle 分析",
+        "分析",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "plankton-code-quality": {
+      "label_zh": "Plankton 代码 质量",
+      "summary_zh": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "picker_zh": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "en_desc": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "triggers_zh": [
+        "plankton-code-quality",
+        "Plankton 代码 质量",
+        "自动化",
+        "提交前检查与",
+        "工作流钩子"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "planning-and-task-breakdown": {
+      "label_zh": "规划 与 任务 Breakdown",
+      "summary_zh": "规划 与 任务 Breakdown：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "规划 与 任务 Breakdown：辅助完成相关分析、生成或审查任务",
+      "en_desc": "规划 与 任务 Breakdown：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "planning-and-task-breakdown",
+        "规划 与 任务 Breakdown",
+        "规划",
+        "任务",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "planning-with-files": {
+      "label_zh": "规划 与 文件",
+      "summary_zh": "规划 与 文件：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "规划 与 文件：辅助完成相关分析、生成或审查任务",
+      "en_desc": "规划 与 文件：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "planning-with-files",
+        "规划 与 文件",
+        "规划",
+        "文件",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "planning-with-files-zh": {
+      "label_zh": "文件规划系统",
+      "summary_zh": "Use when the user asks in Chinese for multi-step planning with task_plan.md, findings.md, progress.md, or 规划/拆解/进度跟踪.",
+      "picker_zh": "文件规划系统",
+      "en_desc": "文件规划系统",
+      "triggers_zh": [
+        "task_plan.md",
+        "progress.md",
+        "中文规划",
+        "planning-with-files-zh",
+        "文件规划系统",
+        "规划",
+        "拆解",
+        "进度跟踪"
+      ],
+      "category_zh": "规划与规格",
+      "auto_generated": true
+    },
+    "pm-analytics": {
+      "label_zh": "数据库/SQL",
+      "summary_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "picker_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "en_desc": "数据库/SQL： schema 设计、查询优化与迁移",
+      "triggers_zh": [
+        "pm-analytics",
+        "数据库/SQL",
+        "数据库",
+        "设计",
+        "查询优化与迁移"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pm-competitor-deconstructor": {
+      "label_zh": "pm-competitor-deconstructor：从竞品名单...",
+      "summary_zh": "pm-competitor-deconstructor：从竞品名单...：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "pm-competitor-deconstructor：从竞品名单...：辅助完成相关分析、生成或审查任务",
+      "en_desc": "pm-competitor-deconstructor：从竞品名单...：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pm-competitor-deconstructor",
+        "pm-competitor-deconstructor：从竞品名单...",
+        "从竞品名单",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pm-experiment-designer": {
+      "label_zh": "无障碍合规（WCAG）",
+      "summary_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "picker_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "en_desc": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "triggers_zh": [
+        "pm-experiment-designer",
+        "无障碍合规（WCAG）",
+        "无障碍合规",
+        "键盘导航与读屏适"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pm-image2pencil": {
+      "label_zh": "鏍稿績鍘熷垯",
+      "summary_zh": "鏍稿績鍘熷垯：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "鏍稿績鍘熷垯：辅助完成相关分析、生成或审查任务",
+      "en_desc": "鏍稿績鍘熷垯：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pm-image2pencil",
+        "鏍稿績鍘熷垯",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pm-image2proto": {
+      "label_zh": "图片-到-原型 Skill",
+      "summary_zh": "图片-到-原型 Skill：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "图片-到-原型 Skill：辅助完成相关分析、生成或审查任务",
+      "en_desc": "图片-到-原型 Skill：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "screenshot prototype",
+        "image2proto",
+        "pm-image2proto",
+        "图片-到-原型 Skill",
+        "图片",
+        "原型",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pm-postmortem-writer": {
+      "label_zh": "pm-postmortem-writer：从上线数据到可执行的复盘报告",
+      "summary_zh": "pm-postmortem-writer：从上线数据到可执行的复盘报告：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "pm-postmortem-writer：从上线数据到可执行的复盘报告：辅助完成相关分析、生成或审查任务",
+      "en_desc": "pm-postmortem-writer：从上线数据到可执行的复盘报告：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pm-postmortem-writer",
+        "pm-postmortem-writer：从上线数据到可执行的复盘报告",
+        "从上线数据到可执",
+        "行的复盘报告",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pm-prd-writer": {
+      "label_zh": "PRD 撰写",
+      "summary_zh": "把模糊需求转化为可评审的产品需求文档（PRD）。当用户说写PRD、需求文档、功能说明书时使用。不适用于：纯技术方案与模块架构（用 zero-to-one-gate）、纯 UI 标注（用 design-handoff）。",
+      "picker_zh": "把模糊需求转化为可评审的产品需求文档（PRD）",
+      "en_desc": "把模糊需求转化为可评审的产品需求文档（PRD）",
+      "triggers_zh": [
+        "pm-prd-writer",
+        "PRD 撰写",
+        "把模糊需求转化为",
+        "可评审的产品需求",
+        "文档",
+        "当用户说写",
+        "需求文档",
+        "功能说明书时使用",
+        "不适用于",
+        "纯技术方案与模块"
+      ],
+      "category_zh": "规划与规格",
+      "auto_generated": true
+    },
+    "pm-prioritization-engine": {
+      "label_zh": "SPACE-prioritization-engine锛氬妯″瀷...",
+      "summary_zh": "SPACE-prioritization-engine锛氬妯″瀷...：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "SPACE-prioritization-engine锛氬妯″瀷...：辅助完成相关分析、生成或审查任务",
+      "en_desc": "SPACE-prioritization-engine锛氬妯″瀷...：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pm-prioritization-engine",
+        "SPACE-prioritization-engine锛氬妯″瀷...",
+        "锛氬",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pm-review-board": {
+      "label_zh": "SPACE-review-board锛氬瑙掕壊妯℃嫙璇勫",
+      "summary_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "picker_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "en_desc": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "triggers_zh": [
+        "pm-review-board",
+        "SPACE-review-board锛氬瑙掕壊妯℃嫙璇勫",
+        "把模糊产品想法整",
+        "理为可评审的产品",
+        "需求文档"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pm-roadmap-planner": {
+      "label_zh": "PM Road绘制/映射 规划",
+      "summary_zh": "PM Road绘制/映射 规划：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "PM Road绘制/映射 规划：辅助完成相关分析、生成或审查任务",
+      "en_desc": "PM Road绘制/映射 规划：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pm-roadmap-planner",
+        "PM Road绘制/映射 规划",
+        "绘制",
+        "映射",
+        "规划",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pm-survey-designer": {
+      "label_zh": "SPACE-survey-designer锛氫粠璋冪爺鐩爣鍒伴珮...",
+      "summary_zh": "SPACE-survey-designer锛氫粠璋冪爺鐩爣鍒伴珮...：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "SPACE-survey-designer锛氫粠璋冪爺鐩爣鍒伴珮...：辅助完成相关分析、生成或审查任务",
+      "en_desc": "SPACE-survey-designer锛氫粠璋冪爺鐩爣鍒伴珮...：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pm-survey-designer",
+        "SPACE-survey-designer锛氫粠璋冪爺鐩爣鍒伴珮...",
+        "锛氫粠璋冪爺鐩",
+        "爣鍒伴珮",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pm-tracking-spec-writer": {
+      "label_zh": "Tracking Spec Writer锛氬煁鐐逛笌鎸囨爣璁捐",
+      "summary_zh": "Tracking Spec Writer锛氬煁鐐逛笌鎸囨爣璁捐：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Tracking Spec Writer锛氬煁鐐逛笌鎸囨爣璁捐：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Tracking Spec Writer锛氬煁鐐逛笌鎸囨爣璁捐：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pm-tracking-spec-writer",
+        "Tracking Spec Writer锛氬煁鐐逛笌鎸囨爣璁捐",
+        "锛氬煁鐐逛笌鎸囨",
+        "爣璁捐",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pm-url2proto": {
+      "label_zh": "前端工程",
+      "summary_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "picker_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "en_desc": "前端工程：组件、状态、构建与 UI 实现",
+      "triggers_zh": [
+        "pm-url2proto",
+        "前端工程",
+        "组件",
+        "状态",
+        "构建与",
+        "实现"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "porters-five-forces": {
+      "label_zh": "Porters Five Forces",
+      "summary_zh": "Porters Five Forces：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Porters Five Forces：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Porters Five Forces：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "porters-five-forces",
+        "Porters Five Forces",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "positioning-ideas": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "picker_zh": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "en_desc": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "triggers_zh": [
+        "positioning-ideas",
+        "当 到 使用",
+        "编码前脑暴",
+        "澄清需求",
+        "探索方案并确认设"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "postgres-optimization": {
+      "label_zh": "数据库/SQL",
+      "summary_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "picker_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "en_desc": "数据库/SQL： schema 设计、查询优化与迁移",
+      "triggers_zh": [
+        "postgres-optimization",
+        "数据库/SQL",
+        "数据库",
+        "设计",
+        "查询优化与迁移"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ppt-master": {
+      "label_zh": "PPT Master 原生生成",
+      "summary_zh": "从文档/Markdown/URL 生成可编辑原生 PowerPoint，支持模板与旁白。",
+      "picker_zh": "文档/MD → 原生可编辑 PPTX（非纯图片幻灯）",
+      "en_desc": ">",
+      "triggers_zh": [
+        "做PPT",
+        "markdown转PPT",
+        "可编辑PPT",
+        "原生PPT",
+        "ppt-master"
+      ],
+      "category_zh": "演示与幻灯片",
+      "auto_generated": false
+    },
+    "pptx": {
+      "label_zh": "演示文稿处理",
+      "summary_zh": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "picker_zh": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "en_desc": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "triggers_zh": [
+        "pptx",
+        "改PPT",
+        "编辑幻灯片",
+        "presentation",
+        "演示文稿处理",
+        "创建",
+        "编辑",
+        "幻灯片"
+      ],
+      "category_zh": "演示与文档",
+      "auto_generated": true
+    },
+    "pr-review": {
+      "label_zh": "/pr-审查",
+      "summary_zh": "/pr-审查：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "/pr-审查：辅助完成相关分析、生成或审查任务",
+      "en_desc": "/pr-审查：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pr-review",
+        "/pr-审查",
+        "审查",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pr-triage": {
+      "label_zh": "PR 分诊",
+      "summary_zh": "PR 分诊：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "PR 分诊：辅助完成相关分析、生成或审查任务",
+      "en_desc": "PR 分诊：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pr-triage",
+        "PR 分诊",
+        "分诊",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pre-mortem": {
+      "label_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "summary_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "picker_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "en_desc": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "triggers_zh": [
+        "pre-mortem",
+        "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+        "把模糊产品想法整",
+        "理为可评审的产品",
+        "需求文档"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "premium": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "premium",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "pricing-strategy": {
+      "label_zh": "Pricing 策略",
+      "summary_zh": "Pricing 策略：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Pricing 策略：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Pricing 策略：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "pricing-strategy",
+        "Pricing 策略",
+        "策略",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "prioritization-frameworks": {
+      "label_zh": "Prioritization Frameworks",
+      "summary_zh": "Prioritization Frameworks：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Prioritization Frameworks：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Prioritization Frameworks：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "prioritization-frameworks",
+        "Prioritization Frameworks",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "prioritize-assumptions": {
+      "label_zh": "实验/分析",
+      "summary_zh": "实验/分析：A/B 测试解读与统计显著性判断",
+      "picker_zh": "实验/分析：A/B 测试解读与统计显著性判断",
+      "en_desc": "实验/分析：A/B 测试解读与统计显著性判断",
+      "triggers_zh": [
+        "prioritize-assumptions",
+        "实验/分析",
+        "实验",
+        "分析",
+        "测试解读与统计显",
+        "著性判断"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "prioritize-features": {
+      "label_zh": "Prioritize Features",
+      "summary_zh": "Prioritize Features：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Prioritize Features：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Prioritize Features：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "prioritize-features",
+        "Prioritize Features",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "privacy-policy": {
+      "label_zh": "文档/ADR",
+      "summary_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "picker_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "en_desc": "文档/ADR：架构决策记录与技术说明撰写",
+      "triggers_zh": [
+        "privacy-policy",
+        "文档/ADR",
+        "文档",
+        "架构决策记录与技",
+        "术说明撰写"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "product-name": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "picker_zh": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "en_desc": "编码前脑暴：澄清需求、探索方案并确认设计",
+      "triggers_zh": [
+        "product-name",
+        "当 到 使用",
+        "编码前脑暴",
+        "澄清需求",
+        "探索方案并确认设"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "product-strategy": {
+      "label_zh": "Product 策略",
+      "summary_zh": "Product 策略：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Product 策略：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Product 策略：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "product-strategy",
+        "Product 策略",
+        "策略",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "product-vision": {
+      "label_zh": "编码前脑暴",
+      "summary_zh": "编码前脑暴：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "编码前脑暴：辅助完成相关分析、生成或审查任务",
+      "en_desc": "编码前脑暴：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "product-vision",
+        "编码前脑暴",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "production-audit": {
+      "label_zh": "生产 审计",
+      "summary_zh": "生产 审计：适用于部署发布等场景",
+      "picker_zh": "生产 审计：适用于部署发布等场景",
+      "en_desc": "生产 审计：适用于部署发布等场景",
+      "triggers_zh": [
+        "production-audit",
+        "生产 审计",
+        "生产",
+        "审计",
+        "适用于部署发布等",
+        "场景",
+        "部署发布"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "professional": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "professional",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "prompt-engineering": {
+      "label_zh": "Prompt 工程",
+      "summary_zh": "Prompt 工程：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Prompt 工程：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Prompt 工程：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "prompt-engineering",
+        "Prompt 工程",
+        "工程",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "prototype": {
+      "label_zh": "原型",
+      "summary_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "picker_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "en_desc": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "triggers_zh": [
+        "prototype",
+        "原型",
+        "无障碍合规",
+        "键盘导航与读屏适"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "publication": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "publication",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "python-best-practices": {
+      "label_zh": "Python 后端",
+      "summary_zh": "Python 后端：框架、ORM、迁移与 API 设计",
+      "picker_zh": "Python 后端：框架、ORM、迁移与 API 设计",
+      "en_desc": "Python 后端：框架、ORM、迁移与 API 设计",
+      "triggers_zh": [
+        "python-best-practices",
+        "Python 后端",
+        "后端",
+        "框架",
+        "迁移与",
+        "设计"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "qa": {
+      "label_zh": "QA 会话",
+      "summary_zh": "QA 会话：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "QA 会话：辅助完成相关分析、生成或审查任务",
+      "en_desc": "QA 会话：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "qa",
+        "QA 会话",
+        "会话",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "qa-test-planner": {
+      "label_zh": "测试计划",
+      "summary_zh": "测试计划：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "测试计划：辅助完成相关分析、生成或审查任务",
+      "en_desc": "测试计划：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "测试计划",
+        "QA",
+        "测试用例",
+        "qa-test-planner",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "验证与审查",
+      "auto_generated": true
+    },
+    "query-expert": {
+      "label_zh": "SQL 查询专家",
+      "summary_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "picker_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "en_desc": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "triggers_zh": [
+        "SQL",
+        "慢查询",
+        "数据库查询",
+        "query-expert",
+        "SQL 查询专家",
+        "性能分析与优化",
+        "瓶颈定位",
+        "包体与运行时改进"
+      ],
+      "category_zh": "工程",
+      "auto_generated": true
+    },
+    "react-patterns": {
+      "label_zh": "React 模式",
+      "summary_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "picker_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "en_desc": "前端工程：组件、状态、构建与 UI 实现",
+      "triggers_zh": [
+        "react-patterns",
+        "React 模式",
+        "前端工程",
+        "组件",
+        "状态",
+        "构建与",
+        "实现"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "recall": {
+      "label_zh": "回忆",
+      "summary_zh": "回忆：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "回忆：辅助完成相关分析、生成或审查任务",
+      "en_desc": "回忆：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "recall",
+        "回忆",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "recap": {
+      "label_zh": "回顾",
+      "summary_zh": "回顾：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "回顾：辅助完成相关分析、生成或审查任务",
+      "en_desc": "回顾：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "recap",
+        "回顾",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "receiving-code-review": {
+      "label_zh": "代码 审查 Reception",
+      "summary_zh": "代码审查：质量、模式、安全与可维护性检查",
+      "picker_zh": "代码审查：质量、模式、安全与可维护性检查",
+      "en_desc": "代码审查：质量、模式、安全与可维护性检查",
+      "triggers_zh": [
+        "receiving-code-review",
+        "代码 审查 Reception",
+        "代码审查",
+        "质量",
+        "模式",
+        "安全与可维护性检"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "redesign-existing-projects": {
+      "label_zh": "0→1 新模块门禁",
+      "summary_zh": "0→1 新模块门禁：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "0→1 新模块门禁：辅助完成相关分析、生成或审查任务",
+      "en_desc": "0→1 新模块门禁：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "redesign",
+        "改版",
+        "UI audit",
+        "界面审计",
+        "现有页面优化",
+        "spacing fix",
+        "层次不对",
+        "redesign-existing-projects",
+        "0→1 新模块门禁",
+        "新模块门禁",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "redis-patterns": {
+      "label_zh": "Redis 模式",
+      "summary_zh": "Redis 模式：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Redis 模式：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Redis 模式：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "redis-patterns",
+        "Redis 模式",
+        "模式",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "refined": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "refined",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "release-notes": {
+      "label_zh": "Release Notes",
+      "summary_zh": "Release Notes：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Release Notes：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Release Notes：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "release-notes",
+        "Release Notes",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "remember": {
+      "label_zh": "记住",
+      "summary_zh": "记住：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "记住：辅助完成相关分析、生成或审查任务",
+      "en_desc": "记住：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "remember",
+        "记住",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "repo-recap": {
+      "label_zh": "Repo 回顾",
+      "summary_zh": "Repo 回顾：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Repo 回顾：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Repo 回顾：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "repo-recap",
+        "Repo 回顾",
+        "回顾",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "request-refactor-plan": {
+      "label_zh": "Request 重构 计划",
+      "summary_zh": "重构/清理：去重、删死代码与结构收敛",
+      "picker_zh": "重构/清理：去重、删死代码与结构收敛",
+      "en_desc": "重构/清理：去重、删死代码与结构收敛",
+      "triggers_zh": [
+        "request-refactor-plan",
+        "Request 重构 计划",
+        "重构",
+        "清理",
+        "去重",
+        "删死代码与结构收"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "requesting-code-review": {
+      "label_zh": "Requesting 代码 审查",
+      "summary_zh": "代码审查：质量、模式、安全与可维护性检查",
+      "picker_zh": "代码审查：质量、模式、安全与可维护性检查",
+      "en_desc": "代码审查：质量、模式、安全与可维护性检查",
+      "triggers_zh": [
+        "requesting-code-review",
+        "Requesting 代码 审查",
+        "代码审查",
+        "质量",
+        "模式",
+        "安全与可维护性检"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "requirement-clarifier": {
+      "label_zh": "Requirement Clarifier（需求澄清与 Agent...",
+      "summary_zh": "ALWAYS apply at session start and before execution. Converts fuzzy vibe-coding input into Mini-Spec (S4.5) + structured S1-S12 + Agent execution Prompt. Read vibe-coding-bridge....",
+      "picker_zh": "模糊需求澄清：整理 Mini-Spec 与可执行 Prompt",
+      "en_desc": "模糊需求澄清：整理 Mini-Spec 与可执行 Prompt",
+      "triggers_zh": [
+        "帮我做",
+        "帮我",
+        "优化一下",
+        "整理需求",
+        "需求不清",
+        "不清楚",
+        "模糊",
+        "口语",
+        "整体优化",
+        "想做个",
+        "能不能",
+        "怎么弄"
+      ],
+      "category_zh": "核心门禁",
+      "auto_generated": true
+    },
+    "retro": {
+      "label_zh": "Retro",
+      "summary_zh": "Retro：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Retro：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Retro：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "retro",
+        "Retro",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "revealjs": {
+      "label_zh": "Reveal.js 演示",
+      "summary_zh": "生成 reveal.js HTML 演示：主题、多栏、图表、演讲者备注。",
+      "picker_zh": "Reveal.js 专业 HTML 幻灯片，浏览器直接播放",
+      "en_desc": "Create polished, professional reveal.js presentations. Use when the user asks to create slides, a presentation, a deck, or a slideshow. Supports themes, multi-column layouts, code highlighting, animations, speaker notes, and custom styling. Generates HTML + CSS with no build step required.",
+      "triggers_zh": [
+        "reveal.js",
+        "revealjs",
+        "HTML演示",
+        "presentation",
+        "deck",
+        "slideshow"
+      ],
+      "category_zh": "演示与幻灯片",
+      "auto_generated": false
+    },
+    "review": {
+      "label_zh": "审查",
+      "summary_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "picker_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "en_desc": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "triggers_zh": [
+        "review",
+        "审查",
+        "把模糊产品想法整",
+        "理为可评审的产品",
+        "需求文档"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "review-resume": {
+      "label_zh": "SEO 优化",
+      "summary_zh": "SEO 优化：技术审计、页面元数据与结构化数据",
+      "picker_zh": "SEO 优化：技术审计、页面元数据与结构化数据",
+      "en_desc": "SEO 优化：技术审计、页面元数据与结构化数据",
+      "triggers_zh": [
+        "review-resume",
+        "SEO 优化",
+        "优化",
+        "技术审计",
+        "页面元数据与结构",
+        "化数据"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "rezvani-ai-act-readiness": {
+      "label_zh": "Rezvani AI 法案 就绪",
+      "summary_zh": "DevOps/部署：容器、流水线与环境配置",
+      "picker_zh": "DevOps/部署：容器、流水线与环境配置",
+      "en_desc": "DevOps/部署：容器、流水线与环境配置",
+      "triggers_zh": [
+        "AI Act",
+        "欧盟 AI 法",
+        "人工智能法案",
+        "rezvani-ai-act-readiness",
+        "Rezvani AI 法案 就绪",
+        "部署",
+        "容器",
+        "流水线与环境配置"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "rezvani-gdpr-audit-prep": {
+      "label_zh": "当 到 运行",
+      "summary_zh": "合规审计：GDPR/SOC2/AI Act 等检查清单",
+      "picker_zh": "合规审计：GDPR/SOC2/AI Act 等检查清单",
+      "en_desc": "合规审计：GDPR/SOC2/AI Act 等检查清单",
+      "triggers_zh": [
+        "GDPR",
+        "数据保护",
+        "隐私合规审计",
+        "rezvani-gdpr-audit-prep",
+        "当 到 运行",
+        "合规审计",
+        "等检查清单"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "rezvani-soc2-audit-prep": {
+      "label_zh": "当 到 运行",
+      "summary_zh": "合规审计：GDPR/SOC2/AI Act 等检查清单",
+      "picker_zh": "合规审计：GDPR/SOC2/AI Act 等检查清单",
+      "en_desc": "合规审计：GDPR/SOC2/AI Act 等检查清单",
+      "triggers_zh": [
+        "SOC2",
+        "soc 2",
+        "合规审计",
+        "rezvani-soc2-audit-prep",
+        "当 到 运行",
+        "等检查清单"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "riso": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "riso",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "rtk-tdd": {
+      "label_zh": "Rust TDD 工作流",
+      "summary_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "picker_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "en_desc": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "triggers_zh": [
+        "rtk-tdd",
+        "Rust TDD 工作流",
+        "测试驱动开发",
+        "先写测试再实现",
+        "覆盖单元",
+        "集成"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "rtk-triage": {
+      "label_zh": "/rtk-分诊",
+      "summary_zh": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "picker_zh": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "en_desc": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "triggers_zh": [
+        "rtk-triage",
+        "/rtk-分诊",
+        "编排",
+        "子任务分发",
+        "汇总与验证闭环"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "rust-systems": {
+      "label_zh": "Rust 工程",
+      "summary_zh": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "picker_zh": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "en_desc": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "triggers_zh": [
+        "rust-systems",
+        "Rust 工程",
+        "工程",
+        "编译",
+        "所有权与",
+        "模式"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "savethetokens": {
+      "label_zh": "上下文 Governor",
+      "summary_zh": "上下文 Governor：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "上下文 Governor：辅助完成相关分析、生成或审查任务",
+      "en_desc": "上下文 Governor：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "savethetokens",
+        "上下文 Governor",
+        "上下文",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "scaffold-exercises": {
+      "label_zh": "脚手架 Exercises",
+      "summary_zh": "脚手架 Exercises：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "脚手架 Exercises：辅助完成相关分析、生成或审查任务",
+      "en_desc": "脚手架 Exercises：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "scaffold-exercises",
+        "脚手架 Exercises",
+        "脚手架",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "security-and-hardening": {
+      "label_zh": "Rust 工程",
+      "summary_zh": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "picker_zh": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "en_desc": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "triggers_zh": [
+        "security-and-hardening",
+        "Rust 工程",
+        "工程",
+        "编译",
+        "所有权与",
+        "模式"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "security-guardian": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "Hook/自动化：提交前检查与 Agent 工作流钩子。适用于安全审计",
+      "picker_zh": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "en_desc": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "triggers_zh": [
+        "security-guardian",
+        "当 到 使用",
+        "自动化",
+        "提交前检查与",
+        "工作流钩子",
+        "适用于安全审计",
+        "安全审计"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "security-hardening": {
+      "label_zh": "Rust 工程",
+      "summary_zh": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "picker_zh": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "en_desc": "Rust 工程：编译、所有权与 idiomatic 模式",
+      "triggers_zh": [
+        "security-hardening",
+        "Rust 工程",
+        "工程",
+        "编译",
+        "所有权与",
+        "模式"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "sega": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "sega",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "sentiment-analysis": {
+      "label_zh": "Sentiment 分析",
+      "summary_zh": "Sentiment 分析：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Sentiment 分析：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Sentiment 分析：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "sentiment-analysis",
+        "Sentiment 分析",
+        "分析",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "session-history": {
+      "label_zh": "会话 历史",
+      "summary_zh": "会话 历史：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "会话 历史：辅助完成相关分析、生成或审查任务",
+      "en_desc": "会话 历史：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "session-history",
+        "会话 历史",
+        "会话",
+        "历史",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "setup-matt-pocock-skills": {
+      "label_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "summary_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "picker_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "en_desc": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "triggers_zh": [
+        "setup-matt-pocock-skills",
+        "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+        "把模糊产品想法整",
+        "理为可评审的产品",
+        "需求文档"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "setup-pre-commit": {
+      "label_zh": "设置 预-提交 Hooks",
+      "summary_zh": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "picker_zh": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "en_desc": "Hook/自动化：提交前检查与 Agent 工作流钩子",
+      "triggers_zh": [
+        "setup-pre-commit",
+        "设置 预-提交 Hooks",
+        "自动化",
+        "提交前检查与",
+        "工作流钩子"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "shadcn": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "shadcn",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ship": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "当 到 使用：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "当 到 使用：辅助完成相关分析、生成或审查任务",
+      "en_desc": "当 到 使用：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "ship",
+        "当 到 使用",
+        "使用",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "shipping-and-launch": {
+      "label_zh": "交付 与 发布",
+      "summary_zh": "DevOps/部署：容器、流水线与环境配置。适用于部署发布",
+      "picker_zh": "DevOps/部署：容器、流水线与环境配置",
+      "en_desc": "DevOps/部署：容器、流水线与环境配置",
+      "triggers_zh": [
+        "shipping-and-launch",
+        "交付 与 发布",
+        "部署",
+        "容器",
+        "流水线与环境配置",
+        "适用于部署发布",
+        "部署发布"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "shipping-artifacts": {
+      "label_zh": "代码审查",
+      "summary_zh": "代码审查：质量、模式、安全与可维护性检查",
+      "picker_zh": "代码审查：质量、模式、安全与可维护性检查",
+      "en_desc": "代码审查：质量、模式、安全与可维护性检查",
+      "triggers_zh": [
+        "shipping-artifacts",
+        "代码审查",
+        "质量",
+        "模式",
+        "安全与可维护性检"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "simple": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "simple",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "sketch": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "sketch",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "skeumorphism": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "skeumorphism",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "skill-creator": {
+      "label_zh": "Skill 工程",
+      "summary_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "picker_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "en_desc": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "triggers_zh": [
+        "skill-creator",
+        "Skill 工程",
+        "工程",
+        "编写",
+        "验证",
+        "与触发条件设计"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "skill-scout": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "当 到 使用：适用于技能管理等场景",
+      "picker_zh": "当 到 使用：适用于技能管理等场景",
+      "en_desc": "当 到 使用：适用于技能管理等场景",
+      "triggers_zh": [
+        "skill-scout",
+        "当 到 使用",
+        "使用",
+        "适用于技能管理等",
+        "场景",
+        "技能管理"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "skill-stocktake": {
+      "label_zh": "Skill-盘点",
+      "summary_zh": "Skill-盘点：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Skill-盘点：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Skill-盘点：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "skill 审计",
+        "技能审计",
+        "stocktake",
+        "inventory audit",
+        "skill-stocktake",
+        "Skill-盘点",
+        "盘点",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "slack-gif-creator": {
+      "label_zh": "Slack Gif Creator",
+      "summary_zh": "Slack Gif Creator：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Slack Gif Creator：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Slack Gif Creator：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "slack-gif-creator",
+        "Slack Gif Creator",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "sleek": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "sleek",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "source-driven-development": {
+      "label_zh": "文档/ADR",
+      "summary_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "picker_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "en_desc": "文档/ADR：架构决策记录与技术说明撰写",
+      "triggers_zh": [
+        "source-driven-development",
+        "文档/ADR",
+        "文档",
+        "架构决策记录与技",
+        "术说明撰写"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "space-url2proto": {
+      "label_zh": "已弃用 Alias",
+      "summary_zh": "已弃用 Alias：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "已弃用 Alias：辅助完成相关分析、生成或审查任务",
+      "en_desc": "已弃用 Alias：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "space-url2proto",
+        "已弃用 Alias",
+        "已弃用",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "spacious": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "spacious",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "spec-driven-development": {
+      "label_zh": "规格 Driven Development",
+      "summary_zh": "规格 Driven Development：适用于方案不确定等场景",
+      "picker_zh": "规格 Driven Development：适用于方案不确定等场景",
+      "en_desc": "规格 Driven Development：适用于方案不确定等场景",
+      "triggers_zh": [
+        "spec-driven-development",
+        "规格 Driven Development",
+        "规格",
+        "适用于方案不确定",
+        "等场景",
+        "方案不确定"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "springboot-patterns": {
+      "label_zh": "后端/Java",
+      "summary_zh": "后端/Java：API、分层架构与持久化",
+      "picker_zh": "后端/Java：API、分层架构与持久化",
+      "en_desc": "后端/Java：API、分层架构与持久化",
+      "triggers_zh": [
+        "springboot-patterns",
+        "后端/Java",
+        "后端",
+        "分层架构与持久化"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "sprint-plan": {
+      "label_zh": "Sprint 计划",
+      "summary_zh": "Sprint 计划：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Sprint 计划：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Sprint 计划：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "sprint-plan",
+        "Sprint 计划",
+        "计划",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "sql-queries": {
+      "label_zh": "SQL 查询 生成",
+      "summary_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "picker_zh": "数据库/SQL： schema 设计、查询优化与迁移",
+      "en_desc": "数据库/SQL： schema 设计、查询优化与迁移",
+      "triggers_zh": [
+        "sql-queries",
+        "SQL 查询 生成",
+        "数据库",
+        "设计",
+        "查询优化与迁移"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "stakeholder-map": {
+      "label_zh": "文档/ADR",
+      "summary_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "picker_zh": "文档/ADR：架构决策记录与技术说明撰写",
+      "en_desc": "文档/ADR：架构决策记录与技术说明撰写",
+      "triggers_zh": [
+        "stakeholder-map",
+        "文档/ADR",
+        "文档",
+        "架构决策记录与技",
+        "术说明撰写"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "startup-canvas": {
+      "label_zh": "Startup Canvas",
+      "summary_zh": "Startup Canvas：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Startup Canvas：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Startup Canvas：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "startup-canvas",
+        "Startup Canvas",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "stitch-design-taste": {
+      "label_zh": "性能分析与优化",
+      "summary_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "picker_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "en_desc": "前端工程：组件、状态、构建与 UI 实现",
+      "triggers_zh": [
+        "stitch-design-taste",
+        "性能分析与优化",
+        "前端工程",
+        "组件",
+        "状态",
+        "构建与",
+        "实现"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "storytelling": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "storytelling",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "strategic-compact": {
+      "label_zh": "Strategic Compact",
+      "summary_zh": "Strategic Compact：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Strategic Compact：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Strategic Compact：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "strategic-compact",
+        "Strategic Compact",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "strategy-red-team": {
+      "label_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "summary_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "picker_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "en_desc": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "triggers_zh": [
+        "strategy-red-team",
+        "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+        "把模糊产品想法整",
+        "理为可评审的产品",
+        "需求文档"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "subagent-driven-development": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "picker_zh": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "en_desc": "多 Agent 编排：子任务分发、汇总与验证闭环",
+      "triggers_zh": [
+        "subagent-driven-development",
+        "当 到 使用",
+        "编排",
+        "子任务分发",
+        "汇总与验证闭环"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "summarize-interview": {
+      "label_zh": "Summarize Interview",
+      "summary_zh": "Summarize Interview：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Summarize Interview：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Summarize Interview：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "summarize-interview",
+        "Summarize Interview",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "summarize-meeting": {
+      "label_zh": "Summarize Meeting",
+      "summary_zh": "Summarize Meeting：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Summarize Meeting：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Summarize Meeting：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "summarize-meeting",
+        "Summarize Meeting",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "swot-analysis": {
+      "label_zh": "SWOT 分析",
+      "summary_zh": "SWOT 分析：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "SWOT 分析：辅助完成相关分析、生成或审查任务",
+      "en_desc": "SWOT 分析：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "swot-analysis",
+        "SWOT 分析",
+        "分析",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "systematic-debugging": {
+      "label_zh": "系统化排错",
+      "summary_zh": "Use when encountering bugs, test failures, unexpected behavior, or performance issues — before proposing fixes.",
+      "picker_zh": "系统化排错：先复现与定位根因，再提出修复方案",
+      "en_desc": "系统化排错：先复现与定位根因，再提出修复方案",
+      "triggers_zh": [
+        "root cause",
+        "根因",
+        "systematic debug",
+        "systematic-debugging",
+        "系统化排错",
+        "测试失败",
+        "缺陷排查"
+      ],
+      "category_zh": "调试",
+      "auto_generated": true
+    },
+    "tactus-design-style": {
+      "label_zh": "设计 风格 Skill",
+      "summary_zh": "Use when applying Castor6/tactus design-style mapping — pick visual style tokens, palettes, and typography from styles-mapping.json before UI work.",
+      "picker_zh": "设计 风格 Skill",
+      "en_desc": "设计 风格 Skill",
+      "triggers_zh": [
+        "design style",
+        "设计风格",
+        "tactus",
+        "风格映射",
+        "style preset",
+        "styles-mapping",
+        "视觉风格",
+        "tactus-design-style",
+        "设计 风格 Skill",
+        "落地页"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "task-intake-bridge": {
+      "label_zh": "网络诊断",
+      "summary_zh": "网络诊断：连通性、路由、DNS 与分层排查",
+      "picker_zh": "网络诊断：连通性、路由、DNS 与分层排查",
+      "en_desc": "网络诊断：连通性、路由、DNS 与分层排查",
+      "triggers_zh": [
+        "整理一下需求",
+        "拆解一下任务",
+        "转成执行语言",
+        "需求分析",
+        "任务分析",
+        "bridge",
+        "normalize request",
+        "execution-ready brief",
+        "先分析再执行",
+        "task-intake-bridge",
+        "网络诊断",
+        "连通性"
+      ],
+      "category_zh": "核心门禁",
+      "auto_generated": true
+    },
+    "tdd": {
+      "label_zh": "测试驱动开发",
+      "summary_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "picker_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "en_desc": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "triggers_zh": [
+        "tdd",
+        "测试驱动开发",
+        "先写测试再实现",
+        "覆盖单元",
+        "集成"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "tdd-rust": {
+      "label_zh": "RTK TDD 工作流",
+      "summary_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "picker_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "en_desc": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "triggers_zh": [
+        "tdd-rust",
+        "RTK TDD 工作流",
+        "测试驱动开发",
+        "先写测试再实现",
+        "覆盖单元",
+        "集成"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "tdd-workflow": {
+      "label_zh": "TDD 工作流",
+      "summary_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E。适用于缺陷排查、重构",
+      "picker_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "en_desc": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "triggers_zh": [
+        "tdd",
+        "test first",
+        "red green refactor",
+        "tdd-workflow",
+        "TDD 工作流",
+        "测试驱动开发",
+        "先写测试再实现",
+        "覆盖单元",
+        "集成",
+        "适用于缺陷排查",
+        "重构",
+        "缺陷排查"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "teach": {
+      "label_zh": "Teach",
+      "summary_zh": "Teach：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Teach：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Teach：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "teach",
+        "Teach",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "technical-launch-planner": {
+      "label_zh": "技术发布规划",
+      "summary_zh": "技术发布规划：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "技术发布规划：辅助完成相关分析、生成或审查任务",
+      "en_desc": "技术发布规划：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "technical-launch-planner",
+        "技术发布规划",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "规划与规格",
+      "auto_generated": true
+    },
+    "template-skill": {
+      "label_zh": "模板 Skill",
+      "summary_zh": "模板 Skill：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "模板 Skill：辅助完成相关分析、生成或审查任务",
+      "en_desc": "模板 Skill：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "template-skill",
+        "模板 Skill",
+        "模板",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "terracotta": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "terracotta",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "test-driven-development": {
+      "label_zh": "测试驱动开发",
+      "summary_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E。适用于缺陷排查、重构",
+      "picker_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "en_desc": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "triggers_zh": [
+        "test-driven-development",
+        "测试驱动开发",
+        "先写测试再实现",
+        "覆盖单元",
+        "集成",
+        "适用于缺陷排查",
+        "重构",
+        "缺陷排查"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "test-scenarios": {
+      "label_zh": "测试 Scenarios",
+      "summary_zh": "测试 Scenarios：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "测试 Scenarios：辅助完成相关分析、生成或审查任务",
+      "en_desc": "测试 Scenarios：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "test-scenarios",
+        "测试 Scenarios",
+        "测试",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "testing-strategies": {
+      "label_zh": "测试 Strategies",
+      "summary_zh": "测试 Strategies：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "测试 Strategies：辅助完成相关分析、生成或审查任务",
+      "en_desc": "测试 Strategies：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "testing-strategies",
+        "测试 Strategies",
+        "测试",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "tetris": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "tetris",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "theme-factory": {
+      "label_zh": "演示文稿处理",
+      "summary_zh": "演示文稿处理：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "演示文稿处理：辅助完成相关分析、生成或审查任务",
+      "en_desc": "演示文稿处理：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "theme-factory",
+        "演示文稿处理",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "to-issues": {
+      "label_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "summary_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "picker_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "en_desc": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "triggers_zh": [
+        "to-issues",
+        "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+        "把模糊产品想法整",
+        "理为可评审的产品",
+        "需求文档"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "to-prd": {
+      "label_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "summary_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "picker_zh": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "en_desc": "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+      "triggers_zh": [
+        "to-prd",
+        "把模糊产品想法整理为可评审的产品需求文档（PRD）",
+        "把模糊产品想法整",
+        "理为可评审的产品",
+        "需求文档"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "triage": {
+      "label_zh": "分诊",
+      "summary_zh": "分诊：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "分诊：辅助完成相关分析、生成或审查任务",
+      "en_desc": "分诊：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "triage",
+        "分诊",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "typescript-advanced": {
+      "label_zh": "TypeScript Advanced",
+      "summary_zh": "TypeScript Advanced：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "TypeScript Advanced：辅助完成相关分析、生成或审查任务",
+      "en_desc": "TypeScript Advanced：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "typescript-advanced",
+        "TypeScript Advanced",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "typescript-strict-patterns": {
+      "label_zh": "TypeScript Strict 模式",
+      "summary_zh": "TypeScript Strict 模式：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "TypeScript Strict 模式：辅助完成相关分析、生成或审查任务",
+      "en_desc": "TypeScript Strict 模式：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "typescript-strict-patterns",
+        "TypeScript Strict 模式",
+        "模式",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ubiquitous-language": {
+      "label_zh": "Ubiquitous Language",
+      "summary_zh": "Ubiquitous Language：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Ubiquitous Language：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Ubiquitous Language：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "ubiquitous-language",
+        "Ubiquitous Language",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "ui-ux-pro-max": {
+      "label_zh": "无障碍合规（WCAG）",
+      "summary_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "picker_zh": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "en_desc": "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配",
+      "triggers_zh": [
+        "ui-ux-pro-max",
+        "无障碍合规（WCAG）",
+        "无障碍合规",
+        "键盘导航与读屏适"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "understand": {
+      "label_zh": "/理解",
+      "summary_zh": "/理解：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "/理解：辅助完成相关分析、生成或审查任务",
+      "en_desc": "/理解：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "understand",
+        "/理解",
+        "理解",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "understand-chat": {
+      "label_zh": "/理解-chat",
+      "summary_zh": "/理解-chat：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "/理解-chat：辅助完成相关分析、生成或审查任务",
+      "en_desc": "/理解-chat：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "understand-chat",
+        "/理解-chat",
+        "理解",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "understand-dashboard": {
+      "label_zh": "理解 Dashboard",
+      "summary_zh": "理解 Dashboard：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "理解 Dashboard：辅助完成相关分析、生成或审查任务",
+      "en_desc": "理解 Dashboard：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "understand-dashboard",
+        "理解 Dashboard",
+        "理解",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "understand-diff": {
+      "label_zh": "/理解-diff",
+      "summary_zh": "/理解-diff：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "/理解-diff：辅助完成相关分析、生成或审查任务",
+      "en_desc": "/理解-diff：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "understand-diff",
+        "/理解-diff",
+        "理解",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "understand-domain": {
+      "label_zh": "理解 Domain",
+      "summary_zh": "理解 Domain：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "理解 Domain：辅助完成相关分析、生成或审查任务",
+      "en_desc": "理解 Domain：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "understand-domain",
+        "理解 Domain",
+        "理解",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "understand-explain": {
+      "label_zh": "图谱 结构 参考",
+      "summary_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "picker_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "en_desc": "前端工程：组件、状态、构建与 UI 实现",
+      "triggers_zh": [
+        "understand-explain",
+        "图谱 结构 参考",
+        "前端工程",
+        "组件",
+        "状态",
+        "构建与",
+        "实现"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "understand-knowledge": {
+      "label_zh": "理解 Knowledge",
+      "summary_zh": "理解 Knowledge：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "理解 Knowledge：辅助完成相关分析、生成或审查任务",
+      "en_desc": "理解 Knowledge：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "understand-knowledge",
+        "理解 Knowledge",
+        "理解",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "understand-onboard": {
+      "label_zh": "图谱 结构 参考",
+      "summary_zh": "图谱 结构 参考：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "图谱 结构 参考：辅助完成相关分析、生成或审查任务",
+      "en_desc": "图谱 结构 参考：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "understand-onboard",
+        "图谱 结构 参考",
+        "图谱",
+        "结构",
+        "参考",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "user-personas": {
+      "label_zh": "User Personas",
+      "summary_zh": "User Personas：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "User Personas：辅助完成相关分析、生成或审查任务",
+      "en_desc": "User Personas：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "user-personas",
+        "User Personas",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "user-segmentation": {
+      "label_zh": "User Segmentation",
+      "summary_zh": "User Segmentation：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "User Segmentation：辅助完成相关分析、生成或审查任务",
+      "en_desc": "User Segmentation：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "user-segmentation",
+        "User Segmentation",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "user-stories": {
+      "label_zh": "User Stories",
+      "summary_zh": "User Stories：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "User Stories：辅助完成相关分析、生成或审查任务",
+      "en_desc": "User Stories：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "user-stories",
+        "User Stories",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "using-agent-skills": {
+      "label_zh": "Skill 工程",
+      "summary_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "picker_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "en_desc": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "triggers_zh": [
+        "using-agent-skills",
+        "Skill 工程",
+        "工程",
+        "编写",
+        "验证",
+        "与触发条件设计"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "using-git-worktrees": {
+      "label_zh": "编写可执行实施计划",
+      "summary_zh": "编写可执行实施计划：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "编写可执行实施计划：辅助完成相关分析、生成或审查任务",
+      "en_desc": "编写可执行实施计划：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "using-git-worktrees",
+        "编写可执行实施计划",
+        "编写可执行实施计",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "using-superpowers": {
+      "label_zh": "编码前脑暴",
+      "summary_zh": "Cursor 技能路由：匹配 description；0→1/vibe coding 须 Read zero-to-one-gate + brainstorming。见 refinements/using-superpowers.md。",
+      "picker_zh": "0→1 新模块门禁：先架构/方案确认，再写实现",
+      "en_desc": "0→1 新模块门禁：先架构/方案确认，再写实现",
+      "triggers_zh": [
+        "using-superpowers",
+        "编码前脑暴",
+        "技能路由",
+        "匹配"
+      ],
+      "category_zh": "核心门禁",
+      "auto_generated": true
+    },
+    "va-md-preview": {
+      "label_zh": "Va Md 预览",
+      "summary_zh": "Va Md 预览：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Va Md 预览：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Va Md 预览：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "va-md-preview",
+        "Va Md 预览",
+        "预览",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "va-preview": {
+      "label_zh": "Va 预览",
+      "summary_zh": "Va 预览：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Va 预览：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Va 预览：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "va-preview",
+        "Va 预览",
+        "预览",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "va-session": {
+      "label_zh": "Va 会话",
+      "summary_zh": "Va 会话：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Va 会话：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Va 会话：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "va-session",
+        "Va 会话",
+        "会话",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "value-prop-statements": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片。适用于营销文案、新手引导优化",
+      "picker_zh": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "en_desc": "演示文稿处理：创建/编辑 PPT 或 HTML 幻灯片",
+      "triggers_zh": [
+        "value-prop-statements",
+        "当 到 使用",
+        "演示文稿处理",
+        "创建",
+        "编辑",
+        "幻灯片",
+        "适用于营销文案",
+        "新手引导优化",
+        "营销文案"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "value-proposition": {
+      "label_zh": "Value Proposition",
+      "summary_zh": "Value Proposition：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Value Proposition：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Value Proposition：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "value-proposition",
+        "Value Proposition",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "vercel-react-best-practices": {
+      "label_zh": "性能分析与优化",
+      "summary_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "picker_zh": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "en_desc": "性能分析与优化：瓶颈定位、包体与运行时改进",
+      "triggers_zh": [
+        "vercel-react-best-practices",
+        "性能分析与优化",
+        "瓶颈定位",
+        "包体与运行时改进"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "verification-before-completion": {
+      "label_zh": "验证 在完成之前使用",
+      "summary_zh": "Use before claiming done, fixed, or PASS — re-read acceptance criteria and run fresh verify output.",
+      "picker_zh": "完成前验证：重读验收标准并附 fresh 命令输出",
+      "en_desc": "完成前验证：重读验收标准并附 fresh 命令输出",
+      "triggers_zh": [
+        "claim done",
+        "verification before completion",
+        "fresh evidence",
+        "verification-before-completion",
+        "验证 在完成之前使用"
+      ],
+      "category_zh": "验证与审查",
+      "auto_generated": true
+    },
+    "verification-loop": {
+      "label_zh": "验证 循环 Skill",
+      "summary_zh": "验证 循环 Skill：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "验证 循环 Skill：辅助完成相关分析、生成或审查任务",
+      "en_desc": "验证 循环 Skill：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "verification-loop",
+        "验证 循环 Skill",
+        "验证",
+        "循环",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "vibearound": {
+      "label_zh": "当 到 使用",
+      "summary_zh": "当 到 使用：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "当 到 使用：辅助完成相关分析、生成或审查任务",
+      "en_desc": "当 到 使用：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "vibearound",
+        "当 到 使用",
+        "使用",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "vibrant": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "vibrant",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "vintage": {
+      "label_zh": "管理功能/API 弃用与迁移",
+      "summary_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "picker_zh": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "en_desc": "管理功能/API 弃用与迁移：兼容期、替换方案与变更说明",
+      "triggers_zh": [
+        "vintage",
+        "管理功能/API 弃用与迁移",
+        "管理功能",
+        "弃用与迁移",
+        "兼容期",
+        "替换方案与变更说"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "web-artifacts-builder": {
+      "label_zh": "设计 & 风格 准则",
+      "summary_zh": "设计 & 风格 准则：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "设计 & 风格 准则：辅助完成相关分析、生成或审查任务",
+      "en_desc": "设计 & 风格 准则：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "web-artifacts-builder",
+        "设计 & 风格 准则",
+        "设计",
+        "风格",
+        "准则",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "web-prototype": {
+      "label_zh": "Web 原型",
+      "summary_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "picker_zh": "前端工程：组件、状态、构建与 UI 实现",
+      "en_desc": "前端工程：组件、状态、构建与 UI 实现",
+      "triggers_zh": [
+        "web-prototype",
+        "Web 原型",
+        "前端工程",
+        "组件",
+        "状态",
+        "构建与",
+        "实现"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "webapp-testing": {
+      "label_zh": "端到端测试",
+      "summary_zh": "端到端测试：关键用户路径自动化与回归验证",
+      "picker_zh": "端到端测试：关键用户路径自动化与回归验证",
+      "en_desc": "端到端测试：关键用户路径自动化与回归验证",
+      "triggers_zh": [
+        "webapp-testing",
+        "端到端测试",
+        "关键用户路径自动",
+        "化与回归验证"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "websocket-realtime": {
+      "label_zh": "Websocket Realtime",
+      "summary_zh": "Websocket Realtime：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Websocket Realtime：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Websocket Realtime：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "websocket-realtime",
+        "Websocket Realtime",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "windows-desktop-e2e": {
+      "label_zh": "端到端测试",
+      "summary_zh": "端到端测试：关键用户路径自动化与回归验证。适用于E2E 测试",
+      "picker_zh": "端到端测试：关键用户路径自动化与回归验证",
+      "en_desc": "端到端测试：关键用户路径自动化与回归验证",
+      "triggers_zh": [
+        "windows-desktop-e2e",
+        "端到端测试",
+        "关键用户路径自动",
+        "化与回归验证",
+        "适用于",
+        "测试",
+        "E2E 测试"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "write-a-skill": {
+      "label_zh": "Skill 工程",
+      "summary_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "picker_zh": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "en_desc": "Skill 工程：编写/验证 SKILL.md 与触发条件设计",
+      "triggers_zh": [
+        "write-a-skill",
+        "Skill 工程",
+        "工程",
+        "编写",
+        "验证",
+        "与触发条件设计"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "writing-beats": {
+      "label_zh": "编写 Beats",
+      "summary_zh": "编写 Beats：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "编写 Beats：辅助完成相关分析、生成或审查任务",
+      "en_desc": "编写 Beats：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "writing-beats",
+        "编写 Beats",
+        "编写",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "writing-fragments": {
+      "label_zh": "编写 Fragments",
+      "summary_zh": "编写 Fragments：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "编写 Fragments：辅助完成相关分析、生成或审查任务",
+      "en_desc": "编写 Fragments：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "writing-fragments",
+        "编写 Fragments",
+        "编写",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "writing-plans": {
+      "label_zh": "编写实施计划",
+      "summary_zh": "编写可执行实施计划：步骤拆分与验证顺序",
+      "picker_zh": "编写可执行实施计划：步骤拆分与验证顺序",
+      "en_desc": "编写可执行实施计划：步骤拆分与验证顺序",
+      "triggers_zh": [
+        "writing-plans",
+        "编写实施计划",
+        "编写可执行实施计",
+        "步骤拆分与验证顺"
+      ],
+      "category_zh": "规划与规格",
+      "auto_generated": true
+    },
+    "writing-shape": {
+      "label_zh": "编写 Shape",
+      "summary_zh": "端到端测试：关键用户路径自动化与回归验证",
+      "picker_zh": "端到端测试：关键用户路径自动化与回归验证",
+      "en_desc": "端到端测试：关键用户路径自动化与回归验证",
+      "triggers_zh": [
+        "writing-shape",
+        "编写 Shape",
+        "端到端测试",
+        "关键用户路径自动",
+        "化与回归验证"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "writing-skills": {
+      "label_zh": "测试驱动开发",
+      "summary_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "picker_zh": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "en_desc": "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E",
+      "triggers_zh": [
+        "写 skill",
+        "skill.md",
+        "技能设计",
+        "触发设计",
+        "高质量 skill",
+        "writing-skills",
+        "测试驱动开发",
+        "先写测试再实现",
+        "覆盖单元",
+        "集成"
+      ],
+      "category_zh": "Skill 工程",
+      "auto_generated": true
+    },
+    "wwas": {
+      "label_zh": "Wwas",
+      "summary_zh": "Wwas：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Wwas：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Wwas：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "wwas",
+        "Wwas",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "xlsx": {
+      "label_zh": "Xlsx",
+      "summary_zh": "Xlsx：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Xlsx：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Xlsx：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "xlsx",
+        "Xlsx",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    },
+    "zero-to-one-gate": {
+      "label_zh": "Zero-to-One Gate（0→1 架构门禁）",
+      "summary_zh": "Use when work is greenfield, a new module/page/workflow, or 帮我做… without ADR coverage — before Write/Edit on implementation files.",
+      "picker_zh": "0→1 新模块门禁：先架构/方案确认，再写实现",
+      "en_desc": "0→1 新模块门禁：先架构/方案确认，再写实现",
+      "triggers_zh": [
+        "新功能",
+        "新模块",
+        "新页面",
+        "从0",
+        "从零",
+        "帮我做",
+        "做一个",
+        "架构",
+        "模块划分",
+        "技术方案",
+        "整体设计",
+        "greenfield"
+      ],
+      "category_zh": "规划与规格",
+      "auto_generated": true
+    },
+    "zoom-out": {
+      "label_zh": "Zoom Out",
+      "summary_zh": "Zoom Out：辅助完成相关分析、生成或审查任务",
+      "picker_zh": "Zoom Out：辅助完成相关分析、生成或审查任务",
+      "en_desc": "Zoom Out：辅助完成相关分析、生成或审查任务",
+      "triggers_zh": [
+        "zoom-out",
+        "Zoom Out",
+        "辅助完成相关分析",
+        "生成或审查任务"
+      ],
+      "category_zh": "技能库",
+      "auto_generated": true
+    }
+  }
+}

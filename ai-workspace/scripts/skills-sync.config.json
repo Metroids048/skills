@@ -57,24 +57,26 @@
     "most-capable-agent-reference",
     "claude-code-prompts-reference",
     "design-style",
-    "frontend-design",
-    "prompt-engineering"
+    "frontend-design"
   ],
   "exclusiveGroups": [
     ["design-taste-frontend", "tactus-design-style", "gpt-taste", "high-end-visual-design", "minimalist-ui", "frontend-design"],
     ["figma-workflow", "figma2code"],
     ["requirement-clarifier", "pm-prd-writer"],
     ["systematic-debugging", "diagnose"],
-    ["ai-delivery-gate", "global-delivery-gate", "verification-before-completion"],
-    ["ai-prompt-engineering", "prompt-engineering"]
+    ["ai-delivery-gate", "global-delivery-gate", "verification-before-completion"]
   ],
   "topMatches": 10,
   "alwaysOnSkills": [
     "global-session-core",
+    "task-intake-bridge",
     "requirement-clarifier",
-    "karpathy-guidelines",
-    "workflow-gate"
+    "karpathy-guidelines"
   ],
+  "categoryRoutingEnabled": true,
+  "curatedCatalogDir": "~/.ai-workspace/skills-curated",
+  "curatedCatalogRelativePath": "skills/curated",
+  "fallbackToGlobalRouting": true,
   "conditionalAlwaysOnSkills": [
     {
       "skill": "ai-coding-ok",
@@ -112,6 +114,7 @@
     "using-superpowers": "Cursor 技能路由：匹配 description；0→1/vibe coding 须 Read zero-to-one-gate + brainstorming。见 refinements/using-superpowers.md。",
     "pm-prd-writer": "把模糊需求转化为可评审的产品需求文档（PRD）。当用户说写PRD、需求文档、功能说明书时使用。不适用于：纯技术方案与模块架构（用 zero-to-one-gate）、纯 UI 标注（用 design-handoff）。",
     "requirement-clarifier": "ALWAYS apply at session start and before execution. Converts fuzzy vibe-coding input into Mini-Spec (S4.5) + structured S1-S12 + Agent execution Prompt. Read vibe-coding-bridge.md for B-class coding. Use for 帮我做/优化一下/vibe coding/agent实现 before Write/Edit.",
+    "task-intake-bridge": "Use when a user request must first be typed, normalized, and rewritten into an execution-ready brief before routing downstream skills. Especially for fuzzy implementation, multi-step changes, cross-module work, debugging vs verification ambiguity, or skill-engineering requests.",
     "design-taste-frontend": "Anti-slop 前端审美（Leonxlnx/taste-skill v2）。Landing/作品集/改版；先读 brief 再定设计方向。用户说 UI 丑、要设计感、落地页、portfolio、anti-slop 时使用。NOT when: tactus/风格映射/style preset（用 tactus-design-style）；仅审计现有站点（用 redesign-existing-projects）；高 GSAP 动效 landing（用 gpt-taste）。",
     "gpt-taste": "Codex/GPT 向 stricter taste-skill：更高 layout variance + GSAP ScrollTrigger。高动效 landing 时用。NOT when: tactus 风格 token 映射（用 tactus-design-style）；低动效 editorial UI（用 minimalist-ui）。",
     "minimalist-ui": "Clean editorial-style interfaces. Warm monochrome, typographic contrast, flat bento grids. NOT when: anti-slop landing/portfolio（用 design-taste-frontend）或 tactus style preset（用 tactus-design-style）。",
@@ -141,10 +144,12 @@
     "pm-image2proto": "Use when converting a screenshot or reference image into an HTML prototype with iterative refinement.",
     "tactus-design-style": "Use when applying Castor6/tactus design-style mapping — pick visual style tokens, palettes, and typography from styles-mapping.json before UI work. Triggers: design style, 设计风格, tactus, 风格映射, style preset. NOT when: generic anti-slop landing without preset（用 design-taste-frontend）。",
     "most-capable-agent-reference": "Read-only reference for fainir most-capable-agent system prompt patterns. Use when studying agent prompt architecture — not for routine coding.",
-    "claude-code-prompts-reference": "Read-only reference for repowise-dev claude-code-prompts patterns. Use when comparing Claude Code prompt structure — not for routine coding.",
-    "workflow-gate": "ALWAYS apply — six-phase workflow gate (P1 clarify → P2 arch → P3 interface → P4 build → P5 review → P6 verify). Tier A requires approval before P4.",
-    "context-engineering": "Context engineering — signal-to-noise, progressive discovery, just-in-time loading. Use for agent/prompt structure questions. NOT when: production prompt patterns（用 ai-prompt-engineering）。",
-    "ai-prompt-engineering": "Operational prompt engineering for production agents — structured outputs, RAG, tool planners, eval gates. NOT when: basic ECC templates（用 context-engineering for principles only）。"
+    "claude-code-prompts-reference": "Read-only reference for piebald-ai Claude Code built-in prompts. Use when comparing Claude Code prompt structure — not for routine coding.",
+    "bruce-pptx-generator": "用 pptxgenjs 从零生成或编辑可编辑 PPTX；含华为/麦肯锡/苹果等风格预设。用户要做 PPT、幻灯片、pptx、路演 deck 时使用。",
+    "guizang-ppt-skill": "生成单文件 HTML 横向翻页网页 PPT（杂志风/瑞士风）。用户要网页幻灯、发布会风、Swiss Style 时使用。",
+    "html-slide-to-pptx": "HTML 幻灯片转可编辑 PPTX（dom-to-pptx 主路径，截图兜底）。用户说 html转ppt、做一版ppt、网页幻灯时使用。",
+    "revealjs": "用 reveal.js 生成专业 HTML 演示（主题、图表、演讲者备注）。用户要 slides/presentation/deck 时使用。",
+    "huashu-design": "花叔 Design：HTML 高保真原型/幻灯片/动画/五维设计评审。用户说做原型、PPT、设计风格、评审、导出 MP4 时使用。"
   },
   "promptKeywordBoosts": {
     "requirement-clarifier": [
@@ -167,6 +172,17 @@
       "配置",
       "找出问题",
       "解决掉"
+    ],
+    "task-intake-bridge": [
+      "整理一下需求",
+      "拆解一下任务",
+      "转成执行语言",
+      "需求分析",
+      "任务分析",
+      "bridge",
+      "normalize request",
+      "execution-ready brief",
+      "先分析再执行"
     ],
     "zero-to-one-gate": [
       "新功能",
@@ -370,6 +386,120 @@
       "task_plan.md",
       "progress.md",
       "中文规划"
+    ],
+    "ppt-master": [
+      "做PPT",
+      "幻灯片",
+      "演示文稿",
+      "汇报PPT",
+      "可编辑PPT",
+      "pptx生成",
+      "markdown转PPT",
+      "生成PPT",
+      "原生PPT",
+      "文档转PPT"
+    ],
+    "bruce-pptx-generator": [
+      "做PPT",
+      "生成PPT",
+      "pptx",
+      "幻灯片",
+      "演示文稿",
+      "路演deck",
+      "华为风PPT",
+      "麦肯锡PPT",
+      "pitch deck",
+      "可编辑pptx"
+    ],
+    "guizang-ppt-skill": [
+      "网页PPT",
+      "杂志风PPT",
+      "瑞士风PPT",
+      "横向翻页",
+      "HTML幻灯片",
+      "发布会PPT",
+      "Swiss Style",
+      "horizontal swipe"
+    ],
+    "html-slide-to-pptx": [
+      "html转ppt",
+      "HTML转PPTX",
+      "网页幻灯片",
+      "dom-to-pptx",
+      "截图合成ppt",
+      "做一版ppt",
+      "html slide"
+    ],
+    "revealjs": [
+      "reveal.js",
+      "revealjs",
+      "HTML演示",
+      "幻灯片",
+      "presentation",
+      "deck",
+      "slideshow"
+    ],
+    "huashu-design": [
+      "花叔",
+      "高保真原型",
+      "HTML幻灯片",
+      "设计风格",
+      "设计评审",
+      "导出MP4",
+      "做个好看的",
+      "UI mockup",
+      "动画页面"
+    ],
+    "awesome-ai-ppt": [
+      "AI PPT工具",
+      "PPT工具推荐",
+      "用什么做PPT",
+      "演示工具选型",
+      "awesome-ai-ppt"
+    ],
+    "pptx": [
+      "pptx",
+      "改PPT",
+      "编辑幻灯片",
+      "presentation"
+    ],
+    "frontend-slides": [
+      "HTML幻灯片",
+      "网页演示",
+      "PPT转网页",
+      "frontend slides",
+      "零依赖幻灯片",
+      "View Transitions"
+    ],
+    "anthropic-architect": [
+      "Anthropic架构",
+      "Skill还是Agent",
+      "架构选型"
+    ],
+    "llm-router": [
+      "模型路由",
+      "LLM router",
+      "多提供商"
+    ],
+    "query-expert": [
+      "SQL",
+      "慢查询",
+      "数据库查询"
+    ],
+    "qa-test-planner": [
+      "测试计划",
+      "QA",
+      "测试用例"
+    ],
+    "academic-paper": [
+      "写论文",
+      "学术论文",
+      "学术写作"
+    ],
+    "academic-paper-reviewer": [
+      "审稿",
+      "peer review",
+      "论文评审"
     ]
   },
   "refinementFiles": {

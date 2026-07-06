@@ -1,0 +1,16 @@
+[
+  {"Skill": "anthropic-architect", "Action": "install", "Reason": "jamesrochabrun"},
+  {"Skill": "llm-router", "Action": "install", "Reason": "jamesrochabrun"},
+  {"Skill": "engineer-expertise-extractor", "Action": "install", "Reason": "jamesrochabrun"},
+  {"Skill": "design-brief-generator", "Action": "install", "Reason": "jamesrochabrun"},
+  {"Skill": "content-brief-generator", "Action": "install", "Reason": "jamesrochabrun"},
+  {"Skill": "query-expert", "Action": "install", "Reason": "jamesrochabrun"},
+  {"Skill": "technical-launch-planner", "Action": "install", "Reason": "jamesrochabrun"},
+  {"Skill": "qa-test-planner", "Action": "install", "Reason": "jamesrochabrun"},
+  {"Skill": "awesome-ai-ppt", "Action": "install", "Reason": "ningzimu/awesome-ai-ppt"},
+  {"Skill": "ppt-master", "Action": "skip", "Reason": "network timeout - retry install-requested-skills-batch.ps1"},
+  {"Skill": "awesome-copilot-cherry", "Action": "skip", "Reason": "network timeout - retry install-awesome-copilot-cherry.ps1"},
+  {"Skill": "superprogramming", "Action": "skip", "Reason": "overlap with brainstorming/writing-plans/ouro-loop/tdd-workflow"},
+  {"Skill": "presenton", "Action": "skip", "Reason": "full app (Docker/API/MCP); not installed as skill"},
+  {"Skill": "claude-skill-registry", "Action": "skip", "Reason": "index-only registry stub"}
+]

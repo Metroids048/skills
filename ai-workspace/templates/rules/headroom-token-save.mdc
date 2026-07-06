@@ -1,0 +1,24 @@
+---
+description: Headroom MCP + RTK — compress tool output before it hits the model (global token savings)
+alwaysApply: true
+---
+
+# Headroom / RTK（全局省 token）
+
+## Shell 命令
+
+前缀 **`rtk`**（RTK，Headroom 栈内置）：`rtk git status`、`rtk pytest`、`rtk grep pattern` — 无过滤器时原样透传。
+
+## MCP（Cursor / Claude / Codex 已配置 `headroom`）
+
+长输出、日志、大文件读入后优先：
+
+1. `headroom_compress` — 压缩进上下文
+2. 需要原文 → `headroom_retrieve`
+3. 查看节省 → `headroom_stats`
+
+## 全流量压缩（可选）
+
+另开终端：`powershell -File "$env:USERPROFILE\.ai-workspace\scripts\start-headroom-proxy.ps1"`
+
+勿与现有 CC Switch（`127.0.0.1:15721`）同时改 `ANTHROPIC_BASE_URL`，除非明确要链式代理。

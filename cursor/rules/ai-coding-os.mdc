@@ -1,0 +1,15 @@
+<!-- AIOS MANAGED BLOCK START -->
+---
+description: AI Coding OS product/page/UI workflow routing.
+alwaysApply: false
+---
+
+# AI Coding OS
+
+When a task involves product design, page design, UI design, redesign, dashboard, landing page, AI product workflow, PRD-to-UI, or product/UI review:
+
+- Read `C:\Users\win\.ai-workspace\ai-coding-os\AGENTS.md`.
+- Prefer `skills/ai-product-ui-workflow/SKILL.md` as the routing skill.
+- Load only the specific workflow and review files required.
+- Preserve existing global and repo rules as higher priority.
+<!-- AIOS MANAGED BLOCK END -->

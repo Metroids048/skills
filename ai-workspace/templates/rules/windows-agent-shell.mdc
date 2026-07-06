@@ -1,0 +1,46 @@
+---
+description: Windows shell / RTK / Python 运行契约 — 避免重复试错与盲目 pip install（三端全局）
+alwaysApply: true
+---
+
+# Windows Agent Shell（全局）
+
+本机为 **Windows + PowerShell**。遵守以下契约，避免 spawn/RTK/Python 重复失败。
+
+## RTK 前缀
+
+- 原生 exe（`git`、`node`、`npm`、`python`、`cargo` 等）：`rtk <cmd>`
+- PowerShell **内建 cmdlet / 管道**（`Get-ChildItem`、`Select-Object` 等）：  
+  `rtk powershell -NoProfile -ExecutionPolicy Bypass -Command "..."`  
+  **禁止**裸跑 cmdlet（RTK 无法过滤内建命令）
+- 链式命令：每段都前缀 `rtk`，例如 `rtk git add . && rtk git commit -m "msg"`
+- 调试单条失败时可用裸命令；稳定后仍用 `rtk`
+
+## Shell 失败快速路径
+
+| 症状 | 先做 |
+|------|------|
+| `spawn ENOENT` / 找不到命令 | `where.exe <tool>` 确认 PATH |
+| `.ps1` 脚本 | `powershell -NoProfile -ExecutionPolicy Bypass -File "path\to\script.ps1"`（优先 `-File`，避免 `-Command` 嵌套引号） |
+| hook / JSON 解析失败 | 检查是否 PowerShell banner 污染 stdout |
+
+## Python（禁止盲目 pip install）
+
+探测顺序：
+
+1. 项目 `.venv\Scripts\python.exe` — **仅当** `pyvenv.cfg` 的 `home` 指向现存路径
+2. `py -3` 或 `python`
+3. 先 `python -c "import <pkg>"` 或查 user-site；**仅当 import 失败**才 `pip install`
+
+运行时快照：`~/.ai-workspace/runtime/python-env.json`（SessionStart 更新）
+
+## 禁止（即使「最大权限」）
+
+- 删除/重装 CC Switch（`~/.cc-switch`）
+- `Remove-Item -Recurse` 清用户配置目录
+- 重复安装已存在于 user-site 的包
+- 自动改 `ANTHROPIC_BASE_URL`（保持 CC Switch `15721`）
+
+## Claude Code + 第三方 API 缓存
+
+`~/.claude/settings.json` 须含 `CLAUDE_CODE_ATTRIBUTION_HEADER=0`（防每轮 `cch` 变化导致缓存归零）。勿手动删除。

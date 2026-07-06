@@ -1,0 +1,24 @@
+{
+  "installedAt": "2026-07-02",
+  "triEnd": ["cursor", "claude", "codex"],
+  "skills": [
+    { "name": "bruce-pptx-generator", "source": "https://github.com/bruc3van/bruce-pptx-generator", "status": "installed" },
+    { "name": "guizang-ppt-skill", "source": "https://github.com/op7418/guizang-ppt-skill", "status": "installed" },
+    { "name": "html-slide-to-pptx", "source": "https://github.com/kkennyss/html-slide-to-pptx", "status": "installed" },
+    { "name": "revealjs", "source": "https://github.com/ryanbbrown/revealjs-skill", "status": "installed" },
+    { "name": "awesome-ai-ppt", "source": "https://github.com/ningzimu/awesome-ai-ppt", "status": "installed" },
+    { "name": "ppt-master", "source": "https://github.com/hugohe3/ppt-master", "status": "installed-partial-vendor" },
+    { "name": "frontend-slides", "source": "https://github.com/zarazhangrui/frontend-slides", "status": "installed" },
+    { "name": "huashu-design", "source": "https://github.com/alchaincyf/huashu-design", "status": "installed-minimal-vendor" }
+  ],
+  "routingUpdates": [
+    "scan-global-skills.ps1: CJK fuzzy trigger matching",
+    "intent-profiles.json: ppt_slides expanded",
+    "skills-sync.config.json: PPT keyword boosts + descriptionOverrides",
+    "skills-locale-zh.json: manual PPT locale entries"
+  ],
+  "notes": {
+    "ppt-master": "Vendor via GitHub API tree (skipped ai-image-comparison PNGs; templates/brands hit API 403 — re-run download-github-skill-tree.js if needed)",
+    "huashu-design": "SKILL.md only at vendor; full repo ~200MB — clone manually if MP4/scripts needed"
+  }
+}

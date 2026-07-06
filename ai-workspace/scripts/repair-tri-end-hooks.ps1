@@ -40,6 +40,7 @@ foreach ($dst in @(
     (Join-Path $claudeScripts 'rtk-hook-cursor.ps1'),
     (Join-Path $cursorHooksDir 'rtk-hook-cursor.ps1')
 )) {
+    if ((Resolve-Path -LiteralPath $rtkSrc).Path -eq (Resolve-Path -LiteralPath $dst -ErrorAction SilentlyContinue).Path) { continue }
     Copy-Item -LiteralPath $rtkSrc -Destination $dst -Force
     Write-Host "Installed RTK hook: $dst"
 }
@@ -66,9 +67,16 @@ Write-Host 'Installed gate bypass stubs (CLARIFICATION_GATE_OFF mode)'
 # cursor-shell-allow.js for Write/Edit (node, no PS banner)
 $allowJsRepo = Join-Path $hooksDir 'cursor-shell-allow.js'
 $allowJsGlobal = Join-Path $aiScripts 'cursor-shell-allow.js'
-Copy-Item -LiteralPath $allowJsRepo -Destination $allowJsGlobal -Force
+if ((Resolve-Path -LiteralPath $allowJsRepo).Path -ne (Resolve-Path -LiteralPath $allowJsGlobal -ErrorAction SilentlyContinue).Path) {
+    Copy-Item -LiteralPath $allowJsRepo -Destination $allowJsGlobal -Force
+}
 $allowHook = "node `"$allowJsGlobal`""
-$rtkHookCmd = "powershell -NoProfile -ExecutionPolicy Bypass -File `"$aiScripts\rtk-hook-cursor.ps1`" -OutputFormat Cursor"
+$pwshExe = 'C:\Program Files\PowerShell\7\pwsh.exe'
+if (-not (Test-Path -LiteralPath $pwshExe)) {
+    $pwshExe = (Get-Command pwsh -ErrorAction SilentlyContinue).Source
+}
+if (-not $pwshExe) { throw 'pwsh.exe not found — run upgrade-powershell7-global.ps1' }
+$rtkHookCmd = "`"$pwshExe`" -NoProfile -ExecutionPolicy Bypass -File `"$aiScripts\rtk-hook-cursor.ps1`" -OutputFormat Cursor"
 
 if (-not $SkipGateOff) {
     [Environment]::SetEnvironmentVariable('CLARIFICATION_GATE_OFF', '1', 'User')

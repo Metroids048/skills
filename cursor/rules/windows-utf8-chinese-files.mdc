@@ -30,10 +30,20 @@ Get-Content -LiteralPath $path -Raw -Encoding UTF8
 
 ## PowerShell 写中文（禁止危险方式）
 
+- **禁止** Agent 用 Cursor Write/apply_patch 直接写**含大量中文**的 `.ps1`（PS 5.1 易乱码/语法炸裂）。**改用 Python**（`python-pptx` / `win32com` 等）。
+- 若必须用 `.ps1` 且含中文：写入后**必须** `Write-Utf8BomFile`（见 `Write-Utf8NoBom.ps1`），并跑 `verify-ps1-script-encoding.ps1`。
 - **禁止**用 PowerShell 的 here-string 管道、重定向、`Set-Content`、`Out-File` 写入含中文源码、JSON 或文档。
 - PowerShell 5.1 的 `Set-Content -Encoding UTF8` 会写入 **UTF-8 BOM**，导致 Node.js 解析 JSON/JS 失败；hooks/settings 必须用 **UTF-8 无 BOM**。
 - 必须用 NoBom 写入时，使用 `~/.ai-workspace/scripts/Write-Utf8NoBom.ps1` 中的 `Write-Utf8NoBomFile`，或 `[System.IO.File]::WriteAllText($path, $content, (New-Object System.Text.UTF8Encoding $false))`。
 - **不要用** `sed`、`awk` 处理含中文文件；改用 Python 或 Node.js，并显式 UTF-8 读写。
+
+## 执行含中文的 .ps1
+
+**禁止** `powershell -File script.ps1` 直接跑 Agent 生成的中文脚本。顺序：
+
+1. `verify-ps1-script-encoding.ps1 -Path script.ps1`
+2. PASS 后：`invoke-agent-ps1.ps1 -Path script.ps1`
+3. FAIL → **重写为 Python**，禁止在对话里循环试编码
 
 ## 写源码与文档（Agent 工具）
 
@@ -54,7 +64,19 @@ RTK / Python / hook 契约见 `windows-agent-shell.mdc`；本规则在涉及中�
 
 ## 扫描与修复
 
-交付前可对仓库运行：
+Shell/Python UTF-8 一键检查（Agent 优先跑这个，不要试编码）：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\verify-windows-shell-encoding.ps1"
+```
+
+FAIL 时修复：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\repair-windows-shell-encoding.ps1"
+```
+
+仓库内文件编码扫描：
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\scan-encoding-issues.ps1" -RepoPath "."

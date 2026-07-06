@@ -1,7 +1,8 @@
-# Detect Python runtime for agents — avoid blind pip install.
+# Resolve ONE global Agent Python for all projects (no per-folder venv audit).
 # Writes ~/.ai-workspace/runtime/python-env.json
 param(
     [string]$ProjectDir = '',
+    [switch]$UseProjectVenv,
     [switch]$Quiet
 )
 
@@ -37,20 +38,41 @@ function Test-VenvValid {
 
 function Find-Python {
     $projectDir = Resolve-ProjectDir -Seed $ProjectDir
+    $globalVenvPy = Join-Path $env:USERPROFILE '.ai-workspace\venv\Scripts\python.exe'
     $result = [ordered]@{
-        python      = $null
-        source      = 'none'
-        venv_valid  = $false
-        venv_path   = $null
-        user_site   = $null
-        py_launcher = $false
-        updated     = (Get-Date).ToString('o')
-        project_dir = $projectDir
+        python       = $null
+        source       = 'none'
+        venv_valid   = $false
+        venv_path    = $null
+        global_venv  = $globalVenvPy
+        user_site    = $null
+        py_launcher  = $false
+        updated      = (Get-Date).ToString('o')
+        project_dir  = $projectDir
     }
 
-    if ($projectDir) {
+    # 1) User env AGENT_PYTHON (set by install-global-agent-python.ps1)
+    if ($env:AGENT_PYTHON -and (Test-Path -LiteralPath $env:AGENT_PYTHON)) {
+        $result.python = $env:AGENT_PYTHON
+        $result.source = 'agent_python_env'
+        $result.venv_valid = $true
+        $result.venv_path = $env:AGENT_PYTHON
+    }
+
+    # 2) Global agent venv — same stack in every project folder
+    if (-not $result.python -and (Test-Path -LiteralPath $globalVenvPy)) {
+        if (Test-VenvValid -VenvPython $globalVenvPy) {
+            $result.python = $globalVenvPy
+            $result.source = 'global_agent_venv'
+            $result.venv_valid = $true
+            $result.venv_path = $globalVenvPy
+        }
+    }
+
+    # 3) Optional project .venv (off by default — avoids per-project audit churn)
+    if (-not $result.python -and $UseProjectVenv -and $projectDir) {
         $venvPy = Join-Path $projectDir '.venv\Scripts\python.exe'
-        if (Test-Path $venvPy) {
+        if (Test-Path -LiteralPath $venvPy) {
             $result.venv_path = $venvPy
             if (Test-VenvValid -VenvPython $venvPy) {
                 $result.python = $venvPy
@@ -96,8 +118,14 @@ function Find-Python {
     if (-not $Quiet) {
         Write-Host "python-env -> $outPath"
         Write-Host "  python: $($result.python) ($($result.source))"
+        if ($result.source -eq 'global_agent_venv') {
+            Write-Host '  stack: global (~/.ai-workspace/venv) — same for all projects'
+        }
         if ($result.venv_path -and -not $result.venv_valid) {
-            Write-Host "  WARN: .venv exists but pyvenv.cfg home invalid — use system python"
+            Write-Host '  WARN: venv exists but pyvenv.cfg home invalid'
+        }
+        if (-not $result.python -or $result.source -eq 'py_launcher' -or $result.source -eq 'path_python') {
+            Write-Host '  WARN: run install-global-agent-python.ps1 for Office/file stack'
         }
     }
 

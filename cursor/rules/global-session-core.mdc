@@ -17,8 +17,9 @@ After tasks: append global-task-history per `ai-coding-ok` Mode C.
 
 ## Skill routing
 
-1. Match user requests to skill descriptions in `~/.cursor/skills/` (index: `~/.claude/global-skills-index.md`).
-2. Read full `SKILL.md` for each applicable skill before other tools.
+1. Match user requests to skill descriptions in `~/.cursor/skills/` (indexes: `~/.claude/global-skills-index.md` + **`~/.claude/global-skills-index-zh.md`**).
+2. **中文/模糊输入：** 查 `~/.ai-workspace/skills-locale-zh.json` 触发词与 `intent-profiles.json`；description 以 `【中文名】` 开头者优先。
+3. Read full `SKILL.md` for each applicable skill before other tools.
 3. Reply start: `Skills: name-a, name-b` (include `global-session-core` when relevant).
 4. Priority: user instruction > matched skill > built-in > default.
 5. **0→1 strict**: 新模块/大范围「帮我做…」→ Read `zero-to-one-gate` + `brainstorming` before Write/Edit; user approve before code. See `zero-to-one-gate.mdc`.

@@ -1,0 +1,15 @@
+{
+    "hooks":  {
+                  "PreToolUse":  {
+                                     "hooks":  [
+                                                   {
+                                                       "command":  "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\clarification-hard-gate.ps1\" -OutputFormat Codex",
+                                                       "timeout":  5,
+                                                       "type":  "command",
+                                                       "statusMessage":  "Gate"
+                                                   }
+                                               ],
+                                     "matcher":  "Write|Edit|MultiEdit|StrReplace|apply_patch"
+                                 }
+              }
+}

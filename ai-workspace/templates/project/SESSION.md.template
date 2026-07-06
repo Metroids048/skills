@@ -1,0 +1,26 @@
+# SESSION — {{项目名称}}
+
+> 人类可读的会话摘要。权威细节见 `.github/agent/memory/project-memory.md`。任务结束同步更新本节（顶部 15 行内）。
+
+Last updated: {{YYYY-MM-DD}}
+
+## Current Status
+
+一句话描述项目当前阶段。
+
+## 已完成
+
+- 
+
+## 进行中
+
+- 
+
+## 遗留问题
+
+- 
+
+## 下次从哪开始
+
+- 文件/模块：
+- 建议第一步：

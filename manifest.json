@@ -1,6 +1,27 @@
 {
+    "version":  "1.1.0",
+    "exportedAt":  "2026-07-06T18:08:28+08:00",
     "sourceMachine":  "DESKTOP-6CJ3QPD",
-    "exportedAt":  "2026-06-24T18:16:16+08:00",
-    "version":  "1.0.0",
-    "skillCount":  263
+    "skillCounts":  {
+                        "agents":  8,
+                        "cursor":  280,
+                        "claude":  280,
+                        "codex":  312
+                    },
+    "includes":  [
+                     "endpoint skills",
+                     "commands",
+                     "rules",
+                     "hooks",
+                     "mcp configs",
+                     "AIOS",
+                     "global memory",
+                     "project agent memory snapshots"
+                 ],
+    "excludes":  [
+                     "tokens/secrets/auth/session files",
+                     "sqlite runtime state",
+                     "logs/cache/browser state",
+                     "venv/node_modules/vendor runtime caches"
+                 ]
 }

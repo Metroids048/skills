@@ -1,0 +1,42 @@
+---
+description: AI 工程核心约束 — 禁止假完成、必须验证、PDCA 记忆。细则见 AGENTS.md。
+alwaysApply: true
+---
+
+# AI Engineering Guardrails
+
+Read `AGENTS.md` and `.github/agent/memory/*.md` at task start.
+
+Navigation/session changes: also read `.github/agent/memory/postmortem-navigation-2026-05-28.md`.
+
+## Non-negotiable
+
+1. Code generation ≠ task completion — verify before claiming done.
+2. Never use TODO/FIXIE/mock/fake success to hide unfinished work.
+3. If verification fails or was skipped → **"Task is NOT fully verified."**
+4. End every task with **Completed / Verified / Remaining Risks**.
+
+## PDCA
+
+- **Plan**: AGENTS.md + memory files
+- **Act**: Update `task-history.md`; architecture → `decisions-log.md`
+
+## Prototype (this repo)
+
+After editing `prototype/assets/*.js` or navigation-related HTML:
+
+```bash
+node prototype/scripts/verify-all.js
+```
+
+Must include **navigation-journey-check** (5th step). Do not rely on smoke/e2e grep alone.
+
+**ADR-003 — forbidden:** `window.__*Wired` early-return; session-only Tab lock without URL `?new=1`.
+
+After updating `.cursor/rules/` or `.cursor/skills/`:
+
+```powershell
+powershell scripts/sync-ai-guardrails.ps1 -Force
+```
+
+Full rules: [AGENTS.md](../../AGENTS.md)

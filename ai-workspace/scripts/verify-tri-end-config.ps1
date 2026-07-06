@@ -101,14 +101,27 @@ if ($gateOff -ne '1') {
 }
 else { Write-Line 'OK: CLARIFICATION_GATE_OFF=1' }
 
-# 6. windows-agent-shell rule
+# 6. Windows shell / Python UTF-8 (Agent -NoProfile shells)
+$shellVerify = Join-Path $env:USERPROFILE '.ai-workspace\scripts\verify-windows-shell-encoding.ps1'
+if (-not (Test-Path -LiteralPath $shellVerify)) {
+    Add-Fail 'MISSING: verify-windows-shell-encoding.ps1 — run apply-utf8-governance-local.ps1'
+}
+else {
+    & $shellVerify -Quiet
+    if ($LASTEXITCODE -ne 0) {
+        Add-Fail 'Windows shell/Python UTF-8 check failed — run repair-windows-shell-encoding.ps1'
+    }
+    else { Write-Line 'OK: verify-windows-shell-encoding' }
+}
+
+# 7. windows-agent-shell rule
 $winRule = Join-Path $env:USERPROFILE '.cursor\rules\windows-agent-shell.mdc'
 if (-not (Test-Path $winRule)) {
     Add-Fail 'MISSING: ~/.cursor/rules/windows-agent-shell.mdc — run sync-ai-guardrails.ps1 -Force'
 }
 else { Write-Line 'OK: windows-agent-shell.mdc' }
 
-# 7. headroom (optional warn)
+# 8. headroom (optional warn)
 $headroom = Join-Path $env:APPDATA 'Python\Python312\Scripts\headroom.exe'
 if (-not (Test-Path $headroom)) {
     Add-Warn "headroom.exe not at $headroom"
@@ -126,6 +139,7 @@ if ($failures.Count -gt 0) {
     Write-Line ''
     Write-Line 'Repair:'
     Write-Line '  powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\Desktop\Agent Platform\scripts\hooks\repair-tri-end-hooks.ps1"'
+    Write-Line '  powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\repair-windows-shell-encoding.ps1"'
     Write-Line '  powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\Desktop\Agent Platform\scripts\global-workspace\apply-tri-end-env.ps1"'
     Write-Line '  powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\Desktop\Agent Platform\scripts\sync-ai-guardrails.ps1" -Force'
     exit 1

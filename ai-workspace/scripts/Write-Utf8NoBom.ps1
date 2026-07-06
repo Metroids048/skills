@@ -24,3 +24,19 @@ function Read-Utf8File {
     $utf8 = New-Object System.Text.UTF8Encoding $false
     return [System.IO.File]::ReadAllText($Path, $utf8)
 }
+
+function Write-Utf8BomFile {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Path,
+        [Parameter(Mandatory = $true)]
+        [string]$Content
+    )
+    $dir = Split-Path -Parent $Path
+    if ($dir -and -not (Test-Path -LiteralPath $dir)) {
+        New-Item -ItemType Directory -Path $dir -Force | Out-Null
+    }
+    # PS 5.1 requires UTF-8 BOM to parse non-ASCII in .ps1 files.
+    $utf8Bom = New-Object System.Text.UTF8Encoding $true
+    [System.IO.File]::WriteAllText($Path, $Content, $utf8Bom)
+}

@@ -1,0 +1,38 @@
+---
+description: ALWAYS apply — 「最大权限」仅减少确认步骤，禁止越权破坏性操作（删配置/卸载工具/递归清目录等）。
+alwaysApply: true
+---
+
+# Maximum Permission Scope
+
+When the user says **「最大权限」「全部解决」「你看着办」** or grants broad shell access:
+
+## Meaning (user intent)
+
+- **Reduce back-and-forth** — fix the stated problem end-to-end without asking at every micro-step.
+- **NOT** authorization to expand scope, delete third-party configs, or perform destructive cleanup.
+
+## Forbidden without explicit user confirmation
+
+Even with「最大权限」, **ask first** (plain 中文: what / why / impact) before:
+
+1. **Deleting or uninstalling** user tools, config dirs, databases, backups (e.g. CC Switch `~/.cc-switch`, sync scripts, provider DB).
+2. **`Remove-Item -Recurse`**, `rm -rf`, wiping `backups/`, registry env vars **beyond the single key tied to the bug**.
+3. **Replacing entire config files** when a single field/provider entry fixes the issue.
+4. **Creating/running removal scripts** (`_remove-*`, uninstall helpers) unless user explicitly requested removal.
+5. **Stopping/disabling** auto-sync, startup tasks, or integrations unrelated to the fix.
+
+## Default approach
+
+- **Minimal diff** for the **current task scope** only.
+- Example: Codex 401 from CC Switch → fix `codex-official` provider + conflicting env — **do not** remove CC Switch.
+
+## Protected components (unless user explicitly says delete/uninstall)
+
+- CC Switch (`~/.cc-switch`, `cc-sync-all.ps1`, `cc-watch-sync.ps1`)
+- OAuth sessions (`~/.codex/auth.json`, Claude login)
+- User-managed API provider entries not mentioned in the task
+
+If scope is ambiguous → **ask one short question** instead of guessing destructive action.
+
+Full global rules: `~/.claude/AGENTS.md` § Maximum permission scope.
