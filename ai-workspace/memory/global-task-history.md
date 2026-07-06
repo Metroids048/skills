@@ -166,6 +166,12 @@
 - **验证**: `installer/verify-aios.ps1` PASS；`scan-global-skills.ps1` 扫描 406 skills，`global-skills-index.md` / `global-skills-index-zh.md` 已包含 `ai-product-ui-workflow` 与中文触发词；`verify-tri-end-config.ps1` PASS。
 - **风险**: 第一版只覆盖 Codex/Cursor/Claude Code，不做 Gemini/OpenCode；内容为核心闭环版，后续真实项目中可继续沉淀 examples、design tokens 和更细模板。
 
+[project: C:\Users\win\Desktop\skills] 2026-07-06 三端 Agent Workspace 全局同步与 skill 盘点
+- **内容**: 盘点 Codex / Claude Code / Cursor / `.agents` skills，共 880 个入口；发现 280 组完全重复内容，输出 `docs/reports/agent-workspace-stocktake.{md,json}` 与 `skills-inventory.csv`。升级 `scripts/export-from-local.ps1` 和 `install.ps1`，同步三端 skills、commands、rules、hooks、MCP、AIOS、全局 memory/scripts/templates、项目级 `.github/agent` memory 快照。
+- **同步**: 提交并推送到 `git@github.com:Metroids048/skills.git`，commit `0496207 chore: sync tri-end agent workspace`；本地 `origin` 已切到 SSH，`origin/main` 验证到同一 commit。
+- **验证**: skills 计数为 Cursor 280 / Claude 280 / Codex 312 / `.agents` 8；PowerShell 脚本语法检查通过；`git diff --check` 通过；高熵 token/API key/Bearer 扫描无真实命中；远端 HEAD 为 `0496207f25eedeb8ed9cbced09b03dc877a6700d`。
+- **风险**: 当前只做完整快照与去重报告，没有实际删除/归档重复 skill；后续精简应按报告逐项确认后再改成单源 + shim/junction。
+
 [project: C:\Users\win\Desktop\AI--main] 2026-07-06 Open-source RAG assetization
 - **内容**: 将开源策略库摄取从登记摘要升级为真实本地 RAG 资产：新增 `ResearchSourceAsset`、GitHub allowlist fetch、清洗 Markdown 资产、`asset_manifest.json`、资产 API、Agent 资产计数字段，并让 `StrategyIdea` 提取依赖 `asset_refs`。
 - **资产**: 已生成 Freqtrade/Jesse/Hummingbot/ABU/NautilusTrader/Qlib/vectorbt/OpenBB 的本地资产与 manifest；未知 license / metadata-only 源只进入 `research_note_only`。
