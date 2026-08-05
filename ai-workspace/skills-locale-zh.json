@@ -6331,6 +6331,25 @@
       ],
       "category_zh": "技能库",
       "auto_generated": true
+    },
+    "verify-work": {
+      "label_zh": "验证工作",
+      "summary_zh": "对照原始需求做真实验证：验收映射、确定性测试、行为检查、测试完整性、独立评审、最多三轮修复，输出 COMPLETE/PARTIAL/BLOCKED。",
+      "picker_zh": "实现/修复后用 verify-work 做证据化验收与独立评审。",
+      "en_desc": "Verify implementation against the original request with real tests, execution evidence, independent review, and honest completion reporting.",
+      "triggers_zh": [
+        "verify-work",
+        "验证工作",
+        "验证完成",
+        "交付验收",
+        "独立评审",
+        "COMPLETE",
+        "PARTIAL",
+        "BLOCKED",
+        "验收映射"
+      ],
+      "category_zh": "验证与审查",
+      "auto_generated": false
     }
   }
 }

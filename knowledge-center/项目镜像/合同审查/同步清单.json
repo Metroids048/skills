@@ -1,0 +1,12 @@
+{
+  "project": "合同审查",
+  "time": "2026-07-29T17:38:57",
+  "dry_run": false,
+  "stats": {
+    "copied": 0,
+    "unchanged": 9,
+    "conflict": 1,
+    "skip": 0,
+    "project": "合同审查"
+  }
+}

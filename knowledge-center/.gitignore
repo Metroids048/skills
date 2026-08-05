@@ -1,0 +1,12 @@
+# 中央知识库 — 本地私有仓库
+.env
+*.pem
+*.key
+wallet.dat
+**/__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+日志/*.log
+备份/**
+工具/_debug_*.py

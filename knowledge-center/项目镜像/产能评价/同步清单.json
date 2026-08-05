@@ -1,0 +1,12 @@
+{
+  "project": "产能评价",
+  "time": "2026-07-30T16:07:45",
+  "dry_run": false,
+  "stats": {
+    "copied": 2,
+    "unchanged": 10,
+    "conflict": 1,
+    "skip": 0,
+    "project": "产能评价"
+  }
+}

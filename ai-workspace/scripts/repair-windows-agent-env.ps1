@@ -22,33 +22,14 @@ Write-Info '=== repair-windows-agent-env ==='
 & (Join-Path $scripts 'repair-windows-shell-encoding.ps1') -Quiet:$Quiet
 & (Join-Path $scripts 'apply-tri-end-env.ps1') -Quiet:$Quiet
 
-# 2. Agent Python + Office packages (system python only, not codex bundled)
-& (Join-Path $scripts 'ensure-python-env.ps1') -Quiet
-$envJson = Join-Path $env:USERPROFILE '.ai-workspace\runtime\python-env.json'
-$agentPy = $null
-if (Test-Path -LiteralPath $envJson) {
-    $info = Get-Content -LiteralPath $envJson -Raw -Encoding UTF8 | ConvertFrom-Json
-    $agentPy = $info.python
+# 2. Global agent venv: Office + agent tooling ONCE (not per-project)
+$installGlobal = Join-Path $scripts 'install-global-agent-python.ps1'
+if (Test-Path -LiteralPath $installGlobal) {
+    Write-Info 'Ensuring global agent python + tooling (install-global-agent-python.ps1)...'
+    & $installGlobal -Quiet
 }
-if (-not $agentPy) { $agentPy = (Get-Command python -ErrorAction Stop).Source }
-
-$probePy = Join-Path $scripts 'probe-python-modules.py'
-foreach ($item in @(
-        @{ pip = 'python-pptx'; mod = 'pptx' }
-        @{ pip = 'python-docx'; mod = 'docx' }
-        @{ pip = 'pywin32';    mod = 'win32com' }
-    )) {
-    if (Test-Path -LiteralPath $probePy) {
-        $modJson = & $agentPy $probePy | ConvertFrom-Json
-        $has = $modJson.modules.($item.mod)
-    }
-    else {
-        $has = $false
-    }
-    if (-not $has) {
-        Write-Info "pip install $($item.pip) ..."
-        & $agentPy -m pip install $item.pip --quiet
-    }
+else {
+    & (Join-Path $scripts 'ensure-python-env.ps1') -Quiet
 }
 
 # 3. Cursor hooks: RTK Shell only (remove per-prompt skill scan)

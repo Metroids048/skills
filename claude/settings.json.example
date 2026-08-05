@@ -1,21 +1,19 @@
 {
-    "mcpServers":  {
-                       "vibearound":  {
-                                          "type":  "http",
-                                          "url":  "http://127.0.0.1:12358/va/mcp?token=YOUR_TOKEN"
-                                      }
-                   },
-    "includeCoAuthoredBy":  false,
-    "model":  "sonnet",
     "$schema":  "https://json.schemastore.org/claude-code-settings.json",
+    "disableAllHooks":  true,
+    "includeCoAuthoredBy":  false,
+    "mcpServers":  {
+
+                   },
+    "model":  "sonnet[1m]",
     "env":  {
+                "ANTHROPIC_AUTH_TOKEN":  "YOUR_SECRET",
+                "ANTHROPIC_BASE_URL":  "https://api.tangguo.xin",
                 "CLAUDE_CODE_ATTRIBUTION_HEADER":  "0",
-                "HEADROOM_REQUIRE_RUST_CORE":  "false",
-                "ANTHROPIC_BASE_URL":  "http://127.0.0.1:15721",
+                "ENABLE_PROMPT_CACHING_1H":  "1",
                 "PYTHONUTF8":  "1",
                 "PYTHONIOENCODING":  "utf-8",
-                "ANTHROPIC_AUTH_TOKEN":  "YOUR_SECRET",
-                "ENABLE_PROMPT_CACHING_1H":  "1"
-            },
-    "disableAllHooks":  true
+                "HEADROOM_REQUIRE_RUST_CORE":  "false",
+                "DISABLE_AUTOUPDATER":  "1"
+            }
 }

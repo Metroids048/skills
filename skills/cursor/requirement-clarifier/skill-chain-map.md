@@ -7,6 +7,7 @@
 ```
 极模糊（「做一个 X」）
   → interview-protocol（单问+猜测，至 95%）
+  → [1–2 个] prompt-optimizer + requirement-clarifier（常见）| brainstorming + clarifier | …
   → §4.5 Mini-Spec
   → [可选] idea-refine / brainstorming（多方案）
   → [若新模块] zero-to-one-gate + ADR
@@ -15,12 +16,13 @@
   → 实现 + global-delivery-gate
 
 中等模糊（「优化 Y，因为 Z」）
+  → [可选 1–2] prompt-optimizer | maestro-prompt-leverage | prompt-architect + requirement-clarifier
   → vibe-coding-bridge 七维
   → §4.5 Mini-Spec + §7
   → §12 → 实现
 
 清晰（路径+验收齐全）
-  → §1 + §12 极简 → 实现
+  → §1 + §12 极简 → 实现（通常 0–1 个 enhancer，或跳过）
 ```
 
 ## 外部精华 ↔ 本地落地

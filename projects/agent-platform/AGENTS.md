@@ -218,3 +218,33 @@ Postmortem: `.github/agent/memory/postmortem-user-portal-2026-06-10.md` · ADR-0
 | Skills vendor    | `skills/vendor/`                                                     |
 |                  |                                                                      |
 
+<!-- AGENT-CONFIG-PACK:PROJECT-BRIDGE START -->
+## Agent Config Pack bridge (2026-07-22)
+
+Shared cross-tool contract for this repo (Cursor / Codex / Claude Code):
+
+- Global Working Agreement lives in user globals (`~/.codex/AGENTS.md`, `~/.claude/AGENTS.md`, Cursor `00-agent-working-agreement.mdc`).
+- This file (`AGENTS.md`) is the **project SSOT**. Claude imports it via `@AGENTS.md` in `CLAUDE.md`.
+- Tool patches: `.cursor/rules/00-core-workflow.mdc`, `.cursor/rules/10-verification.mdc`, `.claude/rules/testing.md`.
+- Before claiming COMPLETE: use `verify-work` skill (global or project `.agents/.cursor/.claude/skills/verify-work`).
+- Analysis / planning / review-only requests: do not edit files.
+- Max 3 auto-repairs per failing check; same failure twice without progress → stop and escalate with evidence.
+- Never report unexecuted checks as passed. Prefer project-documented verify commands.
+- Durable lessons only in `docs/AGENT_LESSONS.md` (no secrets, no temp task chatter).
+- Substantial changes: independent read-only review via `.claude/agents/code-reviewer` when available.
+<!-- AGENT-CONFIG-PACK:PROJECT-BRIDGE END -->
+
+<!-- AI-KNOWLEDGE-MANAGED-START -->
+
+## 共享用户记忆与项目知识
+
+开始涉及本项目的非简单任务前，读取：
+
+- `项目知识库/项目总览.md`
+- `项目知识库/当前状态.md`
+- `项目知识库/目标与验收标准.md`
+- `项目知识库/开放事项.md`
+
+默认收口模式；任务结束生成会话记录并调用中央同步；不得直接重写中央主知识库。
+
+<!-- AI-KNOWLEDGE-MANAGED-END -->

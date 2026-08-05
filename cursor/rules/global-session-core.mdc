@@ -29,6 +29,7 @@ After tasks: append global-task-history per `ai-coding-ok` Mode C.
 - Short phase-based updates; no long command dumps unless asked.
 - One session per task; compact around 50% context.
 - Never skip tests, verification, or safety checks to save tokens.
+- **成本与稳定性：** 见 `cost-stability-constraints.mdc`（单目标、30–60s 轮询、日志末尾约 200 行、429 最多重试 1 次、阶段提交、中断恢复点）。
 
 ## Verification before completion
 

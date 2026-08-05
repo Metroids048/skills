@@ -1,12 +1,12 @@
 {
-    "version":  "1.1.0",
-    "exportedAt":  "2026-07-06T18:08:28+08:00",
+    "version":  "1.2.0",
+    "exportedAt":  "2026-08-05T09:51:11+08:00",
     "sourceMachine":  "DESKTOP-6CJ3QPD",
     "skillCounts":  {
-                        "agents":  8,
-                        "cursor":  280,
-                        "claude":  280,
-                        "codex":  312
+                        "agents":  13,
+                        "cursor":  286,
+                        "claude":  286,
+                        "codex":  318
                     },
     "includes":  [
                      "endpoint skills",
@@ -16,12 +16,14 @@
                      "mcp configs",
                      "AIOS",
                      "global memory",
-                     "project agent memory snapshots"
+                     "project agent memory snapshots",
+                     "knowledge-center (Desktop/全局配置 sanitized)"
                  ],
     "excludes":  [
                      "tokens/secrets/auth/session files",
                      "sqlite runtime state",
                      "logs/cache/browser state",
-                     "venv/node_modules/vendor runtime caches"
+                     "venv/node_modules/vendor runtime caches",
+                     "raw chat dumps / session archives / conflict records"
                  ]
 }

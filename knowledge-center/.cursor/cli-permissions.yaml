@@ -1,0 +1,44 @@
+# 全局知识采集器 — Cursor CLI 权限模板（模块 8）
+# 说明：deny 优先于 allow。不要直接放开任意 powershell/cmd。
+
+version: 1
+profile: global-collector
+
+permissions:
+  allow:
+    read:
+      - "C:/Users/win/Desktop/**"
+      - "C:/Users/win/Desktop/全局配置/**"
+    write:
+      - "C:/Users/win/Desktop/全局配置/**"
+      - "C:/Users/win/Desktop/**/项目知识库/**"
+      - "C:/Users/win/Desktop/**/AI原始记录/**"
+      - "C:/Users/win/Desktop/**/.cursor/rules/全局知识与会话归档.mdc"
+      - "C:/Users/win/Desktop/**/.cursor/commands/**"
+    shell:
+      - "python C:/Users/win/Desktop/全局配置/工具/*.py"
+      - "git status"
+      - "git diff"
+      - "git log"
+  deny:
+    - "**/.env"
+    - "**/.env.*"
+    - "**/*.pem"
+    - "**/*.key"
+    - "**/wallet.dat"
+    - "**/Cookies*"
+    - "C:/Windows/**"
+    - "C:/ProgramData/**"
+    - "Remove-Item -Recurse"
+    - "format"
+    - "reg delete"
+    - "ssh *"
+    - "scp *"
+    - "生产部署"
+    - "真实交易"
+    - "付款"
+
+notes:
+  - 全局采集器不得修改业务源码（仅知识区与受控规则/命令）
+  - 不得修改本权限文件以自我提权
+  - Shell 仅限已审查的中央脚本与只读 git

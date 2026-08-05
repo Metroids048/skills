@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{font-family:Inter,Arial,"Microsoft YaHei",sans-serif;color:var(--figma-color-text);background:var(--figma-color-bg)}
+    *{box-sizing:border-box}body{margin:0;padding:20px}.panel{display:grid;gap:16px}
+    h1{font-size:18px;margin:0}p{font-size:12px;line-height:1.6;margin:0;color:var(--figma-color-text-secondary)}
+    .drop{border:1px dashed var(--figma-color-border);border-radius:10px;padding:20px;background:var(--figma-color-bg-secondary)}
+    input{width:100%}button{height:36px;border:0;border-radius:6px;background:var(--figma-color-bg-brand);color:var(--figma-color-text-onbrand);font-weight:600;cursor:pointer}
+    button:disabled{opacity:.45;cursor:not-allowed}progress{width:100%;height:12px}.status{font-size:13px;font-weight:600}.summary{font-size:12px;color:var(--figma-color-text-secondary)}
+    ul{max-height:180px;overflow:auto;margin:0;padding-left:20px;color:var(--figma-color-text-danger);font-size:12px;line-height:1.5}
+    .rules{font-size:11px;padding:10px;border-radius:8px;background:var(--figma-color-bg-secondary);color:var(--figma-color-text-secondary)}
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <div>
+      <h1>Prototype Screenshot Atlas Importer</h1>
+      <p>本地读取 ZIP，只导入截图并按模块/流程排版；不联网、不重绘、不改变产品设计。</p>
+    </div>
+    <label class="drop">
+      <input id="zipFile" type="file" accept=".zip,application/zip" />
+    </label>
+    <button id="start" disabled>导入截图图谱</button>
+    <div class="status" id="status">请选择 figma-import.zip</div>
+    <progress id="progress" value="0" max="1"></progress>
+    <div class="summary" id="summary"></div>
+    <ul id="errors"></ul>
+    <div class="rules">全部模块 → 1 个独立 Figma Page；模块/流程 → Section；主状态横向排列；异常/补充状态放在下方。Frame 间距 160×200，Section 内边距 120。截图使用 FIT，保持原始比例。</div>
+  </main>
+  <script>/*__UI_BUNDLE__*/</script>
+</body>
+</html>

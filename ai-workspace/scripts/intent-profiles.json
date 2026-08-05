@@ -17,6 +17,10 @@
       "skillBoosts": {
         "task-intake-bridge": 42,
         "requirement-clarifier": 50,
+        "prompt-intake-router": 24,
+        "prompt-optimizer": 28,
+        "maestro-prompt-leverage": 26,
+        "prompt-architect": 22,
         "brainstorming": 18,
         "idea-refine": 15,
         "pm-prd-writer": 12

@@ -1,0 +1,30 @@
+# 项目开发 Agent 权限模板（模块 8）
+
+version: 1
+profile: project-developer
+
+permissions:
+  allow:
+    read:
+      - "<PROJECT_ROOT>/**"
+      - "C:/Users/win/Desktop/全局配置/MEMORY_AGENTS.md"
+      - "C:/Users/win/Desktop/全局配置/USER_KNOWLEDGE_BASE.md"
+      - "C:/Users/win/Desktop/全局配置/工具/**"
+    write:
+      - "<PROJECT_ROOT>/**"
+    shell:
+      - "项目内测试/构建/git"
+      - "python C:/Users/win/Desktop/全局配置/工具/同步项目知识.py*"
+      - "python C:/Users/win/Desktop/全局配置/工具/结束并归档.py*"
+  deny:
+    - "C:/Users/win/Desktop/*/!(<PROJECT_NAME>)/**"  # 概念：禁止改其他项目源码
+    - "C:/Users/win/Desktop/全局配置/USER_KNOWLEDGE_BASE.md"  # 禁止直接重写中央主库
+    - "**/.env"
+    - "**/*.pem"
+    - "真实资金"
+    - "生产部署"
+    - "不可逆迁移"
+
+notes:
+  - 可更新本项目知识库；中央主库只能提交待确认补丁
+  - 危险操作必须人工确认

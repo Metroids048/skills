@@ -24,8 +24,16 @@ alwaysApply: true
 - **禁止**用 Codex 自带 Python（`~/.cache/codex-runtimes/.../python.exe`）— **无 win32com**
 - **必须**用全局栈：`$env:AGENT_PYTHON` 或 `%USERPROFILE%\.ai-workspace\venv\Scripts\python.exe`
 - **禁止**每个项目审计 `.venv` 或写依赖检测 boilerplate — 见 `~/.ai-workspace/AGENT-GLOBAL-STACK.md`
-- 未装栈：`install-global-agent-python.ps1`（一次）；验证：`verify-global-agent-stack.ps1`
+- 未装栈：`install-global-agent-python.ps1`（一次，含 Office + Agent 工具包）；验证：`verify-global-agent-stack.ps1`
 - PPT 优先 `python-pptx`；COM 仅当 pptx 不够且 win32com 可用
+- **项目测试**：先 `& $env:AGENT_PYTHON ...\resolve-test-runner.py`；禁止把「AGENT_PYTHON 无项目插件」报成全局损坏（见 `windows-failure-triage.mdc`）
+
+## 路径 / 转义（Codex 高频 L1）
+
+- JS/JSON/TOML/内联命令里的 Windows 路径：**用正斜杠** `C:/Users/...`，禁止未转义的 `C:\Users\...`（`\U` 会炸）
+- PowerShell 过滤目录：用 `-notlike` / `Get-ChildItem`，禁止以 `\` 结尾的路径正则
+- Codex `config.toml`：**不要**把长 Windows 路径写进 `persistent_instructions`；规则放 `~/.codex/AGENTS.md`
+- 详见：`CODEX-WINDOWS-SHELL.md` + `windows-agent-failure-catalog-zh.md`
 
 ## Shell 失败快速路径
 
@@ -33,13 +41,16 @@ alwaysApply: true
 |------|------|
 | Python 中文路径乱码 / `gbk` / cwd 乱码 | `verify-windows-shell-encoding.ps1`；FAIL → `repair-windows-shell-encoding.ps1` |
 | `.ps1` 中文乱码 / Unexpected token / 字符串语法炸 | `verify-ps1-script-encoding.ps1`；FAIL → **改 Python 重写**，禁止试编码；PASS → `invoke-agent-ps1.ps1` |
-- PS 7 支持 `&&` / `||`；仍优先写 `.ps1` + `-File`，避免嵌套 `-Command`
+| 需要链式命令 | PS7 可用 `&&`/`||`；优先写 `.ps1` + `-File`，避免嵌套 `-Command` |
 | `$env` / `$_` 被外层吃掉 | **禁止** inline 命令里写 `$_`、`$var`；用 `rg`/Python/`.ps1 -File` |
 | `spawn ENOENT` / 找不到命令 | `where.exe <tool>` 确认 PATH |
 | `.ps1` 脚本 | `powershell -NoProfile -ExecutionPolicy Bypass -File "path\to\script.ps1"`（优先 `-File`，避免 `-Command` 嵌套引号） |
 | RTK 包不住 Get-Content / cmdlet | **禁止** rtk 包 cmdlet；用 `read-text-file.py` 或 Read 工具 |
 | inline `python -c` BOM / 语法炸 | 写 `.py` → `run-agent-python.ps1` |
 | win32com / LibreOffice 不可用 | 先 `verify-agent-python.ps1`；勿用 Codex 自带 python |
+| `\U` / invalid unicode / 正则以 `\` 结尾 | **L1**：改路径写法；不要报 L3 |
+| 浏览器测完临时目录 EPERM | **L2 清理**：主流程过则勿报 E2E 失败 |
+| 「缺 pytest」 | 先 `resolve-test-runner.py`；缺全局工具包只跑 install 一次 |
 
 ## Shell 编码门禁（涉及 Python / 中文路径 / Office 文件前）
 

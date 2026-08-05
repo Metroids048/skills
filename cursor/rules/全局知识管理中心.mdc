@@ -1,0 +1,23 @@
+---
+description: 本机全局知识管理中心入口
+alwaysApply: true
+---
+
+<!-- AI-KNOWLEDGE-CENTER-START -->
+## 本机 AI 全局知识管理中心
+
+中央目录：`C:/Users/win/Desktop/全局配置`
+
+开始非简单跨项目任务前，按需读取：
+
+- `C:/Users/win/Desktop/全局配置/MEMORY_AGENTS.md`
+- `C:/Users/win/Desktop/全局配置/USER_KNOWLEDGE_BASE.md`
+- `C:/Users/win/Desktop/全局配置/当前全局状态.md`
+- 相关项目：`C:/Users/win/Desktop/全局配置/项目镜像/<项目名>/`
+
+任务结束：生成会话胶囊 → 更新项目 `项目知识库/` → `python 工具/知识中心.py 同步 --项目 <名>`。
+不得静默覆盖中央主知识库；冲突只写待确认补丁。
+禁止读取密钥/Cookie/钱包；禁止自动部署/真实交易/付款。
+
+CLI：`python C:/Users/win/Desktop/全局配置/工具/知识中心.py --help`
+<!-- AI-KNOWLEDGE-CENTER-END -->

@@ -1,6 +1,6 @@
 # User Memory (Global)
 
-Last updated: 2026-06-18
+Last updated: 2026-07-22
 
 > Cross-project facts, preferences, and workflow conventions. **Do not commit to git** — lives in `~/.ai-workspace/memory/`.
 
@@ -24,6 +24,58 @@ Last updated: 2026-06-18
 - Tools: Cursor + Claude Code + Codex share hooks via `~/.ai-workspace/scripts/`
 - **0→1 mode: strict** — 新模块/大范围「帮我做…」必须先方案+ADR+用户确认，再写代码；用户非技术，由 Agent 主动补 ADR/模块边界
 - **Maximum permission:** 「最大权限」「全部解决」= 少来回确认、把**当前问题**修完 — **不等于**可删 CC Switch、清配置目录、跑卸载脚本；破坏性操作须先说明并获确认
+- **成本与稳定性（2026-07-30 / ADR-G007）：** 单目标；长命令 30–60s 轮询；日志只取错误+末尾约 200 行；429/断流最多重试 1 次；可验收阶段立即 Git 提交；中断必报恢复点。SSOT: `cost-stability-constraints.md`
+
+
+<!-- AGENT-CONFIG-PACK:MEMORY START -->
+## Agent Config Pack (三端统一架构) — 2026-07-22
+
+推荐结构（不要分别维护三套完全不同的规则）：
+
+```
+全局个人规则（Working Agreement）
+    ↓
+项目根 AGENTS.md（共同事实来源；Claude 用 @AGENTS.md 导入）
+    ↓
+工具专用补丁（Cursor .cursor/rules；Claude CLAUDE.md + .claude/rules）
+    ↓
+verify-work Skill
+    ↓
+测试 / CI / Hooks / 权限（硬性约束）
+```
+
+### 安装位置速查
+
+| 层 | 路径 |
+|---|---|
+| Working Agreement 规范副本 | `~/.ai-workspace/memory/agent-working-agreement.md` |
+| Codex 全局 | `~/.codex/AGENTS.md`（含 managed block） |
+| Claude 全局 | `~/.claude/CLAUDE.md` + `~/.claude/AGENTS.md` |
+| Cursor 全局规则 | `~/.cursor/rules/00-agent-working-agreement.mdc` |
+| Cursor User Rules 粘贴源 | `~/.cursor/USER_RULES.txt` 与 `~/.ai-workspace/templates/cursor/USER_RULES.txt`（Settings → Rules → User Rules） |
+| verify-work | `~/.agents|/.cursor|/.claude/skills/verify-work/SKILL.md` |
+| 项目模板 | `~/.ai-workspace/templates/agent-config-pack/` |
+
+### AGENT_LESSONS / 长期记忆只记什么
+
+只记录长期有效且已验证：真实构建测试命令、特殊架构约束、重复≥2次错误、已证实根因与修复、外部平台不明显行为。
+
+不要记录：临时进度、一次性日志、未验证猜测、隐私密钥、整段会话上下文。
+
+Claude auto memory：保持为索引（启动约前 200 行 / 25KB）；不是硬执行机制。
+
+### 使用原则（摘要）
+
+- 单文件小改：直接改 + 针对性测试
+- Bug：先复现再回归测试
+- 多文件/架构：里程碑 + 验收
+- 分析任务：禁止擅自实施
+- 重要功能：独立上下文评审
+- 真金/生产/破坏性 DB：必须人工确认
+- 同一失败连续两次无进展：停止重复方案
+- 所有「完成」必须附真实命令与结果
+- 提示词只能影响行为；硬规则靠 Hooks / 权限 / 测试 / CI
+<!-- AGENT-CONFIG-PACK:MEMORY END -->
 
 ## Global Workflow
 
@@ -44,7 +96,17 @@ Last updated: 2026-06-18
 - **2026-06-17 交付门禁（TASK-073）：** `node-project-delivery.mdc` — Agent Platform 用 `verify-all`；`program1-main`/`demo1` 用 `npm run verify`；勿在平台根跑 `npm run lint`
 - **2026-06-17 DeepSeek 缓存二期：** 客户端 `15721` → CC Switch → `18789` `deepseek-cc-proxy`（tool 排序 + 剥 header）；playbook：`Agent Platform/docs/tri-end-deepseek-cache-playbook-zh.md`
 - **2026-06-18 AI 项目复盘（program1-main）：** 未锁「本轮改哪一层」就改页面 → 返工恶性循环；已沉淀为 `ai-project-retrospective-rules-zh.md` + `ai-delivery-anti-patterns.mdc` + ADR-G004；模糊输入必须提问，禁止跨层混改
+- **2026-07-17 Windows/Codex 失败三层 + 全局装一次（ADR-G006）：** 路径 `\U`、PS 正则、AGENT_PYTHON≠项目 pytest、EPERM 清理等反复出现，是 L1/L2 被误报成「环境又坏了」+ 每项目重装。目录 `windows-agent-failure-catalog-zh.md`；规则 `windows-failure-triage.mdc`；测试前 `resolve-test-runner.py`；依赖只进 `~/.ai-workspace/venv` 一次
 
 ## Active Projects
 
 See `projects-registry.md` for path → alias mapping.
+
+<!-- AGENT-CONFIG-PACK:MULTI-PROJECT START -->
+### 多项目说明（2026-07-22）
+
+- **Codex 全局已就绪**：`~/.codex/AGENTS.md`（Working Agreement + workspace 规则）+ `~/.agents/skills/verify-work` + `~/.codex/skills/verify-work`。
+- **项目层对所有已发现仓库安装**（不仅 alpha）：每个仓库的 `AGENTS.md` bridge、`CLAUDE.md`、`.cursor/rules/00|10`、`.claude/rules/testing`、`code-reviewer`、`verify-work`、docs 模板。
+- 已有项目的 `AGENTS.md` **正文不覆盖**，只 upsert bridge；无 `AGENTS.md` 的仓库用 pack 模板创建（含 `<...>` 占位符，需按项目填实）。
+- 项目清单见 `projects-registry.md`。
+<!-- AGENT-CONFIG-PACK:MULTI-PROJECT END -->

@@ -1,0 +1,6 @@
+project_id: "Agent-Platform"
+name: "Agent Platform"
+path: "C:/Users/win/Desktop/Agent Platform"
+has_git: false
+mirror_only: true
+note: "中央镜像不是源码备份"

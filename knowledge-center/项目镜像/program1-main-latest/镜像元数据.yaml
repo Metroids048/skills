@@ -1,0 +1,6 @@
+project_id: "program1-main-latest"
+name: "program1-main-latest"
+path: "C:/Users/win/Desktop/program1-main-latest"
+has_git: true
+mirror_only: true
+note: "中央镜像不是源码备份"

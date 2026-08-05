@@ -1,0 +1,19 @@
+# 文件命名规则
+version: 1
+user_readable: chinese
+tool_required_english:
+  - AGENTS.md
+  - CLAUDE.md
+  - README.md
+  - .gitignore
+  - .cursor/rules/
+  - .cursor/commands/
+  - .cursor/hooks.json
+  - .cursor/cli.json
+session_artifact_pattern: "{date}_{time}_{tool}_{project}_{kind}.{ext}"
+examples:
+  - "2026-07-28_143205_Cursor_自动量化交易系统_用户输入.md"
+  - "2026-07-28_143205_CursorCLI_自动量化交易系统_原始事件.jsonl"
+date_format: "%Y-%m-%d"
+time_format: "%H%M%S"
+path_style: forward_slash_in_yaml

@@ -6,7 +6,7 @@
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\install-global-agent-python.ps1"
-powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\repair-codex-config.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\repair-windows-agent-env.ps1"
 ```
 
 ## 固定路径
@@ -17,31 +17,42 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-worksp
 | 环境变量 | `AGENT_PYTHON`（User 级） |
 | 命令别名 | `%USERPROFILE%\.local\bin\agent-python.cmd` |
 | 运行时快照 | `%USERPROFILE%\.ai-workspace\runtime\python-env.json` |
+| 失败目录 | `%USERPROFILE%\.ai-workspace\memory\windows-agent-failure-catalog-zh.md` |
+| 测试解析 | `%USERPROFILE%\.ai-workspace\scripts\resolve-test-runner.py` |
+
+## 已装模块（全局一次）
+
+**Office / 文档：** pywin32、python-pptx、python-docx、openpyxl、Pillow（可选：`-WithPdf` → pymupdf）
+
+**Agent 工具包：** pytest、pyyaml、requests、httpx、jsonschema、chardet  
+
+> 工具包里的 pytest 供 Agent 脚本/冒烟用，**不能**代替项目 `.venv` 的业务测试依赖。跑项目测试前先：`resolve-test-runner.py`。
 
 ## Agent 应怎么用
 
 ```powershell
 # 跑项目里的脚本（任意 cwd）
-& $env:AGENT_PYTHON tools\ppt_v0_xxx.py "C:\Users\win\Desktop\敖钦储能项目\..."
+& $env:AGENT_PYTHON tools\ppt_v0_xxx.py "C:/Users/win/Desktop/敖钦储能项目/..."
 
 # 或
 agent-python tools\build_doc.py "中文路径.docx"
 
 # 读中文文件
 & $env:AGENT_PYTHON "$env:USERPROFILE\.ai-workspace\scripts\read-text-file.py" "路径"
+
+# 项目测试用哪个 Python？（必跑，禁止瞎猜）
+& $env:AGENT_PYTHON "$env:USERPROFILE\.ai-workspace\scripts\resolve-test-runner.py"
 ```
 
-**不要：** 扫 `.venv`、`python -c`、管道喂 Python、每项目 `build_*_optimized.py` 里重复 pip 检测。
+**不要：** 扫 `.venv`、`python -c`、管道喂 Python、每项目 `build_*_optimized.py` 里重复 pip 检测。  
+**路径：** 写入 JS/JSON/TOML 时用正斜杠 `C:/Users/...`，避免 `\U` 非法转义（见失败目录 L1-01）。
 
 ## 验证（与项目无关）
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\verify-global-agent-stack.ps1"
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\audit-windows-agent-env.ps1"
 ```
-
-## 已装模块
-
-pywin32、python-pptx、python-docx、openpyxl、Pillow（可选：`install-global-agent-python.ps1 -WithPdf` 装 pymupdf）
 
 ## Codex 更新后
 
@@ -52,7 +63,7 @@ Desktop 会冲掉 `config.toml` → 再跑 `repair-codex-config.ps1`，然后**�
 仅当你**显式**要跑该项目专用依赖时用 `-UseProjectVenv`：
 
 ```powershell
-ensure-python-env.ps1 -UseProjectVenv -ProjectDir "C:\path\to\project"
+ensure-python-env.ps1 -UseProjectVenv -ProjectDir "C:/path/to/project"
 ```
 
 默认 Agent 栈 **不**自动切到项目 `.venv`。

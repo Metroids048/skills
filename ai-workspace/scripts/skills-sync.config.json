@@ -64,13 +64,13 @@
     ["figma-workflow", "figma2code"],
     ["requirement-clarifier", "pm-prd-writer"],
     ["systematic-debugging", "diagnose"],
-    ["ai-delivery-gate", "global-delivery-gate", "verification-before-completion"]
+    ["ai-delivery-gate", "global-delivery-gate", "verification-before-completion"],
+    ["prompt-architect", "prompt-optimizer", "maestro-prompt-leverage"]
   ],
   "topMatches": 10,
   "alwaysOnSkills": [
     "global-session-core",
     "task-intake-bridge",
-    "requirement-clarifier",
     "karpathy-guidelines"
   ],
   "categoryRoutingEnabled": true,
@@ -114,6 +114,10 @@
     "using-superpowers": "Cursor 技能路由：匹配 description；0→1/vibe coding 须 Read zero-to-one-gate + brainstorming。见 refinements/using-superpowers.md。",
     "pm-prd-writer": "把模糊需求转化为可评审的产品需求文档（PRD）。当用户说写PRD、需求文档、功能说明书时使用。不适用于：纯技术方案与模块架构（用 zero-to-one-gate）、纯 UI 标注（用 design-handoff）。",
     "requirement-clarifier": "ALWAYS apply at session start and before execution. Converts fuzzy vibe-coding input into Mini-Spec (S4.5) + structured S1-S12 + Agent execution Prompt. Read vibe-coding-bridge.md for B-class coding. Use for 帮我做/优化一下/vibe coding/agent实现 before Write/Edit.",
+    "prompt-intake-router": "On fuzzy or prompt-improvement tasks: pick 1–2 skills total from intake pool (max 1 of prompt-architect/optimizer/maestro-leverage + optional requirement-clarifier/brainstorming/etc.). Integrates with existing skills — not a fixed 3-skill pipeline.",
+    "prompt-architect": "Transform vague prompts via research-backed frameworks (CO-STAR, RISEN, TIDD-EC, CoT, etc.). Use when optimizing general prompts, writing tasks, or framework-based prompt design — not primary for EARS requirements (use prompt-optimizer) or coding execution briefs (use maestro-prompt-leverage).",
+    "prompt-optimizer": "Transform vague requirements into EARS testable specifications with domain theory and examples. Use for loose feature/requirement language, optimize my prompt for specs, make requirements measurable.",
+    "maestro-prompt-leverage": "Strengthen raw agent/coding task instructions with Objective, Tool Rules, Output Contract, Done Criteria. Use for repo implementation, debug, refactor, multi-step agent execution — before tools run.",
     "task-intake-bridge": "Use when a user request must first be typed, normalized, and rewritten into an execution-ready brief before routing downstream skills. Especially for fuzzy implementation, multi-step changes, cross-module work, debugging vs verification ambiguity, or skill-engineering requests.",
     "design-taste-frontend": "Anti-slop 前端审美（Leonxlnx/taste-skill v2）。Landing/作品集/改版；先读 brief 再定设计方向。用户说 UI 丑、要设计感、落地页、portfolio、anti-slop 时使用。NOT when: tactus/风格映射/style preset（用 tactus-design-style）；仅审计现有站点（用 redesign-existing-projects）；高 GSAP 动效 landing（用 gpt-taste）。",
     "gpt-taste": "Codex/GPT 向 stricter taste-skill：更高 layout variance + GSAP ScrollTrigger。高动效 landing 时用。NOT when: tactus 风格 token 映射（用 tactus-design-style）；低动效 editorial UI（用 minimalist-ui）。",
@@ -183,6 +187,44 @@
       "normalize request",
       "execution-ready brief",
       "先分析再执行"
+    ],
+    "prompt-intake-router": [
+      "增强 prompt",
+      "优化 prompt",
+      "优化提示词",
+      "整理任务指令",
+      "转成 agent",
+      "执行前增强",
+      "prompt leverage",
+      "prompt architect",
+      "prompt optimizer"
+    ],
+    "prompt-architect": [
+      "prompt architect",
+      "CO-STAR",
+      "RISEN",
+      "framework",
+      "优化提示词结构",
+      "improve this prompt",
+      "help me improve this prompt"
+    ],
+    "prompt-optimizer": [
+      "EARS",
+      "需求语法",
+      "可测试需求",
+      "optimize my prompt",
+      "improve this requirement",
+      "make this more specific",
+      "模糊需求转规格"
+    ],
+    "maestro-prompt-leverage": [
+      "execution prompt",
+      "agent brief",
+      "handoff prompt",
+      "tool rules",
+      "done criteria",
+      "wrap prompt",
+      "coding agent prompt"
     ],
     "zero-to-one-gate": [
       "新功能",

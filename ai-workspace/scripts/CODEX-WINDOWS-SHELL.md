@@ -53,3 +53,30 @@ Apply/repair: `repair-codex-config.ps1` then `repair-codex-plus-plugins-mcp.ps1`
 
 Codex wraps commands in `-Command "..."`. **Never use `$_` or `$foo` in inline shell.**
 Use `rg`, `python script.py`, or write `.ps1` and run with `-File`.
+
+## Path escape / `\U` (L1 — not "Windows broken")
+
+- Never put raw `C:\Users\...` into JS/JSON/TOML string literals — `\U` is an illegal Unicode escape.
+- Use forward slashes: `C:/Users/win/...` or Path APIs.
+- Do **not** put long Windows paths in Codex `config.toml` `persistent_instructions` — put rules in `~/.codex/AGENTS.md`.
+
+## PowerShell regex ending with `\` (L1)
+
+- Path-based `-match` regex that ends with `\` is invalid.
+- Prefer `Get-ChildItem` + `-notlike`, or put the pattern in a `.ps1` file.
+
+## Project pytest vs AGENT_PYTHON (L2 misuse)
+
+```powershell
+& $env:AGENT_PYTHON "$env:USERPROFILE\.ai-workspace\scripts\resolve-test-runner.py"
+```
+
+- Global venv includes agent tooling pytest (installed once).
+- Project business tests still prefer project `.venv` / `py -3`.
+- Missing project plugins on AGENT_PYTHON ≠ global stack broken.
+- Catalog: `~/.ai-workspace/memory/windows-agent-failure-catalog-zh.md`
+- Always classify: L1 tool / L2 env / L3 project (`windows-failure-triage.mdc`).
+
+## Playwright cleanup EPERM (L2)
+
+If the browser flow assertions already passed and only temp-profile cleanup throws `EPERM`, report **L2 cleanup**, not L3 E2E failure.

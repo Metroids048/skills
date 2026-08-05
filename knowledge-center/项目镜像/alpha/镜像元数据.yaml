@@ -1,0 +1,6 @@
+project_id: "alpha"
+name: "alpha"
+path: "C:/Users/win/Desktop/alpha"
+has_git: true
+mirror_only: true
+note: "中央镜像不是源码备份"

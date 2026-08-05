@@ -1,0 +1,4 @@
+{
+  "permissionsFile": "cli-permissions.yaml",
+  "note": "请在 Cursor Settings → Agents → CLI permissions 中对齐本文件 deny/allow；deny 优先"
+}

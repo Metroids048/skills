@@ -47,3 +47,29 @@ Cross-project architecture decisions. Project-specific ADRs stay in `<repo>/.git
 - **Decision**: Create ~/.ai-workspace/memory/global-agent-master.md as the SSOT. Reduce ~/.claude/AGENTS.md, ~/.codex/AGENTS.md, and key Cursor always-on rules to thin shims that reference the master.
 - **Consequences**: Cross-tool behavior is now governed by one document; repo-local AGENTS still win on project details; existing safety rules remain in the shims.
 
+## ADR-G006: Windows/Codex failure triage + global install once
+
+- **Date**: 2026-07-17
+- **Status**: accepted
+- **Context**: Codex/Cursor tasks repeatedly surfaced the same Windows issues (path `\U` escapes, PowerShell regex, AGENT_PYTHON vs project pytest, Playwright EPERM cleanup, missing SDKs). Users had already repaired global Python/encoding multiple times; agents re-reported L1/L2 as "environment broken" and re-pip'd per project, wasting time and disk.
+- **Decision**:
+  1. Catalog SSOT: `~/.ai-workspace/memory/windows-agent-failure-catalog-zh.md`
+  2. Always-on rule: `windows-failure-triage.mdc` — every verify failure must be labeled L1 tool / L2 env / L3 project
+  3. Global venv (`install-global-agent-python.ps1`) installs Office + agent tooling (pytest/yaml/requests/httpx/jsonschema/chardet) **once**; `resolve-test-runner.py` selects project vs global interpreter
+  4. `repair-windows-agent-env.ps1` / `audit-windows-agent-env.ps1` enforce catalog + rule presence + tooling modules
+  5. Codex/Claude `AGENTS.md` + `CODEX-WINDOWS-SHELL.md` + `AGENT-GLOBAL-STACK.md` updated to match
+- **Consequences**: Agents must not reinstall global deps per project; must not call L1/L2 a project failure; EPERM cleanup after successful browser flow is L2 only.
+
+## ADR-G007: 成本与稳定性约束（全局 always-on）
+
+- **Date**: 2026-07-30
+- **Status**: accepted
+- **Context**: 长任务中高频轮询、灌入完整日志、无限重试与范围漂移抬高成本并降低稳定性；需要跨 Cursor / Claude Code / Codex 统一约束。
+- **Decision**:
+  1. SSOT: `~/.ai-workspace/memory/cost-stability-constraints.md`
+  2. Cursor alwaysApply: `~/.cursor/rules/cost-stability-constraints.mdc`
+  3. Claude / Codex shim: `~/.claude/AGENTS.md` 与 `~/.codex/AGENTS.md` 同名章节
+  4. 八条硬约束：单目标、30–60s 轮询、日志末尾约 200 行、API/网关最多重试 1 次、阶段 Git 提交、不重复扫描、推理分级、中断恢复点
+  5. 阶段提交覆盖 Working Agreement「未要求不提交」的默认习惯；用户当次说「不要提交」仍可跳过
+- **Consequences**: 多阶段任务默认阶段提交；429/断流类失败不得死循环；实现阶段应降低发散推理。
+

@@ -24,6 +24,7 @@ Cursor、Claude Code、Codex **三端全局配置** 的可移植源仓库。从�
 | `ai-workspace/templates/` | 全局模板 |
 | `ai-workspace/skills-curated/` | 轻量 curated skill 源材料 |
 | `projects/*/` | 项目级 AGENTS、CLAUDE、`.github/agent` memory/rules 快照 |
+| `knowledge-center/` | Desktop「全局配置」知识中心可移植子集（文档/工具/记忆/镜像；不含原始会话归档） |
 | `docs/reports/` | skills 去重/迁移审计报告 |
 | `install.ps1` | 新机器一键安装 |
 | `scripts/export-from-local.ps1` | 从本机刷新仓库内容 |

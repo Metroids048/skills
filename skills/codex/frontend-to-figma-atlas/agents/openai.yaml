@@ -1,0 +1,4 @@
+interface:
+  display_name: "前端页面转 Figma Atlas"
+  short_description: "一键完成浏览器验收、场景截图与 Figma 图谱增量同步"
+  default_prompt: "Use $frontend-to-figma-atlas to audit this frontend, capture missing states, and sync a screenshot atlas into Figma."

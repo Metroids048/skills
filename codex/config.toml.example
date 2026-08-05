@@ -1,111 +1,185 @@
-model_provider = "custom"
-model = "gpt-5.5"
+#:schema https://developers.openai.com/codex/config-schema.json
+# Repaired 2026-06-03: removed macOS notify, stale node_repl paths, and startup-heavy MCP set.
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "live"
+persistent_instructions = "Follow project AGENTS.md. Fuzzy/vibe coding: Read requirement-clarifier + skill-chain-map.md + vibe-coding-bridge.md; ultra-vague use interview-protocol (one Q+GUESS); output Mini-Spec S4.5 + S7 before Write/Edit; multi-file risk use clarification-guardrails.md. User must confirm before execute unless 直接执行. Use MCP when helpful."
+model = "gpt-5.6-terra"
 model_reasoning_effort = "high"
-disable_response_storage = true
+notify = ['C:\Users\win\AppData\Local\OpenAI\Codex\runtimes\cua_node\a89897d3d9baa117\bin\node_modules\@oai\sky\bin\windows\codex-computer-use.exe', "turn-ended"]
+model_provider = "custom"
+openai_base_url = "http://127.0.0.1:57321/v1"
+model_catalog_json = "model-catalogs/ccs-one-api-1783589315861.json"
+[desktop.open-in-target-preferences]
+global = "cursor"
 
-[model_providers.custom]
-name = "One-API"
-base_url = "http://127.0.0.1:15721/v1"
-wire_api = "responses"
-requires_openai_auth = true
-experimental_bearer_token = "PROXY_MANAGED"
+[desktop.open-in-target-preferences.perPath]
+'C:\Users\win\Desktop\敖钦储能项目' = "fileManager"
+'C:\Users\win\Desktop\AI--main' = "cursor"
 
-# Core MCP servers for coding / PM / vibe workflows.
-# Secrets are not stored here. Set Windows user environment variables as needed:
-# GITHUB_PERSONAL_ACCESS_TOKEN, EXA_API_KEY, FAL_KEY, FIGMA_API_KEY.
-[projects.'c:\users\win\desktop\agent platform']
-trust_level = "trusted"
+[mcp_servers]
 
-[projects.'c:\users\win\desktop\敖钦储能项目']
-trust_level = "trusted"
-
-[projects.'c:\users\win\desktop\海小南']
-trust_level = "trusted"
-
-[projects.'c:\users\win\desktop\ai--main']
-trust_level = "trusted"
-
-[projects.'c:\users\win\documents\codex\2026-07-06\wo']
-trust_level = "trusted"
-
-[projects.'c:\users\win\documents\codex\2026-07-06\1-3-skills-skills-2-3']
-trust_level = "trusted"
-
-[windows]
-sandbox = "unelevated"
-shell_path = "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
-
-[mcp_servers.github]
+[mcp_servers.chrome-devtools]
+type = "stdio"
 command = "npx"
-args = ["-y", "@modelcontextprotocol/server-github"]
+args = ["-y", "chrome-devtools-mcp@latest"]
 startup_timeout_sec = 30
 
 [mcp_servers.context7]
+type = "stdio"
 command = "npx"
 args = ["-y", "@upstash/context7-mcp@latest"]
 startup_timeout_sec = 30
 
-[mcp_servers.openaiDeveloperDocs]
-url = "https://developers.openai.com/mcp"
-startup_timeout_sec = 30
-
-[mcp_servers.memory]
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-memory"]
-startup_timeout_sec = 30
-
-[mcp_servers.sequential-thinking]
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
-startup_timeout_sec = 30
-
-[mcp_servers.playwright]
-command = "npx"
-args = ["-y", "@playwright/mcp@latest", "--browser", "chrome"]
-startup_timeout_sec = 30
-
 [mcp_servers.exa]
+type = "stdio"
 command = "npx"
 args = ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
 startup_timeout_sec = 30
 
 [mcp_servers.fal-ai]
+type = "stdio"
 command = "npx"
 args = ["-y", "fal-ai-mcp-server"]
 startup_timeout_sec = 30
 
 [mcp_servers.filesystem-agent-platform]
+type = "stdio"
 command = "npx"
-args = ["-y", "@modelcontextprotocol/server-filesystem", "C:\\Users\\win\\Desktop\\Agent Platform"]
+args = ["-y", "@modelcontextprotocol/server-filesystem", 'C:\Users\win\Desktop\Agent Platform']
 startup_timeout_sec = 30
 
-[mcp_servers.chrome-devtools]
+[mcp_servers.github]
+type = "stdio"
 command = "npx"
-args = ["-y", "chrome-devtools-mcp@latest"]
+args = ["-y", "@modelcontextprotocol/server-github"]
 startup_timeout_sec = 30
 
-[mcp_servers.figma]
-url = "https://mcp.figma.com/mcp"
+[mcp_servers.memory]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-memory"]
 startup_timeout_sec = 30
 
-[mcp_servers.figma-desktop]
-url = "http://127.0.0.1:3845/mcp"
+[mcp_servers.playwright]
+type = "stdio"
+command = "npx"
+args = ["-y", "@playwright/mcp@latest", "--browser", "chrome"]
 startup_timeout_sec = 30
 
-[marketplaces.openai-bundled]
-last_updated = "2026-06-08T00:00:00Z"
-source_type = "local"
-source = 'C:\Users\win\.codex\.tmp\bundled-marketplaces\openai-bundled'
+[mcp_servers.sequential-thinking]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+startup_timeout_sec = 30
 
-[marketplaces.openai-curated]
-last_updated = "2026-06-08T00:00:00Z"
-source_type = "local"
-source = '\\?\C:\Users\win\.codex\.tmp\plugins'
+[features]
+multi_agent = true
+
+[model_providers.custom]
+name = "One-API"
+requires_openai_auth = false
+supports_websockets = true
+wire_api = "responses"
+base_url = "https://api.tangguo.xin/v1"
+
+[profiles.strict]
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+web_search = "cached"
+
+[profiles.yolo]
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+web_search = "live"
+
+[profiles.hcai]
+model_provider = "hcai"
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+
+[agents]
+max_threads = 3
+max_depth = 1
+
+[plugins."openai-developers@openai-curated"]
+enabled = true
+
+[plugins."superpowers@openai-api-curated"]
+enabled = true
+
+[plugins."codex-security@openai-curated"]
+enabled = true
+
+[agents.explorer]
+description = "Read-only codebase explorer for gathering evidence before changes are proposed."
+config_file = "agents/explorer.toml"
+
+[plugins."binance@openai-curated"]
+enabled = true
+
+[plugins."hyperframes@openai-api-curated"]
+enabled = true
+
+[agents.reviewer]
+description = "PR reviewer focused on correctness, security, and missing tests."
+config_file = "agents/reviewer.toml"
+
+[agents.docs_researcher]
+description = "Documentation specialist that verifies APIs, framework behavior, and release notes."
+config_file = "agents/docs-researcher.toml"
+
+[windows]
+sandbox = "elevated"
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[hooks.state.'C:\Users\win\.codex\hooks.json:session_start:0:0']
+trusted_hash = "sha256:7d8351580109d1697043b45fa467ce05cd60fa8c024d5fe5f2212d96563c098c"
+
+[plugins."product-design@openai-curated-remote"]
+enabled = true
+
+[hooks.state.'C:\Users\win\.codex\hooks.json:user_prompt_submit:0:0']
+trusted_hash = "sha256:175d441a3675a006f20c134fb11398e4759b8e9677be866a374e06d8e4a36d68"
+
+[plugins."creative-production@openai-curated-remote"]
+enabled = true
+
+[projects.'c:\users\win\desktop\demo']
+trust_level = "trusted"
+
+[plugins."picsart@openai-curated"]
+enabled = true
+
+[projects.'c:\users\win\desktop\平台项目资料']
+trust_level = "trusted"
+
+[projects.'c:\users\win\desktop\ai--main']
+trust_level = "trusted"
+
+[projects.'c:\users\win\desktop\敖钦储能项目']
+trust_level = "trusted"
+
+[plugins."supabase@openai-curated"]
+enabled = true
+
+[projects.'c:\users\win\desktop\program1-main-latest']
+trust_level = "trusted"
+
+[projects.'c:\users\win\desktop\alpha']
+trust_level = "trusted"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-06-08T00:00:00Z"
+last_updated = "2026-07-31T02:14:57Z"
 source_type = "local"
-source = 'C:\Users\win\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
+source = '\\?\C:\Users\win\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
+
+[marketplaces.openai-curated]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\plugins'
 
 [marketplaces.openai-api-curated]
 source_type = "local"
@@ -115,14 +189,9 @@ source = '\\?\C:\Users\win\.codex\.tmp\plugins'
 source_type = "local"
 source = '\\?\C:\Users\win\.codex\.tmp\plugins-remote'
 
-[plugins."browser@openai-bundled"]
-enabled = true
-
-[plugins."chrome@openai-bundled"]
-enabled = true
-
-[plugins."computer-use@openai-bundled"]
-enabled = true
+[marketplaces.openai-bundled]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\bundled-marketplaces\openai-bundled'
 
 [plugins."documents@openai-primary-runtime"]
 enabled = true
@@ -133,545 +202,28 @@ enabled = true
 [plugins."presentations@openai-primary-runtime"]
 enabled = true
 
-[plugins."actively@openai-curated"]
-enabled = true
-
-[plugins."aiera@openai-curated"]
-enabled = true
-
-[plugins."airtable@openai-curated"]
-enabled = true
-
-[plugins."alation@openai-curated"]
-enabled = true
-
-[plugins."alpaca@openai-curated"]
-enabled = true
-
-[plugins."amplitude@openai-curated"]
-enabled = true
-
-[plugins."apollo@openai-curated"]
-enabled = true
-
-[plugins."asana@openai-curated"]
-enabled = true
-
-[plugins."atlassian-rovo@openai-curated"]
-enabled = true
-
-[plugins."attio@openai-curated"]
-enabled = true
-
-[plugins."base44@openai-curated"]
-enabled = true
-
-[plugins."binance@openai-curated"]
-enabled = true
-
-[plugins."biorender@openai-curated"]
-enabled = true
-
-[plugins."boltz-api-cli@openai-curated"]
-enabled = true
-
-[plugins."box@openai-curated"]
-enabled = true
-
-[plugins."brand24@openai-curated"]
-enabled = true
-
-[plugins."brex@openai-curated"]
-enabled = true
-
-[plugins."brighthire@openai-curated"]
-enabled = true
-
-[plugins."build-ios-apps@openai-curated"]
-enabled = true
-
-[plugins."build-macos-apps@openai-curated"]
-enabled = true
-
-[plugins."build-web-apps@openai-curated"]
-enabled = true
-
-[plugins."build-web-data-visualization@openai-curated"]
-enabled = true
-
-[plugins."calendly@openai-curated"]
-enabled = true
-
-[plugins."canva@openai-curated"]
-enabled = true
-
-[plugins."carta-crm@openai-curated"]
-enabled = true
-
-[plugins."catalyst-by-zoho@openai-curated"]
-enabled = true
-
-[plugins."cb-insights@openai-curated"]
-enabled = true
-
-[plugins."channel99@openai-curated"]
-enabled = true
-
-[plugins."chronograph-gp@openai-curated"]
-enabled = true
-
-[plugins."chronograph-lp@openai-curated"]
-enabled = true
-
-[plugins."circleback@openai-curated"]
-enabled = true
-
-[plugins."circleci@openai-curated"]
-enabled = true
-
-[plugins."clay@openai-curated"]
-enabled = true
-
-[plugins."clickup@openai-curated"]
-enabled = true
-
-[plugins."close@openai-curated"]
-enabled = true
-
-[plugins."cloudflare@openai-curated"]
-enabled = true
-
-[plugins."cloudinary@openai-curated"]
-enabled = true
-
-[plugins."coderabbit@openai-curated"]
-enabled = true
-
-[plugins."codex-security@openai-curated"]
-enabled = true
-
-[plugins."cogedim@openai-curated"]
-enabled = true
-
-[plugins."common-room@openai-curated"]
-enabled = true
-
-[plugins."conductor@openai-curated"]
-enabled = true
-
-[plugins."convex@openai-curated"]
-enabled = true
-
-[plugins."coupler-io@openai-curated"]
-enabled = true
-
-[plugins."coveo@openai-curated"]
-enabled = true
-
-[plugins."cube@openai-curated"]
-enabled = true
-
-[plugins."daloopa@openai-curated"]
-enabled = true
-
-[plugins."datadog@openai-curated"]
-enabled = true
-
-[plugins."datasite@openai-curated"]
-enabled = true
-
-[plugins."deepnote@openai-curated"]
-enabled = true
-
-[plugins."demandbase@openai-curated"]
-enabled = true
-
-[plugins."digitalocean@openai-curated"]
-enabled = true
-
-[plugins."dnb-finance-analytics@openai-curated"]
-enabled = true
-
-[plugins."docket@openai-curated"]
-enabled = true
-
-[plugins."docusign@openai-curated"]
-enabled = true
-
-[plugins."domotz-preview@openai-curated"]
-enabled = true
-
-[plugins."dovetail@openai-curated"]
-enabled = true
-
-[plugins."dow-jones-factiva@openai-curated"]
-enabled = true
-
-[plugins."egnyte@openai-curated"]
-enabled = true
-
-[plugins."expo@openai-curated"]
-enabled = true
-
-[plugins."factset@openai-curated"]
-enabled = true
-
-[plugins."fal@openai-curated"]
-enabled = true
-
 [plugins."figma@openai-curated"]
-enabled = true
-
-[plugins."finn@openai-curated"]
-enabled = true
-
-[plugins."fireflies@openai-curated"]
-enabled = true
-
-[plugins."fiscal-ai@openai-curated"]
-enabled = true
-
-[plugins."fyxer@openai-curated"]
-enabled = true
-
-[plugins."game-studio@openai-curated"]
 enabled = true
 
 [plugins."github@openai-curated"]
 enabled = true
 
-[plugins."glean@openai-curated"]
-enabled = true
-
-[plugins."gmail@openai-curated"]
-enabled = true
-
-[plugins."google-calendar@openai-curated"]
-enabled = true
-
-[plugins."google-drive@openai-curated"]
-enabled = true
-
-[plugins."govtribe@openai-curated"]
-enabled = true
-
-[plugins."granola@openai-curated"]
-enabled = true
-
-[plugins."happenstance@openai-curated"]
-enabled = true
-
-[plugins."hebbia@openai-curated"]
-enabled = true
-
-[plugins."help-scout@openai-curated"]
-enabled = true
-
-[plugins."hex@openai-curated"]
-enabled = true
-
-[plugins."heygen@openai-curated"]
-enabled = true
-
-[plugins."hg-insights@openai-curated"]
-enabled = true
-
-[plugins."highlevel@openai-curated"]
-enabled = true
-
-[plugins."hostinger@openai-curated"]
-enabled = true
-
-[plugins."hubspot@openai-curated"]
-enabled = true
-
-[plugins."hugging-face@openai-curated"]
-enabled = true
-
 [plugins."hyperframes@openai-curated"]
 enabled = true
 
-[plugins."intercom@openai-curated"]
+[plugins."chrome@openai-bundled"]
 enabled = true
 
-[plugins."jam@openai-curated"]
+[plugins."pdf@openai-primary-runtime"]
 enabled = true
 
-[plugins."keybid-puls@openai-curated"]
-enabled = true
-
-[plugins."life-science-research@openai-curated"]
-enabled = true
-
-[plugins."linear@openai-curated"]
-enabled = true
-
-[plugins."lovable@openai-curated"]
-enabled = true
-
-[plugins."lseg@openai-curated"]
-enabled = true
-
-[plugins."magicpath@openai-curated"]
-enabled = true
-
-[plugins."marcopolo@openai-curated"]
-enabled = true
-
-[plugins."mem@openai-curated"]
-enabled = true
-
-[plugins."meticulate@openai-curated"]
-enabled = true
-
-[plugins."midpage@openai-curated"]
-enabled = true
-
-[plugins."mixpanel@openai-curated"]
-enabled = true
-
-[plugins."mixpanel-headless@openai-curated"]
-enabled = true
-
-[plugins."monday-com@openai-curated"]
-enabled = true
-
-[plugins."moody-s@openai-curated"]
-enabled = true
-
-[plugins."morningstar@openai-curated"]
-enabled = true
-
-[plugins."motherduck@openai-curated"]
-enabled = true
-
-[plugins."mt-newswires@openai-curated"]
-enabled = true
-
-[plugins."myregistry-com@openai-curated"]
-enabled = true
-
-[plugins."neon-postgres@openai-curated"]
-enabled = true
-
-[plugins."netlify@openai-curated"]
-enabled = true
-
-[plugins."network-solutions@openai-curated"]
-enabled = true
-
-[plugins."ngs-analysis@openai-curated"]
-enabled = true
-
-[plugins."notion@openai-curated"]
-enabled = true
-
-[plugins."nvidia@openai-curated"]
-enabled = true
-
-[plugins."omni-analytics@openai-curated"]
-enabled = true
-
-[plugins."openai-ads-conversions@openai-curated"]
-enabled = true
-
-[plugins."openai-developers@openai-curated"]
-enabled = true
-
-[plugins."otter-ai@openai-curated"]
-enabled = true
-
-[plugins."outlook-calendar@openai-curated"]
-enabled = true
-
-[plugins."outlook-email@openai-curated"]
-enabled = true
-
-[plugins."outreach@openai-curated"]
-enabled = true
-
-[plugins."particl-market-research@openai-curated"]
-enabled = true
-
-[plugins."picsart@openai-curated"]
-enabled = true
-
-[plugins."pipedrive@openai-curated"]
-enabled = true
-
-[plugins."pitchbook@openai-curated"]
-enabled = true
-
-[plugins."plugin-eval@openai-curated"]
-enabled = true
-
-[plugins."policynote@openai-curated"]
-enabled = true
-
-[plugins."posthog@openai-curated"]
-enabled = true
-
-[plugins."pylon@openai-curated"]
-enabled = true
-
-[plugins."quartr@openai-curated"]
-enabled = true
-
-[plugins."quickbooks@openai-curated"]
-enabled = true
-
-[plugins."quicknode@openai-curated"]
-enabled = true
-
-[plugins."ranked-ai@openai-curated"]
-enabled = true
-
-[plugins."razorpay@openai-curated"]
-enabled = true
-
-[plugins."read-ai@openai-curated"]
-enabled = true
-
-[plugins."readwise@openai-curated"]
-enabled = true
-
-[plugins."remotion@openai-curated"]
-enabled = true
-
-[plugins."render@openai-curated"]
-enabled = true
-
-[plugins."replayio@openai-curated"]
-enabled = true
-
-[plugins."replit@openai-curated"]
-enabled = true
-
-[plugins."responsive@openai-curated"]
-enabled = true
-
-[plugins."rox@openai-curated"]
-enabled = true
-
-[plugins."scite@openai-curated"]
-enabled = true
-
-[plugins."semrush@openai-curated"]
-enabled = true
-
-[plugins."sendgrid@openai-curated"]
-enabled = true
-
-[plugins."sentry@openai-curated"]
-enabled = true
-
-[plugins."setu-bharat-connect-billpay@openai-curated"]
-enabled = true
-
-[plugins."sharepoint@openai-curated"]
-enabled = true
-
-[plugins."shopify@openai-curated"]
-enabled = true
-
-[plugins."shutterstock@openai-curated"]
-enabled = true
-
-[plugins."signnow@openai-curated"]
-enabled = true
-
-[plugins."similarweb@openai-curated"]
-enabled = true
-
-[plugins."skywatch@openai-curated"]
-enabled = true
-
-[plugins."slack@openai-curated"]
-enabled = true
-
-[plugins."s-p@openai-curated"]
-enabled = true
-
-[plugins."statsig@openai-curated"]
-enabled = true
-
-[plugins."streak@openai-curated"]
-enabled = true
-
-[plugins."stripe@openai-curated"]
-enabled = true
-
-[plugins."supabase@openai-curated"]
-enabled = true
-
-[plugins."superhuman@openai-curated"]
-enabled = true
-
-[plugins."superpowers@openai-curated"]
-enabled = true
-
-[plugins."taxdown@openai-curated"]
-enabled = true
-
-[plugins."teams@openai-curated"]
-enabled = true
-
-[plugins."teamwork-com@openai-curated"]
-enabled = true
-
-[plugins."temporal@openai-curated"]
-enabled = true
-
-[plugins."test-android-apps@openai-curated"]
-enabled = true
-
-[plugins."third-bridge@openai-curated"]
-enabled = true
-
-[plugins."thoughtspot@openai-curated"]
-enabled = true
-
-[plugins."tinman-ai@openai-curated"]
-enabled = true
-
-[plugins."twilio-developer-kit@openai-curated"]
-enabled = true
-
-[plugins."united-rentals@openai-curated"]
-enabled = true
-
-[plugins."vantage@openai-curated"]
-enabled = true
-
-[plugins."vercel@openai-curated"]
-enabled = true
-
-[plugins."waldo@openai-curated"]
-enabled = true
-
-[plugins."weatherpromise@openai-curated"]
-enabled = true
-
-[plugins."windsor-ai@openai-curated"]
-enabled = true
-
-[plugins."wix@openai-curated"]
-enabled = true
-
-[plugins."yepcode@openai-curated"]
-enabled = true
-
-[plugins."zoho@openai-curated"]
-enabled = true
-
-[plugins."zoom@openai-curated"]
-enabled = true
-
-[plugins."zoominfo@openai-curated"]
-enabled = true
-
-[plugins."zotero@openai-curated"]
+[plugins."template-creator@openai-primary-runtime"]
 enabled = true
 
 [desktop]
 followUpQueueMode = "queue"
+conversationDetailMode = "STEPS_COMMANDS"
+show-context-window-usage = true
+
+[plugins."browser@openai-bundled"]
+enabled = true

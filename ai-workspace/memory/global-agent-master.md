@@ -1,3 +1,12 @@
+<!-- AGENT-CONFIG-PACK:MASTER START -->
+## Agent Config Pack bridge (2026-07-22)
+
+- Working Agreement: `agent-working-agreement.md`
+- Completion verification skill: `verify-work` (Cursor/Codex/Claude skills dirs)
+- Project SSOT remains repo-root `AGENTS.md`; Claude imports via `@AGENTS.md`
+- Do not fork divergent rule sets per tool; patch only tool-specific surfaces
+<!-- AGENT-CONFIG-PACK:MASTER END -->
+
 # Global Agent Master
 
 Status: active
@@ -14,6 +23,7 @@ This file is the SSOT for all agent-facing behavior across Cursor, Codex, and Cl
 5. "最大权限" means fewer confirmations for the stated task only, not destructive scope.
 6. If uncertainty affects the implementation path, stop and ask.
 7. When a task requires major changes, removes/replaces existing content, changes a product flow, or conflicts with existing behavior/PRD/ADR/implementation, ask in plain non-technical language before continuing. Explain what the user will see, what may change or disappear, and the practical tradeoff between options. “Continue” or “do it directly” does not waive this rule when a real conflict exists.
+8. **成本与稳定性（ADR-G007）**：单目标收口；长任务 30–60s 轮询；日志只取关键错误+末尾约 200 行；429/断流/网关最多重试 1 次后停并记恢复点；可独立验收阶段立即 Git 提交；不重复扫未变文件；高推理仅用于根因/关键决策；中断前输出已完成/状态/未完成/下一步/最新提交。SSOT: `cost-stability-constraints.md`。
 
 ## 2. 对话提问门禁
 
@@ -88,6 +98,16 @@ Classify every rework:
 - context drift
 
 If the same failure repeats, update the rule files or task template first, not just the implementation.
+
+### 6.1 Windows / Codex 环境类返工（ADR-G006）
+
+Repeated "global Python / PowerShell / Windows broken" reports must be classified:
+
+- **L1** agent command/escape/regex failure
+- **L2** machine capability / global stack / cleanup permission
+- **L3** real project verify failure
+
+SSOT: `windows-agent-failure-catalog-zh.md`. Rules: `windows-failure-triage.mdc`. Do not reinstall global deps per project; use `resolve-test-runner.py` before pytest claims.
 
 ## 7. 开发前置文档门禁
 

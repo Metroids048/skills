@@ -1,5 +1,10 @@
-# One-time global Agent Python stack (Office/file/CJK). Same for ALL projects.
-param([switch]$Quiet, [switch]$WithPdf)
+# One-time global Agent Python stack (Office/CJK + agent tooling). Same for ALL projects.
+# Do NOT reinstall per task/project. Project business deps stay in project .venv.
+param(
+    [switch]$Quiet,
+    [switch]$WithPdf,
+    [switch]$SkipAgentTooling
+)
 
 $ErrorActionPreference = 'Stop'
 $venvRoot = Join-Path $env:USERPROFILE '.ai-workspace\venv'
@@ -14,10 +19,20 @@ if (-not (Test-Path -LiteralPath $venvPy)) {
     & $basePy.Source -3 -m venv $venvRoot
 }
 
+# Office / documents / images — required
 $packages = @(
     'pywin32', 'python-pptx', 'python-docx', 'openpyxl', 'Pillow'
 )
 if ($WithPdf) { $packages += 'pymupdf' }
+
+# Agent tooling — install ONCE globally (scripts, smoke, encoding helpers)
+# NOT a replacement for project pytest plugins / project-only deps.
+if (-not $SkipAgentTooling) {
+    $packages += @(
+        'pytest', 'pyyaml', 'requests', 'httpx', 'jsonschema', 'chardet'
+    )
+}
+
 foreach ($pkg in $packages) {
     Write-Info "pip install $pkg ..."
     & $venvPy -m pip install $pkg --quiet --disable-pip-version-check
@@ -37,3 +52,4 @@ $shimBody = "@echo off`r`n`"$venvPy`" %*`r`n"
 & (Join-Path $PSScriptRoot 'ensure-python-env.ps1') -Quiet
 Write-Info "PASS: global agent python -> $venvPy"
 Write-Info "Use: agent-python script.py   OR   `$env:AGENT_PYTHON script.py"
+Write-Info "Project tests: run resolve-test-runner.py first (do not assume AGENT_PYTHON = project pytest)"

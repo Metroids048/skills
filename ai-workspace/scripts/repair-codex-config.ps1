@@ -1,4 +1,4 @@
-# Merge Codex [windows] block (pwsh + unelevated sandbox). Does NOT touch persistent_instructions
+# Merge Codex [windows] shell_path (pwsh) while preserving existing sandbox. Does NOT touch persistent_instructions
 # (Windows paths with \U break TOML — rules live in ~/.codex/AGENTS.md instead).
 param([switch]$Quiet)
 
@@ -32,9 +32,17 @@ if (-not (Test-Path -LiteralPath $codexConfig)) {
 $toml = Get-Content -LiteralPath $codexConfig -Raw -Encoding UTF8
 $pwshEscaped = $pwshExe -replace '\\', '\\'
 
+$currentSandbox = 'elevated'
+if ($toml -match '(?ms)\[windows\](?<body>.*?)(?=\r?\n\[|\z)') {
+    $windowsBody = $Matches['body']
+    if ($windowsBody -match '(?m)^\s*sandbox\s*=\s*"([^"]+)"') {
+        $currentSandbox = $Matches[1]
+    }
+}
+
 $windowsBlock = @"
 [windows]
-sandbox = "unelevated"
+sandbox = "$currentSandbox"
 shell_path = "$pwshEscaped"
 "@
 
@@ -74,6 +82,6 @@ $hookBody = @{
 }
 Write-Utf8NoBom $codexHooks ($hookBody | ConvertTo-Json -Depth 10)
 
-Write-Info "Updated: $codexConfig (sandbox=unelevated, no persistent_instructions)"
+Write-Info "Updated: $codexConfig (preserved sandbox=$currentSandbox, no persistent_instructions)"
 Write-Info "Rules: $env:USERPROFILE\.codex\AGENTS.md"
 Write-Info 'Restart Codex Desktop fully (quit tray).'

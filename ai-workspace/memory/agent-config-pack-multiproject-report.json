@@ -1,0 +1,134 @@
+{
+  "date": "2026-07-22",
+  "projects": [
+    {
+      "path": "C:\\Users\\win\\Desktop\\Agent Platform",
+      "actions": [
+        "AGENTS.md bridge upserted (existing content preserved)",
+        "CLAUDE.md upserted",
+        "cursor rule 00-core-workflow.mdc",
+        "cursor rule 10-verification.mdc",
+        ".claude\\rules\\testing.md",
+        ".claude\\agents\\code-reviewer.md",
+        "docs/AGENT_LESSONS.md created",
+        "docs/TASK_SPEC_TEMPLATE.md",
+        ".agent/TASK_STATE_TEMPLATE.json",
+        ".agents\\skills\\verify-work\\SKILL.md",
+        ".cursor\\skills\\verify-work\\SKILL.md",
+        ".claude\\skills\\verify-work\\SKILL.md"
+      ]
+    },
+    {
+      "path": "C:\\Users\\win\\Desktop\\AI--main",
+      "actions": [
+        "AGENTS.md bridge upserted (existing content preserved)",
+        "CLAUDE.md upserted",
+        "cursor rule 00-core-workflow.mdc",
+        "cursor rule 10-verification.mdc",
+        ".claude\\rules\\testing.md",
+        ".claude\\agents\\code-reviewer.md",
+        "docs/AGENT_LESSONS.md created",
+        "docs/TASK_SPEC_TEMPLATE.md",
+        ".agent/TASK_STATE_TEMPLATE.json",
+        ".agents\\skills\\verify-work\\SKILL.md",
+        ".cursor\\skills\\verify-work\\SKILL.md",
+        ".claude\\skills\\verify-work\\SKILL.md"
+      ]
+    },
+    {
+      "path": "C:\\Users\\win\\Desktop\\alpha",
+      "actions": [
+        "AGENTS.md bridge upserted (existing content preserved)",
+        "CLAUDE.md upserted",
+        "cursor rule 00-core-workflow.mdc",
+        "cursor rule 10-verification.mdc",
+        ".claude\\rules\\testing.md",
+        ".claude\\agents\\code-reviewer.md",
+        "docs/AGENT_LESSONS.md kept",
+        "docs/TASK_SPEC_TEMPLATE.md",
+        ".agent/TASK_STATE_TEMPLATE.json",
+        ".agents\\skills\\verify-work\\SKILL.md",
+        ".cursor\\skills\\verify-work\\SKILL.md",
+        ".claude\\skills\\verify-work\\SKILL.md"
+      ]
+    },
+    {
+      "path": "C:\\Users\\win\\Desktop\\program1-main-latest",
+      "actions": [
+        "AGENTS.md bridge upserted (existing content preserved)",
+        "CLAUDE.md upserted",
+        "cursor rule 00-core-workflow.mdc",
+        "cursor rule 10-verification.mdc",
+        ".claude\\rules\\testing.md",
+        ".claude\\agents\\code-reviewer.md",
+        "docs/AGENT_LESSONS.md created",
+        "docs/TASK_SPEC_TEMPLATE.md",
+        ".agent/TASK_STATE_TEMPLATE.json",
+        ".agents\\skills\\verify-work\\SKILL.md",
+        ".cursor\\skills\\verify-work\\SKILL.md",
+        ".claude\\skills\\verify-work\\SKILL.md"
+      ]
+    },
+    {
+      "path": "C:\\Users\\win\\Desktop\\yinpinjianting",
+      "actions": [
+        "AGENTS.md bridge upserted (existing content preserved)",
+        "CLAUDE.md upserted",
+        "cursor rule 00-core-workflow.mdc",
+        "cursor rule 10-verification.mdc",
+        ".claude\\rules\\testing.md",
+        ".claude\\agents\\code-reviewer.md",
+        "docs/AGENT_LESSONS.md created",
+        "docs/TASK_SPEC_TEMPLATE.md",
+        ".agent/TASK_STATE_TEMPLATE.json",
+        ".agents\\skills\\verify-work\\SKILL.md",
+        ".cursor\\skills\\verify-work\\SKILL.md",
+        ".claude\\skills\\verify-work\\SKILL.md"
+      ]
+    },
+    {
+      "path": "C:\\Users\\win\\Desktop\\敖钦储能项目",
+      "actions": [
+        "AGENTS.md bridge upserted (existing content preserved)",
+        "CLAUDE.md created",
+        "cursor rule 00-core-workflow.mdc",
+        "cursor rule 10-verification.mdc",
+        ".claude\\rules\\testing.md",
+        ".claude\\agents\\code-reviewer.md",
+        "docs/AGENT_LESSONS.md created",
+        "docs/TASK_SPEC_TEMPLATE.md",
+        ".agent/TASK_STATE_TEMPLATE.json",
+        ".agents\\skills\\verify-work\\SKILL.md",
+        ".cursor\\skills\\verify-work\\SKILL.md",
+        ".claude\\skills\\verify-work\\SKILL.md"
+      ]
+    },
+    {
+      "path": "C:\\Users\\win\\Desktop\\海小南",
+      "actions": [
+        "AGENTS.md created from template + bridge",
+        "CLAUDE.md created",
+        "cursor rule 00-core-workflow.mdc",
+        "cursor rule 10-verification.mdc",
+        ".claude\\rules\\testing.md",
+        ".claude\\agents\\code-reviewer.md",
+        "docs/AGENT_LESSONS.md created",
+        "docs/TASK_SPEC_TEMPLATE.md",
+        ".agent/TASK_STATE_TEMPLATE.json",
+        ".agents\\skills\\verify-work\\SKILL.md",
+        ".cursor\\skills\\verify-work\\SKILL.md",
+        ".claude\\skills\\verify-work\\SKILL.md"
+      ]
+    }
+  ],
+  "codex": [
+    "verify-work -> C:\\Users\\win\\.agents\\skills\\verify-work\\SKILL.md",
+    "verify-work -> C:\\Users\\win\\.codex\\skills\\verify-work\\SKILL.md",
+    "verify-work -> C:\\Users\\win\\.codex\\.agents\\skills\\verify-work\\SKILL.md",
+    "AGENTS.md Working Agreement OK",
+    "Codex multi-project note upserted"
+  ],
+  "errors": [],
+  "registry_updated": "C:\\Users\\win\\.ai-workspace\\memory\\projects-registry.md",
+  "project_count": 7
+}

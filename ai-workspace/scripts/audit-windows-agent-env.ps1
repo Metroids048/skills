@@ -65,8 +65,33 @@ if (Test-Path -LiteralPath $rule) {
     $r = Get-Content -LiteralPath $rule -Raw -Encoding UTF8
     if ($r -notmatch 'read-text-file\.py') { Add-Warn 'windows-agent-shell.mdc missing read-text-file.py guidance' }
     if ($r -match 'rtk powershell -NoProfile.*Get-Content') { Add-Warn 'windows-agent-shell.mdc still suggests rtk powershell for cmdlets' }
+    if ($r -notmatch 'resolve-test-runner') { Add-Warn 'windows-agent-shell.mdc missing resolve-test-runner guidance' }
 }
 else { Add-Fail 'MISSING: ~/.cursor/rules/windows-agent-shell.mdc' }
+
+$triage = Join-Path $env:USERPROFILE '.cursor\rules\windows-failure-triage.mdc'
+if (-not (Test-Path -LiteralPath $triage)) {
+    Add-Fail 'MISSING: ~/.cursor/rules/windows-failure-triage.mdc'
+}
+else {
+    Write-Line 'OK: windows-failure-triage.mdc'
+}
+
+$catalog = Join-Path $env:USERPROFILE '.ai-workspace\memory\windows-agent-failure-catalog-zh.md'
+if (-not (Test-Path -LiteralPath $catalog)) {
+    Add-Fail 'MISSING: windows-agent-failure-catalog-zh.md'
+}
+else {
+    Write-Line 'OK: failure catalog'
+}
+
+$resolve = Join-Path $scripts 'resolve-test-runner.py'
+if (-not (Test-Path -LiteralPath $resolve)) {
+    Add-Fail 'MISSING: resolve-test-runner.py'
+}
+else {
+    Write-Line 'OK: resolve-test-runner.py'
+}
 
 $codexPy = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
 if (Test-Path -LiteralPath $codexPy) {

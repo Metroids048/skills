@@ -47,6 +47,7 @@ If triggered:
 3. One chat session per task; start fresh for unrelated work.
 4. Compact around 50% context usage instead of waiting for hard limits.
 5. **Never** reduce code thoroughness to save tokens — tests, verification, safety checks, and error handling are non-negotiable.
+6. **Cost & stability (ADR-G007):** follow `~/.ai-workspace/memory/cost-stability-constraints.md` — single goal; poll long jobs every 30–60s; read errors + last ~200 log lines only; retry 429/gateway at most once then stop with recovery point; commit after each verifiable milestone; no re-scan of unchanged files; high reasoning only for root-cause/key decisions.
 
 ## 3. Verification before completion
 

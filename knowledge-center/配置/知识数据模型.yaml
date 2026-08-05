@@ -1,0 +1,100 @@
+# 知识数据模型（模块 1）
+version: 1
+description: 中央知识库实体与必填字段
+
+record_types:
+  - USER_FACT
+  - USER_PREFERENCE
+  - USER_CONSTRAINT
+  - PROJECT_FACT
+  - PROJECT_STATUS
+  - DECISION
+  - TASK
+  - OPEN_QUESTION
+  - ASSUMPTION
+  - ERROR_PATTERN
+  - ROOT_CAUSE
+  - PROVEN_FIX
+  - VERIFICATION
+  - LESSON
+  - CONTENT_IDEA
+  - SENSITIVE
+  - DO_NOT_PUBLISH
+  - SESSION
+  - SYNC_STATE
+
+source_tools:
+  - cursor
+  - cursor-cli
+  - codex
+  - claude-code
+  - chatgpt
+  - claude-web
+  - user
+  - system
+  - other
+
+confidence:
+  - CONFIRMED
+  - HIGH
+  - MEDIUM
+  - LOW
+  - ASSUMED
+  - USER_REPORTED
+  - VERIFIED
+
+sensitivity:
+  - PUBLIC_SAFE
+  - PRIVATE
+  - SENSITIVE
+  - DO_NOT_STORE
+
+status:
+  - ACTIVE
+  - SUPERSEDED
+  - CONFLICT
+  - EXPIRED
+  - PENDING_CONFIRM
+  - REJECTED
+
+completion_status:
+  - COMPLETE
+  - PARTIAL
+  - BLOCKED
+  - USER_REPORTED
+  - VERIFIED
+  - NOT_STARTED
+
+knowledge_item_required_fields:
+  - id
+  - date
+  - source_tool
+  - project
+  - type
+  - statement
+  - confidence
+  - evidence
+  - sensitivity
+  - public_eligible
+  - status
+  - supersedes
+  - conflicts_with
+  - tags
+
+entity_kinds:
+  - knowledge_item
+  - session_record
+  - project
+  - decision
+  - error
+  - root_cause
+  - fix
+  - verification
+  - content_candidate
+  - sync_state
+
+rules:
+  - 不得自动覆盖 status=ACTIVE 且经人工确认的主知识库条目
+  - 冲突必须写入 冲突与过期记录/ 并生成待确认补丁
+  - 重复检测基于 statement 规范化文本 + project + type
+  - 无独立验证证据不得将完成态标为 VERIFIED 或 COMPLETE

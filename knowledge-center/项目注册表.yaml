@@ -1,0 +1,108 @@
+# 项目注册表 — 用户已确认（模块 0 收口）
+# 无 Git 的项目后续会补；登记根以桌面顶层为准，子目录 prototype 不单独作为安装根。
+version: 1
+status: confirmed
+updated: "2026-07-28"
+confirmed_by: user
+confirmed_note: "清单内项目均为真实项目；无 git 的后续也会有"
+projects:
+  - id: "AI--main"
+    name: "AI--main"
+    path: "C:/Users/win/Desktop/AI--main"
+    enabled: true
+    sensitive: false
+    has_git: true
+    markers: [".git", "package.json", "pyproject.toml"]
+    notes: "用户确认启用"
+    discovered_at: "2026-07-28T03:18:54Z"
+  - id: "alpha"
+    name: "alpha"
+    path: "C:/Users/win/Desktop/alpha"
+    enabled: true
+    sensitive: false
+    has_git: true
+    markers: [".git", "package.json"]
+    notes: "用户确认启用"
+    discovered_at: "2026-07-28T03:18:54Z"
+  - id: "program1-main-latest"
+    name: "program1-main-latest"
+    path: "C:/Users/win/Desktop/program1-main-latest"
+    enabled: true
+    sensitive: false
+    has_git: true
+    markers: [".git", "package.json"]
+    notes: "用户确认启用"
+    discovered_at: "2026-07-28T03:18:54Z"
+  - id: "yinpinjianting"
+    name: "yinpinjianting"
+    path: "C:/Users/win/Desktop/yinpinjianting"
+    enabled: true
+    sensitive: false
+    has_git: true
+    markers: [".git", "package.json"]
+    notes: "用户确认启用"
+    discovered_at: "2026-07-28T03:18:54Z"
+  - id: "敖钦储能项目"
+    name: "敖钦储能项目"
+    path: "C:/Users/win/Desktop/敖钦储能项目"
+    enabled: true
+    sensitive: false
+    has_git: true
+    markers: [".git"]
+    notes: "用户确认启用"
+    discovered_at: "2026-07-28T03:18:54Z"
+  - id: "海小南"
+    name: "海小南"
+    path: "C:/Users/win/Desktop/海小南"
+    enabled: true
+    sensitive: false
+    has_git: true
+    markers: [".git"]
+    notes: "用户确认启用"
+    discovered_at: "2026-07-28T03:18:54Z"
+  - id: "Agent-Platform"
+    name: "Agent Platform"
+    path: "C:/Users/win/Desktop/Agent Platform"
+    enabled: true
+    sensitive: false
+    has_git: false
+    markers: []
+    notes: "用户确认启用；当前无 git，后续会补；含 prototype 子工程"
+    discovered_at: "2026-07-28T03:20:00Z"
+  - id: "产能评价"
+    name: "产能评价"
+    path: "C:/Users/win/Desktop/产能评价"
+    enabled: true
+    sensitive: false
+    has_git: false
+    markers: []
+    notes: "用户确认启用；当前无 git，后续会补；含 prototype 子工程"
+    discovered_at: "2026-07-28T03:20:00Z"
+  - id: "合同审查"
+    name: "合同审查"
+    path: "C:/Users/win/Desktop/合同审查"
+    enabled: true
+    sensitive: false
+    has_git: false
+    markers: []
+    notes: "用户确认启用；当前无 git，后续会补"
+    discovered_at: "2026-07-28T03:20:00Z"
+  # 以下为扫描到的子目录，归属父项目，不单独安装
+  - id: "Agent-Platform-prototype"
+    name: "prototype"
+    path: "C:/Users/win/Desktop/Agent Platform/prototype"
+    enabled: false
+    sensitive: false
+    has_git: false
+    markers: ["package.json"]
+    notes: "归属 Agent Platform，不单独作为登记根"
+    discovered_at: "2026-07-28T03:18:54Z"
+  - id: "产能评价-prototype"
+    name: "prototype"
+    path: "C:/Users/win/Desktop/产能评价/prototype"
+    enabled: false
+    sensitive: false
+    has_git: false
+    markers: ["package.json"]
+    notes: "归属 产能评价，不单独作为登记根"
+    discovered_at: "2026-07-28T03:18:54Z"

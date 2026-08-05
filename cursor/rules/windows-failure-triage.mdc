@@ -1,0 +1,43 @@
+---
+description: Windows/Codex 失败三层分类 + 全局依赖一次装齐 — 禁止把工具/环境问题报成项目失败（三端）
+alwaysApply: true
+---
+
+# Windows Failure Triage（全局 · 硬门禁）
+
+全文目录：`~/.ai-workspace/memory/windows-agent-failure-catalog-zh.md`  
+ADR：`global-decisions-log.md` ADR-G006
+
+## 报告任何「验证失败 / 卡住 / 环境问题」前
+
+必须标明一层（可并列，不可混称）：
+
+1. **L1 工具命令失败** — 你写的路径转义、JS `\U`、PowerShell 正则、`$_` 被吞、rtk 包 cmdlet 等。**不是**用户机器坏了。
+2. **L2 环境能力缺口** — 全局栈缺包、编码、EPERM 清理、缺 .NET/Docker、Codex 仍是 PS5.1。先跑 repair/install，**禁止**写成项目代码失败。
+3. **L3 项目功能失败** — 仅当项目约定的测试/验收真正跑过且断言失败。
+
+未分清 L1/L2/L3 → **禁止**说「任务失败」「验证未通过」「环境又坏了」。
+
+## 全局装一次（禁止每任务/每项目重来）
+
+- Office / 中文路径 / Agent 脚本依赖：只装进 `AGENT_PYTHON`（`install-global-agent-python.ps1`）。
+- **禁止**每个新项目写 pip 探测脚本或重复 `pip install` 同一批全局包。
+- 跑项目测试前先执行：
+  `& $env:AGENT_PYTHON "$env:USERPROFILE\.ai-workspace\scripts\resolve-test-runner.py"`
+- `AGENT_PYTHON` 里没有项目插件 ≠ 全局 Python 损坏；按 resolve 输出选解释器。
+- 缺全局工具包 → 只跑安装/repair 脚本一次，不要在对话里循环试。
+
+## 高频误报对照（摘录）
+
+| 现象 | 归类 | 禁止话术 |
+|------|------|----------|
+| `AGENT_PYTHON` 无 pytest | L2 或误用（先 resolve） | 「全局 Python 坏了」 |
+| 路径 `\U` / TOML unicode | L1 | 「Windows 又炸了」 |
+| 浏览器测完 EPERM 清理 | L2 清理 | 「E2E 失败」（主流程过则 L3 可过） |
+| 缺 Docker / .NET | L2 skipped | 「项目构建失败」 |
+
+## 自检
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE\.ai-workspace\scripts\audit-windows-agent-env.ps1"
+```

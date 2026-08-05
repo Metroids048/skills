@@ -1,0 +1,6 @@
+project_id: "yinpinjianting"
+name: "yinpinjianting"
+path: "C:/Users/win/Desktop/yinpinjianting"
+has_git: true
+mirror_only: true
+note: "中央镜像不是源码备份"

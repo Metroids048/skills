@@ -1,0 +1,37 @@
+# 全局知识管理中心 — 同步与发现配置（模块 0）
+version: 1
+status: draft
+central_root: "C:/Users/win/Desktop/全局配置"
+project_roots:
+  - "C:/Users/win/Desktop"
+exclude_root_children:
+  - "全局配置"
+  - "记录"
+exclude_dir_names:
+  - "node_modules"
+  - ".git"
+  - "venv"
+  - ".venv"
+  - "__pycache__"
+  - "dist"
+  - "build"
+  - ".next"
+  - "coverage"
+  - ".turbo"
+  - ".cache"
+  - "_cache"
+  - "vendor"
+  - "target"
+  - ".pytest_cache"
+  - ".mypy_cache"
+# 1 = 扫描桌面直接子项，并对无标记目录再下探一层（避免 skills/vendor 深层仓库污染）
+max_depth: 1
+project_markers:
+  - ".git"
+  - "package.json"
+  - "pyproject.toml"
+  - "Cargo.toml"
+  - "go.mod"
+notes: |
+  仅扫描 project_roots。enabled 项目以 项目注册表.yaml 为准。
+  发现脚本不得修改业务源码。

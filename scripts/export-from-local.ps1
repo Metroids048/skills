@@ -1,4 +1,4 @@
-# ai-global-config export
+﻿# ai-global-config export
 # Sync portable Cursor / Claude Code / Codex global agent config from this machine.
 
 param(
@@ -203,11 +203,40 @@ Copy-FileIfExists -Source (Join-Path $UserHome ".ai-workspace\AGENT-GLOBAL-STACK
 Copy-FileIfExists -Source (Join-Path $UserHome ".ai-workspace\skills-locale-zh.json") -Dest (Join-Path $RepoRoot "ai-workspace\skills-locale-zh.json")
 
 # Project-level agent memory snapshots, no source code.
-$projects = @(
+# Hardcoded known projects + Desktop dirs that have AGENTS.md / .github/agent.
+$projects = [System.Collections.Generic.List[object]]::new()
+$knownProjects = @(
     @{ Name = "agent-platform"; Path = Join-Path $UserHome "Desktop\Agent Platform" },
     @{ Name = "program1-main"; Path = Join-Path $UserHome "Desktop\program1-main" },
-    @{ Name = "demo1"; Path = Join-Path $UserHome "Desktop\demo1" }
+    @{ Name = "program1-main-latest"; Path = Join-Path $UserHome "Desktop\program1-main-latest" },
+    @{ Name = "demo1"; Path = Join-Path $UserHome "Desktop\demo1" },
+    @{ Name = "AI--main"; Path = Join-Path $UserHome "Desktop\AI--main" },
+    @{ Name = "alpha"; Path = Join-Path $UserHome "Desktop\alpha" },
+    @{ Name = "yinpinjianting"; Path = Join-Path $UserHome "Desktop\yinpinjianting" },
+    @{ Name = "aoqin-ess"; Path = Join-Path $UserHome "Desktop\敖钦储能项目" },
+    @{ Name = "haixiaonan"; Path = Join-Path $UserHome "Desktop\海小南" },
+    @{ Name = "capacity-eval"; Path = Join-Path $UserHome "Desktop\产能评价" },
+    @{ Name = "contract-review"; Path = Join-Path $UserHome "Desktop\合同审查" }
 )
+foreach ($kp in $knownProjects) { $projects.Add($kp) }
+
+$desktopRoot = Join-Path $UserHome "Desktop"
+$seenPaths = @{}
+foreach ($p in $projects) { $seenPaths[$p.Path.ToLowerInvariant()] = $true }
+Get-ChildItem -LiteralPath $desktopRoot -Directory -ErrorAction SilentlyContinue |
+    Where-Object {
+        $_.Name -notmatch '(?i)backup|skills$|全局配置' -and
+        -not $seenPaths.ContainsKey($_.FullName.ToLowerInvariant()) -and
+        (
+            (Test-Path -LiteralPath (Join-Path $_.FullName "AGENTS.md")) -or
+            (Test-Path -LiteralPath (Join-Path $_.FullName ".github\agent"))
+        )
+    } |
+    ForEach-Object {
+        $safeName = ($_.Name -replace '[\\/:*?"<>|]', '-').Trim()
+        $projects.Add(@{ Name = $safeName; Path = $_.FullName })
+    }
+
 foreach ($project in $projects) {
     $projectRoot = $project.Path
     $destRoot = Join-Path $RepoRoot ("projects\" + $project.Name)
@@ -222,6 +251,19 @@ foreach ($project in $projects) {
     if (Test-Path -LiteralPath (Join-Path $projectRoot ".claude\skills")) {
         Sync-Tree -Source (Join-Path $projectRoot ".claude\skills") -Dest (Join-Path $destRoot ".claude\skills")
     }
+}
+
+# Knowledge center (Desktop/全局配置): portable docs/tools/memory, not raw chat dumps.
+$knowledgeCenter = Join-Path $UserHome "Desktop\全局配置"
+if (Test-Path -LiteralPath $knowledgeCenter) {
+    $kcDest = Join-Path $RepoRoot "knowledge-center"
+    Sync-Tree -Source $knowledgeCenter -Dest $kcDest -ExtraExcludeDirs @(
+        ".git", "原始记录", "日志", "备份", "inbox", "personal", "sessions",
+        "全局会话归档", "冲突与过期记录", "待整理输入", "待确认更新", "测试夹具"
+    )
+    Write-Host "Synced knowledge-center (sanitized subset of Desktop/全局配置)"
+} else {
+    Write-Warning "Skip missing knowledge center: $knowledgeCenter"
 }
 
 # Redact exported examples and templates.
@@ -243,7 +285,7 @@ foreach ($endpoint in @("cursor", "claude", "codex", "agents")) {
 }
 
 $manifest = [ordered]@{
-    version = "1.1.0"
+    version = "1.2.0"
     exportedAt = (Get-Date).ToString("yyyy-MM-ddTHH:mm:ssK")
     sourceMachine = $env:COMPUTERNAME
     skillCounts = $skillCounts
@@ -255,13 +297,15 @@ $manifest = [ordered]@{
         "mcp configs",
         "AIOS",
         "global memory",
-        "project agent memory snapshots"
+        "project agent memory snapshots",
+        "knowledge-center (Desktop/全局配置 sanitized)"
     )
     excludes = @(
         "tokens/secrets/auth/session files",
         "sqlite runtime state",
         "logs/cache/browser state",
-        "venv/node_modules/vendor runtime caches"
+        "venv/node_modules/vendor runtime caches",
+        "raw chat dumps / session archives / conflict records"
     )
 } | ConvertTo-Json -Depth 5
 Write-Utf8NoBomFile -Path (Join-Path $RepoRoot "manifest.json") -Content $manifest
