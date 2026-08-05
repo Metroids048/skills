@@ -1,0 +1,253 @@
+# 海小南 Demo 改造方案 — 执行规划
+
+## Context（背景）
+
+目标：按照 `海小南Demo改造方案.md` 五个模块逐项改造 `hai-xiaonan-demo.html`（6093 行），使演示 Demo 能够展现需求文档中的**交互能力提升**、**语音交互能力**（语音唤醒 + 数字人形象）、**智能体调度能力**（意图识别 → 直接回答 / 调出操作界面 / 呼出指标页面）三大核心能力，同时消除当前阻塞演示效果的根本问题。
+
+关键文件：
+- `C:/Users/win/Desktop/海小南/hai-xiaonan-demo.html`（主文件，单文件 HTML+CSS+JS）
+- `C:/Users/win/Desktop/海小南/avatar-runtime.js`（PixiJS 骨骼驱动，执行后废弃）
+- `C:/Users/win/Desktop/海小南/digital-human-cutout.png`（整体立绘，非分层图）
+- `C:/Users/win/Desktop/海小南/演示话术与脚本维护.md`（演示脚本文档）
+
+---
+
+## 先决步骤：全局配置更新
+
+**目标**：在 `~/.claude/CLAUDE.md` 末尾追加一条全局指令：
+> 有任何不确定和拿不准主意的都必须要问用户，整个任务的进度、流程、思考和操作过程，还有提问都要用中文详细展示。
+
+**文件**：`C:\Users\win\.claude\CLAUDE.md`（追加内容，不覆盖已有内容）
+
+---
+
+## Module 1：删除 V1 死代码
+
+### 证据
+- 行 2645：`<script type="text/plain" id="legacy-demo-script">` 
+- 行 3776：对应 `</script>`（约 1132 行 V1 旧实现）
+- `type="text/plain"` 意味着浏览器不执行，对运行时零影响，但严重干扰代码可读性
+
+### 改动
+- **删除行 2645–3776**（含首尾标签），包含函数：`matchIntent`、`runAgentFlow`、`processVoiceCommand`、`AGENT_REGISTRY` 等 V1 逻辑
+- 删除前用 `grep -n` 重新确认起止行号（文件有滚动风险）
+
+### 验收
+- `grep "legacy-demo-script" hai-xiaonan-demo.html` → 0 条
+- `grep "function matchIntent(" hai-xiaonan-demo.html` → 0 条（V2 使用的是 `resolveRouteV2`）
+- 页面所有现有功能正常（点击智能体卡片、文字输入触发场景、modal 打开关闭）
+
+---
+
+## Module 2：数字人 CSS 动画方案（替换 PixiJS）
+
+### 证据
+- 行 3777–3778：`<script src="./vendor/pixi.min.js">` + `<script src="./avatar-runtime.js">`
+- 行 2370–2407：`.pet.avatar-runtime-enabled` CSS 块，用 `animation: none !important` 覆盖了所有原生 CSS 动画
+- 行 1642–1709：**CSS 动画已完整定义**（`petIdle`、`petAwake`、`petThinking`、`petListening`、`petSpeaking`、`petSuccess`，以及各状态的 `.pet.xxx .pet-core` class 规则）
+- 问题根因：PixiJS 加载后添加 `avatar-runtime-enabled` class，覆盖原生 CSS；但图片非分层格式导致骨骼驱动失败，结果是：原生动画被禁用 + PixiJS 驱动也无效 → 数字人完全静止
+
+### 改动
+1. **删除行 3777–3778**（两行 script 标签）
+2. **在 `.pet-core {}` 或独立添加一条基础 idle 动画规则**（当前 `petIdle` keyframe 已定义但没有应用到任何选择器），在现有 CSS 块（约 1642 行附近）添加：
+   ```css
+   .pet .pet-core {
+     animation: petIdle 3s ease-in-out infinite;
+   }
+   ```
+3. **将 `ensureAvatarRuntimeV2` 函数体清空**（约行 4303–4328），改为空函数保留签名，避免删除调用点时引发引用错误：
+   ```js
+   async function ensureAvatarRuntimeV2() {
+     /* PixiJS 已移除，CSS 动画接管 */
+   }
+   ```
+4. **保留 `dispatchAvatarEventV2`** 函数（行 4297），不做改动；它发送 CustomEvent，移除 PixiJS 后事件无人监听，静默无害
+
+### 验收
+- 控制台无 `pixi` 或 `avatar-runtime` 相关报错
+- 页面加载后数字人有 idle 浮动动画（`petIdle`：上下移动 + 轻微旋转）
+- 触发各场景时数字人切换到对应状态动画（thinking/listening/speaking/success）
+
+---
+
+## Module 3：modal 追问对话补充流式渲染（P1 核心交互缺口）
+
+### 证据
+- 行 5314–5321：`appendDialogV2` 一次性插入用户+AI 两条消息，无流式、无过渡
+- 行 5358–5363：`handleFollowV2` 同步直接调用 `appendDialogV2`，没有"思考中"过渡状态
+- 行 4508–4525：`streamBubbleCopyV2` 已实现流式逐字渲染，有 `tick` 机制可复用
+
+### 改动
+
+**步骤 A**：在 `appendDialogV2`（行 5314）之前插入通用流式渲染函数：
+```js
+function streamIntoElement(targetEl, text, options) {
+  const speed = (options && options.speed) || 22;
+  const onDone = (options && options.onDone) || function() {};
+  let index = 0;
+  targetEl.textContent = "";
+  const tick = function() {
+    index += Math.max(1, text[index] === " " ? 2 : 1);
+    targetEl.textContent = text.slice(0, index);
+    if (index < text.length) {
+      window.setTimeout(tick, speed);
+    } else {
+      onDone();
+    }
+  };
+  window.setTimeout(tick, 30);
+}
+```
+
+**步骤 B**：将 `appendDialogV2` 改造为两个函数，替换原实现：
+```js
+function appendUserTurnV2(userText) {
+  const thread = document.getElementById("dialog-thread-v2");
+  if (!thread) return;
+  thread.insertAdjacentHTML("beforeend",
+    '<div class="chat-bubble user">' + escapeHtmlV2(userText) + '</div>');
+  thread.scrollTop = thread.scrollHeight;
+}
+
+function appendAiTurnStreamingV2(replyText) {
+  const thread = document.getElementById("dialog-thread-v2");
+  if (!thread) return;
+  const thinkingId = "thinking-" + Date.now();
+  thread.insertAdjacentHTML("beforeend",
+    '<div class="chat-bubble ai thinking" id="' + thinkingId + '">' +
+    '<span class="thinking-dots"><i></i><i></i><i></i></span></div>');
+  thread.scrollTop = thread.scrollHeight;
+  const delay = 500 + Math.floor(Math.random() * 500);
+  window.setTimeout(function() {
+    const el = document.getElementById(thinkingId);
+    if (!el) return;
+    el.classList.remove("thinking");
+    el.innerHTML = "";
+    streamIntoElement(el, replyText, {
+      speed: 22,
+      onDone: function() { thread.scrollTop = thread.scrollHeight; }
+    });
+  }, delay);
+}
+```
+
+**步骤 C**：修改 `handleFollowV2`（行 5358）：
+```js
+function handleFollowV2(plan, text) {
+  const reply = followReplyV2(plan, text);
+  appendUserTurnV2(text);
+  setStateV2("thinking");
+  appendAiTurnStreamingV2(reply);
+  toastV2("已继续在 " + plan.agent.name + " 中处理追问", "success", plan.agent.name);
+}
+```
+（注：`speakV2(reply)` 暂移除或保留可选；当前语音依赖 Web Speech API 外网，与改造方案 P2 说明一致）
+
+**步骤 D**：在 CSS `<style>` 块内添加 `.thinking-dots` 动画（复用现有弹性曲线 `cubic-bezier(0.34, 1.56, 0.64, 1)` 风格，在 `@keyframes petSuccess` 附近插入）：
+```css
+.thinking-dots i {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  margin: 0 2px;
+  animation: thinking-bounce 1.2s ease-in-out infinite;
+}
+.thinking-dots i:nth-child(2) { animation-delay: 0.15s; }
+.thinking-dots i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes thinking-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+```
+
+**步骤 E**：检查 `bindModalV2`（行 5440）中 follow-input 的 Enter 键提交逻辑，确认它调用的是修改后的 `handleFollowV2`（不需要改，只需确认路径正确）
+
+### 验收
+- 在任意 modal 打开后，底部追问输入框输入文字并发送，依次观察到：
+  1. 用户气泡立即出现
+  2. AI 位置出现跳动三点"思考中"占位
+  3. 500–1000ms 后三点消失，AI 文字逐字流式输出
+- 连续快速发送多条追问，不出现动画堆叠或 timer 未清理的视觉混乱
+
+---
+
+## Module 4：补全缺失 scriptSteps 覆盖所有场景
+
+### 证据
+`SCENARIO_LIBRARY_V2` 共 12 个场景；当前无 `scriptSteps` 的场景：
+| id | responseMode | 缺失原因 |
+|----|------|------|
+| `wake` | `wake` | 仅唤醒，无需脚本，**保持不变** |
+| `answer-leave-flow` | `direct_answer` | 有 `answerPayload` 但无高亮流程 |
+| `answer-contract-materials` | `direct_answer` | 有 `answerPayload` 但无高亮流程 |
+| `answer-budget-summary` | `direct_answer` | 有 `answerPayload` + `metricId` 但无高亮流程 |
+
+### 改动
+为以上 3 个 `direct_answer` 场景补充 `scriptId` + `scriptSteps`，体现"调用过程感"：
+
+```js
+// answer-leave-flow（行 3897 前，answerKey 所在对象内）
+scriptId: "answer_leave_flow_display",
+scriptSteps: [
+  { type: "highlight", selector: "#answer-summary-v2", delay: 160 },
+  { type: "pulseTarget", selector: "#answer-flow-v2", delay: 440 }
+]
+
+// answer-contract-materials（行 3920 前）
+scriptId: "answer_contract_materials_display",
+scriptSteps: [
+  { type: "highlight", selector: "#answer-summary-v2", delay: 160 },
+  { type: "pulseTarget", selector: "#answer-source-v2", delay: 440 }
+]
+
+// answer-budget-summary（行 3944 前）
+scriptId: "answer_budget_summary_display",
+scriptSteps: [
+  { type: "highlight", selector: "#metric-card-budget-v2", delay: 160 },
+  { type: "pulseTarget", selector: "#answer-summary-v2", delay: 440 }
+]
+```
+
+> **注意**：selector 对应的元素（`#answer-summary-v2`、`#answer-flow-v2`、`#answer-source-v2`）需要在执行前用 `grep` 确认存在于 HTML 结构中，不存在则改用实际存在的选择器，**如有疑问必须先问用户**。
+
+同时，在 `DEMO_SCRIPT_LIBRARY`（行 4161-4171 附近）的构建逻辑里，确认 filter 条件 `scenario.scriptId && scenario.scriptSteps?.length` 能覆盖到这 3 个新增场景（应已满足，但需核查）。
+
+### 验收
+- `SCENARIO_LIBRARY_V2` 中 12 个场景，除 `wake` 外的 11 个都可以在 `DEMO_SCRIPT_LIBRARY` 中找到对应条目
+- 触发 3 个 `direct_answer` 场景时，能观察到高亮/脉冲动画，而不是直接弹窗
+
+---
+
+## Module 5：演示话术文档同步更新
+
+### 改动目标文件
+`C:/Users/win/Desktop/海小南/演示话术与脚本维护.md`
+
+### 新增内容
+1. **在每个场景条目下**添加"追问问答速查表"小节（参考 `followReplyV2` 中 if/else 分支），列出：触发关键词 → 预设回答内容
+2. **新增场景状态总览表**，标注每个场景当前是"纯整体渲染"还是"已支持同步执行脚本 + 流式追问"
+3. **新增"演示避免误触提示"小节**，说明哪些自然口语**不会**命中预设场景
+
+---
+
+## 执行顺序
+
+| 步骤 | 内容 | 风险 | 可并行 |
+|------|------|------|--------|
+| 0 | 全局配置 CLAUDE.md 追加规则 | 极低 | - |
+| 1 | 删除 V1 死代码（Module 1） | 零风险 | - |
+| 2A | 移除 PixiJS script 标签（Module 2） | 低 | 可与 3 并行 |
+| 2B | 添加 idle CSS 动画 + 清空 ensureAvatarRuntimeV2 | 低 | 可与 3 并行 |
+| 3 | modal 流式追问（Module 3） | 中（涉及 UI 行为） | 可与 2 并行 |
+| 4 | 补全 scriptSteps（Module 4） | 低（数据配置层） | 步骤 1 完成后 |
+| 5 | 演示文档更新（Module 5） | 无 | 随时 |
+
+---
+
+## 验证方式
+
+每个 Module 完成后，用浏览器直接打开 `hai-xiaonan-demo.html`（无需服务器），按验收标准核查。全部完成后按需求文档核对：
+- 语音唤醒 + 数字人形象展示：Module 2 覆盖
+- 智能体调度（直接回答 / 调出操作界面 / 呼出指标页面）：Module 4 覆盖
+- 对话交互感（流式追问）：Module 3 覆盖

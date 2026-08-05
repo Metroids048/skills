@@ -1,0 +1,20 @@
+---
+pid: 18088
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n$py = \"C:\\Users\\win\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\"\n& $py -c @\"\nimport json, time, urllib.request\nfrom datetime import datetime, UTC\nimport pandas as pd\n\ndef get(path, timeout=35):\n  req=urllib.request.Request('http://127.0.0.1:8016'+path, headers={'Authorization':'[REDACTED]'})\n  t0=time.perf_counter()\n  with urllib.request.urlopen(req, timeout=timeout) as r:\n    return json.loads(r.read().decode()), round(time.perf_counter()-t0,2)\n\n# warm with decisions then snapshot\nget('/api/v1/runtime/decisions?limit=1')\nsnap, dt = get('/api/v1/runtime/snapshot')\nprint('OK snapshot', dt, 's')\nprint('OK data_freshness', snap['data_freshness']['status'], snap['data_freshness']['value'])\nprint('OK strategy_evidence', snap['strategy_evidence']['status'], {k:snap['strategy_evidence']['value'].get(k) for k in ('paper_run_id','strategy_lane','execution_mode','simulation_sampling_fallback_enabled','evidence_class')})\nprint('OK exchange', 'pos', len((snap['exchange']['value'] or {}).get('positions') or []), 'orders', len((snap['exchange']['value'] or {}).get('open_orders') or []))\nrecon,_=get('/api/v1/runtime/reconciliation')\nprint('OK recon', recon.get('status'), 'blocked', recon.get('entry_blocked_symbols'))\nfor sym in ['BTCUSDT','ETHUSDT']:\n  raw=json.loads(urllib.request.urlopen(f'https://testnet.binancefuture.com/fapi/v1/klines?symbol={sym}&interval=15m&limit=80',timeout=20).read())\n  closed=[i for i in raw if i[6]<datetime.now(UTC).timestamp()*1000]\n  c=pd.Series([float(i[4]) for i in closed])\n  ema=float(c.ewm(span=50,adjust=False).mean().iloc[-1])\n  ml=c.ewm(span=12,adjust=False).mean()-c.ewm(span=26,adjust=False).mean()\n  macd=float((ml-ml.ewm(span=9,adjust=False).mean()).iloc[-1])\n  d=c.diff(); ag=d.clip(lower=0).ewm(alpha=1/14,adjust=False,min_periods=14).mean(); al=(-d.clip(upper=0)).ewm(alpha=1/14,adjust=False,min_periods=14).mean()\n  rsi=float((100-(100/(1+ag/al.replace(0,float('nan'))))).iloc[-1])\n  last=float(c.iloc[-1])\n  print('OK', sym, 'SHORT', last<ema and macd<0 and 28<=rsi<=50, 'macd', round(macd,3), 'rsi', round(rsi,2))\n\"@\n"
+started_at: 2026-07-28T08:03:07.309Z
+running_for_ms: 30012    
+---
+OK snapshot 28.25 s
+OK data_freshness available {'data_fresh': True, 'exchange_info_ready': True, 'heartbeat_at': '2026-07-28T08:03:24.516888+00:00', 'running': True}
+OK strategy_evidence available {'paper_run_id': '78ba69a7-2bfb-457e-9a97-934aaf418e00', 'strategy_lane': 'directional', 'execution_mode': 'binance_testnet', 'simulation_sampling_fallback_enabled': True, 'evidence_class': 'NON_PROMOTABLE_PIPELINE_SAMPLE'}
+OK exchange pos 0 orders 0
+OK recon unavailable blocked ['BTC/USDT', 'ETH/USDT']
+OK BTCUSDT SHORT False macd 45.157 rsi 46.52
+OK ETHUSDT SHORT False macd 1.533 rsi 45.01
+
+---
+exit_code: 0
+elapsed_ms: 31655
+ended_at: 2026-07-28T08:03:38.964Z
+---

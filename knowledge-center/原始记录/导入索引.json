@@ -1,0 +1,1673 @@
+{
+  "imports": {
+    "e5c14e45db22ecf7e54fa78c19910e9c26080d4f8bf779079546e16271486b17": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_112856_fixture_cursor.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_112856_cursor_fixture_导入会话.md",
+      "at": "2026-07-28_112856"
+    },
+    "3ae18a9df8961ea2ff42c12f08ee1e18dfa2e4f710f3ac8d034f2d2195df4a05": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\claude_code\\2026-07-28_112856_fixture_claude.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_112856_claude-code_fixture_导入会话.md",
+      "at": "2026-07-28_112856"
+    },
+    "4b5a8835a618e9856d425139a2675240e52ea6da78c66c2c6069a8a75c2c5d79": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\codex\\2026-07-28_112856_fixture_codex.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_112856_codex_fixture_导入会话.md",
+      "at": "2026-07-28_112856"
+    },
+    "29f304c406f7731b2566e11f963151164454174cf653ad2b4f52cbc55d7feb4b": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\chatgpt\\2026-07-28_112856_fixture_chatgpt.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_112856_chatgpt_fixture_导入会话.md",
+      "at": "2026-07-28_112856"
+    },
+    "94d9275094c954e1a6f886051f3506dbd3bd756f15ed0f63f98431b907d798ec": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_114028_敏感客户项目_leak.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114028_cursor_敏感客户项目_导入会话.md",
+      "at": "2026-07-28_114028"
+    },
+    "f9b064f6b3acbaec93144ade9840ba30f9af78fd2e897b048a68d2aee577f83a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_114101_fixture_cursor.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114101_cursor_fixture_导入会话.md",
+      "at": "2026-07-28_114101"
+    },
+    "d9f74eacdcad4baa690c67363080286a112f3818ac08a63a57df46c88014a84e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\claude_code\\2026-07-28_114101_fixture_claude.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114101_claude-code_fixture_导入会话.md",
+      "at": "2026-07-28_114101"
+    },
+    "b4f8cf5f4ed0ffe76b94caf7be2ae8390a768357529e956abb0d87d98dde6034": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\codex\\2026-07-28_114101_fixture_codex.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114101_codex_fixture_导入会话.md",
+      "at": "2026-07-28_114101"
+    },
+    "abb121620e78c052fedf03694c9b1afeff6c3b9061dc80e613897931acf4e31c": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\chatgpt\\2026-07-28_114101_fixture_chatgpt.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114101_chatgpt_fixture_导入会话.md",
+      "at": "2026-07-28_114101"
+    },
+    "56d10a86f2ab78b92cddc9cf007d26078d22e2cc70111190f70eea2f7ea05776": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_114101_fixture_cursor.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114101_cursor_fixture_导入会话.md",
+      "at": "2026-07-28_114101"
+    },
+    "a2e02abeb67d0c2285635dd7052dc03d89f7e18f2da999f914e02eab2c5e1147": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\claude_code\\2026-07-28_114101_fixture_claude.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114101_claude-code_fixture_导入会话.md",
+      "at": "2026-07-28_114101"
+    },
+    "c83ac9fb1ec4a5ea1fd857a117fac34cee914e3891f9d164b24691e2b186d675": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\codex\\2026-07-28_114101_fixture_codex.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114101_codex_fixture_导入会话.md",
+      "at": "2026-07-28_114101"
+    },
+    "aa80e3cc697a3bb597bb2f86de6845a6db2d4807ab4de1b99e55ad68c032b8b8": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\chatgpt\\2026-07-28_114101_fixture_chatgpt.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114101_chatgpt_fixture_导入会话.md",
+      "at": "2026-07-28_114101"
+    },
+    "9f0767b6e5ec24b05d7d4a7205791f99f213fa2ce08f9d820374c9324e0a01a1": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_114156_fixture_cursor.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114156_cursor_fixture_导入会话.md",
+      "at": "2026-07-28_114156"
+    },
+    "c39eee6116fff82e83177877579b7e88624eae33575a9bc6abc002ac27c29cdc": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\claude_code\\2026-07-28_114156_fixture_claude.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114156_claude-code_fixture_导入会话.md",
+      "at": "2026-07-28_114156"
+    },
+    "27bf63e70de17eca6e8feb9da5702284bf505a5076e1a31f833c7dffe0d27391": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\codex\\2026-07-28_114156_fixture_codex.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114156_codex_fixture_导入会话.md",
+      "at": "2026-07-28_114156"
+    },
+    "277fd280a0a9c178b965a5b0b4cb8fabfd56eb5e83f691038e50720eb8addf2d": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\chatgpt\\2026-07-28_114156_fixture_chatgpt.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114156_chatgpt_fixture_导入会话.md",
+      "at": "2026-07-28_114156"
+    },
+    "8ff709b50e01c3c44b8138e1afafcd5d61d66477fee68fd66bf3137bef96d58e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_114158_敏感客户项目_leak.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_114158_cursor_敏感客户项目_导入会话.md",
+      "at": "2026-07-28_114158"
+    },
+    "aaa1cb63cde5f27007f3aa960e0550e639b6055c819430f5e3cb05e57b72267a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_115000_fixture_cursor.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_115000_cursor_fixture_导入会话.md",
+      "at": "2026-07-28_115000"
+    },
+    "5499684091fecef02ea2393b0962ddecc0e9889e04263272cb8387913680a648": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\claude_code\\2026-07-28_115000_fixture_claude.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_115000_claude-code_fixture_导入会话.md",
+      "at": "2026-07-28_115000"
+    },
+    "b968e158ef3b720f5b34f6d0e03c6db80d89c7a68cf2db76f1a7b644d70db6dd": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\codex\\2026-07-28_115000_fixture_codex.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_115000_codex_fixture_导入会话.md",
+      "at": "2026-07-28_115000"
+    },
+    "a9ae8a1edca68e36868001405d928300441c114b4e090e46bc4ae64a3b9632ae": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\chatgpt\\2026-07-28_115000_fixture_chatgpt.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_115000_chatgpt_fixture_导入会话.md",
+      "at": "2026-07-28_115000"
+    },
+    "69847caa1e8cc8efbbcf6973bc6001142eb7c8dd91999765fb45744dc58d6e58": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_115003_敏感客户项目_leak.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_115003_cursor_敏感客户项目_导入会话.md",
+      "at": "2026-07-28_115003"
+    },
+    "8f1bf2e88f3a5f1d6690d0ee863e3355fad36bedf208c39ee242d6c847b741bc": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161431_fixture_cursor.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161431_cursor_fixture_导入会话.md",
+      "at": "2026-07-28_161431",
+      "project": "fixture"
+    },
+    "6be83c19feda31e8926d1fbe0dc2f10375c357a0b16670b3e4334cc40e05bb8f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\claude_code\\2026-07-28_161431_fixture_claude.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161431_claude-code_fixture_导入会话.md",
+      "at": "2026-07-28_161431",
+      "project": "fixture"
+    },
+    "9f57cc1cd20e0a87cc6e660044bbacd03c5267aa3963e5eb1e503dbfc9e97dfc": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\codex\\2026-07-28_161431_fixture_codex.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161431_codex_fixture_导入会话.md",
+      "at": "2026-07-28_161431",
+      "project": "fixture"
+    },
+    "afe30f833b98adcef46b59e4145e4cbc1ab4c9ac84cdf12ef3e68968246ade2a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\chatgpt\\2026-07-28_161431_fixture_chatgpt.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161431_chatgpt_fixture_导入会话.md",
+      "at": "2026-07-28_161431",
+      "project": "fixture"
+    },
+    "3defb6b76314a96bd37106923c33c071e0a7b90b692d759ba0a8bd62ab6a84af": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161431_fixture_cursor_transcript_20260728161431228595.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161431_cursor_fixture_导入会话.md",
+      "at": "2026-07-28_161431",
+      "project": "fixture"
+    },
+    "eb6979414e9935778bf4e79be2e13476afb90f8eb2ce79062f1e355184f9972e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_1781598175069_1.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_1781598175069_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "1781598175069"
+    },
+    "1b839119c5970dc5b4c7a8354c86adfc01108c0158aa866a33fa93d330cea758": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_1782099021267_2bd51540-fc21-45dd-ae83-5f68d1a70b10.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_1782099021267_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "1782099021267"
+    },
+    "2462e2cda3a52117575a33dbaaee7db4eb78bf17b06ac1abfc16083d04dd0362": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_1783564119715_2.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_1783564119715_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "1783564119715"
+    },
+    "c76cbaa35fb14fd77902f158e2ccccf9baa5c6869c9fbbc6d23cd820bec21ea2": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_1784515194866_2.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_1784515194866_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "1784515194866"
+    },
+    "c1455142957e737dc9a683f646c78a7fdab35bf686c4ac0486ba0f39d2d35bce": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_C-Users-win-AppData-Local-Temp-0041b7b9-5d10-466c-9047-6d246deb2e11_STATUS.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_C-Users-win-AppData-Local-Temp-0041b7b9-5d10-466c-9047-6d246deb2e11_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "C-Users-win-AppData-Local-Temp-0041b7b9-5d10-466c-9047-6d246deb2e11"
+    },
+    "16df849bb674c341e12be80f7989a632d11a57e189bba3e86f7c38848800eee0": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_C-Users-win-AppData-Local-Temp-01dd77c1-78cd-4d59-b1ea-4d03b840eb71_INSTRUCTIONS.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_C-Users-win-AppData-Local-Temp-01dd77c1-78cd-4d59-b1ea-4d03b840eb71_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "C-Users-win-AppData-Local-Temp-01dd77c1-78cd-4d59-b1ea-4d03b840eb71"
+    },
+    "0e6675910d86a1b0c5fc97410357bfdfc48878f32c7e9da84a1d0eed719b2bb0": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_C-Users-win-AppData-Local-Temp-01dd77c1-78cd-4d59-b1ea-4d03b840eb71_INSTRUCTIONS.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_C-Users-win-AppData-Local-Temp-01dd77c1-78cd-4d59-b1ea-4d03b840eb71_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "C-Users-win-AppData-Local-Temp-01dd77c1-78cd-4d59-b1ea-4d03b840eb71"
+    },
+    "d8a5846e23f421d0303ce5bdaf3068f052e31adf23ce023a4abca53c867e00fe": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_C-Users-win-AppData-Local-Temp-04946844-251f-4bf1-831b-3c4477bce0e6_INSTRUCTIONS.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_C-Users-win-AppData-Local-Temp-04946844-251f-4bf1-831b-3c4477bce0e6_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "C-Users-win-AppData-Local-Temp-04946844-251f-4bf1-831b-3c4477bce0e6"
+    },
+    "db6521ad9e6b4ab8e76d4f6f7a4c4b45d57ebd09497beaea6ef9113064a2daa8": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_C-Users-win-AppData-Local-Temp-0521dd0a-146a-457a-a59b-06d0d54c05ff_STATUS.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_C-Users-win-AppData-Local-Temp-0521dd0a-146a-457a-a59b-06d0d54c05ff_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "C-Users-win-AppData-Local-Temp-0521dd0a-146a-457a-a59b-06d0d54c05ff"
+    },
+    "ea241b1b79979a814b463f56b3abbab593e7e37291923c908ebf783c875f3324": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_C-Users-win-AppData-Local-Temp-5f1be70d-2ff4-487a-9a60-808d6e0b9c2a_INSTRUCTIONS.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_C-Users-win-AppData-Local-Temp-5f1be70d-2ff4-487a-9a60-808d6e0b9c2a_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "C-Users-win-AppData-Local-Temp-5f1be70d-2ff4-487a-9a60-808d6e0b9c2a"
+    },
+    "834b64678d30a385009610e4a4d013133351a10cd5c4b313dc1b0c40b42e5923": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_C-Users-win-AppData-Local-Temp-881784cb-fa95-43c4-af7c-ab8c1edfebf4_190533.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_C-Users-win-AppData-Local-Temp-881784cb-fa95-43c4-af7c-ab8c1edfebf4_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "C-Users-win-AppData-Local-Temp-881784cb-fa95-43c4-af7c-ab8c1edfebf4"
+    },
+    "80fc34b124160ff307547f5bee30b679d5f897dfe385e623c2700669948fe944": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_C-Users-win-AppData-Local-Temp-881784cb-fa95-43c4-af7c-ab8c1edfebf4_last30days-skill-1.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_C-Users-win-AppData-Local-Temp-881784cb-fa95-43c4-af7c-ab8c1edfebf4_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "C-Users-win-AppData-Local-Temp-881784cb-fa95-43c4-af7c-ab8c1edfebf4"
+    },
+    "7da322e6b256c2bf7a00f019127649277ae449bde448a35039354123015b6221": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_C-Users-win-AppData-Local-Temp-881784cb-fa95-43c4-af7c-ab8c1edfebf4_pm-skills-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_C-Users-win-AppData-Local-Temp-881784cb-fa95-43c4-af7c-ab8c1edfebf4_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "C-Users-win-AppData-Local-Temp-881784cb-fa95-43c4-af7c-ab8c1edfebf4"
+    },
+    "508ae7d76faae30d52a194116d8be5e32685f8c8d8646e357d11c737a23be30e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_0305aaa4-1c43-4b7a-b222-4ee43eaae8dc.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "98e6f0bb6c21834ac84c21de9daefb69bc68e560a27a2bf47e3a3c961512e646": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_0714fbf1-70e5-4c7f-92f5-5f74495e3215.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "39ec1a06382e349272ec568a88d002463073205b01b1563e964f8516de463caa": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_0b6ed8b6-7343-4f99-a042-52a3b6fd6d79.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "5c9342a68401afda50681a229bd2c0cd579e4c7c9c20df21077dc1f7a9f409ca": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_15cf9807-e617-4a82-ad1f-981c6825fe06.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "43fdd72cf290435391cb5b5ec62aab658ddad19f4bdc0429ed8834b77d42c71c": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_22f95ebe-9da8-4797-8283-347cfb7f8356.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "b842fcffd9fb2c58297d56b8af71c4770bf207667e6074d5c236f9974479bf4f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_26b39a40-dc0f-4a07-b534-7367a8e45249.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "4005f2e03b7ec0e835242502804b114e63507c7f516cc562fc1c9994973f7934": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_28fcbdf8-38ba-47ae-9ed7-51a54446c426.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "6e2fc39b2f98d07d504d45303f1e2dc9d983d0f6fba837299d1beaf334188ffa": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_30801d63-e9d4-46af-ac90-680177f44aa2.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "88876da660ce38eedd3a9b1fdd6a0d35e1bbade8aaf08aba0b72631e2196b38d": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_312228bf-5899-46bb-84ce-ce2b132cdc13.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "31a41ae58c3b69d2fae0058514520acbf0f090f5c93a2c4b9fe27c64e9e39d2f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_39410f17-0ea8-4e64-b64d-1249bee3ded0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "1ed0922ec41181f5d576e2fc151a632876a9bfa8fd0a95dc9ca831cceb5ca90a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_39be2db4-4c41-4fe1-afc4-f7fae44d2050.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "3b78c86c8a157cd1392ad8c9a1122410eefcc9efd8aafbc4d3cebec265db7e61": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_3e920835-492a-4be0-b7aa-f7813c14bab2.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "7081b9c03e6242dd12af7c8819453097edf650a3a82251616d0bb28426609dc7": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_3ec1811e-6662-4e77-bf6a-67be5a17f199.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "7af34a223cf30b2b43084aa78311fe140d2ddcad8ddc3842b7fc8d096634e571": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_3ecb051c-61a4-4aa4-b1a3-0ba1ea85922d.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "125e089183c6b9d115d68083bc46f9eb83b419b7cb5ce93c58734a1ec8c06392": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_4481b61e-30ca-41dd-acca-1571fabcd944.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "0b3cdc462d2d757253a55b008a854670af3b1e49614138dc390d3b2dbbad86d4": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_4ab58f97-48ce-469e-b62e-ebba3fc3bcd1.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "8454186288883fd5e8c916075e5f43b7c521b067672cadac3b1fdb4f84b8cd27": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_4b4dfff2-9f7d-4870-b864-07291cbcab64.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "f2f48b6a54d01f7a4811ef4d1e3d9ad8358fe3342d8faab46270a6daa6bb32fb": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_4edb9686-37f8-4372-8ba9-5284c2bc7f04.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "13802ed5fef9de12efc38669fa756fae964e0599f5441395d2e43245f116b7f4": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_517ad2a5-e855-44da-a5c7-2e655002fbb3.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "1b80185336d3c6960799f99299ca76c7ba6a3dca7db5ad4cb4f659f1f1fe479e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_52418693-1f18-45cf-9fa9-8c93d61365b4.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "1a4e4f0a108095cc39d5b2b43dd26cb41fec4d79b5143104286e831dd7febc12": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_61313ea3-e4e0-4f4b-8b92-a83240eca6ca.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "987ca6dd8a7817194f563d4bc12f81c22188c9d00211c5695cd6a21b533bf223": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_6392bf41-b66a-40de-b3e0-0ff3051020bd.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "2eae789fd2e2fa4d95388d1ebffcb5824fb14a9dc6e7c61b08cfd75277ec4984": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_641f2655-1981-4113-97fc-77527ce1c5c7.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "e0839549455fb4c8300fca7ff8a7397dcdb3a0d5eb673c5e18d6619533a5de9f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_649bcf46-5cbb-4628-9059-442e1ab67f39.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "4c466e626418e20f5f96548c20d97e909528431c6829854370627ebb35b92a43": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_64c9b5a6-1db0-4b97-918b-61318bee24f4.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "b349b419d5d3ca378611e8a43eb138630a63cc3fe2d750f077996e6ce7a48096": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_6d49c185-43ec-4cbd-97a3-4848ea22297f.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "07024bc513db74ab26073d5af53af828ce4b2595f7399e14a4ec39484db1aa75": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_6f63ee19-f962-4fa1-b048-b1e978f260f9.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "936930d24d2b126ab8b3b48ccc35fe402b4677f47a71b55558f42a8219d996ef": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_71e45b21-ddd4-4349-992a-f89b6e18231f.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "86188840388583837955bda64f9ed0232fbe9ac4c96f017d2494a3a9e227cc13": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_7347e8c7-34a5-4fc0-8f00-ec873ce18aed.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "60501e8838241c4f5af1171656cc5da53df5349b14365e41a1491ac46f4afe96": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_7c371a7f-ea9a-4f26-b6c4-e0447efe26fe.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "94a5960b53aafea2afa7926afa50a8a7dca9c90588f133b2d654231f50e81963": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_7e179f81-e49e-4f56-a4f7-2ea2f6468af1.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "8983f77e7880b86a1788720e3c208a6a0d1cb064ac5fbece1acf8b4d154f7be5": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_8d996fb7-46c4-4a32-8c90-7d83da4ca03d.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "956e8e5b4c1269c4fde6fb90d7d88604e3abcd9fde0099b03dc7ed8ac431f8d9": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_ad9343bb-7e6a-4220-a330-21a359359a42.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "834cf58bb595eb3f5eb7d7276e2a34c06b9b7708f5f94a17989810cbf6ac43e4": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_afaa83b1-e239-4bbe-9f7b-312235d7cda2.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "a460717fbce1393ffa4b9cbd9807c70681da6edeab9766762f19ebb2d82b4ac6": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_b1da1baa-5d2e-45c0-8ac2-4079db5019f9.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "47966597959b49c01e491772496930d3d9fb5748d482d1d95fbeb164f87ee986": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_b485621f-b159-434a-af8b-b750f2bb3872.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "154704ae1b7152f949c04f17cda8c63ed961e6e26057285e8bbfdb79323dea85": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_b6053411-32df-4c5d-8572-10c59118c146.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "bbc29eadb62fecf2e557139209bb95e7061e98cd4cf04ca37465b358c9a5869e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_b678a26f-04a7-432b-8cc5-289cc96dd719.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "479e29584a02c5173bf614f6fce91b86af3cfce6658ec4346aac2880b63c01f3": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_bfcde725-6eba-4bcd-bb9c-63f91e363a3a.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "eafc596f678613d3e855cffe3b8370f50716340d89d79ee853a32e8e28a4979d": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_c5b4bdf2-00b5-4b10-aada-566bdeaef2b4.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "c9f75cf56a1b7c14fd3e2979ab1bd3db498a9f67bb1accb6bdac7c5753517d12": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_cc50906a-899a-4990-9e89-a026254abf43.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "682dd88ecdc7a03d4ba565615291efc0d9f870e5e17259af67dca860c2f954d8": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_cfac4777-d0a0-40ce-9e16-81ea5703caf6.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "81787546c2bb68ad87046dba644ecb87b433576d3befad0ff7577de56579c452": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_d2ef3f50-3dca-4a72-b896-f2c45a0e68ad.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "390bdfb3e3e41d106e2118ef4566243fb93efbb83394ea4bed496f2dd9c6b17d": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_d33ae3dc-c944-467a-9354-4255bc366111.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "e4358f83f9ed8e3aab4052544f42fe50b0480f627936f242e8ce9d201dd9534e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_d387416d-0264-4270-bb90-0c53daa46de4.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "f000d1a1e1a2c3bc89b77269a81d47b818ec18002753107574129bc416828ddc": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_d7a0c40a-18b4-4ab2-8f98-4ddab3349fc8.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "57ec4a84ddf70e7bdd9d3fb3149c4737340d993c1e1c93bef7fb1e9b2adbfab9": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_d8ac3960-3db9-4b14-be9d-5a2fd74d9de9.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "a743e814bf18066129077574e133e365ead6c136ab53cc486b0fccae9cf4da9a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_e7f1afce-252b-4f54-9538-e6141e198f29.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "51de860de54859a3b5792ec7fc1dc52202b0f18e74d55228192fab1375fa3058": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_e91721f8-3624-4ef9-b3ba-13a982984d05.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "a871d2f5f0f32b46d7b9f91a1a2aaf5470944b3b5bd0de68c7990082cf0f0bf1": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_f7ea5d01-fa68-4bbd-9840-49a0bfb711d4.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "05fb2562ba6f4b3986ba58b9319975ca98474d636adfcdd90ecfeaa933d7ebbc": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_fa13e50b-677e-4366-a494-7509c2f21ec0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "47e23fdc426202a54d3df55dacc2727d4a691be10933d3a9fbe68769d29db5aa": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_awesome-design-skills-3.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "c22add09a238f504bcea90bfc3e45bb5861ff41fa68d4b2e900436e594340be3": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_c__Users_win_.codex_sessions_2026_05_28_rollout-2026-05-28T13-00-47-019e6cf4-ddf9-7e50-9a25-9cc3af16890b-L1-L110-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "8648b32faa44e6ec3e970bc92804e1ae2e8fbb622e9c0889f0b7b26dac4a1c00": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_claude-code-system-prompts-1.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "276d3f02d943230b24eda98aaa2183394c34296095797c5af06851990803da9a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161635_Agent Platform_codegraph-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161635_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161635",
+      "project": "Agent Platform"
+    },
+    "311ca8e9230b4cc06d63b09ec904a2e25f229573e70a7fb85facb0aebd8c0f62": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161636_Agent Platform_headroom-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161636_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161636",
+      "project": "Agent Platform"
+    },
+    "0210d46d4bf3b9496904d465e0dbab07c68f38bece4ff7cad750271f9574fe7d": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161636_Agent Platform_most-capable-agent-system-prompt-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161636_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161636",
+      "project": "Agent Platform"
+    },
+    "80f6e4ab713dda3ee3b7b46c987a9380e0686252a9d6d92a0b65c4454aec371e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161636_Agent Platform_README.zh-CN-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161636_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161636",
+      "project": "Agent Platform"
+    },
+    "8e7ca5e8fc42a0e8a7176d07973f9323dbc21a447d3038bdb26f1a2c892387d6": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161636_Agent Platform_rtk-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161636_cursor_Agent Platform_导入会话.md",
+      "at": "2026-07-28_161636",
+      "project": "Agent Platform"
+    },
+    "c372b4508527cc386149c038842e14acec5acd2dd4fd54c8e2c5484da5a47d29": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161636_AI--main_21acad29-bff2-426b-9cf1-026d79366d6b.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161636_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161636",
+      "project": "AI--main"
+    },
+    "ed8ad087cc7bfff2ebf71851f0aaf8c62dcca8fc7f9f95be8050b3d272f8f46b": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161636_AI--main_23a03d21-8552-4971-916a-49dbaceb1292.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161636_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161636",
+      "project": "AI--main"
+    },
+    "d28c18d29423292c9d05ae73899b4d75be334fbef1372ced74a49189a12b3d26": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161636_AI--main_487b497e-6e83-4a98-be2f-ef81b8bafdf6.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161636_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161636",
+      "project": "AI--main"
+    },
+    "e4659b5c68f9a1b4baa3bc0b3500cd4e15105a09c6127d6494f06651bc906d02": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161636_AI--main_a9590a58-8d58-4f61-969a-ce5e163e064a.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161636_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161636",
+      "project": "AI--main"
+    },
+    "a90aa200500fbec078f2a45c44b469b635e211ba6f27b92f2ac203ffceb04859": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161636_AI--main_abc15510-fdba-4e37-ac62-d42b01ec8e44.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161636_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161636",
+      "project": "AI--main"
+    },
+    "0802dde2dcb562bf95892fa607810225b7367473008dd268aaa1f9e35b84aea7": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161636_AI--main_b7a8ef95-98d4-48d5-b961-6a4c9ec7c386.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161636_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161636",
+      "project": "AI--main"
+    },
+    "6a46c7c34802752d8223612367a6e1ded38fd22872d14ab8380ba2395a42eb79": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161636_AI--main_deb87a6b-d3fa-4759-b921-84d212ad28e6.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161636_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161636",
+      "project": "AI--main"
+    },
+    "475e4721f0064df11814618436b516794130caf1996e29ae6e342bb20f6dad48": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_e0d44fd8-bea3-404b-86d8-d439a7c94170.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "434d98c3d573d14506a84df6a94ebdfc726fffdad03c916760d094c96ec886bc": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_e11ed53c-a301-47dc-98bd-e697b5105885.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "c9b98fefe8e6f5a704be031678a698d63b5c93fc42cf66d8fd4e1ada0fd857f1": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_f16c03c5-d660-497b-9d63-66561b226809.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "678818d6baff48512b1a52aa83190063d3483ef1ea4e75062531f90e1184090a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_0487b6b1-de12-40f4-99a3-a6ba147309b6.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "11bf15c5206ee86d1cd5f38e69d91b69aa8c7800907184e5fc4c064c0f958e82": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_1368645a-5b94-4649-ab2d-0ad1e7b135f7.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "4ae03fef4abec7cbe6d7bbd4519ac2f5f22f58c1f5382d4480bcdc5f931aa61e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_27c12082-a273-4c5c-8161-e5fdcc639283.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "bb5380edc5c0696f141180bf9ad139fb58493b135cc963fdceed857539d5037b": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_36a34439-0d56-47f1-9690-f23640bd1776.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "5ebae89f64b374a1712f7eb58f8770c09d9a2d856475001fc4a48eeed50a478c": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_3e214f90-95fa-46b9-88ea-41dbcbbf6786.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "a7070a3dea46717ee0e054cf2ce1a46e8f34fe2b95c59ba95b68eb29001d5532": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_5aa5459a-75f9-4dea-b092-1305875cde85.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "dff001464450a8f184bf891086aafb40f3545bac373511e1d15debc4fd6addee": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_5e3f7f24-3fc7-4125-9901-f0b10b573aac.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "3f7d58ac49ec9f76fd9c784f4608e6160d6f2eecc369f33a03dd76626ce48f61": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_65cf9dab-e1ae-4de5-9805-b17e7d414fd3.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "35e3902aaa532b44cc0720d1c7a3e1496939e3c0ded472de60ca7b4d5d1878cc": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_922d8493-19cd-4e73-a81a-39a27406d288.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "4b7b740bc80bfb202872f10f8255c0b0add953ac767093fc0332fdf1b8beb6ce": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_99f38faa-adc3-4b86-825b-606c2034e2b7.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "9204f2eb36840637cd99fbea81a7f5a48098724697f474356d74bd440ac14e79": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_acd0e005-2333-4d36-8076-29e4f1bafc0c.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "44eeebde5e6f0b5daa0261722135cf09233603e178d29af0e9d971449d361a53": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_c4387ece-ce41-478e-afdd-3993bec31535.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "3b402096ef7b1ffe6b1850d4cb44c537b435480b05c29cdd80263ae090dd212f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_e2980c12-829c-4b31-9c17-f0142133e861.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "f898942473f0cb6b066661bc069175e6b3c61029377b269c1efed9e2c1f09df2": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_ff948a4e-f343-4c86-beb5-0ea1d0cab1fc.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "73fd6fccdd802c419a6b2d983d6c3173b7da97558ac4b589edec2dfe443db9ad": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_README.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "3b2e0b3488621ce12e3274768c8a9b0ccc76d54311c99a5ce5ee7ab246a2284a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_1.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "94e009eb3afc1a53906b19c345cbd293df8b33f7c22038f8819274966fc753be": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_28.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "0b5d39899033fe4328b1b4af6f6ffa521453c355332f0eeade67258201a83125": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_3.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "dd1ca243094e0231dbee26c9cea72f51fd4fc4ac5bcfebb1c5f2ae2a4b0cac45": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_4.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "06ef41ca61a212a2c0e75d382bf004f35f8145f878039c4de1381ffe4aeff69b": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929757.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "e6d15ec7ec86c9042dabbdf6ae5db44747d913ea54da1f8e713744d54fe70949": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929758.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "724ed99d26c42bf274a3e330f107797a571fb7813a42551821f227508ed1ea02": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929759.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "2d0cc68639e88ad7e97a8bb1e88219864bf58424ce7cf55be0a1c4098d8d630e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929760.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "19795ee3299efa3997447f8930619b28437d87b153f02e1531e8da252253bdde": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929761.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "86e3e4c76b08b3446b235b141a907fec935ed50a4204fd85116ada1155722aa2": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929762.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "e60e807270636dddc76260b2f4bb07a9493b17fc9c9e32313293e1ec73e1eae8": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929763.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "b03b2ac6411930b13f7fb68843d2f256f47c9944ff8e0ce1d4b3148f90fa56db": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929764.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "f5374fdfd3c871bdd4b696271d4920877758d8839fb782123268028990580160": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929765.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "38e9d7ce763652aacd3b35fe9f9a197bfdb68e8a377719528d1494c73a3f5587": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929766.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "9581c4db32f6835cdc4f3810d0727f127588745d0585e87bc4f97e47ddb3f953": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929767.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "0be96edfb05ccf6e6c0166567a043b6f0704d1a75f22998f1fe500d64188d00c": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929768.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "18a92025115589530b97da226792d61ab11bf7e39e7d9a83beea194d9d28b09e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929769.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "d0c32317c3c4754de3f7def7ce87127e979f551e7bc2c8470bfa27a7af40b0ca": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929770.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "b19ff611bc29545151180ab740019350b00708f4eda655019d5c35a80eb075bb": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929771.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "fc249b23e9363b3d3e732e7ea995db9e696bab4c7e0befd7677543d617a4631c": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929772.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "d6e0b634d71a13176bf5617d2f623d5caaeec7ed09e75c58de3aea8e57c69b31": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929773.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "a47e71ec107254e241e397cdc8e89f62d83ad221342f2287693ee64b39ef206a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929774.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "f4f45cd9970621a62076d2483e8bd54e5e20e80ea0202123828a097dc2443f40": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929775.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "e64893b113f9d6c0f9aaa94605ef13a3112a6e9b44d096968c21f51a3364fc5f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929776.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "40a6c60acb4ae0712b06addab919bb692eef8cd22bad989b977dba809e3817fa": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929777.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "8a77e8625a4eb02aff92e8b6eb8b0b7fa84a8e01e06f90b2cb6bea3cb6d282b8": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929778.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "2eaf54ee341ba4d17827823bdca430d8ad3cb6b21f7dc38ff95c174e6deb1170": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929779.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "47b659072477f3763f99851738ae7d94065259453ac9ba94f1eb1637612c795f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929780.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "c7a981a1ce50c320d96f3ba8a4b1d941e4d4f8dd2357cb2f15a50e4b588d1349": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929781.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "a4c33f6dae46639b1f08fe023cb3cdfd7ea2959d541043aba69299744a5e4db2": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929782.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "c1dbf6247eca5358a70dabf4ba47b5c3c4a4c6cc2fd76d085378e2716152f62f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929783.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "fea28ad79f9737c74bab77d6e38c0f13b84a187c07fd52afc3455403a0a86cbb": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929784.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "84d5d90b4e9e98db2cf9763c592fd73a154c62e1c89407c258c5000591d91828": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929785.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "02740a67938e5568ddef36cc1cfe2e4f92e3682ca009a8a325ff294f316b1e81": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929786.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "f3cc25cd21a652431109167ab0e02d5dbffa1290a6b405a649bce29bfce97c20": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929787.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "303997d0783383dc673b40fdb0245e137ea3f4850007bc31de94a9c9a31aa283": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929788.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "86fe7af0ca6cb15a3ba7a5c9a0f9a4f11e7917cad4c25373eb38c14a37cbe1cb": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929789.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "6b47ef4ce8534c4c32050ef4dbb421276de2a23ced84a7158da20659239addf9": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929790.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "9af3592ce6ae5279c94598edc250f509f4d5e88f4d8aeb891d5deb52c05dd147": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929791.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "528bede7fe731e4870415f2db1af07b669560a4b374a200be44101fcebcbae1d": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929792.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "ac25a731fd765ef7e2056f8a96b1351efb1c32064340728722209d360d125876": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929793.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "e0fc6bb7a6fc57a17522ad15740475b0937074aeb8100ca176cc23874766094e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929794.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "e7d245a633ea18358772bdeb8e0e3a13a6a8938165255b40691a947e76ee2c23": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_929795.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "6736f0fb279e9310b54388b54b2b3d4b46af287411f81495badec9de95e32906": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_961450.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "b44a99b0726289ebb54baed1c6ccb1e494a8ff5ef4e6b8b3a8a6de7d185bdd27": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_AI--main_AI--0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "AI--main"
+    },
+    "3ac1c3d46a89451a9d248e6dcbae49980ca71404378907783f1d4ed1e855961a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_alpha_8319001a-15aa-45c3-856c-0289194f150b.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_alpha_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "alpha"
+    },
+    "e93e24f7ed433d789a1f3418a29f1ec03f9a0b830a20b0f7032d438ad3b3fbc1": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_alpha_9ae2db13-17f8-4ed4-a60c-35fc489af1d1.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_alpha_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "alpha"
+    },
+    "8d8ecae5ce844b7b5b7712f1c18bf8ccf6633e8b33b1f60ddf1242c483333140": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_alpha_d9020978-8cee-4a7d-b0f2-d6fc206a2daf.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_alpha_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "alpha"
+    },
+    "8a4e94582774684656ae8fbddc5568244c2658e1c4c9135e3791f9392df6050a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_alpha_830000.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_alpha_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "alpha"
+    },
+    "bc84956961a74c39e81549a8df4d31aa8e31c1ade9b2f86edf10855f183ebb52": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_demo1_1154555b-aa77-4251-8644-d00dee362a98.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_demo1_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "demo1"
+    },
+    "5d53fcbd3b342946134960bf7053e9438ca1a795e0e907010e203f7c84169500": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_demo1_cad2f99d-8c12-4540-b4f0-475a5e717e0c.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_demo1_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "demo1"
+    },
+    "63c06f1155594a064f18c772877d3a12a6a639cd5cdb16ffebad708ec8b5821c": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_demo1_439450.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_demo1_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "demo1"
+    },
+    "4e92dd1cf36f15f03cfed860849c9465dfce21f5a0818cac14ff2f48da381acc": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_demo1_694423.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_demo1_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "demo1"
+    },
+    "8c4908326e4ab724f49f1d915c2876ac178186a90a077557891947c9ebb63be9": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_demo_22b089b6-f3cb-4fdd-a6c2-40ab99a5068a.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_demo_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "demo"
+    },
+    "aaf588a52008085b915a7acbdbebdd31a783e93422405a527162c3079f3289bf": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_demo_ba9276ba-bd59-4584-9003-7e0800081b8f.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_demo_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "demo"
+    },
+    "76b197fdc7853e77af7474038dd2333cbf5ae5ce433234a69f00484a78438a80": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_demo_dd2508ae-4356-4822-aa01-b974f92bf15b.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_demo_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "demo"
+    },
+    "280e6c86ea2a1d17973ccce1bea2b77241b04b0705b11c6d943d7b0c368b9e83": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_demo_debd5f12-ad66-4d74-b6ee-3268f9a18f76.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_demo_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "demo"
+    },
+    "367f6d86c26d4a4b513ad0184c8a2d88ec549c8309122c26c788737fb8f3ce0d": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_demo_84776.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_demo_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "demo"
+    },
+    "8eae0c59c0da71d83e30691965915bce9029c4209a609482eedcaf1316acbfa8": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_Operating Platform_09c9ea71-9fcb-4dd1-8248-c6ce79465f61.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_Operating Platform_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "Operating Platform"
+    },
+    "cda370804c3d3989ecd65b2dd8e1278f8298c8cf6a9b25134c28be2a7215d635": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_Operating Platform_344e7481-3073-4bee-a697-cdaca7871a5a.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_Operating Platform_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "Operating Platform"
+    },
+    "d7f231824aef174acf2514b931d35a7441dc35bee8c1b4c53e99eda17d0eb033": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_Operating Platform_c54cf9e0-4703-45d7-892c-41709801c0cc.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_Operating Platform_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "Operating Platform"
+    },
+    "2d13f90792596d348d05543e33d16510bf0db7dba08254346e378fa17e6f3f1f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_Operating Platform_d54d6414-197d-4b94-842e-96aa4f4935d2.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_Operating Platform_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "Operating Platform"
+    },
+    "3fe8efc55756962cb53523f2f8b5cbc2b34de9d5e66c06bd0164f336b9624a92": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main-latest_7b600808-eb11-4ba0-b6e3-6b29fc38ef13.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main-latest_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main-latest"
+    },
+    "c289e88602332c56ee6dd5ac6750849498d8e6df0b72328a50f2101f25645186": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main-latest_8cf3134c-bfd1-4a55-9828-e307f8c47ed2.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main-latest_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main-latest"
+    },
+    "cc8ae48cf58992ed66218676d1dae9bfe598a5e5a9e099407a1c836753546def": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main-latest_1.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main-latest_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main-latest"
+    },
+    "d84c0c7bad332e0599cb8c33361fe0bbc0a4acaf241a3a92637fc2ffb80b5d26": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main-latest_full-usability-fix-1.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main-latest_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main-latest"
+    },
+    "07acd5565226afd660aaae31cb464ed6c4d1e0fcda06687c4b97bd8ed547964a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main-latest_ponytail-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main-latest_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main-latest"
+    },
+    "fe31df65ca08d76b786707e89f914a4500784ae15f345d30cf46ea8e8b6cb623": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main_1c5aa9b4-a246-49ba-a19c-f0c7903fdc92.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main"
+    },
+    "64f44059203d254ffaebbf39b9957cae8f8d72a0c26837b6a00b90a9d8293398": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main_5790df6f-ce0b-425e-9883-6e4d6764983e.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main"
+    },
+    "5459b868a8398293a5aca8a3977347e8d6fd0fea3659e639de870be0eee2c7ac": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main_5e0752e2-1f5d-4702-bc8b-868204e441a9.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main"
+    },
+    "b8dd353e574cbe90a48a82e4c0b75c4c1208b25969e14de20f09b8f6ff6692ba": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main_626234bd-7506-4632-94f2-ddd62d0e9492.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main"
+    },
+    "b2d2d59984983f36c4235d03fba02dddafdfbcc6e1a6479ea5fb80667858d922": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main_663c357b-8a8c-40d5-acd0-38ff54daf92b.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main"
+    },
+    "3330923b280fd2eff820c79b4728cf893e9038043889580ccbab1a0abead4a39": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main_f2a6aa93-8a27-4650-b73a-075723bd5010.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main"
+    },
+    "2ed433e4e0bc639158aa424f7f1895e187145313d019830a94f5d3f1afbc37d7": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main_most-capable-agent-system-prompt-2.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main"
+    },
+    "83eb675a24b468f664b7618a72c14a8a4fbb09d499995874ff6518c5ab705ac0": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program1-main_program1-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program1-main_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program1-main"
+    },
+    "66600fcf8b30515d5d880bfb930afc2a3219198aa9436a8a4414c425218d7325": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program_1b2f898b-05dd-4487-a976-d08c4c9d4151.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program"
+    },
+    "6b89e37c60a4112de90924e98a0025d3717d93584700a44fe96b45dd00aa12ad": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program_4757d901-1d65-42a3-8ae9-cb222756f54a.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program"
+    },
+    "04c7a6691ea54003ae3f79ed83610e5c474235f78e23d9d7988781b0453ca0e7": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program_60a04ec4-e82f-48f7-a7f9-7f2477689ce8.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program"
+    },
+    "244e2ceca759fdf9115b69bb83f9b5f8cfadb622bec94940d10d4ad39f8c2139": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program_8ebc10a0-c16c-4158-ab01-56e79f4f4ed5.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program"
+    },
+    "edc64f67263e87f588c0221c174cb27b2ca8ec39ae9b17c0b9e4906911f34b2a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program_93a2c3ae-b2fd-47ee-8738-e8d96b9da678.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program"
+    },
+    "449d054c2c216f81f60c7f03782a980b5e10cba91ca2708861d6571abc220bff": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program_9d180388-d95d-44cd-9b6a-12978116daa0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program"
+    },
+    "72c585acc9029d7b177493950f8f1c1919bf7156a055e054e3b6ada18ce4696c": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program_b05941c2-d66d-4145-8d90-41d1bb1e1605.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program"
+    },
+    "5d6b0575393eb466a8ae199583ff1c5e7d0f9b4d0eefb018bf42d63f3faa7fc4": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program_INSTRUCTIONS.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program"
+    },
+    "4917415d1b9eede3422f3ef007684fb2ac6681310155bbcd2b3b558166ee0c27": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_program_INSTRUCTIONS.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_program_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "program"
+    },
+    "98c823134d639d8b7a8ff2f214e312696b48074c0af2fd7062e6c33552d46df0": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_全局配置_05308143-3345-4833-9b2c-2e75e92a90f5.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "全局配置"
+    },
+    "a8002115a91c2108f61edb8136830ccf4358c14ab21495eb9ebe471be21d930f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_全局配置_113c5738-0c16-4c3f-85fe-f97f68be31d6.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "全局配置"
+    },
+    "00a246ab7e8fa48579bf9f562e1e4a3edd398215681b06468eff0b9552f68492": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_全局配置_12dd8e6f-2a29-4968-b655-03f9c1c9a8c5.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "全局配置"
+    },
+    "1c95d72fbf77ca7676db2260f373b8e1b2678e7820210cfd9ae308a25e87dee4": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_全局配置_17d90f6e-6744-4a62-b9a5-6a5a671e2a9c.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "全局配置"
+    },
+    "73349237d0408ccfd7a6e1d235cffd9cc30d0442f7120fecd7aa65f71fabefb7": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_全局配置_1ab5ba59-9471-4f94-b935-541b388b3776.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "全局配置"
+    },
+    "cbf4a23bce828be38e8f576e7b4227fd3e67c2f36782173a0c2e75ce478d7aec": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_全局配置_1ea1dbac-2125-4659-81ba-e969eb44a364.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "全局配置"
+    },
+    "9c2719a2b4bce2540f8596219f7be5241eac7ee330460f83cac4e7e7829853c6": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_全局配置_332a2190-b446-4ae5-ae5e-77bd7fb613b2.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "全局配置"
+    },
+    "7e2cf4aec15802555b854162f156227a4a08b37a6317bb362b13d856daafb749": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161637_全局配置_39bb8b78-4305-4c39-bc44-85de3b3e095f.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161637_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161637",
+      "project": "全局配置"
+    },
+    "361da7d39fccbe18bc272809658e85069e421adb9089a4b794777741bc2b4ac4": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_42fd60c8-2e52-40da-8ae8-ebcebbfefb27.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "d77de8757d4c4f29b72d657c614c59f20e745e0e3287ab2e106914c373b36e97": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_55621974-c0de-4428-8b2c-cd3b80bcec74.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "fc0193091ff3fef41d1b2a317bad30211bb25da0b4209cbe112268ae7291f13e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_5baceea4-55b7-48fa-9e37-6d51e03e24ca.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "fd869711806821d8c18b75790a8fd972401a3feeede4357f6d02701eb8bd6605": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_88b2b410-7ecf-41d2-8c7f-59160dc53b32.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "f902651257850a50dfcff1624b88e918d7baf47a5e412883431884c7dc806d09": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_9031edca-c57f-462d-b5df-9f96676cbf77.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "2625a865becd68d07184faf3ea2ee22f9efc4e09e7f7b400176a0ade00dbbe09": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_90603c7e-8be4-4b1b-8393-2ee144488ee0.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "a074c4427ba57abbfc0d3a350db053a21badd842ebe7c15d65982b3edd03e429": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_e365539c-47fd-41c8-aa59-9113c7def75e.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "a07a4639b235803d827fce581dc8be4bbe2d6d083db30240c2340e3c50a5d471": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_e7ebab21-3446-41f2-a87a-e5950d782d49.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "bebaeb5508f0792ee53948c2b5be37757a61368ff68add9858d8609b1325b1c3": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_0006ad25-bcd2-4909-8eeb-ea24037b1a8e.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "86483ff02811b45a9d2c568de2334e087182caf0dcdf33392bff61b7701bd083": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_025f9925-4a10-4967-954d-501fac9c98b5.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "853f8be19fec37d634eb43ed037ddc4e60ae3a123b0323eb724135689506d8f7": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_04ad22ed-81fd-4144-a43d-7d2ec1c03f9a.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "578dcadca069236f31c984dcd6b00b00b85d436b97dd68e1a1cb7cea08bf32f7": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_04e83d01-e9ed-4c54-8ca9-3bcba59d106f.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "66749a436b617b109811166e8079f7c7ef6b892f3479280b1e0be4a294d8a095": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_1eb07651-dc38-44d2-9ad3-8181649f0545.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "12138bf1c49fbb0f2c26d0ae26fde2158850803564893222cb61119002c620e1": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_2c8ec7fc-c081-4639-ad90-c588fc6c3bc6.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "fbfc7aa1db44758845d10b9efb68a6fcd9ae1217249150c3a4b160d1652700a8": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_321c4c7a-5355-4415-ab99-880882c3e3de.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "2f7acfc17dc7c01f9fe35206b5eea7be633921dfea4f8ff099bd63d388662152": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_382ceee0-5e61-4498-b650-63bd0a46e4f7.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "44e4a942408a4c1309324a66b4eb4d5928ded077f05876b73f5be58d37c2d282": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_3e324212-882f-422e-a3d2-2854e60a651c.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "2cb944ca5595bcc8c57afc241ed3840fa13202599734ba1dab921cbd688ed77a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_459076cd-6fd7-430b-84f4-e014b65a3317.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "9dcb9d60713389f271e6ea505d09b23f663fbff68b6f96113faedb6a085810e4": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_4865caa4-fa67-4cc5-93d3-c758742fa651.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "dad2c57b39349fc125320a280d6a23ae19e98b293082879955981952ddfd9a87": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_4d71b1ab-2aab-4f08-8f90-4e8ad7a292d8.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "9160fa78c2e09c059f96b95d48c0463940315c90bb716e8595cd71672aae80ce": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_51256ee0-e9de-4e97-a0ad-1a889619c736.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "6b68ee6ba0819a278c375f6c75e80181249c9c30b056be670e5fcaa0e81ee3a0": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_5af4709b-05a0-4439-a2a8-26e8374c5ba8.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "831b2dba309b80d168e9529df7e9d8d8dff57cc0ac5c02291bf95b334cd12923": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_5e0f63ad-12d9-4227-bab5-7858f5d71078.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "fd28de4085278a430c01a7b0504c4a11792a894c02b709b93fe7b9a3060369a8": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_657183a2-d5b6-4f38-b705-2425a766c4ac.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "b56536a3f7dac7aac26d8fb49c633ced8c98d9c85bf8b100541e2752fb0001fd": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_6c41a5cf-2f37-481b-aa38-7204f048d5b8.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "f87190cea07a59653cd20b360b99ff43fed5c31aedbc9d3fb29b27c69ab7fa8b": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_8ad7edde-f921-44b6-a5ca-9b7d6f27a3e9.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "d8dbcb8a406408697265fa62a68bc3bdcc691768add1a58c03e7f65c60aca089": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_8cc76120-da2c-4283-be06-dc7bfc85c620.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "56bbcc1f0d753951182b3eb94b5b32610578428aaa92ed182ba7ab98d6f99f55": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_8e53753d-7917-42df-828a-915a802a085e.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "fd25d31864ae97ae1bd686f377f0d19d0fa45b09a81ab1fbc27a947139fa377e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_979ab886-b044-4daf-babf-477d3f8d9b77.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "85b7335ac6e10c0b2f09e80df2818aa49df9e09cd482d52dd28bc1881e53bed0": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_9889847a-9bab-4584-addb-a697dfeaa219.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "0baeb772a8741edf3a5b0aceacd2e0aa3d5734720380fc6e54b212f2b3002043": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_a2668780-ffb7-4a30-bf3b-690a70fc46c3.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "ddf08ef4302cd02d257b1bc8042a18db69bf48865e3d8b2892b0fec645d3247e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_b2a38f40-22ac-4cdb-826a-baff38e17248.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "f23a39afb9cadca9f8d31015763a5884b698cb74affc5fee473f5b174cd49c2f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_b55ce49d-e6a3-4602-aa98-4a42c2a959a3.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "279a3cfe32da3cb250c13fe2dc5768762fc25e81c1ac5c2a9c6829a30a0c1c66": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_bb287e94-d230-4e7c-8ddf-5396660dfb82.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "4a76c4425228b40d7c788b2698a86f10b800e35cfaccb21dab1be04ddf9d1203": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_c145973b-cf94-4706-ae7c-6db4b383710a.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "91594f384efc24905b6f4302f1b54b83bdb1cb05c19be678c564faff8bfad74c": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_c9ceba2d-dd0c-4bc1-a698-540730fcc1e9.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "d203e74e72655fdf009506c6b1f06ed3c49f0519f2797bcfc8e2bf0547435c0e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_ef7f2690-c79f-4abb-88d9-d0a5c0fa130c.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "8161b5b33e1f0f34985a82d73cb2a2ad6ef33863fc2b8563f38b6caddeee7d1d": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_f3b1814f-a9fc-4e9e-97d2-d73213620a8b.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "2ed7d50afdc470380223f1b4c06869b5f1a897ec972b59648eb1e8ea56a275cb": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_f4d1b985-8ba3-4e0c-85af-015f02a368bb.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "29eac6d0aea84b98a18cfefebb48ba5cea31ae66729bcd95db9e3992ae16ae00": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_f6bc6d51-ff97-4436-ae12-cb15980a42b5.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "9a5a0c2b62c182ad3a79295fbcb8cdb43091a277ffd466216eac2bbc30ecdd39": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_f757dcce-c0d4-4180-adf9-c0934b148f05.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "e51be8f90f9a2d00aaf61184244b677b0ac24847463b924cd3f5f5ce636522df": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_fabb86f6-4a52-4318-8ac2-291fa2fa6553.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "2bed8a4db8a7537e49d547830328afa7ba28fdaf057e106c0311ef258ffff743": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_1.txt",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "9a8c6729db48fce4d4292d401bcb40e6deed80733163b5e37e1f991d03c4742d": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_awesome-ai-ppt-4.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "ee4ca16508f99cad43e63616c71118705dd29d95bdfa0b997689b36790ac4266": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_awesome-ai-ppt-6.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "2774c0f954d7997e343ed60fe98713fffa8041bf8dd761bc91b747b175a6de6c": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_awesome-copilot-1.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "1da1c2e64a048fee9d82c1d84221b53f137691a723e2a842ff4049426cbf5483": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_claude-skill-registry-2.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "771733e1f5afec1e53d3e3fcfd74cf24a168847c95a2e7ce2fc605c89484e35e": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_frontend-slides-6.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "2abb95323c218b33b6b7151d9b0c9a2f3b045eff1d850ba137000a4ee2a38747": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_frontend-slides-editable-1.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "0609caf78828068417bede9ad947667a4e04873e206e0adcb0790740d9d2ab0f": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161638_全局配置_guizang-ppt-skill-7.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161638_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161638",
+      "project": "全局配置"
+    },
+    "09e119a20e40ad0a69ffe167f2fd95e9e2835fab011d815400ec6180edef67a4": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161639_全局配置_huashu-design-8.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161639_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161639",
+      "project": "全局配置"
+    },
+    "d4e48daa41085d7543c4fdc68655ab0b09312a9d361745bdbd71d7e0643a0892": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161639_全局配置_main-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161639_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161639",
+      "project": "全局配置"
+    },
+    "98c03417b12d5b17065b7fca084cee12ef0e343dcd0f6edb87dbfe830d58b3a5": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161639_全局配置_ppt-master-3.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161639_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161639",
+      "project": "全局配置"
+    },
+    "c54c804dcb03de48ad7e219d4270f9d04454d4403fb92e0add164e518fdb1546": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161639_全局配置_ppt-master-5.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161639_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161639",
+      "project": "全局配置"
+    },
+    "035910faa6820403f06ff662ff550b0eb7e27ae8c91b0212aae995e678f689d5": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161639_全局配置_presenton-5.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161639_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161639",
+      "project": "全局配置"
+    },
+    "839c7f452456d6c5a8aa7989536aa469595385357dfc4944cc904fe01df697d6": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161639_全局配置_prompt-architect-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161639_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161639",
+      "project": "全局配置"
+    },
+    "354f5a877b7c66f119e7e3065509a0b88e65503da6668c23aa55c80cd3ec6596": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161639_全局配置_skills-0.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161639_cursor_全局配置_导入会话.md",
+      "at": "2026-07-28_161639",
+      "project": "全局配置"
+    },
+    "ae187f83699327825d0bcacd68b30270b7ee6fa73a71aca66fb25c7fb89b24e1": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161639_empty-window_5af4709b-05a0-4439-a2a8-26e8374c5ba8.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161639_cursor_empty-window_导入会话.md",
+      "at": "2026-07-28_161639",
+      "project": "empty-window"
+    },
+    "4a04a0996575d11006a62626fb7b7438c854b78a66701ca3ff856cb867b14093": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161639_empty-window_INSTRUCTIONS.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161639_cursor_empty-window_导入会话.md",
+      "at": "2026-07-28_161639",
+      "project": "empty-window"
+    },
+    "cf1e6208222135079a7036e1ec81ead591f1442571e3a0cdfab39eea90bc18c7": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161748_AI--main_99f38faa-adc3-4b86-825b-606c2034e2b7.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161748_cursor_AI--main_导入会话.md",
+      "at": "2026-07-28_161748",
+      "project": "AI--main"
+    },
+    "77f46a6e073c1605b3f9d4886888ee13fdfcd3312127b9cdda504b37ec50a4ff": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161940_fixture_cursor.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161940_cursor_fixture_导入会话.md",
+      "at": "2026-07-28_161940",
+      "project": "fixture"
+    },
+    "1715da62291b085adf176fd9617704d6710010d489789a247a45f87135603933": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\claude_code\\2026-07-28_161940_fixture_claude.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161940_claude-code_fixture_导入会话.md",
+      "at": "2026-07-28_161940",
+      "project": "fixture"
+    },
+    "e74ecd8da1ece867709729278b4fc0737a24d0214fea8cae1a591da34c066ac3": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\codex\\2026-07-28_161940_fixture_codex.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161940_codex_fixture_导入会话.md",
+      "at": "2026-07-28_161940",
+      "project": "fixture"
+    },
+    "59b4df8e09f864a74fa16ea63aa0f83a34564d4a9565952d7976e30f926c717a": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\chatgpt\\2026-07-28_161940_fixture_chatgpt.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161940_chatgpt_fixture_导入会话.md",
+      "at": "2026-07-28_161940",
+      "project": "fixture"
+    },
+    "00bed24e64bc0b808fb6da32c69d019ebd841e93f43b6b9f139b4e906e00f120": {
+      "dest": "C:\\Users\\win\\Desktop\\全局配置\\原始记录\\Cursor_聊天导出\\2026-07-28_161940_fixture_cursor_transcript_20260728161940813353.md",
+      "capsule": "C:\\Users\\win\\Desktop\\全局配置\\全局会话归档\\2026\\07\\2026-07-28_161940_cursor_fixture_导入会话.md",
+      "at": "2026-07-28_161940",
+      "project": "fixture"
+    }
+  }
+}

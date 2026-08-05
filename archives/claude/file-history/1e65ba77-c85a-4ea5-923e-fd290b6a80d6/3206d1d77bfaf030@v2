@@ -1,0 +1,45 @@
+# 发现与决策
+
+## 需求
+
+- 用户报告自动开平仓系统与量化策略逻辑存在严重缺陷，要求先给独立分析，再按第 3 点方案/Prompt 顺序逐模块修复，不确定处必须先问。
+- Phase 1 的具体实现方式已被用户明确授权由我决定（"这部分你定吧"），但每步完成后必须同步更新全部项目文件。
+
+## 研究发现（Phase 1）
+
+- `shared/models/workflow.py` 中 `AutoTradingSettings.asset_risk_tiers` 使用 Pydantic `default_factory`，导致该字段**始终非空**（默认含 core/standard 两档）。
+- `services/execution/paper_signal.py::_requested_leverage`/`_requested_notional` 只要 `execution_profile.get("asset_risk_tiers")` 为真值就无条件优先于 `position_rules.max_leverage`——而这个条件因上述默认值永远为真，是"杠杆滑块不生效"的架构根因。
+- 前端 `RuntimePanels.jsx` 的 `AutoSettingsPanel` 没有任何分档编辑 UI，只有一个绑定 `max_leverage` 的全局杠杆输入框（这是一个从未被 `asset_risk_tiers` 读取的死字段）。
+- `DEFAULT_AUTO_SETTINGS.asset_risk_tiers` 前端硬编码值（core=10x/15%，standard=5x/6%）与后端真实默认值（core=20x/15%，standard=10x/6%）不一致，证明前端从未真正反映过后端实际生效值。
+- 前端"档位预览"区域是纯静态文案（硬编码"10x·单币15%"/"5x·单币6%"），不随任何用户输入变化，是纯装饰性展示，与真实状态完全脱钩。
+- 每周 Celery 任务 `refresh_volatility_asset_risk_tiers`（`services/execution/tasks.py`）会用 ATR% 三分位动态计算 `vol_low`/`vol_mid`/`vol_high` 分档并写回运行中 PaperRun 的 `execution_profile["asset_risk_tiers"]`——这意味着分档表不只有 core/standard 两档，任何修复方案都必须兼容动态分档场景。
+- `services/execution/paper_runtime.py::_apply_trailing_ratchet`（通用 `ProtectiveLevels` 抽象）与 `services/validation/technical_replay.py::_advance_open_position`（手写 `ExitLadderState`/`_OpenPosition` 重建）在"阶梯止盈全部执行完毕后的余量移动止损"逻辑上，经逐行核对，数学上完全等价：均为"价格向有利方向移动量 ≥ trail_after_r × initial_distance 后，将止损棘轮式收紧到入场价"，只是分别作用在两种不同的数据结构上，属于纯粹的代码重复而非行为分歧。
+
+## 技术决策
+
+| 决策 | 理由 |
+|------|------|
+| 采用方案 B：滑块联动分档表 | 用户通过 AskUserQuestion 明确选择；保留 core/standard/vol_* 分档结构本身的语义价值（区分核心币与其余币种风险等级），同时让操作员的杠杆/敞口滑块真正驱动生效值。 |
+| 新增 `scale_asset_risk_tiers()` 而非直接覆写单一杠杆值 | 需要保留每周 ATR% 动态分档任务写入的 symbol 分配（`vol_low`/`vol_mid`/`vol_high`），只重新计算数值（`leverage`/`max_position_fraction`），不破坏分档结构本身。 |
+| `TIER_SCALE_RATIOS` 按相对风险排序锚定 core=滑块原值 | core 档直接等于操作员设定的杠杆/敞口上限，其余档位按预定义比例收紧，维持 core > vol_low > standard > vol_mid > vol_high 的风险梯度。 |
+| 提取共享纯函数 `next_trailed_stop_price()` 到 `exit_ladder.py` | 该模块已是双方都可无循环依赖导入的纯函数模块；提取后 `paper_runtime.py` 与 `technical_replay.py` 共用同一套棘轮止损数学，避免未来只改一处导致回测与实盘行为分歧。 |
+| 前端预览改为动态计算而非静态文案 | 让操作员在保存前就能看到滑块变动后实际会生效的分档数值，避免"看起来没变化"的误导。 |
+
+## 遇到的问题
+
+| 问题 | 解决方案 |
+|------|---------|
+| 最初误判 `asset_risk_tiers` 从未写入 `execution_profile` | 通读完整 Pydantic 模型与前端代码后修正：字段每次保存都会写入，但因前端从未真正编辑它而写入的是陈旧/脱钩的默认值——已向用户澄清更精确的诊断。 |
+| 需要在不破坏动态 ATR% 分档场景的前提下重新计算数值 | `scale_asset_risk_tiers()` 以现有分档表（或默认表）为基底，只重写 `leverage`/`max_position_fraction` 两个数值字段，symbol 分配原样保留。 |
+
+## 资源
+
+- `shared/models/workflow.py`（`AssetRiskTierSettings`、`AutoTradingSettings`）
+- `services/execution/risk_tiers.py`（`scale_asset_risk_tiers`、`TIER_SCALE_RATIOS`、`default_asset_risk_tiers`、动态 ATR% 分档）
+- `services/execution/paper_signal.py`（`_requested_leverage`/`_requested_notional` 根因所在）
+- `services/execution/exit_ladder.py`（新增 `next_trailed_stop_price` 共享纯函数）
+- `services/execution/paper_runtime.py`（`_apply_trailing_ratchet`、`_resolve_protective_levels`）
+- `services/validation/technical_replay.py`（`_advance_open_position` 阶梯余量移动止损分支）
+- `apps/api/routers/runs.py`（`update_paper_run_auto_settings`）
+- `frontend/admin/src/components/RuntimePanels.jsx`（`AutoSettingsPanel`、`DEFAULT_AUTO_SETTINGS`、`renderTierPreviewRows`）
+- `tests/services/test_asset_risk_tiers.py`、`tests/services/test_exit_ladder.py`、`tests/api/test_paper_runtime_api.py`

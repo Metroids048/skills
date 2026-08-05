@@ -1,0 +1,1 @@
+{"id": "K-20260729093942-1941b8", "date": "2026-07-29", "source_tool": "system", "project": "global", "type": "USER_PREFERENCE", "statement": "用户偏好：默认中文沟通", "confidence": "CONFIRMED", "evidence": ["USER_KNOWLEDGE_BASE.md"], "sensitivity": "PRIVATE", "public_eligible": false, "status": "ACTIVE", "supersedes": [], "conflicts_with": [], "tags": [], "confirmed": true}

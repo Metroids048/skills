@@ -1,0 +1,71 @@
+---
+pid: 22660
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n$deadline = [datetimeoffset]::Parse(\"2026-07-28T12:00:20+08:00\")\nWrite-Host \"waiting until $deadline for 04:00 UTC bar\"\nwhile ([datetimeoffset]::Now -lt $deadline) { Start-Sleep -Seconds 5 }\nStart-Sleep -Seconds 70\n$env:POSTGRES_URL = \"sqlite:///C:/Users/win/Desktop/AI--main/.local_paper_console.db\"\n. .\\scripts\\load-dotenv.ps1\nImport-DotEnv (Join-Path (Get-Location) \".env\") | Out-Null\n$env:BINANCE_USE_TESTNET='true'; $env:LIVE_TRADING_ENABLED='false'\n& $env:AGENT_PYTHON scripts\\_observe_p03_cycle.py\n& $env:AGENT_PYTHON -c \"\nimport json\nfrom pathlib import Path\ns=json.loads(Path('logs/scheduler-state.json').read_text(encoding='utf-8'))\npr=s.get('task_last_results',{}).get('paper_runtime_cycle') or {}\nprint('slot', pr.get('slot'), 'runs', pr.get('paper_runs'))\nfor r in pr.get('results') or []:\n  print('cycle', r.get('cycle_time'), 'opened', r.get('opened_positions'))\n  for a in r.get('actions') or []:\n    t=a.get('decision_trace') or {}\n    print(a.get('symbol'), a.get('action'), a.get('reason'), t.get('sampling_fallback_rejection_reason'), (t.get('sampling_metrics') or {}).get('evaluated_at'))\n\"\n& $env:AGENT_PYTHON scripts\\check_binance_positions.py\n"
+started_at: 2026-07-28T03:49:30.517Z
+running_for_ms: 751928   
+---
+waiting until 07/28/2026 12:00:20 +08:00 for 04:00 UTC bar
+=== P0.3 observe @ 2026-07-28T04:01:34.684468+00:00 ===
+
+-- exchange_orders (last 10) --
+count= 0
+
+-- exchange_fill_receipts (last 10) --
+count= 0
+
+-- order_executions with gateway id (last 8) --
+{'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14774000974', 'rejection_reason': None, 'created_at': '2026-07-28 02:11:07', 'paper_run_id': '80ce8bee-d64f-4d4c-8791-847cbee3807d'}
+{'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14764997180', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16', 'paper_run_id': '80ce8bee-d64f-4d4c-8791-847cbee3807d'}
+{'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14721824421', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16', 'paper_run_id': '80ce8bee-d64f-4d4c-8791-847cbee3807d'}
+{'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14718593865', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16', 'paper_run_id': '80ce8bee-d64f-4d4c-8791-847cbee3807d'}
+{'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14708554103', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16', 'paper_run_id': '80ce8bee-d64f-4d4c-8791-847cbee3807d'}
+{'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14621553958', 'rejection_reason': None, 'created_at': '2026-07-27 07:17:57', 'paper_run_id': '80ce8bee-d64f-4d4c-8791-847cbee3807d'}
+{'symbol': 'ETH/USDT', 'execution_status': 'submitted', 'gateway_order_id': '14621512861', 'rejection_reason': None, 'created_at': '2026-07-27 07:17:57', 'paper_run_id': '80ce8bee-d64f-4d4c-8791-847cbee3807d'}
+{'symbol': 'BTC/USDT', 'execution_status': 'submitted', 'gateway_order_id': '23961591882', 'rejection_reason': None, 'created_at': '2026-07-27 07:17:57', 'paper_run_id': '80ce8bee-d64f-4d4c-8791-847cbee3807d'}
+
+-- funnel terminals (last 12 directional) --
+{'symbol': 'ETH/USDT', 'bar_time': '2026-07-28 04:00:00.000000', 'reason_code': 'SAMPLING_RULES_NOT_ALIGNED', 'status': 'SKIPPED', 'created_at': '2026-07-28 04:01:29'}
+{'symbol': 'BTC/USDT', 'bar_time': '2026-07-28 04:00:00.000000', 'reason_code': 'SAMPLING_RULES_NOT_ALIGNED', 'status': 'SKIPPED', 'created_at': '2026-07-28 04:01:29'}
+{'symbol': 'ETH/USDT', 'bar_time': '2026-07-28 03:45:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'status': 'SKIPPED', 'created_at': '2026-07-28 03:46:32'}
+{'symbol': 'BTC/USDT', 'bar_time': '2026-07-28 03:45:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'status': 'SKIPPED', 'created_at': '2026-07-28 03:46:32'}
+{'symbol': 'ETH/USDT', 'bar_time': '2026-07-28 03:30:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'status': 'SKIPPED', 'created_at': '2026-07-28 03:31:49'}
+{'symbol': 'BTC/USDT', 'bar_time': '2026-07-28 03:30:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'status': 'SKIPPED', 'created_at': '2026-07-28 03:31:49'}
+{'symbol': 'ETH/USDT', 'bar_time': '2026-07-28 03:15:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'status': 'SKIPPED', 'created_at': '2026-07-28 03:16:35'}
+{'symbol': 'BTC/USDT', 'bar_time': '2026-07-28 03:15:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'status': 'SKIPPED', 'created_at': '2026-07-28 03:16:35'}
+{'symbol': 'ETH/USDT', 'bar_time': '2026-07-28 03:00:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'status': 'SKIPPED', 'created_at': '2026-07-28 03:01:41'}
+{'symbol': 'BTC/USDT', 'bar_time': '2026-07-28 03:00:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'status': 'SKIPPED', 'created_at': '2026-07-28 03:01:41'}
+{'symbol': 'ETH/USDT', 'bar_time': '2026-07-28 02:15:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'status': 'SKIPPED', 'created_at': '2026-07-28 02:17:17'}
+{'symbol': 'BTC/USDT', 'bar_time': '2026-07-28 02:15:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'status': 'SKIPPED', 'created_at': '2026-07-28 02:17:17'}
+
+-- paper_runs directional profile BTC/ETH --
+{'paper_run_id': '78ba69a7-2bfb-457e-9a97-934aaf418e00', 'execution_mode': 'binance_testnet', 'mirror': True, 'sampling': True, 'assets': [{'symbol': 'BTC/USDT', 'tradable_status': 'trading', 'min_notional': '50', 'reason': None}, {'symbol': 'ETH/USDT', 'tradable_status': 'trading', 'min_notional': '20', 'reason': None}]}
+
+-- scheduler-state --
+{'running': True, 'heartbeat_at': '2026-07-28T04:01:32.855851+00:00', 'last_auto_cycle_at': '2026-07-28T04:01:29.575271+00:00', 'exchange_info_ready': True, 'scheduler_error': None, 'last_scheduled_for': '2026-07-28T04:00:00+00:00'}
+{'paper_run_id': '78ba69a7-2bfb-457e-9a97-934aaf418e00', 'cycle_time': '2026-07-28T04:00:27.654697Z', 'skipped': 2, 'opened': 0}
+{'symbol': 'BTC/USDT', 'action': 'skip_no_trade_decision', 'reason': 'multi_timeframe_disagreement', 'sampling_reason': 'SAMPLING_RULES_NOT_ALIGNED', 'evaluated_at': '2026-07-28T04:00:33.253002+00:00'}
+{'symbol': 'ETH/USDT', 'action': 'skip_no_trade_decision', 'reason': 'multi_timeframe_disagreement', 'sampling_reason': 'SAMPLING_RULES_NOT_ALIGNED', 'evaluated_at': '2026-07-28T04:01:01.288927+00:00'}
+slot tight_entry runs 1
+cycle 2026-07-28T04:00:27.654697Z opened 0
+BTC/USDT skip_no_trade_decision multi_timeframe_disagreement SAMPLING_RULES_NOT_ALIGNED 2026-07-28T04:00:33.253002+00:00
+ETH/USDT skip_no_trade_decision multi_timeframe_disagreement SAMPLING_RULES_NOT_ALIGNED 2026-07-28T04:01:01.288927+00:00
+{
+  "status": "healthy",
+  "source": "BINANCE_USDT_M_TESTNET",
+  "observed_at": "2026-07-28T04:01:36.348471+00:00",
+  "open_position_count": 0,
+  "open_order_count": 0,
+  "positions": [],
+  "open_orders": [],
+  "reconciliation_status": "ok",
+  "notes": [
+    "binance gateway reconciliation snapshot"
+  ]
+}
+
+---
+exit_code: 0
+elapsed_ms: 754266
+ended_at: 2026-07-28T04:02:04.783Z
+---

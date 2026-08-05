@@ -1,0 +1,252 @@
+services\agents\__init__.py:13:from .service import AgentTaskService
+services\agents\__init__.py:16:    "AgentTaskService",
+services\execution\bootstrap.py:477:    from services.data.tasks import poll_macro_calendar, poll_news_feeds, poll_social_watchlist
+services\notifications_tasks.py:1:"""Celery task entrypoints for notification delivery."""
+services\notifications_tasks.py:5:from celery import shared_task
+services\notifications_tasks.py:12:@shared_task(name="services.notifications_tasks.dispatch_notification_outbox", queue="ops_queue")
+services\agents\service.py:1:"""Agent-task orchestration with structured I/O only."""
+services\agents\service.py:11:from services.strategy_library import AgentTaskRepository, ReviewRepository, StrategyRepository
+services\agents\service.py:14:    AgentTask,
+services\agents\service.py:15:    AgentTaskRequest,
+services\agents\service.py:26:class AgentTaskService:
+services\agents\service.py:27:    """Execute the first structured agent tasks over persisted repository seams."""
+services\agents\service.py:32:        agent_repo: AgentTaskRepository,
+services\agents\service.py:46:        # modifying _execute(). Keys are (agent_type, task_type) tuples.
+services\agents\service.py:47:        self._executors: dict[tuple[str, str], Callable[[AgentTask], dict]] = {}
+services\agents\service.py:51:        self, agent_type: str, task_type: str, handler: Callable[[AgentTask], dict]
+services\agents\service.py:53:        """Register a new agent-task executor (hot-pluggable).
+services\agents\service.py:59:        self._executors[(agent_type, task_type)] = handler
+services\agents\service.py:71:    def list_tasks(self, *, limit: int = 50) -> list[AgentTask]:
+services\agents\service.py:72:        return self.agent_repo.list_tasks(limit=limit)
+services\agents\service.py:74:    def get_task(self, agent_task_id: str) -> AgentTask | None:
+services\agents\service.py:75:        return self.agent_repo.get_task(agent_task_id)
+services\agents\service.py:77:    def submit_task(self, request: AgentTaskRequest) -> AgentTask:
+services\agents\service.py:78:        task = self.agent_repo.create_task(
+services\agents\service.py:79:            AgentTask(
+services\agents\service.py:80:                agent_task_id=str(uuid.uuid4()),
+services\agents\service.py:82:                task_type=request.task_type,
+services\agents\service.py:86:                task_status="running",
+services\agents\service.py:90:        output_payload = self._execute(task)
+services\agents\service.py:92:        task_status = output_payload.get("task_status", "completed" if completed else "failed")
+services\agents\service.py:94:            self.agent_repo.update_task(
+services\agents\service.py:95:                task.agent_task_id or "",
+services\agents\service.py:97:                task_status=task_status,
+services\agents\service.py:98:                error_summary=None if task_status == "completed" else output_payload.get("message"),
+services\agents\service.py:105:            or task
+services\agents\service.py:108:    def _execute(self, task: AgentTask) -> dict:
+services\agents\service.py:109:        # LLM-backed tasks with multi-agent routing (classify_event spans
+services\agents\service.py:111:        # the (agent_type, task_type) registry without duplication).
+services\agents\service.py:112:        if task.task_type == "classify_event" and task.agent_type in {
+services\agents\service.py:117:            return self._execute_llm_classification(task)
+services\agents\service.py:118:        if task.agent_type == "decision_veto_agent" and task.task_type == "pre_execution_veto_llm":
+services\agents\service.py:119:            return self._execute_llm_veto(task)
+services\agents\service.py:121:        handler = self._executors.get((task.agent_type, task.task_type))
+services\agents\service.py:126:                "message": "task recorded but no executor is registered yet",
+services\agents\service.py:129:        return handler(task)
+services\agents\service.py:137:    def _handle_scan_local_alpha(self, task: AgentTask) -> dict:
+services\agents\service.py:138:        root_path = task.input_payload.get("alpha_root") or settings.worldquant_alpha_local_path
+services\agents\service.py:143:                "task_status": "failed",
+services\agents\service.py:147:        ideas = self.alpha_scanner.scan(root_path, limit=int(task.input_payload.get("limit", 10)))
+services\agents\service.py:149:        if task.input_payload.get("persist_ideas", True):
+services\agents\service.py:164:    def _handle_import_open_source(self, task: AgentTask) -> dict:
+services\agents\service.py:166:            source_ids=list(task.input_payload.get("source_ids", [])),
+services\agents\service.py:167:            refresh_assets=bool(task.input_payload.get("refresh_assets", True)),
+services\agents\service.py:168:            fetch_remote=bool(task.input_payload.get("fetch_remote", False)),
+services\agents\service.py:183:    def _handle_extract_open_source_ideas(self, task: AgentTask) -> dict:
+services\agents\service.py:184:        source_ids = list(task.input_payload.get("source_ids", []))
+services\agents\service.py:185:        max_ideas_per_source = task.input_payload.get("max_ideas_per_source")
+services\agents\service.py:186:        persist_ideas = bool(task.input_payload.get("persist_ideas", True))
+services\agents\service.py:215:    def _handle_materialize_drafts(self, task: AgentTask) -> dict:
+services\agents\service.py:216:        requested_ids = set(task.input_payload.get("idea_ids", []))
+services\agents\service.py:235:    def _handle_deterministic_veto(self, task: AgentTask) -> dict:
+services\agents\service.py:236:        risk_events = task.input_payload.get("risk_events", [])
+services\agents\service.py:240:        forced_reason = task.input_payload.get("forced_veto_reason")
+services\agents\service.py:249:            agent_task_ref=task.agent_task_id,
+services\agents\service.py:258:            "output_ref": f"decision_veto:{task.agent_task_id}",
+services\agents\service.py:261:    def _handle_summarize_failures(self, task: AgentTask) -> dict:
+services\agents\service.py:262:        failures = task.input_payload.get("failures", [])
+services\agents\service.py:272:            "output_ref": f"review_summary:{task.agent_task_id}",
+services\agents\service.py:275:    def _execute_llm_classification(self, task: AgentTask) -> dict:
+services\agents\service.py:278:                agent_type=task.agent_type,
+services\agents\service.py:279:                task_type=task.task_type,
+services\agents\service.py:280:                payload=task.input_payload,
+services\agents\service.py:291:                "output_ref": f"agent_task:{task.agent_task_id}",
+services\agents\service.py:303:            "task_status": "completed" if is_valid else "failed",
+services\agents\service.py:316:            "output_ref": f"agent_task:{task.agent_task_id}",
+services\agents\service.py:319:    def _execute_llm_veto(self, task: AgentTask) -> dict:
+services\agents\service.py:322:                agent_type=task.agent_type,
+services\agents\service.py:323:                task_type=task.task_type,
+services\agents\service.py:324:                payload=task.input_payload,
+services\agents\service.py:336:                "task_status": "completed",
+services\agents\service.py:342:                "output_ref": f"decision_veto:{task.agent_task_id}",
+services\agents\service.py:348:                "task_status": "failed",
+services\agents\service.py:358:                    "agent_task_ref": task.agent_task_id,
+services\agents\service.py:360:                "output_ref": f"decision_veto:{task.agent_task_id}",
+services\agents\service.py:366:                "task_status": "failed",
+services\agents\service.py:376:                    "agent_task_ref": task.agent_task_id,
+services\agents\service.py:378:                "output_ref": f"decision_veto:{task.agent_task_id}",
+services\execution\gatekeeper.py:234:        # Martingale guard (AGENTS.md §5: Martingale strategies are forbidden).
+services\agents\llm_runtime.py:15:    def generate_structured(self, *, agent_type: str, task_type: str, payload: dict[str, Any]) -> dict[str, Any]: ...
+services\agents\llm_runtime.py:19:    def generate_structured(self, *, agent_type: str, task_type: str, payload: dict[str, Any]) -> dict[str, Any]:
+services\agents\llm_runtime.py:20:        raise RuntimeError(f"llm runtime unavailable for {agent_type}/{task_type}")
+services\agents\llm_runtime.py:45:    def generate_structured(self, *, agent_type: str, task_type: str, payload: dict[str, Any]) -> dict[str, Any]:
+services\agents\llm_runtime.py:46:        prompt = _build_prompt(agent_type=agent_type, task_type=task_type, payload=payload)
+services\agents\llm_runtime.py:113:    def generate_structured(self, *, agent_type: str, task_type: str, payload: dict[str, Any]) -> dict[str, Any]:
+services\agents\llm_runtime.py:114:        prompt = _build_prompt(agent_type=agent_type, task_type=task_type, payload=payload)
+services\agents\llm_runtime.py:170:    def generate_structured(self, *, agent_type: str, task_type: str, payload: dict[str, Any]) -> dict[str, Any]:
+services\agents\llm_runtime.py:176:                return runtime.generate_structured(agent_type=agent_type, task_type=task_type, payload=payload)
+services\agents\llm_runtime.py:205:    def generate_structured(self, *, agent_type: str, task_type: str, payload: dict[str, Any]) -> dict[str, Any]:
+services\agents\llm_runtime.py:217:        return runtime.generate_structured(agent_type=agent_type, task_type=task_type, payload=payload)
+services\agents\llm_runtime.py:261:def _build_prompt(*, agent_type: str, task_type: str, payload: dict[str, Any]) -> dict[str, str]:
+services\agents\llm_runtime.py:263:    if task_type == "classify_event":
+services\agents\llm_runtime.py:272:                    "task_type": task_type,
+services\agents\llm_runtime.py:283:    if task_type == "pre_execution_veto_llm":
+services\agents\llm_runtime.py:304:                    "task_type": task_type,
+services\agents\llm_runtime.py:311:    raise ValueError(f"unsupported llm task: {agent_type}/{task_type}")
+services\execution\decision_pipeline.py:12:from services.agents import AgentTaskService, build_configured_llm_runtime
+services\execution\decision_pipeline.py:17:    AgentTaskRepository,
+services\execution\decision_pipeline.py:39:    AgentTask,
+services\execution\decision_pipeline.py:40:    AgentTaskRequest,
+services\execution\decision_pipeline.py:107:        agent_repo: AgentTaskRepository | None = None,
+services\execution\decision_pipeline.py:419:            task = self.agent_repo.create_task(
+services\execution\decision_pipeline.py:420:                AgentTask(
+services\execution\decision_pipeline.py:422:                    task_type="pre_execution_veto_llm",
+services\execution\decision_pipeline.py:425:                    task_status="failed",
+services\execution\decision_pipeline.py:445:                        source_ref=f"agent_task:{task.agent_task_id}",
+services\execution\decision_pipeline.py:452:                agent_task_ref=task.agent_task_id,
+services\execution\decision_pipeline.py:455:        service = AgentTaskService(
+services\execution\decision_pipeline.py:461:        task = service.submit_task(
+services\execution\decision_pipeline.py:462:            AgentTaskRequest(
+services\execution\decision_pipeline.py:464:                task_type="pre_execution_veto_llm",
+services\execution\decision_pipeline.py:490:        payload = task.output_payload.get("veto_result", {})
+services\execution\decision_pipeline.py:495:                agent_task_ref=task.agent_task_id,
+services\execution\decision_pipeline.py:509:            agent_task_ref=task.agent_task_id,
+services\execution\decision_pipeline.py:670:def _daily_veto_calls(agent_repo: AgentTaskRepository, day: date) -> int:
+services\execution\decision_pipeline.py:672:    for task in agent_repo.list_tasks():
+services\execution\decision_pipeline.py:673:        created_at = task.created_at
+services\execution\decision_pipeline.py:675:            task.agent_type == "decision_veto_agent"
+services\execution\decision_pipeline.py:676:            and task.task_type == "pre_execution_veto_llm"
+services\data\news.py:13:from services.agents import AgentTaskService, build_configured_llm_runtime
+services\data\news.py:15:from services.strategy_library import AgentTaskRepository, ReviewRepository, StrategyRepository
+services\data\news.py:17:from shared.models import AgentTaskRequest, RiskEvent, RiskEventType, RiskSeverity
+services\data\news.py:44:        agent_repo: AgentTaskRepository,
+services\data\news.py:102:        task = AgentTaskService(
+services\data\news.py:107:        ).submit_task(
+services\data\news.py:108:            AgentTaskRequest(
+services\data\news.py:110:                task_type="classify_event",
+services\data\news.py:115:        classification = task.output_payload.get("classification") or {}
+services\data\market.py:11:    MarketOrderBookResponse,
+services\data\market.py:167:    def get_order_book(self, *, symbol: str, limit: int = 20) -> MarketOrderBookResponse:
+services\data\market.py:169:            return MarketOrderBookResponse(symbol=symbol, source="disabled")
+services\data\market.py:171:            return self.binance_client.fetch_live_order_book(symbol=symbol, limit=limit)
+services\data\market.py:173:            return MarketOrderBookResponse(symbol=symbol, source="binance_public_rest_error")
+services\validation\tasks.py:1:"""Celery tasks for persisted backtest runs."""
+services\validation\tasks.py:5:from celery import shared_task
+services\validation\tasks.py:13:@shared_task(name="services.validation.tasks.enqueue_backtest_run", queue="backtest_queue")
+services\validation\tasks.py:25:@shared_task(name="services.validation.tasks.enqueue_carry_backtest", queue="backtest_queue")
+services\data\binance.py:21:    MarketOrderBookResponse,
+services\data\binance.py:25:    OrderBookLevel,
+services\data\binance.py:311:    def fetch_order_book(self, symbol: str, limit: int | None = None) -> Mapping[str, Any]: ...
+services\data\binance.py:374:    def fetch_order_book(self, symbol: str, limit: int | None = None) -> Mapping[str, Any]:
+services\data\binance.py:574:    def fetch_live_order_book(self, *, symbol: str, limit: int = 20) -> MarketOrderBookResponse:
+services\data\binance.py:577:        payload = self._exchange_for_symbol(symbol).fetch_order_book(symbol, safe_limit)
+services\data\binance.py:578:        bids = _normalize_book_side(payload.get("bids", []), limit=safe_limit)
+services\data\binance.py:579:        asks = _normalize_book_side(payload.get("asks", []), limit=safe_limit)
+services\data\binance.py:580:        return MarketOrderBookResponse(
+services\data\binance.py:582:            data_status="ok" if bids or asks else "empty",
+services\data\binance.py:585:            bids=bids,
+services\data\binance.py:586:            asks=asks,
+services\data\binance.py:642:def _normalize_book_side(rows: Iterable[Sequence], *, limit: int) -> list[OrderBookLevel]:
+services\data\binance.py:643:    levels: list[OrderBookLevel] = []
+services\data\binance.py:651:            OrderBookLevel(
+services\review\tasks.py:1:"""Celery task entrypoints for Review Layer automation."""
+services\review\tasks.py:7:from celery import shared_task
+services\review\tasks.py:14:@shared_task(name="services.review.tasks.generate_daily_review", queue="ops_queue")
+services\strategy_library\models.py:301:class AgentTask(Base):
+services\strategy_library\models.py:302:    __tablename__ = "agent_tasks"
+services\strategy_library\models.py:304:    agent_task_id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_uuid_str)
+services\strategy_library\models.py:306:    task_type: Mapped[str] = mapped_column(String(80))
+services\strategy_library\models.py:312:    task_status: Mapped[str] = mapped_column(String(30), default="queued")
+services\strategy_library\playbook.py:228:        forbidden=["决定交易方向", "修改入场价或止损", "决定仓位", "绕过Validation或Gatekeeper", "直接向交易所下单"],
+services\data\tasks.py:1:"""Celery task entrypoints for data ingestion."""
+services\data\tasks.py:9:from celery import shared_task
+services\data\tasks.py:18:from services.strategy_library import AgentTaskRepository, IngestionRepository, ReviewRepository, StrategyRepository
+services\data\tasks.py:53:@shared_task(name="services.data.tasks.enqueue_binance_ingestion", queue="ingestion_queue")
+services\data\tasks.py:178:@shared_task(name="services.data.tasks.market_data_heartbeat", queue="ops_queue")
+services\data\tasks.py:235:@shared_task(name="services.data.tasks.poll_news_feeds", queue="ingestion_queue")
+services\data\tasks.py:241:            agent_repo=AgentTaskRepository(session),
+services\data\tasks.py:250:@shared_task(name="services.data.tasks.poll_macro_calendar", queue="ingestion_queue")
+services\data\tasks.py:259:@shared_task(name="services.data.tasks.poll_social_watchlist", queue="ingestion_queue")
+services\data\tasks.py:265:            agent_repo=AgentTaskRepository(session),
+services\execution\paper_signal.py:11:    AgentTaskRepository,
+services\execution\paper_signal.py:41:        agent_repo: AgentTaskRepository | None = None,
+services\strategy_library\runner.py:4:that the orchestration layer (Celery tasks, API routers) can invoke them
+services\execution\tasks.py:1:"""Celery tasks for paper-run orchestration."""
+services\execution\tasks.py:5:from celery import shared_task
+services\execution\tasks.py:14:    AgentTaskRepository,
+services\execution\tasks.py:27:@shared_task(name="services.execution.tasks.enqueue_paper_run", queue="paper_queue")
+services\execution\tasks.py:38:@shared_task(name="services.execution.tasks.run_paper_runtime_cycle", queue="paper_queue")
+services\execution\tasks.py:49:            agent_repo=AgentTaskRepository(session),
+services\execution\tasks.py:72:@shared_task(name="services.execution.tasks.run_all_paper_runtime_cycles", queue="paper_queue")
+services\execution\tasks.py:91:@shared_task(name="services.execution.tasks.risk_profile_sweep", queue="ops_queue")
+services\execution\tasks.py:142:@shared_task(name="services.execution.tasks.refresh_volatility_asset_risk_tiers", queue="ops_queue")
+services\execution\runtime_state.py:30:    task_run_counts: dict[str, int] = field(default_factory=dict)
+services\execution\runtime_state.py:31:    task_failure_counts: dict[str, int] = field(default_factory=dict)
+services\execution\runtime_state.py:32:    task_last_results: dict[str, Any] = field(default_factory=dict)
+services\execution\runtime_state.py:84:        task_run_counts=dict(raw.get("task_run_counts") or {}),
+services\execution\runtime_state.py:85:        task_failure_counts=dict(raw.get("task_failure_counts") or {}),
+services\execution\runtime_state.py:86:        task_last_results=dict(raw.get("task_last_results") or {}),
+services\strategy_library\__init__.py:4:    AgentTask,
+services\strategy_library\__init__.py:30:    AgentTaskRepository,
+services\strategy_library\__init__.py:60:    "AgentTask",
+services\strategy_library\__init__.py:79:    "AgentTaskRepository",
+services\execution\scheduler.py:23:def _preload_celery_task_api() -> None:
+services\execution\scheduler.py:24:    """Initialize Celery's lazy task exports before worker threads import task modules."""
+services\execution\scheduler.py:25:    from celery import shared_task
+services\execution\scheduler.py:27:    if not callable(shared_task):  # pragma: no cover - dependency contract guard
+services\execution\scheduler.py:28:        raise RuntimeError("Celery shared_task API is unavailable")
+services\execution\scheduler.py:101:        self._tasks: list[asyncio.Task] = []
+services\execution\scheduler.py:110:        _preload_celery_task_api()
+services\execution\scheduler.py:116:        self._tasks = [
+services\execution\scheduler.py:117:            asyncio.create_task(
+services\execution\scheduler.py:125:            asyncio.create_task(
+services\execution\scheduler.py:132:            asyncio.create_task(
+services\execution\scheduler.py:139:            asyncio.create_task(
+services\execution\scheduler.py:147:            asyncio.create_task(
+services\execution\scheduler.py:155:            asyncio.create_task(
+services\execution\scheduler.py:163:            asyncio.create_task(
+services\execution\scheduler.py:170:            asyncio.create_task(
+services\execution\scheduler.py:178:            asyncio.create_task(self._run_daily_review_loop()),
+services\execution\scheduler.py:181:            self._tasks.extend(self._live_collector_tasks())
+services\execution\scheduler.py:188:        for task in self._tasks:
+services\execution\scheduler.py:189:            task.cancel()
+services\execution\scheduler.py:190:        if self._tasks:
+services\execution\scheduler.py:191:            await asyncio.gather(*self._tasks, return_exceptions=True)
+services\execution\scheduler.py:192:        self._tasks = []
+services\execution\scheduler.py:253:            f"{task_name}: {error}"
+services\execution\scheduler.py:254:            for task_name, error in sorted(self._scheduler_errors.items())
+services\execution\scheduler.py:278:                "task_run_counts": self.status.run_counts,
+services\execution\scheduler.py:279:                "task_failure_counts": self.status.failure_counts,
+services\execution\scheduler.py:280:                "task_last_results": self.status.last_results,
+services\execution\scheduler.py:297:    def _live_collector_tasks(self) -> list[asyncio.Task]:
+services\execution\scheduler.py:302:            asyncio.create_task(self._run_live_collector(symbol=symbol, timeframe=settings.binance_live_ws_timeframe))
+services\execution\scheduler.py:358:    from services.execution.tasks import run_all_paper_runtime_cycles
+services\execution\scheduler.py:371:    from services.data.tasks import market_data_heartbeat
+services\execution\scheduler.py:399:    from services.data.tasks import poll_news_feeds
+services\execution\scheduler.py:405:    from services.data.tasks import poll_macro_calendar
+services\execution\scheduler.py:411:    from services.data.tasks import poll_social_watchlist
+services\execution\scheduler.py:417:    from services.execution.tasks import risk_profile_sweep
+services\execution\scheduler.py:423:    from services.notifications_tasks import dispatch_notification_outbox
+services\execution\scheduler.py:429:    from services.review.tasks import generate_daily_review
+services\strategy_library\repository.py:14:    AgentTask,
+services\strategy_library\repository.py:376:def _agent_task_from_orm(row: models.AgentTask) -> AgentTask:
+services\strategy_library\repository.py:377:    return AgentTask(
+services\strategy_library\repository.py:378:        agent_task_id=row.agent_task_id,
+services\strategy_library\repository.py:380:        task_type=row.task_type,
+services\strategy_library\repository.py:386:        task_status=row.task_status,
+services\strategy_library\repository.py:1240:class AgentTaskRepository:
+services\strategy_library\repository.py:1244:    def list_tasks(self, *, limit: int = 50) -> list[AgentTask]:
+services\strategy_library\repository.py:1245:        rows = self.session.query(models.AgentTask).order_by(models.AgentTask.created_at.desc()).limit(limit).all()
+services\strategy_library\repository.py:1246:        return [_agent_task_from_orm(row) for row in rows]
+
+[Showing results with pagination = limit: 250]

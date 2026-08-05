@@ -1,0 +1,49 @@
+---
+pid: 23316
+cwd: |
+  C:\Users\win\Desktop\program1-main-latest
+last_command: git pull
+last_exit_code: 0
+---
+PS C:\Users\win\Desktop\program1-main-latest> git pull
+remote: Enumerating objects: 30, done.
+remote: Counting objects: 100% (30/30), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 30 (delta 21), reused 30 (delta 21), pack-reused 0 (from 0)
+Unpacking objects: 100% (30/30), 192.95 KiB | 556.00 KiB/s, done.
+From github.com:Metroids048/program1
+   a83590a..787d2f2  main       -> origin/main
+Enumerating objects: 981, done.
+Counting objects: 100% (981/981), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (527/527), done.
+Writing objects: 100% (981/981), done.
+Total 981 (delta 495), reused 862 (delta 404), pack-reused 0 (from 0)
+Enumerating cruft objects: 617, done.
+Traversing cruft objects: 882, done.
+Counting objects: 100% (617/617), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (134/134), done.
+Writing objects: 100% (617/617), done.
+Total 617 (delta 506), reused 589 (delta 481), pack-reused 0 (from 0)
+Updating a83590a..787d2f2
+Fast-forward
+ .data/ai-job-platform.json                         | 666 ++++++++++++++++++++-
+ scripts/external-browser-user-flow.ts              |  15 +-
+ server/ai/provider.test.ts                         |  28 +
+ server/ai/provider.ts                              |  25 +-
+ server/index.test.ts                               |  28 +
+ server/orchestrator.ts                             |  49 +-
+ server/prompts/registry.ts                         |   4 +-
+ src/App.test.tsx                                   |  17 +-
+ src/App.tsx                                        |   6 +-
+ src/components/audioBridge.tsx                     |  33 +-
+ src/components/live.tsx                            |  36 +-
+ src/components/positions.test.tsx                  |  10 +-
+ src/components/positions.tsx                       |  67 +--
+ src/lib/copy.ts                                    |  17 +
+ src/styles.css                                     | 102 +++-
+ .../desktop-records-1280x720.png                   | Bin 130955 -> 85621 bytes
+ .../external-browser-flow/mobile-records-390.png   | Bin 182895 -> 113884 bytes
+ 17 files changed, 969 insertions(+), 134 deletions(-)
+PS C:\Users\win\Desktop\program1-main-latest>

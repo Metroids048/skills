@@ -1,0 +1,88 @@
+# 进度日志
+
+## 会话：2026-07-13
+
+### Phase 1（第 1 项）：设置断链修复——杠杆滑块联动分档表
+
+- **状态：** complete
+- 执行的操作：
+  - 通读 `shared/models/workflow.py`、`services/execution/paper_signal.py`、`services/execution/risk_tiers.py`、前端 `RuntimePanels.jsx`/`PaperConsole.jsx`，确认"杠杆滑块不生效"根因：`asset_risk_tiers` 因 Pydantic `default_factory` 永远非空，`_requested_leverage`/`_requested_notional` 无条件优先取用它而非 `position_rules.max_leverage`；前端从未真正编辑该字段，只是原样回传旧值。
+  - 通过 AskUserQuestion 向用户确认修复方向，用户选择方案 B：滑块联动分档表。
+  - `services/execution/risk_tiers.py` 新增 `TIER_SCALE_RATIOS` 与 `scale_asset_risk_tiers()`，按相对风险排序重新计算各档 `leverage`/`max_position_fraction`，保留动态 ATR% 分档的 symbol 分配。
+  - `apps/api/routers/runs.py::update_paper_run_auto_settings` 接入该函数，替换掉客户端回传的陈旧分档表。
+  - 前端 `RuntimePanels.jsx`：修正 `DEFAULT_AUTO_SETTINGS.asset_risk_tiers` 默认值与后端一致（core 10x→20x，standard 5x→10x）；用 `renderTierPreviewRows()` 动态预览替换失效的静态文案。
+  - 新增/扩展测试：`tests/services/test_asset_risk_tiers.py`（+3 用例）、`tests/api/test_paper_runtime_api.py`（新增杠杆随滑块变化断言）。
+- 创建/修改的文件：
+  - `services/execution/risk_tiers.py`
+  - `apps/api/routers/runs.py`
+  - `frontend/admin/src/components/RuntimePanels.jsx`
+  - `tests/services/test_asset_risk_tiers.py`
+  - `tests/api/test_paper_runtime_api.py`
+
+### Phase 1（第 2 项）：统一 remainder-trail 重复实现
+
+- **状态：** complete
+- 执行的操作：
+  - 逐行核对 `services/execution/paper_runtime.py::_apply_trailing_ratchet`（通用 `ProtectiveLevels`）与 `services/validation/technical_replay.py::_advance_open_position`（手写 `ExitLadderState`）的阶梯止盈余量移动止损逻辑，确认数学完全等价。
+  - 在 `services/execution/exit_ladder.py` 新增共享纯函数 `next_trailed_stop_price()`。
+  - 重构 `paper_runtime.py::_apply_trailing_ratchet` 与 `technical_replay.py::_advance_open_position` 的对应分支，改为调用该共享函数，删除各自的手写 LONG/SHORT 分支。
+  - 新增 `tests/services/test_exit_ladder.py` 中 5 个 `next_trailed_stop_price` 专项用例（长/短双向触发、未触发、不改善止损、初始距离为零）。
+  - 用 Read 工具重新读取两处调用点的最终代码，确认改动落地且逻辑等价（满足交付自查规则）。
+- 创建/修改的文件：
+  - `services/execution/exit_ladder.py`
+  - `services/execution/paper_runtime.py`
+  - `services/validation/technical_replay.py`
+  - `tests/services/test_exit_ladder.py`
+
+## 测试结果
+
+| 测试 | 输入 | 预期结果 | 实际结果 | 状态 |
+|------|------|---------|---------|------|
+| 资产风险分档测试 | `tests/services/test_asset_risk_tiers.py` | 分档缩放随滑块变化、动态分档保留 symbol、缺省回退 | 全部通过 | PASS |
+| Paper 运行时 API 测试 | `tests/api/test_paper_runtime_api.py` | auto-settings 保存后 tier 杠杆随滑块联动 | 全部通过 | PASS |
+| ExitLadder 单测 | `tests/services/test_exit_ladder.py` | 阶梯止盈、`next_trailed_stop_price` 长/短双向棘轮 | 全部通过 | PASS |
+| 相关模块回归 | `test_paper_runtime.py`、`test_technical_strategy_validation.py` | 无行为回归 | 37 passed | PASS |
+| Ruff | `services/execution/{risk_tiers,exit_ladder,paper_runtime}.py`、`apps/api/routers/runs.py`、`services/validation/technical_replay.py`、相关测试文件 | 全部通过 | All checks passed | PASS |
+| Mypy | 同上文件集合 | 无类型错误 | Success | PASS |
+
+## 错误日志
+
+本轮暂无运行时错误或需要重试的失败用例。
+
+## 五问重启检查（Phase 1 完成时点，历史记录保留）
+
+| 问题 | 答案 |
+|------|------|
+| 我在哪里？ | Phase 1 两项子任务均已完成并通过测试/静态检查，正在同步项目记忆文件。 |
+| 我要去哪里？ | 完成记忆文件同步后，进入 Phase 0（ExitLadder 回放对比）的方案制定，提交给用户确认后再实施。 |
+| 目标是什么？ | 按用户 Phase 0-5 remediation 计划逐模块修复自动交易系统缺陷，每步验证、不确定必问。 |
+| 我学到了什么？ | 见 `findings.md`。 |
+| 我做了什么？ | 见上方记录。 |
+
+## Phase 2/3：执行层默认行为核查 + 多数票信号融合核查（2026-07-13）
+
+- **状态：** complete
+- 执行的操作：
+  - 用户在本次指令中追加两项要求：（a）杠杆/仓位设置整体适当激进化 + 修复 0.04% 仓位不按设置开单的 bug（已在此前会话完成，本轮通过 `bootstrap.py` 数值核查再确认：`risk_per_trade=0.025`、`max_portfolio_initial_risk_fraction=0.15`、`max_leverage=25`、`max_position_fraction=0.20`）；（b）开单判断纳入 MACD 金叉死叉、RSI 超买超卖、多周期 MA、FVG 补缺口等指标层面信号（已在此前会话完成，本轮通过重新读取 `tests/services/test_technical_signals.py`、`tests/services/test_signal_ensemble.py` 全量内容再确认）。
+  - 按用户"继续完成所有任务，不用中断，自动执行"的指示，对 Phase 2（执行层默认行为修正）与 Phase 3（多周期信号密度改造）逐项核查代码现状。
+  - Phase 2 第 1 项：Grep+Read `shared/config.py`、`services/execution/paper_signal.py`、`services/execution/gateway.py`，确认"默认限价单+市价单兜底"已实现，无需改动。
+  - Phase 2 第 2 项：Read `services/execution/paper_runtime.py` 600-840 行，确认保护性止损止盈优先于反向信号平仓的顺序已正确；核对 `tests/services/test_paper_runtime.py` 中既有回归测试 `test_runtime_stoploss_wins_over_opposite_signal_hit_on_same_bar` 已覆盖该行为。
+  - Phase 2 第 3/4 项：Read `.github/agent/memory/decisions-log.md` 第 1-9 行，确认 ADR-023→ADR-058 重新编号与 15% 数值修正在此前会话中已落地且保持完整。
+  - Phase 3：核查 `services/strategy_library/ensemble.py::layered_regime_entry` 与 `tests/services/test_signal_ensemble.py`，确认多数票+quorum fail-closed 机制已取代旧的全票 AND-gate。
+  - 运行全量测试与静态检查：`pytest -q` 320 passed / 1 skipped；ruff、mypy 全部通过。
+  - 同步更新 `task_plan.md`（当前阶段、遇到的错误、Phase 2/3 checklist 全部标记完成）、`findings.md`（新增 Phase 2/3 研究发现小节）、本文件（本条目）、`.github/agent/memory/project-memory.md`（新增顶部条目 + 修正"5%→15%"历史遗留错误数值）。
+- 创建/修改的文件：
+  - `task_plan.md`
+  - `findings.md`
+  - `progress.md`
+  - `.github/agent/memory/project-memory.md`
+
+## 五问重启检查（当前）
+
+| 问题 | 答案 |
+|------|------|
+| 我在哪里？ | Phase 0/1/2/3 全部核查确认完成，项目跟踪文件（`task_plan.md`/`findings.md`/`progress.md`/`project-memory.md`）已同步；即将同步 `.github/agent/memory/task-history.md`。 |
+| 我要去哪里？ | 按用户"不用中断，下一个phase以上一个phase的结果制定方案，自动执行"的指示，自动推进 Phase 4（`TestnetAcceptanceService` 验收单与真实策略单隔离 + ExitLadder 端到端测试）与 Phase 5（跨品种相关性组合风控）。 |
+| 目标是什么？ | 按用户 Phase 0-5 remediation 计划逐模块修复自动交易系统缺陷，每步验证、不确定必问；本轮无新增不确定点，Phase 2/3 结论均有代码+测试实证支撑。 |
+| 我学到了什么？ | 见 `findings.md` 新增"研究发现（Phase 2/3）"小节。 |
+| 我做了什么？ | 见上方"Phase 2/3"条目记录。 |

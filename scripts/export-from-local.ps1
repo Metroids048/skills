@@ -55,7 +55,8 @@ function Sync-Tree {
         [string]$Dest,
         [string[]]$ExtraExcludeDirs = @(),
         [string[]]$ExtraExcludeFiles = @(),
-        [switch]$FollowJunctions
+        [switch]$FollowJunctions,
+        [switch]$KeepSessionArchives
     )
     if (-not (Test-Path -LiteralPath $Source)) {
         Write-Warning "Skip missing: $Source"
@@ -70,8 +71,16 @@ function Sync-Tree {
         }
     }
     Ensure-Dir (Split-Path -Parent $Dest)
-    $excludeDirs = $CommonExcludeDirs + $ExtraExcludeDirs
-    $excludeFiles = $CommonExcludeFiles + $ExtraExcludeFiles
+    $baseDirs = $CommonExcludeDirs
+    $baseFiles = $CommonExcludeFiles
+    if ($KeepSessionArchives) {
+        $sessionDirAllow = @("sessions", "archived_sessions", "file-history", "history")
+        $baseDirs = @($CommonExcludeDirs | Where-Object { $sessionDirAllow -notcontains $_ })
+        $sessionFileAllow = @("history.jsonl", "session_index.jsonl")
+        $baseFiles = @($CommonExcludeFiles | Where-Object { $sessionFileAllow -notcontains $_ })
+    }
+    $excludeDirs = $baseDirs + $ExtraExcludeDirs
+    $excludeFiles = $baseFiles + $ExtraExcludeFiles
     $roboArgs = @($Source, $Dest, "/E", "/NFL", "/NDL", "/NJH", "/NJS", "/NC", "/NS", "/NP")
     if (-not $FollowJunctions) { $roboArgs += "/XJ" }
     $roboArgs += "/XD"
@@ -253,15 +262,55 @@ foreach ($project in $projects) {
     }
 }
 
-# Knowledge center (Desktop/全局配置): portable docs/tools/memory, not raw chat dumps.
+# Extra ai-workspace retention (not venv/vendor/runtime)
+Sync-Tree -Source (Join-Path $UserHome ".ai-workspace\clarifications") -Dest (Join-Path $RepoRoot "ai-workspace\clarifications")
+Sync-Tree -Source (Join-Path $UserHome ".ai-workspace\backups") -Dest (Join-Path $RepoRoot "ai-workspace\backups")
+
+# Cursor portable extras
+Copy-FileIfExists -Source (Join-Path $UserHome ".cursor\USER_RULES.txt") -Dest (Join-Path $RepoRoot "cursor\USER_RULES.txt")
+if (Test-Path -LiteralPath (Join-Path $UserHome ".cursor\skills-cursor")) {
+    Sync-SkillsEndpoint -Source (Join-Path $UserHome ".cursor\skills-cursor") -Dest (Join-Path $RepoRoot "skills\cursor-builtin")
+}
+
+# Claude retention: history, file-history, plans, projects metadata, backups, agents
+Copy-FileIfExists -Source (Join-Path $UserHome ".claude\history.jsonl") -Dest (Join-Path $RepoRoot "archives\claude\history.jsonl")
+Sync-Tree -Source (Join-Path $UserHome ".claude\file-history") -Dest (Join-Path $RepoRoot "archives\claude\file-history") -KeepSessionArchives
+Sync-Tree -Source (Join-Path $UserHome ".claude\plans") -Dest (Join-Path $RepoRoot "archives\claude\plans")
+Sync-Tree -Source (Join-Path $UserHome ".claude\projects") -Dest (Join-Path $RepoRoot "archives\claude\projects") -ExtraExcludeDirs @("cache", ".cache")
+Sync-Tree -Source (Join-Path $UserHome ".claude\backups") -Dest (Join-Path $RepoRoot "archives\claude\backups")
+Sync-Tree -Source (Join-Path $UserHome ".claude\agents") -Dest (Join-Path $RepoRoot "archives\claude\agents")
+Copy-FileIfExists -Source (Join-Path $UserHome ".claude\config.json") -Dest (Join-Path $RepoRoot "claude\config.json.example")
+
+# Codex retention: sessions, archived_sessions, memories, agents, automations
+Sync-Tree -Source (Join-Path $UserHome ".codex\sessions") -Dest (Join-Path $RepoRoot "archives\codex\sessions") -KeepSessionArchives -ExtraExcludeDirs @("cache", ".cache", "browser")
+Sync-Tree -Source (Join-Path $UserHome ".codex\archived_sessions") -Dest (Join-Path $RepoRoot "archives\codex\archived_sessions") -KeepSessionArchives
+Sync-Tree -Source (Join-Path $UserHome ".codex\memories") -Dest (Join-Path $RepoRoot "archives\codex\memories")
+Sync-Tree -Source (Join-Path $UserHome ".codex\agents") -Dest (Join-Path $RepoRoot "archives\codex\agents")
+Sync-Tree -Source (Join-Path $UserHome ".codex\automations") -Dest (Join-Path $RepoRoot "archives\codex\automations")
+Sync-Tree -Source (Join-Path $UserHome ".codex\backups") -Dest (Join-Path $RepoRoot "archives\codex\backups")
+Copy-FileIfExists -Source (Join-Path $UserHome ".codex\session_index.jsonl") -Dest (Join-Path $RepoRoot "archives\codex\session_index.jsonl")
+
+# Cursor agent transcripts under ~/.cursor/projects/*/agent-transcripts
+$cursorProjects = Join-Path $UserHome ".cursor\projects"
+$transcriptDestRoot = Join-Path $RepoRoot "archives\cursor\agent-transcripts"
+if (Test-Path -LiteralPath $cursorProjects) {
+    Get-ChildItem -LiteralPath $cursorProjects -Directory -ErrorAction SilentlyContinue | ForEach-Object {
+        $src = Join-Path $_.FullName "agent-transcripts"
+        if (Test-Path -LiteralPath $src) {
+            $files = @(Get-ChildItem -LiteralPath $src -File -Recurse -ErrorAction SilentlyContinue)
+            if ($files.Count -gt 0) {
+                Sync-Tree -Source $src -Dest (Join-Path $transcriptDestRoot $_.Name) -KeepSessionArchives
+            }
+        }
+    }
+}
+
+# Knowledge center: FULL Desktop/全局配置 (private repo). Only skip nested .git.
 $knowledgeCenter = Join-Path $UserHome "Desktop\全局配置"
 if (Test-Path -LiteralPath $knowledgeCenter) {
     $kcDest = Join-Path $RepoRoot "knowledge-center"
-    Sync-Tree -Source $knowledgeCenter -Dest $kcDest -ExtraExcludeDirs @(
-        ".git", "原始记录", "日志", "备份", "inbox", "personal", "sessions",
-        "全局会话归档", "冲突与过期记录", "待整理输入", "待确认更新", "测试夹具"
-    )
-    Write-Host "Synced knowledge-center (sanitized subset of Desktop/全局配置)"
+    Sync-Tree -Source $knowledgeCenter -Dest $kcDest -KeepSessionArchives -ExtraExcludeDirs @(".git")
+    Write-Host "Synced knowledge-center FULL (Desktop/全局配置)"
 } else {
     Write-Warning "Skip missing knowledge center: $knowledgeCenter"
 }
@@ -285,7 +334,7 @@ foreach ($endpoint in @("cursor", "claude", "codex", "agents")) {
 }
 
 $manifest = [ordered]@{
-    version = "1.2.0"
+    version = "1.3.0"
     exportedAt = (Get-Date).ToString("yyyy-MM-ddTHH:mm:ssK")
     sourceMachine = $env:COMPUTERNAME
     skillCounts = $skillCounts
@@ -298,14 +347,16 @@ $manifest = [ordered]@{
         "AIOS",
         "global memory",
         "project agent memory snapshots",
-        "knowledge-center (Desktop/全局配置 sanitized)"
+        "knowledge-center FULL (Desktop/全局配置)",
+        "codex/claude/cursor session archives",
+        "ai-workspace clarifications/backups"
     )
     excludes = @(
-        "tokens/secrets/auth/session files",
+        "tokens/secrets/auth/.env/CC Switch",
         "sqlite runtime state",
         "logs/cache/browser state",
-        "venv/node_modules/vendor runtime caches",
-        "raw chat dumps / session archives / conflict records"
+        "venv/vendor/node_modules",
+        "AppData editor caches"
     )
 } | ConvertTo-Json -Depth 5
 Write-Utf8NoBomFile -Path (Join-Path $RepoRoot "manifest.json") -Content $manifest

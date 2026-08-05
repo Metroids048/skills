@@ -1,0 +1,44 @@
+---
+pid: 26332
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n& $env:AGENT_PYTHON -m pytest tests/api/test_runtime_truth_api.py -q --tb=short\n# restart API only (keep scheduler)\n$apiPid = (Get-Content logs\\api.pid -Raw).Trim()\nWrite-Host \"stopping api pid=$apiPid\"\nGet-CimInstance Win32_Process -Filter \"ParentProcessId = $apiPid\" -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }\nStop-Process -Id ([int]$apiPid) -Force -ErrorAction SilentlyContinue\nStart-Sleep 2\n# relaunch via paper console (scheduler healthy -> early path still starts missing pieces)\npowershell -NoProfile -ExecutionPolicy Bypass -Command \"& '.\\scripts\\launch-paper-console.ps1' -OpenBrowser:`$false\"\nStart-Sleep 5\n. .\\scripts\\load-dotenv.ps1\nImport-DotEnv (Join-Path (Get-Location) \".env\") | Out-Null\n$headers = @{ Authorization = \"Bearer $($env:ADMIN_API_TOKEN)\" }\n$sw = [Diagnostics.Stopwatch]::StartNew()\ntry {\n  $r = Invoke-WebRequest -Uri \"http://127.0.0.1:8016/api/v1/runtime/snapshot\" -Headers $headers -UseBasicParsing -TimeoutSec 25 -Proxy $null\n  $sw.Stop()\n  Write-Host \"snapshot -> $($r.StatusCode) in $($sw.ElapsedMilliseconds)ms len=$($r.Content.Length)\"\n  $j = $r.Content | ConvertFrom-Json\n  Write-Host \"exchange.status=$($j.exchange.status) error=$($j.exchange.error)\"\n} catch {\n  $sw.Stop()\n  Write-Host \"snapshot FAIL after $($sw.ElapsedMilliseconds)ms : $($_.Exception.Message)\"\n}\n"
+started_at: 2026-07-28T05:07:03.581Z
+running_for_ms: 55047    
+---
+.........                                                                [100%]
+============================== warnings summary ===============================
+..\..\.ai-workspace\venv\Lib\site-packages\_pytest\config\__init__.py:1464
+  C:\Users\win\.ai-workspace\venv\Lib\site-packages\_pytest\config\__init__.py:1464: PytestConfigWarning: Unknown config option: asyncio_mode
+  
+    self._warn_or_fail_if_strict(f"Unknown config option: {key}\n")
+
+tests/api/test_runtime_truth_api.py::test_runtime_snapshot_exposes_exchange_unavailable_without_zero_fallback
+  C:\Users\win\.ai-workspace\venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+9 passed, 2 warnings in 3.96s
+stopping api pid=31884
+Log file is in use, continuing without reset: C:\Users\win\Desktop\AI--main\logs\frontend.log
+2026-07-28 13:07:15 [paper-console] checking frontend dependency versions
+2026-07-28 13:07:17 [paper-console] no Binance proxy configured; disabling live WebSocket collectors for startup stability
+2026-07-28 13:07:17 [paper-console] starting isolated Paper scheduler; Testnet mirror remains cost-gated
+2026-07-28 13:07:17 [paper-console] preparing local database
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+2026-07-28 13:07:20 [paper-console] starting API http://127.0.0.1:8016
+2026-07-28 13:07:21 [paper-console] stopping prior local scheduler (pid 21460)
+C:\Users\win\Desktop\AI--main\scripts\reclaim_stale_scheduler_locks.py:25: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  now = datetime.utcnow().isoformat(sep=" ")
+2026-07-28 13:07:22 [paper-console] reclaimed=2
+2026-07-28 13:07:23 [paper-console] waiting for services (up to 90s)
+2026-07-28 13:07:25 [paper-console] services ready
+2026-07-28 13:07:25 [paper-console] frontend: http://127.0.0.1:5173/trading
+2026-07-28 13:07:25 [paper-console] API: http://127.0.0.1:8016
+snapshot FAIL after 25069ms : The request was canceled due to the configured HttpClient.Timeout of 25 seconds elapsing.
+
+---
+exit_code: 0
+elapsed_ms: 57944
+ended_at: 2026-07-28T05:08:01.525Z
+---

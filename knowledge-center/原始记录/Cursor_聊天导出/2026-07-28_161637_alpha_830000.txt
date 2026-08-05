@@ -1,0 +1,36 @@
+---
+pid: 31360
+cwd: "C:\\Users\\win\\Desktop\\alpha"
+command: "Write-Host \"=== direct openai/chatgpt ===\"; @('api.openai.com','chatgpt.com','auth.openai.com','api.github.com') | ForEach-Object { $h=$_; try { $r=Test-NetConnection $h -Port 443 -WarningAction SilentlyContinue; \"$h 443 -> $($r.TcpTestSucceeded) ($($r.RemoteAddress))\" } catch { \"$h -> err $_\" } }; Write-Host \"=== via proxy 7890 curl ===\"; curl.exe -sS -o NUL -w \"openai %{http_code} time=%{time_total}`n\" --connect-timeout 8 --proxy http://127.0.0.1:7890 https://api.openai.com/v1/models; curl.exe -sS -o NUL -w \"chatgpt %{http_code} time=%{time_total}`n\" --connect-timeout 8 --proxy http://127.0.0.1:7890 https://chatgpt.com; curl.exe -sS -o NUL -w \"direct-openai %{http_code} time=%{time_total} err=%{errormsg}`n\" --connect-timeout 8 --noproxy \"*\" https://api.openai.com/v1/models 2>&1; Write-Host \"=== git proxy / system proxy ===\"; netsh winhttp show proxy; Get-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings' | Select-Object ProxyEnable,ProxyServer,AutoConfigURL | Format-List; Write-Host \"=== 15721 ===\"; Test-NetConnection 127.0.0.1 -Port 15721 -WarningAction SilentlyContinue | Select-Object TcpTestSucceeded"
+started_at: 2026-07-24T03:04:38.162Z
+running_for_ms: 125149   
+---
+=== direct openai/chatgpt ===
+api.openai.com 443 -> False (2a03:2880:f10e:83:face:b00c:0:25de)
+chatgpt.com 443 -> False (2a03:2880:f134:83:face:b00c:0:25de)
+auth.openai.com 443 -> True (2606:4700:4400::6812:29f1)
+api.github.com 443 -> True (20.205.243.168)
+=== via proxy 7890 curl ===
+openai 401 time=1.165651
+chatgpt 403 time=0.649012
+direct-openai 000 time=8.007087 err=Connection timed out after 8006 milliseconds
+curl: (28) Connection timed out after 8006 milliseconds
+=== git proxy / system proxy ===
+
+Current WinHTTP proxy settings:
+
+    Direct access (no proxy server).
+
+
+ProxyEnable   : 1
+ProxyServer   : 127.0.0.1:7890
+AutoConfigURL : 
+
+=== 15721 ===
+
+
+---
+exit_code: 0
+elapsed_ms: 126941
+ended_at: 2026-07-24T03:06:45.103Z
+---

@@ -1,0 +1,16 @@
+---
+pid: 21600
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n$py = \"C:\\Users\\win\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\"\n& $py -c @\"\nimport json, time, urllib.request\n\ndef get(path, timeout=40):\n  req=urllib.request.Request('http://127.0.0.1:8016'+path, headers={'Authorization':'[REDACTED]'})\n  t0=time.perf_counter()\n  with urllib.request.urlopen(req, timeout=timeout) as r:\n    return json.loads(r.read().decode()), round(time.perf_counter()-t0,2)\n\nfor i in range(3):\n  recon, dt = get('/api/v1/runtime/reconciliation')\n  print(i, 'dt', dt, 'status', recon.get('status'), 'blocked', recon.get('entry_blocked_symbols'), 'err', recon.get('error'), 'kill', recon.get('entry_kill_switch_active'))\n  time.sleep(2)\n\"@\n"
+started_at: 2026-07-28T08:04:01.768Z
+running_for_ms: 35016    
+---
+0 dt 27.45 status healthy blocked [] err None kill False
+1 dt 0.04 status healthy blocked [] err None kill False
+2 dt 0.01 status healthy blocked [] err None kill False
+
+---
+exit_code: 0
+elapsed_ms: 35405
+ended_at: 2026-07-28T08:04:37.173Z
+---

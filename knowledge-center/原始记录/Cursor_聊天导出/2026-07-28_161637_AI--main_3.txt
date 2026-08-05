@@ -1,0 +1,6 @@
+---
+pid: 27060
+cwd: |
+  C:\Users\win\Desktop\AI--main
+---
+PS C:\Users\win\Desktop\AI--main> 

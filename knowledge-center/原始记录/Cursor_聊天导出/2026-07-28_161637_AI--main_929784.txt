@@ -1,0 +1,13 @@
+---
+pid: 30368
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n@'\nfrom services.execution.scheduler_coordination import _local_pid_is_alive\nimport os\n\ndef test_pid_alive():\n    assert _local_pid_is_alive(os.getpid()) is True\n    assert _local_pid_is_alive(424242) is False\n'@ | Set-Content -Encoding utf8 logs\\_test_pid_alive.py\n$py = \"C:\\Users\\win\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\"\n$p = Start-Process -FilePath $py -ArgumentList '-m pytest -q logs\\_test_pid_alive.py -vv' -WorkingDirectory (Get-Location) -RedirectStandardOutput logs\\pid-alive-out.txt -RedirectStandardError logs\\pid-alive-err.txt -PassThru -NoNewWindow\nWait-Process -Id $p.Id -Timeout 60\nGet-Content logs\\pid-alive-out.txt\nGet-Content logs\\pid-alive-err.txt\n"
+started_at: 2026-07-28T06:03:09.264Z
+running_for_ms: 30       
+---
+
+---
+exit_code: 0
+elapsed_ms: 3291
+ended_at: 2026-07-28T06:03:12.555Z
+---

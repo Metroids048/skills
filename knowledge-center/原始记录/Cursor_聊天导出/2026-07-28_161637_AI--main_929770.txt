@@ -1,0 +1,17 @@
+---
+pid: 21552
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\npy -3 -m ruff check services/execution/gateway.py tests/services/test_binance_gateway.py\npy -3 -m pytest -q tests/services/test_binance_gateway.py::test_pretrade_snapshot_uses_usdm_book_and_mark_endpoints_when_ticker_is_incomplete tests/services/test_binance_gateway.py::test_pretrade_snapshot_falls_back_to_ticker_last_price_when_book_mark_missing --tb=short\n. .\\scripts\\load-dotenv.ps1\nImport-DotEnv (Join-Path (Get-Location) \".env\") | Out-Null\n$env:BINANCE_USE_TESTNET='true'; $env:LIVE_TRADING_ENABLED='false'\n& $env:AGENT_PYTHON -c \"\nimport time\nfrom datetime import UTC, datetime, timedelta\nfrom decimal import Decimal\nfrom services.execution.gateway import BinanceUsdtPerpetualGateway\nfrom shared.models import ExecutionOrderRequest, TradeSide, MarketRulesSnapshot\ng = BinanceUsdtPerpetualGateway()\ndecision_time = datetime.now(UTC) - timedelta(seconds=30)\nreq = ExecutionOrderRequest(\n    strategy_id='probe', symbol='BTC/USDT', direction=TradeSide.LONG,\n    entry_context={'atr': '140', 'decision_bar_close_time': decision_time.isoformat(), 'reference_price': '63200'},\n    market_rules_snapshot=MarketRulesSnapshot(\n        rules_snapshot_id='rules', symbol='BTC/USDT:USDT', market_status='TRADING',\n        position_mode='ONE_WAY', margin_mode='CROSS', leverage=Decimal('1'),\n        tick_size=Decimal('0.10'), step_size=Decimal('0.001'), min_quantity=Decimal('0.001'),\n        min_notional=Decimal('50'), loaded_at=decision_time, exchange='binance', market_type='swap',\n        exchange_symbol='BTC/USDT:USDT', price_precision=1, amount_precision=3,\n        contract_size=Decimal('1'), market_active=True,\n    ),\n)\nt0=time.perf_counter(); snap=g.pretrade_market_snapshot(order_request=req); dt=time.perf_counter()-t0\nprint('seconds', round(dt,3), 'bid', snap.bid, 'ask', snap.ask, 'mark', snap.mark_price, 'age', round(snap.decision_age_seconds,3))\n\"\n"
+started_at: 2026-07-28T03:43:39.898Z
+running_for_ms: 61069    
+---
+[1;32mAll checks passed![0m
+..                                                                       [100%]
+2 passed in 2.71s
+seconds 31.228 bid 63329.8 ask 63334.0 mark 63334.0 age 54.497
+
+---
+exit_code: 0
+elapsed_ms: 62526
+ended_at: 2026-07-28T03:44:42.424Z
+---

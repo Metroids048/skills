@@ -1,0 +1,122 @@
+<script setup lang="ts">
+import { ArrowRightOutlined, SafetyCertificateOutlined } from '@ant-design/icons-vue'
+import { useRoute, useRouter } from 'vue-router'
+import { mockUsers } from '../../mock'
+import { useAuthStore } from '../../stores/auth'
+
+const auth = useAuthStore()
+const router = useRouter()
+const route = useRoute()
+
+function login(userId: string) {
+  auth.login(userId)
+  const redirect = typeof route.query.redirect === 'string' ? route.query.redirect : '/dashboard'
+  router.push(redirect)
+}
+</script>
+
+<template>
+  <div class="login-shell">
+    <section class="login-hero">
+      <div>
+        <div class="chip" style="background: rgba(255, 255, 255, 0.12); color: #edf6fb">
+          <SafetyCertificateOutlined />
+          内网业务工作台
+        </div>
+        <h1 style="margin: 20px 0 14px; font-size: 42px; color: #fff">
+          储量及产量规划协同工作台
+        </h1>
+        <p style="max-width: 560px; line-height: 1.8; color: rgba(237, 246, 251, 0.82)">
+          把表格填报、规则校验、方案推演、版本对比、成果输出和敖钦辅助放在同一条业务链路里。
+        </p>
+      </div>
+
+      <div class="triple-grid">
+        <div class="page-section" style="background: rgba(255, 255, 255, 0.08); color: #edf6fb">
+          <div class="subtle-text" style="color: rgba(237, 246, 251, 0.76)">核心工作</div>
+          <div style="margin-top: 8px; font-size: 18px; font-weight: 700">填报、校验、对比、输出</div>
+        </div>
+        <div class="page-section" style="background: rgba(255, 255, 255, 0.08); color: #edf6fb">
+          <div class="subtle-text" style="color: rgba(237, 246, 251, 0.76)">表格能力</div>
+          <div style="margin-top: 8px; font-size: 18px; font-weight: 700">类 Excel 编制与单元格溯源</div>
+        </div>
+        <div class="page-section" style="background: rgba(255, 255, 255, 0.08); color: #edf6fb">
+          <div class="subtle-text" style="color: rgba(237, 246, 251, 0.76)">智能辅助</div>
+          <div style="margin-top: 8px; font-size: 18px; font-weight: 700">问数、解释、工具调用留痕</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="login-panel">
+      <div class="page-section" style="width: min(520px, 100%); padding: 28px">
+        <div class="page-heading">
+          <h1 style="font-size: 30px">选择工作身份</h1>
+          <p>演示模式使用本地样例数据，用于确认业务流程和交互方式。</p>
+        </div>
+
+        <div class="stack" style="margin-top: 20px">
+          <a-button
+            v-for="user in mockUsers"
+            :key="user.id"
+            type="default"
+            size="large"
+            style="height: auto; padding: 14px 16px; text-align: left"
+            @click="login(user.id)"
+          >
+            <div style="display: flex; justify-content: space-between; gap: 12px; align-items: center">
+              <div>
+                <div style="font-size: 16px; font-weight: 700">{{ user.roleName }} · {{ user.name }}</div>
+                <div class="subtle-text" style="margin-top: 4px">
+                  {{ user.department }} ｜ {{ user.focus }}
+                </div>
+              </div>
+              <ArrowRightOutlined />
+            </div>
+          </a-button>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<style scoped>
+.login-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  background:
+    linear-gradient(135deg, rgba(13, 79, 121, 0.92), rgba(18, 47, 67, 0.94)),
+    #0f2231;
+}
+
+.login-hero {
+  padding: 56px;
+  color: #edf6fb;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.login-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 28px;
+  background: #edf3f7;
+}
+
+@media (max-width: 920px) {
+  .login-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .login-hero {
+    padding: 36px 24px 20px;
+    gap: 24px;
+  }
+
+  .login-panel {
+    padding: 0 20px 28px;
+  }
+}
+</style>

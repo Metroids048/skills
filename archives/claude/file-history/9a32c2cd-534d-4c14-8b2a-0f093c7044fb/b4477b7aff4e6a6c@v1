@@ -1,0 +1,264 @@
+<script setup lang="ts">
+import { CheckCircleOutlined, FileDoneOutlined, RobotOutlined } from '@ant-design/icons-vue'
+import { message } from 'ant-design-vue'
+import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import MetricTrendChart from '../../components/charts/MetricTrendChart.vue'
+import { outputArtifacts, planningRows, planningWorkbook, versionComparisons } from '../../mock/business'
+import { useWorkbenchStore } from '../../stores/workbench'
+
+const router = useRouter()
+const route = useRoute()
+const workbench = useWorkbenchStore()
+const outputSection = ref<HTMLElement | null>(null)
+
+const area = ref('全部油气区')
+const rows = computed(() => planningRows
+  .map((row) => ({
+    ...row,
+    base: row.values['2026'].total,
+    compare: row.values['2028'].total,
+    gap: Number((row.values['2028'].total - row.values['2026'].total).toFixed(1)),
+    reason: row.warning || '基础递减与措施贡献变化。',
+  }))
+  .filter((row) => area.value === '全部油气区' || row.area === area.value))
+const netGap = computed(() => rows.value.reduce((sum, row) => sum + row.gap, 0).toFixed(1))
+const versionChartSeries = computed(() => [
+  { name: '规划 V2', type: 'bar' as const, data: rows.value.map((row) => row.base), yAxisIndex: 0 },
+  { name: '规划 V3', type: 'bar' as const, data: rows.value.map((row) => row.compare), yAxisIndex: 0 },
+  { name: '净差异', type: 'line' as const, data: rows.value.map((row) => row.gap), yAxisIndex: 1 },
+])
+
+const selectedFields = ref(planningRows.map((row) => row.oilfield))
+const selectedYears = ref<string[]>(['2026', '2028'])
+const chartKind = ref<'bar' | 'line' | 'pie' | 'combo'>('combo')
+const showCompareLine = ref(true)
+const filteredRows = computed(() => planningRows.filter((row) => selectedFields.value.includes(row.oilfield)))
+const primaryYear = computed(() => selectedYears.value[selectedYears.value.length - 1] ?? '2028')
+const total = computed(() => filteredRows.value.reduce((sum, row) => sum + row.values[primaryYear.value].total, 0))
+const planningArtifacts = computed(() => outputArtifacts.filter((item) => item.domain === 'planning'))
+const planningVersion = versionComparisons.find((item) => item.domain === 'planning')!
+const outputChartSeries = computed(() => {
+  if (chartKind.value === 'pie') {
+    return [{
+      name: `${primaryYear.value} 年总产量`,
+      type: 'bar' as const,
+      data: filteredRows.value.map((row) => row.values[primaryYear.value].total),
+    }]
+  }
+  const series = selectedYears.value.map((year, index) => ({
+    name: `${year} 年总产量`,
+    type: (chartKind.value === 'combo'
+      ? (index === 0 ? 'bar' : 'line')
+      : chartKind.value) as 'line' | 'bar',
+    data: filteredRows.value.map((row) => row.values[year].total),
+    yAxisIndex: chartKind.value === 'combo' && index > 0 ? 1 : 0,
+  }))
+  if (showCompareLine.value && selectedYears.value.length >= 2) {
+    const [baseYear, compareYear] = [selectedYears.value[0], selectedYears.value[selectedYears.value.length - 1]]
+    series.push({
+      name: `${compareYear}-${baseYear} 差异`,
+      type: 'line',
+      data: filteredRows.value.map((row) => Number((row.values[compareYear].total - row.values[baseYear].total).toFixed(1))),
+      yAxisIndex: 1,
+    })
+  }
+  return series
+})
+
+const focusOutput = computed(() => {
+  const focus = String(route.query.focus || '')
+  return focus === 'output' || focus === 'graphics' || focus === 'export'
+})
+
+async function scrollToOutput() {
+  await nextTick()
+  outputSection.value?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+onMounted(() => {
+  if (focusOutput.value) void scrollToOutput()
+})
+
+watch(focusOutput, (value) => {
+  if (value) void scrollToOutput()
+})
+
+function generateSummaryDraft() {
+  workbench.openAssistant(`产量版本对比与结果输出 / ${area.value}`, 'insight', '/planning/version')
+  workbench.submitAssistant(
+    `生成复核摘要草稿：范围 ${area.value}，油气田 ${rows.value.length} 个，净差异 ${netGap.value}，并列出导出前检查项。`,
+    'insight',
+  )
+}
+
+function generateOutputPackage() {
+  message.success('已生成样例输出包（总表 / 图件 / 摘要），未写入正式归档。')
+}
+
+function runExportCheck() {
+  message.info('导出前检查：版本绑定、图件范围、摘要与责任人已核对（样例）。')
+}
+
+function backToWorkbook(oilfield?: string) {
+  router.push({
+    path: '/planning/workflow',
+    query: {
+      task: 'planning-fill-v3',
+      sheet: '产量剖面汇总',
+      ...(oilfield ? { oilfield } : {}),
+    },
+  })
+}
+</script>
+
+<template>
+  <div class="business-page version-page">
+    <header class="business-page-header">
+      <div>
+        <span class="eyebrow">产量规划 / 版本对比与结果输出</span>
+        <h1>规划版本对比与结果输出</h1>
+        <p>先看 V2/V3 差异，再在本页完成汇报图件与标准化导出（对应原始需求 B6 + B7）。</p>
+      </div>
+      <div class="header-button-row">
+        <a-button @click="generateSummaryDraft"><RobotOutlined />生成摘要草稿</a-button>
+        <a-button @click="backToWorkbook()">返回规划工作表</a-button>
+        <a-button type="primary" @click="scrollToOutput"><FileDoneOutlined />去结果输出</a-button>
+      </div>
+    </header>
+
+    <section class="version-toolbar">
+      <a-select
+        v-model:value="area"
+        :options="['全部油气区', ...Array.from(new Set(planningRows.map((row) => row.area)))].map((value) => ({ value }))"
+        style="width: 190px"
+      />
+      <a-tag>规划 V2</a-tag>
+      <span>对比</span>
+      <a-tag color="blue">规划 V3 草案</a-tag>
+    </section>
+
+    <section class="metric-overview-row">
+      <article class="metric-overview"><span>油气田</span><strong>{{ rows.length }}</strong><em>当前筛选范围</em></article>
+      <article class="metric-overview"><span>正向变化</span><strong>{{ rows.filter((row) => row.gap > 0).length }}</strong><em>投产或工作量带动</em></article>
+      <article class="metric-overview"><span>净差异</span><strong>{{ netGap }}</strong><em>按样例年份比较</em></article>
+    </section>
+
+    <section class="business-panel version-chart-panel">
+      <div class="panel-title"><h2>规划版本趋势</h2><span>双柱对比 + 折线净差异</span></div>
+      <MetricTrendChart :categories="rows.map((row) => row.oilfield)" :series="versionChartSeries" :height="300" :dual-axis="true" chart-kind="combo" />
+    </section>
+
+    <section class="business-panel">
+      <div class="panel-title"><h2>版本差异明细</h2><span>确认差异后再做结果输出</span></div>
+      <a-table :data-source="rows" :pagination="false" row-key="id" :scroll="{ x: 1080 }">
+        <a-table-column title="油气田" data-index="oilfield" />
+        <a-table-column title="状态" data-index="state" />
+        <a-table-column title="规划 V2" data-index="base" />
+        <a-table-column title="规划 V3" data-index="compare" />
+        <a-table-column title="差异" data-index="gap" />
+        <a-table-column title="原因" data-index="reason" />
+        <a-table-column title="操作" width="140" fixed="right">
+          <template #default="{ record }">
+            <a-button type="link" @click="backToWorkbook(record.oilfield)">回工作表修订</a-button>
+          </template>
+        </a-table-column>
+      </a-table>
+    </section>
+
+    <section id="planning-output" ref="outputSection" class="business-panel output-merge-section">
+      <div class="panel-title">
+        <div>
+          <h2>结果输出（B7）</h2>
+          <span>标准化图件、摘要与成果包，绑定当前版本 {{ planningWorkbook.version }}</span>
+        </div>
+        <div class="header-button-row">
+          <a-button @click="runExportCheck"><CheckCircleOutlined />导出前检查</a-button>
+          <a-button type="primary" @click="generateOutputPackage"><FileDoneOutlined />生成输出包</a-button>
+        </div>
+      </div>
+
+      <div v-if="focusOutput" class="focus-note"><FileDoneOutlined />已定位到结果输出区</div>
+
+      <section class="results-summary-row compact-results-row">
+        <article><span>当前版本</span><strong>{{ planningWorkbook.version }}</strong><em>成果引用版本</em></article>
+        <article><span>{{ primaryYear }} 年范围</span><strong>{{ total.toFixed(1) }}</strong><em>{{ filteredRows.length }} 个油气田汇总</em></article>
+        <article><span>版本结论</span><strong>需复核</strong><em>{{ planningVersion.summary }}</em></article>
+      </section>
+
+      <section class="insight-filter-bar">
+        <div class="control-group">
+          <span>油气田范围</span>
+          <a-select
+            v-model:value="selectedFields"
+            mode="multiple"
+            :max-tag-count="3"
+            :options="planningRows.map((row) => ({ label: `${row.oilfield} · ${row.area}`, value: row.oilfield }))"
+          />
+        </div>
+        <div class="control-group">
+          <span>对比年份</span>
+          <a-select
+            v-model:value="selectedYears"
+            mode="multiple"
+            :max-tag-count="3"
+            :options="['2026', '2027', '2028'].map((value) => ({ value }))"
+            style="min-width: 200px"
+          />
+        </div>
+        <div class="control-group compact">
+          <span>图形样式</span>
+          <a-segmented
+            v-model:value="chartKind"
+            :options="[
+              { label: '组合', value: 'combo' },
+              { label: '对比', value: 'bar' },
+              { label: '趋势', value: 'line' },
+              { label: '构成', value: 'pie' },
+            ]"
+          />
+        </div>
+        <div class="control-group compact"><a-checkbox v-model:checked="showCompareLine">显示年份差异折线</a-checkbox></div>
+      </section>
+
+      <section class="results-main-grid">
+        <main class="business-panel nested-panel">
+          <div class="panel-title">
+            <div>
+              <h2>汇报图件预览</h2>
+              <span>多选油气田/年份组合对比，图例可切换系列</span>
+            </div>
+          </div>
+          <MetricTrendChart
+            v-if="filteredRows.length && selectedYears.length"
+            :categories="filteredRows.map((row) => row.oilfield)"
+            :series="outputChartSeries"
+            :chart-kind="chartKind"
+            :dual-axis="chartKind === 'combo' || showCompareLine"
+            :height="360"
+            unit="万吨"
+          />
+          <a-empty v-else description="请选择油气田和至少一个年份" />
+        </main>
+        <aside class="business-panel result-conclusion-panel nested-panel">
+          <div class="panel-title compact"><h2>成果摘要</h2></div>
+          <div class="trace-row"><span>主要变化</span><strong>开发井工作量和投产节奏带来年度增量。</strong></div>
+          <div class="trace-row"><span>复核重点</span><strong>核对投产时间、异常说明和版本差异原因。</strong></div>
+          <div class="trace-row"><span>建议动作</span><strong>确认后将摘要与图件一起纳入成果包。</strong></div>
+        </aside>
+      </section>
+
+      <div class="artifact-grid" style="margin-top: 14px">
+        <article v-for="artifact in planningArtifacts" :key="artifact.id" class="artifact-card active">
+          <strong>{{ artifact.title }}</strong>
+          <p>{{ artifact.source }}</p>
+          <div class="task-meta-line">
+            <span>{{ planningWorkbook.version }}</span>
+            <span>{{ artifact.owner }}</span>
+            <span>{{ filteredRows.length ? '可生成' : '待选择范围' }}</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</template>

@@ -1,0 +1,106 @@
+"""Throwaway smoke test for scripts/audit_symbol_data_completeness.py end-to-end rendering. Deleted after use."""
+import os
+import sys
+import tempfile
+from datetime import UTC, datetime, timedelta
+from decimal import Decimal
+
+tmp_db = tempfile.NamedTemporaryFile(suffix=".db", delete=False)
+tmp_db.close()
+os.environ["POSTGRES_URL"] = f"sqlite:///{tmp_db.name}"
+
+from services.database import create_relational_schema, get_session_factory  # noqa: E402
+from services.data import DataRepository  # noqa: E402
+from services.data.service import DEFAULT_BINANCE_TOP20  # noqa: E402
+from services.strategy_library import (  # noqa: E402
+    DecisionSnapshotRepository,
+    ExecutionRepository,
+    PaperRunRepository,
+    StrategyRepository,
+    ValidationRepository,
+)
+from shared.models import (  # noqa: E402
+    BacktestRun,
+    DecisionSnapshot,
+    GateDecision,
+    PaperRun,
+    StrategyCreate,
+)
+
+create_relational_schema()
+session = get_session_factory()()
+
+symbol = DEFAULT_BINANCE_TOP20[0]
+data_repo = DataRepository(session)
+now = datetime.now(UTC).replace(microsecond=0)
+data_repo.store_ohlcv_bars(
+    [
+        {
+            "symbol": symbol,
+            "exchange": "binance",
+            "timeframe": "1h",
+            "time": now - timedelta(hours=1),
+            "open": Decimal("100"),
+            "high": Decimal("101"),
+            "low": Decimal("99"),
+            "close": Decimal("100.5"),
+            "volume": Decimal("10"),
+        }
+    ]
+)
+
+strategy_repo = StrategyRepository(session)
+strategy = strategy_repo.create_strategy(
+    StrategyCreate(
+        strategy_key="smoke_audit_script",
+        source="manual",
+        core_thesis="smoke test",
+        rules={
+            "entry_rules": {},
+            "exit_rules": {},
+            "stoploss_rules": {},
+            "takeprofit_rules": {},
+            "position_rules": {},
+        },
+    )
+)
+backtest = ValidationRepository(session).create_backtest_run(
+    BacktestRun(
+        strategy_id=strategy.strategy_id,
+        execution_engine="smoke-test",
+        eligibility_result=GateDecision(
+            strategy_id=strategy.strategy_id,
+            passed=True,
+            decision_status="accepted",
+            reason="smoke",
+        ),
+    )
+)
+paper_run = PaperRunRepository(session).create_paper_run(
+    PaperRun(
+        strategy_id=strategy.strategy_id,
+        gate_decision_ref=backtest.backtest_run_id,
+        candidate_symbols=[symbol],
+        paper_status="running",
+    )
+)
+
+DecisionSnapshotRepository(session).create_snapshot(
+    DecisionSnapshot(
+        paper_run_id=paper_run.paper_run_id,
+        symbol=symbol,
+        action="skip_no_trade_decision",
+        pipeline_status="technical_signals_insufficient",
+        reason="technical_signals_insufficient",
+        decision_trace={"pipeline_status": "technical_signals_insufficient"},
+        cycle_time=now,
+    )
+)
+session.close()
+
+sys.argv = ["audit_symbol_data_completeness.py", "--database-url", os.environ["POSTGRES_URL"]]
+from scripts.audit_symbol_data_completeness import main  # noqa: E402
+
+exit_code = main()
+print(f"\n--exit_code={exit_code}--")
+os.unlink(tmp_db.name)

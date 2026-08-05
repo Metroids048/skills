@@ -1,0 +1,54 @@
+---
+pid: 31752
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "py -3 \"c:\\Users\\win\\Desktop\\AI--main\\scripts\\flatten_binance_sim_account.py\" --confirm"
+started_at: 2026-07-28T02:09:12.287Z
+running_for_ms: 145063   
+---
+{
+  "before": {
+    "connected": true,
+    "trading_mode": "testnet",
+    "api_backend": "testnet-fallback",
+    "positions": [
+      {
+        "symbol": "ETH/USDT:USDT",
+        "side": "short",
+        "quantity": 5.1,
+        "entry_price": 1969.0,
+        "mark_price": 1875.58,
+        "notional_usdt": 9565.458,
+        "margin_usdt": 239.13645,
+        "leverage": 40.0,
+        "unrealized_pnl": 476.442,
+        "liquidation_price": 3013.29892569
+      }
+    ],
+    "open_orders": []
+  }
+}
+{
+  "cancelled_order_ids": [],
+  "closed_positions": [
+    {
+      "symbol": "ETH/USDT:USDT",
+      "quantity": 5.1,
+      "gateway_order_id": "14774000974",
+      "gateway_status": "filled"
+    }
+  ],
+  "after": {
+    "connected": true,
+    "api_backend": "testnet-fallback",
+    "open_position_count": 0,
+    "open_order_count": 0,
+    "positions": [],
+    "open_orders": []
+  }
+}
+
+---
+exit_code: 0
+elapsed_ms: 149047
+ended_at: 2026-07-28T02:11:41.334Z
+---

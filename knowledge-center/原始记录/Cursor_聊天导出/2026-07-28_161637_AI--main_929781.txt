@@ -1,0 +1,14 @@
+---
+pid: 24092
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n$py = \"C:\\Users\\win\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\"\n$argLine = '-m pytest -q -m \"not integration\" -k \"runtime or account_equity or auto_schedule or gateway or paper_cycle_orchestrator or paper_exchange_execution or paper_signal or scheduler or scheduler_coordination or tasks\" --tb=line'\n$p = Start-Process -FilePath $py -ArgumentList $argLine -WorkingDirectory (Get-Location) -RedirectStandardOutput logs\\targeted-suite3.txt -RedirectStandardError logs\\targeted-suite3.err -PassThru -NoNewWindow\nSet-Content logs\\targeted-suite3.pid -Value $p.Id\nWrite-Host \"started pid=$($p.Id)\"\n"
+started_at: 2026-07-28T05:56:27.352Z
+running_for_ms: 5023     
+---
+started pid=29700
+
+---
+exit_code: 0
+elapsed_ms: 6113
+ended_at: 2026-07-28T05:56:33.465Z
+---

@@ -1,0 +1,34 @@
+---
+pid: 18144
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n(Get-Item logs\\commit-out.txt).Length\nGet-Content logs\\commit-out.txt -Raw\n# manually run what the hook would run with staged files\n$files = git diff --cached --name-only -- 'services/execution/*.py' 'apps/api/routers/*.py'\nWrite-Host \"staged critical:\"\n$files\npy -3 scripts\\precommit_targeted_tests.py $files 2>&1 | Tee-Object -FilePath logs\\targeted-manual.txt | Select-Object -Last 40\nWrite-Host \"targeted_exit=$LASTEXITCODE\"\n"
+started_at: 2026-07-28T05:47:04.000Z
+running_for_ms: 30020    
+---
+648
+ruff (legacy alias)......................................................Passed
+ruff format..............................................................Passed
+check yaml...........................................(no files to check)Skipped
+check json...........................................(no files to check)Skipped
+fix end of files.........................................................Passed
+trim trailing whitespace.................................................Passed
+check for added large files..............................................Passed
+mypy.....................................................................Passed
+
+staged critical:
+apps/api/routers/runtime.py
+services/execution/account_equity.py
+services/execution/auto_schedule.py
+services/execution/gateway.py
+services/execution/paper_cycle_orchestrator.py
+services/execution/paper_exchange_execution.py
+services/execution/paper_signal.py
+services/execution/scheduler.py
+services/execution/scheduler_coordination.py
+services/execution/tasks.py
+
+---
+exit_code: 0
+elapsed_ms: 33572
+ended_at: 2026-07-28T05:47:37.572Z
+---

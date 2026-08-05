@@ -1,0 +1,457 @@
+Codex hooks just gave you back complete control over your code. | by JP Caparas | Apr, 2026 | AI @ Sulat.com
+
+Sign up
+
+Get app
+
+Sign up
+
+## AI @ Sulat.com
+
+Deep technical research on AI meets eloquent, accessible writing for everyday people and the technically curious. Subscribe now.
+
+# Codex hooks just gave you back complete control over your code.
+
+## A practical walk-through of exit code 2, the three new hook events, and real code and Git examples you can drop into your project today.
+
+12 min read
+
+Apr 6, 2026
+
+--
+
+1
+
+Share
+
+Press enter or click to view image in full size
+
+No violation shall make it through.
+
+If hands-on AI tooling guides are your thing, follow me; I write them the week the feature ships.
+
+A few weeks ago I wrote a guide to Codex CLI hooks. At the time, the system had only two events:`SessionStart` and`Stop`. You could inject context when a session opened and run cleanup when it closed. That was it. No tool-level filtering, no blocking, no conditional execution.
+
+I ended that piece wishing for more. The hooks system felt like scaffolding for something bigger, and it was.
+
+In March, two pull requests landed that changed the whole picture. PR #14626, merged on 18 March 2026, brought`UserPromptSubmit`. And`PreToolUse` arrived alongside`PostToolUse` around v0.117.0. The system went from a mere two session bookends to five events that can intercept, inspect, and block the agentic loop mid-stride. Awesome.
+
+The centrepiece: exit code 2. One integer that turns a hook from a passive observer into a full-on gatekeeper. Below, I’ll cover every new event, the blocking mechanism, and drop-in examples for Laravel and Git projects (for the sake of easy illustration).
+
+Press enter or click to view image in full size
+
+More events, more fun.
+
+## What changed
+
+The original hooks system was notification-only. Scripts ran, printed context to stdout, and Codex absorbed it. But nothing could stop a dangerous command; you had to hope your`AGENTS.md` instructions were persuasive enough.
+
+Three new events changed that.
+
+PreToolUse fires before Codex executes a tool call. The hook receives the tool name and the full command, so you can inspect it, approve it, or deny it outright.
+
+PostToolUse fires after a tool call finishes. It receives the tool name, the command, and the output. You can’t undo what ran, but you can replace the tool result with feedback that steers the agent’s next move.
+
+UserPromptSubmit fires when a user submits a prompt. Block the submission entirely, or inject additional context before the model sees it.
+
+Combined with`SessionStart` and`Stop`, that's five events covering the full lifecycle. Community release trackers map`UserPromptSubmit` to v0.116.0 and`PreToolUse`/`PostToolUse` to v0.117.0.
+
+Hooks went from “things that run at session boundaries” to middleware for the entire agentic loop.
+
+Press enter or click to view image in full size
+
+## Exit code 2: the permission gate
+
+Every hook script returns an exit code. Before the new events, exit codes didn’t carry much meaning. Now they carry all of it:
+
+Exit 0 means continue. The hook ran, everything’s fine, carry on.
+
+Exit 2 means block. The hook is actively refusing to let this action happen. When your script exits 2, it must write a reason to`stderr`. Codex feeds that reason back to the agent as context, so the model understands why it was stopped and can adjust. This is not the last time you’ll encounter this exit code, so pay very close attention.
+
+Any other exit code (1, 3, 127, whatever) means the hook failed or errored. Codex logs it and continues. Your hook crashing doesn’t halt the session.
+
+Only exit code 2 blocks. If your validation script has a bug and exits 1, Codex treats it as a non-blocking failure. A broken hook shouldn’t brick your workflow.
+
+A minimal example that blocks any`rm -rf /` attempt:
+
+```
+#!/bin/bash# .codex/hooks/block-rm-rf.shINPUT=$(cat)COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command // empty')if echo "$COMMAND" | grep -q 'rm -rf /'; then  echo "Blocked: refusing to run rm -rf /" >&2  exit 2fiexit 0
+```
+
+And the hooks.json that wires it up:
+
+```
+{  "hooks": {    "PreToolUse": [      {        "matcher": "Bash",        "hooks": [          {            "type": "command",            "command": ".codex/hooks/block-rm-rf.sh",            "statusMessage": "Checking command safety...",            "timeout": 10          }        ]      }    ]  }}
+```
+
+`matcher` is a regex that filters on tool name. Since`PreToolUse` and`PostToolUse` currently only emit`Bash`, that's what you match on. The`stderr` message ("Blocked: refusing to run rm -rf /") goes straight back to the agent, and the model adjusts on its next turn.
+
+Here’s how that looks like in action:
+
+Press enter or click to view image in full size
+
+And it never did delete the folder.
+
+Exit code 2 is the only integer that blocks. Everything else continues or logs a warning. Stderr from exit 2 becomes the agent’s feedback.
+
+2 is a special number.
+
+## The five events at a glance
+
+Each event, broken down.
+
+### SessionStart
+
+Fires when a Codex session begins or resumes.`matcher` filters on`source`: either`startup`(fresh session) or`resume`(continuing a previous one). Plain text written to stdout gets added as developer context, so your script's output becomes part of what the model sees. Exit code 2 has no effect here; this is a context-injection point, not a gate.
+
+Key input fields:`session_id`,`cwd`,`model`,`source`.
+
+### PreToolUse
+
+Fires before any tool call executes.`matcher` filters on`tool_name`. The hook receives`tool_name`,`tool_input`(which contains the`command` for Bash calls), and standard session fields like`session_id`,`transcript_path`, and`cwd`.
+
+Exit code 2 blocks the tool call. You can also return JSON with a`hookSpecificOutput` block containing a`permissionDecision` set to`allow`,`deny`, or`ask`.`deny` works like exit code 2.`ask` prompts the user for manual confirmation before proceeding.
+
+### PostToolUse
+
+Fires after a tool call completes. Same matcher pattern as PreToolUse, filtering on`tool_name`. The hook receives`tool_name`,`tool_input`, and`tool_response` containing the result.
+
+One catch: exit code 2 on PostToolUse doesn’t undo the execution (the command already ran). It replaces the tool result the agent sees with your`stderr` feedback. Use this for injecting linting output, test failures, or corrections that steer the next move.
+
+### UserPromptSubmit
+
+Fires when the user submits a prompt.`matcher` is ignored for this event. The hook receives`turn_id` and`prompt`. Exit code 2 rejects the prompt before it enters the conversation history. Good for content policies or prompt validation.
+
+### Stop
+
+Fires when the session ends.`matcher` is ignored. On exit 0, the hook must output valid JSON; plain text won't work. A`decision: "block"` in the output creates an automatic continuation prompt, keeping the session alive. If you just need to log or clean up, output`{"continue": true}` and exit 0.
+
+Key input:`turn_id`,`stop_hook_active`,`last_assistant_message`.
+
+Press enter or click to view image in full size
+
+All five events share common input fields:`session_id`,`transcript_path`,`cwd`,`hook_event_name`, and`model`.
+
+Hook discovery searches two locations:`~/.codex/hooks.json`(user-level) and`.codex/hooks.json`(repo-level). When matching hooks exist in both files, they all run concurrently. One hook can't prevent another from starting.
+
+The feature flag`[features] codex_hooks = true` in your`config.toml` is still required. Hooks remain experimental, and they're disabled on Windows.
+
+Press enter or click to view image in full size
+
+## Laravel meets Codex hooks
+
+I work with Laravel daily, and three hook patterns have become permanent fixtures in my`.codex/hooks.json`.
+
+## Get JP Caparas’s stories in your inbox
+
+Join Medium for free to get updates from this writer.
+
+Subscribe
+
+Subscribe
+
+Remember me for faster sign in
+
+Full config for a Laravel project, with scripts explained below:
+
+```
+{  "hooks": {    "SessionStart": [      {        "matcher": "startup",        "hooks": [          {            "type": "command",            "command": ".codex/hooks/laravel-context.sh",            "statusMessage": "Loading Laravel project context...",            "timeout": 15          }        ]      }    ],    "PreToolUse": [      {        "matcher": "Bash",        "hooks": [          {            "type": "command",            "command": ".codex/hooks/block-dangerous-artisan.sh",            "statusMessage": "Checking artisan command safety...",            "timeout": 10          }        ]      }    ],    "PostToolUse": [      {        "matcher": "Bash",        "hooks": [          {            "type": "command",            "command": ".codex/hooks/php-quality-check.sh",            "statusMessage": "Running code quality checks...",            "timeout": 120          }        ]      }    ]  }}
+```
+
+One script per event. Let’s go over what each does.
+
+## Injecting Laravel project context on session start
+
+When Codex opens a session in a Laravel project, it has no idea which branch you’re on, what your last migration was, or whether`.env` is sane. This hook fixes that.
+
+```
+#!/bin/bash# .codex/hooks/laravel-context.shecho "=== Laravel Project Context ==="echo "Branch: $(git branch --show-current)"echo "Last migration: $(ls -1t database/migrations/ | head -1)"echo "PHP: $(php -v | head -1)"echo "Composer: $(composer --version 2>/dev/null | head -1)"if [ -f .env ]; then  echo "APP_ENV: $(grep '^APP_ENV=' .env | cut -d= -f2)"  echo "DB_CONNECTION: $(grep '^DB_CONNECTION=' .env | cut -d= -f2)"  echo "QUEUE_CONNECTION: $(grep '^QUEUE_CONNECTION=' .env | cut -d= -f2)"else  echo "WARNING: No .env file found"fi
+```
+
+Actual output (injected as developer context):
+
+Press enter or click to view image in full size
+
+Now the model knows the branch, the database driver, and the queue backend before writing a single line of code. Plain text on stdout from`SessionStart` feeds straight into developer context.
+
+Press enter or click to view image in full size
+
+## Blocking dangerous artisan commands
+
+This is the exit code 2 pattern I reach for most.`php artisan migrate:fresh` wipes your database.`php artisan db:wipe` does the same.`php artisan down` takes your app offline. In a Codex session, the model might decide any of these is a reasonable next step.
+
+```
+#!/bin/bash# .codex/hooks/block-dangerous-artisan.shINPUT=$(cat)COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command // empty')BLOCKED_COMMANDS=(  "artisan migrate:fresh"  "artisan db:wipe"  "artisan down"  "artisan migrate:reset")for blocked in "${BLOCKED_COMMANDS[@]}"; do  if echo "$COMMAND" | grep -q "$blocked"; then    echo "Blocked: '$blocked' is too destructive for an automated session. Use 'artisan migrate' for safe migrations." >&2    exit 2  fidoneexit 0
+```
+
+When Codex tries to run`php artisan migrate:fresh`, the hook catches it, exits 2, and the stderr message tells it to use`artisan migrate` instead. No database wiped. (Yes, I've had this save me.) The feedback lands in the context window, so the next turn adapts.
+
+Here it is in practice:
+
+Press enter or click to view image in full size
+
+## Auto-running Pint and PHPStan after PHP file changes
+
+PostToolUse can’t reverse what already ran, but it can inject feedback that shapes what happens next. This hook runs Laravel Pint and PHPStan after any bash command that looks like it touched PHP files:
+
+```
+#!/bin/bash# .codex/hooks/php-quality-check.shINPUT=$(cat)COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command // empty')# Only trigger on commands that likely modified PHP filesif ! echo "$COMMAND" | grep -qE '\.(php|blade\.php)'; then  exit 0fiFEEDBACK=""# Run Pintif [ -x ./vendor/bin/pint ]; then  PINT_OUTPUT=$(./vendor/bin/pint --test 2>&1)  if [ $? -ne 0 ]; then    FEEDBACK="${FEEDBACK}Pint style violations found:\n${PINT_OUTPUT}\n"  fifi# Run PHPStanif [ -x ./vendor/bin/phpstan ]; then  PHPSTAN_OUTPUT=$(./vendor/bin/phpstan analyse --no-progress --error-format=raw 2>&1)  if [ $? -ne 0 ]; then    FEEDBACK="${FEEDBACK}PHPStan errors found:\n${PHPSTAN_OUTPUT}\n"  fifiif [ -n "$FEEDBACK" ]; then  printf '%b' "$FEEDBACK" >&2  exit 2fiexit 0
+```
+
+When the hook exits 2, PostToolUse replaces the tool result with`stderr` output. If PHPStan finds a type error in the file Codex just modified, that feedback is already in context for the next turn. Self-correction, no prompting required.
+
+Press enter or click to view image in full size
+
+And here it is doing it’s thing:
+
+Press enter or click to view image in full size
+
+For most developers worth their salt, automatic linting is a way of life.
+
+## Git safety hooks
+
+Git operations are the other place where Codex needs guardrails.
+
+Add them to the same`.codex/hooks.json`. Multiple hooks in the same event group run concurrently, so the artisan blocker and the Git blocker both fire on every`Bash` tool call:
+
+```
+{  "hooks": {    "PreToolUse": [      {        "matcher": "Bash",        "hooks": [          {            "type": "command",            "command": ".codex/hooks/block-dangerous-artisan.sh",            "statusMessage": "Checking artisan safety..."          },          {            "type": "command",            "command": ".codex/hooks/block-dangerous-git.sh",            "statusMessage": "Checking Git safety..."          }        ]      }    ],    "PostToolUse": [      {        "matcher": "Bash",        "hooks": [          {            "type": "command",            "command": ".codex/hooks/php-quality-check.sh",            "statusMessage": "Running quality checks..."          },          {            "type": "command",            "command": ".codex/hooks/validate-commit-message.sh",            "statusMessage": "Checking commit message..."          }        ]      }    ]  }}
+```
+
+## Blocking destructive Git commands on main
+
+Force-pushing to main, hard-resetting, cleaning tracked files: none of these should happen from an AI agent on your primary branch.
+
+```
+#!/bin/bash# .codex/hooks/block-dangerous-git.shINPUT=$(cat)COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command // empty')BRANCH=$(git branch --show-current 2>/dev/null)# Only enforce on main/masterif [[ "$BRANCH" != "main" && "$BRANCH" != "master" ]]; then  exit 0fiDANGEROUS_PATTERNS=(  "git push --force"  "git push -f"  "git reset --hard"  "git clean -f"  "git checkout -- .")for pattern in "${DANGEROUS_PATTERNS[@]}"; do  if echo "$COMMAND" | grep -q "$pattern"; then    echo "Blocked: '$pattern' is not allowed on $BRANCH. Create a feature branch first." >&2    exit 2  fidoneexit 0
+```
+
+The branch check is the whole point. On a feature branch, force-push all you want. On main, the hook stops it and tells the model to branch first.
+
+Press enter or click to view image in full size
+
+And again, it just works:
+
+Press enter or click to view image in full size
+
+Too easy.
+
+## Validating commit message format
+
+PostToolUse is the right fit here. The commit already happened; you can’t un-commit it through the hook. But you can tell the model its message didn’t follow your convention.
+
+```
+#!/bin/bash# .codex/hooks/validate-commit-message.shINPUT=$(cat)COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command // empty')# Only check git commit commandsif ! echo "$COMMAND" | grep -q 'git commit'; then  exit 0fiLAST_MSG=$(git log -1 --pretty=%s 2>/dev/null)# Check for conventional commit formatif ! echo "$LAST_MSG" | grep -qE '^(feat|fix|docs|style|refactor|test|chore|ci|build|perf)(\(.+\))?: .+'; then  echo "Commit message '$LAST_MSG' does not follow conventional commit format. Expected: type(scope): description. Please amend." >&2  exit 2fiexit 0
+```
+
+PostToolUse doesn’t undo the commit, but the feedback gives the agent enough context to run`git commit --amend` on the next turn.
+
+Press enter or click to view image in full size
+
+Trying it out is easy. Ask Codex to create some dummy files and commit them on your behalf:
+
+Press enter or click to view image in full size
+
+Rules me, and for thee? Joy!
+
+## The Bash-only caveat
+
+`PreToolUse` and`PostToolUse` matchers filter on`tool_name`, and right now the only tool name Codex emits is`Bash`. The matcher regex supports patterns like`Edit|Write|Bash`, but nothing matches for`Edit` or`Write`. Codex's file editing tools don't fire hook events yet.
+
+So you can’t block a file write to`config/app.php` through PreToolUse, and you can't lint a file modified through the Edit tool. Hooks only see shell commands. Bit frustrating, that.
+
+For Laravel and Git workflows, that’s fine: most of the dangerous operations are CLI commands anyway. But if you want to intercept every file modification Codex makes, hooks can’t do that yet.
+
+The hook schema directory defines`tool_name` as a string field, with 10 schema files covering input and output for all five events. The infrastructure for more tool types exists; it just hasn't been wired up.
+
+Press enter or click to view image in full size
+
+## Where this is heading
+
+Codex’s five events are a solid start, but the space is moving fast.
+
+Claude Code has over 27 hook events covering file reads, file writes, subagent spawns, and notifications. It supports four hook types: command, prompt, agent, and HTTP. Gemini CLI shipped with roughly 12 lifecycle events including`BeforeTool`,`AfterTool`,`BeforeModel`, and`AfterModel`, with hooks enabled by default since v0.26.0. No feature flag needed.
+
+Codex still requires the feature flag, and hooks are still experimental and disabled on Windows. But the velocity speaks for itself: two events in February, five by late March.
+
+Issue #16226 on the Codex repo proposes adding`agent_id` and`agent_type` fields to all hook schemas. That would let you write different rules for the primary agent versus sub-agents, the kind of granularity that turns personal convenience scripts into team-scale governance.
+
+The three new events took Codex hooks from a neat idea to something I’d build a workflow around. Exit code 2 is the mechanism that makes blocking work. And the distance between Codex’s 5 events and Claude Code’s 27+ shows how much room there is to grow.
+
+Press enter or click to view image in full size
+
+Some catching up to do, but a very solid foundation with quality at the helm.
+
+If this guide saved you time, follow along. I write these when the features ship, and the next Codex release is always a few weeks away.
+
+## Related reading
+
+## Codex CLI has hooks now, stop stuffing AGENTS.md
+
+### Codex CLI has hooks now, stop stuffing AGENTS.md OpenAI quietly shipped lifecycle hooks for Codex CLI and they fill a…
+
+## The definitive guide to Codex CLI: from first install to production workflows
+
+### Everything I've learned from writing 10+ Codex guides, now in one place; with infographics, copy-paste configs, and…
+
+## List: Codex | Curated by JP Caparas | Medium
+
+### Codex · 54 stories on Medium
+
+## You can do more with this article
+
+Bookmark it for the next time you set up a Codex project and need the hooks.json patterns.
+
+Highlight the exit code 2 section so other developers find the blocking mechanism when they search for it.
+
+Share it with your team if you’re adopting Codex CLI for collaborative work. The Git safety hooks are a good starting point for team conventions.
+
+Leave a response if you’ve built hooks for other frameworks. I’d like to see what patterns emerge beyond Laravel and Git.
+
+Sign in to Medium to bookmark, highlight, and respond.
+
+## Published in AI @ Sulat.com
+
+Last published May 7, 2026
+
+Deep technical research on AI meets eloquent, accessible writing for everyday people and the technically curious. Subscribe now.
+
+## Written by JP Caparas
+
+Codex Ambassador @ OpenAI. I write technical explainers with a hint of humour and a dash of cynicism. Subscribe now for daily updates.
+
+## Responses (1)
+
+```
+Amazing article! Very informative. Thanks!
+```
+
+--
+
+Reply
+
+## More from JP Caparas and AI @ Sulat.com
+
+In
+
+by
+
+·
+
+Feb 1
+
+## The definitive guide to OpenCode: from first install to production workflows
+
+In
+
+by
+
+·
+
+Jan 23
+
+## The Advanced Claude Code Setup Guide
+
+### You’ve read the basics. Now here’s the configuration layer that separates casual users from teams shipping production code at 3x speed.
+
+In
+
+by
+
+·
+
+Jan 21
+
+## Claude Code is turning non-programmers into builders. Here’s how to start.
+
+### From an 8-year-old making games to a Google engineer completing a year’s work in one hour. And how a $20 subscription might change your…
+
+In
+
+by
+
+·
+
+Jan 23
+
+## Commands, skills, and agents in OpenCode: what’s the difference?
+
+### A practical guide to extending OpenCode without confusing yourself
+
+See all from JP Caparas
+
+See all from AI @ Sulat.com
+
+## Recommended from Medium
+
+In
+
+by
+
+·
+
+May 21
+
+## We Built 70+ Claude Skills. These Are The Best
+
+### I asked 7 AI writers to share their #1 Claude skill they built.
+
+In
+
+by
+
+·
+
+May 22
+
+## Claude Code: Spec-Driven Development — Why Your AI Coding Sessions Fall Apart at Hour Three
+
+### Part 4: Stop coding blind: the spec-driven workflow built-in that turns Claude Code from a function writer into a feature builder.
+
+In
+
+by
+
+·
+
+May 8
+
+## A Single CLAUDE.md File Went Viral. The Reason Is Embarrassingly Simple.
+
+### 91,000 stars on GitHub. No code. Four rules from Andrej Karpathy that every coding agent should have been following from day one.
+
+In
+
+by
+
+·
+
+Apr 24
+
+## I Spent 6 Months Tuning Claude Code. Here’s the Exact Setup That Finally Worked.
+
+### CLAUDE.md, subagents, hooks, skills, worktrees, and the five MCP servers that earn their place
+
+In
+
+by
+
+·
+
+Apr 6
+
+## MCP is Dead
+
+### Why you should avoid using MCP in Claude Code and what to use instead
+
+In
+
+by
+
+·
+
+May 11
+
+## Spec-Driven Development with Spec Kit and Claude Code
+
+### How AI agents are pushing requirements back to the center of the software development lifecycle

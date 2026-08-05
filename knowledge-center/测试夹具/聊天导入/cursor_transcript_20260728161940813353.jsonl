@@ -1,0 +1,2 @@
+{"role": "user", "message": {"content": [{"type": "text", "text": "jsonl user 20260728161940813353"}]}}
+{"role": "assistant", "message": {"content": [{"type": "text", "text": "jsonl assistant ok"}]}}

@@ -1,0 +1,12 @@
+---
+pid: 26880
+cwd: |
+  C:\Users\win\Desktop\AI--main
+---
+PowerShell Extension v2025.4.0
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/vscode-powershell
+Type 'help' to get help.
+
+PS C:\Users\win\Desktop\AI--main> 

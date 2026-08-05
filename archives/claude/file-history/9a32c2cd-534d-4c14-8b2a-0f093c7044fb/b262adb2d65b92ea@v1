@@ -1,0 +1,626 @@
+import { computed, ref } from 'vue'
+import { defineStore } from 'pinia'
+
+export type AssistantMode = 'knowledge' | 'data' | 'tool' | 'insight'
+export type AssistantProfileKey =
+  | 'home'
+  | 'dataAccess'
+  | 'workbook'
+  | 'insight'
+  | 'version'
+  | 'adjust'
+  | 'output'
+  | 'admin'
+  | 'assistant'
+  | 'default'
+
+export interface AssistantMessage {
+  id: number
+  role: 'user' | 'agent'
+  text: string
+  time: string
+  refs?: string[]
+}
+
+export interface AssistantReference {
+  title: string
+  type: '业务表快照' | '字段说明' | '已审核摘要' | '规范文档'
+  scope: string
+  version: string
+  updatedAt: string
+  review: string
+}
+
+export interface AssistantTask {
+  id: string
+  title: string
+  mode: AssistantMode
+  status: '待复核' | '草稿已生成'
+  summary: string
+  steps: { title: string; detail: string; status: 'done' | 'active' }[]
+  references: string[]
+}
+
+interface AssistantProfile {
+  key: AssistantProfileKey
+  label: string
+  mode: AssistantMode
+  modeChips: AssistantMode[]
+  quickActions: string[]
+  starter: string
+  task: AssistantTask
+  references: AssistantReference[]
+}
+
+const modeTitles: Record<AssistantMode, string> = {
+  knowledge: '知识与口径查询',
+  data: '结构化数据查询',
+  tool: '规划工具任务',
+  insight: '规律与版本解读',
+}
+
+const profiles: Record<AssistantProfileKey, AssistantProfile> = {
+  home: {
+    key: 'home',
+    label: '首页总览',
+    mode: 'data',
+    modeChips: ['data', 'insight', 'knowledge'],
+    quickActions: ['解释当前待办', '汇总阻断异常', '生成下一步处理建议'],
+    starter: '我已读取你的当前责任、待办进度和阻断异常。可先解释待办，或汇总需要优先处理的问题。',
+    task: {
+      id: 'task-home',
+      title: '续办当前责任',
+      mode: 'data',
+      status: '待复核',
+      summary: '按角色整理最高优先级任务与阻断项。',
+      steps: [
+        { title: '识别当前角色责任', detail: '读取首页待办与版本状态', status: 'done' },
+        { title: '汇总阻断异常', detail: '关联异常数与处理入口', status: 'active' },
+        { title: '给出下一步建议', detail: '进入对应工作表或版本页', status: 'active' },
+      ],
+      references: ['首页责任卡快照', '异常回流说明'],
+    },
+    references: [
+      {
+        title: '首页责任卡快照',
+        type: '业务表快照',
+        scope: '当前角色 / 待办 / 异常 / 版本',
+        version: '演示会话 V0.7',
+        updatedAt: '2026-07-13 17:00',
+        review: '仅演示身份可见，正式权限待确认',
+      },
+      {
+        title: '异常回流说明',
+        type: '字段说明',
+        scope: '从首页回到工作表定位',
+        version: '流程样例',
+        updatedAt: '2026-07-13 16:40',
+        review: '需人工确认处理责任',
+      },
+    ],
+  },
+  dataAccess: {
+    key: 'dataAccess',
+    label: '数据接入',
+    mode: 'knowledge',
+    modeChips: ['knowledge', 'data', 'tool'],
+    quickActions: ['解释批次来源', '说明字段映射风险', '生成清洗后处理建议'],
+    starter: '当前在数据接入页。我可以解释接口/数据湖/模板批次来源，并提示清洗后应落到储量工作表的哪些异常。',
+    task: {
+      id: 'task-access',
+      title: '批次清洗与异常分流',
+      mode: 'knowledge',
+      status: '待复核',
+      summary: '核对上传/拉取批次的映射与质量告警。',
+      steps: [
+        { title: '识别批次来源', detail: '接口、数据湖或 Excel 模板', status: 'done' },
+        { title: '检查字段映射', detail: '商业性条件、层位编码', status: 'active' },
+        { title: '分流到工作表', detail: '带 issue/sheet 上下文进入储量工作表', status: 'active' },
+      ],
+      references: ['接口批次字段映射', '模板导入识别规则'],
+    },
+    references: [
+      {
+        title: '接口批次字段映射',
+        type: '字段说明',
+        scope: '储量填报系统 → 工作表字段',
+        version: '映射样例 V1',
+        updatedAt: '2026-07-13 10:05',
+        review: '正式映射表待业务确认',
+      },
+      {
+        title: '模板导入识别规则',
+        type: '规范文档',
+        scope: '按文件名识别预置模板，不解析业务内容',
+        version: 'Demo 边界',
+        updatedAt: '2026-07-13 09:30',
+        review: '已标注本地样例边界',
+      },
+    ],
+  },
+  workbook: {
+    key: 'workbook',
+    label: '工作表',
+    mode: 'tool',
+    modeChips: ['tool', 'knowledge', 'data'],
+    quickActions: ['解释当前填写规则', '定位这个异常怎么处理', '生成当前校验摘要'],
+    starter: '我已关联当前工作表、Sheet 与校验问题。可解释填写规则、定位异常，或生成校验摘要供复核。',
+    task: {
+      id: 'task-workbook',
+      title: '工作表校验协助',
+      mode: 'tool',
+      status: '待复核',
+      summary: '围绕可填字段、公式只读列和阻断异常提供建议。',
+      steps: [
+        { title: '读取 Sheet 与版本', detail: '当前 Sheet / 草案版本', status: 'done' },
+        { title: '定位异常单元格', detail: '行、列、字段与责任人', status: 'active' },
+        { title: '生成校验摘要', detail: '人工复核后使用', status: 'active' },
+      ],
+      references: ['字段公式说明', '当前校验问题清单'],
+    },
+    references: [
+      {
+        title: '字段公式说明',
+        type: '字段说明',
+        scope: '可填 / 公式只读 / 锁定',
+        version: '模板候选 V1',
+        updatedAt: '2026-07-12 16:20',
+        review: '正式公式维护责任待确认',
+      },
+      {
+        title: '当前校验问题清单',
+        type: '业务表快照',
+        scope: '阻断与需复核项',
+        version: '草案快照',
+        updatedAt: '2026-07-13 11:10',
+        review: '需回到工作表确认后再归档',
+      },
+    ],
+  },
+  insight: {
+    key: 'insight',
+    label: '洞察与分析',
+    mode: 'insight',
+    modeChips: ['insight', 'data', 'knowledge'],
+    quickActions: ['解释当前图表口径', '对比所选指标差异', '生成分析结论草稿'],
+    starter: '当前页以图表和指标筛选为主。我会结合所选范围说明口径，并生成可复核的分析结论草稿。',
+    task: {
+      id: 'task-insight',
+      title: '指标解读草稿',
+      mode: 'insight',
+      status: '待复核',
+      summary: '按多选指标与范围生成结论与风险提示。',
+      steps: [
+        { title: '确认筛选范围', detail: '油区、指标、年份或三条线', status: 'done' },
+        { title: '对比差异驱动', detail: '列出主要变化项', status: 'active' },
+        { title: '输出结论草稿', detail: '不作为最终专业结论', status: 'active' },
+      ],
+      references: ['指标口径说明', '分析范围快照'],
+    },
+    references: [
+      {
+        title: '指标口径说明',
+        type: '字段说明',
+        scope: '国家线 / 内部线 / 上市线',
+        version: '口径样例',
+        updatedAt: '2026-07-11 14:00',
+        review: '正式口径仍待确认',
+      },
+      {
+        title: '分析范围快照',
+        type: '业务表快照',
+        scope: '当前筛选条件',
+        version: '会话快照',
+        updatedAt: '2026-07-13 15:20',
+        review: '随筛选变化更新',
+      },
+    ],
+  },
+  version: {
+    key: 'version',
+    label: '版本对比与结果输出',
+    mode: 'insight',
+    modeChips: ['insight', 'knowledge', 'data'],
+    quickActions: ['解释当前版本差异', '生成复核摘要草稿', '列出导出前检查项'],
+    starter: '已带入版本对比与结果输出上下文。可解释差异、生成复核摘要，或列出导出前检查项。',
+    task: {
+      id: 'task-version',
+      title: '版本差异复核',
+      mode: 'insight',
+      status: '待复核',
+      summary: '定位版本间指标变化并给出回流处理建议。',
+      steps: [
+        { title: '读取版本快照', detail: '基线与对比版本', status: 'done' },
+        { title: '汇总差异项', detail: '按单元/油气田聚合', status: 'done' },
+        { title: '生成复核建议', detail: '异常回流至工作表', status: 'active' },
+      ],
+      references: ['版本差异表快照', '复核摘要模板'],
+    },
+    references: [
+      {
+        title: '版本差异表快照',
+        type: '业务表快照',
+        scope: '基线 vs 对比版本',
+        version: '对比快照 2026-07-13',
+        updatedAt: '2026-07-13 10:46',
+        review: '正式采用前需业务复核',
+      },
+      {
+        title: '复核摘要模板',
+        type: '已审核摘要',
+        scope: '差异说明结构',
+        version: '摘要模板 V1',
+        updatedAt: '2026-07-12 18:00',
+        review: 'AI 草稿不可直接归档',
+      },
+    ],
+  },
+  adjust: {
+    key: 'adjust',
+    label: '调整与排期',
+    mode: 'tool',
+    modeChips: ['tool', 'insight', 'data'],
+    quickActions: ['解释约束冲突', '整理可调整参数', '生成调整任务草稿'],
+    starter: '当前在调整与排期页。我可以解释约束冲突，整理可调参数，并生成调整任务草稿供人工确认。',
+    task: {
+      id: 'task-adjust',
+      title: '约束与参数调整',
+      mode: 'tool',
+      status: '待复核',
+      summary: '投产时间、工作量与产量约束联动检查。',
+      steps: [
+        { title: '读取约束条件', detail: '总量、时率、投产窗口', status: 'done' },
+        { title: '识别冲突项', detail: '无解或超限原因', status: 'active' },
+        { title: '生成调整草稿', detail: '不直接覆盖正式版本', status: 'active' },
+      ],
+      references: ['约束参数说明', '排期回写规则'],
+    },
+    references: [
+      {
+        title: '约束参数说明',
+        type: '字段说明',
+        scope: '产量约束 / 工作量 / 投产时间',
+        version: '工具样例',
+        updatedAt: '2026-07-12 11:00',
+        review: '算法边界待确认',
+      },
+      {
+        title: '排期回写规则',
+        type: '规范文档',
+        scope: '回写草案，不覆盖正式版',
+        version: '流程样例',
+        updatedAt: '2026-07-11 09:40',
+        review: '正式责任链待确认',
+      },
+    ],
+  },
+  output: {
+    key: 'output',
+    label: '结果输出',
+    mode: 'knowledge',
+    modeChips: ['knowledge', 'insight', 'data'],
+    quickActions: ['核对成果引用版本', '生成成果摘要草稿', '列出导出前检查项'],
+    starter: '结果输出已并入版本对比页。我可以核对引用版本、生成摘要草稿，并列出导出前必查内容。',
+    task: {
+      id: 'task-output',
+      title: '成果导出前检查',
+      mode: 'knowledge',
+      status: '待复核',
+      summary: '核对版本引用、图件范围与摘要完整性。',
+      steps: [
+        { title: '核对引用版本', detail: 'V2 / V3 与成果包绑定', status: 'done' },
+        { title: '检查图件与范围', detail: '油区、年份、指标', status: 'active' },
+        { title: '生成摘要草稿', detail: '人工确认后导出', status: 'active' },
+      ],
+      references: ['成果包版本清单', '导出前检查清单'],
+    },
+    references: [
+      {
+        title: '成果包版本清单',
+        type: '业务表快照',
+        scope: '图件 / 总表 / 摘要',
+        version: '成果候选',
+        updatedAt: '2026-07-13 12:10',
+        review: '导出前需复核',
+      },
+      {
+        title: '导出前检查清单',
+        type: '规范文档',
+        scope: '版本、口径、权限、日志',
+        version: '检查项 V1',
+        updatedAt: '2026-07-10 17:00',
+        review: '正式检查项待确认',
+      },
+    ],
+  },
+  admin: {
+    key: 'admin',
+    label: '系统管理',
+    mode: 'knowledge',
+    modeChips: ['knowledge', 'data'],
+    quickActions: ['说明模板维护责任', '列出知识快照范围', '生成配置检查建议'],
+    starter: '系统管理页侧重模板、主数据与知识快照维护。我可以说明责任边界并给出配置检查建议。',
+    task: {
+      id: 'task-admin',
+      title: '配置与知识治理',
+      mode: 'knowledge',
+      status: '待复核',
+      summary: '核对模板公式、主数据与 AI 引用快照责任。',
+      steps: [
+        { title: '定位配置对象', detail: '模板 / 主数据 / 知识库', status: 'done' },
+        { title: '说明维护责任', detail: '谁改、谁审、谁生效', status: 'active' },
+        { title: '给出检查建议', detail: '不自动改正式配置', status: 'active' },
+      ],
+      references: ['模板维护说明', '知识快照治理边界'],
+    },
+    references: [
+      {
+        title: '模板维护说明',
+        type: '规范文档',
+        scope: '工作表模板与字段公式',
+        version: '治理样例',
+        updatedAt: '2026-07-09 15:00',
+        review: '正式责任链待确认',
+      },
+      {
+        title: '知识快照治理边界',
+        type: '已审核摘要',
+        scope: '业务表快照 / 字段说明 / 摘要',
+        version: 'AI-09 样例',
+        updatedAt: '2026-07-13 08:50',
+        review: '正式时点与权限待确认',
+      },
+    ],
+  },
+  assistant: {
+    key: 'assistant',
+    label: '敖钦辅助',
+    mode: 'knowledge',
+    modeChips: ['knowledge', 'data', 'tool', 'insight'],
+    quickActions: ['解释当前待办', '汇总阻断异常', '给出下一步建议'],
+    starter: '可继续基于当前业务上下文提问；回答中的来源标签用于核对版本，不直接改正式数据。',
+    task: {
+      id: 'task-assistant',
+      title: '共享会话追踪',
+      mode: 'knowledge',
+      status: '待复核',
+      summary: '侧栏与全屏对话共用同一会话。',
+      steps: [
+        { title: '保持会话连续', detail: '侧栏提问后展开仍保留', status: 'done' },
+        { title: '核对来源', detail: '版本、范围、更新时间', status: 'active' },
+        { title: '人工复核', detail: 'AI 不覆盖正式数据', status: 'active' },
+      ],
+      references: ['共享会话说明', '来源复核要求'],
+    },
+    references: [
+      {
+        title: '共享会话说明',
+        type: '规范文档',
+        scope: '侧栏快速协助 + 全屏对话',
+        version: 'V0.7',
+        updatedAt: '2026-07-13 09:00',
+        review: '已作为演示约束',
+      },
+      {
+        title: '来源复核要求',
+        type: '已审核摘要',
+        scope: '版本 / 范围 / 更新时间 / 复核状态',
+        version: '引用规范',
+        updatedAt: '2026-07-12 10:00',
+        review: '无引用不得给确定结论',
+      },
+    ],
+  },
+  default: {
+    key: 'default',
+    label: '当前页面',
+    mode: 'knowledge',
+    modeChips: ['knowledge', 'data', 'insight'],
+    quickActions: ['解释当前页面目的', '汇总可执行动作', '生成下一步建议'],
+    starter: '我会结合当前页面上下文整理可复核的建议。',
+    task: {
+      id: 'task-default',
+      title: '页面上下文协助',
+      mode: 'knowledge',
+      status: '待复核',
+      summary: '基于当前路由提供通用协助。',
+      steps: [
+        { title: '识别页面', detail: '读取路由与标题', status: 'done' },
+        { title: '给出可执行动作', detail: '快捷建议', status: 'active' },
+        { title: '等待确认', detail: '人工复核后使用', status: 'active' },
+      ],
+      references: ['页面上下文快照'],
+    },
+    references: [
+      {
+        title: '页面上下文快照',
+        type: '业务表快照',
+        scope: '当前路由',
+        version: '会话',
+        updatedAt: '2026-07-13 12:00',
+        review: '通用兜底',
+      },
+    ],
+  },
+}
+
+function resolveProfileKey(path: string, context = ''): AssistantProfileKey {
+  const text = `${path} ${context}`
+  if (path.includes('/dashboard') || context.includes('首页')) return 'home'
+  if (path.includes('/history-cleaning') || context.includes('数据接入')) return 'dataAccess'
+  if (path.includes('/collection') || path.includes('/workflow') || context.includes('工作表') || context.includes('编制')) return 'workbook'
+  if (path.includes('/analysis') || context.includes('洞察')) return 'insight'
+  if (path.includes('/version') || context.includes('版本')) return 'version'
+  if (path.includes('/profile') || context.includes('调整') || context.includes('排期')) return 'adjust'
+  if (path.includes('/output') || context.includes('成果')) return 'output'
+  if (path.includes('/admin') || context.includes('系统管理')) return 'admin'
+  if (path.includes('/assistant') || context.includes('智能辅助')) return 'assistant'
+  if (text.includes('工作表') || text.includes('采集')) return 'workbook'
+  return 'default'
+}
+
+export const useWorkbenchStore = defineStore('workbench', () => {
+  const assistantOpen = ref(false)
+  const assistantMode = ref<AssistantMode>('knowledge')
+  const assistantContext = ref('首页总览')
+  const assistantPrompt = ref('')
+  const profileKey = ref<AssistantProfileKey>('home')
+  const activeProfile = computed(() => profiles[profileKey.value] ?? profiles.default)
+
+  const messages = ref<AssistantMessage[]>([
+    { id: 1, role: 'agent', text: profiles.home.starter, time: '刚刚', refs: profiles.home.references.map((item) => item.title).slice(0, 2) },
+  ])
+  const references = ref<AssistantReference[]>([...profiles.home.references])
+  const tasks = ref<AssistantTask[]>([{ ...profiles.home.task, steps: profiles.home.task.steps.map((step) => ({ ...step })) }])
+  const activeTaskId = ref(profiles.home.task.id)
+
+  const activeTask = computed(() => tasks.value.find((task) => task.id === activeTaskId.value) ?? tasks.value[0])
+  const quickActions = computed(() => activeProfile.value.quickActions)
+  const modeChips = computed(() => activeProfile.value.modeChips)
+
+  function applyProfile(key: AssistantProfileKey, contextLabel?: string, resetThread = true) {
+    const profile = profiles[key] ?? profiles.default
+    profileKey.value = profile.key
+    assistantContext.value = contextLabel || profile.label
+    assistantMode.value = profile.mode
+    references.value = profile.references.map((item) => ({ ...item }))
+    const seededTask: AssistantTask = {
+      ...profile.task,
+      steps: profile.task.steps.map((step) => ({ ...step })),
+      references: [...profile.task.references],
+    }
+    tasks.value = [seededTask]
+    activeTaskId.value = seededTask.id
+    if (resetThread) {
+      messages.value = [
+        {
+          id: Date.now(),
+          role: 'agent',
+          text: profile.starter,
+          time: '刚刚',
+          refs: profile.references.map((item) => item.title).slice(0, 2),
+        },
+      ]
+    }
+  }
+
+  function syncRouteContext(path: string, title?: string) {
+    const key = resolveProfileKey(path, title || '')
+    const label = title ? `${title}` : profiles[key].label
+    if (key !== profileKey.value || assistantContext.value !== label) {
+      applyProfile(key, label, !assistantOpen.value)
+    }
+  }
+
+  function openAssistant(context = '首页总览', mode?: AssistantMode, path = '') {
+    const key = resolveProfileKey(path || context, context)
+    applyProfile(key, context, messages.value.length <= 1)
+    if (mode) assistantMode.value = mode
+    assistantOpen.value = true
+  }
+
+  function closeAssistant() {
+    assistantOpen.value = false
+  }
+
+  function setAssistantMode(mode: AssistantMode) {
+    assistantMode.value = mode
+  }
+
+  function buildModeReply(question: string, mode: AssistantMode): string {
+    const context = assistantContext.value
+    if (mode === 'knowledge') {
+      return [
+        `【知识与口径查询 · 样例】针对「${question}」`,
+        `已在知识库检索与「${context}」相关的制度/字段说明。`,
+        '命中：产量规划字段与公式说明；QHS 2062 年度产量预测技术规范。',
+        '结论草稿：可填字段与公式只读列需分开处理；正式口径以已审核文档为准。',
+        '边界：无引用不得给确定结论；本回复为本地样例，非敖钦正式检索结果。',
+      ].join('\n')
+    }
+    if (mode === 'data') {
+      return [
+        `【结构化数据查询 · NL2SQL 样例】针对「${question}」`,
+        '查询说明：按当前身份与数据范围过滤。',
+        '拟生成 SQL（样例）：SELECT oilfield, year, total FROM planning_profile WHERE version = \'规划 V3 草案\' AND year IN (2026,2028);',
+        '样例结果：惠州 26-1 / 2028 / 18.2；西江 30-2 / 2028 / 12.4（单位：万吨）。',
+        '边界：真实表结构与准确率待确认；结果需人工复核。',
+      ].join('\n')
+    }
+    if (mode === 'tool') {
+      return [
+        `【规划工具任务 · 样例】针对「${question}」`,
+        `已关联「${context}」参数：投产时间、工作量、总量约束。`,
+        '任务步骤：1) 读取约束 2) 生成调整草案 3) 提交人工复核。',
+        '输出：调整任务草稿已创建，不会直接覆盖工作表正式版本。',
+        '边界：算法耗时与可调参数范围待业务确认。',
+      ].join('\n')
+    }
+    return [
+      `【规律与版本解读 · 样例】针对「${question}」`,
+      `已读取「${context}」版本快照与差异项。`,
+      '驱动因素草稿：开发井工作量与投产节奏带来正向变化；基础递减仍需核对。',
+      '风险：投产时间、异常说明未闭环前不宜归档成果包。',
+      '边界：AI 解读不可作为最终专业结论，需复核后使用。',
+    ].join('\n')
+  }
+
+  function submitAssistant(question = assistantPrompt.value, mode = assistantMode.value) {
+    const text = question.trim()
+    if (!text) return
+    const id = Date.now()
+    const title = modeTitles[mode]
+    const refs = references.value.slice(0, 2).map((reference) => reference.title)
+    messages.value.push({ id, role: 'user', text, time: '刚刚' })
+    messages.value.push({
+      id: id + 1,
+      role: 'agent',
+      text: buildModeReply(text, mode),
+      time: '刚刚',
+      refs,
+    })
+    const task: AssistantTask = {
+      id: `task-${id}`,
+      title: `${title}：${text.slice(0, 18)}${text.length > 18 ? '…' : ''}`,
+      mode,
+      status: '待复核',
+      summary: text,
+      steps: [
+        { title: '确认业务上下文', detail: assistantContext.value, status: 'done' },
+        {
+          title: mode === 'tool' ? '组织参数与约束' : mode === 'data' ? '生成查询说明与样例结果' : mode === 'knowledge' ? '检索知识与引用' : '汇总差异驱动因素',
+          detail: '保留版本、范围和权限说明',
+          status: 'done',
+        },
+        { title: '提交人工复核', detail: '不能直接覆盖正式数据或版本', status: 'active' },
+      ],
+      references: refs,
+    }
+    tasks.value.unshift(task)
+    activeTaskId.value = task.id
+    assistantPrompt.value = ''
+  }
+
+  return {
+    assistantOpen,
+    assistantMode,
+    assistantContext,
+    assistantPrompt,
+    profileKey,
+    activeProfile,
+    messages,
+    references,
+    tasks,
+    activeTaskId,
+    activeTask,
+    quickActions,
+    modeChips,
+    modeTitles,
+    openAssistant,
+    closeAssistant,
+    setAssistantMode,
+    submitAssistant,
+    syncRouteContext,
+    applyProfile,
+  }
+})

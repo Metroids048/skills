@@ -1,0 +1,30 @@
+---
+pid: 25320
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\ngit add scripts/_watch_p03_until_fill.py services/agents/service.py\n# re-add anything ruff-format touched\ngit add -u\n$env:QUANT_PYTEST_PYTHON = \"C:\\Users\\win\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\"\n$msg = @\"\ncheckpoint: P1 MARKET/TRADE review + P2 evidence UI while P0.3 watches\n\nAdvance remaining authenticity-plan items that do not need a natural fill: hourly MARKET_REVIEW, advisory TRADE_REVIEW schema, Runtime Data Freshness/Strategy Evidence, exchange-order transition guards, and headless Runtime Truth verify helper. Leave Sampling watch running; P3 stays locked.\n\"@\ngit commit --trailer \"Co-authored-by: Cursor <cursoragent@cursor.com>\" -m $msg\n"
+started_at: 2026-07-28T07:40:41.073Z
+running_for_ms: 157306   
+---
+ruff (legacy alias)......................................................Passed
+ruff format..............................................................Passed
+check yaml...........................................(no files to check)Skipped
+check json...........................................(no files to check)Skipped
+fix end of files.........................................................Passed
+trim trailing whitespace.................................................Passed
+check for added large files..............................................Passed
+mypy.....................................................................Passed
+pytest subset for trading-critical changes...............................Passed
+verify-work skill copies match canonical source......(no files to check)Skipped
+[codex/testnet-truth-recovery 5e7b926] checkpoint: P1 MARKET/TRADE review + P2 evidence UI while P0.3 watches
+ 17 files changed, 1075 insertions(+), 4 deletions(-)
+ create mode 100644 scripts/_watch_p03_until_fill.py
+ create mode 100644 scripts/verify-runtime-truth-browser.mjs
+ create mode 100644 services/execution/exchange_order_transitions.py
+ create mode 100644 tests/services/test_exchange_order_state_machine.py
+ create mode 100644 tests/services/test_market_review_task.py
+
+---
+exit_code: 0
+elapsed_ms: 161627
+ended_at: 2026-07-28T07:43:22.700Z
+---

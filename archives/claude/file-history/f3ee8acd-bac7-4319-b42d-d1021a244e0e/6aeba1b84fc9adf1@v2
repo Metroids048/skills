@@ -1,0 +1,148 @@
+# 海小南 Demo 四个问题修复计划
+
+## Context
+
+`hai-xiaonan-demo.html` 上一次改动移除了两个外部脚本引用（PixiJS + avatar-runtime.js），导致数字人动画系统失效。同时存在语音权限二次弹框和关键词匹配不健壮的问题。
+
+---
+
+## 问题根因分析
+
+### 问题 1 & 3：数字人悬浮/点击/拖拽/唤醒后无动作
+
+**根因**：
+- 旧版本 HTML 末尾有 `<script src="./vendor/pixi.min.js">` 和 `<script src="./avatar-runtime.js">`
+- `ensureAvatarRuntimeV2()` 旧版会调用 `window.createHaiXiaoNanAvatarRuntime({...})` 初始化 Pixi 动画
+- 成功后给 `.pet` 加 `avatar-runtime-enabled` 类，由 Pixi 接管动画（头部追踪、眨眼、肢体运动）
+- 当前版本把两个 `<script>` 删掉了，`ensureAvatarRuntimeV2()` 被改成空函数（只有注释）
+- `avatarRuntimeV2` 永远是 `null`，`dispatchAvatarEventV2` 也成了空操作
+- 虽然 CSS 动画仍在，但缺少 Pixi 运行时，没有头部追踪、眨眼、肢体响应
+
+**文件现状**：`vendor/pixi.min.js` 和 `avatar-runtime.js` 文件都**存在**于磁盘，只是没有被加载。
+
+### 问题 2：进入页面要开两次浏览器权限（语音 + 麦克风）
+
+**根因**：
+- `autoPassiveListenV2()` 在页面加载 1400ms 后自动调用，触发 `getUserMedia` → 第一次权限弹窗
+- 用户双击头像后 `toggleVoiceV2()` 调用，再次创建 SpeechRecognition 并 `start()` → Chrome 有时触发第二次权限弹窗（Speech Recognition Service）
+- 两次弹窗的原因：`getUserMedia` (mic hardware) 和 Web Speech API (Google service) 是两个独立权限
+
+**可行方案**：在页面完全加载且用户有第一次点击/交互后，提前统一请求一次权限，之后不再重复弹。另外把 `ensureVoicePermissionV2` 的结果缓存，避免重复调用 `getUserMedia`。
+
+### 问题 4：预设话术关键词匹配不健壮，语音转文本错字会失配
+
+**根因**：
+- `routeScoreV2` 里用 `value.includes(normalized)` 做精确子串匹配
+- 语音识别错字（如"预算" → "豫算"，"帮我查" → "帮我察"）会导致整条路由匹配失败
+- 落回 "能再说具体一点吗" 气泡，演示中断
+
+**修复思路**：给每条 scenario 增加 `keywords` 数组（从 triggerPhrases 中提取核心词），在 `routeScoreV2` 中增加**关键词部分命中打分**，只要命中足够多的核心词就能路由到正确场景。
+
+---
+
+## 修复方案（具体步骤）
+
+### Step 1：恢复 Pixi + Avatar Runtime（问题 1 & 3）
+
+在 `</body>` 前（主 `<script>` 标签之前）加回两个脚本标签：
+
+```html
+<script src="./vendor/pixi.min.js"></script>
+<script src="./avatar-runtime.js"></script>
+```
+
+恢复 `ensureAvatarRuntimeV2()` 函数内容（从旧版还原）：
+
+```js
+async function ensureAvatarRuntimeV2() {
+  if (avatarRuntimeV2 || typeof window.createHaiXiaoNanAvatarRuntime !== "function") return avatarRuntimeV2;
+  try {
+    avatarRuntimeV2 = await window.createHaiXiaoNanAvatarRuntime({
+      host: elsV2.digitalHuman,
+      imageUrl: "./digital-human-cutout.png"
+    });
+  } catch (error) {
+    console.error("Avatar runtime failed to start", error);
+    avatarRuntimeV2 = null;
+  }
+  return avatarRuntimeV2;
+}
+```
+
+**文件**：`hai-xiaonan-demo.html`
+- 在 `</body>` 前约 line 5107 加两个 `<script src>` 标签
+- 替换 line 3204 的 `ensureAvatarRuntimeV2` 空函数
+
+---
+
+### Step 2：统一权限请求，减少二次弹框（问题 2）
+
+策略：缓存权限请求结果，首次成功后不再重复调用 `getUserMedia`。
+
+在 `stateV2` 中加 `voicePermissionGranted: false`。
+
+修改 `ensureVoicePermissionV2()`：
+
+```js
+async function ensureVoicePermissionV2() {
+  if (stateV2.voicePermissionGranted) return;  // 已授权，跳过
+  if (!window.isSecureContext && ...) throw new Error(...);
+  if (!navigator.mediaDevices || ...) throw new Error(...);
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  stream.getTracks().forEach((track) => track.stop());
+  stateV2.voicePermissionGranted = true;  // 缓存结果
+}
+```
+
+另外：`autoPassiveListenV2` 的 1400ms 自动启动改为等待用户第一次交互（`pointerdown`）后再触发，减少自动弹窗打扰。添加 `once: true` 事件监听，在用户首次点击任意位置后请求权限并启动被动监听。
+
+---
+
+### Step 3：增加关键词模糊匹配（问题 4）
+
+在 `SCENARIO_LIBRARY_V2` 每条记录中增加 `keywords` 字段（核心词数组）：
+
+```js
+{ id: "metric-budget", triggerPhrases: ["看一下本月预算完成率", ...], keywords: ["预算", "完成率", "查"], ... }
+```
+
+修改 `routeScoreV2`，增加关键词部分命中分：
+
+```js
+function routeScoreV2(route, value) {
+  let score = 0;
+  // 精确子串匹配（高分）
+  (route.phrases || []).forEach((phrase) => {
+    const normalized = normalizeV2(phrase);
+    if (normalized && value.includes(normalized)) score = Math.max(score, 100 + normalized.length);
+  });
+  // 关键词命中匹配（低分，作为语音识别错字兜底）
+  const keywords = route.keywords || [];
+  if (keywords.length > 0 && score === 0) {
+    const hits = keywords.filter((kw) => value.includes(kw)).length;
+    const ratio = hits / keywords.length;
+    if (ratio >= 0.6) score = Math.max(score, 50 + hits * 5);  // 至少命中60%的关键词才计分
+  }
+  return score;
+}
+```
+
+同时在 `SCENARIO_LIBRARY_V2` 的 `SCENARIO_ROUTE_TABLE` 映射中把 `keywords` 透传进去。
+
+---
+
+## 关键文件
+
+- `hai-xiaonan-demo.html` — 所有改动都在这一个文件
+- `vendor/pixi.min.js` — 已存在，不需改动
+- `avatar-runtime.js` — 已存在，不需改动
+
+---
+
+## 验证方式
+
+1. 浏览器打开 `hai-xiaonan-demo.html`（用本地服务器，如 Live Server）
+2. **动画**：鼠标悬停数字人 → 应有头部追踪+身体倾斜；拖拽 → 应有拖拽动效；双击 → 进入 listening 动画
+3. **权限**：重新加载页面，首次点击数字人时应只弹一次权限框
+4. **语音**：说"小南小南，帮我查预算" → 即使"查"被识别为"察"，也应能路由到预算场景
+5. **关键词点击**：点快捷命令按钮验证基本流程仍正常

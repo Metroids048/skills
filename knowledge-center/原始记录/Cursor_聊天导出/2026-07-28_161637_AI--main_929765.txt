@@ -1,0 +1,46 @@
+---
+pid: 27288
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\nGet-CimInstance Win32_Process -Filter \"Name='python.exe'\" | Where-Object {\n  $_.CommandLine -match 'local_server|run-local-paper-scheduler'\n} | Select-Object ProcessId,CommandLine | Format-List\nif (Test-Path logs\\scheduler-state.json) {\n  $s = Get-Content logs\\scheduler-state.json -Raw -Encoding UTF8 | ConvertFrom-Json\n  Write-Host \"running=$($s.running) heartbeat=$($s.heartbeat_at) err=$($s.scheduler_error) last_cycle=$($s.last_auto_cycle_at)\"\n} else { Write-Host \"no scheduler state\" }\ntry { (Invoke-RestMethod http://127.0.0.1:8016/health).status } catch { $_ }\n# Load dotenv into this shell for binance check\n. .\\scripts\\load-dotenv.ps1\nImport-DotEnv (Join-Path (Get-Location) \".env\") | Out-Null\n$env:BINANCE_USE_TESTNET='true'; $env:LIVE_TRADING_ENABLED='false'\n& $env:AGENT_PYTHON scripts\\check_binance_positions.py 2>&1 | Select-Object -Last 25\n"
+started_at: 2026-07-28T03:10:07.458Z
+running_for_ms: 30002    
+---
+
+ProcessId   : 28960
+CommandLine : "C:\Users\win\.ai-workspace\venv\Scripts\python.exe" -m apps.api.local_server --host 127.0.0.1 --port 801
+              6 --log-level warning --local-console
+
+ProcessId   : 31884
+CommandLine : "C:\Users\win\AppData\Local\Programs\Python\Python312\python.exe" -m apps.api.local_server --host 127.0.0
+              .1 --port 8016 --log-level warning --local-console
+
+ProcessId   : 17696
+CommandLine : "C:\Users\win\.ai-workspace\venv\Scripts\python.exe" C:\Users\win\Desktop\AI--main\scripts\run-local-pape
+              r-scheduler.py --database-url sqlite:///C:/Users/win/Desktop/AI--main/.local_paper_console.db
+
+ProcessId   : 31908
+CommandLine : "C:\Users\win\AppData\Local\Programs\Python\Python312\python.exe" C:\Users\win\Desktop\AI--main\scripts\r
+              un-local-paper-scheduler.py --database-url sqlite:///C:/Users/win/Desktop/AI--main/.local_paper_console.d
+              b
+
+running=True heartbeat=07/28/2026 11:10:06 err= last_cycle=
+ok
+{
+  "status": "healthy",
+  "source": "BINANCE_USDT_M_TESTNET",
+  "observed_at": "2026-07-28T03:10:10.164549+00:00",
+  "open_position_count": 0,
+  "open_order_count": 0,
+  "positions": [],
+  "open_orders": [],
+  "reconciliation_status": "ok",
+  "notes": [
+    "binance gateway reconciliation snapshot"
+  ]
+}
+
+---
+exit_code: 0
+elapsed_ms: 30967
+ended_at: 2026-07-28T03:10:38.425Z
+---

@@ -1,0 +1,1590 @@
+dbs ['.local_paper_console.db', '.local_paper_console.pre-0015-20260727-1610.db', '.local_runtime_ledger.db', '.local\\audit\\alembic-drift.db', '.local\\audit\\browser-audit.db', '.local\\audit\\browser-remediation.db', '.local\\audit\\startup-remediation-2.db', '.local\\audit\\startup-remediation.db', '.local\\backups\\.local_paper_console.migration-dryrun.20260721T1030.db', '.local\\backups\\.local_paper_console.pre-0010.20260721T1030.db', '.local\\backups\\local_paper_console-before-0010-20260721-105142.db', '.local\\test-runtime\\.pytest_ai_quant.10548.db', '.local\\test-runtime\\.pytest_ai_quant.12184.db', '.local\\test-runtime\\.pytest_ai_quant.12244.db', '.local\\test-runtime\\.pytest_ai_quant.14368.db', '.local\\test-runtime\\.pytest_ai_quant.14692.db', '.local\\test-runtime\\.pytest_ai_quant.15292.db', '.local\\test-runtime\\.pytest_ai_quant.16256.db', '.local\\test-runtime\\.pytest_ai_quant.1804.db', '.local\\test-runtime\\.pytest_ai_quant.18484.db', '.local\\test-runtime\\.pytest_ai_quant.18800.db', '.local\\test-runtime\\.pytest_ai_quant.19668.db', '.local\\test-runtime\\.pytest_ai_quant.22100.db', '.local\\test-runtime\\.pytest_ai_quant.2232.db', '.local\\test-runtime\\.pytest_ai_quant.22596.db', '.local\\test-runtime\\.pytest_ai_quant.22692.db', '.local\\test-runtime\\.pytest_ai_quant.23192.db', '.local\\test-runtime\\.pytest_ai_quant.23200.db', '.local\\test-runtime\\.pytest_ai_quant.23880.db', '.local\\test-runtime\\.pytest_ai_quant.24316.db']
+--- .local_paper_console.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 173
+decision_funnel_terminals 166
+--- .local_paper_console.pre-0015-20260727-1610.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 13
+decision_funnel_terminals 13
+--- .local_runtime_ledger.db
+tables ['exchange_account_snapshots']
+--- .local\audit\alembic-drift.db
+tables ['exchange_account_snapshots']
+--- .local\audit\browser-audit.db
+tables ['exchange_account_snapshots']
+--- .local\audit\browser-remediation.db
+tables ['exchange_account_snapshots']
+--- .local\audit\startup-remediation-2.db
+tables ['exchange_account_snapshots']
+--- .local\audit\startup-remediation.db
+tables ['exchange_account_snapshots']
+--- .local\backups\.local_paper_console.migration-dryrun.20260721T1030.db
+tables ['exchange_account_snapshots']
+--- .local\backups\.local_paper_console.pre-0010.20260721T1030.db
+tables ['exchange_account_snapshots']
+--- .local\backups\local_paper_console-before-0010-20260721-105142.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.10548.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.12184.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.12244.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.14368.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.14692.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.15292.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.16256.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.1804.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.18484.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.18800.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.19668.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.22100.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.2232.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.22596.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.22692.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.23192.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.23200.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.23880.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.24316.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.24740.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.25144.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.25232.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.25344.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.25548.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.26940.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.27888.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.28312.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.28700.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.29312.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.30396.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.30544.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.31136.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.31348.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.31416.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.31868.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.32016.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.32104.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.32752.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.3308.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.33492.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.34108.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.34172.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.34320.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.34476.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\.pytest_ai_quant.35720.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\migration-safety-0011-20260722.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.10048.db
+tables ['exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+--- .local\test-runtime\pytest_ai_quant.10128.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.10428.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.10440.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.10536.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.10564.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.10640.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.10904.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.11060.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.11128.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.12100.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.12120.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.12132.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.12228.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.12320.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.12324.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.12460.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.12488.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.12736.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.12740.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.12832.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.12892.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.12936.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.13536.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.13700.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.1420.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.14204.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.14304.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.14436.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.14636.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.14652.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.14756.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.14840.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.15048.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 7
+decision_funnel_terminals 7
+--- .local\test-runtime\pytest_ai_quant.15084.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.15104.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.15188.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.15200.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.15996.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.16336.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.164.db
+tables ['exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+--- .local\test-runtime\pytest_ai_quant.1652.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.16712.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.17096.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.17212.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.17320.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.17344.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.17368.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.17460.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.17468.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.17976.db
+tables ['exchange_account_snapshots', 'protection_records']
+--- .local\test-runtime\pytest_ai_quant.18140.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.18320.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.18504.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.18636.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.18656.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 2
+decision_funnel_terminals 2
+--- .local\test-runtime\pytest_ai_quant.18776.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.18796.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.18820.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.18952.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.19040.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.19100.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.19248.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.19252.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.19480.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.19488.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.19568.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.19584.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.19756.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.19760.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.19788.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.19800.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 2
+decision_funnel_terminals 2
+--- .local\test-runtime\pytest_ai_quant.2004.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.20208.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.20256.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.20304.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.20496.db
+tables ['exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+--- .local\test-runtime\pytest_ai_quant.2064.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.20672.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.20732.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.20780.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.20792.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.20876.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.20900.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.21004.db
+tables ['exchange_account_snapshots', 'protection_records']
+--- .local\test-runtime\pytest_ai_quant.21088.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.21124.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.21196.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.21216.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.21304.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.2148.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.21488.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.21552.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.21556.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.21572.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.21968.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.22012.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 2
+decision_funnel_terminals 2
+--- .local\test-runtime\pytest_ai_quant.22092.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.22332.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.22432.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.22436.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.22592.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.22608.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.22612.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.22628.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+decision_funnel_terminals 2
+--- .local\test-runtime\pytest_ai_quant.23544.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.23548.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.23724.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.23860.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.23872.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.24008.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.24100.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.24184.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.24188.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.24252.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.24432.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.24612.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.24636.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.24688.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.24692.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.24744.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.24780.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.2480.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.24816.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.24820.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.24860.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.25004.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.25028.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.25036.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.25092.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.25104.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.25112.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.25224.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.25240.db
+tables ['exchange_account_snapshots', 'protection_records']
+--- .local\test-runtime\pytest_ai_quant.25540.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.25736.db
+tables ['exchange_account_snapshots', 'protection_records']
+--- .local\test-runtime\pytest_ai_quant.25880.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.25960.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.26024.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.26292.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.26596.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.26748.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.26760.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.26768.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.26976.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.26984.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.27000.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.27036.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.27048.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.27116.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.27124.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.27220.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.27240.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.27332.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.27392.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.27500.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.27528.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.27632.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.27768.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.27948.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.28212.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.28492.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.28548.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.28608.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.28644.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.28656.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.28680.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.28720.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.28740.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.28764.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.28784.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.28884.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.29216.db
+tables ['exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+--- .local\test-runtime\pytest_ai_quant.29300.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.29376.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.29396.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.29456.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 2
+decision_funnel_terminals 2
+--- .local\test-runtime\pytest_ai_quant.29556.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.29628.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.29760.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.29776.db
+tables ['exchange_account_snapshots', 'protection_records']
+--- .local\test-runtime\pytest_ai_quant.29828.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.30080.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.30148.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.30392.db
+tables ['exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+--- .local\test-runtime\pytest_ai_quant.30440.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.30492.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.30520.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.30552.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.30588.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.30604.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.30824.db
+tables ['exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+--- .local\test-runtime\pytest_ai_quant.30844.db
+tables ['exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+--- .local\test-runtime\pytest_ai_quant.30856.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.30908.db
+tables ['exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+--- .local\test-runtime\pytest_ai_quant.31000.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31064.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.31128.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31140.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31200.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.31204.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31324.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31368.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.31420.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.31512.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31576.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.31616.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.31644.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31684.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31688.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31700.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.31868.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31880.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31904.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.31936.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.32000.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.32012.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.32068.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.3220.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.32272.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.32276.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.3228.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.32280.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.32396.db
+tables ['exchange_account_snapshots', 'protection_records']
+--- .local\test-runtime\pytest_ai_quant.32448.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.32488.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.32540.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.32600.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.32608.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.32624.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.3268.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 2
+decision_funnel_terminals 2
+--- .local\test-runtime\pytest_ai_quant.32960.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.33036.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.33040.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.33096.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.33148.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.33196.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.33216.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.33240.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.3348.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.33568.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.33632.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.33636.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.33688.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.33796.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.33800.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.33828.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.33876.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.33912.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.33992.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.34044.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.34052.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.3412.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.34236.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.34308.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.34476.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.34500.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.34548.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.34576.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.34612.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.34740.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.34804.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.34860.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.34880.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.34952.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.35056.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.35092.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.35196.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.35220.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.35244.db
+tables ['exchange_account_snapshots', 'protection_records']
+--- .local\test-runtime\pytest_ai_quant.35464.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.35820.db
+tables ['exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+--- .local\test-runtime\pytest_ai_quant.35884.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.36088.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.36168.db
+tables ['exchange_account_snapshots', 'protection_records']
+--- .local\test-runtime\pytest_ai_quant.36236.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.36416.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.36468.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.3648.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.36512.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.36752.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.3684.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.37084.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.37308.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.37540.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.37684.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.37820.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.38380.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.38500.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.38640.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.38708.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.38896.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.38984.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.39108.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.39160.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.3932.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.39556.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.39956.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.3996.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.39960.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.39964.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.40064.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.40088.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.40372.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.40396.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.4084.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.41016.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.41152.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.41372.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.41520.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.41656.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.4172.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.41904.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.4244.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.42484.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.43100.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.43344.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.43440.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.44108.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.44300.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.44380.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.44956.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.4500.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.45256.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.45436.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.45456.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.45496.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.4572.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.46056.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.46648.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.46684.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.46708.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.46964.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.47112.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.47260.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.47320.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.47460.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.47544.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.4760.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.4792.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.48440.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.48508.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.48600.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.48796.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.49252.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.49796.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.49940.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.5048.db
+tables ['exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+--- .local\test-runtime\pytest_ai_quant.50552.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.5128.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.51336.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.5136.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.51920.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.52140.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.52304.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.52620.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.5320.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 1
+exchange_fill_receipts 1
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.55924.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.56624.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.5692.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 1
+--- .local\test-runtime\pytest_ai_quant.57204.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.58280.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.5876.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.59180.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.5920.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.62984.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.6332.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.63684.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.6676.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.66868.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.67380.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.6812.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 1
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.6948.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.7288.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.7624.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.780.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.7916.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.80544.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.812.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.8244.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.8384.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.8404.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.84672.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.8480.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.85932.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.8612.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.8624.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.8664.db
+tables ['exchange_account_snapshots']
+--- .local\test-runtime\pytest_ai_quant.9168.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.928.db
+tables ['decision_funnel_terminals', 'exchange_account_snapshots', 'exchange_fill_receipts', 'exchange_orders', 'exchange_trade_identities', 'llm_invocations', 'protection_records']
+exchange_orders 0
+exchange_fill_receipts 0
+llm_invocations 0
+decision_funnel_terminals 0
+--- .local\test-runtime\pytest_ai_quant.9412.db
+tables ['exchange_account_snapshots']
+--- artifacts\backups\local_paper_console.pre-0014.20260727.db
+tables ['exchange_account_snapshots', 'protection_records']
+---logs---
+
+Name                                          Length LastWriteTime
+----                                          ------ -------------
+__pycache__                                          2026/7/28 14:03:10
+p2-runtime-truth-verify                              2026/7/28 15:13:18
+_debug_lease.py                               1292   2026/7/28 14:03:32
+_pidcheck.py                                  374    2026/7/28 14:01:41
+_test_pid_alive.py                            208    2026/7/28 14:03:09
+api.log                                       0      2026/7/28 13:07:15
+api.pid                                       7      2026/7/28 15:59:15
+baseline-import-commit.err.log                640    2026/7/24 17:03:25
+baseline-import-commit.out.log                695    2026/7/24 17:03:25
+commit-msg.txt                                325    2026/7/28 13:49:34
+commit-msg1.txt                               185    2026/7/28 13:52:18
+commit-msg2.txt                               325    2026/7/28 13:52:34
+commit-out-step2.txt                          648    2026/7/28 13:52:38
+commit-out.txt                                648    2026/7/28 13:44:55
+commit-out2.txt                               648    2026/7/28 13:49:38
+coord-fail.err                                0      2026/7/28 13:59:39
+coord-fail.pid                                7      2026/7/28 13:59:39
+coord-fail.txt                                2500   2026/7/28 14:00:01
+coord-fix.err                                 0      2026/7/28 14:05:28
+coord-fix.pid                                 7      2026/7/28 14:05:28
+coord-fix.txt                                 101    2026/7/28 14:05:40
+debug-lease-err.txt                           1212   2026/7/28 14:03:34
+debug-lease-out.txt                           35     2026/7/28 14:03:34
+frontend.log                                  35258  2026/7/28 15:04:05
+frontend.pid                                  7      2026/7/28 15:04:04
+llm-test.err                                  0      2026/7/28 14:59:11
+llm-test.pid                                  6      2026/7/28 14:59:11
+llm-test.txt                                  100    2026/7/28 14:59:14
+multi-instance-scheduler-error.log            0      2026/7/22 10:39:08
+multi-instance-scheduler.log                  4294   2026/7/22 10:39:10
+official-launch-ascii-20260724-172706.err.log 130    2026/7/24 17:27:26
+official-launch-ascii-20260724-172706.out.log 1713   2026/7/24 17:29:13
+official-launch-utf16-20260724-172509.err.log 62     2026/7/24 17:25:09
+official-launch-utf16-20260724-172509.out.log 37     2026/7/24 17:25:09
+official-launch.err.log                       808    2026/7/24 17:21:19
+official-launch.out.log                       59     2026/7/24 17:21:19
+p0_p3_acceptance_audit.json                   2237   2026/7/28 16:10:08
+pid-alive-err.txt                             0      2026/7/28 14:03:09
+pid-alive-out.txt                             894    2026/7/28 14:03:12
+precommit-target.err                          0      2026/7/28 14:08:22
+precommit-target.pid                          7      2026/7/28 14:08:22
+precommit-target.txt                          2295   2026/7/28 14:11:16
+precommit-targeted-out.txt                    0      2026/7/28 13:44:07
+remaining-tests.err                           0      2026/7/28 15:34:36
+remaining-tests.pid                           5      2026/7/28 15:34:36
+remaining-tests.txt                           661    2026/7/28 15:34:44
+scheduler-error.log                           0      2026/7/28 15:59:15
+scheduler-state.json                          9177   2026/7/28 16:10:34
+scheduler.log                                 5053   2026/7/28 15:59:17
+scheduler.pid                                 7      2026/7/28 15:59:15
+schema-sync-commit.err.log                    640    2026/7/24 17:10:43
+schema-sync-commit.out.log                    112    2026/7/24 17:10:43
+smoke-llm.err                                 0      2026/7/28 14:53:11
+smoke-llm.pid                                 7      2026/7/28 14:53:11
+smoke-llm.txt                                 288    2026/7/28 14:53:18
+startup-last.log                              1031   2026/7/28 15:04:04
+targeted-manual.txt                           162    2026/7/28 13:47:31
+targeted-suite.txt                            162    2026/7/28 13:54:40
+targeted-suite2.err                           51     2026/7/28 13:55:58
+targeted-suite2.pid                           7      2026/7/28 13:55:57
+targeted-suite2.txt                           25     2026/7/28 13:55:58
+targeted-suite3.err                           0      2026/7/28 13:56:28
+targeted-suite3.pid                           7      2026/7/28 13:56:28
+targeted-suite3.txt                           3342   2026/7/28 13:58:36
+watch-p03.err                                 0      2026/7/28 15:59:15
+watch-p03.log                                 2034   2026/7/28 16:06:40
+watch-p03.pid                                 7      2026/7/28 15:59:15
+
+---p2---
+C:\Users\win\Desktop\AI--main\logs\p2-runtime-truth-verify\checklist.json
+

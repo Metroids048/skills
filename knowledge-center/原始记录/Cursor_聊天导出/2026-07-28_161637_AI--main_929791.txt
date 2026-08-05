@@ -1,0 +1,47 @@
+---
+pid: 27988
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\ngit add .github/agent/memory/task-history.md\n$env:QUANT_PYTEST_PYTHON = \"C:\\Users\\win\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\"\n$msg = @\"\ncheckpoint: P1 MARKET/TRADE review + P2 evidence UI while P0.3 watches\n\nAdvance remaining authenticity-plan items that do not need a natural fill: hourly MARKET_REVIEW, advisory TRADE_REVIEW schema, Runtime Data Freshness/Strategy Evidence, exchange-order transition guards, and headless Runtime Truth verify helper. Leave Sampling watch running; P3 stays locked.\n\"@\ngit commit --trailer \"Co-authored-by: Cursor <cursoragent@cursor.com>\" -m $msg\n"
+started_at: 2026-07-28T07:37:49.972Z
+running_for_ms: 160226   
+---
+ruff (legacy alias)......................................................Failed
+- hook id: ruff
+- exit code: 1
+
+[1m[91mSIM102 [0m[1mUse a single `if` statement instead of nested `if` statements[0m
+  [1m[94m-->[0m scripts\_watch_p03_until_fill.py:92:9
+   [1m[94m|[0m
+[1m[94m90 |[0m               print("NATURAL_EXCHANGE_EVIDENCE", flush=True)
+[1m[94m91 |[0m               return
+[1m[94m92 |[0m [1m[91m/[0m         if btc["SHORT"] or btc["LONG"] or eth["SHORT"] or eth["LONG"]:
+[1m[94m93 |[0m [1m[91m|[0m             if last_bar != btc["bar"]:
+   [1m[94m|[0m [1m[91m|______________________________________^[0m
+[1m[94m94 |[0m                   print("SAMPLING_ALIGN_CANDIDATE", flush=True)
+[1m[94m95 |[0m                   last_bar = btc["bar"]
+   [1m[94m|[0m
+[1m[96mhelp[0m: [1mCombine `if` statements using `and`[0m
+
+Found 1 error.
+No fixes available (1 hidden fix can be enabled with the `--unsafe-fixes` option).
+
+ruff format..............................................................Failed
+- hook id: ruff-format
+- files were modified by this hook
+
+1 file reformatted, 12 files left unchanged
+
+check yaml...........................................(no files to check)Skipped
+check json...........................................(no files to check)Skipped
+fix end of files.........................................................Passed
+trim trailing whitespace.................................................Passed
+check for added large files..............................................Passed
+mypy.....................................................................Passed
+pytest subset for trading-critical changes...............................Passed
+verify-work skill copies match canonical source......(no files to check)Skipped
+
+---
+exit_code: 1
+elapsed_ms: 161018
+ended_at: 2026-07-28T07:40:30.990Z
+---

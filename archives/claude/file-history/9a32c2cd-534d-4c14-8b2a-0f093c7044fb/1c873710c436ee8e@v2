@@ -1,0 +1,37 @@
+# -*- coding: utf-8 -*-
+import openpyxl
+from openpyxl.utils import get_column_letter
+
+path = r"C:\Users\win\Desktop\敖钦储能项目\原始需求\产量规划需求\明细表（4个附件）\附件1.1 产量规划在生产原油-XX方案.xlsx"
+wb = openpyxl.load_workbook(path, data_only=True)
+
+target_sheets = [
+    '6-基础产量（万吨）',
+    '7-调整井单井剖面（万吨）',
+    '8-措施增产剖面（万吨）',
+    '9-综合调整增油（万吨）',
+    '12-总产量（万吨）',
+    '13-调整井工作量（口）综合调整 ',
+    '16-措施工作量（井次）',
+]
+
+for name in target_sheets:
+    if name not in wb.sheetnames:
+        print(f"\n=== SHEET NOT FOUND: {name} ===")
+        continue
+    ws = wb[name]
+    print(f"\n=== SHEET: {name}  dims={ws.dimensions}  max_row={ws.max_row} max_col={ws.max_column} ===")
+    max_r = min(ws.max_row, 8)
+    max_c = min(ws.max_column, 40)
+    for r in range(1, max_r + 1):
+        row_vals = []
+        for c in range(1, max_c + 1):
+            cell = ws.cell(row=r, column=c)
+            v = cell.value
+            if v is not None:
+                col_letter = get_column_letter(c)
+                row_vals.append(f"{col_letter}{r}={v!r}")
+        if row_vals:
+            print(" | ".join(row_vals))
+    if ws.max_column > 40:
+        print(f"... ({ws.max_column - 40} more columns not shown)")

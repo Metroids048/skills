@@ -1,0 +1,184 @@
+<script setup lang="ts">
+import {
+  ArrowRightOutlined,
+  CheckCircleOutlined,
+  ExclamationCircleOutlined,
+  FileDoneOutlined,
+  RobotOutlined,
+} from '@ant-design/icons-vue'
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import {
+  businessTasks,
+  getPrimaryTask,
+  getTasksForUser,
+  outputArtifacts,
+  validationIssues,
+  versionComparisons,
+} from '../../mock/business'
+import { useAuthStore } from '../../stores/auth'
+import { useWorkbenchStore } from '../../stores/workbench'
+
+const router = useRouter()
+const auth = useAuthStore()
+const workbench = useWorkbenchStore()
+
+const myTasks = computed(() => getTasksForUser(auth.currentUser?.id))
+const primaryTask = computed(() => getPrimaryTask(auth.currentUser?.id))
+const linkedIssues = computed(() => {
+  const issueId = primaryTask.value.context.issueId
+  return validationIssues.filter((issue) => issue.id === issueId).slice(0, 2)
+})
+const totalIssues = computed(() => myTasks.value.reduce((sum, task) => sum + task.issueCount, 0))
+const avgProgress = computed(() =>
+  myTasks.value.length
+    ? Math.round(myTasks.value.reduce((sum, task) => sum + task.progress, 0) / myTasks.value.length)
+    : 0,
+)
+
+function jump(path: string) {
+  router.push(path)
+}
+</script>
+
+<template>
+  <div class="business-page dashboard-page">
+    <header class="business-page-header">
+      <div>
+        <span class="eyebrow">首页总览</span>
+        <h1>我的规划协同工作</h1>
+        <p>从当前责任、阻断问题和版本状态开始处理，所有后续动作都回到对应工作表或成果页面。</p>
+      </div>
+      <div class="header-button-row">
+        <a-button @click="workbench.openAssistant(`首页总览 / ${primaryTask.context.version}`, 'data')">
+          <RobotOutlined />
+          询问当前工作
+        </a-button>
+        <a-button type="primary" @click="jump(primaryTask.route)">
+          继续当前任务
+          <ArrowRightOutlined />
+        </a-button>
+      </div>
+    </header>
+
+    <section class="current-work-panel">
+      <div class="current-work-lead">
+        <span>当前责任</span>
+        <h2>{{ primaryTask.title }}</h2>
+        <p>{{ primaryTask.nextAction }}</p>
+        <div class="current-work-meta">
+          <span>{{ auth.currentUser?.department }}</span>
+          <span>{{ primaryTask.period }}</span>
+          <span>{{ primaryTask.context.version }}</span>
+        </div>
+      </div>
+      <div class="current-work-status">
+        <span>{{ primaryTask.status }}</span>
+        <strong>{{ primaryTask.progress }}%</strong>
+        <a-progress :percent="primaryTask.progress" :show-info="false" />
+        <small>优先处理：{{ primaryTask.context.focus }}</small>
+      </div>
+      <a-button type="link" @click="jump(primaryTask.route)">
+        进入处理 <ArrowRightOutlined />
+      </a-button>
+    </section>
+
+    <section class="summary-grid dashboard-summary-grid">
+      <button class="summary-tile" type="button" @click="jump(primaryTask.route)">
+        <span>我的任务进度</span>
+        <strong>{{ avgProgress }}%</strong>
+        <em>{{ myTasks.length || 1 }} 项待处理工作</em>
+      </button>
+      <button class="summary-tile danger" type="button" @click="jump(primaryTask.route)">
+        <span>关联异常</span>
+        <strong>{{ totalIssues }}</strong>
+        <em>点击回到问题位置</em>
+      </button>
+      <button class="summary-tile" type="button" @click="jump('/planning/version')">
+        <span>待复核版本</span>
+        <strong>{{ versionComparisons.length }}</strong>
+        <em>版本差异需要说明</em>
+      </button>
+      <button class="summary-tile" type="button" @click="jump('/planning/version?focus=output')">
+        <span>成果与输出</span>
+        <strong>{{ outputArtifacts.length }}</strong>
+        <em>均关联来源版本</em>
+      </button>
+    </section>
+
+    <section class="business-dashboard-grid dashboard-work-grid">
+      <main class="business-stack">
+        <section class="business-panel">
+          <div class="panel-title">
+            <div>
+              <h2>我的待办</h2>
+              <p>按当前登录身份排序，优先展示需要本人继续处理的工作。</p>
+            </div>
+            <span>{{ auth.currentUser?.name }} / {{ myTasks.length || 1 }} 项</span>
+          </div>
+          <div class="task-list">
+            <article v-for="task in myTasks" :key="task.id" class="business-task-row">
+              <div class="task-icon" :class="task.domain">
+                <CheckCircleOutlined v-if="task.status === '已归档'" />
+                <ExclamationCircleOutlined v-else />
+              </div>
+              <div>
+                <h3>{{ task.title }}</h3>
+                <p>{{ task.nextAction }}</p>
+                <div class="task-meta-line">
+                  <span>{{ task.period }}</span>
+                  <span>{{ task.context.version }}</span>
+                  <span>异常 {{ task.issueCount }}</span>
+                </div>
+              </div>
+              <div class="task-action">
+                <a-progress :percent="task.progress" size="small" />
+                <a-button type="link" @click="jump(task.route)">进入处理</a-button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="business-panel">
+          <div class="panel-title">
+            <div>
+              <h2>协同进度</h2>
+              <p>跨储量、产量和配置工作的当前状态，只用于识别需要协作的环节。</p>
+            </div>
+          </div>
+          <div class="dashboard-progress-list">
+            <div v-for="task in businessTasks" :key="task.id">
+              <div><strong>{{ task.owner }}</strong><span>{{ task.title }}</span></div>
+              <a-progress :percent="task.progress" size="small" />
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="business-stack">
+        <section class="business-panel">
+          <div class="panel-title compact"><h2>需要处理的异常</h2><ExclamationCircleOutlined /></div>
+          <div class="issue-list">
+            <button v-for="issue in linkedIssues" :key="issue.id" type="button" class="issue-row" @click="jump(primaryTask.route)">
+              <strong>{{ issue.location }}</strong>
+              <span>{{ issue.reason }}</span>
+              <em>{{ issue.level }} / {{ issue.owner }}</em>
+            </button>
+          </div>
+        </section>
+
+        <section class="business-panel">
+          <div class="panel-title compact"><h2>版本与成果</h2><FileDoneOutlined /></div>
+          <div class="link-list">
+            <button v-for="version in versionComparisons" :key="version.id" type="button" class="link-row" @click="jump(version.route)">
+              <strong>{{ version.title }}</strong><span>{{ version.summary }}</span>
+            </button>
+            <button v-for="artifact in outputArtifacts.slice(0, 2)" :key="artifact.id" type="button" class="link-row" @click="jump(artifact.route)">
+              <strong>{{ artifact.title }}</strong><span>{{ artifact.status }} / {{ artifact.version }}</span>
+            </button>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </div>
+</template>

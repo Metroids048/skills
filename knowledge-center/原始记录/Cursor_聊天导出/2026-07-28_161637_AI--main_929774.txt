@@ -1,0 +1,52 @@
+---
+pid: 3836
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n& $env:AGENT_PYTHON -c @'\nimport json, time, sqlite3\nfrom pathlib import Path\nfor i in range(36):\n    s=json.loads(Path(\"logs/scheduler-state.json\").read_text(encoding=\"utf-8-sig\"))\n    paper=s.get(\"task_last_results\",{}).get(\"paper_runtime_cycle\")\n    counts=s.get(\"task_run_counts\",{})\n    print(i, \"utc\", time.strftime(\"%H:%M:%S\", time.gmtime()), \"counts_paper\", counts.get(\"paper_runtime_cycle\"), \"last_auto\", s.get(\"last_auto_cycle_at\"), \"paper\", (paper.get(\"status\") if isinstance(paper,dict) and \"status\" in paper else (\"runs=\"+str(paper.get(\"paper_runs\")) if isinstance(paper,dict) else paper)))\n    if isinstance(paper, dict) and paper.get(\"paper_runs\") is not None:\n        print(\"SUCCESS\")\n        for r in paper.get(\"results\") or []:\n            for a in r.get(\"actions\") or []:\n                print(\" \", a.get(\"symbol\"), a.get(\"action\"), a.get(\"reason\"), (a.get(\"decision_trace\") or {}).get(\"sampling_fallback_rejection_reason\"))\n        break\n    if isinstance(paper, dict) and paper.get(\"status\") in {\"standby_not_leader\",\"duplicate_slot_skipped\"}:\n        print(\"  detail\", paper)\n    time.sleep(5)\nelse:\n    print(\"timeout\")\nconn=sqlite3.connect(\".local_paper_console.db\")\nprint(\"recent runtime cycles\", list(conn.execute(\"SELECT scheduled_for, status, process_id, failure_reason FROM scheduler_cycles WHERE job_name=\\\"paper_runtime_cycle\\\" ORDER BY started_at DESC LIMIT 5\")))\nprint(\"orders\", conn.execute(\"SELECT COUNT(*) FROM exchange_orders\").fetchone()[0], \"fills\", conn.execute(\"SELECT COUNT(*) FROM exchange_fill_receipts\").fetchone()[0])\n'@\n"
+started_at: 2026-07-28T04:26:17.381Z
+running_for_ms: 180010   
+---
+0 utc 04:26:18 counts_paper None last_auto None paper None
+1 utc 04:26:23 counts_paper None last_auto None paper None
+2 utc 04:26:28 counts_paper None last_auto None paper None
+3 utc 04:26:33 counts_paper None last_auto None paper None
+4 utc 04:26:38 counts_paper None last_auto None paper None
+5 utc 04:26:43 counts_paper None last_auto None paper None
+6 utc 04:26:48 counts_paper None last_auto None paper None
+7 utc 04:26:53 counts_paper None last_auto None paper None
+8 utc 04:26:58 counts_paper None last_auto None paper None
+9 utc 04:27:03 counts_paper None last_auto None paper None
+10 utc 04:27:08 counts_paper None last_auto None paper None
+11 utc 04:27:13 counts_paper None last_auto None paper None
+12 utc 04:27:18 counts_paper None last_auto None paper None
+13 utc 04:27:23 counts_paper None last_auto None paper None
+14 utc 04:27:28 counts_paper None last_auto None paper None
+15 utc 04:27:33 counts_paper None last_auto None paper None
+16 utc 04:27:38 counts_paper None last_auto None paper None
+17 utc 04:27:43 counts_paper None last_auto None paper None
+18 utc 04:27:48 counts_paper None last_auto None paper None
+19 utc 04:27:53 counts_paper None last_auto None paper None
+20 utc 04:27:58 counts_paper None last_auto None paper None
+21 utc 04:28:03 counts_paper None last_auto None paper None
+22 utc 04:28:08 counts_paper None last_auto None paper None
+23 utc 04:28:13 counts_paper None last_auto None paper None
+24 utc 04:28:18 counts_paper None last_auto None paper None
+25 utc 04:28:23 counts_paper None last_auto None paper None
+26 utc 04:28:28 counts_paper None last_auto None paper None
+27 utc 04:28:33 counts_paper None last_auto None paper None
+28 utc 04:28:38 counts_paper None last_auto None paper None
+29 utc 04:28:43 counts_paper None last_auto None paper None
+30 utc 04:28:48 counts_paper None last_auto None paper None
+31 utc 04:28:53 counts_paper None last_auto None paper None
+32 utc 04:28:58 counts_paper None last_auto None paper None
+33 utc 04:29:03 counts_paper None last_auto None paper None
+34 utc 04:29:08 counts_paper None last_auto None paper None
+35 utc 04:29:13 counts_paper None last_auto None paper None
+timeout
+recent runtime cycles [('2026-07-28 04:25:00.000000', 'failed', 18212, 'owner_process_dead_reclaimed_offline'), ('2026-07-28 04:20:00.000000', 'failed', 12052, 'owner_process_dead_reclaimed_offline'), ('2026-07-28 04:10:00.000000', 'failed', 21208, 'owner_process_dead_reclaimed_offline'), ('2026-07-28 04:05:00.000000', 'completed', 21208, None), ('2026-07-28 04:00:00.000000', 'completed', 21208, None)]
+orders 0 fills 0
+
+---
+exit_code: 0
+elapsed_ms: 181269
+ended_at: 2026-07-28T04:29:18.650Z
+---

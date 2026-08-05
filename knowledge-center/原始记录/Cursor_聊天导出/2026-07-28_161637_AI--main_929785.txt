@@ -1,0 +1,13 @@
+---
+pid: 8364
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n@'\nfrom datetime import UTC, datetime, timedelta\nfrom pathlib import Path\nimport tempfile, os\nfrom sqlalchemy import create_engine\nfrom sqlalchemy.orm import sessionmaker\nfrom services.execution.scheduler_coordination import SchedulerCoordinator, _local_pid_is_alive\nfrom services.strategy_library.models import Base\n\nprint(\"alive self\", _local_pid_is_alive(os.getpid()))\nprint(\"alive fake\", _local_pid_is_alive(424242))\n\ntmpdir = Path(tempfile.mkdtemp())\nengine = create_engine(f\"sqlite:///{(tmpdir / 'coordination.db').as_posix()}\")\nBase.metadata.create_all(engine)\nfactory = sessionmaker(bind=engine, expire_on_commit=False)\nfirst = SchedulerCoordinator(session_factory=factory, instance_id=\"scheduler-a\", hostname=\"test-host\", process_id=os.getpid())\nsecond = SchedulerCoordinator(session_factory=factory, instance_id=\"scheduler-b\", hostname=\"test-host\", process_id=os.getpid())\nnow = datetime(2026, 7, 22, tzinfo=UTC)\nprint(\"first\", first.acquire_or_renew_lease(now=now, ttl_seconds=90))\nprint(\"second_same_time\", second.acquire_or_renew_lease(now=now, ttl_seconds=90))\nwith factory() as s:\n    from services.strategy_library import models\n    lease = s.get(models.SchedulerLease, \"paper_runtime_cycle\")\n    print(\"owner\", lease.owner_id, \"pid\", lease.process_id, \"exp\", lease.expires_at)\n'@ | Set-Content -Encoding utf8 logs\\_debug_lease.py\n$py = \"C:\\Users\\win\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\"\n$p = Start-Process -FilePath $py -ArgumentList 'logs\\_debug_lease.py' -WorkingDirectory (Get-Location) -RedirectStandardOutput logs\\debug-lease-out.txt -RedirectStandardError logs\\debug-lease-err.txt -PassThru -NoNewWindow\nWait-Process -Id $p.Id -Timeout 60\nWrite-Host out:\nGet-Content logs\\debug-lease-out.txt\nWrite-Host err:\nGet-Content logs\\debug-lease-err.txt\n"
+started_at: 2026-07-28T06:03:31.931Z
+running_for_ms: 24       
+---
+
+---
+exit_code: 0
+elapsed_ms: 2360
+ended_at: 2026-07-28T06:03:34.291Z
+---

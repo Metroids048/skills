@@ -1,0 +1,221 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+# Repaired 2026-06-03: removed macOS notify, stale node_repl paths, and startup-heavy MCP set.
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "live"
+persistent_instructions = "Follow project AGENTS.md. Fuzzy/vibe coding: Read requirement-clarifier + skill-chain-map.md + vibe-coding-bridge.md; ultra-vague use interview-protocol (one Q+GUESS); output Mini-Spec S4.5 + S7 before Write/Edit; multi-file risk use clarification-guardrails.md. User must confirm before execute unless 直接执行. Use MCP when helpful."
+model = "gpt-5.6-sol"
+model_reasoning_effort = "high"
+notify = ['C:\Users\win\AppData\Local\OpenAI\Codex\runtimes\cua_node\a89897d3d9baa117\bin\node_modules\@oai\sky\bin\windows\codex-computer-use.exe', "turn-ended"]
+model_provider = "custom"
+model_catalog_json = "model-catalogs/ccs-unified-official.json"
+
+[desktop.open-in-target-preferences]
+global = "cursor"
+
+[desktop.open-in-target-preferences.perPath]
+'C:\Users\win\Desktop\敖钦储能项目' = "fileManager"
+'C:\Users\win\Desktop\AI--main' = "cursor"
+
+[mcp_servers]
+
+[mcp_servers.chrome-devtools]
+type = "stdio"
+command = "npx"
+args = ["-y", "chrome-devtools-mcp@latest"]
+startup_timeout_sec = 30
+
+[mcp_servers.context7]
+type = "stdio"
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]
+startup_timeout_sec = 30
+
+[mcp_servers.exa]
+type = "stdio"
+command = "npx"
+args = ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
+startup_timeout_sec = 30
+
+[mcp_servers.fal-ai]
+type = "stdio"
+command = "npx"
+args = ["-y", "fal-ai-mcp-server"]
+startup_timeout_sec = 30
+
+[mcp_servers.filesystem-agent-platform]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", 'C:\Users\win\Desktop\Agent Platform']
+startup_timeout_sec = 30
+
+[mcp_servers.github]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-github"]
+startup_timeout_sec = 30
+
+[mcp_servers.memory]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-memory"]
+startup_timeout_sec = 30
+
+[mcp_servers.playwright]
+type = "stdio"
+command = "npx"
+args = ["-y", "@playwright/mcp@latest", "--browser", "chrome"]
+startup_timeout_sec = 30
+
+[mcp_servers.sequential-thinking]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+startup_timeout_sec = 30
+
+[features]
+multi_agent = true
+
+[model_providers.custom]
+name = "One-API"
+requires_openai_auth = true
+supports_websockets = true
+wire_api = "responses"
+base_url = "https://api.tangguo.xin/v1"
+experimental_bearer_token = "sk-YOUR_SECRET"
+
+[profiles.strict]
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+web_search = "cached"
+
+[profiles.yolo]
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+web_search = "live"
+
+[profiles.hcai]
+model_provider = "hcai"
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+
+[agents]
+max_threads = 3
+max_depth = 1
+
+[plugins."superpowers@openai-api-curated"]
+enabled = true
+
+[agents.explorer]
+description = "Read-only codebase explorer for gathering evidence before changes are proposed."
+config_file = "agents/explorer.toml"
+
+[plugins."hyperframes@openai-api-curated"]
+enabled = true
+
+[agents.reviewer]
+description = "PR reviewer focused on correctness, security, and missing tests."
+config_file = "agents/reviewer.toml"
+
+[agents.docs_researcher]
+description = "Documentation specialist that verifies APIs, framework behavior, and release notes."
+config_file = "agents/docs-researcher.toml"
+
+[windows]
+sandbox = "elevated"
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[hooks.state.'C:\Users\win\.codex\hooks.json:session_start:0:0']
+trusted_hash = "sha256:7d8351580109d1697043b45fa467ce05cd60fa8c024d5fe5f2212d96563c098c"
+
+[plugins."product-design@openai-curated-remote"]
+enabled = true
+
+[hooks.state.'C:\Users\win\.codex\hooks.json:user_prompt_submit:0:0']
+trusted_hash = "sha256:175d441a3675a006f20c134fb11398e4759b8e9677be866a374e06d8e4a36d68"
+
+[plugins."creative-production@openai-curated-remote"]
+enabled = true
+
+[projects.'c:\users\win\desktop\demo']
+trust_level = "trusted"
+
+[plugins."picsart@openai-curated"]
+enabled = true
+
+[projects.'c:\users\win\desktop\平台项目资料']
+trust_level = "trusted"
+
+[projects.'c:\users\win\desktop\ai--main']
+trust_level = "trusted"
+
+[projects.'c:\users\win\desktop\敖钦储能项目']
+trust_level = "trusted"
+
+[plugins."supabase@openai-curated"]
+enabled = true
+
+[projects.'c:\users\win\desktop\program1-main-latest']
+trust_level = "trusted"
+
+[projects.'c:\users\win\desktop\alpha']
+trust_level = "trusted"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-07-08T03:02:15Z"
+source_type = "local"
+source = '\\?\C:\Users\win\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
+
+[marketplaces.openai-curated]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\plugins'
+
+[marketplaces.openai-api-curated]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\plugins'
+
+[marketplaces.openai-curated-remote]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\plugins-remote'
+
+[marketplaces.openai-bundled]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\bundled-marketplaces\openai-bundled'
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."figma@openai-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."hyperframes@openai-curated"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[desktop]
+followUpQueueMode = "queue"
+conversationDetailMode = "STEPS_COMMANDS"
+show-context-window-usage = true
+
+[plugins."browser@openai-bundled"]
+enabled = true

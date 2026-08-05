@@ -1,0 +1,88 @@
+<script setup lang="ts">
+import { ArrowRightOutlined, SendOutlined } from '@ant-design/icons-vue'
+import { watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useWorkbenchStore, type AssistantMode } from '../stores/workbench'
+
+const router = useRouter()
+const route = useRoute()
+const workbench = useWorkbenchStore()
+
+watch(
+  () => [route.path, route.meta.title, workbench.assistantOpen] as const,
+  ([path, title, open]) => {
+    if (open) workbench.syncRouteContext(String(path), String(title || ''))
+  },
+)
+
+function expandWorkspace() {
+  workbench.closeAssistant()
+  router.push({ path: '/assistant', query: { context: workbench.assistantContext } })
+}
+
+function selectMode(mode: AssistantMode) {
+  workbench.setAssistantMode(mode)
+}
+</script>
+
+<template>
+  <a-drawer
+    :open="workbench.assistantOpen"
+    :width="460"
+    title="敖钦辅助"
+    placement="right"
+    class="assistant-drawer"
+    @close="workbench.closeAssistant"
+  >
+    <div class="assistant-drawer-body chat-first">
+      <section class="assistant-context-card">
+        <div>
+          <span>当前页面</span>
+          <strong>{{ workbench.assistantContext }}</strong>
+        </div>
+        <a-button type="link" @click="expandWorkspace">展开对话 <ArrowRightOutlined /></a-button>
+      </section>
+
+      <div class="assistant-mode-chips">
+        <button
+          v-for="mode in workbench.modeChips"
+          :key="mode"
+          type="button"
+          class="assistant-mode-chip"
+          :class="{ active: workbench.assistantMode === mode }"
+          @click="selectMode(mode)"
+        >
+          {{ workbench.modeTitles[mode] }}
+        </button>
+      </div>
+
+      <div class="assistant-thread compact-thread">
+        <article v-for="message in workbench.messages" :key="message.id" class="agent-message" :class="message.role">
+          <span>{{ message.role === 'user' ? '你' : '敖钦辅助' }}</span>
+          <p class="agent-message-body">{{ message.text }}</p>
+          <div v-if="message.refs?.length" class="assistant-msg-refs">
+            <em v-for="refName in message.refs" :key="refName" :title="'回答参考：' + refName">来源 · {{ refName }}</em>
+          </div>
+          <em>{{ message.time }}</em>
+        </article>
+      </div>
+
+      <div class="assistant-quick-actions">
+        <span>试试问 · {{ workbench.activeProfile.label }}</span>
+        <button v-for="action in workbench.quickActions" :key="action" type="button" @click="workbench.submitAssistant(action)">
+          {{ action }}
+        </button>
+      </div>
+
+      <div class="assistant-composer">
+        <a-textarea
+          v-model:value="workbench.assistantPrompt"
+          :auto-size="{ minRows: 2, maxRows: 4 }"
+          placeholder="输入问题，例如解释异常、查询口径或下一步建议"
+          @press-enter.exact.prevent="workbench.submitAssistant()"
+        />
+        <a-button type="primary" aria-label="发送" @click="workbench.submitAssistant()"><SendOutlined /></a-button>
+      </div>
+    </div>
+  </a-drawer>
+</template>

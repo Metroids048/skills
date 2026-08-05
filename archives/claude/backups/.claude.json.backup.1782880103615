@@ -1,0 +1,216 @@
+{
+  "numStartups": 9,
+  "tipsHistory": {
+    "color-when-multi-clauding": 8,
+    "default-permission-mode-config": 5,
+    "new-user-warmup": 2,
+    "shift-enter": 7
+  },
+  "unpinOpus47LaunchEffort": true,
+  "unpinOpus48LaunchEffort": true,
+  "changelogLastFetched": 1779674511573,
+  "firstStartTime": "2026-05-25T01:59:37.826Z",
+  "lastOnboardingVersion": "2.1.150",
+  "lastPlanModeUse": 1779695006383,
+  "lastReleaseNotesSeen": "2.1.150",
+  "mcpServers": {
+    "agentmemory": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@agentmemory/mcp"
+      ],
+      "env": {
+        "AGENTMEMORY_URL": "http://localhost:3111"
+      }
+    },
+    "codegraph": {
+      "args": [
+        "serve",
+        "--mcp"
+      ],
+      "command": "codegraph",
+      "type": "stdio"
+    },
+    "vibearound": {
+      "type": "http",
+      "url": "http://127.0.0.1:12358/va/mcp?token=YOUR_TOKEN"
+    },
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    },
+    "figma-desktop": {
+      "type": "http",
+      "url": "http://127.0.0.1:3845/mcp"
+    },
+    "headroom": {
+      "type": "stdio",
+      "command": "headroom",
+      "args": [
+        "mcp",
+        "serve"
+      ],
+      "env": {}
+    }
+  },
+  "migrationVersion": 13,
+  "officialMarketplaceAutoInstallAttempted": true,
+  "officialMarketplaceAutoInstallFailReason": "git_unavailable",
+  "officialMarketplaceAutoInstallLastAttemptTime": 1779935319467,
+  "officialMarketplaceAutoInstallNextRetryTime": 1779964119467,
+  "officialMarketplaceAutoInstallRetryCount": 3,
+  "officialMarketplaceAutoInstalled": false,
+  "opusProMigrationComplete": true,
+  "projects": {
+    "C:/Users/win/Desktop/Agent Platform": {
+      "allowedTools": [],
+      "disabledMcpjsonServers": [],
+      "enabledMcpjsonServers": [],
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "hasTrustDialogAccepted": true,
+      "lastGracefulShutdown": false,
+      "lastVersionBase": "2.1.150",
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "projectOnboardingSeenCount": 0
+    },
+    "C:/Users/win/Desktop/Operating Platform": {
+      "allowedTools": [],
+      "disabledMcpjsonServers": [],
+      "enabledMcpjsonServers": [],
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "hasTrustDialogAccepted": true,
+      "lastAPIDuration": 491324,
+      "lastAPIDurationWithoutRetries": 491132,
+      "lastCost": 1.56106,
+      "lastDuration": 4359208,
+      "lastFpsAverage": 2.17,
+      "lastFpsLow1Pct": 174.69,
+      "lastGracefulShutdown": false,
+      "lastLinesAdded": 200,
+      "lastLinesRemoved": 11,
+      "lastModelUsage": {
+        "deepseek-v4-flash": {
+          "cacheCreationInputTokens": 0,
+          "cacheReadInputTokens": 0,
+          "costUSD": 0.00887,
+          "inputTokens": 424,
+          "outputTokens": 270,
+          "webSearchRequests": 0
+        },
+        "deepseek-v4-pro[1m]": {
+          "cacheCreationInputTokens": 0,
+          "cacheReadInputTokens": 1537920,
+          "costUSD": 1.55219,
+          "inputTokens": 65946,
+          "outputTokens": 18140,
+          "webSearchRequests": 0
+        }
+      },
+      "lastSessionId": "b8da269f-8b62-4243-9129-2ae0fe3763c1",
+      "lastSessionMetrics": {
+        "frame_duration_ms_avg": 1.1386387096763388,
+        "frame_duration_ms_count": 9300,
+        "frame_duration_ms_max": 144.47669999999923,
+        "frame_duration_ms_min": 0.07709999999497086,
+        "frame_duration_ms_p50": 0.8978500000666827,
+        "frame_duration_ms_p95": 2.1852549998555326,
+        "frame_duration_ms_p99": 6.377260999931015,
+        "hook_duration_ms_avg": 0.2352941176470588,
+        "hook_duration_ms_count": 17,
+        "hook_duration_ms_max": 1,
+        "hook_duration_ms_min": 0,
+        "hook_duration_ms_p50": 0,
+        "hook_duration_ms_p95": 1,
+        "hook_duration_ms_p99": 1,
+        "pre_tool_hook_duration_ms_avg": 1.3823529411764706,
+        "pre_tool_hook_duration_ms_count": 34,
+        "pre_tool_hook_duration_ms_max": 13,
+        "pre_tool_hook_duration_ms_min": 0,
+        "pre_tool_hook_duration_ms_p50": 0,
+        "pre_tool_hook_duration_ms_p95": 9.349999999999998,
+        "pre_tool_hook_duration_ms_p99": 12.010000000000003
+      },
+      "lastToolDuration": 14517,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 1537920,
+      "lastTotalInputTokens": 66370,
+      "lastTotalOutputTokens": 18410,
+      "lastTotalWebSearchRequests": 0,
+      "lastVersionBase": "2.1.150",
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "projectOnboardingSeenCount": 0
+    },
+    "C:/Users/win/Desktop/program": {
+      "allowedTools": [],
+      "disabledMcpjsonServers": [],
+      "enabledMcpjsonServers": [],
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "hasTrustDialogAccepted": true,
+      "lastAPIDuration": 0,
+      "lastAPIDurationWithoutRetries": 0,
+      "lastCost": 0,
+      "lastDuration": 13284,
+      "lastFpsAverage": 3.21,
+      "lastFpsLow1Pct": 125.54,
+      "lastGracefulShutdown": false,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastModelUsage": {},
+      "lastSessionId": "64b8694b-6af5-4358-a8cd-5a9b666e336a",
+      "lastSessionMetrics": {
+        "frame_duration_ms_avg": 0.9407843749999962,
+        "frame_duration_ms_count": 32,
+        "frame_duration_ms_max": 7.965599999999995,
+        "frame_duration_ms_min": 0.11580000000003564,
+        "frame_duration_ms_p50": 0.6917499999999563,
+        "frame_duration_ms_p95": 1.6691399999999246,
+        "frame_duration_ms_p99": 6.089263000000086
+      },
+      "lastToolDuration": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalWebSearchRequests": 0,
+      "lastVersionBase": "2.1.150",
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "projectOnboardingSeenCount": 1
+    }
+  },
+  "seenNotifications": {},
+  "shiftEnterKeyBindingInstalled": true,
+  "showSpinnerTree": false,
+  "skillUsage": {
+    "update-config": {
+      "lastUsedAt": 1779693761877,
+      "usageCount": 1
+    },
+    "requirement-clarifier": {
+      "usageCount": 2,
+      "lastUsedAt": 1781667218099
+    },
+    "model-route": {
+      "usageCount": 1,
+      "lastUsedAt": 1782814161392
+    }
+  },
+  "sonnet1m45MigrationComplete": true,
+  "userID": "00943c68f590ef1bbaa4bef159a1b65406bacf849ebfbf060b61dc4278a84875",
+  "pluginUsage": {
+    "ai-coding-ok@skills-dir": {
+      "usageCount": 0,
+      "lastUsedAt": 1781165536265,
+      "lastUsedNumStartups": 9
+    }
+  },
+  "machineID": "b5ddd646c1ea2305d5ea6ab278b7690076cceb387e476606b164674cbd130f3e"
+}

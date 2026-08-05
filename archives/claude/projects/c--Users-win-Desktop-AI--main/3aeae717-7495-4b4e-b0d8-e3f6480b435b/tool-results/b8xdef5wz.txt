@@ -1,0 +1,182 @@
+
+## ADR-016: 24 小时运行的可靠性分三层监督，故障响应为"自动降级、人工恢复"，仅两类例外可自动恢复
+
+- Date: 2026-07-02
+- Status: accepted
+- Context: 用户要求为 7x24 自动实时交易单独产出运行方案。现有设计文档未定义进程崩溃/连接静默断连/数据缺口等运行时故障的检测与响应机制，通知/告警层此前在多处文档中被标记为缺口但从未定义触发规则。
+- Decision: 新增 `docs/architecture/24x7-operations-plan.md`，分进程层/连接层/数据层三层监督；连接层采用应用层心跳（不依赖 socket 状态）+ 指数退避带抖动重连；故障响应对齐 `execution-risk-review-design.md` 已有的风控结果枚举（`pause_strategy`/`pause_account`/`hard_stop`），默认"自动降级、人工恢复"，仅"高严重度新闻事件计时结束"与"数据中断已恢复且新鲜度确认通过"两种客观可验证场景允许自动恢复；定义"只允许平仓"模式的具体行为边界（不得撤销已有止损）；定义通知告警三级触发规则。
+- Consequences: 该文档成为风控措施与保障方案（ADR-018）裁决具体熔断时长/阈值时的运行时行为基础，两文档不重复定义触发动作分类，只有取值和最终裁决在风控文档。
+
+## ADR-017: 外部数据源接入的具体 API/SDK/频率选型独立成文，不并入抽象的数据接入设计
+
+- Date: 2026-07-02
+- Status: accepted
+- Context: `data-and-ingestion-design.md` 有意保持抽象，不点名具体供应商与轮询频率。用户要求的开发前方案包需要"外部数据源、信息源的接入"具体到可执行程度，且原文档的抽象定位不应被破坏（避免未来供应商变更导致要重写架构文档）。
+- Decision: 新增 `docs/architecture/external-data-source-integration-plan.md`，逐级（A/B/C/D/E）给出具体 API/SDK 选型（CCXT/ForexFactory RSS/Trading Economics/金十+CoinDesk+TheBlock+SEC EDGAR RSS/Twitter API v2+Telegram Bot API/GitHub+arXiv API）与拉取频率原则；`IngestionJob.source_family`/`job_type`/`schedule_mode`/`job_status` 建议枚举取值；原始数据 P0/P1 阶段落文件存储、P2 迁移对象存储的路径规划；明确 Reddit（PRAW）/YouTube Data API 是当前真实缺口，定为 P2；澄清 Telegram 三重角色（D级采集/E级采集可共用 Token，运维出站告警必须用不同 Token）。
+- Consequences: 供应商/SDK/频率属于本文件而非 `data-and-ingestion-design.md` 的维护范围，未来更换数据供应商只需修订本文件；`IngestionJob` 尚未代码化，枚举取值是 P1 实现时的建议值而非已落地约束。
+
+## ADR-018: 风控措施与保障方案裁决四项此前留白的风险容忍度选择
+
+- Date: 2026-07-02
+- Status: accepted
+- Context: `llm-integration-plan.md` §3.2、`execution-risk-review-design.md` §2.2a、`technical-architecture-plan.md` §8.3、`domain-and-interfaces-design.md` §3.13 均把具体取值/选择显式留白，交给风控方案文档裁决。用户要求的开发前方案包必须包含"风控措施和保障"维度，且这些留白必须在进入开发前有明确答案，不能带着未裁决的分支进入实现阶段。
+- Decision: 新增 `docs/architecture/risk-control-and-safeguards-plan.md`：(1) LLM 否决超时选"超时即否决"（选项 A），理由是选项 B 在市场剧烈波动时可能恰好放行风险最高的信号，与风控优先级原则冲突；(2) `paper`/`live` 环境交易所 Key 启动期强制自检提现权限，若检测到提现权限则拒绝启动而非仅告警，`dev`/`test` 环境按"是否涉及真实资金"为界例外；(3) 给出 `RiskProfile` 全字段针对 BTC/USDT 永续第一阶段的具体默认阈值表（单笔1%/单品种20%/总仓位60%/最大杠杆3倍/当日3%/单周8%/回撤10%触发收紧/回撤20%硬停止），明确扩展市场不可直接复用；(4) 具体化熔断触发条件表，且明确"自动降级、人工恢复"为默认原则，仅两类客观可验证场景例外允许自动恢复（与 ADR-016 一致）。
+- Consequences: 后续如需修改这四项裁决的具体数值/选择，应作为对本文件的修订，不得绕开本文件直接改动被引用的源文档；`RiskProfile` 阈值表是 P1 代码化时的默认配置，运行时仍需可配置，不是硬编码常量。
+
+## ADR-019: 用单独索引文档固定真源层级、产品文档分层与 Phase 语义
+
+- Date: 2026-07-02
+- Status: accepted
+- Context: 仓库在第二轮设计补强后已同时存在主报告、母文档、专项方案、旧版产品文档与新版 PRD/模块清单。若继续只靠 README 或记忆文件口头说明，会再次出现“哪份文档说了算”“Phase 0 和 P0/P1 是否同义”的理解漂移。
+- Decision: 新增 `docs/architecture/design-source-index.md` 作为开发入口索引，固定真源层级为“研究报告 > AGENTS.md > 母文档 > 第二轮专项方案 > 产品细化文档 > README/记忆索引”；明确 `product-spec.md` + `feature-catalog.md` 是上层定位与总表，`prd.md` + `module-feature-catalog.md` 是开发验收真源；明确当前仓库整体仍处于 `Phase 0`（平台骨架 + 统一模型 + 设计冻结），而 `appendix-b-feature-phasing.md` 中的 `P0/P1/P2` 只是实现 tranche 标签。
+- Consequences: 后续任何新增文档都必须先放入该索引的层级体系，再决定它是否有裁决权；README、`report-alignment.md`、记忆文件只能同步入口和现状，不得绕过该索引重新发明真源链。
+## ADR-020: The first executable slice expands into Binance Top20 ingestion plus BTC/ETH-first paper preparation
+- Date: 2026-07-02
+- Status: accepted
+- Context: After the design convergence pass, the user confirmed that the first implementation tranche should no longer stop strictly before paper trading. The tranche must now cover Binance top-universe ingestion metadata and a simulated paper-run preparation path, while still keeping live execution, WebSocket streaming, and LLM veto outside this code drop.
+- Decision: Keep the first real exchange integration Binance-only, but widen the scope to include persisted `IngestionJob`, `BacktestRun`, and `PaperRun` objects; a default Binance `Top20` quote-volume universe fallback for ingestion jobs; and a paper-run orchestration default that always prioritizes `BTC/USDT` and `ETH/USDT` as the first simulated symbols. `GateDecision` is extended to explicit `accepted` / `conditional` / `rejected_with_reason` statuses so the paper-preparation boundary can be expressed without overloading a boolean.
+- Consequences: The API and repository implementation must cover `StrategyIdea -> StrategyDraft -> Strategy -> StrategyVersion -> BacktestRun -> GateDecision -> PaperRun`; Celery gets first real ingestion/backtest/paper task entrypoints; Alembic must manage all relational tables for this slice; and later Binance live collectors can replace the fallback universe source without changing the public contract shape.
+
+## ADR-021: Persisted carry backtests execute through an application service over timeseries repositories
+- Date: 2026-07-02
+- Status: accepted
+- Context: After the first persisted slice landed, the remaining gap was that backtests could only be created from already-built payloads. The project still lacked a real application flow that reads persisted `ohlcv_bars` / `market_extras`, evaluates data quality, runs carry validation, and writes the resulting `BacktestRun`.
+- Decision: Add a dedicated `CarryBacktestApplicationService` and `CarryBacktestRequest` contract. The service reads Binance spot/perp/funding history from a `DataRepository`, uses settlement-window cadence for the carry lane's gap check, runs the existing carry backtest engine, enriches `validation_methodology` with persisted data-quality evidence, and persists the run through `ValidationRepository`. Expose the flow through `/backtests/carry` and a matching `enqueue_carry_backtest` Celery task rather than overloading generic CRUD endpoints.
+- Consequences: The verified backtest chain now includes persisted market data as an explicit dependency. Future Freqtrade/VectorBT adapters can reuse the same application boundary, and later live exchange collectors can feed the same repository contract without changing the API shape.
+
+## ADR-022: The first executable P1 expansion uses versioned `/api/v1` envelopes plus persisted gatekeeper seams
+- Date: 2026-07-02
+- Status: accepted
+- Context: After TASK-010, the repository still mixed old unversioned skeleton routes, direct final-object submission patterns, and in-memory `risk/review/runs` seams. This made it too easy to bypass validation and impossible to reason about a single public API style.
+- Decision: Move the public surface to `/api/v1`, standardize list responses to `items + total`, standardize error payloads to `error_code/message/detail`, and convert asynchronous-style creation paths (`backtests`, `optimizations`, `ingestion jobs`, `agent tasks`, `paper runs`) to `TaskSubmission` acknowledgements. Persist `RiskProfile`, `RiskEvent`, `ReviewReport`, `FailureRecord`, `AgentTask`, `LiveRun`, `OrderExecution`, and `PositionSnapshot`; add an `ExecutionGatekeeperService` that blocks orders or paper admission when stoploss, validation, freshness, veto, or active high-severity risk-event checks fail.
+- Consequences: The research loop is now auditable across Strategy -> Validation -> Risk/Execution -> Review without relying on in-memory dictionaries. Future Celery/Llive wiring can extend the same contracts instead of replacing them, and frontend/admin can target a stable versioned API surface.
+
+## ADR-023: Fixed Top20 directional automation uses four timeframe responsibilities and deterministic execution authority
+
+- Date: 2026-07-12
+- Status: accepted
+- Context: The scheduler was running but the default directional lane had stale 1h input while only 1m data was continuously refreshed. Existing positions could also be skipped when their entry bar had already been processed. The user confirmed a fixed Top20 universe, aggressive core-symbol leverage, cost-after-profit requirements, and an LLM role that enhances research without becoming an untestable discretionary trader.
+- Decision: Keep fixed Top20 as the universe. Directional entries require closed `15m` signals aligned with a `1h` state check and `4h` trend check; `1m` exclusively manages protections. BTC/ETH/SOL cap at 20x, all other Top20 symbols at 10x, while quantity remains capped by 2% stop risk and 5% aggregate initial risk. Hard drawdown at 20% force-closes and locks the PaperRun; 5% daily loss blocks new entries. Apply 10bps/side core and 18bps/side standard costs. LLM/RAG outputs become auditable advisory evidence; only already-persisted high/critical RiskEvents veto entry.
+- Consequences: A model timeout, budget limit, or invalid response may not silently relax deterministic risk controls, but also may not independently suppress an otherwise valid rule-based Paper entry. Testnet and live execution remain disabled until the defined 90-day/100-trade, cost-stressed Paper evidence gate is met.
+===PROJECT-MEMORY===
+- `docker-compose.test.yml`、`docker-compose.paper.yml`、`docker-compose.live.yml` 已入仓，Prometheus/Grafana dashboard 资产已有首版骨架
+
+## Local Console Reliability (2026-07-12)
+
+- 本地交易台 API 固定使用 `127.0.0.1:8016`；`8000` 在当前 Windows 环境会出现可监听但不返回 HTTP 响应的异常，启动器不得再使用它作为默认端口。
+- API 使用 `--local-console` 模式，只读本地 SQLite 的已落库行情、订单、仓位与账户快照；不得在页面读取请求中同步调用 Binance。
+- 独立 `scripts/run-local-paper-scheduler.py` 持续执行行情心跳和自动 Paper 周期，写回同一 SQLite。状态 API 用 `logs/scheduler.pid` 显示该外部调度是否存活。
+- 这属于 Data -> Execution -> Review 闭环：接口读取不中断、自动周期持续写入、币安验收成交与外部账户快照继续作为独立审计记录留存。
+
+## Directional Paper Runtime (2026-07-12)
+
+- Directional auto execution is Paper-only and scans the fixed Binance Top20. Its mandatory timeline is `4h trend -> 1h state -> 15m closed-bar entry`; `1m` is reserved for position protection and does not create entries.
+- Existing positions must always be protected from a fresh 1m bar, even if entry-frame data is stale or the 15m entry bar was already processed. Missing multi-timeframe data blocks only new entries.
+- Risk defaults for this lane: BTC/ETH/SOL max 20x; remaining Top20 max 10x; 2% stop-risk per trade; 5% aggregate initial stop risk; 5% daily loss blocks new entries; 20% peak drawdown force-closes and locks the PaperRun pending manual recovery.
+- Profit exits: break-even at +1R, close 50% at +2R, retain the balance under a ratcheting stop, and close after 24 hours if favorable movement is below +0.5R. Costs are 10bps/side for core symbols and 18bps/side otherwise; stress validation still requires 1.5x cost evidence before Testnet promotion.
+- LLM/RAG may enrich decision evidence and review data but cannot set direction, price, leverage, sizing, or stops. Only persisted high/critical `RiskEvent`s veto an entry; LLM unavailability is auditable but cannot bypass deterministic risk gates or itself halt a valid rule entry.
+
+## Phase-0 开发前完整方案包 (TASK-007, 2026-07-02)
+
+用户要求做第二轮全局查缺补漏，并交付一整套开发前方案文档（技术架构/PRD/模块功能清单/
+策略库机制/LLM接入/24小时运行/外部数据源/风控），全部写入 `docs/` 作为正式仓库文档，
+分批交付。8 份文档已全部完成：
+
+1. [technical-architecture-plan.md](C:\Users\Windows11\Desktop\量化项目\docs\architecture\technical-architecture-plan.md) — 六层到物理部署的映射、四环境 compose 拓扑规划、API/队列/存储/配置技术规则、§12 已知技术缺口追踪表（当前仓库骨架与目标态之间的具体缺口清单）。
+2. [prd.md](C:\Users\Windows11\Desktop\量化项目\docs\product\prd.md) — 产品愿景与反成功标准、两角色、六个人工决策点作为产品硬约束、七模块用户故事+验收标准。
+3. [module-feature-catalog.md](C:\Users\Windows11\Desktop\量化项目\docs\product\module-feature-catalog.md) — 逐模块功能点表，精确交叉引用 domain-and-interfaces-design.md 的对象/接口簇字段名。
+4. [strategy-library-collection-and-scoring.md](C:\Users\Windows11\Desktop\量化项目\docs\architecture\strategy-library-collection-and-scoring.md) — 六类来源分类、单策略/组合两级评分机制、六类淘汰触发信号，只设计机制不写具体参数。
+5. [llm-integration-plan.md](C:\Users\Windows11\Desktop\量化项目\docs\architecture\llm-integration-plan.md) — 逐 Agent LLM 使用边界与禁止清单、四段式 Prompt 结构、成本控制、LangChain/LlamaIndex 仅服务 Research Agent 的 RAG 边界，只做方案不写代码。
+6. [24x7-operations-plan.md](C:\Users\Windows11\Desktop\量化项目\docs\architecture\24x7-operations-plan.md) — 进程/连接/数据三层监督模型、心跳与指数退避重连、五级降级状态机、通知告警分级规则。
+7. [external-data-source-integration-plan.md](C:\Users\Windows11\Desktop\量化项目\docs\architecture\external-data-source-integration-plan.md) — 五级数据源的具体 API/SDK/拉取频率/存储路径，补全 data-and-ingestion-design.md 有意留白的具体参数。
+8. [risk-control-and-safeguards-plan.md](C:\Users\Windows11\Desktop\量化项目\docs\architecture\risk-control-and-safeguards-plan.md) — 裁决此前四处留白：LLM 否决超时选"超时即否决"、Key 权限自检强制拒绝启动规则、`RiskProfile` 具体阈值默认值、熔断触发规则具体化。
+
+对应 ADR：见 decisions-log.md ADR-015~018。
+
+## Design Convergence Blueprint (TASK-008, 2026-07-02)
+
+- 新增 `docs/architecture/design-source-index.md` 作为开发入口索引，固定真源层级、Phase 语义、文档职责边界。
+- 明确 `Phase 0` = 平台骨架 + 统一模型 + 设计冻结；`appendix-b-feature-phasing.md` 中的 `P0/P1/P2` 仅是实现 tranche 标签。
+- README / `report-alignment.md` / 产品上层文档已同步说明：`product-spec.md` + `feature-catalog.md` 负责上层定位，`prd.md` + `module-feature-catalog.md` 负责开发验收。
+- `策略库/笔记.docx` 被正式定义为研究素材池，只能通过 `StrategyIdea -> StrategyDraft -> StrategyContract` 流程进入主链路。
+- 代码层补齐：`RiskProfile` 契约、工作流生命周期对象契约、六大接口簇 API skeleton、全量 `Settings` 环境变量入口、`services/data` 包骨架。
+## First Persisted Vertical Slice (TASK-009, 2026-07-02)
+
+- The repository now has persisted SQLAlchemy-backed repositories for `StrategyIdea`, `StrategyDraft`, `Strategy`, `StrategyVersion`, `BacktestRun`, `IngestionJob`, and `PaperRun`.
+- `apps/api/routers/{strategies,backtests,ingestion,runs}.py` now use real repositories via `get_db_session` instead of in-memory dictionaries.
+- Binance A-level helpers now exist in `services/data/binance.py` for `Top20` universe selection, OHLCV normalization, and funding-rate normalization.
+- `services/data/service.py` defines the current fallback Binance `Top20` universe list for ingestion jobs until live exchange ranking is wired in.
+- `services/validation/carry.py` contains the first carry backtest service with settlement-window handling, spot/perp/funding cost reconciliation, and `conditional` gate behavior when deflated Sharpe is absent.
+- `services/execution/paper.py` makes `BTC/USDT` and `ETH/USDT` the default first simulated symbols for paper preparation.
+- Celery now has first real task entrypoints for ingestion, backtests, and paper runs.
+- Alembic `0001` now manages the relational tables for this slice instead of only the original `strategies` table.
+- Current verified path: `StrategyIdea -> StrategyDraft -> Strategy -> StrategyVersion -> BacktestRun -> GateDecision -> PaperRun`.
+
+## Persisted Carry Application Flow (TASK-010, 2026-07-02)
+
+- `services/data/repository.py` now provides the first real timeseries repository for `ohlcv_bars` and `market_extras`, including store/list helpers plus gap and freshness checks for Phase-1 carry validation.
+- `shared.models.CarryBacktestRequest` is now the application-layer submission contract for the persisted carry lane.
+- `services/validation/application.py` now defines `CarryBacktestApplicationService`, which loads persisted spot/perp/funding data, applies settlement-window data-quality checks, runs the carry backtest, and persists the resulting `BacktestRun`.
+- `apps/api/routers/backtests.py` now exposes `/backtests/carry` as the first API path that executes a backtest from persisted market data instead of accepting only a pre-built `BacktestRun` payload.
+- `services.validation.tasks.enqueue_carry_backtest` is wired as the queue-side entrypoint for the same application flow, but local import smoke for Celery remains pending until the environment installs `celery`.
+===TASK-HISTORY===
+- **Notes**: The next recommended design step is the domain and interfaces design package.
+
+### [TASK-003] Add domain and interfaces design package
+- **Date**: 2026-06-28
+- **Type**: design
+- **Summary**: Added the domain and interfaces design package, defining the core domain objects, aggregate boundaries, lifecycle states, interface groups, agent I/O objects, and orchestration backbone for the research platform.
+- **Files changed**: `docs/architecture/domain-and-interfaces-design.md`, `docs/architecture/platform-master-design.md`, `docs/architecture/report-alignment.md`, `.github/agent/memory/*.md`
+- **Notes**: The next recommended design step is the data and ingestion design package.
+
+### [TASK-004] Complete the remaining pre-development design assets
+- **Date**: 2026-06-28
+- **Type**: design
+- **Summary**: Added the remaining pre-development preparation documents, including data and ingestion design, agent and orchestration design, execution/risk/review design, product specification, feature catalog, roadmap, environment/config guide, and delivery checklist.
+- **Files changed**: `docs/architecture/*.md`, `docs/product/*.md`, `docs/roadmap/*.md`, `docs/ops/*.md`, `README.md`, `.github/agent/memory/*.md`
+- **Notes**: The repository now contains a broad project preparation package. The next step can shift to concrete schema/API/model implementation.
+
+### [TASK-005] Build Phase-0 global engineering scaffolding
+- **Date**: 2026-06-29
+- **Type**: feat (scaffolding, no business logic)
+- **Summary**: Filled the foundational plumbing identified in the v2.0 集成方案 PDF gap analysis. Added `shared/models/` unified Pydantic contracts (OHLCVBar/MarketExtras/BacktestReport/GateDecision/RiskEvent/StrategyContract/TradeSignal/MacroEvent/AlphaPlan + enums); `infra/` (timescale `init.sql` hypertables, freqtrade config/strategies/user_data, jesse, grafana provisioning); docker-compose v2 (8 services, postgres→TimescaleDB) + `docker-compose.dev.yml`; expanded `.env.example` to 5 data tiers; Alembic + Strategy 18-field ORM + first migration `0001`; FastAPI strategies CRUD seam + `config.py` + `celery_app.py`; pyproject additions (alembic/anthropic/pandas-ta, ruff/mypy tightening); tests scaffolding (contract guard + API smoke); `Makefile`; `.pre-commit-config.yaml`; CI `ci.yml`; worldquant methodology seam (operators/parser/crypto factor generator stubs); docs reconciliation file.
+- **Files changed**: `shared/**`, `infra/**`, `services/strategy_library/{models.py,__init__.py}`, `migrations/**`, `apps/api/{main.py,config.py,celery_app.py,routers/**}`, `docker-compose*.yml`, `.env.example`, `.gitignore`, `pyproject.toml`, `Makefile`, `.pre-commit-config.yaml`, `.github/workflows/ci.yml`, `research_source/worldquant_adapter/**`, `docs/architecture/v2-integration-reconciliation.md`
+- **Verification**: py_compile 37 files OK; YAML/JSON validated; `shared.models` imports; contract tests 6/6 pass (caught + fixed a real bug: high≥low cross-field check needed `model_validator(mode="after")`). NOT run here (no docker/make/uv): `docker compose up`, `alembic upgrade head`, `uv lock`, API tests (need `pydantic_settings`). These run in CI / docker.
+- **Notes**: Decisions: 移植 WorldQuant 方法论到加密（非搬运表达式）; v2.0 PDF 并入 docs 作落地细化（docx 仍为真源）. Next: P0-03 ohlcv_downloader + P0-12 strategies repository (replace in-memory seam).
+
+### [TASK-008] Converge design sources, phase semantics, and API skeletons
+- **Date**: 2026-07-02
+- **Type**: feat + design convergence
+- **Summary**: Implemented the “开发前整体设计收敛蓝图” in repo form. Added `docs/architecture/design-source-index.md` to fix the source-of-truth chain, Phase semantics, and document responsibilities; synchronized README / report-alignment / roadmap / product entry docs / project memory; coded `RiskProfile` plus workflow lifecycle contracts (`BacktestRun`, `PaperRun`, `LiveRun`, `ReviewReport`, `FailureRecord`, `IngestionJob`, `AgentTask`, `DecisionVetoResult`, strategy intake objects); expanded FastAPI from a single strategies seam to six interface-cluster skeletons; added `services/data` package scaffold; expanded `Settings` to cover `.env.example`; and updated tests to cover the new contracts and skeleton routes.
+- **Files changed**: `docs/architecture/{design-source-index.md,report-alignment.md,appendix-b-feature-phasing.md,technical-architecture-plan.md}`, `docs/roadmap/phase-roadmap.md`, `docs/product/{product-spec.md,feature-catalog.md}`, `README.md`, `shared/models/**`, `apps/api/{main.py,config.py,celery_app.py,routers/**}`, `services/data/__init__.py`, `tests/{api,contracts}/**`, `.github/agent/memory/{project-memory.md,decisions-log.md,task-history.md}`
+- **Verification**: `py -3 -m pytest -q` -> 11 passed; `shared.models` targeted import smoke passed; `apps.api.main` import smoke passed with 42 registered routes; compileall passed with a Windows path warning during directory listing but reported `COMPILE_OK`.
+- **Notes**: Local environment still lacks `pytest-asyncio` / `pydantic_settings`; `apps/api/config.py` now contains a minimal fallback path for local smoke tests, while the primary dependency remains declared in `pyproject.toml`.
+
+## 2026-07-12 — Local console reliability, cost gate, and audit retention
+
+- **Summary**: Separated Testnet acceptance fills from strategy performance, persisted Binance demo account snapshots and reconciled orders, fixed funding carry edge calculation to deduct four execution legs, and localized the trading workspace. The desktop console now reads persisted data on API port `8016`; an external scheduler process refreshes markets and runs automatic Paper cycles without blocking the API.
+- **Verification**: API core reads returned 200 in 1-261 ms; local overview retained 10 orders, 10 positions, and 2 account snapshots; scheduler reported running and auto execution armed. Full suite `253 passed, 1 skipped`; Ruff, frontend `26` tests, frontend production build, and `git diff --check` passed.
+- **Notes**: Binance demo account API remains network/credential dependent. Its failure is isolated to the account panel and does not mark the entire console unavailable. Mainnet remains disabled; cost gate still prevents automatic Testnet mirroring until explicit validation evidence exists.
+
+## 2026-07-08 — Binance Testnet gateway + local paper mirror E2E
+
+- **Summary**: Fixed CCXT Binance USDM Testnet integration (manual testnet URLs instead of deprecated `set_sandbox_mode`), algo protection orders (`algoType=CONDITIONAL`), paper mirror min-notional bump (50 USDT), and dev relaxed signal filters. Verified live K-line feed, testnet balance sync (~5256 USDT), manual testnet orders, and paper auto-cycle mirror (`gateway_order_id` on recent fills).
+- **Files changed**: `services/execution/{gateway.py,paper_runtime.py,decision_pipeline.py,paper_signal.py}`, `shared/config.py`, `apps/api/celery_app.py`, `.env.example`, `tests/services/test_binance_gateway.py`
+- **Verification**: `py -3 -m pytest tests/services/test_binance_gateway.py tests/services/test_paper_bootstrap.py -q` -> 4 passed; API `trading-status` credentials+gateway+scheduler+live feed OK; testnet manual order `gateway_order_id=20127948601`; paper mirror orders `20128622805` / `20128804499`.
+
+## 2026-07-12 — Fixed Top20 directional Paper execution and cost-risk controls
+
+- **Summary**: Reworked the automatic directional Paper lane around `4h trend -> 1h state -> 15m entry -> 1m protection`. The fixed Top20 remains intact; heartbeat now maintains all four closed-bar timeframes. Existing positions receive 1m stop, time-exit, partial-profit, and drawdown protection even when entry bars are stale or already processed.
+- **Risk policy**: BTC/ETH/SOL use 20x caps; the other fixed Top20 symbols use 10x caps. Position size remains stop-distance risk based at 2% per trade, with a 5% aggregate initial-stop-risk cap, 5% daily new-entry halt, and 20% hard-drawdown close-and-lock action. All work remains Paper-only.
+- **Exit/cost policy**: +1R break-even ratchet, +2R partial 50% exit, trailing remainder, and 24-hour exit below +0.5R. Core assets model 10bps per side; other symbols 18bps per side, with the existing transaction-cost ledger retaining fee/slippage evidence.
+- **LLM boundary**: LLM/RAG remains structured audit and research input. Only persisted high/critical risk events hard-veto entries; model budget/runtime/schema failures are recorded as advisory unavailability and cannot weaken deterministic gates.
+- **Verification**: `pytest -q` -> 274 passed, 1 skipped; `ruff check .`; `mypy`; `npm --workspace frontend/admin run build`; `git diff --check` all passed. Vite retains its pre-existing >500kB bundle warning.
+- [project: C:\Users\Windows11\Desktop\量化项目] 2026-07-12 Fixed Top20 Binance Testnet acceptance connected end-to-end
+  - **内容**: 先定位到直接调用 `TestnetAcceptanceService` 不会写回平台验收状态的断点；随后通过正式 API `/api/v1/execution/testnet-acceptance-runs` 执行固定 20 币顺序开仓/平仓验收。
+  - **验收证据**: `run_status=completed`、20/20 币完成、40 笔成交、无失败币、`final_open_position_count=0`、`final_open_order_count=0`；API `trading-status` 已回写 `testnet_acceptance_verified=true`、`auto_execution_state=ready`、`execution_ready=true`、调度器运行中。
+  - **边界**: 仅 Binance Futures Testnet/Mock，主网保持关闭；预检确认账户初始 0 持仓/0 挂单。正式验收 run id: `02c25bdd-be98-4060-a816-e625c61e7b24`。
+- [project: C:\Users\Windows11\Desktop\量化项目] 2026-07-12 Trading console strategy/audit boundary and browser sync fix
+  - **结论**: 固定 Top20 的 40 笔 Binance Testnet 成交属于 `testnet_acceptance` 基础设施验收，不属于量化策略收益或策略开平逻辑；自动 Paper 周期按既定资金费成本门禁拒绝当前信号，未产生策略新仓。
+  - **故障**: 本地启动脚本将行情接口强制置为 API-only，外部行情读取超时会污染整页错误；更关键的是 CORS `OPTIONS` 预检被 Bearer 认证中间件拦截，浏览器拿不到任何数据，命令行带 Token 却正常。
+  - **修复/验证**: 本地控制台继续使用隔离调度器缓存；行情可选请求失败不再升级成全局错误；认证中间件放行 `OPTIONS`，启动器注入 `http://127.0.0.1:5173`/`localhost:5173` CORS 白名单。预检返回 200，后端健康测试 8 passed，前端 Vitest 30 passed，API overview/market endpoints 全部 200。
+  - **同步边界**: 账户 API 已能读取 Binance 最近订单与 0 持仓；主交易表展示本地执行/审计记录，策略订单与验收审计继续分开，避免把验收单计入策略表现。

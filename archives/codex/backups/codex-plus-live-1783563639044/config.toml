@@ -1,0 +1,113 @@
+model_provider = "custom"
+model = "gpt-5.5"
+model_reasoning_effort = "high"
+disable_response_storage = true
+notify = ['C:\Users\win\AppData\Local\OpenAI\Codex\runtimes\cua_node\a89897d3d9baa117\bin\node_modules\@oai\sky\bin\windows\codex-computer-use.exe', "turn-ended"]
+
+[model_providers.custom]
+name = "One-API"
+base_url = "https://api.tangguo.xin/v1"
+wire_api = "responses"
+requires_openai_auth = true
+experimental_bearer_token = "sk-YOUR_SECRET"
+
+[mcp_servers.github]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-github"]
+startup_timeout_sec = 30
+
+[mcp_servers.context7]
+type = "stdio"
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]
+startup_timeout_sec = 30
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+startup_timeout_sec = 30
+
+[mcp_servers.memory]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-memory"]
+startup_timeout_sec = 30
+
+[mcp_servers.sequential-thinking]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+startup_timeout_sec = 30
+
+[mcp_servers.playwright]
+type = "stdio"
+command = "npx"
+args = ["-y", "@playwright/mcp@latest", "--browser", "chrome"]
+startup_timeout_sec = 30
+
+[mcp_servers.exa]
+type = "stdio"
+command = "npx"
+args = ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
+startup_timeout_sec = 30
+
+[mcp_servers.fal-ai]
+type = "stdio"
+command = "npx"
+args = ["-y", "fal-ai-mcp-server"]
+startup_timeout_sec = 30
+
+[mcp_servers.filesystem-agent-platform]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", 'C:\Users\win\Desktop\Agent Platform']
+startup_timeout_sec = 30
+
+[mcp_servers.chrome-devtools]
+type = "stdio"
+command = "npx"
+args = ["-y", "chrome-devtools-mcp@latest"]
+startup_timeout_sec = 30
+
+[marketplaces]
+
+[marketplaces.openai-curated]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\plugins'
+
+[marketplaces.openai-api-curated]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\plugins'
+
+[marketplaces.openai-curated-remote]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\plugins-remote'
+
+[marketplaces.openai-bundled]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\bundled-marketplaces\openai-bundled'
+
+[features]
+
+[plugins]
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[desktop]
+followUpQueueMode = "queue"
+
+[projects.'c:\users\win\desktop\ai--main']
+trust_level = "trusted"
+
+[projects.'c:\users\win\desktop\program1-main-latest']
+trust_level = "trusted"
+
+[windows]
+sandbox = "elevated"

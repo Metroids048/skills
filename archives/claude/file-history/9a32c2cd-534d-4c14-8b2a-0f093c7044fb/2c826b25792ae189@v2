@@ -1,0 +1,40 @@
+# -*- coding: utf-8 -*-
+import warnings
+warnings.filterwarnings("ignore")
+import openpyxl
+from openpyxl.utils import get_column_letter
+
+base = r"C:\Users\win\Desktop\敖钦储能项目\原始需求\产量规划需求"
+
+def dump(path, sheet_names=None, max_row=8, max_col=30):
+    print(f"\n############ FILE: {path.split(chr(92))[-1]} ############")
+    try:
+        wb = openpyxl.load_workbook(path, data_only=True)
+    except Exception as e:
+        print("ERROR loading:", e)
+        return
+    targets = sheet_names if sheet_names else wb.sheetnames
+    for name in targets:
+        if name not in wb.sheetnames:
+            print(f"  (sheet not found: {name})")
+            continue
+        ws = wb[name]
+        print(f"\n=== SHEET: {name}  dims={ws.dimensions} ===")
+        mr = min(ws.max_row, max_row)
+        mc = min(ws.max_column, max_col)
+        for r in range(1, mr + 1):
+            row_vals = []
+            for c in range(1, mc + 1):
+                v = ws.cell(row=r, column=c).value
+                if v is not None:
+                    row_vals.append(f"{get_column_letter(c)}{r}={v!r}")
+            if row_vals:
+                print(" | ".join(row_vals))
+        if ws.max_column > mc:
+            print(f"... ({ws.max_column - mc} more columns)")
+
+dump(base + r"\框架.xlsx")
+dump(base + r"\常用图表输出\产量规划总表.xlsx")
+dump(base + r"\常用图表输出\产量规划常用图表模版.xlsx")
+dump(base + r"\明细表（4个附件）\附件1.2 产量规划在生产天然气-XX方案.xlsx", ["1-储量及动用情况"])
+dump(base + r"\明细表（4个附件）\附件2.1 产量规划新项目原油-XX方案.xlsx", ["5-推荐方案分年产量（万吨）", "6-推荐方案产量汇总（万吨）"])

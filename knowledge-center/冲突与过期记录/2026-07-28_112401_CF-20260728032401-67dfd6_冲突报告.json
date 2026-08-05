@@ -1,0 +1,45 @@
+{
+  "conflict_id": "CF-20260728032401-67dfd6",
+  "created_at": "2026-07-28T11:24:01",
+  "reason": "同 ID 且已确认，拒绝静默覆盖",
+  "existing": {
+    "id": "K-20260728032401-672fb1",
+    "date": "2026-07-28",
+    "source_tool": "system",
+    "project": "global",
+    "type": "USER_PREFERENCE",
+    "statement": "用户偏好：默认中文沟通",
+    "confidence": "CONFIRMED",
+    "evidence": [
+      "USER_KNOWLEDGE_BASE.md"
+    ],
+    "sensitivity": "PRIVATE",
+    "public_eligible": false,
+    "status": "ACTIVE",
+    "supersedes": [],
+    "conflicts_with": [],
+    "tags": [],
+    "confirmed": true
+  },
+  "incoming": {
+    "id": "K-20260728032401-672fb1",
+    "date": "2026-07-28",
+    "source_tool": "system",
+    "project": "global",
+    "type": "USER_PREFERENCE",
+    "statement": "用户偏好：默认中文沟通",
+    "confidence": "HIGH",
+    "evidence": [
+      "conflict-test"
+    ],
+    "sensitivity": "PRIVATE",
+    "public_eligible": false,
+    "status": "ACTIVE",
+    "supersedes": [],
+    "conflicts_with": [],
+    "tags": [],
+    "confirmed": false
+  },
+  "resolution": "PENDING_CONFIRM",
+  "rule": "不得静默覆盖已确认主知识库"
+}

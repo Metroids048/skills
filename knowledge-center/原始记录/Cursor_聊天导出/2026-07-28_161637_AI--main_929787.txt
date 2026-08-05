@@ -1,0 +1,28 @@
+---
+pid: 15608
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n$env:QUANT_PYTEST_PYTHON = \"C:\\Users\\win\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\"\n# Prefer PS7 if available for cleaner heredoc-like commit\n$msg = @\"\ncheckpoint: P0.3 entry latency, funnel protect, dead-PID reclaim\n\nKeep Sampling Entry→Exit watchable: faster pretrade snapshot, non-blocking runtime exchange probe, skip-duplicate funnel overwrite guard, and same-host dead-PID lease/claim reclaim so restarts do not miss bars.\n\"@\ngit commit --trailer \"Co-authored-by: Cursor <cursoragent@cursor.com>\" -m $msg\n"
+started_at: 2026-07-28T06:11:52.688Z
+running_for_ms: 135168   
+---
+ruff (legacy alias)......................................................Passed
+ruff format..............................................................Failed
+- hook id: ruff-format
+- files were modified by this hook
+
+1 file reformatted, 10 files left unchanged
+
+check yaml...........................................(no files to check)Skipped
+check json...........................................(no files to check)Skipped
+fix end of files.........................................................Passed
+trim trailing whitespace.................................................Passed
+check for added large files..............................................Passed
+mypy.....................................................................Passed
+pytest subset for trading-critical changes...............................Passed
+verify-work skill copies match canonical source......(no files to check)Skipped
+
+---
+exit_code: 1
+elapsed_ms: 136885
+ended_at: 2026-07-28T06:14:09.573Z
+---

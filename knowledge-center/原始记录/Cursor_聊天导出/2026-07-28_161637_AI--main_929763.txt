@@ -1,0 +1,21 @@
+---
+pid: 13956
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "py -3 -m pytest -q -m \"not integration\" --tb=no 2>&1 | Select-Object -Last 8"
+started_at: 2026-07-28T02:32:34.235Z
+running_for_ms: 182411   
+---
+    util.warn_deprecated(
+
+tests/api/test_carry_execution_api.py::test_carry_execution_api_persists_closed_dual_leg_result
+  C:\Users\win\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+692 passed, 10 skipped, 2 deselected, 4 warnings in 179.44s (0:02:59)
+
+---
+exit_code: 0
+elapsed_ms: 183732
+ended_at: 2026-07-28T02:35:37.967Z
+---

@@ -1,0 +1,257 @@
+<script setup lang="ts">
+import {
+  AimOutlined,
+  CheckCircleOutlined,
+  ExpandOutlined,
+  ImportOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  RobotOutlined,
+  SaveOutlined,
+  SendOutlined,
+} from '@ant-design/icons-vue'
+import { message } from 'ant-design-vue'
+import { computed, nextTick, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import TemplateImportModal, { type TemplateImportResult } from '../../components/workbook/TemplateImportModal.vue'
+import TableFullscreenModal from '../../components/workbook/TableFullscreenModal.vue'
+import {
+  cellRules,
+  reserveRows,
+  reserveWorkbook,
+  validationIssues,
+  type ReserveRow,
+  type ValidationIssue,
+} from '../../mock/business'
+import { useWorkbenchStore } from '../../stores/workbench'
+
+type WorkflowState = 'draft' | 'validated' | 'review' | 'returned' | 'archived'
+
+const route = useRoute()
+const router = useRouter()
+const workbench = useWorkbenchStore()
+const importer = ref<InstanceType<typeof TemplateImportModal>>()
+const tableRef = ref<{ recalculate?: (refresh?: boolean) => void }>()
+const rows = ref<ReserveRow[]>(reserveRows.map((row) => ({ ...row })))
+const activeSheetId = ref(reserveWorkbook.sheets[1]?.id ?? reserveWorkbook.sheets[0].id)
+const activeIssueId = ref(validationIssues[0].id)
+const inspectorMode = ref<'issue' | 'rule' | 'trace'>('issue')
+const inspectorOpen = ref(false)
+const sheetNavOpen = ref(false)
+const tableFullscreen = ref(false)
+const showDetails = ref(true)
+const checkedAt = ref('10:41')
+const workflowState = ref<WorkflowState>('draft')
+const dirty = ref(false)
+const importedBatch = ref<TemplateImportResult>()
+
+const pageTitle = computed(() =>
+  route.path.includes('history-cleaning') ? '数据接入' : '储量工作表',
+)
+const activeSheet = computed(() => reserveWorkbook.sheets.find((item) => item.id === activeSheetId.value))
+const activeIssue = computed(() => validationIssues.find((item) => item.id === activeIssueId.value) ?? validationIssues[0])
+const reserveIssues = computed(() => validationIssues.filter((item) => item.sheet.includes('油藏')))
+const blockingCount = computed(() => rows.value.filter((item) => !item.commerciality).length)
+const workflowLabel = computed(() => ({
+  draft: dirty.value ? '有未保存修改' : '草稿',
+  validated: '校验完成',
+  review: '已提交复核',
+  returned: '已退回修正',
+  archived: '已归档',
+}[workflowState.value]))
+
+function markDirty() {
+  dirty.value = true
+  if (workflowState.value !== 'review') workflowState.value = 'draft'
+}
+
+function runValidation() {
+  rows.value.forEach((row) => {
+    if (!row.commerciality) row.status = '缺字段'
+    else if (row.depth > 6000) row.status = '需复核'
+    else row.status = '通过'
+  })
+  checkedAt.value = '刚刚'
+  workflowState.value = 'validated'
+  inspectorOpen.value = true
+  inspectorMode.value = 'issue'
+  message.success('已完成样例校验，问题已定位到行、列和字段。')
+}
+
+function saveDraft() {
+  dirty.value = false
+  workflowState.value = 'draft'
+  message.success('已保存储量草案；未覆盖正式版本。')
+}
+
+function submitReview() {
+  if (workflowState.value !== 'validated') {
+    message.warning('请先完成校验，再提交复核。')
+    return
+  }
+  workflowState.value = 'review'
+  inspectorMode.value = 'rule'
+  inspectorOpen.value = true
+  message.success('已提交通用复核流；正式角色与节点仍待确认。')
+}
+
+function returnForCorrection() {
+  workflowState.value = 'returned'
+  dirty.value = true
+  message.info('样例已退回修正，可编辑后重新执行校验。')
+}
+
+function archiveWorkbook() {
+  if (workflowState.value !== 'review') {
+    message.warning('请先完成提交复核后再归档。')
+    return
+  }
+  workflowState.value = 'archived'
+  message.success('样例已归档，正在进入成果输出。')
+  router.push('/reserve/output')
+}
+
+function locateIssue(issue: ValidationIssue) {
+  activeIssueId.value = issue.id
+  inspectorMode.value = 'trace'
+  inspectorOpen.value = true
+  message.info(`已定位到：${issue.location}`)
+}
+
+function handleImport(result: TemplateImportResult) {
+  importedBatch.value = result
+  inspectorOpen.value = true
+  inspectorMode.value = 'rule'
+  message.success(`已形成 ${result.batchId} 导入批次，字段映射已进入检查器。`)
+}
+
+function rowClassName({ row }: { row: ReserveRow }) {
+  if (activeIssue.value.location.includes(row.unit)) return 'row-selected'
+  if (row.status === '缺字段') return 'row-error'
+  if (row.status === '需复核') return 'row-warning'
+  return ''
+}
+
+async function resizeTable() {
+  await nextTick()
+  tableRef.value?.recalculate?.(true)
+  window.dispatchEvent(new Event('resize'))
+}
+
+function toggleSheetNav() {
+  sheetNavOpen.value = !sheetNavOpen.value
+  void resizeTable()
+}
+
+function toggleInspector() {
+  inspectorOpen.value = !inspectorOpen.value
+  void resizeTable()
+}
+
+function openTableFullscreen() {
+  tableFullscreen.value = true
+}
+
+function onTableFullscreenOpened() {
+  void resizeTable()
+}
+
+function onTableFullscreenClosed() {
+  void resizeTable()
+}
+</script>
+
+<template>
+  <div class="business-page workbook-page">
+    <header class="workbook-header">
+      <div>
+        <span class="eyebrow">储量分析 / {{ pageTitle }}</span>
+        <h1>{{ reserveWorkbook.title }}</h1>
+        <p>在统一工作表内完成填报、校验、复核和版本留痕。</p>
+      </div>
+      <div class="header-button-row">
+        <a-tag color="blue">{{ reserveWorkbook.version }}</a-tag>
+        <a-tag :color="workflowState === 'review' || workflowState === 'archived' ? 'green' : 'gold'">{{ workflowLabel }}</a-tag>
+        <a-tag color="red">阻断 {{ blockingCount }}</a-tag>
+        <a-button @click="importer?.show()"><ImportOutlined />导入模板</a-button>
+        <a-button @click="workbench.openAssistant(pageTitle, 'knowledge')"><RobotOutlined />解释规则</a-button>
+        <a-button @click="runValidation"><CheckCircleOutlined />执行校验</a-button>
+        <a-button @click="saveDraft"><SaveOutlined />保存草案</a-button>
+        <a-button type="primary" @click="submitReview"><SendOutlined />提交复核</a-button>
+      </div>
+    </header>
+
+    <section class="workbook-control-bar">
+      <span>当前任务：内部储量线上记录与校验</span>
+      <span>当前 Sheet：{{ activeSheet?.name }}</span>
+      <span>当前主数据：计算单元与 AK 列联合定位</span>
+      <div class="workbook-control-actions">
+        <a-button size="small" @click="toggleSheetNav"><MenuFoldOutlined v-if="sheetNavOpen" /><MenuUnfoldOutlined v-else />{{ sheetNavOpen ? '收起 Sheet' : '展开 Sheet' }}</a-button>
+        <a-button size="small" @click="showDetails = !showDetails">{{ showDetails ? '隐藏辅助列' : '显示辅助列' }}</a-button>
+        <a-button size="small" @click="toggleInspector">{{ inspectorOpen ? '收起检查器' : '展开检查器' }}</a-button>
+        <a-button size="small" title="表格全屏" aria-label="表格全屏" @click="openTableFullscreen">
+          <ExpandOutlined />
+          全屏
+        </a-button>
+      </div>
+    </section>
+
+    <section class="workbook-layout" :class="{ 'sidebar-collapsed': !sheetNavOpen, 'inspector-collapsed': !inspectorOpen }">
+      <aside v-if="sheetNavOpen" class="workbook-sidebar">
+        <div class="sidebar-section">
+          <h2>模板 Sheet</h2>
+          <button v-for="sheet in reserveWorkbook.sheets" :key="sheet.id" type="button" class="sheet-button" :class="{ active: sheet.id === activeSheetId }" @click="activeSheetId = sheet.id">
+            <strong>{{ sheet.name }}</strong>
+            <span>{{ sheet.kind }} / {{ sheet.state }}</span>
+          </button>
+        </div>
+        <div class="sidebar-section">
+          <h2>数据批次</h2>
+          <button type="button" class="batch-card" @click="importer?.show()"><strong>导入 Excel 模板</strong><span>识别、映射、校验后形成批次</span></button>
+          <div v-if="importedBatch" class="batch-card active"><strong>{{ importedBatch.batchId }}</strong><span>{{ importedBatch.templateName }} / {{ importedBatch.sheetCount }} Sheet</span></div>
+          <div class="batch-card"><strong>2026-R-0423</strong><span>储量填报系统 / 已接收批次</span></div>
+        </div>
+      </aside>
+
+      <main class="workbook-main">
+        <div class="sheet-bar">
+          <div><strong>{{ activeSheet?.name }}</strong><span>{{ activeSheet?.source }} ｜ {{ activeSheet?.rows }} ｜ {{ activeSheet?.columns }}</span></div>
+          <div class="legend-row compact"><span class="legend-chip"><i class="legend-dot green"></i>可填</span><span class="legend-chip"><i class="legend-dot red"></i>阻断</span><span class="legend-chip"><i class="legend-dot gray"></i>公式只读</span></div>
+        </div>
+        <div class="field-strip"><span>基础识别：计算单元、层位、沉积相、岩性</span><span>储量口径：国家线、内部线、上市线</span><span>业务判定：商业性条件、3P3C、难动用</span><span>左右拖动查看完整表格</span></div>
+
+        <TableFullscreenModal
+          v-model:open="tableFullscreen"
+          :title="`${pageTitle} · ${activeSheet?.name || '工作表'}`"
+          @opened="onTableFullscreenOpened"
+          @closed="onTableFullscreenClosed"
+        >
+          <vxe-table ref="tableRef" class="workbench-table spreadsheet-table" border stripe show-overflow="title" :data="rows" :row-class-name="rowClassName" :height="tableFullscreen ? 780 : 590">
+            <vxe-column field="unit" title="计算单元" width="120" fixed="left" />
+            <vxe-column field="oilfield" title="油气田" width="130" fixed="left" />
+            <vxe-column v-if="showDetails" field="layer" title="层位" width="120" />
+            <vxe-column v-if="showDetails" field="facies" title="沉积相" width="140" />
+            <vxe-column v-if="showDetails" field="lithology" title="岩性" width="100" />
+            <vxe-column field="depth" title="深度(m)" width="120"><template #default="{ row }"><a-input-number v-model:value="row.depth" :min="0" :controls="false" class="cell-input" :class="{ 'cell-danger-text': row.depth > 6000 }" @change="markDirty" /></template></vxe-column>
+            <vxe-column field="reserveType" title="储量类型" width="110" />
+            <vxe-column field="commerciality" title="商业性条件" width="180"><template #default="{ row }"><a-input v-model:value="row.commerciality" :status="row.commerciality ? undefined : 'error'" placeholder="必填：填写条件" class="cell-input" @change="markDirty" /></template></vxe-column>
+            <vxe-column field="nationalLine" title="国家线" width="100" />
+            <vxe-column field="internalLine" title="内部线" width="100" />
+            <vxe-column field="listedLine" title="上市线" width="100" />
+            <vxe-column title="可采储量" width="130"><template #default="{ row }"><span class="formula-cell">{{ (row.internalLine * 0.42).toFixed(1) }}</span></template></vxe-column>
+            <vxe-column field="status" title="校验状态" width="120" fixed="right"><template #default="{ row }"><a-tag :color="row.status === '缺字段' ? 'red' : row.status === '需复核' ? 'gold' : 'green'">{{ row.status }}</a-tag></template></vxe-column>
+          </vxe-table>
+        </TableFullscreenModal>
+        <div class="sheet-statusbar"><span>当前定位：{{ activeIssue.location }}</span><span>责任：{{ activeIssue.owner }}</span><span>来源：{{ reserveWorkbook.sourceFile }}</span></div>
+      </main>
+
+      <aside v-if="inspectorOpen" class="inspector-panel business-inspector">
+        <div class="segmented-tabs"><button type="button" :class="{ active: inspectorMode === 'issue' }" @click="inspectorMode = 'issue'">问题</button><button type="button" :class="{ active: inspectorMode === 'trace' }" @click="inspectorMode = 'trace'">定位</button><button type="button" :class="{ active: inspectorMode === 'rule' }" @click="inspectorMode = 'rule'">规则</button></div>
+        <div v-if="inspectorMode === 'issue'" class="inspector-content"><h2>校验问题</h2><button v-for="issue in reserveIssues" :key="issue.id" type="button" class="issue-row" :class="{ active: issue.id === activeIssueId }" @click="locateIssue(issue)"><strong>{{ issue.location }}</strong><span>{{ issue.reason }}</span><em>{{ issue.level }} / {{ issue.action }}</em></button></div>
+        <div v-else-if="inspectorMode === 'trace'" class="inspector-content"><h2><AimOutlined /> 单元格定位</h2><div class="trace-row"><span>位置</span><strong>{{ activeIssue.location }}</strong></div><div class="trace-row"><span>字段</span><strong>{{ activeIssue.field }}</strong></div><div class="trace-row"><span>原因</span><strong>{{ activeIssue.reason }}</strong></div><div class="trace-row"><span>处理</span><strong>{{ activeIssue.action }}</strong></div><a-button block @click="inspectorMode = 'rule'">查看字段规则</a-button></div>
+        <div v-else class="inspector-content"><h2><CheckCircleOutlined /> 字段规则与导入映射</h2><div v-if="importedBatch" class="rule-card"><strong>{{ importedBatch.batchId }} / 字段映射</strong><p v-for="item in importedBatch.mapping" :key="item">{{ item }}</p><span>已生成模板字段映射</span></div><div v-for="rule in cellRules.filter((item) => item.sheet.includes('油藏'))" :key="rule.id" class="rule-card"><strong>{{ rule.sheet }} / {{ rule.field }}</strong><p>{{ rule.rule }}</p><span>{{ rule.kind }} · {{ rule.confirmState }}</span></div><a-button v-if="workflowState === 'review'" block @click="returnForCorrection">退回修正</a-button><a-button type="primary" block @click="archiveWorkbook">复核后归档并进入成果</a-button></div>
+      </aside>
+    </section>
+    <TemplateImportModal ref="importer" domain="reserve" @complete="handleImport" />
+  </div>
+</template>

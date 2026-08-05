@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+import openpyxl
+from openpyxl.utils import get_column_letter
+
+path = r"C:\Users\win\Desktop\敖钦储能项目\原始需求\储量需求\内部储量+未动用储量录入模板.xlsx"
+wb = openpyxl.load_workbook(path, data_only=True)
+
+def dump_sheet(name, max_rows=60, max_cols=30):
+    ws = wb[name]
+    print(f"\n=== {name} (max_row={ws.max_row}, max_col={ws.max_column}) ===")
+    for r in range(1, min(max_rows, ws.max_row) + 1):
+        vals = []
+        for c in range(1, min(max_cols, ws.max_column) + 1):
+            v = ws.cell(row=r, column=c).value
+            if v is not None:
+                vals.append(f"{get_column_letter(c)}{r}={v}")
+        if vals:
+            print(" | ".join(vals))
+
+dump_sheet("报表清单", max_rows=15, max_cols=10)
+dump_sheet("表1", max_rows=17, max_cols=12)
+dump_sheet("附录2", max_rows=53, max_cols=5)
+dump_sheet("编码_商业性条件", max_rows=6, max_cols=1)

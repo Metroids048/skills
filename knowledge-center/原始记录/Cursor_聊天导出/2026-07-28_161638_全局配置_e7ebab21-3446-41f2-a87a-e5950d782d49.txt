@@ -1,0 +1,1910 @@
+# Pull Request: ReinaMacCredy/maestro #36
+
+- Repository: ReinaMacCredy/maestro | Conductor for cross-agent coding workflows: structured memory, handoffs, plan-approve-execute coordination, and an evidence-based trust substrate across external CLIs (Codex, Claude Code, Hermes). | 155 stars | TypeScript
+
+## feat(skills): 5-skill maestro bundle + task/handoff CLI audit loop (v0.57.0)
+
+- Author: [@ReinaMacCredy](https://github.com/ReinaMacCredy)
+- Association: OWNER
+- State: merged
+- Source branch: feat/skill-bundle
+- Target branch: main
+- Mergeable: unknown
+- Commits: 18
+- Additions: 10185
+- Deletions: 21808
+- Changed files: 263
+- Created: 2026-04-23T05:14:23Z
+- Updated: 2026-04-23T12:27:17Z
+- Closed: 2026-04-23T12:06:46Z
+- Merged: 2026-04-23T12:06:46Z
+- Merged by: [@ReinaMacCredy](https://github.com/ReinaMacCredy)
+
+## Summary
+
+Ships a **5-skill maestro bundle** that replaces the 245-line `AGENT_INSTRUCTION_BLOCK` → `MAESTRO.md` injection with installable skills in `~/.claude/skills/maestro-*/` and `~/.codex/skills/maestro-*/`. Adds `--prompt-file` to `maestro handoff`, drops `droid` and `gemini` from `SUPPORTED_AGENTS` (to be re-added later), and closes twelve rounds of fresh-subagent audits against the installed binary so the shipped skills and the CLI agree on every bare form.
+
+Bumps to **0.57.0** (feature).
+
+## What's in the bundle
+
+| Skill | Role |
+| --- | --- |
+| `maestro-brainstorm` | Migrated from user's `preplan-brainstorm`, chain points at `maestro-plan` |
+| `maestro-plan` | Migrated from user's `execution-plan`; persists approved plans to `.maestro/plans/.md`; chain points at `maestro-task` and `maestro-handoff` |
+| `maestro-task` | Auto-trigger when `.maestro/` is detected; covers claim → contract → complete, plan-to-batch conversion, recovery verbs |
+| `maestro-mission` | Mission / feature / memory system + mission-control TUI reference |
+| `maestro-handoff` | paseo-handoff style; uses `maestro handoff --prompt-file` |
+
+`skills/bundled/` is the source of truth; `scripts/sync-bundled-skills.ts` emits `src/infra/domain/bundled-skill-templates.ts` (the embed); `scripts/ci.ts` runs `check:bundled-skills` as a drift gate.
+
+`maestro install` / `maestro agent inject` writes the five skills into each agent's home `~/.claude/skills/` and `~/.codex/skills/`, preserves per-file user edits via a sha256 manifest (`.maestro-bundled.json`), silently removes legacy `MAESTRO.md` and `@MAESTRO.md` references, and sweeps stale `maestro-*/` skill dirs that still carry the maestro-managed marker. `maestro agent remove` is the inverse.
+
+## CLI adjustments to serve the skill workflow
+
+### Handoff
+
+- `maestro handoff --prompt-file ` — positional ` ` becomes optional; brief file is persisted verbatim to `.maestro/launches/ /prompt.md` (wrapped with a minimal \"## Handoff Startup\" pickup preamble for the receiving agent). Validates non-existent / empty / directory paths with structured `MaestroError`s.
+- \`status: \"consumed\"\` on pickup; `handoff show --json` normalizes legacy pre-0.56 packets (`consumedAt` set but `status: \"launched\"`) at read time.
+- Pickup identity falls back to `basename(homedir())` when `USER`/`USERNAME` are unset (Bun's `userInfo().username` returns the literal `\"unknown\"` in that case, so the homedir fallback yields a real user name on every platform).
+- `handoff pickup` resolves from the packet's own `agent` field when no session is detected, so the bare form just works.
+
+### Task
+
+- **Hard Rule 1** enforced at `task update --status in_progress` (was only on `task next` and `task claim`). `--force` bypasses the busy-session check.
+- **Hard Rule 2**: completion without `--reason` is rejected with a hint.
+- `task contract new | edit | amend` auto-detect piped stdin via `fstatSync(0)` (FIFO or regular file). Works under shells that export `$EDITOR` / `$VISUAL` (the previous condition skipped stdin whenever an editor was ambient, leading to a hang).
+- `task plan` idempotent replay reports `[ok] N task(s) already present (replayed)` instead of `created`.
+- `task contract new | edit | amend | criteria *` share the per-user synthesized session fallback, so bare invocations work without spelling `--session`.
+- `task contract reopen` on a non-completed task hints at both `task update` and `contract amend` / `criteria *`.
+- `task unblock ` now succeeds (completed blocker stays frozen; blocked side's stale `blockedBy` entry is cleared).
+- `normalizeGraph` no longer resurrects graph edges from completed tasks on read.
+- `task show ` text view filters resolved (completed) blockers from the \"Blocked by\" line; `--json` preserves the raw graph for agents.
+
+### Agent surface
+
+- `SUPPORTED_AGENTS` now contains only `claude-code` and `codex`. `droid` / `gemini` will be re-added once their CLIs expose skill support.
+- `AGENT_INSTRUCTION_BLOCK` deleted; `PROJECT_BOOTSTRAP_TEMPLATES` (per-project `.maestro/AGENTS.md` bootstrap) untouched.
+
+## Doctrine
+
+\`CLAUDE.md\` now codifies two rules the maintainers fought out across this branch:
+
+1. **The skill bundle is the spec.** When the CLI diverges from a skill, fix the CLI. Never quietly edit a skill to match surprising CLI behavior.
+2. **Always release + link locally for testing.** `bun run release:local` rebuilds `dist/maestro` *and* installs it on `PATH`; verifying only `./dist/maestro` misses install-path regressions.
+
+## Validation
+
+- **Unit + integration + e2e**: `bun test` → 1538 pass, 0 fail across 167 files.
+- **Boundary / skill checks**: `bun run check:boundaries`, `bun run check:skills`, `bun run check:bundled-skills` all clean.
+- **Iter-12 audit loop**: three independent fresh-context subagents (no source access) tested against the installed binary. All returned ZERO BLOCKERS / ZERO CONCERNS:
+
+- `maestro-task`: every bare form covered (plan / replay / claim / update / Hard Rules 1+2 / contract new|edit|amend on piped stdin with \$EDITOR set / reopen / block / unblock / show / list / next / ready / plan --schema / stuck / mine / prune / heartbeat / release-owned / reopen / receipt-hint).
+ - `maestro-handoff`: bare launch, \`--prompt-file\` (valid / directory / missing / empty), `handoff list`, `handoff show` (fresh + legacy normalization), bare pickup, env-stripped pickup identity fallback, ambiguity, auto-link to in_progress (skips pending), bare invocation error.
+ - Combined real-case: batch plan → claim → Hard Rule 1 → contract (bare pipe with \$EDITOR=vim) → lock → handoff with `--prompt-file` auto-linked → pickup in env-stripped shell → ownership transfer → contract inheritance → completion → blocker hygiene (unblock on completed blocker; `task show` filters resolved entries).
+
+## Manual / release-note items
+
+- Users who hand-edited `~/.claude/MAESTRO.md` should copy their customizations elsewhere before running `maestro install` — the legacy file is removed silently on first run.
+- `droid` / `gemini` users should manually remove `~/.droid/MAESTRO.md` and `~/.gemini/MAESTRO.md` (re-added once those CLIs support skills).
+
+## Test plan
+
+- [ ] `bun run release:local` in a tmp `\$HOME`, confirm all five skills land under `~/.claude/skills/maestro-*/` and `~/.codex/skills/maestro-*/`, and legacy `MAESTRO.md` + `@MAESTRO.md` references are gone.
+- [ ] `maestro handoff --prompt-file /tmp/brief.md --agent claude --name smoke --json` creates a packet whose `promptPath` file on disk contains the supplied brief.
+- [ ] `maestro handoff pickup --id ` from a clean shell (no `CLAUDECODE` / `CODEX_THREAD_ID`) succeeds and records a real `pickedUpBySessionId`.
+- [ ] `cat contract.yaml | EDITOR=vim maestro task contract new ` returns immediately (no editor launched on the pipe).
+- [ ] `maestro task unblock ` exits 0 and clears the stale `blockedBy` from `task show ` text output.
+- [ ] `bun test` full suite passes.
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+
+## Summary by CodeRabbit
+
+- **New Features**
+
+* Introduced bundled skills system (maestro-brainstorm, maestro-handoff, maestro-plan, maestro-task, maestro-mission) replacing legacy instruction blocks.
+ * Added interactive visual companion for brainstorming workflows with WebSocket server support.
+ * Implemented `--prompt-file` flag for handoff launches to use pre-written briefs.
+ * Enhanced task and handoff reconciliation to sync state across linked workflows.
+
+- **Improvements**
+
+* Improved session detection fallback for better ownership handling.
+ * Streamlined handoff pickup with automatic task linkage and consumption tracking.
+ * Removed support for droid and gemini agents.
+
+- **Chores**
+
+* Version bumped to 0.57.0.
+
+---
+
+### Timeline
+
+**ReinaMacCredy** pushed commit `6808dea`: feat(skills): ship 5-skill maestro bundle, replace AGENT_INSTRUCTION_BLOCK with global skill install · Apr 22, 2026 at 5:08pm
+
+**ReinaMacCredy** pushed commit `7787d66`: refactor(skills): simplify processInject + share listFilesRecursive · Apr 22, 2026 at 5:15pm
+
+**ReinaMacCredy** pushed commit `69f8a67`: fix(skills): handle update edge cases (manifest marker, user-edit preservation, clearer not-detected) · Apr 22, 2026 at 5:25pm
+
+**ReinaMacCredy** pushed commit `4908314`: fix(skills): address edge cases surfaced by audit (corrupt manifest, uninstall sweep, migration warn, init hint) · Apr 22, 2026 at 5:37pm
+
+**ReinaMacCredy** pushed commit `b7bf68d`: fix(skills): align maestro-mission skill docs with the real CLI contract · Apr 22, 2026 at 5:43pm
+
+**ReinaMacCredy** pushed commit `cd5d771`: docs(skills): align task + handoff skill docs with real CLI behavior (deep audit) · Apr 22, 2026 at 6:07pm
+
+**ReinaMacCredy** pushed commit `8cfa85d`: fix(cli): make task + handoff CLI match the skill contract (skills are the spec) · Apr 22, 2026 at 6:25pm
+
+**ReinaMacCredy** pushed commit `59aaaf0`: fix(cli): stable per-user session fallback + in_progress-only auto-link · Apr 22, 2026 at 6:37pm
+
+**ReinaMacCredy** pushed commit `620e6a0`: fix(cli): close the last gaps between task/handoff CLI and skill (audit loop) · Apr 22, 2026 at 10:26pm
+
+**ReinaMacCredy** pushed commit `4329f70`: fix(task): restore local session invariants and harden skill sync · Apr 23, 2026 at 1:42am
+
+**ReinaMacCredy** pushed commit `e8eb1dd`: fix(agent): report stale skill cleanup as install · Apr 23, 2026 at 1:58am
+
+**ReinaMacCredy** pushed commit `cddf2c3`: fix(handoff): reconcile detached launch lifecycle · Apr 23, 2026 at 2:26am
+
+**ReinaMacCredy** pushed commit `ed25433`: fix(task): ignore runtime artifact drift in contract verdicts · Apr 23, 2026 at 3:28am
+
+**ReinaMacCredy** pushed commit `eeed1bb`: fix(cli): close iter 9-12 audit findings; bump to 0.57.0 for release · Apr 23, 2026 at 5:08am
+
+**ReinaMacCredy** requested review from [@Copilot](https://github.com/Copilot) · Apr 23, 2026 at 5:14am
+
+**@coderabbitai[bot]** commented · Apr 23, 2026 at 5:15am · edited
+
+> > [!IMPORTANT]
+> > ## Review skipped
+> > 
+> > Too many files!
+> > 
+> > This PR contains 197 files, which is 47 over the limit of 150.
+> 
+> > **⚙️ Run configuration**
+> 
+> > **Configuration used**: defaults
+> > 
+> > **Review profile**: CHILL
+> > 
+> > **Plan**: Pro
+> > 
+> > **Run ID**: `5a0f25a9-571a-4644-8c87-f3c3a06f4573`
+> 
+> > **📥 Commits**
+> 
+> > Reviewing files that changed from the base of the PR and between eeed1bbfea771d2454c789135c6b3db026a010a3 and a8e317c12d89add22b438e01cd5d7c017c3ae1ef.
+> 
+> > **📒 Files selected for processing (197)**
+> 
+> > * `.claude/skills/maestro%3Abrainstorming/SKILL.md`
+> > * `.claude/skills/maestro%3Aplan-review-loop/SKILL.md`
+> > * `.claude/skills/maestro%3Aresearch/SKILL.md`
+> > * `.codex/skills/maestro%3Aagents-md/SKILL.md`
+> > * `.codex/skills/maestro%3Aagents-md/reference/style-enforcement.md`
+> > * `.codex/skills/maestro%3Abrainstorming/SKILL.md`
+> > * `.codex/skills/maestro%3Abrainstorming/reference/interview-guide.md`
+> > * `.codex/skills/maestro%3Adebugging/SKILL.md`
+> > * `.codex/skills/maestro%3Adebugging/reference/debugging-patterns.md`
+> > * `.codex/skills/maestro%3Adesign/SKILL.md`
+> > * `.codex/skills/maestro%3Adesign/reference/classification-data.md`
+> > * `.codex/skills/maestro%3Adesign/reference/elicitation-methods.md`
+> > * `.codex/skills/maestro%3Adesign/reference/metadata-and-registry.md`
+> > * `.codex/skills/maestro%3Adesign/reference/party-mode.md`
+> > * `.codex/skills/maestro%3Adesign/reference/plan-template.md`
+> > * `.codex/skills/maestro%3Adesign/reference/readiness-gate.md`
+> > * `.codex/skills/maestro%3Adesign/reference/spec-template.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-01-init.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-02-parse-input.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-03-create-dir.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-04-classification.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-05-vision.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-06-journeys.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-07-domain.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-08-functional.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-09-nonfunctional.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-10-spec-approval.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-11-codebase-scan.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-12-plan.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-13-skills.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-14-br-sync.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-15-readiness.md`
+> > * `.codex/skills/maestro%3Adesign/reference/steps/step-16-commit.md`
+> > * `.codex/skills/maestro%3Adispatching/SKILL.md`
+> > * `.codex/skills/maestro%3Adispatching/reference/agent-prompt-templates.md`
+> > * `.codex/skills/maestro%3Adispatching/reference/delegation-patterns.md`
+> > * `.codex/skills/maestro%3Adocker/SKILL.md`
+> > * `.codex/skills/maestro%3Aimplement/SKILL.md`
+> > * `.codex/skills/maestro%3Aimplement/reference/br-integration.md`
+> > * `.codex/skills/maestro%3Aimplement/reference/parallel-mode.md`
+> > * `.codex/skills/maestro%3Aimplement/reference/phase-completion.md`
+> > * `.codex/skills/maestro%3Aimplement/reference/plan-to-br-sync.md`
+> > * `.codex/skills/maestro%3Aimplement/reference/single-agent-execution.md`
+> > * `.codex/skills/maestro%3Aimplement/reference/tdd-workflow.md`
+> > * `.codex/skills/maestro%3Aimplement/reference/team-mode.md`
+> > * `.codex/skills/maestro%3Aimplement/reference/track-completion.md`
+> > * `.codex/skills/maestro%3Anew-track/SKILL.md`
+> > * `.codex/skills/maestro%3Anew-track/reference/interview-questions.md`
+> > * `.codex/skills/maestro%3Anew-track/reference/metadata-and-registry.md`
+> > * `.codex/skills/maestro%3Anew-track/reference/plan-template.md`
+> > * `.codex/skills/maestro%3Anew-track/reference/spec-template.md`
+> > * `.codex/skills/maestro%3Anote/SKILL.md`
+> > * `.codex/skills/maestro%3Anote/reference/note-patterns.md`
+> > * `.codex/skills/maestro%3Aparallel-exploration/SKILL.md`
+> > * `.codex/skills/maestro%3Aparallel-exploration/reference/scout-patterns.md`
+> > * `.codex/skills/maestro%3Aparallel-exploration/reference/synthesis-guide.md`
+> > * `.codex/skills/maestro%3Aplan-review-loop/SKILL.md`
+> > * `.codex/skills/maestro%3Aplan-review-loop/reference/edge-case-discovery.md`
+> > * `.codex/skills/maestro%3Aplan-review-loop/reference/review-dimensions.md`
+> > * `.codex/skills/maestro%3Aprompt-leverage/SKILL.md`
+> > * `.codex/skills/maestro%3Aprompt-leverage/reference/amp-codex.md`
+> > * `.codex/skills/maestro%3Aprompt-leverage/reference/anti-patterns.md`
+> > * `.codex/skills/maestro%3Aprompt-leverage/reference/claude-code.md`
+> > * `.codex/skills/maestro%3Aprompt-leverage/reference/framework.md`
+> > * `.codex/skills/maestro%3Aprompt-leverage/reference/openai-gpt.md`
+> > * `.codex/skills/maestro%3Arevert/SKILL.md`
+> > * `.codex/skills/maestro%3Arevert/reference/confirmation-and-plan.md`
+> > * `.codex/skills/maestro%3Arevert/reference/danger-zones.md`
+> > * `.codex/skills/maestro%3Arevert/reference/git-operations.md`
+> > * `.codex/skills/maestro%3Arevert/reference/safety-checks.md`
+> > * `.codex/skills/maestro%3Areview/SKILL.md`
+> > * `.codex/skills/maestro%3Areview/reference/report-template.md`
+> > * `.codex/skills/maestro%3Areview/reference/review-checklist.md`
+> > * `.codex/skills/maestro%3Areview/reference/review-comments.md`
+> > * `.codex/skills/maestro%3Areview/reference/review-dimensions.md`
+> > * `.codex/skills/maestro%3Asetup/SKILL.md`
+> > * `.codex/skills/maestro%3Asetup/reference/interviews.md`
+> > * `.codex/skills/maestro%3Asetup/reference/resume-protocol.md`
+> > * `.codex/skills/maestro%3Asetup/reference/styleguides/cpp.md`
+> > * `.codex/skills/maestro%3Asetup/reference/styleguides/csharp.md`
+> > * `.codex/skills/maestro%3Asetup/reference/styleguides/dart.md`
+> > * `.codex/skills/maestro%3Asetup/reference/styleguides/general.md`
+> > * `.codex/skills/maestro%3Asetup/reference/styleguides/go.md`
+> > * `.codex/skills/maestro%3Asetup/reference/styleguides/html-css.md`
+> > * `.codex/skills/maestro%3Asetup/reference/styleguides/javascript.md`
+> > * `.codex/skills/maestro%3Asetup/reference/styleguides/python.md`
+> > * `.codex/skills/maestro%3Asetup/reference/styleguides/typescript.md`
+> > * `.codex/skills/maestro%3Asetup/reference/templates.md`
+> > * `.codex/skills/maestro%3Asetup/reference/workflow-template.md`
+> > * `.codex/skills/maestro%3Astatus/SKILL.md`
+> > * `.codex/skills/maestro%3Astatus/reference/output-templates.md`
+> > * `.codex/skills/maestro%3Asymphony-setup/SKILL.md`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/WORKFLOW.md.template`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/codex-skills-guide.md`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/codex-skills/commit/SKILL.md`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/codex-skills/debug/SKILL.md`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/codex-skills/land/SKILL.md`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/codex-skills/land/land_watch.py`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/codex-skills/linear/SKILL.md`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/codex-skills/pull/SKILL.md`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/codex-skills/push/SKILL.md`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/environment-detection.md`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/linear-setup.md`
+> > * `.codex/skills/maestro%3Asymphony-setup/reference/workflow-customization.md`
+> > * `.codex/skills/maestro%3Atdd/SKILL.md`
+> > * `.codex/skills/maestro%3Averification/SKILL.md`
+> > * `.codex/skills/maestro%3Averification/reference/verification-checklists.md`
+> > * `.maestro/bootstrap/init.sh`
+> > * `.maestro/bootstrap/library/architecture.md`
+> > * `.maestro/bootstrap/library/cross-cli.md`
+> > * `.maestro/bootstrap/library/environment.md`
+> > * `.maestro/bootstrap/library/implementation-patterns.md`
+> > * `.maestro/bootstrap/library/runtime-recovery.md`
+> > * `.maestro/bootstrap/library/user-testing.md`
+> > * `.maestro/bootstrap/services.yaml`
+> > * `.maestro/bootstrap/validation/README.md`
+> > * `.maestro/bootstrap/validation/foundation-followup/scrutiny/reviews/foundation-followup-typecheck-fixes.json`
+> > * `.maestro/bootstrap/validation/foundation-followup/scrutiny/synthesis.json`
+> > * `.maestro/bootstrap/validation/foundation-followup/user-testing/synthesis.json`
+> > * `.maestro/bootstrap/validation/foundation/scrutiny/reviews/mission-domain-foundation.json`
+> > * `.maestro/bootstrap/validation/foundation/scrutiny/reviews/mission-storage-and-service-wiring.json`
+> > * `.maestro/bootstrap/validation/foundation/scrutiny/synthesis.json`
+> > * `.maestro/bootstrap/validation/foundation/user-testing/synthesis.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/scrutiny/reviews/m1-domain-types.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/scrutiny/reviews/m1-error-handling.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/scrutiny/reviews/m1-id-generation.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/scrutiny/reviews/m1-storage-adapters.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/scrutiny/reviews/m1-validators.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/scrutiny/synthesis.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/user-testing/flows/error-group.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/user-testing/flows/id-group.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/user-testing/flows/storage-group.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/user-testing/flows/types-group.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/user-testing/flows/validate-group.json`
+> > * `.maestro/bootstrap/validation/m1-foundation/user-testing/synthesis.json`
+> > * `.maestro/bootstrap/validation/m2-planning/scrutiny/reviews/m2-feature-management-commands.json`
+> > * `.maestro/bootstrap/validation/m2-planning/scrutiny/reviews/m2-mission-create-command.json`
+> > * `.maestro/bootstrap/validation/m2-planning/scrutiny/reviews/m2-mission-init-command.json`
+> > * `.maestro/bootstrap/validation/m2-planning/scrutiny/reviews/m2-mission-plan-command.json`
+> > * `.maestro/bootstrap/validation/m2-planning/scrutiny/reviews/m2-plan-validation.json`
+> > * `.maestro/bootstrap/validation/m2-planning/scrutiny/synthesis.json`
+> > * `.maestro/bootstrap/validation/m2-planning/user-testing/flows/create-tests.json`
+> > * `.maestro/bootstrap/validation/m2-planning/user-testing/flows/feature-tests.json`
+> > * `.maestro/bootstrap/validation/m2-planning/user-testing/flows/plan-tests.json`
+> > * `.maestro/bootstrap/validation/m2-planning/user-testing/synthesis.json`
+> > * `.maestro/bootstrap/validation/mission-cli/scrutiny/reviews/feature-cli-lifecycle.json`
+> > * `.maestro/bootstrap/validation/mission-cli/scrutiny/reviews/mission-cli-lifecycle.json`
+> > * `.maestro/bootstrap/validation/mission-cli/scrutiny/reviews/worker-prompt-generation.json`
+> > * `.maestro/bootstrap/validation/mission-cli/scrutiny/synthesis.json`
+> > * `.maestro/bootstrap/validation/mission-cli/user-testing/flows/cross-cutting.json`
+> > * `.maestro/bootstrap/validation/mission-cli/user-testing/flows/feature-lifecycle.json`
+> > * `.maestro/bootstrap/validation/mission-cli/user-testing/flows/feature-listing-updates.json`
+> > * `.maestro/bootstrap/validation/mission-cli/user-testing/flows/feature-prompt.json`
+> > * `.maestro/bootstrap/validation/mission-cli/user-testing/flows/mission-lifecycle.json`
+> > * `.maestro/bootstrap/validation/mission-cli/user-testing/synthesis.json`
+> > * `.maestro/bootstrap/validation/polish-followup/scrutiny/synthesis.json`
+> > * `.maestro/bootstrap/validation/polish-followup/user-testing/flows/VAL-CROSS-001.json`
+> > * `.maestro/bootstrap/validation/polish-followup/user-testing/flows/VAL-MILESTONE-001.json`
+> > * `.maestro/bootstrap/validation/polish-followup/user-testing/flows/VAL-MISSION-002.json`
+> > * `.maestro/bootstrap/validation/polish-followup/user-testing/synthesis.json`
+> > * `.maestro/bootstrap/validation/polish/user-testing/flows/group1-progress-reporting.json`
+> > * `.maestro/bootstrap/validation/polish/user-testing/flows/group2-shipped-skills.json`
+> > * `.maestro/bootstrap/validation/polish/user-testing/flows/group3-lifecycle-regression.json`
+> > * `.maestro/bootstrap/validation/polish/user-testing/synthesis.json`
+> > * `.maestro/bootstrap/validation/readme-followup/scrutiny/synthesis.json`
+> > * `.maestro/bootstrap/validation/readme-followup/user-testing/synthesis.json`
+> > * `.maestro/bootstrap/validation/validation-checkpoints/scrutiny/reviews/checkpoint-cli-lifecycle.json`
+> > * `.maestro/bootstrap/validation/validation-checkpoints/scrutiny/reviews/milestone-cli-lifecycle.json`
+> > * `.maestro/bootstrap/validation/validation-checkpoints/scrutiny/reviews/validation-cli-lifecycle.json`
+> > * `.maestro/bootstrap/validation/validation-checkpoints/scrutiny/synthesis.json`
+> > * `.maestro/bootstrap/validation/validation-checkpoints/user-testing/flows/checkpoint.json`
+> > * `.maestro/bootstrap/validation/validation-checkpoints/user-testing/flows/milestone.json`
+> > * `.maestro/bootstrap/validation/validation-checkpoints/user-testing/flows/validation.json`
+> > * `.maestro/bootstrap/validation/validation-checkpoints/user-testing/synthesis.json`
+> > * `.maestro/principles.jsonl`
+> > * `.maestro/skills/backend-agent/SKILL.md`
+> > * `.maestro/skills/cli-agent/SKILL.md`
+> > * `.maestro/tasks/NOW.md`
+> > * `.maestro/tasks/continuations/active/tsk-ddfbc5.json`
+> > * `scripts/sync-built-in-skills.ts`
+> > * `scripts/sync-bundled-skills.ts`
+> > * `src/features/agent/usecases/manage-agents.usecase.ts`
+> > * `src/features/handoff/usecases/launch-handoff.usecase.ts`
+> > * `src/features/handoff/usecases/list-open-handoffs-for-task.usecase.ts`
+> > * `src/features/task/adapters/git-anchor.adapter.ts`
+> > * `src/features/task/commands/contract.command.ts`
+> > * `src/infra/domain/bundled-skill-templates.ts`
+> > * `src/shared/lib/fs.ts`
+> > * `tests/helpers/command-runner.ts`
+> > * `tests/integration/features/task/task-contract-cli.test.ts`
+> > * `tests/integration/features/task/task-contract-completion.test.ts`
+> > * `tests/integration/features/task/task-handoff-pickup.test.ts`
+> > * `tests/unit/features/agent/usecases/manage-agents.usecase.test.ts`
+> > * `tests/unit/features/handoff/usecases/launch-handoff.usecase.test.ts`
+> > * `tests/unit/features/handoff/usecases/list-open-handoffs-for-task.usecase.test.ts`
+> > * `tests/unit/features/task/adapters/git-anchor.adapter.test.ts`
+> > * `tests/unit/infra/domain/bundled-skill-templates.test.ts`
+> 
+> > You can disable this status message by setting the `reviews.review_status` to `false` in the CodeRabbit configuration file.
+> > 
+> > Use the checkbox below for a quick retry:
+> > - [ ] 🔍 Trigger review
+> 
+> **📝 Walkthrough**
+> 
+> ## Walkthrough
+> 
+> This release introduces a bundled skills model replacing the legacy instruction-block pattern, adds four new maestro workflow skills (brainstorm, plan, mission, task) with supporting references, enhances handoff to support `--prompt-file` and task reconciliation, refactors task/agent systems for session-fallback handling, removes droid/gemini agents, and bumps the version to 0.57.0.
+> 
+> ## Changes
+> 
+> | Cohort / File(s) | Summary |
+> | --- | --- |
+> | **Bundled Skills Infrastructure** |
+> 
+> `.gitignore`, `package.json`, `scripts/AGENTS.md`, `scripts/sync-built-in-skills.ts`, `scripts/sync-bundled-skills.ts`|Introduces new bundled skills sync pipeline: adds `.maestro/sessions/` to `.gitignore`, increments version to 0.57.0, adds `check:bundled-skills` and `sync:bundled-skills` Bun scripts, refactors shared `listFilesRecursive` utility, and documents dual built-in/bundled sync responsibilities.|
+> |**Bundled Skill: Brainstorm** 
+> `skills/bundled/maestro-brainstorm/SKILL.md`, `skills/bundled/maestro-brainstorm/agents/openai.yaml`, `skills/bundled/maestro-brainstorm/scripts/*.{html,js,sh,cjs}`, `skills/bundled/maestro-brainstorm/visual-companion.md`, `skills/bundled/maestro-brainstorm/spec-document-reviewer-prompt.md`|Adds new collaborative brainstorm skill with design-first workflow, visual companion server (WebSocket + HTML frame template), interactive helper utilities, startup/control scripts, and design-review sub-task prompt.|
+> |**Bundled Skills: Handoff, Mission, Plan, Task** 
+> `skills/bundled/maestro-handoff/`, `skills/bundled/maestro-mission/`, `skills/bundled/maestro-plan/`, `skills/bundled/maestro-task/`|Introduces four new maestro workflow skills with comprehensive SKILL.md guides, reference documentation (pickup/commands/contracts/assertions/lifecycle/plan-conversion/recovery), and example templates for handoff briefs and mission phases.|
+> |**Handoff System Enhancements** 
+> `src/features/handoff/domain/launch-state.ts`, `src/features/handoff/domain/launch-types.ts`, `src/features/handoff/adapters/launch-store.adapter.ts`, `src/features/handoff/usecases/launch-handoff.usecase.ts`, `src/features/handoff/usecases/reconcile-launch-record.usecase.ts`, `src/features/handoff/usecases/list-launches.usecase.ts`, `src/features/handoff/usecases/list-open-handoffs-for-task.usecase.ts`, `src/features/handoff/usecases/pickup-handoff.usecase.ts`, `src/features/handoff/usecases/show-launch.usecase.ts`, `src/features/handoff/commands/handoff.command.ts`|Adds `--prompt-file` support for pre-written handoff briefs, introduces task reconciliation (marks launched packets completed when linked task completes), normalizes launch status/consumption lifecycle, adds fallback session resolution for pickup, and integrates reconciliation into list/show/pickup flows.|
+> |**Task System Changes** 
+> `src/features/task/domain/task-batch-types.ts`, `src/features/task/domain/task-state.ts`, `src/features/task/domain/task-errors.ts`, `src/features/task/adapters/git-anchor.adapter.ts`, `src/features/task/adapters/jsonl-task-store.adapter.ts`, `src/features/task/commands/task.command.ts`, `src/features/task/commands/contract.command.ts`, `src/features/task/usecases/plan-tasks.usecase.ts`|Enforces completion reason requirement, implements busy-session checks with `--force` override, adds per-user fallback session synthesis on detection failure, refines touched-file filtering for runtime artifacts, supports contract `--from` file input with stdin auto-detection, treats completed tasks as immutable graph endpoints, and improves contract template loading.|
+> |**Agent System Updates** 
+> `src/features/agent/domain/agents.ts`, `src/features/agent/index.ts`, `src/features/agent/usecases/manage-agents.usecase.ts`|Removes droid/gemini from supported agents, introduces `agentSkillsRoot` function for per-agent skills directory computation, replaces legacy instruction-block injection with bundled skills install/remove (tracking per-skill manifests, preserving user edits, cleaning stale files), and documents migration from `MAESTRO.md` reference blocks.|
+> |**Infrastructure & Utilities** 
+> `src/infra/domain/bootstrap-templates.ts`, `src/infra/domain/bundled-skill-templates.ts` (generated), `src/infra/usecases/init.usecase.ts`, `src/infra/commands/init.command.ts`, `src/infra/commands/uninstall.command.ts`, `src/infra/commands/update.command.ts`, `src/shared/lib/fs.ts`, `src/shared/lib/output.ts`, `src/shared/version.ts`|Deletes `AGENT_INSTRUCTION_BLOCK` constant, extracts shared `listFilesRecursive` to utilities, generates bundled skill templates module via sync script, updates init/uninstall/update help text to reference bundled skills, adds agent-not-detected guidance to output formatting, and updates version metadata to 0.57.0.|
+> |**Documentation & Configuration** 
+> `.maestro/plans/skill-bundle.md`, `AGENTS.md`, `CLAUDE.md`, `skills/AGENTS.md`, `scripts/AGENTS.md`|Adds comprehensive plan for bundled-skills architecture migration, updates project knowledge base to document dual skill sources (built-in + bundled), establishes behavioral contracts aligning CLI with skill specifications, documents verification/release practices, and clarifies sync responsibilities.|
+> |**Test Suites** 
+> `tests/e2e/handoff-compiled-e2e.test.ts`, `tests/e2e/task-compiled-e2e.test.ts`, `tests/integration/features/task/task-*.test.ts`, `tests/unit/features/agent/`, `tests/unit/features/handoff/`, `tests/unit/features/task/`, `tests/unit/infra/`, `tests/unit/shared/`, `tests/helpers/mocks.ts`|Adds E2E scenarios for handoff auto-pickup, contract verdict under runtime noise, and reconciliation behavior; adds integration tests for task handoff pickup and contract completion; updates unit tests for session-fallback handling, launch reconciliation, bundled skill installation, and file parsing robustness; extends mock infrastructure to support launch record updates.|
+> 
+> ## Sequence Diagrams
+> 
+> ```mermaid
+> sequenceDiagram
+> participant User as User/CLI
+> participant HS as Handoff Command
+> participant LS as Launch Store
+> participant TS as Task Store
+> participant OP as Pickup Operation
+> 
+> User->>HS: handoff launch --prompt-file brief.md
+> HS->>LS: Write launch record (status: launching)
+> HS->>LS: Write launch prompt (brief + pickup instructions)
+> HS->>User: Return launch ID
+> 
+> User->>OP: handoff pickup --id 
+> OP->>LS: Fetch launch record
+> OP->>TS: Get linked task (if taskId set)
+> alt Task is completed
+> OP->>LS: Update launch status → completed
+> OP->>User: Error: handoff already finished
+> else Task is open/in-progress
+> OP->>OP: Resolve pickup actor (detect session or fallback)
+> OP->>LS: Update launch (status: consumed, consumedAt: now)
+> OP->>TS: Claim task (if linked)
+> OP->>User: Success: task resumed
+> end
+> ```
+> 
+> ```mermaid
+> sequenceDiagram
+> participant User as User (Terminal)
+> participant Helper as Browser Helper JS
+> participant WS as WebSocket Server
+> participant Content as Content Directory
+> participant State as State Directory
+> 
+> User->>WS: start-server.sh (brainstorm server)
+> WS->>Content: Watch for *.html screen files
+> WS->>State: Initialize events log
+> 
+> Helper->>WS: WebSocket connect
+> WS->>Helper: Inject frame template + CSS
+> 
+> User->>Helper: Click option/card element
+> Helper->>WS: Send JSON event {type, choice, metadata}
+> WS->>State: Append to events log
+> WS->>Helper: Broadcast {type: reload}
+> Helper->>Helper: Full page reload
+> 
+> Content->>WS: New screen HTML written
+> WS->>Helper: Broadcast reload
+> Helper->>Helper: Fetch and render new screen
+> ```
+> 
+> ## Estimated code review effort
+> 
+> 🎯 4 (Complex) | ⏱️ ~60 minutes
+> 
+> ## Possibly related PRs
+> 
+> - **ReinaMacCredy/maestro#35**: Modifies handoff pickup flow and launch-record reconciliation logic, directly affecting the same `pickup-handoff` usecase and CLI handling refactored in this PR.
+> 
+> ## Suggested labels
+> 
+> `release:minor`
+> 
+> ## Poem
+> 
+> > 🐰 **Bundled Skills Hop**
+> > 
+> > Five maestro minds now live in harmony,
+> > Brainstorm → Plan → Task → Mission's symphony,
+> > Handoff briefs fly on `--prompt-file` wings,
+> > Visual companions dance in browser things,
+> > Skills bundled tight, no blocks in sight—
+> > *Let the workflows take flight!* ✨
+> 
+> **✨ Finishing Touches**
+> 
+> **🧪 Generate unit tests (beta)**
+> 
+> - [ ] Create PR with unit tests
+> - [ ] Commit unit tests in branch `feat/skill-bundle`
+
+**@gemini-code-assist[bot]** commented · Apr 23, 2026 at 5:16am
+
+> **Review (commented):**
+> 
+> ## Code Review
+> 
+> This pull request replaces the static `AGENT_INSTRUCTION_BLOCK` with a 5-skill bundle installed globally, updating the `maestro agent inject` and `remove` commands to manage these skills via a manifest-based system that preserves user edits. It also introduces a `--prompt-file` flag for `maestro handoff` and improves task/handoff reconciliation. Feedback recommends decoupling disk-writing side-effects from the launch listing operation and moving the completion reason validation from the command layer to the domain or use case layer to ensure consistent enforcement across all potential entry points.
+
+**@greptile-apps[bot]** commented · Apr 23, 2026 at 5:18am
+
+> Greptile Summary 
+> 
+> This PR ships a 5-skill maestro bundle (`maestro-brainstorm`, `maestro-plan`, `maestro-task`, `maestro-mission`, `maestro-handoff`) replacing the previous 245-line `AGENT_INSTRUCTION_BLOCK`/`MAESTRO.md` injection with installable skills in `~/.claude/skills/` and `~/.codex/skills/`. Alongside the bundle it closes a significant backlog of CLI correctness issues: Hard Rules 1+2 enforcement on `task update`, stdin-detection for `contract new/edit/amend`, `task unblock` on completed blockers, `normalizeGraph` resurrection fix, `handoff --prompt-file`, pickup fallback identity, and `status:"consumed"` lifecycle normalization.
+> 
+> - **P1 – ownership mismatch in env-stripped shells**: `fallbackContractUserId()` in `contract.command.ts` returns `userInfo().username` directly without checking for Bun's literal `"unknown"` result or falling back to `basename(homedir())`. All three parallel helpers (`fallbackSessionUserId`, `fallbackPickupSessionId`) include these guards; this one does not. In a Bun shell where `USER`/`USERNAME` are unset, task ownership resolves to `local- ` but contract operations resolve to `local-unknown`, causing every bare `task contract new/edit/amend` to reject with an ownership error against a task the same user just claimed.
+> 
+> Confidence Score: 4/5 
+> 
+> Safe to merge after fixing the fallbackContractUserId ownership mismatch; all other findings are non-blocking style/resilience suggestions.
+> 
+> One P1 defect — fallbackContractUserId is inconsistent with the three other fallback helpers and will produce an ownership mismatch in Bun environments without USER/USERNAME, breaking bare contract operations in the exact env-stripped shells the PR explicitly targets. The remaining two findings (module-level warn flag, write-in-read-path) are P2 quality concerns that don't block merge once the P1 is addressed.
+> 
+> src/features/task/commands/contract.command.ts — fallbackContractUserId() needs the same Bun "unknown" guard and homedir-basename fallback present in task.command.ts and handoff.command.ts
+> 
+> Important Files Changed 
+> 
+> | Filename | Overview |
+> | --- | --- |
+> | src/features/task/commands/contract.command.ts | Adds fstat-based stdin detection, --from on edit/amend, and synthesized per-user fallback session; fallbackContractUserId() is missing the Bun "unknown" guard and homedir fallback present in all parallel helpers |
+> | src/features/handoff/usecases/launch-handoff.usecase.ts | Adds --prompt-file support: validates before worktree creation, wraps brief with pickup preamble, writes prompt artifact to disk; logic is clean and well-tested |
+> | src/features/handoff/commands/handoff.command.ts | Wires --prompt-file option, auto-link now scopes to in_progress tasks only, pickup fallback uses packet's agent field, fallbackPickupSessionId has full 3-level fallback |
+> | src/features/handoff/usecases/reconcile-launch-record.usecase.ts | New reconciliation use case that projects task-completion status onto open launch records; write-inside-read-path could cause read failures on transient store errors |
+> | src/features/agent/usecases/manage-agents.usecase.ts | Complete rewrite from MAESTRO.md injection to skill-bundle installation; sha256 manifest preserves user edits, stale dir sweep is correct, legacy cleanup is thorough |
+> | src/features/task/adapters/jsonl-task-store.adapter.ts | unblock on completed blocker now succeeds by skipping blocker mutation; normalizeGraph skips completed tasks to prevent resurrecting cleared blockedBy edges |
+> | src/features/task/commands/task.command.ts | Hard Rule 1 enforcement on update --status in_progress, Hard Rule 2 (--reason required on completion), synthesized per-user fallback session; module-level warnedAboutFallbackSession flag is a minor concern |
+> | src/features/handoff/adapters/launch-store.adapter.ts | Sets status:"consumed" on pickup, adds normalizeLaunchRecord for pre-0.56 backward compat, clean implementation |
+> | src/features/agent/domain/agents.ts | Removes droid/gemini from SUPPORTED_AGENTS, adds agentSkillsRoot helper, simplifies agentLegacyConfigPaths to always return [] |
+> 
+> Sequence Diagram 
+> 
+> ```mermaid
+> sequenceDiagram
+> participant CLI as CLI (handoff.command)
+> participant LH as launchHandoff
+> participant FS as fs.readText
+> participant LS as launchStore
+> participant TS as taskStore
+> participant Launcher as AgentLauncher
+> 
+> CLI->>LH: launchHandoff({ promptFile?, task, agent })
+> alt --prompt-file supplied
+> LH->>FS: readPromptFromFile(promptFile, cwd)
+> FS-->>LH: briefContent (or MaestroError)
+> LH->>LH: buildMinimalContext(task, constraints)
+> else auto-generate
+> LH->>LH: buildHandoffPrompt(deps, { task, continuation })
+> end
+> LH->>LH: buildLaunchExecutionPrompt(prompt, record)
+> LH->>LS: create(record)
+> LS-->>LH: initialRecord
+> LH->>FS: writeText(promptPath, launchPrompt)
+> LH->>Launcher: launch({ prompt: launchPrompt })
+> Launcher-->>LH: { pid }
+> LH->>LS: update(record, { pid, status:"launched" })
+> 
+> Note over CLI,TS: pickup path
+> CLI->>LS: get(id)
+> LS-->>CLI: storedLaunch
+> CLI->>TS: get(taskId)
+> TS-->>CLI: linkedTask
+> alt linkedTask.status == "completed"
+> CLI->>LS: update({ status:"completed" })
+> CLI-->>CLI: MaestroError (already finished)
+> else open
+> CLI->>LS: pickup({ agent, sessionId, consumedAt })
+> LS-->>CLI: updated record (status:"consumed")
+> end
+> ```
+> 
+> Reviews (1): Last reviewed commit: ["fix(cli): close iter 9-12 audit findings..."](https://github.com/reinamaccredy/maestro/commit/eeed1bbfea771d2454c789135c6b3db026a010a3) | [Re-trigger Greptile](https://app.greptile.com/api/retrigger?id=29381771) 
+
+**greptile-apps[bot]** reviewed: commented · Apr 23, 2026 at 5:18am
+
+**@Copilot** commented · Apr 23, 2026 at 5:18am
+
+> **Review (commented):**
+> 
+> ## Pull request overview
+> 
+> Introduces a bundled 5-skill “maestro-*” install workflow (replacing legacy MAESTRO.md injection), plus CLI and persistence adjustments to keep task/handoff behavior consistent with the shipped skills for v0.57.0.
+> 
+> **Changes:**
+> 
+> - Add `skills/bundled/` source-of-truth and generation pipeline (`sync-bundled-skills`, embed templates, drift tests/CI gate).
+> - Update handoff/task flows: `handoff --prompt-file`, startup pickup preamble injection, stale packet reconciliation, Hard Rule enforcement, session fallback behavior.
+> - Refine git touched-files parsing/filters to ignore agent/runtime noise and handle porcelain edge cases (renames, trimmed first line).
+> 
+> ### Reviewed changes
+> 
+> Copilot reviewed 80 out of 82 changed files in this pull request and generated 4 comments.
+> 
+> **Show a summary per file**
+> 
+> | File | Description |
+> | --- | --- |
+> | tests/unit/shared/lib/output.test.ts | Updates agent result expectations; adds hint tests for “no supported agents detected”. |
+> | tests/unit/infra/domain/bundled-skill-templates.test.ts | Adds drift and invariants tests for bundled-skill embed parity. |
+> | tests/unit/infra/domain/bootstrap-templates.test.ts | Removes AGENT_INSTRUCTION_BLOCK assertions; keeps project bootstrap template checks. |
+> | tests/unit/infra/adapters/git.adapter.test.ts | Adds regression tests for porcelain parsing (first-line trimming, renames). |
+> | tests/unit/features/task/adapters/git-anchor.adapter.test.ts | Expands touched-file ignore behavior tests (runtime noise, tracked config, repo-owned skills). |
+> | tests/unit/features/handoff/usecases/show-launch.usecase.test.ts | Tests reconciling launched packets when linked task already completed. |
+> | tests/unit/features/handoff/usecases/pickup-handoff.usecase.test.ts | Tightens error expectation; asserts reconciled status persisted. |
+> | tests/unit/features/handoff/usecases/list-open-handoffs-for-task.usecase.test.ts | Tests hiding stale launched packets for completed linked tasks. |
+> | tests/unit/features/handoff/usecases/list-launches.usecase.test.ts | Tests “completed means closed” and reconciliation during listing. |
+> | tests/unit/features/handoff/usecases/launch-handoff.usecase.test.ts | Verifies startup preamble injection and `--prompt-file` validation/behavior. |
+> | tests/unit/features/handoff/adapters/launch-store.adapter.test.ts | Adds corrupt launch.json handling test (surface corruption vs missing). |
+> | tests/unit/features/agent/domain/agents.test.ts | Updates supported agents set; adds config + skills-root resolution tests. |
+> | tests/integration/features/task/task-receipt-hint.test.ts | Updates completion calls to include required `--reason`. |
+> | tests/integration/features/task/task-handoff-pickup.test.ts | Adds integration coverage for pickup/sessionless flows + stale packet reconciliation. |
+> | tests/integration/features/task/task-contract-completion.test.ts | Adds runtime-noise/launch ignore coverage; adjusts reopen behavior expectations. |
+> | tests/helpers/mocks.ts | Makes mock launch store mutable so reconciliation updates are observable. |
+> | tests/e2e/task-compiled-e2e.test.ts | Updates sessionless claim/start expectations to use per-user fallback session. |
+> | tests/e2e/handoff-compiled-e2e.test.ts | Adds behavioral provider harness and E2E coverage for pickup+completion and reconciliation. |
+> | src/shared/version.ts | Bumps version metadata to 0.57.0. |
+> | src/shared/lib/output.ts | Adds “no supported agents detected” hint when all actions are `not-detected`. |
+> | src/shared/lib/fs.ts | Adds shared `listFilesRecursive()` utility for skill sync/install flows. |
+> | src/infra/usecases/init.usecase.ts | Switches to shared `listFilesRecursive()` helper. |
+> | src/infra/domain/bootstrap-templates.ts | Removes legacy AGENT_INSTRUCTION_BLOCK content. |
+> | src/infra/commands/update.command.ts | Updates wording to “bundled agent skills” for update/agents-only flow. |
+> | src/infra/commands/uninstall.command.ts | Updates wording to “bundled agent skills” for uninstall/agents-only flow. |
+> | src/infra/commands/init.command.ts | Prints next-step hint to run `maestro install` for bundled skills. |
+> | src/infra/adapters/git.adapter.ts | Adds porcelain line parser resilient to trimmed-first-line and renames. |
+> | src/features/task/usecases/plan-tasks.usecase.ts | Marks idempotent batch replays via `replayed: true`. |
+> | src/features/task/domain/task-state.ts | Enforces busy-session check only when `--force` is not set. |
+> | src/features/task/domain/task-errors.ts | Improves reopen guidance hint text. |
+> | src/features/task/domain/task-batch-types.ts | Adds `replayed?: boolean` to batch results to support UX messaging. |
+> | src/features/task/commands/task.command.ts | Updates plan output messaging; passes taskStore for handoff reconciliation; filters resolved blockers in text view; enforces Hard Rules; adds per-user fallback session. |
+> | src/features/task/commands/contract.command.ts | Adds `--from` for edit/amend; improves stdin detection; adds fallback actor session id. |
+> | src/features/task/adapters/jsonl-task-store.adapter.ts | Allows unblock on completed blocker; freezes completed tasks; prevents graph edge resurrection. |
+> | src/features/task/adapters/git-anchor.adapter.ts | Adds tracked/untracked-aware ignore logic; ignores runtime noise and handoff launch artifacts. |
+> | src/features/handoff/usecases/show-launch.usecase.ts | Adds optional reconciliation against task completion on read. |
+> | src/features/handoff/usecases/reconcile-launch-record.usecase.ts | New usecase to close stale open packets when linked task is completed. |
+> | src/features/handoff/usecases/pickup-handoff.usecase.ts | Reconciles before pickup; blocks pickup of already-completed task-linked packets. |
+> | src/features/handoff/usecases/list-open-handoffs-for-task.usecase.ts | Reconciles and filters by “open” state consistently. |
+> | src/features/handoff/usecases/list-launches.usecase.ts | Reconciles and filters open-only via shared open-state predicate. |
+> | src/features/handoff/usecases/launch-handoff.usecase.ts | Adds `--prompt-file` path handling/validation; writes startup pickup preamble to prompt artifact. |
+> | src/features/handoff/index.ts | Exports open-state helpers for consumers. |
+> | src/features/handoff/domain/launch-types.ts | Adds `status: "consumed"` to status union. |
+> | src/features/handoff/domain/launch-state.ts | New helpers for “open” detection and display-state normalization. |
+> | src/features/handoff/commands/handoff.command.ts | Adds `--prompt-file`; improves pickup identity fallback and open-list display state; reconciles stale packets in list/show. |
+> | src/features/handoff/adapters/launch-store.adapter.ts | Sets status to consumed on consume; normalizes legacy records on read. |
+> | src/features/agent/index.ts | Re-exports `agentSkillsRoot`. |
+> | src/features/agent/domain/agents.ts | Removes droid/gemini; adds `agentSkillsRoot()`; removes legacy paths. |
+> | skills/bundled/maestro-task/reference/recovery.md | Adds task recovery reference content to bundled skill. |
+> | skills/bundled/maestro-task/reference/plan-conversion.md | Adds plan-to-task conversion examples and schema notes. |
+> | skills/bundled/maestro-task/reference/contracts.md | Adds contract workflow reference for bundled skill. |
+> | skills/bundled/maestro-task/reference/commands.md | Adds `maestro task` command surface reference. |
+> | skills/bundled/maestro-task/SKILL.md | Adds bundled maestro-task skill content and hard rules. |
+> | skills/bundled/maestro-plan/SKILL.md | Adds bundled maestro-plan skill (plan-mode discipline + persistence + handoff). |
+> | skills/bundled/maestro-mission/reference/mission-lifecycle.md | Adds mission lifecycle reference. |
+> | skills/bundled/maestro-mission/reference/mission-control-tui.md | Adds mission-control preview/TUI reference. |
+> | skills/bundled/maestro-mission/reference/assertions.md | Adds assertions semantics reference. |
+> | skills/bundled/maestro-mission/SKILL.md | Adds bundled maestro-mission skill content. |
+> | skills/bundled/maestro-handoff/reference/pickup.md | Adds pickup semantics reference for bundled handoff skill. |
+> | skills/bundled/maestro-handoff/reference/brief-template.md | Adds worked example brief template. |
+> | skills/bundled/maestro-handoff/SKILL.md | Adds bundled maestro-handoff skill content and launch/pickup guidance. |
+> | skills/bundled/maestro-brainstorm/visual-companion.md | Adds visual companion operating guide. |
+> | skills/bundled/maestro-brainstorm/spec-document-reviewer-prompt.md | Adds reviewer prompt template for spec/doc review delegation. |
+> | skills/bundled/maestro-brainstorm/scripts/stop-server.sh | Adds stop script for brainstorm companion server. |
+> | skills/bundled/maestro-brainstorm/scripts/start-server.sh | Adds start script for brainstorm companion server. |
+> | skills/bundled/maestro-brainstorm/scripts/server.cjs | Adds lightweight HTTP+WebSocket server for brainstorm companion. |
+> | skills/bundled/maestro-brainstorm/scripts/helper.js | Adds client helper for reload + click event logging. |
+> | skills/bundled/maestro-brainstorm/scripts/frame-template.html | Adds shared frame template (theme + selection UX) for companion screens. |
+> | skills/bundled/maestro-brainstorm/agents/openai.yaml | Adds agent interface metadata for the brainstorm skill. |
+> | skills/bundled/maestro-brainstorm/SKILL.md | Adds bundled maestro-brainstorm skill content. |
+> | skills/AGENTS.md | Updates skill tree documentation for built-in vs bundled and sync flows. |
+> | scripts/sync-bundled-skills.ts | New generator/checker for bundled skills embed template module. |
+> | scripts/sync-built-in-skills.ts | Refactors to use shared `listFilesRecursive()` helper. |
+> | scripts/AGENTS.md | Documents bundled-skill sync script and conventions. |
+> | package.json | Bumps version; adds `check:bundled-skills` / `sync:bundled-skills` scripts. |
+> | CLAUDE.md | Codifies “skill bundle is the spec” and local release testing doctrine. |
+> | AGENTS.md | Updates repo knowledge base to include bundled skill workflow and checks. |
+> | .gitignore | Ignores `.maestro/sessions/` runtime state. |
+> 
+> ---
+> 
+> 💡 Add Copilot custom instructions for smarter, more guided reviews. Learn how to get started.
+
+**@chatgpt-codex-connector[bot]** commented · Apr 23, 2026 at 5:20am
+
+> **Review (commented):**
+> 
+> ### 💡 Codex Review
+> 
+> Here are some automated review suggestions for this pull request.
+> 
+> **Reviewed commit:** `eeed1bbfea`
+> 
+> **ℹ️ About Codex in GitHub**
+> 
+> [Your team has set up Codex to review pull requests in this repo](https://chatgpt.com/codex/cloud/settings/general). Reviews are triggered when you
+> 
+> - Open a pull request for review
+> - Mark a draft as ready
+> - Comment "@codex review".
+> 
+> If Codex has suggestions, it will comment; otherwise it will react with 👍.
+> 
+> Codex can also answer questions or update the PR. Try commenting "@codex address that feedback".
+
+**@coderabbitai[bot]** commented · Apr 23, 2026 at 5:26am
+
+> **Review (commented):**
+> **Actionable comments posted: 14**
+> 
+> > [!CAUTION]
+> > Some comments are outside the diff and can’t be posted inline due to platform limitations.
+> 
+> > **⚠️ Outside diff range comments (3)**
+> 
+> 
+> 
+> > **src/features/task/domain/task-state.ts (1)**
+> 
+> 
+> 
+> > `101-111`: _⚠️ Potential issue_ | _🟠 Major_
+> > 
+> > **Apply the busy-session check to already-claimed status transitions too.**
+> > 
+> > Line 101 only enforces the new invariant when the task is unassigned. If the same session already claimed multiple pending tasks, each can still be updated to `in_progress` because this branch is skipped.
+> 
+> > **🐛 Proposed fix**
+> 
+> > ```diff
+> > - if (!existing.assignee && nextStatus === "in_progress") {
+> > - if (!actor.sessionId) {
+> > + if (nextStatus === "in_progress" && existing.status !== "in_progress") {
+> > + const progressSessionId = existing.assignee ?? actor.sessionId;
+> > + if (!progressSessionId) {
+> > throw taskStatusRequiresClaim("in_progress");
+> > }
+> > if (!actor.force) {
+> > - const busy = findBusySessionTasks(actor.sessionId, existing.id, tasks);
+> > + const busy = findBusySessionTasks(progressSessionId, existing.id, tasks);
+> > if (busy.length > 0) {
+> > - throw taskClaimBusySession(actor.sessionId, busy);
+> > + throw taskClaimBusySession(progressSessionId, busy);
+> > }
+> > }
+> > - return { nextStatus, autoClaim: { sessionId: actor.sessionId } };
+> > + if (!existing.assignee) {
+> > + return { nextStatus, autoClaim: { sessionId: progressSessionId } };
+> > + }
+> > }
+> > ```
+> 
+> > **🤖 Prompt for AI Agents**
+> 
+> > ```
+> > Verify each finding against the current code and only fix it if needed.
+> > 
+> > In `@src/features/task/domain/task-state.ts` around lines 101 - 111, The current
+> > busy-session guard (findBusySessionTasks + taskClaimBusySession) only runs when
+> > existing.assignee is falsy, so tasks already claimed by the same session can
+> > bypass the busy-session rule; move the busy-session check so it runs for any
+> > transition to nextStatus === "in_progress" when actor.sessionId is present and
+> > actor.force is false (i.e., call findBusySessionTasks(actor.sessionId,
+> > existing.id, tasks) and throw taskClaimBusySession if busy.length > 0 regardless
+> > of existing.assignee), while keeping the existing behavior that if there is no
+> > existing.assignee you still require actor.sessionId (throw
+> > taskStatusRequiresClaim) and return autoClaim { sessionId: actor.sessionId }.
+> > ```
+> 
+> > 
+> 
+> > **src/features/task/commands/contract.command.ts (1)**
+> 
+> 
+> 
+> > `389-416`: _⚠️ Potential issue_ | _🟠 Major_
+> > 
+> > **Guard against silently creating blank contract drafts from empty stdin pipes.**
+> > 
+> > When piping empty content (`echo "" | maestro task contract new `), `hasRealStdinPayload()` returns `true` because file descriptor 0 is a FIFO even with no bytes. This causes the code to read empty stdin, parse it as `{}`, and skip the editor/error handling—creating a blank draft without user interaction.
+> > 
+> > 
+> > 
+> > The suggested fix reads stdin eagerly and checks that it contains non-empty content before treating it as a valid source:
+> 
+> > **Proposed guard**
+> 
+> > ```diff
+> > const envEditor = process.env.EDITOR ?? process.env.VISUAL;
+> > + const autoStdinContent = fromPath === undefined
+> > + && editorCommand === undefined
+> > + && hasRealStdinPayload()
+> > + ? await readTextOrStdin("-")
+> > + : undefined;
+> > // Auto-detect real piped/redirected stdin when the caller passed neither
+> > @@
+> > const resolvedFromPath = fromPath
+> > - ?? (!editorCommand && hasRealStdinPayload() ? "-" : undefined);
+> > + ?? (autoStdinContent !== undefined && autoStdinContent.trim().length > 0 ? "-" : undefined);
+> > @@
+> > const baseContent = resolvedFromPath
+> > - ? await readDraftSource(resolvedFromPath)
+> > + ? autoStdinContent ?? await readDraftSource(resolvedFromPath)
+> > : initialContent;
+> > ```
+> 
+> > Also applies to: 428-435
+> 
+> > **🤖 Prompt for AI Agents**
+> 
+> > ```
+> > Verify each finding against the current code and only fix it if needed.
+> > 
+> > In `@src/features/task/commands/contract.command.ts` around lines 389 - 416, The
+> > code currently treats any FIFO/redirected stdin as valid source via
+> > hasRealStdinPayload(), which lets empty pipes produce blank drafts; fix by
+> > eagerly reading stdin when hasRealStdinPayload() is true (call the same reader
+> > used by readDraftSource or a small helper to read "-" stdin once), check that
+> > the returned raw content contains non-empty, non-whitespace data before setting
+> > resolvedFromPath to "-" and using it as baseContent; if the stdin is empty,
+> > leave resolvedFromPath undefined so the existing editor/envEditor guard (and
+> > MaestroError) runs and editContractDraft or error behavior is preserved; ensure
+> > readDraftSource is not called twice and reuse the already-read stdin content
+> > when populating baseContent/finalContent.
+> > ```
+> 
+> > 
+> 
+> > **src/features/handoff/usecases/launch-handoff.usecase.ts (1)**
+> 
+> 
+> 
+> > `76-79`: _⚠️ Potential issue_ | _🟠 Major_
+> > 
+> > **Worktree-launched task-linked handoffs may fail pickup because the launch record is unreachable in the worktree context.**
+> > 
+> > When `--worktree` is used with a task-linked handoff, the packet is stored in the source repo's `.maestro/launches/`. The launched session in the worktree invokes `maestro handoff pickup --id `, which re-initializes services from the worktree's own projectDir. This creates a fresh local launch store rooted in the worktree, making the source repo's packet invisible during lookup.
+> > 
+> > Consider one of these options:
+> > - Store task-linked packets in the global `~/.maestro/launches/` when worktrees are involved, so they remain accessible across directories.
+> > - Embed the source repo path or a shared reference in the launch record and `HandoffWorktree`, then update pickup to check both the worktree and source locations.
+> > - Document the limitation and instruct users to use prompt-only packets (`--prompt-file`) for worktree launches.
+> 
+> > **🤖 Prompt for AI Agents**
+> 
+> > ```
+> > Verify each finding against the current code and only fix it if needed.
+> > 
+> > In `@src/features/handoff/usecases/launch-handoff.usecase.ts` around lines 76 -
+> > 79, Task-linked launches created with createHandoffWorktree end up storing
+> > packets in the source repo `.maestro/launches/` which the worktree process can't
+> > see, so modify the launch flow to make packets discoverable across contexts:
+> > update createHandoffWorktree to return a HandoffWorktree that includes the
+> > originating repo path (e.g., sourceRepoPath) and, when launching a task-linked
+> > handoff in launch-handoff.usecase (the code path that writes the packet), store
+> > task-linked packets in the global launches location (e.g., ~/.maestro/launches/)
+> > or mark the packet with the originating repo path; then update the pickup logic
+> > (the handoff pickup routine) to check both the current worktree-local store and
+> > the originating repo/global store by reading the new sourceRepoPath on the
+> > HandoffWorktree or the packet metadata so pickup can locate the packet from the
+> > worktree-launched session.
+> > ```
+> 
+> > 
+> 
+> > 
+> 
+> **🧹 Nitpick comments (13)**
+> 
+> 
+> **src/features/handoff/usecases/list-launches.usecase.ts (1)**
+> 
+> 
+> `16-22`: **Optional: avoid the `!` non-null assertion by hoisting `taskStore` to a local.**
+> 
+> Narrowing is lost inside the `Promise.all` callback, so `options.taskStore!` is needed. Binding to a local makes the intent obvious and drops the assertion.
+> 
+> **♻️ Suggested refactor**
+> 
+> ```diff
+> - const reconciled = options.taskStore
+> - ? await Promise.all(all.map((record) => reconcileLaunchRecord({
+> - launchStore: store,
+> - taskStore: options.taskStore!,
+> - }, record)))
+> - : all;
+> + const taskStore = options.taskStore;
+> + const reconciled = taskStore
+> + ? await Promise.all(all.map((record) => reconcileLaunchRecord({ launchStore: store, taskStore }, record)))
+> + : all;
+> ```
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@src/features/handoff/usecases/list-launches.usecase.ts` around lines 16 - 22,
+> Hoist options.taskStore into a local constant before using it so you can drop
+> the non-null assertion inside the Promise.all callback: assign something like
+> const taskStore = options.taskStore; then use taskStore when calling
+> reconcileLaunchRecord within the Promise.all (keeps narrowing for reconciled
+> computation), leaving the rest (reconciled, Promise.all, reconcileLaunchRecord,
+> filtered, isOpenLaunchRecord) unchanged.
+> ```
+> 
+> 
+> 
+> **skills/bundled/maestro-brainstorm/scripts/frame-template.html (1)**
+> 
+> 
+> `105-144`: **Verify selectable cards are keyboard-operable.**
+> 
+> These styles make `.option` and `.card` look clickable, but the template should also support focus-visible states and injected markup should use real buttons or equivalent keyboard handlers.
+> 
+> **♿ Suggested focus styling**
+> 
+> ```diff
+> .option:hover { border-color: var(--accent); }
+> + .option:focus-visible {
+> + outline: 2px solid var(--accent);
+> + outline-offset: 2px;
+> + }
+> .option.selected { background: var(--selected-bg); border-color: var(--selected-border); }
+> @@
+> .card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+> + .card:focus-visible {
+> + outline: 2px solid var(--accent);
+> + outline-offset: 2px;
+> + }
+> .card.selected { border-color: var(--selected-border); border-width: 2px; }
+> ```
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@skills/bundled/maestro-brainstorm/scripts/frame-template.html` around lines
+> 105 - 144, The interactive visuals for .option and .card currently only rely on
+> hover/click styles but lack keyboard/focus support; update the template so
+> injected selectable items are real interactive elements (prefer for
+> .option/.card or add role="button" tabindex="0" and keydown handlers that
+> activate on Enter/Space) and add focus styles in CSS (e.g.,
+> .option:focus-visible and .card:focus-visible matching .selected outline/border
+> color) plus appropriate ARIA state (aria-pressed or aria-selected) so keyboard
+> and assistive tech users can operate .option and .card.
+> ```
+> 
+> 
+> 
+> **src/features/handoff/domain/launch-state.ts (1)**
+> 
+> 
+> `5-20`: **Consider keying both helpers off the same open-status allow-list.**
+> 
+> `isOpenLaunchRecord` is `"launching" | "launched"` explicit, while `getLaunchDisplayState` falls through to `"open"` as the default. If the `status` union ever grows a new variant, `getLaunchDisplayState` will silently label it `"open"` while `isOpenLaunchRecord` returns `false`, which can desync filters from rendered state. Extracting a single `OPEN_STATUSES = new Set(["launching","launched"])` and using it in both would make the asymmetry impossible.
+> 
+> **♻️ Suggested shared allow-list**
+> 
+> ```diff
+> import type { HandoffLaunchRecord } from "./launch-types.js";
+> 
+> export type HandoffLaunchDisplayState = "open" | "consumed" | "completed" | "failed";
+> 
+> +const OPEN_STATUSES: ReadonlySet<HandoffLaunchRecord["status"]> = new Set(["launching", "launched"]);
+> +
+> export function isOpenLaunchRecord(record: HandoffLaunchRecord): boolean {
+> - return !record.consumedAt && (record.status === "launching" || record.status === "launched");
+> + return !record.consumedAt && OPEN_STATUSES.has(record.status);
+> }
+> 
+> export function getLaunchDisplayState(record: HandoffLaunchRecord): HandoffLaunchDisplayState {
+> if (record.consumedAt || record.status === "consumed") {
+> return "consumed";
+> }
+> if (record.status === "failed") {
+> return "failed";
+> }
+> if (record.status === "completed") {
+> return "completed";
+> }
+> - return "open";
+> + return OPEN_STATUSES.has(record.status) ? "open" : "open";
+> }
+> ```
+> 
+> (The final ternary is illustrative — if you want the default to assert exhaustiveness instead, replace it with a `never`-checked switch.)
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@src/features/handoff/domain/launch-state.ts` around lines 5 - 20, Extract a
+> shared allow-list (e.g. OPEN_STATUSES = new Set(["launching","launched"])) and
+> use it in both isOpenLaunchRecord and getLaunchDisplayState so they use the same
+> source of truth; change isOpenLaunchRecord to check
+> OPEN_STATUSES.has(record.status) (plus the consumedAt guard) and change
+> getLaunchDisplayState to use OPEN_STATUSES.has(record.status) to decide the
+> "open" branch instead of falling through to a default, keeping other branches
+> (consumed/failed/completed) intact and optionally replace the final fallback
+> with an exhaustiveness check if desired.
+> ```
+> 
+> 
+> 
+> **skills/bundled/maestro-brainstorm/scripts/server.cjs (2)**
+> 
+> 
+> `224-238`: **Synchronous `appendFileSync` on the WS message path.**
+> 
+> `handleMessage` runs on every inbound TEXT frame and blocks the event loop during the append. For an interactive brainstorm companion this is almost never a bottleneck, but switching to `fs.promises.appendFile` (or `fs.appendFile` with a small in-flight guard) keeps the server responsive if the events file lives on slow storage. Same note applies to the `readFileSync` on the `/` handler (line 134) and `/files/*` (line 156).
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@skills/bundled/maestro-brainstorm/scripts/server.cjs` around lines 224 - 238,
+> The handleMessage function currently uses blocking fs.appendFileSync to write
+> events and should be changed to non-blocking I/O: use fs.promises.appendFile (or
+> fs.appendFile with a small in-flight guard) to append JSON to the events file
+> (the eventsFile derived from STATE_DIR) and handle errors via .catch or
+> try/catch in an async helper so the WebSocket message path doesn't block the
+> event loop; also update the synchronous readFileSync usages in the HTTP root
+> handler and the /files/* handler to use fs.promises.readFile (or streaming) with
+> proper async error handling to keep handlers non-blocking.
+> ```
+> 
+> ---
+> 
+> `301-312`: **`server.close` may hang if WebSocket clients are still connected.**
+> 
+> `server.close` only stops accepting new connections; upgraded WebSocket sockets keep the handle open, so `process.exit(0)` won't fire until every client disconnects (or the process is killed externally). For a companion tool that exits on idle/owner-dead, this is usually fine in practice, but you can make shutdown deterministic by destroying connected sockets first (or adding a short timeout fallback to `process.exit`).
+> 
+> **♻️ Suggested tightening**
+> 
+> ```diff
+> watcher.close();
+> clearInterval(lifecycleCheck);
+> + for (const socket of clients) {
+> + try { socket.destroy(); } catch {}
+> + }
+> + clients.clear();
+> + setTimeout(() => process.exit(0), 1000).unref();
+> server.close(() => process.exit(0));
+> ```
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@skills/bundled/maestro-brainstorm/scripts/server.cjs` around lines 301 - 312,
+> The shutdown function can hang because server.close waits for all upgraded
+> WebSocket sockets to disconnect; update shutdown to iterate connected sockets
+> (track them via the HTTP server's connections or maintain a Set of sockets on
+> 'connection'/'upgrade') and destroy each socket before calling server.close,
+> then call watcher.close(), clearInterval(lifecycleCheck) and use a short
+> fallback setTimeout that calls process.exit(0) if the close callback doesn't run
+> within e.g. 2–5 seconds; reference the existing shutdown, server, watcher,
+> lifecycleCheck and STATE_DIR symbols when implementing the
+> socket-tracking/destroy and timeout fallback.
+> ```
+> 
+> 
+> 
+> **.maestro/plans/skill-bundle.md (1)**
+> 
+> 
+> `175-179`: **Tag the fenced code block with a language.**
+> 
+> `markdownlint-cli2` flags this fence as `MD040`. Using ```` ```bash ```` (or `text`) avoids the warning and also gives downstream renderers a styling hint.
+> 
+> **♻️ Proposed fix**
+> 
+> ```diff
+> - ```
+> + ```bash
+> mkdir -p "$HOME/.claude" "$HOME/.codex"
+> echo "# claude config" > "$HOME/.claude/CLAUDE.md"
+> echo "# codex config" > "$HOME/.codex/AGENTS.md"
+> ```
+> ```
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ````
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In @.maestro/plans/skill-bundle.md around lines 175 - 179, Tag the fenced code
+> block containing the shell commands (the block that starts with mkdir -p
+> "$HOME/.claude" "$HOME/.codex" and the two echo lines) with a language such as
+> bash (change ``` to ```bash) so markdownlint-cli2 MD040 is resolved and
+> renderers get proper styling; update the opening fence only (leave the shell
+> lines unchanged).
+> ```
+> 
+> 
+> 
+> **AGENTS.md (1)**
+> 
+> 
+> `48-50`: **Clarify command naming: `maestro install` vs `maestro agent inject`.**
+> 
+> User-facing documentation (README.md, AGENTS.md, skills/AGENTS.md) refers to `maestro install`, but the implementation plan (.maestro/plans/skill-bundle.md, line 39) names `maestro agent inject` as the entry point. Plan constraint explicitly states: "No new user-facing command. `maestro agent inject` is the entry point for both install and upgrade." Align docs to a single command name so readers encounter consistent terminology across README, skill docs, and future docs referencing the install flow.
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@AGENTS.md` around lines 48 - 50, Docs and README mention `maestro install`
+> while the implementation plan (.maestro/plans/skill-bundle.md) uses `maestro
+> agent inject`; update all user-facing documentation (AGENTS.md, README.md,
+> skills/AGENTS.md and any other docs referenced by
+> src/infra/domain/bootstrap-templates.ts) to consistently use the single command
+> name `maestro agent inject` (the entry point named in the plan) so wording,
+> examples, and any command snippets match the implementation and the plan
+> constraint that this is the install/upgrade entry point.
+> ```
+> 
+> 
+> 
+> **src/features/handoff/usecases/reconcile-launch-record.usecase.ts (1)**
+> 
+> 
+> `5-26`: **Be aware of N+1 call pattern when invoked from list paths.**
+> 
+> The function reads `taskStore.get` per record. In `list-launches` and `list-open-handoffs-for-task`, this scales linearly with the number of launches: each reconciliation triggers a separate task lookup. This is fine at current volumes, but if launch history grows significantly, consider optimizing by adding a batch lookup method (`getMany`) to `TaskQueryPort` or caching task lookups within a single list operation.
+> 
+> Also note: if `taskStore.get` or `launchStore.update` throws, the entire list operation fails (via `Promise.all`). If reconciliation should be advisory rather than critical to the list result, the caller may want to wrap these calls with error handling to avoid a single corrupt record breaking the entire list.
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@src/features/handoff/usecases/reconcile-launch-record.usecase.ts` around
+> lines 5 - 26, reconcileLaunchRecord currently does a taskStore.get per record
+> which causes an N+1 query pattern when called from list paths; change the
+> approach by adding a batch lookup to TaskQueryPort (e.g., getMany) and update
+> callers (list-launches/list-open-handoffs-for-task) to collect taskIds, call
+> TaskQueryPort.getMany once and pass the task map into reconcileLaunchRecord (or
+> provide a cached lookup wrapper) so reconcileLaunchRecord uses the pre-fetched
+> task data instead of calling taskStore.get for each record; additionally
+> consider making launchStore.update and task lookups non-fatal for listing by
+> catching and logging errors around those calls (or returning the original record
+> on error) so a single failing lookup/update does not break the entire
+> Promise.all in the list callers.
+> ```
+> 
+> 
+> 
+> **tests/unit/features/handoff/usecases/launch-handoff.usecase.test.ts (1)**
+> 
+> 
+> `250-415`: **Isolate filesystem fixtures to a per-test tmp dir.**
+> 
+> A few concerns with the new `--prompt-file bypass` group:
+> 
+> - Lines 378-414 write to `process.cwd()`, which is the repo root under Bun's default runner. A crash between `Bun.write` and the `finally` block (or parallel execution of another test watching the repo) will leave an untracked `maestro-prompt-file-rel-*.md` in the working tree. Prefer writing under a `mkdtemp`-style directory and passing that as `cwd`, so the use case still exercises the relative-path branch without touching the repo.
+> - Lines 252-292 and 353-376 write to `/tmp/...` and never unlink the brief files, so each run accretes fixture files. The third case (316-351) is fine because the path is intentionally non-existent, but the other two should clean up in a `finally` (or via a shared `mkdtemp`).
+> - Line 412 uses `Bun.file(...).delete?.()` — the optional call silently no-ops if `delete` isn't available. Consider `await fs.promises.unlink(...)` (or `Bun.file(...).unlink()` if you standardize on that) so cleanup is deterministic.
+> 
+> ```web
+> Does Bun.file() expose a stable .delete() or .unlink() method for removing files as of Bun 1.1+?
+> ```
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@tests/unit/features/handoff/usecases/launch-handoff.usecase.test.ts` around
+> lines 250 - 415, The tests in the "--prompt-file bypass" suite create persistent
+> fixtures in process.cwd() and /tmp and use a fragile optional delete; fix by
+> creating a unique per-test temp directory (use mkdtemp) and write all prompt
+> files into that dir, pass that dir as the test's cwd for the "resolves a
+> relative --prompt-file path against cwd" case (so launchHandoff still exercises
+> relative-path resolution), ensure the two /tmp writes (in the "uses the file
+> contents verbatim..." and "throws a MaestroError when --prompt-file is empty"
+> cases) are created in the test temp dir instead of /tmp, and wrap each file
+> creation + test in a try/finally that unlinks the file in finally using a
+> deterministic API (e.g., Bun.file(...).unlink() or fs.promises.unlink) instead
+> of Bun.file(...).delete?.(); adjust the tests referencing the briefPath
+> variables and cwd variable accordingly so cleanup is deterministic.
+> ```
+> 
+> 
+> 
+> **src/features/task/commands/task.command.ts (2)**
+> 
+> 
+> `1126-1133`: **Return type no longer matches the implementation.**
+> 
+> `resolveOptionalOwnershipSessionId` now unconditionally returns `resolveOwnershipSessionId(...)`, which returns `Promise `. The declared return `Promise ` is now dead — every call site that does `sessionId ? [sessionId] : []` or `if (!previous) ...` branching on undefined is now unreachable (e.g., `resolveSessionAndReleaseStale` at line 1139 and the `delete` command's conditional spread at 822). Tighten the return type to `Promise ` and simplify the call sites, or actually preserve an undefined path.
+> 
+> **♻️ Proposed change**
+> 
+> ```diff
+> -async function resolveOptionalOwnershipSessionId(explicitSessionId: string | undefined): Promise {
+> +async function resolveOptionalOwnershipSessionId(explicitSessionId: string | undefined): Promise {
+> // Always produce a stable actor id, synthesizing a per-user fallback when
+> // no env var / explicit session is available. Previously this function
+> // could return undefined, which surfaced as "requires ownership context"
+> // errors on update/heartbeat/unclaim paths that the skill documents as
+> // bare forms.
+> return resolveOwnershipSessionId(explicitSessionId);
+> }
+> ```
+> 
+> Then simplify `resolveSessionAndReleaseStale` and the `delete` actor spread accordingly.
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@src/features/task/commands/task.command.ts` around lines 1126 - 1133, The
+> function resolveOptionalOwnershipSessionId currently always forwards to
+> resolveOwnershipSessionId (which returns Promise), so update
+> resolveOptionalOwnershipSessionId's signature to return Promise (not
+> Promise<string|undefined>), and then simplify all call sites that branch on
+> undefined: remove conditional spreads like sessionId ? [sessionId] : [] and
+> remove guards such as if (!previous) ...; specifically update
+> resolveSessionAndReleaseStale to treat sessionId as always present and simplify
+> the logic, and update the delete command's actor spread (the conditional spread
+> at the delete handler around line ~822) to directly include the session id
+> instead of handling an undefined case.
+> ```
+> 
+> ---
+> 
+> `508-532`: **"One in_progress per session" bypassed via `--session` from another shell.**
+> 
+> The guard only fires when `previous?.status !== "in_progress"`. Because `listTasks({ assignee: sessionId })` is exact-match against the resolved owner id, an agent invoking with `--session ` (e.g., to impersonate another shell) entirely sidesteps this check — fine, that's intentional — but any CLI caller can also pass a throwaway `--session` to bypass the held-task message without `--force`, which contradicts the user-visible rule documented in the skill. Consider noting this intent in the `--session` help text or moving the invariant to cover all resolved ownership paths consistently.
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@src/features/task/commands/task.command.ts` around lines 508 - 532, The check
+> enforcing "one in_progress per session" in task.command.ts only runs when
+> previous?.status !== "in_progress" and uses listTasks(services.taskStore, {
+> assignee: sessionId }) which can be bypassed by callers supplying a custom
+> --session; update the invariant so it consistently applies to the resolved owner
+> regardless of how sessionId was provided: either (A) resolve and validate that
+> sessionId always maps to the current shell owner before checking and keep the
+> existing guard, or (B) move the held-task detection out of the previous?.status
+> conditional so that when patch.status === "in_progress" and opts.force !== true
+> you always call listTasks(...) using the resolved owner id and throw the
+> MaestroError with the same messages if held.length > 0; also consider adding a
+> note to the --session help text to document that using --session can affect this
+> invariant (referencing sessionId, previous, listTasks, opts.force, and
+> MaestroError).
+> ```
+> 
+> 
+> 
+> **src/features/agent/usecases/manage-agents.usecase.ts (1)**
+> 
+> 
+> `160-234`: **`writeBundledSkill` decision table is clean — nice touch recording `prevHash` on preserve.**
+> 
+> Returning `manifestHash: prevHash` on preserve (Line 186) is what makes repeated installs continue to preserve a user edit instead of only surviving one refresh — the test on Line 272-289 directly exercises this. Using `manifestsEqual` to skip rewriting the manifest on no-op installs (Line 229) also avoids `installedAt` churn showing up as a change in diff-based workflows.
+> 
+> One small readability tweak: `manifestHash` in `perFile` results is doing double duty (shipped hash vs. preserved hash depending on branch). Renaming to `hashToRecord` or adding a short comment at the return points would make future readers less likely to reintroduce the "recompute from shipped content" footgun.
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@src/features/agent/usecases/manage-agents.usecase.ts` around lines 160 - 234,
+> The per-file result field named manifestHash in writeBundledSkill is ambiguous
+> because it sometimes holds the shipped content hash and sometimes the preserved
+> (prev) hash; update the per-file result shape and all uses to a clearer name
+> like hashToRecord (or add a very short inline comment at each return) so readers
+> won’t assume it’s always the shipped hash—adjust the returns inside the
+> template.files mapping (the returns that currently include manifestHash), the
+> later loop that builds fileHashes from perFile results, and any manifest writing
+> logic (e.g., newManifest.fileHashes and the manifestsEqual check) to use the new
+> name.
+> ```
+> 
+> 
+> 
+> **skills/bundled/maestro-brainstorm/scripts/helper.js (1)**
+> 
+> 
+> `14-23`: **Unparseable WS frames will throw inside `onmessage`.**
+> 
+> A non-JSON text frame (or an eventual binary frame the server grows support for) makes `JSON.parse` throw; the uncaught exception propagates out of the handler and you lose the reload signal for that tick. Cheap to harden:
+> 
+> **🛡️ Proposed fix**
+> 
+> ```diff
+> ws.onmessage = (msg) => {
+> - const data = JSON.parse(msg.data);
+> - if (data.type === 'reload') {
+> - window.location.reload();
+> - }
+> + let data;
+> + try { data = JSON.parse(msg.data); } catch { return; }
+> + if (data && data.type === 'reload') {
+> + window.location.reload();
+> + }
+> };
+> ```
+> 
+> **🤖 Prompt for AI Agents**
+> 
+> ```
+> Verify each finding against the current code and only fix it if needed.
+> 
+> In `@skills/bundled/maestro-brainstorm/scripts/helper.js` around lines 14 - 23,
+> The ws.onmessage handler currently calls JSON.parse(msg.data) unguarded so
+> non-JSON or binary frames will throw and break the handler; wrap the parse in a
+> try/catch (and optionally check typeof msg.data === 'string' before parsing)
+> inside the ws.onmessage callback to safely ignore or log unparseable frames and
+> avoid letting the exception propagate (leave ws.onclose/connect logic
+> unchanged).
+> ```
+> 
+> 
+> 
+> 
+> 
+> **🤖 Prompt for all review comments with AI agents**
+> 
+> ````
+> Verify each finding against the current code and only fix it if needed.
+> 
+> Inline comments:
+> In `@CLAUDE.md`:
+> - Around line 12-19: Clarify the contradictory guidance by updating the
+> paragraph around the "Always release + link locally" section to state that
+> "./dist/maestro" and the installed "maestro" on PATH are different artifacts and
+> both verification methods are valid: keep the recommendation to use "bun run
+> release:local" when you need to exercise the installed binary (maestro on PATH)
+> and add an explicit sentence that "bun run build" + "./dist/maestro" remains
+> valid for direct dist-binary checks; reference the phrases "bun run
+> release:local", "bun run build", "./dist/maestro", and "maestro on PATH" so
+> readers know when to use each approach.
+> 
+> In `@skills/bundled/maestro-brainstorm/scripts/frame-template.html`:
+> - Around line 2-5: The document is missing a language attribute on the 
+> element and a viewport meta tag in, which impacts accessibility and
+> mobile rendering; add a lang attribute (e.g., lang="en") to the tag and
+> insert a 
+> inside the alongside the existing so the
+> responsive CSS behaves correctly on mobile and screen readers receive language
+> info.
+> 
+> In `@skills/bundled/maestro-brainstorm/scripts/start-server.sh`:
+> - Around line 100-119: The script currently runs cd "$SCRIPT_DIR" without
+> checking for failure which can cause node server.cjs to run from the wrong
+> directory; update start-server.sh to verify that cd "$SCRIPT_DIR" succeeded
+> (check its exit status) and if it failed emit a clear error (to stderr and/or
+> $LOG_FILE), write a non-zero exit code to the PID_FILE path if appropriate, and
+> exit immediately so neither the FOREGROUND branch nor the nohup background
+> launch will try to start node from the wrong cwd; ensure this check applies
+> before both the FOREGROUND env BRAINSTORM... node server.cjs invocation and the
+> nohup env ... node server.cjs background launch.
+> 
+> In `@skills/bundled/maestro-brainstorm/scripts/stop-server.sh`:
+> - Around line 48-50: The cleanup guard in stop-server.sh should canonicalize
+> SESSION_DIR with realpath -m and validate it matches the actual directory prefix
+> used by start-server.sh; specifically, ensure the resolved path begins with
+> /tmp/brainstorm- (since start-server.sh creates /tmp/brainstorm-${SESSION_ID})
+> before calling rm -rf. Update the block that tests SESSION_DIR (referencing the
+> SESSION_DIR variable) to use realpath -m to get an absolute path, check that
+> that resolved path starts with "/tmp/brainstorm-" and only then perform the
+> recursive deletion.
+> - Around line 19-46: The PID file handling in stop-server.sh is unsafe: before
+> using PID_FILE and killing the process, validate the file contains a positive
+> numeric PID and verify the process identity matches the expected server binary
+> (server.cjs) to avoid killing an unrelated PID; implement this by reading
+> PID_FILE into pid, ensure it matches /^[0-9]+$/, then check the command line for
+> that pid (e.g., /proc/$pid/cmdline or ps -p "$pid" -o comm= / -o args=) contains
+> "server.cjs" and if not emit a clear failure JSON and exit 1; only proceed with
+> the existing graceful/kill logic and removal of PID_FILE and
+> "${STATE_DIR}/server.log" when validation succeeds, and ensure error branches do
+> not remove the PID file.
+> 
+> In `@skills/bundled/maestro-brainstorm/spec-document-reviewer-prompt.md`:
+> - Around line 9-47: The fenced Markdown block in the prompt (under the "Task
+> tool (general-purpose):" / "prompt:" content in
+> spec-document-reviewer-prompt.md) lacks a fence language, triggering MD040;
+> update the opening triple-backtick to include a language tag such as text
+> (```text) so markdownlint stops warning, and ensure you do not alter the prompt
+> wording itself—if any change could affect behavior, confirm the skill wording
+> remains approved before committing the edit.
+> 
+> In `@skills/bundled/maestro-handoff/reference/brief-template.md`:
+> - Around line 5-66: The markdown example fence in brief-template.md lacks a
+> language annotation (triple backticks are plain ```) which triggers MD040;
+> update the scaffold fence to include a language token (e.g., change the opening
+> ```
+> 
+> while leaving the example content unchanged and ensure the change is made in
+> skills/bundled/maestro-handoff/reference/brief-template.md where the example
+> block appears.
+> 
+> In `@skills/bundled/maestro-handoff/reference/pickup.md`:
+> 
+> - Around line 64-67: Update the pickup.md text that describes the
+> 
+> contracts.staleReclaimContractPolicy default: change the sentence that currently
+> says "the default is `allow`" to "the default is `inherit`"; the authoritative
+> default is set in contract.command.ts (where the policy default is `inherit`)
+> and other docs reference the same value, so simply replace `allow` with
+> `inherit` in pickup.md to keep the docs consistent.
+> 
+> In `@src/features/agent/usecases/manage-agents.usecase.ts`:
+> 
+> - Around line 284-305: removeStaleBundledSkillDirs currently bulk-deletes entire
+> 
+> shipped skill dirs if their name is no longer in BUNDLED_SKILL_TEMPLATES, which
+> loses user-edited files; change it to mirror removeStaleManagedFiles by
+> enumerating files under the dir, for each shipped path compute/compare the
+> shipped hash and on-disk hash and delete only files that match the shipped hash,
+> remove the manifest (MANIFEST_FILENAME) and any empty dirs, and if any
+> user-edited files would be preserved emit a stderr warning similar to
+> processInject's “[warn] preserved user-edited skill file”; reference
+> removeStaleBundledSkillDirs, removeStaleManagedFiles, processInject,
+> BUNDLED_SKILL_TEMPLATES and MANIFEST_FILENAME to locate and implement the
+> per-file-aware sweep and warning behavior.
+> 
+> In `@src/features/handoff/usecases/list-open-handoffs-for-task.usecase.ts`:
+> 
+> - Around line 14-23: The current use of Promise.all when mapping all records
+> 
+> through reconcileLaunchRecord causes a single reconciliation rejection to abort
+> the whole operation; change the mapping in
+> list-open-handoffs-for-task.usecase.ts so you use Promise.allSettled instead of
+> Promise.all, inspect each settled result and for any that rejected return the
+> original record (i.e., fall back to the unreconciled input), and only replace
+> with the reconciled value when the promise fulfilled; keep the subsequent filter
+> using isOpenLaunchRecord and record.refs.taskId unchanged so a single bad
+> reconciliation won’t crash the task show command.
+> 
+> In `@src/features/task/commands/task.command.ts`:
+> 
+> - Line 1098: The fallback owner ID generated by buildTaskOwnerId("local",
+> 
+> fallbackSessionUserId()) produces prefixes that parseTaskOwnerId doesn't
+> recognize (KNOWN_OWNER_PREFIXES), causing maybeReleaseStaleOwnedTasks to skip
+> them; fix by choosing a recognized prefix or extending parsing: either add
+> "local" to KNOWN_OWNER_PREFIXES and update parseTaskOwnerId to accept and
+> correctly parse the "local- " form, or change the fallbackSession flow to
+> call buildTaskOwnerId with an existing known prefix (e.g., one of the values
+> parseTaskOwnerId already accepts) so fallback owner IDs are parseable and
+> stale-recovery logic in maybeReleaseStaleOwnedTasks works across sessions/users.
+> 
+> In `@src/infra/adapters/git.adapter.ts`:
+> 
+> - Around line 143-156: The parsePorcelainPath function incorrectly treats any
+> 
+> path containing " -> " as a rename; update parsePorcelainPath to read the status
+> character from the padded line (e.g. const status = padded[0]) before extracting
+> the destination and only perform the "ORIG -> NEW" extraction when status is 'R'
+> or 'C' (i.e. if ((status === 'R' || status === 'C') && body.includes(" -> ")) {
+> ... }), otherwise return body unchanged; keep the stable padding and trimming
+> logic and only change the rename/copy conditional around the renameMatch
+> extraction.
+> 
+> In `@tests/e2e/task-compiled-e2e.test.ts`:
+> 
+> - Around line 151-171: The test's fallbackUser computation doesn't match the
+> 
+> CLI's fallbackSessionUserId() logic causing flakes; update the test (the "task
+> claim falls back to a per-user session when session detection is unavailable"
+> case) to compute fallbackUser the same way as fallbackSessionUserId(): use
+> process.env.USER or process.env.USERNAME if set and non-empty, else use
+> userInfo().username only if it's not the string "unknown", else use the basename
+> of os.homedir(), and finally default to "default"; replace the current
+> (process.env.USER ?? process.env.USERNAME ?? "").trim() || userInfo().username
+> logic with this four-tier cascade so the assertion for assignee
+> `local-${fallbackUser}` matches the compiled CLI behavior.
+> 
+> In `@tests/unit/infra/adapters/git.adapter.test.ts`:
+> 
+> - Around line 57-67: The test currently creates package.json as an untracked
+> 
+> file (producing `?? package.json`) so it doesn't exercise the trimmed-first-line
+> bug; update the test "does not truncate package.json when it appears as the
+> first status line" to first create and commit package.json (use the repo helpers
+> or run git add+git commit on tempRepo so package.json is tracked), then modify
+> package.json (overwrite it via Bun.write or similar) to produce a tracked
+> modification whose first status line is the trimmed `M package.json`; then call
+> git.getState(tempRepo) and assert changedFiles contains "package.json" and not
+> "ackage.json" so the parser branch handling trimmed-first-line is exercised.
+> 
+> ---
+> 
+> Outside diff comments:
+> In `@src/features/handoff/usecases/launch-handoff.usecase.ts`:
+> 
+> - Around line 76-79: Task-linked launches created with createHandoffWorktree end
+> 
+> up storing packets in the source repo `.maestro/launches/` which the worktree
+> process can't see, so modify the launch flow to make packets discoverable across
+> contexts: update createHandoffWorktree to return a HandoffWorktree that includes
+> the originating repo path (e.g., sourceRepoPath) and, when launching a
+> task-linked handoff in launch-handoff.usecase (the code path that writes the
+> packet), store task-linked packets in the global launches location (e.g.,
+> ~/.maestro/launches/) or mark the packet with the originating repo path; then
+> update the pickup logic (the handoff pickup routine) to check both the current
+> worktree-local store and the originating repo/global store by reading the new
+> sourceRepoPath on the HandoffWorktree or the packet metadata so pickup can
+> locate the packet from the worktree-launched session.
+> 
+> In `@src/features/task/commands/contract.command.ts`:
+> 
+> - Around line 389-416: The code currently treats any FIFO/redirected stdin as
+> 
+> valid source via hasRealStdinPayload(), which lets empty pipes produce blank
+> drafts; fix by eagerly reading stdin when hasRealStdinPayload() is true (call
+> the same reader used by readDraftSource or a small helper to read "-" stdin
+> once), check that the returned raw content contains non-empty, non-whitespace
+> data before setting resolvedFromPath to "-" and using it as baseContent; if the
+> stdin is empty, leave resolvedFromPath undefined so the existing
+> editor/envEditor guard (and MaestroError) runs and editContractDraft or error
+> behavior is preserved; ensure readDraftSource is not called twice and reuse the
+> already-read stdin content when populating baseContent/finalContent.
+> 
+> In `@src/features/task/domain/task-state.ts`:
+> 
+> - Around line 101-111: The current busy-session guard (findBusySessionTasks +
+> 
+> taskClaimBusySession) only runs when existing.assignee is falsy, so tasks
+> already claimed by the same session can bypass the busy-session rule; move the
+> busy-session check so it runs for any transition to nextStatus === "in_progress"
+> when actor.sessionId is present and actor.force is false (i.e., call
+> findBusySessionTasks(actor.sessionId, existing.id, tasks) and throw
+> taskClaimBusySession if busy.length > 0 regardless of existing.assignee), while
+> keeping the existing behavior that if there is no existing.assignee you still
+> require actor.sessionId (throw taskStatusRequiresClaim) and return autoClaim {
+> sessionId: actor.sessionId }.
+> 
+> ---
+> 
+> Nitpick comments:
+> In @.maestro/plans/skill-bundle.md:
+> 
+> - Around line 175-179: Tag the fenced code block containing the shell commands
+> 
+> (the block that starts with mkdir -p "$HOME/.claude" "$HOME/.codex" and the two
+> echo lines) with a language such as bash (change ``` to ```bash) so
+> markdownlint-cli2 MD040 is resolved and renderers get proper styling; update the
+> opening fence only (leave the shell lines unchanged).
+> 
+> In `@AGENTS.md`:
+> 
+> - Around line 48-50: Docs and README mention `maestro install` while the
+> 
+> implementation plan (.maestro/plans/skill-bundle.md) uses `maestro agent
+> inject`; update all user-facing documentation (AGENTS.md, README.md,
+> skills/AGENTS.md and any other docs referenced by
+> src/infra/domain/bootstrap-templates.ts) to consistently use the single command
+> name `maestro agent inject` (the entry point named in the plan) so wording,
+> examples, and any command snippets match the implementation and the plan
+> constraint that this is the install/upgrade entry point.
+> 
+> In `@skills/bundled/maestro-brainstorm/scripts/frame-template.html`:
+> 
+> - Around line 105-144: The interactive visuals for .option and .card currently
+> 
+> only rely on hover/click styles but lack keyboard/focus support; update the
+> template so injected selectable items are real interactive elements (prefer
+> for .option/.card or add role="button" tabindex="0" and keydown
+> handlers that activate on Enter/Space) and add focus styles in CSS (e.g.,
+> .option:focus-visible and .card:focus-visible matching .selected outline/border
+> color) plus appropriate ARIA state (aria-pressed or aria-selected) so keyboard
+> and assistive tech users can operate .option and .card.
+> 
+> In `@skills/bundled/maestro-brainstorm/scripts/helper.js`:
+> 
+> - Around line 14-23: The ws.onmessage handler currently calls
+> 
+> JSON.parse(msg.data) unguarded so non-JSON or binary frames will throw and break
+> the handler; wrap the parse in a try/catch (and optionally check typeof msg.data
+> === 'string' before parsing) inside the ws.onmessage callback to safely ignore
+> or log unparseable frames and avoid letting the exception propagate (leave
+> ws.onclose/connect logic unchanged).
+> 
+> In `@skills/bundled/maestro-brainstorm/scripts/server.cjs`:
+> 
+> - Around line 224-238: The handleMessage function currently uses blocking
+> 
+> fs.appendFileSync to write events and should be changed to non-blocking I/O: use
+> fs.promises.appendFile (or fs.appendFile with a small in-flight guard) to append
+> JSON to the events file (the eventsFile derived from STATE_DIR) and handle
+> errors via .catch or try/catch in an async helper so the WebSocket message path
+> doesn't block the event loop; also update the synchronous readFileSync usages in
+> the HTTP root handler and the /files/* handler to use fs.promises.readFile (or
+> streaming) with proper async error handling to keep handlers non-blocking.
+> 
+> - Around line 301-312: The shutdown function can hang because server.close waits
+> 
+> for all upgraded WebSocket sockets to disconnect; update shutdown to iterate
+> connected sockets (track them via the HTTP server's connections or maintain a
+> Set of sockets on 'connection'/'upgrade') and destroy each socket before calling
+> server.close, then call watcher.close(), clearInterval(lifecycleCheck) and use a
+> short fallback setTimeout that calls process.exit(0) if the close callback
+> doesn't run within e.g. 2–5 seconds; reference the existing shutdown, server,
+> watcher, lifecycleCheck and STATE_DIR symbols when implementing the
+> socket-tracking/destroy and timeout fallback.
+> 
+> In `@src/features/agent/usecases/manage-agents.usecase.ts`:
+> 
+> - Around line 160-234: The per-file result field named manifestHash in
+> 
+> writeBundledSkill is ambiguous because it sometimes holds the shipped content
+> hash and sometimes the preserved (prev) hash; update the per-file result shape
+> and all uses to a clearer name like hashToRecord (or add a very short inline
+> comment at each return) so readers won’t assume it’s always the shipped
+> hash—adjust the returns inside the template.files mapping (the returns that
+> currently include manifestHash), the later loop that builds fileHashes from
+> perFile results, and any manifest writing logic (e.g., newManifest.fileHashes
+> and the manifestsEqual check) to use the new name.
+> 
+> In `@src/features/handoff/domain/launch-state.ts`:
+> 
+> - Around line 5-20: Extract a shared allow-list (e.g. OPEN_STATUSES = new
+> 
+> Set(["launching","launched"])) and use it in both isOpenLaunchRecord and
+> getLaunchDisplayState so they use the same source of truth; change
+> isOpenLaunchRecord to check OPEN_STATUSES.has(record.status) (plus the
+> consumedAt guard) and change getLaunchDisplayState to use
+> OPEN_STATUSES.has(record.status) to decide the "open" branch instead of falling
+> through to a default, keeping other branches (consumed/failed/completed) intact
+> and optionally replace the final fallback with an exhaustiveness check if
+> desired.
+> 
+> In `@src/features/handoff/usecases/list-launches.usecase.ts`:
+> 
+> - Around line 16-22: Hoist options.taskStore into a local constant before using
+> 
+> it so you can drop the non-null assertion inside the Promise.all callback:
+> assign something like const taskStore = options.taskStore; then use taskStore
+> when calling reconcileLaunchRecord within the Promise.all (keeps narrowing for
+> reconciled computation), leaving the rest (reconciled, Promise.all,
+> reconcileLaunchRecord, filtered, isOpenLaunchRecord) unchanged.
+> 
+> In `@src/features/handoff/usecases/reconcile-launch-record.usecase.ts`:
+> 
+> - Around line 5-26: reconcileLaunchRecord currently does a taskStore.get per
+> 
+> record which causes an N+1 query pattern when called from list paths; change the
+> approach by adding a batch lookup to TaskQueryPort (e.g., getMany) and update
+> callers (list-launches/list-open-handoffs-for-task) to collect taskIds, call
+> TaskQueryPort.getMany once and pass the task map into reconcileLaunchRecord (or
+> provide a cached lookup wrapper) so reconcileLaunchRecord uses the pre-fetched
+> task data instead of calling taskStore.get for each record; additionally
+> consider making launchStore.update and task lookups non-fatal for listing by
+> catching and logging errors around those calls (or returning the original record
+> on error) so a single failing lookup/update does not break the entire
+> Promise.all in the list callers.
+> 
+> In `@src/features/task/commands/task.command.ts`:
+> 
+> - Around line 1126-1133: The function resolveOptionalOwnershipSessionId
+> 
+> currently always forwards to resolveOwnershipSessionId (which returns
+> Promise), so update resolveOptionalOwnershipSessionId's signature to
+> return Promise (not Promise<string|undefined>), and then simplify all
+> call sites that branch on undefined: remove conditional spreads like sessionId ?
+> [sessionId] : [] and remove guards such as if (!previous) ...; specifically
+> update resolveSessionAndReleaseStale to treat sessionId as always present and
+> simplify the logic, and update the delete command's actor spread (the
+> conditional spread at the delete handler around line ~822) to directly include
+> the session id instead of handling an undefined case.
+> 
+> - Around line 508-532: The check enforcing "one in_progress per session" in
+> 
+> task.command.ts only runs when previous?.status !== "in_progress" and uses
+> listTasks(services.taskStore, { assignee: sessionId }) which can be bypassed by
+> callers supplying a custom --session; update the invariant so it consistently
+> applies to the resolved owner regardless of how sessionId was provided: either
+> (A) resolve and validate that sessionId always maps to the current shell owner
+> before checking and keep the existing guard, or (B) move the held-task detection
+> out of the previous?.status conditional so that when patch.status ===
+> "in_progress" and opts.force !== true you always call listTasks(...) using the
+> resolved owner id and throw the MaestroError with the same messages if
+> held.length > 0; also consider adding a note to the --session help text to
+> document that using --session can affect this invariant (referencing sessionId,
+> previous, listTasks, opts.force, and MaestroError).
+> 
+> In `@tests/unit/features/handoff/usecases/launch-handoff.usecase.test.ts`:
+> 
+> - Around line 250-415: The tests in the "--prompt-file bypass" suite create
+> 
+> persistent fixtures in process.cwd() and /tmp and use a fragile optional delete;
+> fix by creating a unique per-test temp directory (use mkdtemp) and write all
+> prompt files into that dir, pass that dir as the test's cwd for the "resolves a
+> relative --prompt-file path against cwd" case (so launchHandoff still exercises
+> relative-path resolution), ensure the two /tmp writes (in the "uses the file
+> contents verbatim..." and "throws a MaestroError when --prompt-file is empty"
+> cases) are created in the test temp dir instead of /tmp, and wrap each file
+> creation + test in a try/finally that unlinks the file in finally using a
+> deterministic API (e.g., Bun.file(...).unlink() or fs.promises.unlink) instead
+> of Bun.file(...).delete?.(); adjust the tests referencing the briefPath
+> variables and cwd variable accordingly so cleanup is deterministic.
+> 
+> ````
+> 
+> 
+> 
+> 
+> 
+> 
+> **🪄 Autofix (Beta)**
+> 
+> 
+> Fix all unresolved CodeRabbit comments on this PR:
+> 
+> - [ ] Push a commit to this branch (recommended)
+> - [ ] Create a new PR with the fixes
+> 
+> 
+> 
+> 
+> ---
+> 
+> 
+> 
+> **ℹ️ Review info**
+> 
+> 
+> 
+> 
+> **⚙️ Run configuration**
+> 
+> 
+> **Configuration used**: defaults
+> 
+> **Review profile**: CHILL
+> 
+> **Plan**: Pro
+> 
+> **Run ID**: `97926d6d-39bc-4cb9-a797-89508e6b85d6`
+> 
+> 
+> 
+> 
+> 
+> 
+> **📥 Commits**
+> 
+> 
+> Reviewing files that changed from the base of the PR and between 9f92bf911d9f816cd490fa77a0cf4fb14504fac6 and eeed1bbfea771d2454c789135c6b3db026a010a3.
+> 
+> 
+> 
+> 
+> 
+> 
+> **📒 Files selected for processing (82)**
+> 
+> 
+> * `.gitignore`
+> * `.maestro/plans/skill-bundle.md`
+> * `AGENTS.md`
+> * `CLAUDE.md`
+> * `package.json`
+> * `scripts/AGENTS.md`
+> * `scripts/sync-built-in-skills.ts`
+> * `scripts/sync-bundled-skills.ts`
+> * `skills/AGENTS.md`
+> * `skills/bundled/maestro-brainstorm/SKILL.md`
+> * `skills/bundled/maestro-brainstorm/agents/openai.yaml`
+> * `skills/bundled/maestro-brainstorm/scripts/frame-template.html`
+> * `skills/bundled/maestro-brainstorm/scripts/helper.js`
+> * `skills/bundled/maestro-brainstorm/scripts/server.cjs`
+> * `skills/bundled/maestro-brainstorm/scripts/start-server.sh`
+> * `skills/bundled/maestro-brainstorm/scripts/stop-server.sh`
+> * `skills/bundled/maestro-brainstorm/spec-document-reviewer-prompt.md`
+> * `skills/bundled/maestro-brainstorm/visual-companion.md`
+> * `skills/bundled/maestro-handoff/SKILL.md`
+> * `skills/bundled/maestro-handoff/reference/brief-template.md`
+> * `skills/bundled/maestro-handoff/reference/pickup.md`
+> * `skills/bundled/maestro-mission/SKILL.md`
+> * `skills/bundled/maestro-mission/reference/assertions.md`
+> * `skills/bundled/maestro-mission/reference/mission-control-tui.md`
+> * `skills/bundled/maestro-mission/reference/mission-lifecycle.md`
+> * `skills/bundled/maestro-plan/SKILL.md`
+> * `skills/bundled/maestro-task/SKILL.md`
+> * `skills/bundled/maestro-task/reference/commands.md`
+> * `skills/bundled/maestro-task/reference/contracts.md`
+> * `skills/bundled/maestro-task/reference/plan-conversion.md`
+> * `skills/bundled/maestro-task/reference/recovery.md`
+> * `src/features/agent/domain/agents.ts`
+> * `src/features/agent/index.ts`
+> * `src/features/agent/usecases/manage-agents.usecase.ts`
+> * `src/features/handoff/adapters/launch-store.adapter.ts`
+> * `src/features/handoff/commands/handoff.command.ts`
+> * `src/features/handoff/domain/launch-state.ts`
+> * `src/features/handoff/domain/launch-types.ts`
+> * `src/features/handoff/index.ts`
+> * `src/features/handoff/usecases/launch-handoff.usecase.ts`
+> * `src/features/handoff/usecases/list-launches.usecase.ts`
+> * `src/features/handoff/usecases/list-open-handoffs-for-task.usecase.ts`
+> * `src/features/handoff/usecases/pickup-handoff.usecase.ts`
+> * `src/features/handoff/usecases/reconcile-launch-record.usecase.ts`
+> * `src/features/handoff/usecases/show-launch.usecase.ts`
+> * `src/features/task/adapters/git-anchor.adapter.ts`
+> * `src/features/task/adapters/jsonl-task-store.adapter.ts`
+> * `src/features/task/commands/contract.command.ts`
+> * `src/features/task/commands/task.command.ts`
+> * `src/features/task/domain/task-batch-types.ts`
+> * `src/features/task/domain/task-errors.ts`
+> * `src/features/task/domain/task-state.ts`
+> * `src/features/task/usecases/plan-tasks.usecase.ts`
+> * `src/infra/adapters/git.adapter.ts`
+> * `src/infra/commands/init.command.ts`
+> * `src/infra/commands/uninstall.command.ts`
+> * `src/infra/commands/update.command.ts`
+> * `src/infra/domain/bootstrap-templates.ts`
+> * `src/infra/domain/bundled-skill-templates.ts`
+> * `src/infra/usecases/init.usecase.ts`
+> * `src/shared/lib/fs.ts`
+> * `src/shared/lib/output.ts`
+> * `src/shared/version.ts`
+> * `tests/e2e/handoff-compiled-e2e.test.ts`
+> * `tests/e2e/task-compiled-e2e.test.ts`
+> * `tests/helpers/mocks.ts`
+> * `tests/integration/features/task/task-contract-completion.test.ts`
+> * `tests/integration/features/task/task-handoff-pickup.test.ts`
+> * `tests/integration/features/task/task-receipt-hint.test.ts`
+> * `tests/unit/features/agent/domain/agents.test.ts`
+> * `tests/unit/features/agent/usecases/manage-agents.usecase.test.ts`
+> * `tests/unit/features/handoff/adapters/launch-store.adapter.test.ts`
+> * `tests/unit/features/handoff/usecases/launch-handoff.usecase.test.ts`
+> * `tests/unit/features/handoff/usecases/list-launches.usecase.test.ts`
+> * `tests/unit/features/handoff/usecases/list-open-handoffs-for-task.usecase.test.ts`
+> * `tests/unit/features/handoff/usecases/pickup-handoff.usecase.test.ts`
+> * `tests/unit/features/handoff/usecases/show-launch.usecase.test.ts`
+> * `tests/unit/features/task/adapters/git-anchor.adapter.test.ts`
+> * `tests/unit/infra/adapters/git.adapter.test.ts`
+> * `tests/unit/infra/domain/bootstrap-templates.test.ts`
+> * `tests/unit/infra/domain/bundled-skill-templates.test.ts`
+> * `tests/unit/shared/lib/output.test.ts`
+> 
+> 
+> 
+> 
+> 
+> 
+> **💤 Files with no reviewable changes (1)**
+> 
+> 
+> * src/infra/domain/bootstrap-templates.ts
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> ```
+
+**ReinaMacCredy** pushed commit `e8e4399`: fix(handoff): avoid reconciling unrelated task packets · Apr 23, 2026 at 8:38am
+
+**ReinaMacCredy** pushed commit `44ef804`: fix bundled skill install safety and handoff refs · Apr 23, 2026 at 9:02am
+
+**ReinaMacCredy** pushed commit `25a191e`: chore(skills): drop stale .claude/.codex skill trees, add mission state · Apr 23, 2026 at 9:15am
+
+**@chatgpt-codex-connector[bot]** commented · Apr 23, 2026 at 9:26am
+
+> **Review (commented):**
+> 
+> ### 💡 Codex Review
+> 
+> Here are some automated review suggestions for this pull request.
+> 
+> **Reviewed commit:** `25a191e310`
+> 
+> **ℹ️ About Codex in GitHub**
+> 
+> [Your team has set up Codex to review pull requests in this repo](https://chatgpt.com/codex/cloud/settings/general). Reviews are triggered when you
+> 
+> - Open a pull request for review
+> - Mark a draft as ready
+> - Comment "@codex review".
+> 
+> If Codex has suggestions, it will comment; otherwise it will react with 👍.
+> 
+> Codex can also answer questions or update the PR. Try commenting "@codex address that feedback".
+
+**ReinaMacCredy** pushed commit `a8e317c`: fix contract and windows CI regressions · Apr 23, 2026 at 10:51am
+
+**ReinaMacCredy** merged this pull request; closed this · Apr 23, 2026 at 12:06pm
+
+**ReinaMacCredy** deleted the branch · Apr 23, 2026 at 12:27pm
+
+**coderabbitai[bot]** mentioned this in PR [#38: Improve task status view and update checks](https://github.com/ReinaMacCredy/maestro/pull/38) · Apr 26, 2026 at 6:46pm
+
+**coderabbitai[bot]** mentioned this in PR [#50: Maestro architecture deepening](https://github.com/ReinaMacCredy/maestro/pull/50) · May 1, 2026 at 12:12pm
+
+**coderabbitai[bot]** mentioned this in PR [#54: feat(mcp): MCP server with 14 tools + agent runtime integrations](https://github.com/ReinaMacCredy/maestro/pull/54) · May 7, 2026 at 2:51pm
+
+**coderabbitai[bot]** mentioned this in PR [#58: feat(harness-pivot): phase 1 — arch lints, task introspect, session lifecycle](https://github.com/ReinaMacCredy/maestro/pull/58) · May 8, 2026 at 3:18pm

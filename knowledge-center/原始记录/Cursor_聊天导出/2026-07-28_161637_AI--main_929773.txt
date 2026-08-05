@@ -1,0 +1,38 @@
+---
+pid: 30828
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n& $env:AGENT_PYTHON -c @'\nimport json, time\nfrom pathlib import Path\nfor i in range(24):\n    s=json.loads(Path(\"logs/scheduler-state.json\").read_text(encoding=\"utf-8-sig\"))\n    paper=s.get(\"task_last_results\",{}).get(\"paper_runtime_cycle\")\n    print(i, \"hb\", s.get(\"heartbeat_at\"), \"owner\", s.get(\"current_lock_owner\"), \"last_auto\", s.get(\"last_auto_cycle_at\"), \"paper_status\", (paper or {}).get(\"status\") if isinstance(paper, dict) else paper)\n    if isinstance(paper, dict) and paper.get(\"status\") != \"standby_not_leader\" and (paper.get(\"results\") or paper.get(\"paper_runs\") is not None):\n        print(\"SUCCESS\", json.dumps(paper, ensure_ascii=False)[:2500])\n        break\n    if isinstance(paper, dict) and paper.get(\"status\") == \"standby_not_leader\":\n        print(\"STILL STANDBY\")\n    time.sleep(5)\nelse:\n    print(\"timeout\")\n'@\n"
+started_at: 2026-07-28T04:21:32.690Z
+running_for_ms: 120008   
+---
+0 hb 2026-07-28T04:21:23.071666+00:00 owner None last_auto None paper_status None
+1 hb 2026-07-28T04:21:23.071666+00:00 owner None last_auto None paper_status None
+2 hb 2026-07-28T04:21:40.572514+00:00 owner DESKTOP-6CJ3QPD:18212:a2ebc81cd1d7 last_auto None paper_status None
+3 hb 2026-07-28T04:21:40.572514+00:00 owner DESKTOP-6CJ3QPD:18212:a2ebc81cd1d7 last_auto None paper_status None
+4 hb 2026-07-28T04:21:40.572514+00:00 owner DESKTOP-6CJ3QPD:18212:a2ebc81cd1d7 last_auto None paper_status None
+5 hb 2026-07-28T04:21:40.572514+00:00 owner DESKTOP-6CJ3QPD:18212:a2ebc81cd1d7 last_auto None paper_status None
+6 hb 2026-07-28T04:21:59.238438+00:00 owner DESKTOP-6CJ3QPD:18212:a2ebc81cd1d7 last_auto None paper_status None
+7 hb 2026-07-28T04:21:59.238438+00:00 owner DESKTOP-6CJ3QPD:18212:a2ebc81cd1d7 last_auto None paper_status None
+8 hb 2026-07-28T04:22:08.688243+00:00 owner None last_auto None paper_status None
+9 hb 2026-07-28T04:22:08.688243+00:00 owner None last_auto None paper_status None
+10 hb 2026-07-28T04:22:08.688243+00:00 owner None last_auto None paper_status None
+11 hb 2026-07-28T04:22:08.688243+00:00 owner None last_auto None paper_status None
+12 hb 2026-07-28T04:22:08.688243+00:00 owner None last_auto None paper_status None
+13 hb 2026-07-28T04:22:08.688243+00:00 owner None last_auto None paper_status None
+14 hb 2026-07-28T04:22:40.239995+00:00 owner None last_auto None paper_status None
+15 hb 2026-07-28T04:22:40.239995+00:00 owner None last_auto None paper_status None
+16 hb 2026-07-28T04:22:40.239995+00:00 owner None last_auto None paper_status None
+17 hb 2026-07-28T04:22:40.239995+00:00 owner None last_auto None paper_status None
+18 hb 2026-07-28T04:22:40.239995+00:00 owner None last_auto None paper_status None
+19 hb 2026-07-28T04:23:04.739281+00:00 owner None last_auto None paper_status None
+20 hb 2026-07-28T04:23:11.499977+00:00 owner None last_auto None paper_status None
+21 hb 2026-07-28T04:23:11.499977+00:00 owner None last_auto None paper_status None
+22 hb 2026-07-28T04:23:11.499977+00:00 owner None last_auto None paper_status None
+23 hb 2026-07-28T04:23:11.499977+00:00 owner None last_auto None paper_status None
+timeout
+
+---
+exit_code: 0
+elapsed_ms: 121228
+ended_at: 2026-07-28T04:23:33.918Z
+---

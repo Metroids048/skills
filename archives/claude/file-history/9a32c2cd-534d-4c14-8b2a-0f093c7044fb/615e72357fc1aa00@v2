@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+import openpyxl
+from openpyxl.utils import get_column_letter
+
+base = r"C:\Users\win\Desktop\敖钦储能项目\原始需求\产量规划需求"
+
+files = [
+    base + r"\框架.xlsx",
+    base + r"\明细表（4个附件）\附件1.2 产量规划在生产天然气-XX方案.xlsx",
+    base + r"\明细表（4个附件）\附件2.1 产量规划新项目原油-XX方案.xlsx",
+    base + r"\明细表（4个附件）\附件2.2 产量规划新项目天然气-XX方案.xlsx",
+    base + r"\常用图表输出\产量规划总表.xlsx",
+    base + r"\常用图表输出\产量规划常用图表模版.xlsx",
+]
+
+for path in files:
+    print(f"\n############ FILE: {path.split(chr(92))[-1]} ############")
+    try:
+        wb = openpyxl.load_workbook(path, data_only=True)
+    except Exception as e:
+        print("ERROR loading:", e)
+        continue
+    print("SHEETS:", wb.sheetnames)

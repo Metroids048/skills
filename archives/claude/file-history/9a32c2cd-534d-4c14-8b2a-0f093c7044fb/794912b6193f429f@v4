@@ -1,0 +1,356 @@
+export type BusinessDomain = 'reserve' | 'planning' | 'assistant' | 'admin'
+
+export type TaskStatus = '待处理' | '填报中' | '校验中' | '待复核' | '已保存草案' | '已归档'
+
+export type SheetKind = '输入表' | '汇总表' | '计算表' | '成果表'
+
+export type CellRuleKind = '可填' | '只读' | '公式' | '锁定' | '复核'
+
+export type IssueLevel = '阻断' | '预警' | '复核'
+
+export interface BusinessTask {
+  id: string
+  title: string
+  domain: BusinessDomain
+  assigneeIds: string[]
+  priority: 1 | 2 | 3
+  owner: string
+  period: string
+  status: TaskStatus
+  progress: number
+  issueCount: number
+  nextAction: string
+  route: string
+  context: {
+    version: string
+    focus: string
+    issueId?: string
+  }
+}
+
+export interface WorkflowStep {
+  id: string
+  title: string
+  description: string
+  status: 'done' | 'active' | 'wait'
+  route: string
+}
+
+export interface WorkbookSheet {
+  id: string
+  name: string
+  kind: SheetKind
+  source: string
+  owner: string
+  state: '可填报' | '只读公式' | '需复核' | '可生成' | '[待确认]'
+  rows: string
+  columns: string
+  route: string
+}
+
+export interface Workbook {
+  id: string
+  title: string
+  domain: BusinessDomain
+  sourceFile: string
+  version: string
+  owner: string
+  purpose: string
+  sheets: WorkbookSheet[]
+}
+
+export interface CellRule {
+  id: string
+  sheet: string
+  field: string
+  kind: CellRuleKind
+  rule: string
+  owner: string
+  confirmState: '样例已表达' | '需业务复核' | '[待确认]'
+}
+
+export interface ValidationIssue {
+  id: string
+  level: IssueLevel
+  location: string
+  sheet: string
+  field: string
+  reason: string
+  owner: string
+  action: string
+}
+
+export interface FormulaTrace {
+  id: string
+  name: string
+  expression: string
+  sourceSheets: string[]
+  outputSheet: string
+  status: '样例公式' | '需业务复核' | '[待确认]'
+}
+
+export interface VersionComparison {
+  id: string
+  domain: BusinessDomain
+  title: string
+  baseVersion: string
+  compareVersion: string
+  sourceWorkbook: string
+  summary: string
+  keyDrivers: string[]
+  route: string
+}
+
+export interface OutputArtifact {
+  id: string
+  domain: BusinessDomain
+  title: string
+  source: string
+  version: string
+  owner: string
+  status: '可生成' | '需复核' | '待确认模板' | '已归档'
+  route: string
+}
+
+export interface PlanningRow {
+  id: string
+  oilfield: string
+  alias: string
+  area: string
+  state: string
+  owner: string
+  values: Record<string, { base: number; measure: number; adjustment: number; development: number; total: number }>
+  warning?: string
+}
+
+export interface ReserveRow {
+  id: string
+  unit: string
+  oilfield: string
+  layer: string
+  facies: string
+  lithology: string
+  depth: number
+  reserveType: string
+  commerciality: string
+  nationalLine: number
+  internalLine: number
+  listedLine: number
+  recoveryFactor: number
+  difficultCategory?: string
+  status: '通过' | '缺字段' | '需复核'
+}
+
+export interface AiRunRecord {
+  id: string
+  mode: 'knowledge' | 'query' | 'insight'
+  title: string
+  question: string
+  answer: string
+  source: string
+  params: string
+  version: string
+  elapsed: string
+  status: '成功样例' | '需复核' | '失败样例'
+  references: string[]
+}
+
+export const businessTasks: BusinessTask[] = [
+  {
+    id: 'reserve-clean-v2',
+    title: '内部储量 V2 数据校验未通过',
+    domain: 'reserve',
+    assigneeIds: ['u-reserve'],
+    priority: 1,
+    owner: '储量评价室',
+    period: '2026 内部储量',
+    status: '待复核',
+    progress: 68,
+    issueCount: 8,
+    nextAction: '定位商业性条件、深度范围和三条线差异',
+    route: '/reserve/collection?task=reserve-clean-v2&issue=vi1&sheet=%E6%B2%B9%E8%97%8F%E7%BB%BC%E5%90%88%E4%BF%A1%E6%81%AF%E8%A1%A8',
+    context: {
+      version: '内部储量 V2',
+      focus: '油藏综合信息表 / 商业性条件',
+      issueId: 'vi1',
+    },
+  },
+  {
+    id: 'planning-fill-v3',
+    title: '2026 年产量摸排 V3 需要保存版本',
+    domain: 'planning',
+    assigneeIds: ['u-planning'],
+    priority: 1,
+    owner: '综合规划室',
+    period: '2026 年度计划',
+    status: '校验中',
+    progress: 74,
+    issueCount: 9,
+    nextAction: '检查字段公式、保存草案并进入版本对比',
+    route: '/planning/workflow?task=planning-fill-v3&sheet=%E4%BA%A7%E9%87%8F%E5%89%96%E9%9D%A2%E6%B1%87%E6%80%BB',
+    context: {
+      version: '规划 V3 草案',
+      focus: '产量剖面汇总 / 字段公式与保存版本',
+      issueId: 'vi3',
+    },
+  },
+  {
+    id: 'planning-output-v3',
+    title: '规划结果输出模板待复核',
+    domain: 'planning',
+    assigneeIds: ['u-manager'],
+    priority: 1,
+    owner: '开发部 / 综合规划室',
+    period: 'V2 vs V3',
+    status: '待处理',
+    progress: 56,
+    issueCount: 2,
+    nextAction: '确认总表、图表模板、摘要草稿和导出日志',
+    route: '/planning/version?focus=output',
+    context: {
+      version: '规划 V2 vs V3',
+      focus: '成果包导出前检查',
+    },
+  },
+  {
+    id: 'admin-template-rule',
+    title: '规划模板与字段公式待配置',
+    domain: 'admin',
+    assigneeIds: ['u-admin'],
+    priority: 1,
+    owner: '信息化支持组',
+    period: '规划模板配置',
+    status: '待处理',
+    progress: 42,
+    issueCount: 3,
+    nextAction: '核对模板版本、字段规则和知识库快照维护责任',
+    route: '/admin?section=template',
+    context: {
+      version: '规划模板候选 V1',
+      focus: '模板与公式 / 知识库快照配置',
+    },
+  },
+]
+
+export function getTasksForUser(userId?: string) {
+  if (!userId) return []
+  return businessTasks
+    .filter((task) => task.assigneeIds.includes(userId))
+    .sort((left, right) => left.priority - right.priority || left.progress - right.progress)
+}
+
+export function getPrimaryTask(userId?: string) {
+  return getTasksForUser(userId)[0] ?? businessTasks[0]
+}
+
+export const reserveWorkflow: WorkflowStep[] = [
+  { id: 'r1', title: '历史数据调用清洗', description: '接入储量填报系统、数据湖或历史 Excel，形成批次。', status: 'active', route: '/reserve/history-cleaning' },
+  { id: 'r2', title: '多源储量数据采集', description: '内部储量、动储量按模板在线填报并汇总。', status: 'active', route: '/reserve/collection' },
+  { id: 'r3', title: '多指标数据分析', description: '三条线、3P3C、商业性条件和油气田状态联动分析。', status: 'wait', route: '/reserve/analysis' },
+  { id: 'r4', title: '难动用储量分级', description: '按分类标准输出分级结果，人工复核原因。', status: 'wait', route: '/reserve/analysis?focus=classification' },
+  { id: 'r5', title: '历史版本对比', description: '对比不同批次、计算单元和口径变化。', status: 'wait', route: '/reserve/version' },
+  { id: 'r6', title: '数据成果可视化', description: '生成统计图件、图表和归档记录。', status: 'wait', route: '/reserve/analysis?focus=graphics' },
+]
+
+export const planningWorkflow: WorkflowStep[] = [
+  { id: 'p1', title: '历史数据调用分析', description: '清洗历史生产数据，生成基础指标和趋势。', status: 'done', route: '/planning/collection?focus=history' },
+  { id: 'p2', title: '规划工作表编制', description: '发起年度、五年、滚动或专项规划任务。', status: 'active', route: '/planning/workflow' },
+  { id: 'p3', title: '规划数据多源采集', description: '油区/油田按职责在线填报，保存后上级可见。', status: 'active', route: '/planning/collection' },
+  { id: 'p4', title: '产量剖面智能调整', description: '调整产量曲线、递减规律和总量约束。', status: 'wait', route: '/planning/profile' },
+  { id: 'p5', title: '工作量智能排期', description: '调整投产时间、井数、措施工作量并查看联动影响。', status: 'wait', route: '/planning/profile?focus=schedule' },
+  { id: 'p6', title: '规划版本对比', description: '对比多轮方案差异、原因和影响。', status: 'wait', route: '/planning/version' },
+  { id: 'p7', title: '数据成果可视化', description: '按油气区、状态、构成和年份生成图表。', status: 'wait', route: '/planning/version?focus=graphics' },
+  { id: 'p8', title: '规划结果输出', description: '导出总表、图表、摘要和审计日志。', status: 'wait', route: '/planning/version?focus=output' },
+]
+
+export const reserveWorkbook: Workbook = {
+  id: 'reserve-wb',
+  title: '内部储量与未动用储量工作表',
+  domain: 'reserve',
+  sourceFile: '内部储量+未动用储量录入模板.xlsx',
+  version: '内部储量 V2',
+  owner: '储量评价室',
+  purpose: '支撑历史数据清洗、多源采集、三条线、3P3C、难动用分类和图件输出。',
+  sheets: [
+    { id: 'r-sheet-1', name: '3P3C 分类表', kind: '输入表', source: '附表1', owner: '储量评价室', state: '需复核', rows: 'P1/P2/P3/C1/C2/C3', columns: '商业性、次商业性、未动用', route: '/reserve/analysis' },
+    { id: 'r-sheet-2', name: '油藏综合信息表', kind: '输入表', source: '附表3', owner: '油区/储量评价室', state: '可填报', rows: '计算单元样例', columns: '307 列字段摘要', route: '/reserve/collection' },
+    { id: 'r-sheet-3', name: '储量公式结果', kind: '计算表', source: '附表3 公式列', owner: '系统计算/人工复核', state: '只读公式', rows: 'ROUND 公式样例', columns: '地质储量、可采储量、油气折算', route: '/reserve/collection' },
+    { id: 'r-sheet-4', name: '统计数据及图件', kind: '成果表', source: '内部储量-统计数据及图件模板.xlsx', owner: '储量评价室', state: '可生成', rows: '动用变化、3P3C、商业性条件', columns: '图件、统计表、版本、导出日志', route: '/reserve/analysis?focus=graphics' },
+    { id: 'r-sheet-5', name: '气藏综合信息表', kind: '输入表', source: '附表4', owner: '油区/储量评价室', state: '可填报', rows: '气藏计算单元样例', columns: '气藏类型、层位、储量口径', route: '/reserve/collection' },
+    { id: 'r-sheet-6', name: '编码_层位与沉积相', kind: '汇总表', source: '模板编码表', owner: '系统管理员', state: '[待确认]', rows: '编码候选', columns: '层位、沉积相、别名映射', route: '/admin' },
+    { id: 'r-sheet-7', name: '编码_商业性条件', kind: '汇总表', source: '模板编码表', owner: '系统管理员', state: '[待确认]', rows: '商业性条件候选', columns: '编码、名称、有效状态', route: '/admin' },
+  ],
+}
+
+export const planningWorkbook: Workbook = {
+  id: 'planning-wb',
+  title: '2026 年产量摸排规划工作表',
+  domain: 'planning',
+  sourceFile: '附件1.1/1.2/2.1/2.2 + 产量规划总表.xlsx',
+  version: '规划 V3 草案',
+  owner: '综合规划室',
+  purpose: '支撑历史分析、规划任务、在线采集、剖面调整、排期、版本对比、可视化和成果输出。',
+  sheets: [
+    { id: 'p-sheet-1', name: '在生产原油', kind: '输入表', source: '附件1.1', owner: '油区/油田负责人', state: '可填报', rows: '54 个油田样例', columns: '生产时率、水量、基础产量、调整井、措施', route: '/planning/collection' },
+    { id: 'p-sheet-2', name: '在生产天然气', kind: '输入表', source: '附件1.2', owner: '油区/气田负责人', state: '可填报', rows: '9 个气田样例', columns: '气层气、溶解气、生产时率、措施', route: '/planning/collection' },
+    { id: 'p-sheet-3', name: '新项目原油/天然气', kind: '输入表', source: '附件2.1/2.2', owner: '开发评价负责人', state: '需复核', rows: '在建设、开发评价、勘探评价、待发现', columns: '投产时间、开发井产量、风险等级', route: '/planning/profile?focus=schedule' },
+    { id: 'p-sheet-4', name: '产量剖面汇总', kind: '计算表', source: '产量规划总表.xlsx', owner: '系统计算/综合规划室', state: '只读公式', rows: '按油气田/状态/年份汇总', columns: '基础、措施、调整井、开发井、总产量', route: '/planning/workflow' },
+    { id: 'p-sheet-5', name: '常用图表模板', kind: '成果表', source: '产量规划常用图表模版.xlsx', owner: '开发部', state: '[待确认]', rows: '趋势图、构成图、差异图', columns: '图表维度、版本、单位、导出状态', route: '/planning/version?focus=graphics' },
+    { id: 'p-sheet-6', name: '调整井单井剖面', kind: '输入表', source: '附件1.1 / Sheet 7', owner: '油区/油田负责人', state: '可填报', rows: '单井剖面样例', columns: '井名、投产时间、调整类别、年度产量', route: '/planning/workflow' },
+    { id: 'p-sheet-7', name: '措施增产剖面', kind: '输入表', source: '附件1.1 / Sheet 8', owner: '油区/油田负责人', state: '可填报', rows: '措施井样例', columns: '措施类型、井次、增量、年度产量', route: '/planning/workflow' },
+    { id: 'p-sheet-8', name: '调整井工作量', kind: '汇总表', source: '附件1.1 / Sheet 13-15', owner: '综合规划室', state: '需复核', rows: '综合调整与常规调整', columns: '工作量、井数、状态、版本', route: '/planning/profile?focus=schedule' },
+    { id: 'p-sheet-9', name: '措施工作量', kind: '汇总表', source: '附件1.1 / Sheet 16', owner: '综合规划室', state: '需复核', rows: '措施井次样例', columns: '措施类型、井次、影响年份', route: '/planning/profile?focus=schedule' },
+  ],
+}
+
+export const reserveRows: ReserveRow[] = [
+  { id: 'rr1', unit: 'ZJ113', oilfield: '陆丰 13-8', layer: '珠江组', facies: '三角洲前缘', lithology: '砂岩', depth: 1381, reserveType: 'P1', commerciality: '', nationalLine: 118.2, internalLine: 126.4, listedLine: 119.8, recoveryFactor: 0.38, status: '缺字段' },
+  { id: 'rr2', unit: 'ZH142', oilfield: '惠州 26-1', layer: '珠海组', facies: '三角洲前缘', lithology: '砂岩', depth: 1411, reserveType: 'P2', commerciality: '技术因素', nationalLine: 86.3, internalLine: 92.1, listedLine: 89.4, recoveryFactor: 0.44, status: '通过' },
+  { id: 'rr3', unit: 'EP185', oilfield: '西江 30-2', layer: '恩平组', facies: '扇三角洲', lithology: '砂岩', depth: 6230, reserveType: 'C1', commerciality: '经济因素', nationalLine: 54.2, internalLine: 61.8, listedLine: 55.1, recoveryFactor: 0.31, difficultCategory: '深层高温高压 [示例，待8类标准确认]', status: '需复核' },
+  { id: 'rr4', unit: 'ZJ188', oilfield: '番禺 4-2', layer: '珠江组', facies: '滨海障壁', lithology: '灰岩', depth: 2134, reserveType: 'P3', commerciality: '环境因素', nationalLine: 44.8, internalLine: 47.6, listedLine: 45.2, recoveryFactor: 0.4, status: '通过' },
+]
+
+export const planningRows: PlanningRow[] = [
+  { id: 'pr1', oilfield: '惠州26-1', alias: 'HZ26-1', area: '惠州', state: '在生产', owner: '惠州油区', warning: '2028 年开发井产量变动较大，需说明原因。', values: { '2026': { base: 19.8, measure: 1.4, adjustment: 1.3, development: 0, total: 22.5 }, '2027': { base: 19.4, measure: 1.8, adjustment: 1.7, development: 0, total: 22.9 }, '2028': { base: 18.7, measure: 2.2, adjustment: 2.4, development: 15.8, total: 39.1 } } },
+  { id: 'pr2', oilfield: '西江30-2', alias: 'XJ30-2', area: '西江', state: '在生产', values: { '2026': { base: 8.4, measure: 0.6, adjustment: 0.3, development: 0, total: 9.3 }, '2027': { base: 7.6, measure: 0.8, adjustment: 0.4, development: 0, total: 8.8 }, '2028': { base: 6.9, measure: 1.1, adjustment: 0.5, development: 0, total: 8.5 } }, owner: '西江油区' },
+  { id: 'pr3', oilfield: '番禺4-2', alias: 'PY4-2', area: '番禺', state: '在生产', warning: '调整井计划投产时间影响 2027 年剖面。', values: { '2026': { base: 5.3, measure: 0.4, adjustment: 1.1, development: 0, total: 6.8 }, '2027': { base: 4.8, measure: 0.6, adjustment: 2.2, development: 0, total: 7.6 }, '2028': { base: 4.2, measure: 0.7, adjustment: 1.8, development: 0, total: 6.7 } }, owner: '番禺油区' },
+  { id: 'pr4', oilfield: '陆丰13-8', alias: 'LF13-8', area: '陆丰', state: '开发评价', values: { '2026': { base: 0, measure: 0, adjustment: 0, development: 0, total: 0 }, '2027': { base: 0, measure: 0, adjustment: 0, development: 2.4, total: 2.4 }, '2028': { base: 0, measure: 0, adjustment: 0, development: 6.3, total: 6.3 } }, owner: '开发评价室' },
+]
+
+export const validationIssues: ValidationIssue[] = [
+  { id: 'vi1', level: '阻断', location: '油藏综合信息表 / ZJ113 / 商业性条件', sheet: '油藏综合信息表', field: '商业性条件', reason: '必填字段为空，无法进入三条线分析。', owner: '储量评价室', action: '补齐商业性条件或填写人工确认说明。' },
+  { id: 'vi2', level: '预警', location: '油藏综合信息表 / EP185 / 深度', sheet: '油藏综合信息表', field: '油藏中深', reason: '深度超过建议范围，需业务复核。', owner: '地质油藏室', action: '保留原值时必须补充备注。' },
+  { id: 'vi3', level: '复核', location: '在生产原油 / 惠州26-1 / 2028开发井', sheet: '在生产原油', field: '开发井产量', reason: '开发井贡献变化影响 V2/V3 版本差异。', owner: '综合规划室', action: '补充版本说明后保存草案。' },
+]
+
+export const cellRules: CellRule[] = [
+  { id: 'cr1', sheet: '油藏综合信息表', field: '商业性条件', kind: '可填', rule: '为空时阻断归档；候选项来自商业性条件编码。', owner: '储量评价室', confirmState: '样例已表达' },
+  { id: 'cr2', sheet: '油藏综合信息表', field: '可采储量', kind: '公式', rule: '[可采储量] = ROUND([地质储量] * [采收率], 2)。', owner: '系统计算/储量评价室', confirmState: '[待确认]' },
+  { id: 'cr3', sheet: '在生产原油', field: '生产时率', kind: '可填', rule: '二级权限填单油田，数值不超过 100%。', owner: '油区/油田负责人', confirmState: '样例已表达' },
+  { id: 'cr4', sheet: '产量剖面汇总', field: '总产量', kind: '公式', rule: '[总产量] = [基础产量] + [措施增量] + [调整井产量] + [开发井产量]。', owner: '综合规划室', confirmState: '需业务复核' },
+  { id: 'cr5', sheet: '新项目原油/天然气', field: '投产前剖面', kind: '锁定', rule: '投产时间之前的产量剖面锁定；正式锁定规则 [待确认]。', owner: '开发评价负责人', confirmState: '[待确认]' },
+]
+
+export const formulaTraces: FormulaTrace[] = [
+  { id: 'ft1', name: '年度总产量', expression: '[总产量] = [基础产量] + [措施增量] + [调整井产量] + [开发井产量]', sourceSheets: ['在生产原油', '在生产天然气', '新项目原油/天然气'], outputSheet: '产量剖面汇总', status: '样例公式' },
+  { id: 'ft2', name: '综合调整增油', expression: '[综合调整增油] = SUMIFS([调整井单井剖面], [油田], [调整类别])', sourceSheets: ['调整井单井剖面'], outputSheet: '综合调整增油', status: '需业务复核' },
+  { id: 'ft3', name: '储量可采量', expression: '[可采储量] = ROUND([地质储量] * [采收率], 2)', sourceSheets: ['油藏综合信息表'], outputSheet: '储量公式结果', status: '[待确认]' },
+]
+
+export const versionComparisons: VersionComparison[] = [
+  { id: 'vc1', domain: 'reserve', title: '内部储量 V1 vs V2', baseVersion: '内部储量 V1', compareVersion: '内部储量 V2', sourceWorkbook: reserveWorkbook.title, summary: '商业性条件补录、内部线上市线差异和难动用分类变化需复核。', keyDrivers: ['商业性条件补录（ZJ113）', '采收率参数调整', '深层高温高压分类变化'], route: '/reserve/version' },
+  { id: 'vc2', domain: 'planning', title: '规划 V2 vs V3', baseVersion: '规划 V2', compareVersion: '规划 V3 草案', sourceWorkbook: planningWorkbook.title, summary: '投产时间、开发井工作量和基础递减率是主要差异来源。', keyDrivers: ['开发井投产时间提前', '开发井工作量 +2', '基础产量递减率变化'], route: '/planning/version' },
+]
+
+export const outputArtifacts: OutputArtifact[] = [
+  { id: 'oa1', domain: 'reserve', title: '3P3C 评价结果统计表', source: '内部储量-统计数据及图件模板.xlsx', version: reserveWorkbook.version, owner: '储量评价室', status: '可生成', route: '/reserve/analysis?focus=graphics' },
+  { id: 'oa2', domain: 'reserve', title: '难动用储量分级清单', source: '[待确认] 正式图件模板', version: '分级规则草案', owner: '地质油藏室', status: '待确认模板', route: '/reserve/analysis?focus=classification' },
+  { id: 'oa3', domain: 'planning', title: '产量规划总表', source: '产量规划总表.xlsx', version: planningWorkbook.version, owner: '综合规划室', status: '需复核', route: '/planning/version?focus=output' },
+  { id: 'oa4', domain: 'planning', title: '油气田状态构成图', source: '产量规划常用图表模版.xlsx', version: planningWorkbook.version, owner: '开发部', status: '可生成', route: '/planning/version?focus=graphics' },
+]
+
+export const aiRunRecords: AiRunRecord[] = [
+  { id: 'ai1', mode: 'knowledge', title: '储量及产量规划知识库', question: '三条线储量分别对应什么管理口径？', answer: '样例回答：国家线、内部线、上市线需要分别显示来源、版本和口径，正式解释以甲方确认文档为准。', source: '海能知识库 Mock：0317 PPT、立项报告 0423', params: '检索范围=制度/模板/会议记录；权限=当前演示身份', version: '知识库版本 [待确认]', elapsed: '1.2s Mock', status: '需复核', references: ['0317 PPT Slide 8', '立项报告 4.2/5.2'] },
+  { id: 'ai2', mode: 'query', title: '结构化数据智能问数', question: '查看惠州油区 2026-2028 年规划总产量变化。', answer: '样例回答：系统生成查询说明并返回按年份聚合的规划产量表，真实 NL2SQL 表结构和准确率仍需确认。', source: '产量规划工作表 Mock', params: '维度=油区/年份/版本；单位=万吨；权限过滤=演示身份', version: planningWorkbook.version, elapsed: '0.9s Mock', status: '成功样例', references: ['产量剖面汇总', '规划 V2 vs V3'] },
+  { id: 'ai3', mode: 'insight', title: '开发生产规律智能挖掘', question: '解释陆丰 13-8 剖面调整无解的原因。', answer: '样例回答：约束点过密且投产时间锁定，建议放宽单年增量或调整投产时间；正式算法边界需专家复核。', source: '剖面调整与排期日志 Mock', params: '投产时间=2027；开发井=+2；约束=不覆盖正式版本', version: planningWorkbook.version, elapsed: '超时失败样例', status: '失败样例', references: ['工具调用日志', '算法业务适配风险'] },
+]

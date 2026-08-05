@@ -1,0 +1,14 @@
+---
+pid: 30832
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n$py = (Get-Command py).Source\n$args = @('-3','-m','pytest','-q','-m','not integration','-k','runtime or account_equity or auto_schedule or gateway or paper_cycle_orchestrator or paper_exchange_execution or paper_signal or scheduler or scheduler_coordination or tasks','--tb=line')\n$p = Start-Process -FilePath $py -ArgumentList $args -WorkingDirectory (Get-Location) -RedirectStandardOutput logs\\targeted-suite2.txt -RedirectStandardError logs\\targeted-suite2.err -PassThru -NoNewWindow\n$p.Id | Out-File logs\\targeted-suite2.pid\nWrite-Host \"started pid=$($p.Id)\"\n"
+started_at: 2026-07-28T05:55:56.717Z
+running_for_ms: 36       
+---
+started pid=27388
+
+---
+exit_code: 0
+elapsed_ms: 1612
+ended_at: 2026-07-28T05:55:58.329Z
+---

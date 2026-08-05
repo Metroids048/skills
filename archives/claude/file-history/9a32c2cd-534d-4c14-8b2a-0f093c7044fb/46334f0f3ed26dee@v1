@@ -1,0 +1,149 @@
+<script setup lang="ts">
+import {
+  AppstoreOutlined,
+  AuditOutlined,
+  BarChartOutlined,
+  DatabaseOutlined,
+  LogoutOutlined,
+  RobotOutlined,
+  SettingOutlined,
+} from '@ant-design/icons-vue'
+import { computed, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useAuthStore } from '../../stores/auth'
+import { useWorkbenchStore } from '../../stores/workbench'
+import SmartAssistantDrawer from '../SmartAssistantDrawer.vue'
+
+interface NavItem {
+  key: string
+  label: string
+  path?: string
+  icon?: unknown
+  children?: NavItem[]
+}
+
+const route = useRoute()
+const router = useRouter()
+const auth = useAuthStore()
+const workbench = useWorkbenchStore()
+const collapsed = ref(false)
+
+const navigation: NavItem[] = [
+  { key: 'dashboard', label: '首页总览', path: '/dashboard', icon: AppstoreOutlined },
+  {
+    key: 'reserve',
+    label: '储量分析',
+    icon: DatabaseOutlined,
+    children: [
+      { key: 'reserve-history-cleaning', label: '数据接入', path: '/reserve/history-cleaning' },
+      { key: 'reserve-collection', label: '储量工作表', path: '/reserve/collection' },
+      { key: 'reserve-analysis', label: '储量洞察', path: '/reserve/analysis' },
+      { key: 'reserve-version', label: '版本对比', path: '/reserve/version' },
+    ],
+  },
+  {
+    key: 'planning',
+    label: '产量规划',
+    icon: BarChartOutlined,
+    children: [
+      { key: 'planning-collection', label: '基础数据', path: '/planning/collection' },
+      { key: 'planning-workflow', label: '规划工作表', path: '/planning/workflow' },
+      { key: 'planning-profile', label: '调整与排期', path: '/planning/profile' },
+      { key: 'planning-version', label: '版本对比', path: '/planning/version' },
+    ],
+  },
+  { key: 'assistant', label: '敖钦辅助', path: '/assistant', icon: RobotOutlined },
+  { key: 'admin', label: '系统管理', path: '/admin', icon: SettingOutlined },
+]
+
+const openKeys = computed(() => {
+  const active = navigation.find((group) =>
+    group.children?.some((child) => child.path === route.path),
+  )
+  return active ? [active.key] : []
+})
+
+const showHeaderAssistant = computed(() => !route.path.startsWith('/assistant'))
+
+function go(path?: string) {
+  if (!path) return
+  router.push(path)
+}
+
+function logout() {
+  auth.logout()
+  router.push('/login')
+}
+</script>
+
+<template>
+  <a-layout class="app-shell business-shell">
+    <a-layout-sider
+      v-model:collapsed="collapsed"
+      :width="268"
+      :collapsed-width="88"
+      breakpoint="lg"
+      collapsible
+      theme="light"
+      class="business-sider"
+    >
+      <div class="brand-block">
+        <div class="brand-mark">
+          <AuditOutlined />
+          <span v-if="!collapsed">储量及产量规划协同</span>
+        </div>
+        <p v-if="!collapsed">采集 · 校验 · 版本 · 成果</p>
+      </div>
+
+      <a-menu :selected-keys="[route.path]" :open-keys="openKeys" mode="inline" style="border: 0">
+        <template v-for="item in navigation" :key="item.key">
+          <a-menu-item v-if="item.path" :key="item.path" @click="go(item.path)">
+            <component :is="item.icon" v-if="item.icon" />
+            <span>{{ item.label }}</span>
+          </a-menu-item>
+          <a-sub-menu v-else :key="item.key">
+            <template #title>
+              <component :is="item.icon" v-if="item.icon" />
+              <span>{{ item.label }}</span>
+            </template>
+            <a-menu-item v-for="child in item.children" :key="child.path" @click="go(child.path)">
+              {{ child.label }}
+            </a-menu-item>
+          </a-sub-menu>
+        </template>
+      </a-menu>
+    </a-layout-sider>
+
+    <a-layout>
+      <a-layout-header class="business-header">
+        <div class="header-context">储量及产量规划协同</div>
+        <div class="header-actions">
+          <a-button
+            v-if="showHeaderAssistant"
+            @click="workbench.openAssistant(String(route.meta.title || '当前页面'), undefined, route.path)"
+          >
+            <RobotOutlined />
+            敖钦辅助
+          </a-button>
+          <a-dropdown>
+            <a-button type="primary">{{ auth.currentUser?.department }} · {{ auth.currentUser?.name }}</a-button>
+            <template #overlay>
+              <a-menu>
+                <a-menu-item key="focus">当前关注：{{ auth.currentUser?.focus }}</a-menu-item>
+                <a-menu-item key="demo" disabled>演示模式：本地样例数据</a-menu-item>
+                <a-menu-item key="logout" @click="logout">
+                  <LogoutOutlined />
+                  切换角色
+                </a-menu-item>
+              </a-menu>
+            </template>
+          </a-dropdown>
+        </div>
+      </a-layout-header>
+
+      <a-layout-content class="business-content"><router-view /></a-layout-content>
+    </a-layout>
+
+    <SmartAssistantDrawer />
+  </a-layout>
+</template>

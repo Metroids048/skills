@@ -1,0 +1,96 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import MetricTrendChart from '../../components/charts/MetricTrendChart.vue'
+import { reserveRows } from '../../mock/business'
+import { useWorkbenchStore } from '../../stores/workbench'
+
+const router = useRouter()
+const workbench = useWorkbenchStore()
+const baseline = ref('内部储量 V1')
+const compare = ref('内部储量 V2')
+const onlyIssues = ref(false)
+const rows = computed(() => reserveRows.map((row) => ({
+  ...row,
+  base: row.nationalLine,
+  compare: row.internalLine,
+  gap: Number((row.internalLine - row.nationalLine).toFixed(1)),
+  reason: row.status === '缺字段' ? '商业性条件缺失' : '口径或参数变化',
+})).filter((row) => !onlyIssues.value || row.status !== '通过'))
+const issueCount = computed(() => rows.value.filter((row) => row.status !== '通过').length)
+const chartSeries = computed(() => [
+  { name: baseline.value, type: 'bar' as const, data: rows.value.map((row) => row.base), yAxisIndex: 0 },
+  { name: compare.value, type: 'line' as const, data: rows.value.map((row) => row.compare), yAxisIndex: 1 },
+  { name: '差异', type: 'line' as const, data: rows.value.map((row) => row.gap), yAxisIndex: 1 },
+])
+
+function generateDiffNote() {
+  workbench.openAssistant(`储量版本对比 / ${baseline.value} vs ${compare.value}`, 'insight', '/reserve/version')
+  workbench.submitAssistant(
+    `生成差异说明：对比 ${baseline.value} 与 ${compare.value}，需处理项 ${issueCount.value}，总差异 ${rows.value.reduce((sum, row) => sum + row.gap, 0).toFixed(1)}。`,
+    'insight',
+  )
+}
+
+function locateIssue(unit?: string) {
+  router.push({
+    path: '/reserve/collection',
+    query: {
+      task: 'reserve-clean-v2',
+      issue: 'vi1',
+      sheet: '油藏综合信息表',
+      ...(unit ? { unit } : {}),
+    },
+  })
+}
+</script>
+
+<template>
+  <div class="business-page version-page">
+    <header class="business-page-header">
+      <div>
+        <span class="eyebrow">储量分析 / 版本对比</span>
+        <h1>储量版本差异</h1>
+        <p>定位指标变化和复核对象，再回到工作表处理原因。</p>
+      </div>
+      <div class="header-button-row">
+        <a-button @click="generateDiffNote">生成差异说明</a-button>
+        <a-button type="primary" @click="locateIssue()">处理异常</a-button>
+      </div>
+    </header>
+    <section class="version-toolbar">
+      <a-select v-model:value="baseline" :options="['内部储量 V1', '内部储量 V2'].map((value) => ({ value }))" style="width: 180px" />
+      <span>对比</span>
+      <a-select v-model:value="compare" :options="['内部储量 V1', '内部储量 V2'].map((value) => ({ value }))" style="width: 180px" />
+      <a-checkbox v-model:checked="onlyIssues">只看需处理项</a-checkbox>
+    </section>
+    <section class="metric-overview-row">
+      <article class="metric-overview"><span>对比单元</span><strong>{{ rows.length }}</strong><em>{{ baseline }} 与 {{ compare }}</em></article>
+      <article class="metric-overview"><span>需处理项</span><strong>{{ issueCount }}</strong><em>字段或口径变化</em></article>
+      <article class="metric-overview"><span>总差异</span><strong>{{ rows.reduce((sum, row) => sum + row.gap, 0).toFixed(1) }}</strong><em>内部线减国家线</em></article>
+    </section>
+    <section class="business-panel version-chart-panel">
+      <div class="panel-title"><h2>版本差异趋势</h2><span>柱状基线 + 折线对比 / 双轴</span></div>
+      <MetricTrendChart :categories="rows.map((row) => row.unit)" :series="chartSeries" :height="280" :dual-axis="true" chart-kind="combo" />
+    </section>
+    <section class="business-panel">
+      <div class="panel-title"><h2>差异明细</h2><span>异常可返回储量工作表定位处理</span></div>
+      <a-table :data-source="rows" :pagination="false" row-key="id" :scroll="{ x: 1080 }">
+        <a-table-column title="油气田" data-index="oilfield" />
+        <a-table-column title="计算单元" data-index="unit" />
+        <a-table-column title="指标" data-index="reserveType" />
+        <a-table-column :title="baseline" data-index="base" />
+        <a-table-column :title="compare" data-index="compare" />
+        <a-table-column title="差异" data-index="gap" />
+        <a-table-column title="变化原因" data-index="reason" />
+        <a-table-column title="状态" data-index="status" />
+        <a-table-column title="操作" width="120" fixed="right">
+          <template #default="{ record }">
+            <a-button v-if="record.status !== '通过'" type="link" @click="locateIssue(record.unit)">定位处理</a-button>
+            <span v-else class="muted-text">无需处理</span>
+          </template>
+        </a-table-column>
+      </a-table>
+    </section>
+  </div>
+</template>

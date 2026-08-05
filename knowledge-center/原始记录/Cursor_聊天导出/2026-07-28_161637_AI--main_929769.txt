@@ -1,0 +1,23 @@
+---
+pid: 31132
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\nStart-Sleep -Seconds 30\n& $env:AGENT_PYTHON scripts\\_tmp_print_cycle.py\n$s = Get-Content logs\\scheduler-state.json -Raw -Encoding UTF8 | ConvertFrom-Json\nWrite-Host \"last_auto=$($s.last_auto_cycle_at) scheduled=$($s.last_scheduled_for) obs=$($null -ne $s.task_last_results.paper_observation_cycle)\"\n# funnel for 03:30\npy -3 -c \"import sqlite3; c=sqlite3.connect('.local_paper_console.db'); c.row_factory=sqlite3.Row\nfor r in c.execute(\\\"SELECT symbol, bar_time, reason_code, created_at FROM decision_funnel_terminals WHERE paper_run_id LIKE '78ba%' AND bar_time LIKE '2026-07-28 03:30%' ORDER BY created_at\\\"):\n print(dict(r))\"\n"
+started_at: 2026-07-28T03:32:13.538Z
+running_for_ms: 30019    
+---
+slot tight_entry paper_runs 1
+cycle_time 2026-07-28T03:30:27.765410Z opened 0 skipped 2
+{'symbol': 'BTC/USDT', 'action': 'skip_no_trade_decision', 'reason': 'multi_timeframe_disagreement', 'sampling': 'SAMPLING_RULES_NOT_ALIGNED', 'pipeline': 'multi_timeframe_disagreement', 'evaluated_at': '2026-07-28T03:30:33.234087+00:00', 'rsi': 23.496145327663, 'macd': 15.884139302859296, 'close': 63229.9, 'ema50': 64106.40304763356}
+{'symbol': 'ETH/USDT', 'action': 'skip_no_trade_decision', 'reason': 'multi_timeframe_disagreement', 'sampling': 'SAMPLING_RULES_NOT_ALIGNED', 'pipeline': 'multi_timeframe_disagreement', 'evaluated_at': '2026-07-28T03:31:11.250859+00:00', 'rsi': 29.100272196749827, 'macd': 1.4801875510085942, 'close': 1876.85, 'ema50': 1909.37225771048}
+observation {'slot': 'observation', 'paper_runs': 1, 'status': None}
+last_auto=07/28/2026 11:31:50 scheduled=07/28/2026 11:30:00 obs=True
+  File "<string>", line 2
+    for r in c.execute(\
+                      ^
+SyntaxError: '(' was never closed
+
+---
+exit_code: 1
+elapsed_ms: 31294
+ended_at: 2026-07-28T03:32:44.832Z
+---

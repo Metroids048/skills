@@ -1,0 +1,37 @@
+---
+pid: 27388
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "py -3 \"c:\\Users\\win\\Desktop\\AI--main\\scripts\\check_binance_positions.py\""
+started_at: 2026-07-28T02:08:18.067Z
+running_for_ms: 40045    
+---
+{
+  "status": "healthy",
+  "source": "BINANCE_USDT_M_TESTNET",
+  "observed_at": "2026-07-28T02:08:20.374013+00:00",
+  "open_position_count": 1,
+  "open_order_count": 0,
+  "positions": [
+    {
+      "symbol": "ETH/USDT:USDT",
+      "contracts": 5.1,
+      "side": "short",
+      "entry_price": 1969.0,
+      "mark_price": 1875.36,
+      "unrealized_pnl": 477.564,
+      "position_update_time": 1785197229243.0,
+      "leverage": 40.0
+    }
+  ],
+  "open_orders": [],
+  "reconciliation_status": "ok",
+  "notes": [
+    "binance gateway reconciliation snapshot"
+  ]
+}
+
+---
+exit_code: 0
+elapsed_ms: 43268
+ended_at: 2026-07-28T02:09:01.335Z
+---

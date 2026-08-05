@@ -1,0 +1,129 @@
+{"id":"019e4eeb-1dd4-7ef3-97c6-f96d288ec741","thread_name":"读取 Figma 原型","updated_at":"2026-05-22T09:01:39.6966443Z"}
+{"id":"019e5cd5-d67e-7501-9a43-defbc0bc9aaa","thread_name":"先检查 skills","updated_at":"2026-05-25T01:53:13.5680208Z"}
+{"id":"019e5cec-54c2-7a73-8345-7ead8ed25d03","thread_name":"核对Figma原型与现有页面","updated_at":"2026-05-25T02:19:24.0391976Z"}
+{"id":"019e5cfb-f20f-7422-81c2-efb3b7317067","thread_name":"重构新版UI规范","updated_at":"2026-05-25T02:36:55.4333314Z"}
+{"id":"019e6c68-ac58-7d60-8ba6-a99e248f7311","thread_name":"梳理 skills 配置需求","updated_at":"2026-05-28T02:30:00.3226789Z"}
+{"id":"019e6cf4-ddf9-7e50-9a25-9cc3af16890b","thread_name":"添加新增页面到Figma原型","updated_at":"2026-05-28T05:02:32.908765Z"}
+{"id":"019e91d9-9773-7fc0-9c69-8df80d2f96f8","thread_name":"编写系统介绍报告","updated_at":"2026-06-04T09:01:18.8315255Z"}
+{"id":"019ea5c9-0f6e-7212-83e0-346f4e5e05ac","thread_name":"安装常用MCP插件","updated_at":"2026-06-08T05:54:33.3961666Z"}
+{"id":"019ea5f7-c9f7-7842-8a9f-01787e37f36c","thread_name":"梳理产品定位与重构方向","updated_at":"2026-06-08T06:43:43.8696548Z"}
+{"id":"019eaf7c-86e4-7261-8117-7fc0cf973b80","thread_name":"完善用户端Web打通后台","updated_at":"2026-06-10T03:04:30.7834819Z"}
+{"id":"019ebaa2-9a4f-71f0-8efe-61709e1253c8","thread_name":"重构 Web 用户端 UI","updated_at":"2026-06-12T07:01:55.8233724Z"}
+{"id":"019ebaa4-cec3-73f3-8b13-b897d3d6bc83","thread_name":"11","updated_at":"2026-06-12T07:06:55.3052686Z"}
+{"id":"019ece27-ceef-7ef1-b67c-6b1e74857d70","thread_name":"排查 Cursor 模型与环境问题","updated_at":"2026-06-16T01:59:55.3166357Z"}
+{"id":"019ed446-998a-77d0-a429-8eb1947341c4","thread_name":"优化项目UI问题","updated_at":"2026-06-17T06:31:32.3205318Z"}
+{"id":"019ed49e-5202-7a61-917c-13e78ea3cd01","thread_name":"重构对话式求职台","updated_at":"2026-06-17T08:09:05.790657Z"}
+{"id":"019ed988-7f02-7db1-8684-b293258e1462","thread_name":"按最终方案重构产品UI","updated_at":"2026-06-18T07:01:36.1660549Z"}
+{"id":"019ed989-4bdd-7c02-b0a1-69968393d45b","thread_name":"重构敖钦用户端Web门户","updated_at":"2026-06-18T07:02:38.7379013Z"}
+{"id":"019ed989-4bdd-7c02-b0a1-69968393d45b","thread_name":"0409做了一部分","updated_at":"2026-06-18T08:36:25.4705177Z"}
+{"id":"019eed01-3200-7490-8a20-fe1068768fc3","thread_name":"统计可用skills","updated_at":"2026-06-22T01:46:06.3334198Z"}
+{"id":"019eed26-4eb4-70c0-9e10-6aad7fc6646d","thread_name":"梳理报告缺口与返工原因","updated_at":"2026-06-22T02:26:38.665475Z"}
+{"id":"019ef7b3-b4fe-7061-aef1-a1e0b5b4017e","thread_name":"重构问题库和简历页适配","updated_at":"2026-06-24T03:37:16.350873Z"}
+{"id":"019f01c5-5b1a-7ad2-86c3-8787e18b0a15","thread_name":"重设计产品UI并收口样式","updated_at":"2026-06-26T02:33:12.6684036Z"}
+{"id":"019f01d3-e192-7970-a777-69287a40fcda","thread_name":"输出项目需求蓝图","updated_at":"2026-06-26T02:49:58.0890051Z"}
+{"id":"019f01d3-e192-7970-a777-69287a40fcda","thread_name":"输出项目需求蓝图-未完成","updated_at":"2026-06-26T09:07:40.7122996Z"}
+{"id":"019f113d-d0f1-70a1-8777-060f8c14120c","thread_name":"评估海小南Demo差距","updated_at":"2026-06-29T02:38:32.9881167Z"}
+{"id":"019f128d-3ec0-7bd1-b53e-dfc0a1f29699","thread_name":"完善数字人Demo交互","updated_at":"2026-06-29T08:44:58.638265Z"}
+{"id":"019f21bc-80cf-7ec3-9a6f-3ef4c74d12bf","thread_name":"整理需求并产出PRD","updated_at":"2026-07-02T07:30:48.0307645Z"}
+{"id":"019f25fc-d19a-7ec1-b0d7-e59eb5a44948","thread_name":"Fix gitignore and stubbed logic","updated_at":"2026-07-03T03:21:18.5377328Z"}
+{"id":"019f2600-4cb2-7f90-866c-67bcdee4918c","thread_name":"修复 data 模块丢失","updated_at":"2026-07-03T03:23:31.4108402Z"}
+{"id":"019f2605-e17d-7ec3-99b3-5546620afbf7","thread_name":"优化 v0.4 PPT","updated_at":"2026-07-03T03:30:56.5691715Z"}
+{"id":"019f268c-433e-7b43-900a-b5cdcab054b6","thread_name":"生成V0.6启动汇报PPT","updated_at":"2026-07-03T05:56:24.3923779Z"}
+{"id":"019f26bd-60a9-7280-b901-4e14e45f0e49","thread_name":"继续完成PPT任务","updated_at":"2026-07-03T06:50:23.1611146Z"}
+{"id":"019f26bf-fc94-7ca1-b30a-9cc5098bf676","thread_name":"补齐数据层接入","updated_at":"2026-07-03T06:55:04.4697855Z"}
+{"id":"019f26dd-7cbf-75a0-baef-e8382442540b","thread_name":"核查项目缺失项","updated_at":"2026-07-03T07:26:36.5293384Z"}
+{"id":"019f271b-0ba5-7470-867f-ac74482c5683","thread_name":"提炼PPT生成Skill文档","updated_at":"2026-07-03T08:32:35.4165301Z"}
+{"id":"019f272f-226c-7c41-b7b0-ee7305d41193","thread_name":"摄取开源策略库资产化","updated_at":"2026-07-03T08:57:17.9905228Z"}
+{"id":"019f3531-f1c7-7b61-870d-abf549dad70e","thread_name":"优化标黄内容","updated_at":"2026-07-06T02:13:39.2454523Z"}
+{"id":"019f3536-849e-7541-a8cd-70b98768002c","thread_name":"优化标黄文本和架构图","updated_at":"2026-07-06T02:17:21.5802892Z"}
+{"id":"019f366b-67e7-7ff3-8a17-a77f7caac8e9","thread_name":"搭建 AIOS 全局工作流","updated_at":"2026-07-06T07:57:54.4743419Z"}
+{"id":"019f3a58-237f-7990-b129-79637e4a7276","thread_name":"融合语音AI方案","updated_at":"2026-07-07T02:12:13.9071121Z"}
+{"id":"019f3bc3-3bb7-7d51-97b3-cf67957f2f7c","thread_name":"优化核心功能与CI","updated_at":"2026-07-07T08:50:10.9170213Z"}
+{"id":"019f3bc5-1c70-71d0-945a-1801e008e441","thread_name":"优化落地验证与回归测试","updated_at":"2026-07-07T08:50:51.1042571Z"}
+{"id":"019f44b1-3d0c-76a0-b149-8a4df1548a97","thread_name":"审查项目量化策略闭环","updated_at":"2026-07-09T02:25:56.9930153Z"}
+{"id":"019f459e-a46a-7332-ad05-c0f40f6025c3","thread_name":"审查项目量化策略闭环","updated_at":"2026-07-09T06:44:22.368438Z"}
+{"id":"019f45c9-32cb-7dd2-9b8d-5bf820a073be","thread_name":"更新开发文档与原型方案","updated_at":"2026-07-09T07:31:06.3164704Z"}
+{"id":"019f45cc-0a05-77b3-84e3-bb1cd38ff790","thread_name":"审查并修复项目全流程","updated_at":"2026-07-09T07:34:17.1597878Z"}
+{"id":"019f45cc-7f74-75f3-b293-fa24b540c0a3","thread_name":"梳理项目方案并做原型","updated_at":"2026-07-09T07:34:47.6097103Z"}
+{"id":"019f45f1-f13c-7973-8370-969e0d8fbef3","thread_name":"排查 Codex 环境问题","updated_at":"2026-07-09T08:17:27.5756478Z"}
+{"id":"019f4642-f493-7451-9948-9964882f82bb","thread_name":"设计全面测试方案","updated_at":"2026-07-09T09:44:48.7436605Z"}
+{"id":"019f4646-39ad-7581-a61d-a29bce0b9327","thread_name":"梳理交易消息源方案","updated_at":"2026-07-09T09:51:33.6042686Z"}
+{"id":"019f49bd-f95d-7001-bfa6-abb92bdea7c8","thread_name":"拆分音频监听提词工具","updated_at":"2026-07-10T02:00:59.6143295Z"}
+{"id":"019f49c1-cf8f-7633-9e55-79f5f396bc80","thread_name":"1、你现在已经把原型按照用户需求做出来了，但是真的是符合用户需求吗","updated_at":"2026-07-10T02:01:54.0758855Z"}
+{"id":"019f49c6-e87c-7930-a365-c0f568d27e46","thread_name":"梳理需求并优化原型","updated_at":"2026-07-10T02:07:03.0408688Z"}
+{"id":"019f49fd-c4e9-70f1-b367-e9a5fba91e39","thread_name":"1、现在的量化策略有很大的问题需要优化，我昨天手动上去看了一下，一直都没有开单，而且并没有基于前20的币种去开单，这个…","updated_at":"2026-07-10T03:07:11.8081311Z"}
+{"id":"019f4aea-bb8a-76f3-b769-1176da9bd80c","thread_name":"解决一下 为什么我的codex更新完没有5.6的问题 5.6系列已上线，价格不变，更新codex到最新版本和ccswi…","updated_at":"2026-07-10T07:26:03.1706655Z"}
+{"id":"019f4af7-d556-73e0-a5b3-46ac5f9a073e","thread_name":"1、现在做好的整体的原型的前端页面看起来，至少功能页签上是能够响应需求的，但是缺少针对于表格上传、切换、操作、编辑等流…","updated_at":"2026-07-10T07:40:54.5107824Z"}
+{"id":"019f4afa-f8e1-7402-aa6f-d17db03eb434","thread_name":"执行全局对抗性验收","updated_at":"2026-07-10T07:44:15.1611673Z"}
+{"id":"019f4b03-5a30-7161-b8d0-e25a87bf8128","thread_name":"自动调用相关插件和skills，完成这个测试任务，过程中有任何不清楚和拿不准地都需要找我确认@github @supe…","updated_at":"2026-07-10T07:53:03.0432101Z"}
+{"id":"019f5a4b-9eca-7982-8bde-adcca276afc3","thread_name":"审查并同步原型文档","updated_at":"2026-07-13T07:05:56.192325Z"}
+{"id":"019f5f35-b42c-72b0-81a6-09bd3dc4d5c0","thread_name":"梳理储量产量规划需求","updated_at":"2026-07-14T06:00:11.2674057Z"}
+{"id":"019f5fe1-5346-7203-b3df-cb0c3a6ffed3","thread_name":"评估原型功能缺口","updated_at":"2026-07-14T09:10:09.5671077Z"}
+{"id":"019f68c4-a50e-7fb2-8bbe-b2cc3a1c1b22","thread_name":"完成共享提示词任务","updated_at":"2026-07-16T02:33:16.0319456Z"}
+{"id":"019f69d7-0273-7af3-a337-1c5bf2cbf2aa","thread_name":"Role 你是一名资深 AI 产品经理（AI Product Manager）、技术负责人（Tech Lead）和高级…","updated_at":"2026-07-16T07:32:54.4596206Z"}
+{"id":"019f69d7-c21b-7803-9161-f438aeca23c0","thread_name":"分析并重构拒单链路","updated_at":"2026-07-16T07:33:55.4983338Z"}
+{"id":"019f69d8-8759-7803-94fc-c01866f6e68f","thread_name":"按照这些内容来优化项目 Role 你是一名资深 AI 产品经理（AI Product Manager）、技术负责人（T…","updated_at":"2026-07-16T07:34:43.296176Z"}
+{"id":"019f69d9-2c38-76a3-9cc3-9d6ff69837ae","thread_name":"按照这些内容去做，重点是文件输出 AI Product Lead - Codex 开发前准备 Prompt 你现在担任…","updated_at":"2026-07-16T07:35:13.485687Z"}
+{"id":"019f6a41-15c6-70f1-b66a-3f1846a9af85","thread_name":"汇总功能清单","updated_at":"2026-07-16T09:28:24.5030375Z"}
+{"id":"019f6a71-f62d-7363-af4b-8adb49ed7891","thread_name":"从给出的功能清单里做优化后，但感觉还有很多点还是不够符合项目情况、用户原始需求以及现在原型页面，你看一下，然后增删改一…","updated_at":"2026-07-16T10:23:21.9426326Z"}
+{"id":"019f6dbb-a607-7490-a814-47b2329c2b26","thread_name":"Role: Senior Software Engineer / Debugging Specialist 你现在扮演…","updated_at":"2026-07-17T01:41:33.7126019Z"}
+{"id":"019f6dbe-5fd1-7c03-8967-a8d34887d11a","thread_name":"按照这些内容来优化项目，之前的任务已经完成一部分了，对全局检测然后补齐未完成部分，自动调用相关插件和skills，完成…","updated_at":"2026-07-17T01:45:05.5408931Z"}
+{"id":"019f6f23-5a57-7c21-a983-52858404f98b","thread_name":"1、我想梳理一下我作为AI产品经理在日常工作里是怎么借助AI和agent工具来赋能功能的全流程，你在本地会话记录和项目…","updated_at":"2026-07-17T08:14:11.7387493Z"}
+{"id":"019f7d7d-b862-7e80-adec-d0d1189be3f5","thread_name":"基于粘贴的prompt来完成任务，以本地当前文件夹中的文件为主，调用相关的插件和skills来完成任务 你正在重构 G…","updated_at":"2026-07-20T03:07:41.9517048Z"}
+{"id":"019f7d88-c55d-7b61-a97c-b8f66e778173","thread_name":"基于粘贴的prompt来完成任务，以本地当前文件夹中的文件为主，调用相关的插件和skills来完成任务，绝对不要去破坏…","updated_at":"2026-07-20T03:20:39.3225963Z"}
+{"id":"019f7e0f-e859-7ed1-9401-150789d7eb76","thread_name":"请对当前本地文件夹中刚完成的 Consultant Alpha Factory vNext 进行严格的独立代码审计，并…","updated_at":"2026-07-20T05:47:16.5947028Z"}
+{"id":"019f7e24-52d1-7dd3-9fdf-90040b60a254","thread_name":"1、现在项目现状： 从你描述的四类现象同时出现来看，当前问题大概率不只是“量化策略不赚钱”，而是整个自动交易闭环至少有…","updated_at":"2026-07-20T06:10:45.7933011Z"}
+{"id":"019f7e94-a896-7682-9192-b7fdbbcebb62","thread_name":"请在当前本地文件夹中执行 Consultant Alpha Factory 的第一次 Shadow Run。 本次禁止…","updated_at":"2026-07-20T08:12:20.8128217Z"}
+{"id":"019f8268-ea5e-75d1-bcab-e778fc36c502","thread_name":"分析一下当前文件夹中代码为主，为什么改完之后一次单都没开，是否存在粘贴文本中标出的可能情况，找出原因，制定解决方案并实…","updated_at":"2026-07-21T02:05:09.9967532Z"}
+{"id":"019f8354-d617-79d2-9847-100484f5bbaf","thread_name":"继续完成这个任务，还有很多功能和修改没有落实 codex://threads/019f8268-ea5e-75d1-b…","updated_at":"2026-07-21T06:20:49.7461361Z"}
+{"id":"019f877d-69cf-72d2-a208-8993ea998544","thread_name":"当前项目的现状： 现在的自动交易，你分析一下感觉很奇怪 啊，在昨天11点和16点的时候用agent工具来做的优化，交易…","updated_at":"2026-07-22T01:45:57.9253838Z"}
+{"id":"019f8798-d17d-7183-858a-a6584b6277c4","thread_name":"项目现状在粘贴文本1中，修复计划：P0：先停止旧 Alpha 批量提交 直到完成： 平台账本全量同步； 数量对账； A…","updated_at":"2026-07-22T02:14:38.0442977Z"}
+{"id":"019f885c-e15d-7233-95e9-006cf647123d","thread_name":"继续这个任务：codex://threads/019f877d-69cf-72d2-a208-8993ea998544…","updated_at":"2026-07-22T05:47:36.1768729Z"}
+{"id":"019f886e-120e-7d82-b7be-201dda52f1ff","thread_name":"项目现状在粘贴文本中，分析一下项目情况，了解要做的内容。 prompt1： 请在当前当前文件夹实现并验收以下三个核心工…","updated_at":"2026-07-22T06:08:47.7090764Z"}
+{"id":"019f8899-1fec-7100-8e57-7efb0585dece","thread_name":"继续这个任务，完成剩余未完成的部分：codex://threads/019f886e-120e-7d82-b7be-2…","updated_at":"2026-07-22T06:53:38.6487878Z"}
+{"id":"019f8de2-9955-7493-9a6d-ce91c87a3f1a","thread_name":"执行需求回正与Demo迭代","updated_at":"2026-07-23T07:31:42.4607484Z"}
+{"id":"019f8de3-275e-7643-afe7-de98192ecda5","thread_name":"审查文档并开发原型 Demo","updated_at":"2026-07-23T07:32:05.7081411Z"}
+{"id":"019f8de3-bbf2-7661-b1cb-d16a6303c474","thread_name":"Alpha 项目修复补充指令：持续循环、账号密码认证、新 Alpha 生成与全自动提交 以下要求是最高优先级约束。若与…","updated_at":"2026-07-23T07:32:58.057967Z"}
+{"id":"019f8de4-3bfd-75f0-bc12-c1a2b374ea5c","thread_name":"解剖交易链路并定位自动平仓","updated_at":"2026-07-23T07:33:29.0131259Z"}
+{"id":"019f8de3-275e-7643-afe7-de98192ecda5","thread_name":"审查文档并开发原型 Demo-未完成","updated_at":"2026-07-23T10:16:51.8940343Z"}
+{"id":"019f8de3-275e-7643-afe7-de98192ecda5","thread_name":"开发原型 Demo-未完成","updated_at":"2026-07-23T10:17:03.0442797Z"}
+{"id":"019f8de2-9955-7493-9a6d-ce91c87a3f1a","thread_name":"执行需求回正与Demo迭代-未完成","updated_at":"2026-07-23T10:17:33.2700661Z"}
+{"id":"019f92c5-9591-7092-96ee-152d5652b445","thread_name":"继续推进会话任务","updated_at":"2026-07-24T06:18:13.1760014Z"}
+{"id":"019f931f-3898-7fe2-be0d-15a4d1123550","thread_name":"验收 Binance Demo 自动交易闭环","updated_at":"2026-07-24T08:00:29.4882637Z"}
+{"id":"019f9324-7748-7260-a548-7ce94c6635bc","thread_name":"融合最新版并验收自动交易链路","updated_at":"2026-07-24T08:02:04.0005269Z"}
+{"id":"019fa142-7bc1-72a2-aa69-0e739a5ecf76","thread_name":"继续完成这个任务中的剩余未完成工作：codex://threads/019f8de2-9955-7493-9a6d-c…","updated_at":"2026-07-27T01:49:12.5625373Z"}
+{"id":"019fa18f-219c-7712-b2c0-9987d4f44490","thread_name":"1、项目现状： 二、你遇到的现象与实际代码根因 为什么一直不开单 当前正常策略本身就是一条非常低频的漏斗： 4h 方向…","updated_at":"2026-07-27T03:14:29.266407Z"}
+{"id":"019fa65b-dc91-7f60-ace3-94992b9fd8f0","thread_name":"继续完成这个任务：codex://threads/019fa18f-219c-7712-b2c0-9987d4f444…","updated_at":"2026-07-28T01:35:05.671584Z"}
+{"id":"019fa668-0e5d-72d0-a9d3-e00b6c790cba","thread_name":"1、项目现状： 二、你遇到的现象与实际代码根因 为什么一直不开单 当前正常策略本身就是一条非常低频的漏斗： 4h 方向…","updated_at":"2026-07-28T01:47:46.643761Z"}
+{"id":"019fa668-0e5d-72d0-a9d3-e00b6c790cba","thread_name":"1、项目现状： 二、你遇到的现象与实际代码根因 为什么一直不开单 当前正常策略本身就是一条非常低频的漏斗： 4… (2)","updated_at":"2026-07-28T01:47:52.7942116Z"}
+{"id":"019fac8e-6eaa-7f02-965f-34818772c187","thread_name":"@figma 自动生成完整产品截图图谱及 Figma 导入包 你现在需要为当前前端原型建立一份“开发交接用产品页面截图…","updated_at":"2026-07-29T06:28:26.4217763Z"}
+{"id":"019fac8e-277b-7c11-9f2b-300d4937dc27","thread_name":"请严格执行 docs/audit/AI-global-project-acceptance-audit-master-…","updated_at":"2026-07-29T06:29:15.8287542Z"}
+{"id":"019faca9-6174-7df2-a5ac-d1d86bc2b008","thread_name":"现在进入： Phase 2：全局工程验收 + 修复执行模式 不是审计。 目标： 读取当前本地最新代码 → 找出剩余阻断…","updated_at":"2026-07-29T06:57:20.3483673Z"}
+{"id":"019facbd-028f-7ac1-aea7-e90fe33423c6","thread_name":"1、继续这个任务：codex://threads/019fac8e-6eaa-7f02-965f-34818772c1…","updated_at":"2026-07-29T07:19:47.6286308Z"}
+{"id":"019facd7-fc4f-7651-b194-9771ca1680e8","thread_name":"继续完成这个任务：codex://threads/019f8de3-275e-7643-afe7-de98192ecd…","updated_at":"2026-07-29T07:48:41.4583674Z"}
+{"id":"019fad2c-c746-70e3-87ee-1e72a37f3845","thread_name":"1、 个人长期知识库＋项目总账＋Agent 实战经验库＋自媒体选题母库＋跨工具归档机制。 这次生成了什么 用户长期主知…","updated_at":"2026-07-29T09:21:59.2987784Z"}
+{"id":"019fad4f-1aa9-7d70-8b25-0fec22ee07d5","thread_name":"1、这个任务将专注于重构量化策略部分，项目现状和需要解决的问题： 项目情况： 策略内核大改，项目改动面收口。 保留现有…","updated_at":"2026-07-29T10:02:28.4533941Z"}
+{"id":"019facbd-028f-7ac1-aea7-e90fe33423c6","thread_name":"前端转figma","updated_at":"2026-07-30T02:43:02.7052439Z"}
+{"id":"019fb1ef-0326-77f2-b29b-68beab0dd797","thread_name":"建立离线生成与在线批量流程","updated_at":"2026-07-30T07:31:23.2049203Z"}
+{"id":"019fb1ef-55c3-7ae3-952c-e025c142a167","thread_name":"审查产品业务流程与系统差距","updated_at":"2026-07-30T07:31:42.3365649Z"}
+{"id":"019fb1ef-8c9b-7011-a95a-b15adee6c4d4","thread_name":"继续量化策略优化任务","updated_at":"2026-07-30T07:31:45.0125602Z"}
+{"id":"019fb1ef-d5a4-73e2-add1-70fe53921514","thread_name":"开展产品业务与系统审计","updated_at":"2026-07-30T07:32:28.6093433Z"}
+{"id":"019fb1f3-9e14-7c60-b6c5-aff05fb41f86","thread_name":"审查产品业务流程与系统差距","updated_at":"2026-07-30T07:36:29.7767619Z"}
+{"id":"019fb1f6-4686-7c50-af99-7047d5f7d2eb","thread_name":"继续完成相关任务","updated_at":"2026-07-30T07:39:06.2292165Z"}
+{"id":"019fb205-fbdd-7ff3-8995-c6b1522f4c4f","thread_name":"继续这个任务：codex://threads/019fb1ef-8c9b-7011-a95a-b15adee6c4d4","updated_at":"2026-07-30T07:56:38.1635698Z"}
+{"id":"019fb1f3-9e14-7c60-b6c5-aff05fb41f86","thread_name":"审查产品业务流程与系统差距-未完成","updated_at":"2026-07-30T08:11:13.1882595Z"}
+{"id":"019fb2eb-8ec5-7cc3-9421-c99d5179701c","thread_name":"实现离线候选优先级评分","updated_at":"2026-07-30T12:07:14.3381884Z"}
+{"id":"019fb546-98a4-7a53-85cb-10ef042f78bc","thread_name":"完成 codex 线程任务","updated_at":"2026-07-30T23:05:49.9875411Z"}
+{"id":"019fb600-92c2-72a1-948a-dcc93d29dd4d","thread_name":"我现在需要基于项目情况去和客户对需求了，基于他新给的这些表格，以及整个系统的实现形式，我应该问一些什么问题，拿到答案后…","updated_at":"2026-07-31T02:30:07.9939633Z"}
+{"id":"019fc554-a081-7ad2-9518-7b368a885c18","thread_name":"现在需求经过沟通后，发生了比较大的变动，需要重构，重构部分和依据在上传的会议纪要中，你必须要充分理解和分析会议纪要中的…","updated_at":"2026-08-03T01:55:19.6571184Z"}
+{"id":"019fc579-fe94-7ed0-8711-b2e9a75f5108","thread_name":"1、项目问题： DEGRADED 按币种隔离不是本次 Commit 引入的新回归。当前代码注释和测试都明确表达了这个既…","updated_at":"2026-08-03T02:37:02.8474995Z"}
+{"id":"019fc57f-4b31-7553-811d-dadad7d9e180","thread_name":"1、请严格阅读并执行仓库根目录中的： 02-frozen-solution-v1.0.md 将 02-frozen-s…","updated_at":"2026-08-03T02:41:57.6889175Z"}
+{"id":"019fc587-0c1f-7f20-86b4-6727727f0863","thread_name":"继续这个任务：codex://threads/019fc554-a081-7ad2-9518-7b368a885c18…","updated_at":"2026-08-03T02:50:43.1474912Z"}
+{"id":"019fc630-6e88-7630-90fc-676ff991153d","thread_name":"项目前期产品蓝图设计总 Prompt 你现在是一名兼具以下能力的资深专家： 高级产品经理 业务架构师 产品信息架构师…","updated_at":"2026-08-03T05:57:17.2745984Z"}
+{"id":"019fc6b1-9b91-7df2-bbe3-10c037be57b0","thread_name":"修复 Alpha 生成运行链路","updated_at":"2026-08-03T08:16:25.3870467Z"}
+{"id":"019fc6e8-793a-7d23-bc01-2d4f0c2921ee","thread_name":"继续这个任务：codex://threads/019fc6b1-9b91-7df2-bbe3-10c037be57b0","updated_at":"2026-08-03T09:16:39.3081733Z"}
+{"id":"019fc702-443e-76e2-a51c-fbbc85bb9ca1","thread_name":"你现在负责优化一份用于项目前期蓝图设计的产品方案 PPT。 当前项目目录中将包含以下资料： 项目方提供的 PPT 模板…","updated_at":"2026-08-03T09:44:41.5128543Z"}
+{"id":"019fca92-b937-78b0-b4d7-3f219fcf265b","thread_name":"你现在负责修复本仓库的“生成 Alpha”链路。这是一次收口型生产修复，不是继续维护当前错误架构，也不是自由重构。 开…","updated_at":"2026-08-04T02:21:24.8854965Z"}
+{"id":"019fcad8-ab3a-7fc2-a64b-e495dc582bbb","thread_name":"附件中的方案设计要求强调：必须命中真正生效的 Active 链路、覆盖直接上下游、保护原有行为，并将每项修改落实到文件…","updated_at":"2026-08-04T03:38:08.6552643Z"}
+{"id":"019fcb4d-0844-7811-b396-8793413dda7e","thread_name":"继续刚才未完成的任务：codex://threads/019fcad8-ab3a-7fc2-a64b-e495dc58…","updated_at":"2026-08-04T05:44:54.4720188Z"}
+{"id":"019fcbdd-156e-73a1-9789-4a6950bffec8","thread_name":"生成alpha的链路这个日志输出算是跑通了吗 PS C:\\Users\\win\\Desktop\\alpha> & C:/…","updated_at":"2026-08-04T08:22:34.707407Z"}

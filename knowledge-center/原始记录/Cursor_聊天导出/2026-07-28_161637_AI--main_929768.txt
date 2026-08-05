@@ -1,0 +1,25 @@
+---
+pid: 25792
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"; py -3 -m pytest -q -m \"not integration\" --tb=no 2>&1 | Select-Object -Last 12"
+started_at: 2026-07-28T03:19:18.635Z
+running_for_ms: 170213   
+---
+tests/services/test_verify_runtime_config_sync.py::test_load_database_revision_reports_head_schema
+  C:\Users\win\AppData\Local\Programs\Python\Python312\Lib\site-packages\alembic\config.py:612: DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces, commas, and colons for prepend_sys_path.  Consider adding path_separator=os to Alembic config.
+    util.warn_deprecated(
+
+tests/api/test_carry_execution_api.py::test_carry_execution_api_persists_closed_dual_leg_result
+  C:\Users\win\AppData\Local\Programs\Python\Python312\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/api/test_console_market.py::test_market_live_public_rest_endpoints_return_binance_source
+1 failed, 693 passed, 10 skipped, 2 deselected, 4 warnings in 169.56s (0:02:49)
+
+---
+exit_code: 1
+elapsed_ms: 172065
+ended_at: 2026-07-28T03:22:10.700Z
+---

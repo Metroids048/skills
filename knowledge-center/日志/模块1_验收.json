@@ -1,0 +1,7 @@
+{
+  "module": 1,
+  "schema_ok": true,
+  "duplicate_ok": true,
+  "conflict_ok": true,
+  "main_kb_protected": true
+}

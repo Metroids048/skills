@@ -1,0 +1,42 @@
+{
+    "mcpServers":  {
+                       "vibearound":  {
+                                          "type":  "http",
+                                          "url":  "http://127.0.0.1:12358/va/mcp?token=YOUR_TOKEN"
+                                      }
+                   },
+    "includeCoAuthoredBy":  false,
+    "hooks":  {
+                  "UserPromptSubmit":  [
+                                           {
+                                               "hooks":  [
+                                                             {
+                                                                 "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Claude -HookEvent UserPromptSubmit",
+                                                                 "timeout":  45,
+                                                                 "type":  "command",
+                                                                 "statusMessage":  "鍖归厤鍏ㄥ眬 Skills"
+                                                             }
+                                                         ]
+                                           }
+                                       ],
+                  "SessionStart":  [
+                                       {
+                                           "hooks":  [
+                                                         {
+                                                             "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Claude -HookEvent SessionStart",
+                                                             "timeout":  45,
+                                                             "type":  "command",
+                                                             "statusMessage":  "Load global skills"
+                                                         }
+                                                     ],
+                                           "matcher":  "startup|resume|clear|compact"
+                                       }
+                                   ]
+              },
+    "model":  "sonnet",
+    "$schema":  "https://json.schemastore.org/claude-code-settings.json",
+    "env":  {
+                "ANTHROPIC_AUTH_TOKEN":  "YOUR_SECRET",
+                "ANTHROPIC_BASE_URL":  "https://cc.freemodel.dev"
+            }
+}

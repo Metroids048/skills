@@ -1,0 +1,29 @@
+{
+    "hooks":  {
+                  "UserPromptSubmit":  [
+                                           {
+                                               "hooks":  [
+                                                             {
+                                                                 "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Codex -HookEvent UserPromptSubmit",
+                                                                 "timeout":  45,
+                                                                 "type":  "command",
+                                                                 "statusMessage":  "鍖归厤鍏ㄥ眬 Skills"
+                                                             }
+                                                         ]
+                                           }
+                                       ],
+                  "SessionStart":  [
+                                       {
+                                           "hooks":  [
+                                                         {
+                                                             "command":  "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Codex -HookEvent SessionStart",
+                                                             "timeout":  45,
+                                                             "type":  "command",
+                                                             "statusMessage":  "Scan global skills"
+                                                         }
+                                                     ],
+                                           "matcher":  "startup|resume"
+                                       }
+                                   ]
+              }
+}

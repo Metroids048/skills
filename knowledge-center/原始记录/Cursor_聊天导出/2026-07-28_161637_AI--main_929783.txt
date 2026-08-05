@@ -1,0 +1,16 @@
+---
+pid: 808
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n$py = \"C:\\Users\\win\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\"\n$argLine = '-c \"import os; pid=os.getpid();\\nimport sys\\ntry:\\n os.kill(pid,0); print(\\\"kill0_ok\\\")\\nexcept Exception as e:\\n print(type(e).__name__, e)\\nimport ctypes\\nh=ctypes.windll.kernel32.OpenProcess(0x1000, False, pid)\\nprint(\\\"open\\\", bool(h))\\nif h: ctypes.windll.kernel32.CloseHandle(h)\\nh2=ctypes.windll.kernel32.OpenProcess(0x1000, False, 424242)\\nprint(\\\"open_dead\\\", bool(h2))\"'\n# write a small script instead\n@'\nimport os, ctypes\npid = os.getpid()\ntry:\n    os.kill(pid, 0)\n    print(\"kill0_ok\")\nexcept Exception as e:\n    print(\"kill0\", type(e).__name__, e)\nh = ctypes.windll.kernel32.OpenProcess(0x1000, False, pid)\nprint(\"open_live\", bool(h))\nif h:\n    ctypes.windll.kernel32.CloseHandle(h)\nh2 = ctypes.windll.kernel32.OpenProcess(0x1000, False, 424242)\nprint(\"open_dead\", bool(h2))\n'@ | Set-Content -Encoding utf8 logs\\_pidcheck.py\n& $py logs\\_pidcheck.py\n"
+started_at: 2026-07-28T06:01:40.961Z
+running_for_ms: 41       
+---
+kill0_ok
+open_live True
+open_dead False
+
+---
+exit_code: 0
+elapsed_ms: 952
+ended_at: 2026-07-28T06:01:41.913Z
+---

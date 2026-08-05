@@ -1,0 +1,123 @@
+{
+    "entries":  {
+                    "c:\\users\\win\\desktop\\demo1":  {
+                                                           "cwd":  "c:\\users\\win\\desktop\\demo1",
+                                                           "messageType":  "unknown",
+                                                           "clearedAt":  null,
+                                                           "clearedReason":  null,
+                                                           "draftPath":  null,
+                                                           "lastPromptAt":  "2026-06-12T17:18:25.1574549+08:00",
+                                                           "gateStatus":  "exempt",
+                                                           "intentIds":  {
+
+                                                                         },
+                                                           "lastPrompt":  ""
+                                                       },
+                    "c:\\users\\win\\desktop\\program1-main-latest":  {
+                                                                          "cwd":  "c:\\users\\win\\desktop\\program1-main-latest",
+                                                                          "messageType":  "unknown",
+                                                                          "clearedAt":  null,
+                                                                          "clearedReason":  null,
+                                                                          "draftPath":  null,
+                                                                          "lastPromptAt":  "2026-06-29T16:55:22.3521860+08:00",
+                                                                          "gateStatus":  "exempt",
+                                                                          "intentIds":  {
+
+                                                                                        },
+                                                                          "lastPrompt":  ""
+                                                                      },
+                    "c:\\users\\win\\desktop\\敖钦储能项目":  {
+                                                            "cwd":  "c:\\users\\win\\desktop\\敖钦储能项目",
+                                                            "messageType":  "unknown",
+                                                            "clearedAt":  null,
+                                                            "clearedReason":  null,
+                                                            "draftPath":  null,
+                                                            "lastPromptAt":  "2026-07-03T11:39:53.0058919+08:00",
+                                                            "gateStatus":  "exempt",
+                                                            "intentIds":  {
+
+                                                                          },
+                                                            "lastPrompt":  ""
+                                                        },
+                    "c:\\users\\win\\.cursor":  {
+                                                    "cwd":  "c:\\users\\win\\.cursor",
+                                                    "messageType":  "unknown",
+                                                    "clearedAt":  null,
+                                                    "clearedReason":  null,
+                                                    "draftPath":  null,
+                                                    "lastPromptAt":  "2026-06-22T14:14:13.0909623+08:00",
+                                                    "gateStatus":  "exempt",
+                                                    "intentIds":  {
+
+                                                                  },
+                                                    "lastPrompt":  ""
+                                                },
+                    "c:\\users\\win\\desktop\\demo":  {
+                                                          "cwd":  "c:\\users\\win\\desktop\\demo",
+                                                          "messageType":  "unknown",
+                                                          "clearedAt":  null,
+                                                          "clearedReason":  null,
+                                                          "draftPath":  null,
+                                                          "lastPromptAt":  "2026-06-08T17:20:14.4606990+08:00",
+                                                          "gateStatus":  "exempt",
+                                                          "intentIds":  {
+
+                                                                        },
+                                                          "lastPrompt":  ""
+                                                      },
+                    "c:\\users\\win\\desktop\\program1-main":  {
+                                                                   "cwd":  "c:\\users\\win\\desktop\\program1-main",
+                                                                   "messageType":  "unknown",
+                                                                   "clearedAt":  null,
+                                                                   "clearedReason":  null,
+                                                                   "draftPath":  null,
+                                                                   "lastPromptAt":  "2026-06-25T09:44:23.8456833+08:00",
+                                                                   "gateStatus":  "exempt",
+                                                                   "intentIds":  {
+
+                                                                                 },
+                                                                   "lastPrompt":  ""
+                                                               },
+                    "c:\\users\\win\\desktop\\海小南":  {
+                                                         "cwd":  "c:\\users\\win\\desktop\\海小南",
+                                                         "messageType":  "B",
+                                                         "clearedAt":  null,
+                                                         "clearedReason":  null,
+                                                         "draftPath":  "C:\\Users\\win\\.ai-workspace\\clarifications\\pending-20260701-122719-c__users_win_desktop_海小南.md",
+                                                         "lastPromptAt":  "2026-07-01T12:27:19.3892173+08:00",
+                                                         "gateStatus":  "pending",
+                                                         "intentIds":  {
+
+                                                                       },
+                                                         "lastPrompt":  "但是显示状态文字、点击弹出3条快捷指令的功能还是保留，就是不要数字人形象周围的圈"
+                                                     },
+                    "c:\\users\\win\\desktop\\agent platform":  {
+                                                                    "cwd":  "c:\\users\\win\\desktop\\agent platform",
+                                                                    "messageType":  "unknown",
+                                                                    "clearedAt":  null,
+                                                                    "clearedReason":  null,
+                                                                    "draftPath":  null,
+                                                                    "lastPromptAt":  "2026-06-29T18:21:55.3394353+08:00",
+                                                                    "gateStatus":  "exempt",
+                                                                    "intentIds":  {
+
+                                                                                  },
+                                                                    "lastPrompt":  ""
+                                                                },
+                    "c:\\users\\win\\desktop":  {
+                                                    "cwd":  "c:\\users\\win\\desktop",
+                                                    "messageType":  "unknown",
+                                                    "clearedAt":  null,
+                                                    "clearedReason":  null,
+                                                    "draftPath":  null,
+                                                    "lastPromptAt":  "2026-06-11T09:40:05.1845737+08:00",
+                                                    "gateStatus":  "exempt",
+                                                    "intentIds":  {
+
+                                                                  },
+                                                    "lastPrompt":  ""
+                                                }
+                },
+    "version":  1,
+    "updated":  "2026-07-03T11:39:53.0382512+08:00"
+}

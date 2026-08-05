@@ -1,0 +1,38 @@
+---
+pid: 25544
+cwd: "C:\\Users\\win\\Desktop\\AI--main\\scripts"
+command: "cd \"C:\\Users\\win\\Desktop\\AI--main\" && node scripts/verify-runtime-truth-browser.mjs 2>&1"
+started_at: 2026-07-28T07:10:21.579Z
+running_for_ms: 395420   
+---
+P2 Runtime Truth verification starting...
+Log dir: C:\Users\win\Desktop\AI--main\logs\p2-runtime-truth-verify
+
+=== P2 Runtime Truth Checklist ===
+FAIL frontend_up
+PASS api_endpoints
+FAIL runtime_truth_panel
+FAIL paper_console_sections
+FAIL runtime_network_ok
+FAIL polling_not_spam
+FAIL no_console_errors
+FAIL websocket_observed
+FAIL overall_pass
+Evidence: C:\Users\win\Desktop\AI--main\logs\p2-runtime-truth-verify
+Browser check failed: page.goto: Timeout 60000ms exceeded.
+Call log:
+  - navigating to "http://127.0.0.1:5173/trading", waiting until "networkidle"
+
+    at browserCheck (C:\Users\win\Desktop\AI--main\scripts\verify-runtime-truth-browser.mjs:173:14)
+    at async main (C:\Users\win\Desktop\AI--main\scripts\verify-runtime-truth-browser.mjs:250:5) {
+  log: [
+    '  - navigating to "http://127.0.0.1:5173/trading", waiting until "networkidle"'
+  ],
+  name: 'TimeoutError'
+}
+
+---
+exit_code: unknown
+elapsed_ms: 395421
+ended_at: 2026-07-28T07:16:57.000Z
+---

@@ -1,0 +1,62 @@
+---
+pid: 5476
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Start-Sleep -Seconds 60; py -3 \"c:\\Users\\win\\Desktop\\AI--main\\scripts\\_observe_p03_cycle.py\"; py -3 \"c:\\Users\\win\\Desktop\\AI--main\\scripts\\check_binance_positions.py\""
+started_at: 2026-07-28T02:17:14.399Z
+running_for_ms: 91069    
+---
+utc_now=2026-07-28T02:18:15.996558+00:00
+running=True
+heartbeat_at=2026-07-28T02:17:50.209199+00:00
+last_auto_cycle_at=2026-07-28T02:12:34.050359+00:00
+data_fresh=True
+scheduler_error=None
+last_paper_runtime_cycle={"paper_runs": 2, "results": [{"paper_run_id": "78ba69a7-2bfb-457e-9a97-934aaf418e00", "paper_status": "running", "cycle_time": "2026-07-28T02:11:07.001326Z", "scanned_symbols": ["BTC/USDT", "ETH/USDT"], "actions": [{"symbol": "ETH/USDT", "action": "reconcile_local_ghost_quarantined", "direction": "short", "reason": "authoritative exchange snapshot confirms the local-only position is flat", "order_execution_id": null, "reference_price": null, "close_only": true, "idempotency_key": null, "decision_trace": {"reason_code": "RECONCILED_GHOST", "position_record_id": "21e4a5c9-21e7-404b-9a5f-5a099480dd00"}}, {"symbol": "BTC/USDT", "action": "skip_no_trade_decision", "direction": "long", "reason": "technical_signals_insufficient", "order_execution_id": null, "reference_price": 63244.0, "close_only": false, "idempotency_key": "78ba69a7-2bfb-457e-9a97-934aaf418e00:BTC/USDT:15m:2026-07-28T02:00:00+00:00", "decision_trace": {"pipeline_status": "technical_signals_insufficient", "strategy_lane": "directional", "signals": [], "ensemble": null, "meta_label": null, "veto_result": null, "volatility": {"atr": 213.20714285714192, "atr_percent": 0.0033711837147736056, "regime": "low_volatility", "enabled_signals": ["macd"], "evaluated_timeframe": "15m", "signal_count": 0}, "sampling_fallback_attempted": true, "sampling_fallback_rejection_reason": "SAMPLING_RULES_NOT_ALIGNED", "sampling_metrics": {"close": 63244.0, "ema50": 64350.08983747038, "macd_histogram": -60.1819905512416, "rsi14": 17.108677816116355, "atr14": 213.20714285714192, "evaluated_at": "2026-07-28T02:11:12.167399+00:00"}}}, {"symbol": "ETH/USDT", "action": "skip_no_trade_decision", "direction": "long", "reason": "technical_signals_insufficient", "order_execution_id": null, "reference_price": 1875.49, "close_only": false, "idempotency_key": "78ba69a7-2bfb-457e-9a97-934aaf418e00:ETH/USDT:15m:2026-07-28T02:00:00+00:00", "decision_trace": {"pipeline_status": "technical_signals_insufficient", "strategy_lane": "directional", "
+running_paper_runs=2
+{'paper_run_id': '78ba69a7-2bfb-457e-9a97-934aaf418e00', 'paper_status': 'running', 'execution_mode': 'binance_testnet', 'mirror_to_gateway': 1, 'cost_gate_verified': 1, 'universe_mode': 'fixed_top20', 'candidate_symbols': '["BTC/USDT", "ETH/USDT"]'}
+{'paper_run_id': 'aef8c4f6-164b-4dd7-9d59-2aecaca11af8', 'paper_status': 'running', 'execution_mode': 'local_paper', 'mirror_to_gateway': 0, 'cost_gate_verified': 0, 'universe_mode': 'fixed_top20', 'candidate_symbols': '["BTC/USDT", "ETH/USDT", "SOL/USDT"]'}
+universe_assets paper_run=78ba69a7-2bfb-457e-9a97-934aaf418e00 [{'platform_symbol': 'BTC/USDT', 'tradable_status': 'trading', 'reason': None}, {'platform_symbol': 'ETH/USDT', 'tradable_status': 'trading', 'reason': None}]
+universe_assets paper_run=aef8c4f6-164b-4dd7-9d59-2aecaca11af8 [{'platform_symbol': 'BTC/USDT', 'tradable_status': 'trading', 'reason': None}, {'platform_symbol': 'ETH/USDT', 'tradable_status': 'trading', 'reason': None}]
+funnel_terminals=12
+{'paper_run_id': '78ba69a7-2bfb-457e-9a97-934aaf418e00', 'symbol': 'ETH/USDT', 'timeframe': '15m', 'bar_time': '2026-07-28 02:15:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'TECHNICAL_SIGNALS_INSUFFICIENT', 'created_at': '2026-07-28 02:17:17'}
+{'paper_run_id': '78ba69a7-2bfb-457e-9a97-934aaf418e00', 'symbol': 'BTC/USDT', 'timeframe': '15m', 'bar_time': '2026-07-28 02:15:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'TECHNICAL_SIGNALS_INSUFFICIENT', 'created_at': '2026-07-28 02:17:17'}
+{'paper_run_id': '78ba69a7-2bfb-457e-9a97-934aaf418e00', 'symbol': 'ETH/USDT', 'timeframe': '15m', 'bar_time': '2026-07-28 02:00:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'TECHNICAL_SIGNALS_INSUFFICIENT', 'created_at': '2026-07-28 02:12:05'}
+{'paper_run_id': '78ba69a7-2bfb-457e-9a97-934aaf418e00', 'symbol': 'BTC/USDT', 'timeframe': '15m', 'bar_time': '2026-07-28 02:00:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'TECHNICAL_SIGNALS_INSUFFICIENT', 'created_at': '2026-07-28 02:12:05'}
+{'paper_run_id': 'aef8c4f6-164b-4dd7-9d59-2aecaca11af8', 'symbol': 'SOL/USDT', 'timeframe': '15m', 'bar_time': '2026-07-28 02:00:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'created_at': '2026-07-28 02:07:57'}
+{'paper_run_id': 'aef8c4f6-164b-4dd7-9d59-2aecaca11af8', 'symbol': 'ETH/USDT', 'timeframe': '15m', 'bar_time': '2026-07-28 02:00:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'created_at': '2026-07-28 02:07:57'}
+{'paper_run_id': 'aef8c4f6-164b-4dd7-9d59-2aecaca11af8', 'symbol': 'BTC/USDT', 'timeframe': '15m', 'bar_time': '2026-07-28 02:00:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'created_at': '2026-07-28 02:07:57'}
+{'paper_run_id': '78ba69a7-2bfb-457e-9a97-934aaf418e00', 'symbol': 'ETH/USDT', 'timeframe': '15m', 'bar_time': '2026-07-28 00:00:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'UNIVERSE_STATUS_REJECTED', 'created_at': '2026-07-28 02:06:13'}
+{'paper_run_id': '78ba69a7-2bfb-457e-9a97-934aaf418e00', 'symbol': 'BTC/USDT', 'timeframe': '15m', 'bar_time': '2026-07-28 00:00:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'UNIVERSE_STATUS_REJECTED', 'created_at': '2026-07-28 02:06:12'}
+{'paper_run_id': 'aef8c4f6-164b-4dd7-9d59-2aecaca11af8', 'symbol': 'SOL/USDT', 'timeframe': '15m', 'bar_time': '2026-07-27 10:15:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'ENSEMBLE_DISCARDED', 'created_at': '2026-07-27 10:29:16'}
+{'paper_run_id': 'aef8c4f6-164b-4dd7-9d59-2aecaca11af8', 'symbol': 'ETH/USDT', 'timeframe': '15m', 'bar_time': '2026-07-27 10:15:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'TECHNICAL_SIGNALS_INSUFFICIENT', 'created_at': '2026-07-27 10:29:16'}
+{'paper_run_id': 'aef8c4f6-164b-4dd7-9d59-2aecaca11af8', 'symbol': 'BTC/USDT', 'timeframe': '15m', 'bar_time': '2026-07-27 10:15:00.000000', 'terminal_stage': 'entry_signal', 'status': 'SKIPPED', 'reason_code': 'TECHNICAL_SIGNALS_INSUFFICIENT', 'created_at': '2026-07-27 10:29:16'}
+exchange_orders=0
+fill_receipts=0
+order_executions=8
+{'order_execution_id': 'abebb0a2-e544-4af4-9871-ad2c88af31e5', 'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14774000974', 'rejection_reason': None, 'created_at': '2026-07-28 02:11:07'}
+{'order_execution_id': '8202b8ee-5f35-4ee2-a0d9-0abea9ebc6fc', 'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14764997180', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16'}
+{'order_execution_id': '3bdc8fdf-b513-46a3-9ae6-2d40b3934df7', 'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14721824421', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16'}
+{'order_execution_id': 'afa9deba-03e9-43d6-8d3c-aa88087176b1', 'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14718593865', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16'}
+{'order_execution_id': '2b38c5d2-1ed1-445c-a445-7176e591cebd', 'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14708554103', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16'}
+{'order_execution_id': '402ba313-55f9-4a2c-acba-6fc45a89bd32', 'symbol': 'BTC/USDT', 'execution_status': 'EXCHANGE_REJECTED', 'gateway_order_id': None, 'rejection_reason': 'binance_auto_execute_failed: PRETRADE_DECISION_STALE: age=706.000s limit=75s', 'created_at': '2026-07-27 10:26:50'}
+{'order_execution_id': 'edbe839f-08e3-4bb5-8e81-0c108dffb891', 'symbol': 'BTC/USDT', 'execution_status': 'EXCHANGE_REJECTED', 'gateway_order_id': None, 'rejection_reason': 'binance_auto_execute_failed: PRETRADE_MARKET_SNAPSHOT_UNAVAILABLE', 'created_at': '2026-07-27 09:44:58'}
+{'order_execution_id': 'ec7901dc-afc3-49e2-b2f9-0209bcbe16b3', 'symbol': 'SOL/USDT', 'execution_status': 'filled', 'gateway_order_id': None, 'rejection_reason': None, 'created_at': '2026-07-27 08:15:36'}
+{
+  "status": "healthy",
+  "source": "BINANCE_USDT_M_TESTNET",
+  "observed_at": "2026-07-28T02:18:17.422296+00:00",
+  "open_position_count": 0,
+  "open_order_count": 0,
+  "positions": [],
+  "open_orders": [],
+  "reconciliation_status": "ok",
+  "notes": [
+    "binance gateway reconciliation snapshot"
+  ]
+}
+
+---
+exit_code: 0
+elapsed_ms: 91664
+ended_at: 2026-07-28T02:18:46.063Z
+---

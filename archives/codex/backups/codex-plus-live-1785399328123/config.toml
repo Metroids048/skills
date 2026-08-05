@@ -1,0 +1,176 @@
+model_provider = "custom"
+model = "gpt-5.5"
+model_reasoning_effort = "xhigh"
+disable_response_storage = true
+notify = ['C:\Users\win\AppData\Local\OpenAI\Codex\runtimes\cua_node\a89897d3d9baa117\bin\node_modules\@oai\sky\bin\windows\codex-computer-use.exe', "turn-ended"]
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+
+[model_providers.custom]
+name = "One-API"
+base_url = "https://api.tangguo.xin/v1"
+wire_api = "responses"
+requires_openai_auth = true
+experimental_bearer_token = "sk-YOUR_SECRET"
+
+[desktop.open-in-target-preferences]
+global = "cursor"
+
+[desktop.open-in-target-preferences.perPath]
+'C:\Users\win\Desktop\敖钦储能项目' = "fileManager"
+'C:\Users\win\Desktop\AI--main' = "cursor"
+
+[marketplaces]
+
+[marketplaces.openai-curated]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\plugins'
+
+[marketplaces.openai-api-curated]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\plugins'
+
+[marketplaces.openai-curated-remote]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\plugins-remote'
+
+[marketplaces.openai-bundled]
+source_type = "local"
+source = '\\?\C:\Users\win\.codex\.tmp\bundled-marketplaces\openai-bundled'
+
+[features]
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."superpowers@openai-api-curated"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."hyperframes@openai-curated"]
+enabled = true
+
+[plugins."hyperframes@openai-api-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."supabase@openai-curated"]
+enabled = true
+
+[plugins."openai-developers@openai-curated"]
+enabled = true
+
+[plugins."codex-security@openai-curated"]
+enabled = true
+
+[plugins."binance@openai-curated"]
+enabled = true
+
+[plugins."product-design@openai-curated-remote"]
+enabled = true
+
+[desktop]
+followUpQueueMode = "queue"
+conversationDetailMode = "STEPS_COMMANDS"
+show-context-window-usage = true
+
+[projects.'c:\users\win\desktop\ai--main']
+trust_level = "trusted"
+
+[plugins."creative-production@openai-curated-remote"]
+enabled = true
+
+[projects.'c:\users\win\desktop\program1-main-latest']
+trust_level = "trusted"
+
+[windows]
+sandbox = "elevated"
+
+[mcp_servers]
+
+[mcp_servers.chrome-devtools]
+type = "stdio"
+command = "npx"
+args = ["-y", "chrome-devtools-mcp@latest"]
+startup_timeout_sec = 30
+
+[mcp_servers.context7]
+type = "stdio"
+command = "npx"
+args = ["-y", "@upstash/context7-mcp@latest"]
+startup_timeout_sec = 30
+
+[mcp_servers.exa]
+type = "stdio"
+command = "npx"
+args = ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
+startup_timeout_sec = 30
+
+[mcp_servers.fal-ai]
+type = "stdio"
+command = "npx"
+args = ["-y", "fal-ai-mcp-server"]
+startup_timeout_sec = 30
+
+[mcp_servers.filesystem-agent-platform]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", 'C:\Users\win\Desktop\Agent Platform']
+startup_timeout_sec = 30
+
+[mcp_servers.github]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-github"]
+startup_timeout_sec = 30
+
+[mcp_servers.memory]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-memory"]
+startup_timeout_sec = 30
+
+[mcp_servers.playwright]
+type = "stdio"
+command = "npx"
+args = ["-y", "@playwright/mcp@latest", "--browser", "chrome"]
+startup_timeout_sec = 30
+
+[mcp_servers.sequential-thinking]
+type = "stdio"
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+startup_timeout_sec = 30
+
+[plugins."picsart@openai-curated"]
+enabled = true
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-07-08T03:02:15Z"
+source_type = "local"
+source = '\\?\C:\Users\win\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."figma@openai-curated"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true

@@ -1,0 +1,157 @@
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import { useAuthStore } from '../stores/auth'
+
+const routes: RouteRecordRaw[] = [
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../pages/Login/LoginPage.vue'),
+    meta: { public: true, title: '登录' },
+  },
+  {
+    path: '/',
+    component: () => import('../components/Layout/WorkbenchLayout.vue'),
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        name: 'dashboard',
+        component: () => import('../pages/Dashboard/DashboardPage.vue'),
+        meta: { title: '首页总览', module: 'home' },
+      },
+      {
+        path: 'reserve/collection',
+        name: 'reserve-collection',
+        component: () => import('../pages/Reserve/ReserveCollectionPage.vue'),
+        meta: { title: '储量工作表', module: 'reserve' },
+      },
+      {
+        path: 'reserve/history-cleaning',
+        name: 'reserve-history-cleaning',
+        component: () => import('../pages/Reserve/ReserveHistoryCleaningPage.vue'),
+        meta: { title: '数据接入', module: 'reserve' },
+      },
+      {
+        path: 'reserve/analysis',
+        name: 'reserve-analysis',
+        component: () => import('../pages/Reserve/ReserveAnalysisPage.vue'),
+        meta: { title: '储量洞察', module: 'reserve' },
+      },
+      {
+        path: 'reserve/classification',
+        name: 'reserve-classification',
+        redirect: '/reserve/analysis?focus=classification',
+      },
+      {
+        path: 'reserve/version',
+        name: 'reserve-version',
+        component: () => import('../pages/Reserve/ReserveVersionPage.vue'),
+        meta: { title: '储量版本对比', module: 'reserve' },
+      },
+      {
+        path: 'reserve/output',
+        name: 'reserve-output',
+        redirect: '/reserve/analysis?focus=graphics',
+      },
+      {
+        path: 'planning/history',
+        name: 'planning-history',
+        redirect: '/planning/collection?focus=history',
+      },
+      {
+        path: 'planning/workflow',
+        name: 'planning-workflow',
+        component: () => import('../pages/Planning/PlanningSchemePage.vue'),
+        meta: { title: '规划工作表', module: 'planning' },
+      },
+      {
+        path: 'planning/collection',
+        name: 'planning-collection',
+        component: () => import('../pages/Planning/PlanningCollectionPage.vue'),
+        meta: { title: '基础数据', module: 'planning' },
+      },
+      {
+        path: 'planning/scheme',
+        name: 'planning-scheme',
+        redirect: '/planning/workflow',
+      },
+      {
+        path: 'planning/profile',
+        name: 'planning-profile',
+        component: () => import('../pages/Planning/PlanningProfilePage.vue'),
+        meta: { title: '调整与排期', module: 'planning' },
+      },
+      {
+        path: 'planning/schedule',
+        name: 'planning-schedule',
+        redirect: '/planning/profile?focus=schedule',
+      },
+      {
+        path: 'planning/version',
+        name: 'planning-version',
+        component: () => import('../pages/Planning/PlanningVersionPage.vue'),
+        meta: { title: '版本对比', module: 'planning' },
+      },
+      {
+        path: 'planning/output',
+        name: 'planning-output',
+        redirect: '/planning/version?focus=output',
+      },
+      {
+        path: 'planning/visualization',
+        name: 'planning-visualization',
+        redirect: '/planning/version?focus=graphics',
+      },
+      {
+        path: 'assistant',
+        name: 'assistant',
+        component: () => import('../pages/Assistant/AssistantPage.vue'),
+        meta: { title: '敖钦辅助', module: 'assistant' },
+      },
+      {
+        path: 'admin',
+        name: 'admin',
+        component: () => import('../pages/Admin/AdminPage.vue'),
+        meta: { title: '系统管理', module: 'admin' },
+      },
+      {
+        path: '403',
+        name: 'forbidden',
+        component: () => import('../pages/Errors/ErrorPage.vue'),
+        meta: { title: '权限不足', module: 'error', code: '403' },
+      },
+      {
+        path: '500',
+        name: 'server-error',
+        component: () => import('../pages/Errors/ErrorPage.vue'),
+        meta: { title: '系统异常', module: 'error', code: '500' },
+      },
+    ],
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: () => import('../pages/Errors/ErrorPage.vue'),
+    meta: { title: '页面不存在', module: 'error', code: '404' },
+  },
+]
+
+export const router = createRouter({
+  history: createWebHistory(),
+  routes,
+  scrollBehavior: () => ({ top: 0 }),
+})
+
+router.beforeEach((to) => {
+  const auth = useAuthStore()
+  document.title = `${String(to.meta.title || '工作台')} - 敖钦储量及产量规划协同工作台`
+
+  if (!to.meta.public && !auth.currentUser) {
+    return {
+      path: '/login',
+      query: { redirect: to.fullPath },
+    }
+  }
+
+  return true
+})

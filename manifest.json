@@ -1,6 +1,6 @@
 {
-    "version":  "1.2.0",
-    "exportedAt":  "2026-08-05T09:51:11+08:00",
+    "version":  "1.3.0",
+    "exportedAt":  "2026-08-05T10:07:00+08:00",
     "sourceMachine":  "DESKTOP-6CJ3QPD",
     "skillCounts":  {
                         "agents":  13,
@@ -17,13 +17,15 @@
                      "AIOS",
                      "global memory",
                      "project agent memory snapshots",
-                     "knowledge-center (Desktop/全局配置 sanitized)"
+                     "knowledge-center FULL (Desktop/全局配置)",
+                     "codex/claude/cursor session archives",
+                     "ai-workspace clarifications/backups"
                  ],
     "excludes":  [
-                     "tokens/secrets/auth/session files",
+                     "tokens/secrets/auth/.env/CC Switch",
                      "sqlite runtime state",
                      "logs/cache/browser state",
-                     "venv/node_modules/vendor runtime caches",
-                     "raw chat dumps / session archives / conflict records"
+                     "venv/vendor/node_modules",
+                     "AppData editor caches"
                  ]
 }

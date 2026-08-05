@@ -1,0 +1,6 @@
+---
+pid: 26080
+cwd: |
+  C:\Users\win
+---
+PS C:\Users\win> 

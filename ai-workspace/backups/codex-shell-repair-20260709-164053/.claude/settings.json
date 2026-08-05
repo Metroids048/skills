@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "YOUR_SECRET",
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:15721"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Claude -HookEvent SessionStart",
+            "statusMessage": "Load global skills",
+            "timeout": 45,
+            "type": "command"
+          }
+        ],
+        "matcher": "startup|resume|clear|compact"
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"C:\\Users\\win\\.ai-workspace\\scripts\\scan-global-skills.ps1\" -OutputFormat Claude -HookEvent UserPromptSubmit",
+            "statusMessage": "匹配全局 Skills",
+            "timeout": 45,
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  },
+  "includeCoAuthoredBy": false,
+  "mcpServers": {
+    "vibearound": {
+      "type": "http",
+      "url": "http://127.0.0.1:12358/va/mcp?token=YOUR_TOKEN"
+    }
+  },
+  "model": "sonnet"
+}

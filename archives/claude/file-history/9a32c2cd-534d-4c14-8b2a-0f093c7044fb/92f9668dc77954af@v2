@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+import sys
+import openpyxl
+
+path = r"C:\Users\win\Desktop\敖钦储能项目\原始需求\储量需求\内部储量+未动用储量录入模板.xlsx"
+
+wb = openpyxl.load_workbook(path, data_only=True)
+print("SHEETS:", wb.sheetnames)
+for name in wb.sheetnames:
+    ws = wb[name]
+    print("\n=== SHEET:", name, "dims:", ws.dimensions, "===")

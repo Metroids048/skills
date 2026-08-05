@@ -1,0 +1,6 @@
+---
+pid: 1728
+cwd: |
+  C:\Users\win\Desktop\AI--main
+---
+PS C:\Users\win\Desktop\AI--main> 

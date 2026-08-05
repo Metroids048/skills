@@ -1,0 +1,23 @@
+---
+pid: 31560
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\n$py = \"C:\\Users\\win\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\"\n# Cancel orphan Testnet orders only (positions already flat)\n@'\nfrom services.execution.gateway import configured_gateways\nfrom services.execution.testnet_cleanup import testnet_account_cleanup\nfrom shared.config import settings\n\nprint(\"testnet\", settings.binance_use_testnet, \"live\", settings.live_trading_enabled)\ngw = configured_gateways()[0]\n# peek first\nsnap = gw.reconcile(live_run_id=\"p03-orphan-check\")\nprint(\"positions\", snap.get(\"open_positions\"))\nprint(\"open_orders\", len(snap.get(\"open_orders\") or []))\nfor o in snap.get(\"open_orders\") or []:\n    print(o)\nresult = testnet_account_cleanup(gw, idempotency_key=\"p03-orphan-tp-cleanup\")\nprint(\"cleanup\", result)\nsnap2 = gw.reconcile(live_run_id=\"p03-orphan-after\")\nprint(\"after positions\", snap2.get(\"open_positions\"))\nprint(\"after orders\", len(snap2.get(\"open_orders\") or []))\n'@ | Set-Content -Encoding utf8 scripts\\_cancel_orphan_tp.py\n& $py scripts\\_cancel_orphan_tp.py\n"
+started_at: 2026-07-28T07:18:37.674Z
+running_for_ms: 50039    
+---
+testnet True live False
+positions []
+open_orders 1
+{'algoId': 1000000148362162, 'clientAlgoId': 'web_algo_q9qbdttktpxp4bijpri1hm1', 'algoType': 'CONDITIONAL', 'orderType': 'TAKE_PROFIT', 'symbol': 'ETHUSDT', 'side': 'BUY', 'positionSide': 'BOTH', 'timeInForce': 'GTC', 'quantity': '12.554', 'algoStatus': 'NEW', 'actualOrderId': '', 'actualQty': '0.0', 'triggerPrice': '1872.0', 'price': '1872.0', 'icebergQuantity': None, 'selfTradePreventionMode': 'EXPIRE_MAKER', 'workingType': 'CONTRACT_PRICE', 'priceMatch': 'NONE', 'closePosition': False, 'priceProtect': True, 'reduceOnly': False, 'createTime': 1785212478576, 'updateTime': 1785212478577, 'triggerTime': 0, 'goodTillDate': 0}
+[testnet_cleanup] account not clean: 0 position(s), 1 open order(s) — starting cleanup
+[testnet_cleanup] cancelled order 1000000148362162 on ETHUSDT
+[testnet_cleanup] account is now clean (cancelled 1 order(s), closed 0 position(s))
+cleanup {'skipped': False, 'cancelled_orders': ['1000000148362162'], 'closed_positions': [], 'cancel_errors': [], 'close_errors': []}
+after positions []
+after orders 0
+
+---
+exit_code: 0
+elapsed_ms: 50580
+ended_at: 2026-07-28T07:19:28.254Z
+---

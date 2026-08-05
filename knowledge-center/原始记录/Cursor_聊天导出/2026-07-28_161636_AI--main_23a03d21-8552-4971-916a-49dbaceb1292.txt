@@ -1,0 +1,1054 @@
+diff --git a/apps/api/routers/runtime.py b/apps/api/routers/runtime.py
+index 7e3f8a9..1e9466b 100644
+--- a/apps/api/routers/runtime.py
++++ b/apps/api/routers/runtime.py
+@@ -22,13 +22,14 @@ from services.strategy_library import (
+     LlmInvocationRepository,
+     PaperRunRepository,
+ )
+-from shared.models import RuntimeDatum
++from shared.models import PaperRun, RuntimeDatum
+ from shared.models.execution_truth import ExchangeOrderState, ExecutionMode
+ 
+ router = APIRouter(prefix="/runtime", tags=["runtime-truth"])
+-_EXCHANGE_CACHE_SECONDS = 5.0
+-_EXCHANGE_TRUTH_TIMEOUT_SECONDS = 15.0
++_EXCHANGE_CACHE_SECONDS = 15.0
++_EXCHANGE_TRUTH_TIMEOUT_SECONDS = 8.0
+ _exchange_cache_lock = Lock()
++_exchange_probe_lock = Lock()
+ _exchange_cache: tuple[datetime, dict] | None = None
+ _exchange_truth_executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="runtime-exchange-truth")
+ 
+@@ -41,7 +42,7 @@ def _datum(
+     status: Literal["available", "stale", "unavailable"] = "available",
+     error: str | None = None,
+ ) -> dict:
+-    freshness = "unavailable" if status == "unavailable" else "current"
++    freshness = "unavailable" if status == "unavailable" else ("stale" if status == "stale" else "current")
+     return RuntimeDatum(
+         value=value,
+         source=source,
+@@ -52,12 +53,40 @@ def _datum(
+     ).model_dump(mode="json")
+ 
+ 
++def _cached_exchange_truth(*, allow_stale: bool) -> dict | None:
++    with _exchange_cache_lock:
++        if _exchange_cache is None:
++            return None
++        age = (datetime.now(UTC) - _exchange_cache[0]).total_seconds()
++        if age < _EXCHANGE_CACHE_SECONDS or allow_stale:
++            cached = dict(_exchange_cache[1])
++            if allow_stale and age >= _EXCHANGE_CACHE_SECONDS and cached.get("status") == "available":
++                cached["status"] = "stale"
++                cached["freshness"] = "stale"
++            return cached
++        return None
++
++
+ def _exchange_truth() -> dict:
+     global _exchange_cache
+-    with _exchange_cache_lock:
++    fresh = _cached_exchange_truth(allow_stale=False)
++    if fresh is not None:
++        return fresh
++    # One probe at a time. Concurrent UI polls must not queue behind a hung
++    # Binance reconcile on the single worker thread.
++    if not _exchange_probe_lock.acquire(blocking=False):
++        stale = _cached_exchange_truth(allow_stale=True)
++        if stale is not None:
++            return stale
++        return _datum(
++            value=None,
++            source="BINANCE_USDT_M_TESTNET",
++            observed_at=datetime.now(UTC),
++            status="unavailable",
++            error="exchange truth probe already in progress",
++        )
++    try:
+         observed_at = datetime.now(UTC)
+-        if _exchange_cache is not None and (observed_at - _exchange_cache[0]).total_seconds() < _EXCHANGE_CACHE_SECONDS:
+-            return _exchange_cache[1]
+         try:
+             gateway = configured_gateways()[0]
+             future = _exchange_truth_executor.submit(
+@@ -82,15 +111,26 @@ def _exchange_truth() -> dict:
+                 observed_at=observed_at,
+             )
+         except Exception as exc:  # noqa: BLE001 - unavailable must be explicit
+-            result = _datum(
+-                value=None,
+-                source="BINANCE_USDT_M_TESTNET",
+-                observed_at=observed_at,
+-                status="unavailable",
+-                error=str(exc),
+-            )
+-        _exchange_cache = (datetime.now(UTC), result)
++            stale = _cached_exchange_truth(allow_stale=True)
++            if stale is not None and stale.get("value") is not None:
++                stale = dict(stale)
++                stale["status"] = "stale"
++                stale["freshness"] = "stale"
++                stale["error"] = str(exc)
++                result = stale
++            else:
++                result = _datum(
++                    value=None,
++                    source="BINANCE_USDT_M_TESTNET",
++                    observed_at=observed_at,
++                    status="unavailable",
++                    error=str(exc),
++                )
++        with _exchange_cache_lock:
++            _exchange_cache = (datetime.now(UTC), result)
+         return result
++    finally:
++        _exchange_probe_lock.release()
+ 
+ 
+ def _platform_symbol(value: object) -> str:
+@@ -162,6 +202,49 @@ def _exchange_linked_positions(local_open: list) -> list:
+     ]
+ 
+ 
++def _select_strategy_evidence_run(paper_runs: list[PaperRun]) -> PaperRun | None:
++    active_directional = [
++        run
++        for run in paper_runs
++        if run.execution_profile.get("strategy_lane") == "directional" and run.paper_status in {"running", "locked"}
++    ]
++    if not active_directional:
++        return None
++
++    def _rank(run: PaperRun) -> tuple[int, str]:
++        profile = run.execution_profile or {}
++        testnet_rank = 0 if str(profile.get("execution_mode") or "") == "binance_testnet" else 1
++        return (testnet_rank, run.paper_run_id or "")
++
++    return min(active_directional, key=_rank)
++
++
++def _strategy_evidence_datum(*, paper_runs: list[PaperRun], observed_at: datetime) -> dict:
++    paper_run = _select_strategy_evidence_run(paper_runs)
++    if paper_run is None:
++        return _datum(
++            value=None,
++            source="PAPER_RUN_REPOSITORY",
++            observed_at=observed_at,
++            status="unavailable",
++            error="no active directional paper run",
++        )
++    profile = paper_run.execution_profile or {}
++    sampling_enabled = bool(profile.get("simulation_sampling_fallback_enabled"))
++    return _datum(
++        value={
++            "paper_run_id": paper_run.paper_run_id,
++            "strategy_lane": profile.get("strategy_lane"),
++            "acceptance_symbols": profile.get("acceptance_symbols") or paper_run.candidate_symbols,
++            "simulation_sampling_fallback_enabled": sampling_enabled,
++            "execution_mode": profile.get("execution_mode"),
++            "evidence_class": "NON_PROMOTABLE_PIPELINE_SAMPLE" if sampling_enabled else None,
++        },
++        source="PAPER_RUN_REPOSITORY",
++        observed_at=observed_at,
++    )
++
++
+ @router.get("/snapshot")
+ def runtime_snapshot(db: Session = Depends(get_db_session)) -> dict:
+     observed_at = datetime.now(UTC)
+@@ -177,6 +260,7 @@ def runtime_snapshot(db: Session = Depends(get_db_session)) -> dict:
+         observed_at=observed_at,
+     )
+     scheduler = load_external_scheduler_state(now=observed_at)
++    paper_runs = PaperRunRepository(db).list_paper_runs()
+     return {
+         "observed_at": observed_at.isoformat(),
+         "exchange": exchange,
+@@ -199,6 +283,19 @@ def runtime_snapshot(db: Session = Depends(get_db_session)) -> dict:
+             status="available" if scheduler.running else "unavailable",
+             error=None if scheduler.running else scheduler.reason,
+         ),
++        "data_freshness": _datum(
++            value={
++                "data_fresh": scheduler.data_fresh,
++                "exchange_info_ready": scheduler.exchange_info_ready,
++                "heartbeat_at": (scheduler.heartbeat_at.isoformat() if scheduler.heartbeat_at else None),
++                "running": scheduler.running,
++            },
++            source="RUNTIME_SCHEDULER_HEARTBEAT",
++            observed_at=scheduler.heartbeat_at,
++            status="available" if scheduler.running else "unavailable",
++            error=None if scheduler.running else scheduler.reason,
++        ),
++        "strategy_evidence": _strategy_evidence_datum(paper_runs=paper_runs, observed_at=observed_at),
+         "protections": _datum(
+             value=[item.model_dump(mode="json") for item in execution_repo.list_protection_records(limit=200)],
+             source="LOCAL_SQL_PROJECTION",
+diff --git a/services/agents/service.py b/services/agents/service.py
+index e22b9e7..3b6c02a 100644
+--- a/services/agents/service.py
++++ b/services/agents/service.py
+@@ -101,7 +101,7 @@ class AgentTaskService:
+         started_at = time.perf_counter()
+         output_payload = self._execute(task)
+         latency_ms = max(0, int((time.perf_counter() - started_at) * 1000))
+-        if task.task_type in {"pre_execution_veto_llm", "market_review_llm"}:
++        if task.task_type in {"pre_execution_veto_llm", "market_review_llm", "trade_review_llm"}:
+             provider_trace = output_payload.get("provider_trace") or {}
+             usage = output_payload.get("usage") or {}
+             serialized_input = json.dumps(task.input_payload, sort_keys=True, default=str)
+@@ -158,6 +158,10 @@ class AgentTaskService:
+             return self._execute_llm_classification(task)
+         if task.agent_type == "decision_veto_agent" and task.task_type == "pre_execution_veto_llm":
+             return self._execute_llm_veto(task)
++        if task.agent_type == "review_agent" and task.task_type == "market_review_llm":
++            return self._execute_llm_market_review(task)
++        if task.agent_type == "review_agent" and task.task_type == "trade_review_llm":
++            return self._execute_llm_trade_review(task)
+         # Registry dispatch — O(1) lookup instead of an if/elif chain.
+         handler = self._executors.get((task.agent_type, task.task_type))
+         if handler is None:
+@@ -358,6 +362,81 @@ class AgentTaskService:
+             "output_ref": f"agent_task:{task.agent_task_id}",
+         }
+ 
++    def _execute_llm_market_review(self, task: AgentTask) -> dict:
++        """Advisory MARKET_REVIEW: never creates candidates or blocks entry/exit."""
++        return self._execute_llm_advisory_review(task, output_key="market_review", executor_name="llm_market_review")
++
++    def _execute_llm_trade_review(self, task: AgentTask) -> dict:
++        """Advisory TRADE_REVIEW: never blocks entry/exit or changes veto decisions."""
++        return self._execute_llm_advisory_review(task, output_key="trade_review", executor_name="llm_trade_review")
++
++    def _execute_llm_advisory_review(self, task: AgentTask, *, output_key: str, executor_name: str) -> dict:
++        try:
++            result = self.llm_runtime.generate_structured(
++                agent_type=task.agent_type,
++                task_type=task.task_type,
++                payload=task.input_payload,
++            )
++            raw_output = result.get("raw_output", {})
++            advisory = _validate_advisory_review_output(raw_output)
++            provider_trace = {
++                "provider": result.get("provider", "unknown"),
++                "model": result.get("model", "unknown"),
++            }
++            return {
++                "executor_registered": True,
++                "completed": True,
++                "task_status": "completed",
++                "executor_name": executor_name,
++                "schema_validation_status": "passed",
++                "provider_trace": provider_trace,
++                "usage": result.get("usage") or {},
++                "attempt_history": [{"status": "passed", **provider_trace}],
++                output_key: advisory,
++                "output_ref": f"{output_key}:{task.agent_task_id}",
++            }
++        except TimeoutError as exc:
++            return {
++                "executor_registered": True,
++                "completed": False,
++                "task_status": "failed",
++                "executor_name": executor_name,
++                "message": str(exc),
++                "schema_validation_status": "timeout",
++                "provider_trace": {},
++                "attempt_history": [{"status": "timeout", "message": str(exc)}],
++                output_key: None,
++                "output_ref": f"{output_key}:{task.agent_task_id}",
++            }
++        except RuntimeError as exc:
++            logger.warning("llm %s runtime unavailable: %s", output_key, exc)
++            return {
++                "executor_registered": True,
++                "completed": False,
++                "task_status": "failed",
++                "executor_name": executor_name,
++                "message": str(exc),
++                "schema_validation_status": "provider_unavailable",
++                "provider_trace": {},
++                "attempt_history": [{"status": "provider_unavailable", "message": str(exc)}],
++                output_key: None,
++                "output_ref": f"{output_key}:{task.agent_task_id}",
++            }
++        except Exception as exc:
++            logger.warning("llm %s schema validation failed: %s", output_key, exc)
++            return {
++                "executor_registered": True,
++                "completed": False,
++                "task_status": "failed",
++                "executor_name": executor_name,
++                "message": str(exc),
++                "schema_validation_status": "failed",
++                "provider_trace": {},
++                "attempt_history": [{"status": "failed", "message": str(exc)}],
++                output_key: None,
++                "output_ref": f"{output_key}:{task.agent_task_id}",
++            }
++
+     def _execute_llm_veto(self, task: AgentTask) -> dict:
+         try:
+             result = self.llm_runtime.generate_structured(
+@@ -478,6 +557,28 @@ class AgentTaskService:
+         )
+ 
+ 
++def _validate_advisory_review_output(raw_output: dict) -> dict:
++    bias = raw_output.get("bias")
++    confidence = raw_output.get("confidence")
++    summary = raw_output.get("summary")
++    risk_flags = raw_output.get("risk_flags")
++    if bias not in {"support", "neutral", "oppose"}:
++        raise ValueError("advisory review bias failed schema validation")
++    if not isinstance(confidence, (int, float)) or not 0 <= float(confidence) <= 1:
++        raise ValueError("advisory review confidence failed schema validation")
++    if not isinstance(summary, str):
++        raise ValueError("advisory review summary failed schema validation")
++    if not isinstance(risk_flags, list) or any(not isinstance(item, str) for item in risk_flags):
++        raise ValueError("advisory review risk_flags failed schema validation")
++    return {
++        "bias": bias,
++        "confidence": float(confidence),
++        "risk_flags": risk_flags,
++        "summary": summary,
++        "advisory_only": True,
++    }
++
++
+ def _draft_from_open_source_idea(idea: StrategyIdea) -> StrategyDraft:
+     title = idea.title.lower()
+     if "funding" in title or "carry" in title:
+diff --git a/services/execution/decision_pipeline.py b/services/execution/decision_pipeline.py
+index 1ec67a7..4796abd 100644
+--- a/services/execution/decision_pipeline.py
++++ b/services/execution/decision_pipeline.py
+@@ -766,6 +766,18 @@ class DecisionPipeline:
+                     source_ref=f"agent_task:{task.agent_task_id}",
+                 )
+             )
++        self._submit_advisory_trade_review(
++            service=service,
++            symbol=symbol,
++            timeframe=timeframe,
++            signals=signals,
++            ensemble=ensemble,
++            meta_label=meta_label,
++            volatility=volatility,
++            cycle_id=cycle_id,
++            decision_id=decision_id,
++            veto_task=task,
++        )
+         payload = task.output_payload.get("veto_result", {})
+         if not isinstance(payload, dict):
+             return DecisionVetoResult(
+@@ -788,6 +800,45 @@ class DecisionPipeline:
+             agent_task_ref=task.agent_task_id,
+         )
+ 
++    def _submit_advisory_trade_review(
++        self,
++        *,
++        service: AgentTaskService,
++        symbol: str,
++        timeframe: str,
++        signals: list[TradeSignal],
++        ensemble: SignalEnsemble,
++        meta_label: MetaLabel,
++        volatility: dict[str, Any],
++        cycle_id: str | None,
++        decision_id: str | None,
++        veto_task: AgentTask,
++    ) -> None:
++        """Advisory TRADE_REVIEW only; failures must not affect veto or trading."""
++        try:
++            service.submit_task(
++                AgentTaskRequest(
++                    agent_type="review_agent",
++                    task_type="trade_review_llm",
++                    input_ref=f"signal_ensemble:{ensemble.ensemble_id}",
++                    input_payload={
++                        "cycle_id": cycle_id,
++                        "decision_id": decision_id,
++                        "symbol": symbol,
++                        "timeframe": timeframe,
++                        "technical_signals": [signal.model_dump(mode="json") for signal in signals],
++                        "ensemble": ensemble.model_dump(mode="json"),
++                        "meta_label": meta_label.model_dump(mode="json"),
++                        "veto_task_id": veto_task.agent_task_id,
++                        "veto_result": (veto_task.output_payload or {}).get("veto_result"),
++                        "market_context": {"volatility": volatility},
++                        "advisory_only": True,
++                    },
++                )
++            )
++        except Exception:
++            return
++
+     @staticmethod
+     def _skipped(
+         *,
+diff --git a/services/execution/exchange_order_transitions.py b/services/execution/exchange_order_transitions.py
+new file mode 100644
+index 0000000..f801a56
+--- /dev/null
++++ b/services/execution/exchange_order_transitions.py
+@@ -0,0 +1,123 @@
++"""Allowed transitions for exchange-first ExchangeOrderState."""
++
++from __future__ import annotations
++
++from shared.models.execution_truth import ExchangeOrderState
++
++ALLOWED_EXCHANGE_ORDER_TRANSITIONS: dict[ExchangeOrderState, frozenset[ExchangeOrderState]] = {
++    ExchangeOrderState.INTENT_CREATED: frozenset(
++        {
++            ExchangeOrderState.PRETRADE_APPROVED,
++            ExchangeOrderState.PRETRADE_REJECTED,
++        }
++    ),
++    ExchangeOrderState.PRETRADE_APPROVED: frozenset(
++        {
++            ExchangeOrderState.EXCHANGE_SUBMITTING,
++            ExchangeOrderState.PRETRADE_REJECTED,
++        }
++    ),
++    ExchangeOrderState.EXCHANGE_SUBMITTING: frozenset(
++        {
++            ExchangeOrderState.EXCHANGE_ACKNOWLEDGED,
++            ExchangeOrderState.PARTIALLY_FILLED,
++            ExchangeOrderState.FILLED,
++            ExchangeOrderState.EXCHANGE_REJECTED,
++            ExchangeOrderState.EXCHANGE_UNKNOWN,
++            ExchangeOrderState.EMERGENCY_CLOSE_PENDING,
++        }
++    ),
++    ExchangeOrderState.EXCHANGE_ACKNOWLEDGED: frozenset(
++        {
++            ExchangeOrderState.PARTIALLY_FILLED,
++            ExchangeOrderState.FILLED,
++            ExchangeOrderState.EXCHANGE_REJECTED,
++            ExchangeOrderState.EXCHANGE_UNKNOWN,
++        }
++    ),
++    ExchangeOrderState.PARTIALLY_FILLED: frozenset(
++        {
++            ExchangeOrderState.PARTIALLY_FILLED,
++            ExchangeOrderState.FILLED,
++            ExchangeOrderState.EXCHANGE_UNKNOWN,
++            ExchangeOrderState.EXCHANGE_REJECTED,
++        }
++    ),
++    ExchangeOrderState.FILLED: frozenset(
++        {
++            ExchangeOrderState.POSITION_PROJECTED,
++            ExchangeOrderState.EXCHANGE_UNKNOWN,
++            ExchangeOrderState.DUST_REMAINS,
++            ExchangeOrderState.CLOSED,
++        }
++    ),
++    ExchangeOrderState.POSITION_PROJECTED: frozenset(
++        {
++            ExchangeOrderState.PROTECTION_SUBMITTING,
++            ExchangeOrderState.PROTECTED,
++            ExchangeOrderState.PROTECTION_FAILED,
++            ExchangeOrderState.EXCHANGE_UNKNOWN,
++            ExchangeOrderState.CLOSED,
++        }
++    ),
++    ExchangeOrderState.PROTECTION_SUBMITTING: frozenset(
++        {
++            ExchangeOrderState.PROTECTED,
++            ExchangeOrderState.PROTECTION_FAILED,
++            ExchangeOrderState.EXCHANGE_UNKNOWN,
++        }
++    ),
++    ExchangeOrderState.PROTECTED: frozenset(
++        {
++            ExchangeOrderState.CLOSED,
++            ExchangeOrderState.EMERGENCY_CLOSE_PENDING,
++            ExchangeOrderState.EXCHANGE_UNKNOWN,
++            ExchangeOrderState.DUST_REMAINS,
++        }
++    ),
++    ExchangeOrderState.PRETRADE_REJECTED: frozenset(),
++    ExchangeOrderState.EXCHANGE_REJECTED: frozenset(),
++    ExchangeOrderState.PROTECTION_FAILED: frozenset(
++        {
++            ExchangeOrderState.EMERGENCY_CLOSE_PENDING,
++            ExchangeOrderState.EXCHANGE_UNKNOWN,
++            ExchangeOrderState.CLOSED,
++        }
++    ),
++    ExchangeOrderState.EXCHANGE_UNKNOWN: frozenset(
++        {
++            ExchangeOrderState.EXCHANGE_ACKNOWLEDGED,
++            ExchangeOrderState.PARTIALLY_FILLED,
++            ExchangeOrderState.FILLED,
++            ExchangeOrderState.POSITION_PROJECTED,
++            ExchangeOrderState.PROTECTED,
++            ExchangeOrderState.EXCHANGE_REJECTED,
++            ExchangeOrderState.EMERGENCY_CLOSE_PENDING,
++            ExchangeOrderState.DUST_REMAINS,
++            ExchangeOrderState.CLOSED,
++        }
++    ),
++    ExchangeOrderState.EMERGENCY_CLOSE_PENDING: frozenset(
++        {
++            ExchangeOrderState.CLOSED,
++            ExchangeOrderState.EXCHANGE_UNKNOWN,
++            ExchangeOrderState.DUST_REMAINS,
++        }
++    ),
++    ExchangeOrderState.DUST_REMAINS: frozenset(
++        {
++            ExchangeOrderState.CLOSED,
++            ExchangeOrderState.EMERGENCY_CLOSE_PENDING,
++            ExchangeOrderState.EXCHANGE_UNKNOWN,
++        }
++    ),
++    ExchangeOrderState.CLOSED: frozenset(),
++}
++
++
++def validate_exchange_order_transition(current: ExchangeOrderState, next_state: ExchangeOrderState) -> None:
++    if next_state == current:
++        return
++    allowed = ALLOWED_EXCHANGE_ORDER_TRANSITIONS.get(current, frozenset())
++    if next_state not in allowed:
++        raise ValueError(f"illegal exchange order transition: {current} -> {next_state}")
+diff --git a/services/execution/gateway.py b/services/execution/gateway.py
+index 28ba1bc..e95d5e3 100644
+--- a/services/execution/gateway.py
++++ b/services/execution/gateway.py
+@@ -3,16 +3,19 @@
+ from __future__ import annotations
+ 
+ import contextlib
++from collections.abc import Sequence
++from concurrent.futures import ThreadPoolExecutor
+ from dataclasses import dataclass, field
+ from datetime import UTC, datetime
+ from decimal import Decimal
+ from typing import Any, Protocol
+ 
+ from services.data.universe import FIXED_TOP20_SYMBOLS, platform_to_exchange_symbol
++from services.execution.bootstrap import AUTO_PAPER_EXECUTION_SYMBOLS
+ from services.execution.execution_truth import binance_client_order_id
+ from services.execution.order_context import build_gateway_market_rules
+ from services.execution.order_normalizer import OrderNormalizer
+-from shared.binance_network import binance_ccxt_config
++from shared.binance_network import binance_ccxt_config, binance_urlopen_json
+ from shared.config import settings
+ from shared.models import (
+     ExchangeAccountSnapshot,
+@@ -543,33 +546,51 @@ class BinanceUsdtPerpetualGateway:
+     ) -> PretradeMarketSnapshot:
+         exchange_symbol = _normalize_binance_symbol(order_request.symbol)
+         market_id = _binance_market_id(exchange_symbol)
+-        ticker = self.client.fetch_ticker(exchange_symbol)
+-        info = _payload_info(ticker)
+-        bid = _positive_float(ticker.get("bid") or info.get("bidPrice"))
+-        ask = _positive_float(ticker.get("ask") or info.get("askPrice"))
+-        mark = _positive_float(ticker.get("mark") or info.get("markPrice"))
++        # Prefer direct USDM public REST (and CCXT public helpers as fallback).
++        # Testnet fetch_ticker omits bid/ask/mark and CCXT demo-fapi is too slow
++        # for the 75s Sampling pretrade window.
++        bid: float | None = None
++        ask: float | None = None
++        mark: float | None = None
+         exchange_times: list[float] = []
++        ticker: dict[str, Any] = {}
+ 
+-        if bid is None or ask is None:
+-            fetch_book = getattr(self.client, "fapiPublicGetTickerBookTicker", None)
+-            book = fetch_book({"symbol": market_id}) if callable(fetch_book) else {}
+-            if isinstance(book, dict):
+-                bid = bid or _positive_float(book.get("bidPrice") or book.get("bid"))
+-                ask = ask or _positive_float(book.get("askPrice") or book.get("ask"))
+-                book_time = book.get("time") or book.get("timestamp")
+-                if book_time is not None:
+-                    with contextlib.suppress(TypeError, ValueError):
+-                        exchange_times.append(float(book_time))
+-
+-        if mark is None:
+-            fetch_mark = getattr(self.client, "fapiPublicGetPremiumIndex", None)
+-            premium = fetch_mark({"symbol": market_id}) if callable(fetch_mark) else {}
+-            if isinstance(premium, dict):
+-                mark = _positive_float(premium.get("markPrice") or premium.get("mark"))
+-                premium_time = premium.get("time") or premium.get("timestamp")
+-                if premium_time is not None:
+-                    with contextlib.suppress(TypeError, ValueError):
+-                        exchange_times.append(float(premium_time))
++        book, premium = _fetch_pretrade_book_and_mark(
++            client=self.client,
++            market_id=market_id,
++            use_testnet=self.use_testnet,
++        )
++        if isinstance(book, dict):
++            bid = _positive_float(book.get("bidPrice") or book.get("bid"))
++            ask = _positive_float(book.get("askPrice") or book.get("ask"))
++            book_time = book.get("time") or book.get("timestamp")
++            if book_time is not None:
++                with contextlib.suppress(TypeError, ValueError):
++                    exchange_times.append(float(book_time))
++        if isinstance(premium, dict):
++            mark = _positive_float(premium.get("markPrice") or premium.get("mark"))
++            premium_time = premium.get("time") or premium.get("timestamp")
++            if premium_time is not None:
++                with contextlib.suppress(TypeError, ValueError):
++                    exchange_times.append(float(premium_time))
++
++        if bid is None or ask is None or mark is None:
++            ticker = self.client.fetch_ticker(exchange_symbol)
++            info = _payload_info(ticker)
++            bid = bid or _positive_float(ticker.get("bid") or info.get("bidPrice"))
++            ask = ask or _positive_float(ticker.get("ask") or info.get("askPrice"))
++            mark = mark or _positive_float(ticker.get("mark") or info.get("markPrice"))
++            last = _positive_float(ticker.get("last") or info.get("lastPrice") or ticker.get("close"))
++            if mark is None and last is not None:
++                mark = last
++            if bid is None and last is not None:
++                bid = last
++            if ask is None and last is not None:
++                ask = last
++            ticker_time = ticker.get("timestamp") or info.get("closeTime")
++            if ticker_time is not None:
++                with contextlib.suppress(TypeError, ValueError):
++                    exchange_times.append(float(ticker_time))
+ 
+         if bid is None or ask is None or mark is None:
+             raise ValueError("PRETRADE_MARKET_SNAPSHOT_UNAVAILABLE")
+@@ -802,24 +823,39 @@ class BinanceUsdtPerpetualGateway:
+             "gateway_status": _normalize_order_status(cancelled.get("status", "canceled")),
+         }
+ 
+-    def reconcile(self, *, live_run_id: str) -> dict[str, Any]:
++    def reconcile(
++        self,
++        *,
++        live_run_id: str,
++        symbols: Sequence[str] | None = None,
++    ) -> dict[str, Any]:
++        # Default to the automated BTC/ETH universe. Diagnostic callers that need a
++        # wider account view must pass an explicit symbol list.
++        scope = tuple(symbols) if symbols is not None else AUTO_PAPER_EXECUTION_SYMBOLS
++        scope_market_ids = {_binance_market_id(_normalize_binance_symbol(symbol)) for symbol in scope}
+         options = getattr(self.client, "options", None)
+         if isinstance(options, dict):
+             options["warnOnFetchOpenOrdersWithoutSymbol"] = False
+         open_orders: list[Any] = []
+-        open_orders_error: str | None = None
++        open_order_errors: list[str] = []
+         open_algo_orders_error: str | None = None
++        for symbol in scope:
++            try:
++                open_orders.extend(list(self.client.fetch_open_orders(_normalize_binance_symbol(symbol))))
++            except Exception as exc:  # noqa: BLE001
++                # Position flatness is what clears local ghosts; do not fail closed on
++                # open-order scan warnings/rate-limit advisories from CCXT.
++                open_order_errors.append(f"{symbol}:{exc}")
+         try:
+-            open_orders = list(self.client.fetch_open_orders())
+-        except Exception as exc:  # noqa: BLE001
+-            # Position flatness is what clears local ghosts; do not fail closed on
+-            # open-order scan warnings/rate-limit advisories from CCXT.
+-            open_orders_error = str(exc)
+-        try:
+-            open_orders.extend(self._fetch_open_algo_orders())
++            open_orders.extend(self._fetch_open_algo_orders(market_ids=scope_market_ids))
+         except Exception as exc:  # noqa: BLE001
+             open_algo_orders_error = str(exc)
+-        positions = list(self.client.fetch_positions())
++        open_orders_error = "; ".join(open_order_errors) if open_order_errors else None
++        positions = [
++            position
++            for position in self.client.fetch_positions()
++            if _binance_market_id(str(position.get("symbol") or "")) in scope_market_ids
++        ]
+         leverage_by_symbol = self._fetch_position_leverages()
+         open_positions = [position for position in positions if _position_open(position)]
+         mismatches = [position for position in positions if not _position_open(position)]
+@@ -851,12 +887,19 @@ class BinanceUsdtPerpetualGateway:
+             "notes": notes,
+         }
+ 
+-    def _fetch_open_algo_orders(self) -> list[dict[str, Any]]:
++    def _fetch_open_algo_orders(self, *, market_ids: set[str] | None = None) -> list[dict[str, Any]]:
+         method = getattr(self.client, "fapiPrivateGetOpenAlgoOrders", None)
+         if not callable(method):
+             return []
+         payload = method({})
+-        return list(payload or [])
++        orders = list(payload or [])
++        if market_ids is None:
++            return orders
++        return [
++            order
++            for order in orders
++            if isinstance(order, dict) and _binance_market_id(str(order.get("symbol") or "")) in market_ids
++        ]
+ 
+     def _fetch_position_leverages(self) -> dict[str, float]:
+         for method_name in (
+@@ -1066,11 +1109,73 @@ class BinanceUsdtPerpetualGateway:
+ 
+ MOCK_TRADING_WEB_URL = "https://demo.binance.com/en/futures/BTCUSDT"
+ TESTNET_TRADING_WEB_URL = "https://testnet.binancefuture.com/en/futures/BTCUSDT"
++LEGACY_TESTNET_USDM_REST_BASE = "https://testnet.binancefuture.com"
+ MAINNET_NOT_SYNCED_HINT = (
+     "主网 futures.binance.com 的仓位/订单永远不会同步到本系统（LIVE_TRADING_ENABLED=false）。请只与下方模拟盘网页对账。"
+ )
+ 
+ 
++def _pretrade_public_rest_base(*, use_testnet: bool) -> str:
++    if use_testnet:
++        return LEGACY_TESTNET_USDM_REST_BASE
++    return (settings.binance_usdm_rest_base or "https://fapi.binance.com").rstrip("/")
++
++
++def _fetch_pretrade_book_and_mark(
++    *,
++    client: Any,
++    market_id: str,
++    use_testnet: bool,
++) -> tuple[dict[str, Any], dict[str, Any]]:
++    """Load bid/ask/mark without the slow CCXT demo-fapi public path.
++
++    Direct REST to legacy Testnet completes in ~1s; CCXT demo-fapi often stalls
++    ~20s per call and blew the 75s Sampling pretrade window.
++    """
++
++    base = _pretrade_public_rest_base(use_testnet=use_testnet)
++
++    def _http_book() -> dict[str, Any]:
++        payload = binance_urlopen_json(
++            f"{base}/fapi/v1/ticker/bookTicker?symbol={market_id}",
++            timeout=5,
++        )
++        return payload if isinstance(payload, dict) else {}
++
++    def _http_premium() -> dict[str, Any]:
++        payload = binance_urlopen_json(
++            f"{base}/fapi/v1/premiumIndex?symbol={market_id}",
++            timeout=5,
++        )
++        return payload if isinstance(payload, dict) else {}
++
++    try:
++        with ThreadPoolExecutor(max_workers=2) as pool:
++            book_future = pool.submit(_http_book)
++            premium_future = pool.submit(_http_premium)
++            book = book_future.result()
++            premium = premium_future.result()
++        if book or premium:
++            return book, premium
++    except Exception:  # noqa: BLE001 - fall back to CCXT public helpers
++        pass
++
++    def _ccxt_book() -> dict[str, Any]:
++        fetch_book = getattr(client, "fapiPublicGetTickerBookTicker", None)
++        payload = fetch_book({"symbol": market_id}) if callable(fetch_book) else {}
++        return payload if isinstance(payload, dict) else {}
++
++    def _ccxt_premium() -> dict[str, Any]:
++        fetch_mark = getattr(client, "fapiPublicGetPremiumIndex", None)
++        payload = fetch_mark({"symbol": market_id}) if callable(fetch_mark) else {}
++        return payload if isinstance(payload, dict) else {}
++
++    with ThreadPoolExecutor(max_workers=2) as pool:
++        book_future = pool.submit(_ccxt_book)
++        premium_future = pool.submit(_ccxt_premium)
++        return book_future.result(), premium_future.result()
++
++
+ def _apply_legacy_testnet_api(client: Any) -> None:
+     urls = getattr(client, "urls", None)
+     test_urls = urls.get("test") if isinstance(urls, dict) else None
+diff --git a/services/execution/paper_cycle_orchestrator.py b/services/execution/paper_cycle_orchestrator.py
+index 35b99e9..bd9f767 100644
+--- a/services/execution/paper_cycle_orchestrator.py
++++ b/services/execution/paper_cycle_orchestrator.py
+@@ -110,9 +110,49 @@ def _cycle_bar_time(cycle_key: str) -> datetime | None:
+     return parsed if parsed.tzinfo else parsed.replace(tzinfo=UTC)
+ 
+ 
++def _universe_assets_unresolved(assets: object) -> bool:
++    """True when exchange tradability metadata is missing or not yet TRADING."""
++    if not isinstance(assets, list) or not assets:
++        return True
++    for asset in assets:
++        if not isinstance(asset, dict):
++            return True
++        status = str(asset.get("tradable_status") or "unknown").lower()
++        if status != "trading":
++            return True
++    return False
++
++
++def _merge_runtime_execution_profile(
++    *,
++    snapshot_profile: dict[str, Any],
++    run_profile: dict[str, Any],
++) -> dict[str, Any]:
++    """Prefer freshly refreshed run-row universe_assets over a stale active snapshot.
++
++    exchange_info_refresh updates the PaperRun row immediately and stages a NEXT_CYCLE
++    snapshot. Until that snapshot activates, loading the active snapshot alone can
++    re-apply ``tradable_status=unknown`` and skip the entire Entry slot.
++    """
++    merged = dict(snapshot_profile)
++    snapshot_assets = snapshot_profile.get("universe_assets")
++    run_assets = run_profile.get("universe_assets")
++    if _universe_assets_unresolved(snapshot_assets) and not _universe_assets_unresolved(run_assets):
++        merged["universe_assets"] = run_assets
++    return merged
++
++
+ def _funnel_terminal_for_action(
+     action: PaperRuntimeAction,
+ ) -> tuple[DecisionFunnelStage, DecisionFunnelStatus, str]:
++    sampling_rejection = action.decision_trace.get("sampling_fallback_rejection_reason")
++    if action.action.startswith("skip_no_trade") and sampling_rejection:
++        # Prefer sampling terminal so operators see why the fallback lane stayed silent.
++        return (
++            DecisionFunnelStage.ENTRY_SIGNAL,
++            DecisionFunnelStatus.SKIPPED,
++            str(sampling_rejection).upper(),
++        )
+     reason = str(
+         action.decision_trace.get("reason_code")
+         or action.decision_trace.get("pipeline_status")
+@@ -220,7 +260,14 @@ class PaperCycleOrchestrator:
+         if active_config is not None:
+             execution_profile = active_config.config.get("execution_profile")
+             if isinstance(execution_profile, dict):
+-                paper_run = paper_run.model_copy(update={"execution_profile": execution_profile})
++                paper_run = paper_run.model_copy(
++                    update={
++                        "execution_profile": _merge_runtime_execution_profile(
++                            snapshot_profile=execution_profile,
++                            run_profile=paper_run.execution_profile,
++                        )
++                    }
++                )
+             strategy_rules = active_config.config.get("strategy_rules")
+             if isinstance(strategy_rules, dict):
+                 strategy = strategy.model_copy(update={"rules": StrategyRules(**strategy_rules)})
+@@ -300,7 +347,6 @@ class PaperCycleOrchestrator:
+         closed_positions = 0
+         rejected_orders = 0
+         skipped_symbols = 0
+-        hard_drawdown_locked = self._is_hard_drawdown_locked(paper_run=paper_run, metrics=metrics)
+ 
+         actions.extend(self._expire_pending_limit_entries(paper_run=paper_run, cycle_time=cycle_time))
+         entry_blocked_symbols: set[str] = set()
+@@ -309,6 +355,7 @@ class PaperCycleOrchestrator:
+             "error": None,
+             "consecutive_failures": 0,
+             "entry_kill_switch_active": False,
++            "open_positions": None,
+         }
+ 
+         if self._gateway_mirror_armed(paper_run):
+@@ -333,6 +380,14 @@ class PaperCycleOrchestrator:
+             weekly_realized_pnl += float(reconcile_result["net_pnl"])
+             entry_blocked_symbols.update(reconcile_result.get("entry_blocked_symbols", []))
+ 
++        # Reuse the cycle's reconcile open_positions so drawdown locking does not
++        # issue a second private-API reconcile before signal evaluation.
++        hard_drawdown_locked = self._is_hard_drawdown_locked(
++            paper_run=paper_run,
++            metrics=metrics,
++            open_positions=reconcile_result.get("open_positions"),
++        )
++
+         cross_sectional_snapshot: dict[str, CrossSectionalRankEntry] = {}
+         if paper_run.execution_profile.get("strategy_lane") == "cross_sectional_carry":
+             basket_size = int(strategy.rules.entry_rules.get("basket_size", 3))
+@@ -1648,6 +1703,19 @@ class PaperCycleOrchestrator:
+             action_key = action.idempotency_key
+             if action_key:
+                 bar_time = _cycle_bar_time(action_key) or cycle_time
++                # Duplicate entry ticks must not overwrite the first real terminal
++                # for this closed bar (e.g. SAMPLING_RULES_NOT_ALIGNED → ALREADY PROCESSED).
++                if action.action == "skip_duplicate_cycle":
++                    existing_terminals = funnel_repo.list_terminals(
++                        paper_run_id=paper_run_id,
++                        symbol=action.symbol,
++                        limit=20,
++                    )
++                    if any(
++                        terminal.timeframe == runtime_timeframe and terminal.bar_time == bar_time
++                        for terminal in existing_terminals
++                    ):
++                        continue
+                 stage, status, reason_code = _funnel_terminal_for_action(action)
+                 funnel_repo.upsert_terminal(
+                     DecisionFunnelTerminal(
+@@ -1745,7 +1813,13 @@ class PaperCycleOrchestrator:
+             raise ValueError("strategy not found")
+         return strategy
+ 
+-    def _is_hard_drawdown_locked(self, *, paper_run: PaperRun, metrics: dict[str, Any]) -> bool:
++    def _is_hard_drawdown_locked(
++        self,
++        *,
++        paper_run: PaperRun,
++        metrics: dict[str, Any],
++        open_positions: list[dict[str, Any]] | None = None,
++    ) -> bool:
+         initial_equity = float(paper_run.execution_profile.get("account_equity") or 10_000.0)
+         account_equity = float(metrics.get("account_equity") or initial_equity)
+         # Exclude manual/external position PnL — same adjustment as the gatekeeper
+@@ -1755,6 +1829,7 @@ class PaperCycleOrchestrator:
+             paper_run=paper_run,
+             execution_repo=self.execution_repo,
+             gateway=self.gateway,
++            open_positions=open_positions,
+         )
+         strategy_equity = account_equity - manual_pnl
+         equity_peak = float(metrics.get("strategy_equity_peak") or metrics.get("equity_peak") or strategy_equity)
+diff --git a/services/execution/paper_exchange_execution.py b/services/execution/paper_exchange_execution.py
+index 434883b..9b9ebf7 100644
+--- a/services/execution/paper_exchange_execution.py
++++ b/services/execution/paper_exchange_execution.py
+@@ -1092,6 +1092,7 @@ class PaperExchangeExecutionService:
+             "consecutive_failures": self._consecutive_reconciliation_failures,
+             "entry_kill_switch_active": self._entry_kill_switch_active,
+             "unresolved_exchange_order_ids": [order.exchange_order_record_id for order in unresolved_exchange_orders],
++            "open_positions": list(snapshot.get("open_positions") or []),
+         }
+ 
+     def _unavailable_reconciliation_result(
+@@ -1117,6 +1118,7 @@ class PaperExchangeExecutionService:
+             "snapshot_time": cycle_time,
+             "consecutive_failures": self._consecutive_reconciliation_failures,
+             "entry_kill_switch_active": self._entry_kill_switch_active,
++            "open_positions": [],
+         }
+ 
+     def ensure_binance_execution(
+diff --git a/services/execution/scheduler_coordination.py b/services/execution/scheduler_coordination.py
+index 1f3cbf4..280d05d 100644
+--- a/services/execution/scheduler_coordination.py
++++ b/services/execution/scheduler_coordination.py
+@@ -21,6 +21,33 @@ def _db_time(value: datetime) -> datetime:
+     return value.replace(tzinfo=None)
+ 
+ 
++def _local_pid_is_alive(pid: int | None) -> bool:
++    """Best-effort liveness probe for same-host lease reclaim after hard kills."""
++    if pid is None or int(pid) <= 0:
++        return False
++    pid_i = int(pid)
++    if os.name == "nt":
++        import ctypes
++
++        # OpenProcess is more reliable than os.kill(pid, 0) on Windows for
++        # distinguishing live vs gone PIDs across privilege boundaries.
++        process_query_limited_information = 0x1000
++        handle = ctypes.windll.kernel32.OpenProcess(process_query_limited_information, False, pid_i)
++        if handle:
++            ctypes.windll.kernel32.CloseHandle(handle)
++            return True
++        return False
++    try:
++        os.kill(pid_i, 0)
++    except ProcessLookupError:
++        return False
++    except PermissionError:
++        return True
++    except OSError:
++        return False
++    return True
++
++
+ @dataclass(frozen=True)
+ class CycleClaim:
+     claimed: bool
+@@ -83,7 +110,28 @@ class SchedulerCoordinator:
+                 and lease.fencing_token != fencing_token
+             ):
+                 return False
+-            takeover = lease.owner_id != self.instance_id or lease.expires_at <= observed_at
++            # Hard-killed local schedulers leave a long TTL lease; reclaim when the
++            # recorded PID is gone on the same host so restarts are not stuck in
++            # standby_not_leader until expires_at. Same-PID multi-instance (tests /
++            # rare in-process re-entry) must not treat the live owner as dead.
++            dead_local_owner = (
++                lease.owner_id != self.instance_id
++                and lease.hostname == self.hostname
++                and int(lease.process_id or 0) != int(self.process_id)
++                and not _local_pid_is_alive(lease.process_id)
++            )
++            if dead_local_owner:
++                session.query(models.SchedulerLease).filter(
++                    models.SchedulerLease.lease_name == lease_name,
++                    models.SchedulerLease.owner_id == lease.owner_id,
++                    models.SchedulerLease.process_id == lease.process_id,
++                    models.SchedulerLease.hostname == self.hostname,
++                ).update(
++                    {"expires_at": observed_at},
++                    synchronize_session=False,
++                )
++                session.flush()
++            takeover = lease.owner_id != self.instance_id or lease.expires_at <= observed_at or dead_local_owner
+             next_token = int(lease.fencing_token or 1) + (1 if takeover else 0)
+             updated = (
+                 session.query(models.SchedulerLease)
+@@ -147,10 +195,11 @@ class SchedulerCoordinator:
+         run_mode: str = "paper",
+         fencing_token: int | None = None,
+     ) -> CycleClaim:
++        scheduled_for_db = _db_time(scheduled_for)
+         with self.session_factory() as session:
+             row = models.SchedulerCycle(
+                 job_name=job_name,
+-                scheduled_for=_db_time(scheduled_for),
++                scheduled_for=scheduled_for_db,
+                 scheduler_instance_id=self.instance_id,
+                 cycle_source=cycle_source,
+                 run_mode=run_mode,
+@@ -166,7 +215,38 @@ class SchedulerCoordinator:
+                 session.commit()
+             except IntegrityError:
+                 session.rollback()
+-                return CycleClaim(claimed=False)
++                existing = (
++                    session.query(models.SchedulerCycle)
++                    .filter(
++                        models.SchedulerCycle.job_name == job_name,
++                        models.SchedulerCycle.scheduled_for == scheduled_for_db,
++                    )
++                    .one_or_none()
++                )
++                if existing is None:
++                    return CycleClaim(claimed=False)
++                dead_local_claim = (
++                    existing.status == "claimed"
++                    and existing.hostname == self.hostname
++                    and existing.scheduler_instance_id != self.instance_id
++                    and int(existing.process_id or 0) != int(self.process_id)
++                    and not _local_pid_is_alive(existing.process_id)
++                )
++                if not dead_local_claim:
++                    return CycleClaim(claimed=False)
++                existing.scheduler_instance_id = self.instance_id
++                existing.cycle_source = cycle_source
++                existing.run_mode = run_mode
++                existing.deployment_sha = self.deployment_sha
++                existing.hostname = self.hostname
++                existing.process_id = self.process_id
++                existing.status = "claimed"
++                existing.started_at = _db_time(datetime.now(UTC))
++                existing.completed_at = None
++                existing.failure_reason = "reclaimed_from_dead_local_owner"
++                existing.fencing_token = fencing_token or self._fencing_tokens.get("paper_runtime_cycle")
++                session.commit()
++                return CycleClaim(claimed=True, scheduler_cycle_id=existing.scheduler_cycle_id)
+             return CycleClaim(claimed=True, scheduler_cycle_id=row.scheduler_cycle_id)
+ 
+     def finish_cycle(self, cycle_id: str, *, status: str, failure_reason: str | None = None) -> None:

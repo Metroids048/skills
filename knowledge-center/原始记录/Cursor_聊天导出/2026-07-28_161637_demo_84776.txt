@@ -1,0 +1,13 @@
+---
+pid: 31464
+cwd: "C:\\Users\\win\\Desktop\\demo"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\demo\"; git remote add origin \"https://github.com/Metroids048/-.git\" 2>&1; git fetch origin 2>&1"
+started_at: 2026-06-08T09:26:09.164Z
+running_for_ms: 627504   
+---
+
+---
+exit_code: 4294967295
+elapsed_ms: 631385
+ended_at: 2026-06-08T09:36:40.549Z
+---

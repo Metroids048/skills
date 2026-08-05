@@ -1,0 +1,77 @@
+# 任务计划：自动开平仓系统与量化策略缺陷修复
+
+## 目标
+
+按用户诊断报告的 Phase 0-5 remediation 计划，逐模块逐问题修复自动交易系统的架构缺陷，每步验证后再推进，不确定处必须先问用户。
+
+## 当前阶段
+
+Phase 1 已完成并同步全部记忆文件；核查确认 Phase 0 在此前会话（TASK-052，2026-07-12）已完成。下一步进入 Phase 2（执行层默认行为修正），需先向用户提交具体实施方案确认。
+
+## 各阶段
+
+### Phase 0：ExitLadder 回放对比（核查后确认：已完成，非本轮工作）
+
+- [x] `services/validation/technical_replay.py` 已支持 `exit_mode`（`EXIT_MODE_FIXED_2R`/`EXIT_MODE_EXIT_LADDER`），非通过 `--exit-model` CLI 参数，而是 `TechnicalStrategyValidationService(exit_mode=...)` 构造参数
+- [x] 独立脚本 `scripts/run_exitladder_replay_comparison.py`（区别于 `run_top20_technical_validation.py`）驱动同层入场信号下 Fixed 2R vs ExitLadder 的对比回放，只产出审计证据、不改动自动配置
+- [x] 已有测试覆盖 `exit_mode` 参数：`tests/services/test_technical_strategy_validation.py`
+- [x] 已产出审计文档：`docs/audits/2026-07-12-exitladder-replay-comparison.md`
+- [x] 结论已依据当前门槛判断：ExitLadder 净期望 `-0.000866` 差于 Fixed 2R 的 `0.002185`，PF `0.8817` 差于 `1.1308`，最大回撤 `1.4356` 差于 `0.5220`——**不建议**用 ExitLadder 替换/降级现有 4h/1h/15m 主链路
+- **状态：** complete（本轮核查确认，实际工作发生于 2026-07-12 TASK-052，见 `.github/agent/memory/task-history.md`）
+
+> 注：此前基于原始诊断报告的描述误判 Phase 0 尚未开始，本轮实施 Phase 1 时核对代码与既有审计文档后发现已完成，特此更正，避免重复劳动。
+
+### Phase 1：设置断链修复（已完成）
+
+- [x] 诊断"杠杆滑块不生效"根因：`paper_signal.py` 的 `_requested_leverage`/`_requested_notional` 因 Pydantic `default_factory` 导致 `asset_risk_tiers` 永远非空，从而始终优先于 `position_rules.max_leverage`；前端滑块只改后者（死字段），`asset_risk_tiers` 从未被 UI 真正编辑，每次保存都原样回传旧值
+- [x] 用户确认方案 B：滑块联动分档表（保留 core/standard/vol_* 分档结构，随杠杆/单币敞口滑块按比例重新计算各档杠杆与仓位上限）
+- [x] `services/execution/risk_tiers.py` 新增 `TIER_SCALE_RATIOS` + `scale_asset_risk_tiers()`
+- [x] `apps/api/routers/runs.py::update_paper_run_auto_settings` 接入重新计算逻辑，替换掉客户端回传的旧分档表
+- [x] 前端 `RuntimePanels.jsx` 修正 `DEFAULT_AUTO_SETTINGS` 的分档默认值（与后端一致），用 `renderTierPreviewRows()` 替换失效的静态预览文案
+- [x] 新增/扩展测试：`tests/services/test_asset_risk_tiers.py`（3 个新用例）、`tests/api/test_paper_runtime_api.py`（断言 tier 杠杆随滑块变化）
+- [x] 统一 remainder-trail 重复实现：`services/execution/exit_ladder.py` 新增共享纯函数 `next_trailed_stop_price()`；`paper_runtime.py::_apply_trailing_ratchet` 与 `technical_replay.py::_advance_open_position` 均改为调用该函数，不再各自手写 LONG/SHORT 分支
+- [x] 新增 `tests/services/test_exit_ladder.py` 中 5 个 `next_trailed_stop_price` 专项用例
+- [x] 运行 ruff/mypy/pytest 校验本轮改动
+- [x] 更新全部项目记忆文件（本文件 + findings.md + progress.md + `.github/agent/memory/*`）
+- **状态：** complete
+
+### Phase 2：执行层默认行为修正（未开始）
+
+- [ ] 默认改为限价单（保留可配置的市价单兜底）
+- [ ] 收紧反向信号平仓逻辑
+- [ ] 对齐 ADR-023 文档记录的 5% 组合风险与 `bootstrap.py` 实际 10% 的差异
+- [ ] 解决 ADR-023 重复编号（2026-07-03 与 2026-07-12 两条）
+- **状态：** pending
+
+### Phase 3：多周期信号密度改造（未开始）
+
+- [ ] 从"全票通过（fail-closed AND-gate）"改为"多数票 + 权重"
+- **状态：** pending
+
+### Phase 4：验收与真实策略隔离（未开始）
+
+- [ ] `TestnetAcceptanceService` 探测单与真实策略单分离
+- [ ] 为 ExitLadder 补充端到端测试
+- **状态：** pending
+
+### Phase 5：组合层风控（未开始）
+
+- [ ] 新增跨品种相关性风控
+- **状态：** pending
+
+## 关键问题
+
+1. 每一步都要先给独立分析，再对照用户第 3 点给出的方案/Prompt 顺序执行，任何不确定必须先问用户。
+2. Phase 1 的具体技术方案（分档表联动、remainder-trail 统一方式）已获用户明确授权由我决定（"这部分你定吧"），但架构方向仍需用户对齐确认（已通过 AskUserQuestion 完成方案 B 的确认）。
+3. 完成任务后必须更新全部项目文件以保持进度同步——这是用户的明确标准要求，不是可选项。
+
+## 已做决策
+
+| 决策 | 理由 |
+|------|------|
+| Phase 1 采用方案 B：滑块联动分档表 | 用户通过 AskUserQuestion 明确选择，保留分档结构的同时让滑块真正驱动生效值。 |
+| remainder-trail 统一提取到 `exit_ladder.py::next_trailed_stop_price()` | 确认 `paper_runtime.py` 与 `technical_replay.py` 的手写逻辑在数学上完全等价（均为"价格向有利方向移动 trail_after_r*initial_distance 后止损归零风险"），提取共享纯函数消除重复而不改变行为；用户已将此实现细节授权给我决定。 |
+
+## 遇到的错误
+
+本轮暂无运行时错误；所有测试一次性通过（37/37），ruff/mypy 全部通过。

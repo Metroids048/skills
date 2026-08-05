@@ -1,0 +1,13 @@
+---
+pid: 23632
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "Set-Location \"c:\\Users\\win\\Desktop\\AI--main\"\ngit add services/execution apps/api/routers/runtime.py\n$msg2 = @'\ncheckpoint: unblock Testnet natural-cycle ops and Runtime Truth probes\n\nRecover dead-PID scheduler lease/claim ownership after restarts, keep first funnel terminals across duplicate ticks, speed Testnet pretrade snapshots, and make Runtime exchange probes non-blocking so P0.3 observation can continue without standby stalls.\n'@\n[System.IO.File]::WriteAllText(\"$PWD\\logs\\commit-msg2.txt\", $msg2, (New-Object System.Text.UTF8Encoding $false))\ngit commit --trailer \"Co-authored-by: Cursor <cursoragent@cursor.com>\" -F logs\\commit-msg2.txt > logs\\commit-out-step2.txt 2>&1\necho COMMIT_EXIT=$LASTEXITCODE >> logs\\commit-out-step2.txt\ngit log -2 --oneline >> logs\\commit-out-step2.txt\ngit status -sb >> logs\\commit-out-step2.txt\n"
+started_at: 2026-07-28T05:52:33.805Z
+running_for_ms: 80170    
+---
+
+---
+exit_code: 0
+elapsed_ms: 81859
+ended_at: 2026-07-28T05:53:55.664Z
+---

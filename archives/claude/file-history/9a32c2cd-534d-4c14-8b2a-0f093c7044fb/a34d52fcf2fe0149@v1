@@ -1,0 +1,173 @@
+<script setup lang="ts">
+import { CheckCircleOutlined, ExclamationCircleOutlined, FileImageOutlined, RightOutlined } from '@ant-design/icons-vue'
+import { computed, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import MetricTrendChart from '../../components/charts/MetricTrendChart.vue'
+import { outputArtifacts, reserveRows, reserveWorkbook } from '../../mock/business'
+
+type MetricKey = 'nationalLine' | 'internalLine' | 'listedLine'
+type GraphicKind = 'line' | 'bar' | 'pie' | 'combo'
+
+const route = useRoute()
+const router = useRouter()
+const selectedUnits = ref(reserveRows.map((row) => row.unit))
+const selectedMetrics = ref<MetricKey[]>(['nationalLine', 'internalLine'])
+const analysisChart = ref<'line' | 'bar' | 'combo'>('combo')
+const graphicKind = ref<GraphicKind>('combo')
+const showGapSeries = ref(true)
+const filteredRows = computed(() => reserveRows.filter((row) => selectedUnits.value.includes(row.unit)))
+const metricOptions = [
+  { label: '国家线', value: 'nationalLine' },
+  { label: '内部线', value: 'internalLine' },
+  { label: '上市线', value: 'listedLine' },
+]
+const metricLabelMap: Record<MetricKey, string> = {
+  nationalLine: '国家线',
+  internalLine: '内部线',
+  listedLine: '上市线',
+}
+const primaryMetric = computed<MetricKey>(() => selectedMetrics.value[0] ?? 'internalLine')
+const metricLabel = computed(() => metricLabelMap[primaryMetric.value])
+const total = computed(() => filteredRows.value.reduce((sum, row) => sum + row[primaryMetric.value], 0))
+const needReview = computed(() => filteredRows.value.filter((row) => row.status !== '通过'))
+const averageGap = computed(() => filteredRows.value.length
+  ? filteredRows.value.reduce((sum, row) => sum + row.internalLine - row.nationalLine, 0) / filteredRows.value.length
+  : 0)
+const analysisSeries = computed(() => {
+  const series = selectedMetrics.value.map((key, index) => ({
+    name: metricLabelMap[key],
+    type: (analysisChart.value === 'combo'
+      ? (index === 0 ? 'bar' : 'line')
+      : analysisChart.value) as 'line' | 'bar',
+    data: filteredRows.value.map((row) => row[key]),
+    yAxisIndex: analysisChart.value === 'combo' && index > 0 ? 1 : 0,
+  }))
+  if (showGapSeries.value && selectedMetrics.value.includes('nationalLine') && selectedMetrics.value.includes('internalLine')) {
+    series.push({
+      name: '内部线-国家线',
+      type: 'line',
+      data: filteredRows.value.map((row) => Number((row.internalLine - row.nationalLine).toFixed(1))),
+      yAxisIndex: 1,
+    })
+  }
+  return series
+})
+const graphicSeries = computed(() => {
+  if (graphicKind.value === 'pie') {
+    return [{
+      name: metricLabel.value,
+      type: 'bar' as const,
+      data: filteredRows.value.map((row) => row[primaryMetric.value]),
+    }]
+  }
+  return selectedMetrics.value.map((key, index) => ({
+    name: metricLabelMap[key],
+    type: (graphicKind.value === 'combo'
+      ? (index === 0 ? 'bar' : 'line')
+      : graphicKind.value) as 'line' | 'bar',
+    data: filteredRows.value.map((row) => row[key]),
+    yAxisIndex: graphicKind.value === 'combo' && index > 0 ? 1 : 0,
+  }))
+})
+const artifacts = computed(() => outputArtifacts.filter((item) => item.domain === 'reserve'))
+const focusHint = computed(() => route.query.focus === 'classification'
+  ? '已定位到分级复核清单'
+  : route.query.focus === 'graphics' ? '已定位到图件配置区' : '')
+const conclusions = computed(() => [
+  {
+    title: '三条线差异',
+    value: `${averageGap.value.toFixed(1)} 万吨`,
+    detail: '内部线相对国家线的平均差异，建议复核口径和商业性条件。',
+    action: '查看版本差异',
+    route: '/reserve/version',
+  },
+  {
+    title: '重点复核对象',
+    value: `${needReview.value.length} 个`,
+    detail: needReview.value.length ? `${needReview.value[0].oilfield} 的字段状态仍需处理。` : '当前选择范围内没有待处理字段。',
+    action: '进入储量工作表',
+    route: '/reserve/collection',
+  },
+  {
+    title: '图件建议',
+    value: filteredRows.value.length > 2 ? '适合构成图' : '适合对比图',
+    detail: '当前数据范围可作为统计图件和汇报摘要的基础。',
+    action: '配置图件',
+    route: '/reserve/analysis?focus=graphics',
+  },
+])
+
+function go(path: string) {
+  router.push(path)
+}
+</script>
+
+<template>
+  <div class="business-page insight-page">
+    <header class="business-page-header compact-page-intro">
+      <div>
+        <span class="eyebrow">储量分析 / 储量洞察</span>
+        <h1>储量洞察</h1>
+        <p>识别储量差异、待复核对象和可用于汇报的统计图件。</p>
+      </div>
+      <a-tag color="blue">{{ reserveWorkbook.version }}</a-tag>
+    </header>
+
+    <div v-if="focusHint" class="focus-note"><FileImageOutlined />{{ focusHint }}</div>
+
+    <section class="insight-filter-bar">
+      <div class="control-group"><span>计算单元</span><a-select v-model:value="selectedUnits" mode="multiple" :max-tag-count="3" :options="reserveRows.map((row) => ({ label: `${row.unit} · ${row.oilfield}`, value: row.unit }))" /></div>
+      <div class="control-group"><span>对比指标</span><a-select v-model:value="selectedMetrics" mode="multiple" :max-tag-count="3" :options="metricOptions" style="min-width: 220px" /></div>
+      <div class="control-group compact"><span>分析图形</span><a-segmented v-model:value="analysisChart" :options="[{ label: '组合', value: 'combo' }, { label: '对比', value: 'bar' }, { label: '趋势', value: 'line' }]" /></div>
+      <div class="control-group compact"><a-checkbox v-model:checked="showGapSeries">显示差异折线</a-checkbox></div>
+    </section>
+
+    <section class="insight-metric-row">
+      <article class="insight-metric"><span>当前指标</span><strong>{{ metricLabel }}</strong><em>{{ filteredRows.length }} 个计算单元</em></article>
+      <article class="insight-metric"><span>合计储量</span><strong>{{ total.toFixed(1) }}</strong><em>同一版本、同一筛选范围</em></article>
+      <article class="insight-metric warning"><span>待复核</span><strong>{{ needReview.length }}</strong><em>字段或分级需要进一步确认</em></article>
+    </section>
+
+    <section class="insight-main-grid">
+      <main class="business-panel insight-chart-panel">
+        <div class="panel-title"><div><h2>多指标{{ analysisChart === 'combo' ? '组合对比' : analysisChart === 'line' ? '趋势' : '对比' }}</h2><span>版本 {{ reserveWorkbook.version }} · 点击图例可切换系列显示</span></div></div>
+        <MetricTrendChart
+          v-if="filteredRows.length && selectedMetrics.length"
+          :categories="filteredRows.map((row) => row.unit)"
+          :series="analysisSeries"
+          :height="360"
+          :chart-kind="analysisChart"
+          :dual-axis="analysisChart === 'combo' || showGapSeries"
+          unit="万吨"
+        />
+        <a-empty v-else description="请选择计算单元和至少一个指标" />
+      </main>
+      <aside class="business-panel insight-summary-panel">
+        <div class="panel-title compact"><h2>分析结论</h2><span>当前范围</span></div>
+        <article v-for="item in conclusions" :key="item.title" class="conclusion-card">
+          <span>{{ item.title }}</span><strong>{{ item.value }}</strong><p>{{ item.detail }}</p>
+          <button type="button" @click="go(item.route)">{{ item.action }}<RightOutlined /></button>
+        </article>
+      </aside>
+    </section>
+
+    <section id="classification" class="business-panel">
+      <div class="panel-title"><div><h2>分级与复核关注</h2><span>系统先指出影响分析的对象，由业务人员确认分类与处置方式。</span></div><a-button @click="go('/reserve/collection')"><ExclamationCircleOutlined />处理字段问题</a-button></div>
+      <a-table :data-source="needReview" :pagination="false" row-key="id" :scroll="{ x: 860 }">
+        <a-table-column title="油气田" data-index="oilfield" />
+        <a-table-column title="计算单元" data-index="unit" />
+        <a-table-column title="储量类型" data-index="reserveType" />
+        <a-table-column title="商业性条件" data-index="commerciality" />
+        <a-table-column title="复核状态" data-index="status" />
+      </a-table>
+    </section>
+
+    <section id="graphics" class="business-panel graphics-workspace">
+      <div class="panel-title"><div><h2>图件配置与成果包</h2><span>图件基于当前筛选范围生成，避免图表脱离数据和版本。</span></div><a-button type="primary"><CheckCircleOutlined />生成成果包</a-button></div>
+      <div class="graphics-main-grid">
+        <div class="graphics-preview"><div class="graphics-kind"><span>汇报图形</span><a-segmented v-model:value="graphicKind" :options="[{ label: '组合', value: 'combo' }, { label: '构成', value: 'pie' }, { label: '对比', value: 'bar' }, { label: '趋势', value: 'line' }]" /></div><MetricTrendChart v-if="filteredRows.length" :categories="filteredRows.map((row) => row.oilfield)" :series="graphicSeries" :chart-kind="graphicKind" :dual-axis="graphicKind === 'combo'" :height="300" unit="万吨" /></div>
+        <div class="graphics-artifacts"><article v-for="artifact in artifacts" :key="artifact.id" class="artifact-card active"><strong>{{ artifact.title }}</strong><p>{{ artifact.source }}</p><span>{{ reserveWorkbook.version }} · {{ filteredRows.length }} 个计算单元</span></article></div>
+      </div>
+    </section>
+  </div>
+</template>

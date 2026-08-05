@@ -1,0 +1,31 @@
+model_provider = "custom"
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+disable_response_storage = true
+
+[model_providers.custom]
+name = "HCAI"
+base_url = "https://ai-us.hctopup.com/v1"
+wire_api = "responses"
+requires_openai_auth = true
+experimental_bearer_token = "sk-YOUR_SECRET"
+
+[mcp_servers]
+
+[mcp_servers.node_repl]
+type = "stdio"
+command = 'C:\Users\win\AppData\Local\OpenAI\Codex\bin\34ab3e1324cc55b5\node_repl.exe'
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+CODEX_CLI_PATH = 'C:\Users\win\AppData\Local\OpenAI\Codex\bin\716dda49c14d31a0\codex.exe'
+CODEX_HOME = 'C:\Users\win\.codex'
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = ""
+NODE_REPL_NODE_PATH = 'C:\Users\win\AppData\Local\OpenAI\Codex\bin\5b9024f90663758b\node.exe'
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "0b0d41e7a14a4903d2f95b0b3f427ed796b12c8edca2fa392a03df43997075ae,e13c388c2427308a68dffc803e1f28316077b719672e4518a621ae6ab56ad7cf"
+NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\win\.codex'

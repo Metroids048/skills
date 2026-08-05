@@ -1,0 +1,45 @@
+---
+pid: 32160
+cwd: "C:\\Users\\win\\Desktop\\AI--main"
+command: "$target = Get-Date \"2026-07-28T10:45:20+08:00\"; $wait = [math]::Max(5, ($target - (Get-Date)).TotalSeconds); Write-Host \"waiting_s=$([math]::Ceiling($wait))\"; Start-Sleep -Seconds ([math]::Ceiling($wait)); Start-Sleep -Seconds 75; py -3 \"c:\\Users\\win\\Desktop\\AI--main\\scripts\\_observe_p03_cycle.py\"; py -3 \"c:\\Users\\win\\Desktop\\AI--main\\scripts\\check_binance_positions.py\""
+started_at: 2026-07-28T02:31:57.408Z
+running_for_ms: 906412   
+---
+waiting_s=802
+utc_now=2026-07-28T02:46:35.205813+00:00
+running=True heartbeat=2026-07-28T02:31:32.826045+00:00
+last_auto_cycle_at=None
+recent_funnel:
+{'symbol': 'ETH/USDT', 'bar_time': '2026-07-28 02:15:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'created_at': '2026-07-28 02:17:17'}
+{'symbol': 'BTC/USDT', 'bar_time': '2026-07-28 02:15:00.000000', 'reason_code': 'SYMBOL ALREADY PROCESSED FOR THIS CLOSED BAR', 'created_at': '2026-07-28 02:17:17'}
+{'symbol': 'ETH/USDT', 'bar_time': '2026-07-28 02:00:00.000000', 'reason_code': 'TECHNICAL_SIGNALS_INSUFFICIENT', 'created_at': '2026-07-28 02:12:05'}
+{'symbol': 'BTC/USDT', 'bar_time': '2026-07-28 02:00:00.000000', 'reason_code': 'TECHNICAL_SIGNALS_INSUFFICIENT', 'created_at': '2026-07-28 02:12:05'}
+{'symbol': 'ETH/USDT', 'bar_time': '2026-07-28 00:00:00.000000', 'reason_code': 'UNIVERSE_STATUS_REJECTED', 'created_at': '2026-07-28 02:06:13'}
+{'symbol': 'BTC/USDT', 'bar_time': '2026-07-28 00:00:00.000000', 'reason_code': 'UNIVERSE_STATUS_REJECTED', 'created_at': '2026-07-28 02:06:12'}
+recent_orders:
+{'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14774000974', 'rejection_reason': None, 'created_at': '2026-07-28 02:11:07'}
+{'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14764997180', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16'}
+{'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14721824421', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16'}
+{'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14718593865', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16'}
+{'symbol': 'ETH/USDT', 'execution_status': 'filled', 'gateway_order_id': '14708554103', 'rejection_reason': None, 'created_at': '2026-07-28 02:06:16'}
+exchange_orders_count= 0
+fill_receipts_count= 0
+{
+  "status": "healthy",
+  "source": "BINANCE_USDT_M_TESTNET",
+  "observed_at": "2026-07-28T02:46:37.029905+00:00",
+  "open_position_count": 0,
+  "open_order_count": 0,
+  "positions": [],
+  "open_orders": [],
+  "reconciliation_status": "ok",
+  "notes": [
+    "binance gateway reconciliation snapshot"
+  ]
+}
+
+---
+exit_code: 0
+elapsed_ms: 909520
+ended_at: 2026-07-28T02:47:06.928Z
+---

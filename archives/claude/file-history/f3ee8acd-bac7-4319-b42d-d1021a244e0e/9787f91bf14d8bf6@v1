@@ -1,0 +1,9 @@
+# Global AI Workspace
+
+@AGENTS.md
+
+@RTK.md
+
+**SessionStart:** Read `C:\Users\win\.cursor\skills\global-session-core\SKILL.md` and global memory at `C:\Users\win\.ai-workspace\memory\user-memory.md`.
+
+**全局工作规则：** 有任何不确定和拿不准主意的都必须要先问用户，不可自行假设后直接执行。整个任务的进度、流程、思考过程、操作说明和提问都必须用中文详细展示。

@@ -1,0 +1,61 @@
+{
+  "verdict": "COMPLETE",
+  "rows": [
+    {
+      "name": "AI--main",
+      "status": "FILLED",
+      "overview_chars": 11284,
+      "path": "C:/Users/win/Desktop/AI--main"
+    },
+    {
+      "name": "alpha",
+      "status": "FILLED",
+      "overview_chars": 7283,
+      "path": "C:/Users/win/Desktop/alpha"
+    },
+    {
+      "name": "program1-main-latest",
+      "status": "FILLED",
+      "overview_chars": 9497,
+      "path": "C:/Users/win/Desktop/program1-main-latest"
+    },
+    {
+      "name": "yinpinjianting",
+      "status": "FILLED",
+      "overview_chars": 9492,
+      "path": "C:/Users/win/Desktop/yinpinjianting"
+    },
+    {
+      "name": "敖钦储能项目",
+      "status": "FILLED",
+      "overview_chars": 4149,
+      "path": "C:/Users/win/Desktop/敖钦储能项目"
+    },
+    {
+      "name": "海小南",
+      "status": "FILLED",
+      "overview_chars": 6407,
+      "path": "C:/Users/win/Desktop/海小南"
+    },
+    {
+      "name": "Agent Platform",
+      "status": "FILLED",
+      "overview_chars": 9863,
+      "path": "C:/Users/win/Desktop/Agent Platform"
+    },
+    {
+      "name": "产能评价",
+      "status": "FILLED",
+      "overview_chars": 1014,
+      "path": "C:/Users/win/Desktop/产能评价"
+    },
+    {
+      "name": "合同审查",
+      "status": "FILLED",
+      "overview_chars": 864,
+      "path": "C:/Users/win/Desktop/合同审查"
+    }
+  ],
+  "missing_tools": [],
+  "xp_placeholder": []
+}

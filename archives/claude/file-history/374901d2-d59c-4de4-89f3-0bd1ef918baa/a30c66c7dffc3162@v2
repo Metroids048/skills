@@ -1,0 +1,60 @@
+# 进度日志
+
+## 会话：2026-07-13
+
+### Phase 1（第 1 项）：设置断链修复——杠杆滑块联动分档表
+
+- **状态：** complete
+- 执行的操作：
+  - 通读 `shared/models/workflow.py`、`services/execution/paper_signal.py`、`services/execution/risk_tiers.py`、前端 `RuntimePanels.jsx`/`PaperConsole.jsx`，确认"杠杆滑块不生效"根因：`asset_risk_tiers` 因 Pydantic `default_factory` 永远非空，`_requested_leverage`/`_requested_notional` 无条件优先取用它而非 `position_rules.max_leverage`；前端从未真正编辑该字段，只是原样回传旧值。
+  - 通过 AskUserQuestion 向用户确认修复方向，用户选择方案 B：滑块联动分档表。
+  - `services/execution/risk_tiers.py` 新增 `TIER_SCALE_RATIOS` 与 `scale_asset_risk_tiers()`，按相对风险排序重新计算各档 `leverage`/`max_position_fraction`，保留动态 ATR% 分档的 symbol 分配。
+  - `apps/api/routers/runs.py::update_paper_run_auto_settings` 接入该函数，替换掉客户端回传的陈旧分档表。
+  - 前端 `RuntimePanels.jsx`：修正 `DEFAULT_AUTO_SETTINGS.asset_risk_tiers` 默认值与后端一致（core 10x→20x，standard 5x→10x）；用 `renderTierPreviewRows()` 动态预览替换失效的静态文案。
+  - 新增/扩展测试：`tests/services/test_asset_risk_tiers.py`（+3 用例）、`tests/api/test_paper_runtime_api.py`（新增杠杆随滑块变化断言）。
+- 创建/修改的文件：
+  - `services/execution/risk_tiers.py`
+  - `apps/api/routers/runs.py`
+  - `frontend/admin/src/components/RuntimePanels.jsx`
+  - `tests/services/test_asset_risk_tiers.py`
+  - `tests/api/test_paper_runtime_api.py`
+
+### Phase 1（第 2 项）：统一 remainder-trail 重复实现
+
+- **状态：** complete
+- 执行的操作：
+  - 逐行核对 `services/execution/paper_runtime.py::_apply_trailing_ratchet`（通用 `ProtectiveLevels`）与 `services/validation/technical_replay.py::_advance_open_position`（手写 `ExitLadderState`）的阶梯止盈余量移动止损逻辑，确认数学完全等价。
+  - 在 `services/execution/exit_ladder.py` 新增共享纯函数 `next_trailed_stop_price()`。
+  - 重构 `paper_runtime.py::_apply_trailing_ratchet` 与 `technical_replay.py::_advance_open_position` 的对应分支，改为调用该共享函数，删除各自的手写 LONG/SHORT 分支。
+  - 新增 `tests/services/test_exit_ladder.py` 中 5 个 `next_trailed_stop_price` 专项用例（长/短双向触发、未触发、不改善止损、初始距离为零）。
+  - 用 Read 工具重新读取两处调用点的最终代码，确认改动落地且逻辑等价（满足交付自查规则）。
+- 创建/修改的文件：
+  - `services/execution/exit_ladder.py`
+  - `services/execution/paper_runtime.py`
+  - `services/validation/technical_replay.py`
+  - `tests/services/test_exit_ladder.py`
+
+## 测试结果
+
+| 测试 | 输入 | 预期结果 | 实际结果 | 状态 |
+|------|------|---------|---------|------|
+| 资产风险分档测试 | `tests/services/test_asset_risk_tiers.py` | 分档缩放随滑块变化、动态分档保留 symbol、缺省回退 | 全部通过 | PASS |
+| Paper 运行时 API 测试 | `tests/api/test_paper_runtime_api.py` | auto-settings 保存后 tier 杠杆随滑块联动 | 全部通过 | PASS |
+| ExitLadder 单测 | `tests/services/test_exit_ladder.py` | 阶梯止盈、`next_trailed_stop_price` 长/短双向棘轮 | 全部通过 | PASS |
+| 相关模块回归 | `test_paper_runtime.py`、`test_technical_strategy_validation.py` | 无行为回归 | 37 passed | PASS |
+| Ruff | `services/execution/{risk_tiers,exit_ladder,paper_runtime}.py`、`apps/api/routers/runs.py`、`services/validation/technical_replay.py`、相关测试文件 | 全部通过 | All checks passed | PASS |
+| Mypy | 同上文件集合 | 无类型错误 | Success | PASS |
+
+## 错误日志
+
+本轮暂无运行时错误或需要重试的失败用例。
+
+## 五问重启检查
+
+| 问题 | 答案 |
+|------|------|
+| 我在哪里？ | Phase 1 两项子任务均已完成并通过测试/静态检查，正在同步项目记忆文件。 |
+| 我要去哪里？ | 完成记忆文件同步后，进入 Phase 0（ExitLadder 回放对比）的方案制定，提交给用户确认后再实施。 |
+| 目标是什么？ | 按用户 Phase 0-5 remediation 计划逐模块修复自动交易系统缺陷，每步验证、不确定必问。 |
+| 我学到了什么？ | 见 `findings.md`。 |
+| 我做了什么？ | 见上方记录。 |

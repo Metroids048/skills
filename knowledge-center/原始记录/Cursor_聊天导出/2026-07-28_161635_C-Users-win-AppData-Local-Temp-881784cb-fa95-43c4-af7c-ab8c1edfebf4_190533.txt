@@ -1,0 +1,2078 @@
+---
+pid: 8892
+cwd: "C:\\Users\\win"
+command: "powershell -NoProfile -Command \"Get-ChildItem 'C:\\Users\\win\\.cursor\\skills' -Directory | Where-Object { $_.Name -match '^(create-prd|brainstorm|identify-assumptions|prioritize|opportunity-solution|interview-script|summarize-interview|metrics-dashboard|product-strategy|startup-canvas|product-vision|value-proposition|lean-canvas|business-model|monetization|pricing-strategy|swot|pestle|porters|ansoff|outcome-roadmap|sprint-plan|retro|release-notes|pre-mortem|stakeholder-map|summarize-meeting|user-stories|job-stories|wwas|test-scenarios|dummy-dataset|prioritization-frameworks|strategy-red-team|user-personas|market-segments|user-segmentation|customer-journey|market-sizing|competitor-analysis|sentiment-analysis|sql-queries|cohort-analysis|ab-test|gtm-strategy|beachhead|ideal-customer|growth-loops|gtm-motions|competitive-battlecard|marketing-ideas|positioning-ideas|value-prop-statements|product-name|north-star|review-resume|draft-nda|privacy-policy|grammar-check|shipping-artifacts|intended-vs|last30days)' } | Measure-Object | Select-Object -ExpandProperty Count\""
+started_at: 2026-06-22T06:15:30.152Z
+running_for_ms: 35063    
+---
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+.Name : �޷�����.Name����ʶ��Ϊ cmdlet���������ű��ļ�������г�������ơ��������Ƶ�ƴд���������·������ȷ��·����ȷ��Ȼ
+������һ�Ρ�
+����λ�� ��:1 �ַ�: 73
++ ... :\Users\win\.cursor\skills' -Directory | Where-Object { .Name -match  ...
++                                                             ~~~~~
+    + CategoryInfo          : ObjectNotFound: (.Name:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+0
+
+---
+exit_code: 0
+elapsed_ms: 39419
+ended_at: 2026-06-22T06:16:09.571Z
+---

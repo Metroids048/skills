@@ -1,0 +1,546 @@
+<ide_diagnostics>[
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 36,
+    "column": 1,
+    "message": "MD036/no-emphasis-as-heading: Emphasis used instead of a heading",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 39,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 39,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 39,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 39,
+    "column": 26,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 51,
+    "column": 1,
+    "message": "MD036/no-emphasis-as-heading: Emphasis used instead of a heading",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 54,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 54,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 54,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 54,
+    "column": 26,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 66,
+    "column": 1,
+    "message": "MD036/no-emphasis-as-heading: Emphasis used instead of a heading",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 69,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 69,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 69,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 69,
+    "column": 26,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 81,
+    "column": 1,
+    "message": "MD036/no-emphasis-as-heading: Emphasis used instead of a heading",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 84,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 84,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 84,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 84,
+    "column": 26,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 96,
+    "column": 1,
+    "message": "MD036/no-emphasis-as-heading: Emphasis used instead of a heading",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 99,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 99,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 99,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 99,
+    "column": 26,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 111,
+    "column": 1,
+    "message": "MD036/no-emphasis-as-heading: Emphasis used instead of a heading",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 114,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 114,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 114,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 114,
+    "column": 26,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 126,
+    "column": 1,
+    "message": "MD036/no-emphasis-as-heading: Emphasis used instead of a heading",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 129,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 129,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 129,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 129,
+    "column": 26,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 141,
+    "column": 1,
+    "message": "MD036/no-emphasis-as-heading: Emphasis used instead of a heading",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 144,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 144,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 144,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 144,
+    "column": 26,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 156,
+    "column": 1,
+    "message": "MD036/no-emphasis-as-heading: Emphasis used instead of a heading",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 159,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 159,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 159,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 159,
+    "column": 26,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 171,
+    "column": 1,
+    "message": "MD036/no-emphasis-as-heading: Emphasis used instead of a heading",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 174,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 174,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 174,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 174,
+    "column": 26,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 7,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 7,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 17,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 17,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 27,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 27,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 37,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 37,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 47,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 47,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 184,
+    "column": 57,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 212,
+    "column": 1,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 212,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 212,
+    "column": 13,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 212,
+    "column": 30,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 212,
+    "column": 30,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the right for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/c:/Users/win/Desktop/海小南/演示话术与脚本维护.md",
+    "line": 212,
+    "column": 38,
+    "message": "MD060/table-column-style: Table column style [Table pipe is missing space to the left for style \"compact\"]",
+    "code": "[object Object]",
+    "severity": "Warning"
+  }
+]</ide_diagnostics>

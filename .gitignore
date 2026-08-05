@@ -1,33 +1,41 @@
-# Secrets — do not commit real tokens
+# Secrets — do not commit real tokens / auth
 secrets/
+.sandbox-secrets/
 *.local.json
 auth.json
+.credentials.json
 .env
-.env.local
+.env.*
 *.pem
 *.key
 *.p12
 *.pfx
 *credentials*.json
 *token*.json
-*session*.json
 
-# Runtime / cache
+# Runtime / cache / heavy local stacks
 node_modules/
 __pycache__/
 .venv/
 venv/
+vendor/
 dist/
 build/
 cache/
 .cache/
+Cache/
+CachedData/
+GPUCache/
 logs/
 log/
-sessions/
-archived_sessions/
 attachments/
 browser/
 telemetry/
+sqlite/
+process_manager/
+runtime/
+tmp/
+.tmp/
 *.sqlite
 *.sqlite-*
 *.db

@@ -1,0 +1,25 @@
+---
+pid: 23672
+cwd: "C:\\Users\\win\\Desktop\\demo1"
+command: "gh auth login --hostname github.com --git-protocol https --web 2>&1 | Select-Object -First 5"
+started_at: 2026-06-12T09:08:14.195Z
+running_for_ms: 42105    
+---
+gh : 
+����λ�� C:\Users\win\AppData\Local\Temp\ps-script-1614be40-0550-4f87-994c-404977549d61.ps1:89 �ַ�: 1
++ gh auth login --hostname github.com --git-protocol https --web 2>&1 | ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+! First copy your one-time code: A01A-7AE6
+Open this URL to continue in your web browser: https://github.com/login/device
+failed to authenticate via web browser: Post "https://github.com/login/oauth/access_token": read tcp 192.168.1.8:50847-
+>20.205.243.166:443: wsarecv: A connection attempt failed because the connected party did not properly respond after a 
+period of time, or established connection failed because connected host has failed to respond.
+
+---
+exit_code: 1
+elapsed_ms: 44588
+ended_at: 2026-06-12T09:08:58.783Z
+---

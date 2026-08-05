@@ -1,0 +1,6 @@
+---
+pid: 28040
+cwd: |
+  C:\Users\win\Desktop\全局配置
+---
+PS C:\Users\win\Desktop\全局配置> 

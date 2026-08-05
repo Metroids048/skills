@@ -24,14 +24,16 @@ Cursor、Claude Code、Codex **三端全局配置** 的可移植源仓库。从�
 | `ai-workspace/templates/` | 全局模板 |
 | `ai-workspace/skills-curated/` | 轻量 curated skill 源材料 |
 | `projects/*/` | 项目级 AGENTS、CLAUDE、`.github/agent` memory/rules 快照 |
-| `knowledge-center/` | Desktop「全局配置」知识中心可移植子集（文档/工具/记忆/镜像；不含原始会话归档） |
+| `knowledge-center/` | Desktop「全局配置」**完整**快照（含原始记录/会话归档；仓库须为 Private） |
+| `archives/` | Codex/Claude/Cursor 会话与历史沉淀（sessions、file-history、transcripts） |
 | `docs/reports/` | skills 去重/迁移审计报告 |
 | `install.ps1` | 新机器一键安装 |
 | `scripts/export-from-local.ps1` | 从本机刷新仓库内容 |
 
 ## 不包含内容
 
-仓库有意排除真实 secrets、auth/session、sqlite runtime state、浏览器/插件缓存、日志、venv、`node_modules` 和下载后的重型插件缓存。新设备需要按 `.example` 文件补本地 token。
+仓库有意排除真实 secrets、auth/session 凭证、sqlite runtime、浏览器/插件缓存、venv/vendor、`node_modules`、CC Switch 与 AppData 编辑器缓存。  
+**本仓库应为 Private**：`archives/` 与 `knowledge-center/` 含个人/项目对话沉淀。
 
 ## 新设备安装（Windows）
 
