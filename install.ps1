@@ -69,7 +69,6 @@ foreach ($dest in @(".cursor\skills", ".claude\skills", ".codex\skills", ".agent
 Copy-File (Join-Path $RepoRoot "codex\AGENTS.md") (Join-Path $UserHome ".codex\AGENTS.md")
 Copy-File (Join-Path $RepoRoot "claude\AGENTS.md") (Join-Path $UserHome ".claude\AGENTS.md")
 Copy-File (Join-Path $RepoRoot "claude\CLAUDE.md") (Join-Path $UserHome ".claude\CLAUDE.md")
-Backup-Path (Join-Path $UserHome ".cursor\rules")
 Ensure-Dir (Join-Path $UserHome ".cursor\rules")
 Copy-File (Join-Path $RepoRoot "cursor\rules\00-personal-ai-working-contract.mdc") (Join-Path $UserHome ".cursor\rules\00-personal-ai-working-contract.mdc")
 Copy-File (Join-Path $RepoRoot "cursor\rules\01-personal-ai-runtime.mdc") (Join-Path $UserHome ".cursor\rules\01-personal-ai-runtime.mdc")

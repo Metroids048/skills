@@ -1,0 +1,14 @@
+[
+  {"task":"之前明明可以开单，现在为什么又不开单，先找根因","profiles":["engineering","trading","debugging"],"required":["systematic-debugging"],"forbidden":["frontend-design"]},
+  {"task":"修复后做完整业务验收，不要只看 pytest","profiles":["engineering"],"required":["verification-before-completion"],"forbidden":[]},
+  {"task":"给这个多模块重构写一份实施计划","profiles":["engineering"],"required":["writing-plans"],"forbidden":[]},
+  {"task":"方案已经批准，按方案实施并分阶段验证","profiles":["engineering"],"required":["executing-plans"],"forbidden":["brainstorming"]},
+  {"task":"帮我优化个人主页 UI 和视觉效果","profiles":["design","engineering"],"required":["frontend-design"],"forbidden":["systematic-debugging"]},
+  {"task":"分析这个需求并写 PRD","profiles":["product"],"required":["create-prd"],"forbidden":[]},
+  {"task":"现在这么多 skills 为什么调用不到，重做 skill 路由","profiles":["agent-runtime","engineering"],"required":["manage-skills"],"forbidden":[]},
+  {"task":"对漏洞基准做安全审查和风险检查","profiles":["security","engineering"],"required":["security-guardian"],"forbidden":[]},
+  {"task":"GitHub Actions CI 失败了，定位流水线问题","profiles":["engineering"],"required":["ci-cd-pipelines"],"forbidden":[]},
+  {"task":"根据这次面试反馈优化我的面试稿","profiles":["product","career"],"required":["interview-script","summarize-interview"],"forbidden":[]},
+  {"task":"做一个用户旅程图，找出关键摩擦点","profiles":["product"],"required":["customer-journey-map"],"forbidden":[]},
+  {"task":"按这个截图还原网页","profiles":["design","engineering"],"required":["image-to-code"],"forbidden":[]}
+]
