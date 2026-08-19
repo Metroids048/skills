@@ -1,5 +1,5 @@
 # Personal AI Runtime export.
-# Default mode exports only portable public-safe configuration.
+# Default mode is one-way: canonical repo sources are installed to endpoints.
 # Raw session/history material requires -IncludePrivateArchives AND a verified PRIVATE GitHub repository.
 
 param(
@@ -89,20 +89,12 @@ function Redact-Tree([string]$Root) {
         ForEach-Object { Redact-File $_.FullName }
 }
 
-# Canonical skills are maintained in repo/skills-src. Do NOT refresh them from endpoint snapshots here.
-# Export only portable configuration that is not private conversation history.
-Copy-FileIfExists (Join-Path $UserHome ".cursor\USER_RULES.txt") (Join-Path $RepoRoot "cursor\USER_RULES.txt")
-Sync-Tree (Join-Path $UserHome ".cursor\rules") (Join-Path $RepoRoot "cursor\rules") -ExtraExcludeDirs @("_archive")
-Sync-Tree (Join-Path $UserHome ".cursor\commands") (Join-Path $RepoRoot "cursor\commands")
-
-Copy-FileIfExists (Join-Path $UserHome ".claude\AGENTS.md") (Join-Path $RepoRoot "claude\AGENTS.local-snapshot.md")
-Sync-Tree (Join-Path $UserHome ".claude\commands") (Join-Path $RepoRoot "claude\commands")
-Sync-Tree (Join-Path $UserHome ".claude\rules") (Join-Path $RepoRoot "claude\rules")
-
-Copy-FileIfExists (Join-Path $UserHome ".codex\RTK.md") (Join-Path $RepoRoot "codex\RTK.md")
-Sync-Tree (Join-Path $UserHome ".codex\scripts") (Join-Path $RepoRoot "codex\scripts")
-
-# Private durable memory always stays outside the repository in normal mode.
+# v2 is deliberately one-way for normal runtime configuration:
+# repository canonical sources -> local installation.
+# Do not snapshot user rules/commands back into the Git repository by default.
+# This prevents private local instructions from entering a public remote and prevents
+# local endpoint state from becoming a competing source of truth.
+Write-Host "No normal endpoint configuration exported. Edit canonical repo sources, then run install.ps1."
 Write-Host "Private memory SSOT: $UserHome\.ai-workspace\private-memory (not exported)"
 
 if ($IncludePrivateArchives) {
@@ -131,8 +123,4 @@ if ($IncludePrivateArchives) {
     Redact-Tree (Join-Path $RepoRoot "knowledge-center\raw")
 }
 
-Redact-Tree (Join-Path $RepoRoot "cursor")
-Redact-Tree (Join-Path $RepoRoot "claude")
-Redact-Tree (Join-Path $RepoRoot "codex")
-
-Write-Host "Export complete. Canonical skills and private memory were not overwritten."
+Write-Host "Export complete. Canonical repo sources and private memory were not overwritten."

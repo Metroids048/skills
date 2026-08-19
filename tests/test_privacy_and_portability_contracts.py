@@ -35,3 +35,12 @@ def test_installer_preserves_unrelated_cursor_rules():
     text = (ROOT / "install.ps1").read_text(encoding="utf-8")
     assert 'Backup-Path (Join-Path $UserHome ".cursor\\rules")' not in text
     assert 'Ensure-Dir (Join-Path $UserHome ".cursor\\rules")' in text
+
+
+def test_default_export_is_one_way_and_does_not_snapshot_user_rules():
+    text = (ROOT / "scripts" / "export-from-local.ps1").read_text(encoding="utf-8")
+    assert 'USER_RULES.txt' not in text
+    assert '.claude\\AGENTS.md' not in text
+    assert '.cursor\\rules' not in text
+    assert '.claude\\commands' not in text
+    assert '.codex\\scripts' not in text
