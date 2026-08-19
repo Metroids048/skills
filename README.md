@@ -1,41 +1,55 @@
-# ai-global-config
+# Personal AI Runtime v2
 
-Cursor、Claude Code、Codex **三端全局配置** 的可移植源仓库。从本机导出 skills、rules、hooks、AGENTS、Codex 配置与 `~/.ai-workspace` 脚本/记忆模板，另一台设备 clone 后一条命令对齐环境。
+一个跨 **Codex / Claude Code / Cursor** 的个人 AI Runtime：统一用户工作契约、项目记忆、踩坑/已验证修复、Skill Registry、确定性 Skill Router 与可移植安装。
 
-## 包含内容
+> v2 不再把“装了多少 Skills”当能力指标。默认运行时只安装 `skills-src/` 中经过 curated registry 激活的高信号 Skills；旧 `skills/{cursor,claude,codex,agents}` 只作为 legacy source pool / 回滚证据，不再默认安装。
 
-| 目录 | 说明 |
-|------|------|
-| `skills/cursor/` | Cursor 全局 skills 快照（`~/.cursor/skills`） |
-| `skills/claude/` | Claude Code 全局 skills 快照（`~/.claude/skills`） |
-| `skills/codex/` | Codex 全局 skills 快照（`~/.codex/skills`） |
-| `skills/agents/` | `.agents/skills` 子集入口 |
-| `cursor/rules/` | Cursor always-on / ECC rules（`*.mdc`） |
-| `cursor/commands/` | Cursor slash commands |
-| `cursor/hooks/` | Cursor hook 脚本 |
-| `cursor/mcp-configs/` | Cursor MCP server 配置 |
-| `cursor/hooks.json.template` | Cursor 钩子模板 |
-| `cursor/mcp.json.example` | MCP 配置示例（token 已脱敏） |
-| `claude/` | AGENTS/CLAUDE、settings.example、commands、rules、MCP、global skills index |
-| `codex/` | AGENTS、RTK、config/overlay examples、hooks、scripts、MCP |
-| `ai-workspace/scripts/` | scan-global-skills、澄清硬拦、Windows agent shell、修复/验证脚本 |
-| `ai-workspace/memory/` | 用户记忆、全局任务历史、项目注册表、ADR/复盘记录 |
-| `ai-workspace/ai-coding-os/` | AIOS 产品/UI 工作流唯一源 |
-| `ai-workspace/templates/` | 全局模板 |
-| `ai-workspace/skills-curated/` | 轻量 curated skill 源材料 |
-| `projects/*/` | 项目级 AGENTS、CLAUDE、`.github/agent` memory/rules 快照 |
-| `knowledge-center/` | Desktop「全局配置」**完整**快照（含原始记录/会话归档；仓库须为 Private） |
-| `archives/` | Codex/Claude/Cursor 会话与历史沉淀（sessions、file-history、transcripts） |
-| `docs/reports/` | skills 去重/迁移审计报告 |
-| `install.ps1` | 新机器一键安装 |
-| `scripts/export-from-local.ps1` | 从本机刷新仓库内容 |
+## 核心链路
 
-## 不包含内容
+```text
+用户任务
+  → aiw project（识别项目）
+  → L0 全局契约
+  → L1 当前项目 memory pack
+  → L2 当前任务相关 memory
+  → [只有明确追溯历史] L3 session evidence
+  → Skill Registry / Router（Top ≤ 5）
+  → Codex / Claude Code / Cursor
+```
 
-仓库有意排除真实 secrets、auth/session 凭证、sqlite runtime、浏览器/插件缓存、venv/vendor、`node_modules`、CC Switch 与 AppData 编辑器缓存。  
-**本仓库应为 Private**：`archives/` 与 `knowledge-center/` 含个人/项目对话沉淀。
+## 隐私边界
 
-## 新设备安装（Windows）
+本 GitHub 仓库只保存 runtime、public-safe bootstrap memory、模板和 canonical Skills。**真实用户画像、求职/财务/法律/交易、客户资料、ChatGPT 会话和三端原始 session 不允许提交到这里。**
+
+私人长期记忆 SSOT：
+
+```text
+~/.ai-workspace/private-memory/
+```
+
+也可以设置：
+
+```text
+AIW_PRIVATE_MEMORY_ROOT=D:\AI-Knowledge
+```
+
+当前仓库历史曾包含 raw archives/knowledge-center；仅删除当前树不能撤销既往公开暴露。若历史中发现仍有效凭证，应优先轮换凭证；历史重写属于单独的破坏性治理操作。
+
+## 目录
+
+```text
+runtime/                 # aiw CLI / router / memory retriever / context builder
+registry/                # projects + active skill metadata SSOT
+skills-src/              # canonical active Skills SSOT
+skills/                  # legacy endpoint snapshots; no longer installed
+memory/                  # public-safe bootstrap only
+templates/private-memory # 私人项目记忆模板
+scripts/import-chatgpt-export.py
+scripts/export-from-local.ps1
+codex/ claude/ cursor/   # thin adapters
+```
+
+## Windows 安装
 
 ```powershell
 git clone https://github.com/Metroids048/skills.git
@@ -43,57 +57,90 @@ cd skills
 powershell -ExecutionPolicy Bypass -File install.ps1
 ```
 
-安装后：
+安装器会：
+1. 把 `runtime/ registry/ memory/` 安装到 `~/.ai-workspace/`；
+2. 创建但不会覆盖 `~/.ai-workspace/private-memory/`；
+3. 只把 `skills-src/` 安装到三端 Skills 目录；
+4. 安装三端薄适配规则；
+5. 清理 Claude 中旧的 `scan-global-skills.ps1` 全量 prompt hook（其他 hooks 保留）；
+6. 运行 `aiw doctor`。
 
-1. 按 `secrets/README.md` 填写 MCP token、API 代理、HCAI key
-2. 重启 Cursor、Claude Code、Codex
-3. 运行 `powershell -NoProfile -File "$env:USERPROFILE\.ai-workspace\scripts\audit-windows-agent-env.ps1"`
-4. （可选）把 `projects/*` 中的项目 memory 快照复制到对应项目根；启动 headroom / agentmemory 见 `ai-workspace/docs/`
-
-默认安装会保持三端 skills 差异。若希望进一步精简成 Cursor skills 为正本，Claude/Codex 使用 junction：
+## CLI
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File install.ps1 -UseJunctionSkills
+python "$env:USERPROFILE\.ai-workspace\runtime\aiw.py" doctor
+python "$env:USERPROFILE\.ai-workspace\runtime\aiw.py" project
+python "$env:USERPROFILE\.ai-workspace\runtime\aiw.py" route "为什么之前能开单现在不开单"
+python "$env:USERPROFILE\.ai-workspace\runtime\aiw.py" context "定位不开单根因"
+python "$env:USERPROFILE\.ai-workspace\runtime\aiw.py" memory search "R2 cost gate"
+python "$env:USERPROFILE\.ai-workspace\runtime\aiw.py" skills audit
 ```
 
-## 从本机更新仓库（维护者）
+## 项目识别
 
-在已配置好的机器上：
+推荐在业务仓库增加：
+
+```json
+{
+  "project_id": "automated-trading",
+  "memory_pack": ["automated-trading"],
+  "skill_profiles": ["engineering", "trading", "debugging"]
+}
+```
+
+路径：`.ai/project.json`。没有 manifest 时，AIW 再按 `registry/projects.json` 的 remote/basename 匹配。
+
+## Private Memory Pack
+
+每个项目建议：
+
+```text
+projects/<project_id>/
+├─ PROJECT.md
+├─ CURRENT_STATE.md
+├─ DECISIONS.md
+├─ PITFALLS.md
+├─ PROVEN_FIXES.md
+└─ ACCEPTANCE.md
+```
+
+重点不是复制全部聊天，而是保留未来真正会用到的：事实、决定、错误模式、根因、已验证修复、验收证据和开放事项。
+
+## ChatGPT 历史回填
+
+从 ChatGPT 导出的 `conversations.json` 必须导入仓库外部私人目录：
 
 ```powershell
-cd skills
+python scripts/import-chatgpt-export.py C:\path\to\conversations.json
+```
+
+Importer：
+- 拒绝把输出写进当前 Git repo；
+- 对常见 token/key 形态做脱敏；
+- 原始会话只标记 `PROPOSED_NOT_DURABLE`；
+- 不会静默覆盖长期记忆。
+
+之后再把真正稳定的事实/决定/根因/修复提炼到 project pack。
+
+## Export
+
+默认导出不再备份 raw session，也不会覆盖 `skills-src` 或 private memory：
+
+```powershell
 powershell -ExecutionPolicy Bypass -File scripts/export-from-local.ps1 -Force
-git add -A
-git commit -m "chore: sync global config from local"
-git push
 ```
 
-## 三端对齐原理
+只有显式 `-IncludePrivateArchives` 才允许 raw evidence，而且脚本会用 `gh repo view` **fail-closed 验证 PRIVATE visibility**。无法验证为 PRIVATE 就拒绝导出。
 
-```
-skills/cursor  ──copy──>  ~/.cursor/skills
-skills/claude  ──copy──>  ~/.claude/skills
-skills/codex   ──copy──>  ~/.codex/skills
+## Skill 精炼策略
 
-可选：
-skills/cursor  ──junction──>  ~/.claude/skills + ~/.codex/skills
+- `registry/skills.json` 决定 Active / alias / trigger / negative trigger / profiles / priority。
+- `skills-src/<id>` 是 canonical skill body。
+- 同一能力只有一个 `canonical_id`；例如 `verify-work` 路由到 `verification-before-completion`。
+- 默认 Top‑5；没有 positive trigger 的 Skill 不自动激活。
+- style-only / 泛描述 / 重复 Skills 保留在 legacy pool，不进入默认 runtime。
+- `tests/fixtures/routing_cases.json` 是 routing regression benchmark；新增/调整 Skill 必须同时更新 benchmark。
 
-ai-workspace/scripts  ──>  ~/.ai-workspace/scripts  (三端 hooks 共用)
+## 当前验收边界
 
-cursor/rules  ──>  ~/.cursor/rules
-claude/AGENTS.md  ──>  ~/.claude/AGENTS.md
-codex/*  ──>  ~/.codex/
-```
-
-## 版本
-
-见 `manifest.json`（skill 数量、导出日期）。
-
-## 当前去重结论
-
-最新报告见 `docs/reports/agent-workspace-stocktake.md`：
-
-- 三端加 `.agents` 共扫描 880 个 skill。
-- 发现 280 组内容完全一致，主要来自三端复制。
-- 建议下一阶段将重复 skill 收敛为“单一源 + 端侧 shim/junction”，并优先处理薄封装/泛描述 skill。
-- 实际删除或归档仍需要逐项确认，当前仓库先保存完整快照。
+Linux CI/本地可以验证 Python Runtime、routing benchmark、memory privacy contract 与脚本静态契约。Windows PowerShell 的真实安装仍必须在独立 Windows 用户（例如 `C:\Users\aiw-test`）做最终外部验收，不能用静态测试冒充。
