@@ -1,6 +1,8 @@
-# Secrets — do not commit real tokens / auth
+# Secrets / private user material — never commit
 secrets/
 .sandbox-secrets/
+private-memory/
+.ai-private/
 *.local.json
 auth.json
 .credentials.json
@@ -12,10 +14,20 @@ auth.json
 *.pfx
 *credentials*.json
 *token*.json
+conversations.json
+chatgpt-export*
 
-# Runtime / cache / heavy local stacks
+# Raw cross-agent conversations are not durable memory
+archives/
+knowledge-center/raw/
+**/sessions/**/*.jsonl
+**/archived_sessions/**/*.jsonl
+**/agent-transcripts/**
+
+# Runtime / cache
 node_modules/
 __pycache__/
+.pytest_cache/
 .venv/
 venv/
 vendor/
@@ -33,7 +45,7 @@ browser/
 telemetry/
 sqlite/
 process_manager/
-runtime/
+runtime-state/
 tmp/
 .tmp/
 *.sqlite
@@ -41,6 +53,11 @@ tmp/
 *.db
 *.log
 
-# OS
+# OS / local audit
 Thumbs.db
 .encoding-audit/
+
+# Deprecated v1 snapshot roots: keep them out of new exports
+knowledge-center/
+projects/
+ai-workspace/

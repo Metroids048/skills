@@ -1,8 +1,0 @@
----
-pid: 29764
-cwd: |
-  C:\Users\win\Desktop\AI--main
----
-PS C:\Users\win\Desktop\AI--main>
-PS C:\Users\win\Desktop\AI--main>
-PS C:\Users\win\Desktop\AI--main>
