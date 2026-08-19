@@ -1,31 +1,12 @@
 {
-    "version":  "1.3.0",
-    "exportedAt":  "2026-08-05T10:07:00+08:00",
-    "sourceMachine":  "DESKTOP-6CJ3QPD",
-    "skillCounts":  {
-                        "agents":  13,
-                        "cursor":  286,
-                        "claude":  286,
-                        "codex":  318
-                    },
-    "includes":  [
-                     "endpoint skills",
-                     "commands",
-                     "rules",
-                     "hooks",
-                     "mcp configs",
-                     "AIOS",
-                     "global memory",
-                     "project agent memory snapshots",
-                     "knowledge-center FULL (Desktop/全局配置)",
-                     "codex/claude/cursor session archives",
-                     "ai-workspace clarifications/backups"
-                 ],
-    "excludes":  [
-                     "tokens/secrets/auth/.env/CC Switch",
-                     "sqlite runtime state",
-                     "logs/cache/browser state",
-                     "venv/vendor/node_modules",
-                     "AppData editor caches"
-                 ]
+  "version": "2.0.0",
+  "architecture": "Personal AI Runtime",
+  "skillSourceOfTruth": "skills-src/",
+  "routingSourceOfTruth": "registry/skills.json",
+  "privateMemorySourceOfTruth": "~/.ai-workspace/private-memory or AIW_PRIVATE_MEMORY_ROOT",
+  "legacySkillPools": ["skills/cursor", "skills/claude", "skills/codex", "skills/agents"],
+  "rawArchivesDefault": false,
+  "chatgptImportInsideRepoAllowed": false,
+  "maxDefaultSelectedSkills": 5,
+  "requiredExternalValidation": ["clean Windows user install", "Codex context+route", "Claude Code context+route", "Cursor context+route"]
 }
