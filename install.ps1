@@ -19,6 +19,7 @@ function Copy-Tree([string]$Source, [string]$Dest, [switch]$PreserveExisting) {
 function Copy-File([string]$Source, [string]$Dest) {
     if (-not (Test-Path -LiteralPath $Source)) { return }
     Ensure-Dir (Split-Path -Parent $Dest)
+    Backup-Path $Dest
     Copy-Item -LiteralPath $Source -Destination $Dest -Force
 }
 function Remove-LegacySkillScanHooks([string]$SettingsPath) {
