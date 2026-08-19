@@ -1,0 +1,17 @@
+---
+description: Personal AI Runtime v2 context and skill routing
+alwaysApply: true
+---
+# Personal AI Runtime v2
+
+For non-trivial tasks, use the shared deterministic runtime instead of scanning every Skill or guessing which Skill to use:
+
+```powershell
+python "$env:USERPROFILE\.ai-workspace\runtime\aiw.py" context "<user task>"
+```
+
+Load only the returned Skills from `~/.cursor/skills/<id>/SKILL.md` (maximum five by default).
+
+For explicit history/continuation requests, use `aiw.py memory search`. Private user/project memory lives outside the Git repo at `~/.ai-workspace/private-memory` or `AIW_PRIVATE_MEMORY_ROOT` and must never be bulk-injected into context.
+
+Never treat hook execution, file existence, tests-only success, or Agent self-report as business acceptance.
