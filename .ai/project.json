@@ -1,0 +1,5 @@
+{
+  "project_id": "skills-runtime",
+  "memory_pack": ["skills-runtime"],
+  "skill_profiles": ["engineering", "agent-runtime", "debugging"]
+}
