@@ -1,8 +1,6 @@
 ---
-name: "Dispatching 并行 Agents"
-slug: dispatching-parallel-agents
+name: dispatching-parallel-agents
 description: "Dispatching 并行 Agents：辅助完成相关分析、生成或审查任务"
-disable-model-invocation: true
 ---
 # Dispatching Parallel Agents
 
@@ -181,4 +179,3 @@ From debugging session (2025-10-03):
 - All investigations completed concurrently
 - All fixes integrated successfully
 - Zero conflicts between agent changes
-

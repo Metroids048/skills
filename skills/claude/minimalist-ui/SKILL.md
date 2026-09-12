@@ -1,9 +1,8 @@
 ---
-name: "极简 UI"
-slug: minimalist-ui
-description: "无障碍合规（WCAG）：ARIA、键盘导航与读屏适配"
-disable-model-invocation: true
+name: minimalist-ui
+description: Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy shadows.
 ---
+
 # Protocol: Premium Utilitarian Minimalism UI Architect
 
 ## 1. Protocol Overview
@@ -84,4 +83,3 @@ When tasked with writing frontend code (HTML, React, Tailwind, Vue) or designing
 5. Add scroll-entry animations to all major content blocks.
 6. Ensure sections have visual depth through imagery, ambient gradients, or subtle textures — no empty flat backgrounds.
 7. Provide code that reflects this high-end, uncluttered, editorial aesthetic natively without requiring manual adjustments.
-

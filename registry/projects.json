@@ -1,11 +1,40 @@
 {
   "schema_version": "2.0",
   "projects": [
-    {"id": "automated-trading", "basenames": ["量化项目", "AI--main", "AI-"], "remotes": ["Metroids048/AI-"], "memory_pack": ["automated-trading"], "skill_profiles": ["engineering", "trading", "debugging"]},
-    {"id": "alpha", "basenames": ["alpha"], "remotes": ["Metroids048/alpha", "Metroids1957/alpha"], "memory_pack": ["alpha"], "skill_profiles": ["engineering", "research", "debugging"]},
-    {"id": "ai-bug", "basenames": ["AI_bug"], "remotes": ["Metroids048/AI_bug"], "memory_pack": ["ai-bug"], "skill_profiles": ["engineering", "security", "research"]},
-    {"id": "agent-video-studio", "basenames": ["Agent Video Studio", "video"], "remotes": [], "memory_pack": ["agent-video-studio"], "skill_profiles": ["engineering", "media", "design"]},
-    {"id": "portfolio", "basenames": ["pm-ai-portfolio", "alpha-portfolio"], "remotes": ["Metroids1957/pm-ai-portfolio"], "memory_pack": ["portfolio"], "skill_profiles": ["engineering", "design", "product"]},
-    {"id": "skills-runtime", "basenames": ["skills"], "remotes": ["Metroids048/skills"], "memory_pack": ["skills-runtime"], "skill_profiles": ["engineering", "agent-runtime", "debugging"]}
+    {
+      "id": "automated-trading",
+      "basenames": ["量化项目", "AI--main", "AI-"],
+      "remotes": ["Metroids048/AI-"],
+      "memory_pack": ["automated-trading"],
+      "skill_profiles": ["engineering", "trading", "debugging"]
+    },
+    {
+      "id": "alpha",
+      "basenames": ["alpha"],
+      "remotes": ["Metroids048/alpha", "Metroids1957/alpha"],
+      "memory_pack": ["alpha"],
+      "skill_profiles": ["engineering", "research", "debugging", "data"]
+    },
+    {
+      "id": "ai-bug",
+      "basenames": ["AI_bug"],
+      "remotes": ["Metroids048/AI_bug"],
+      "memory_pack": ["ai-bug"],
+      "skill_profiles": ["engineering", "security", "research"]
+    },
+    {
+      "id": "portfolio",
+      "basenames": ["pm-ai-portfolio", "alpha-portfolio"],
+      "remotes": ["Metroids1957/pm-ai-portfolio"],
+      "memory_pack": ["portfolio"],
+      "skill_profiles": ["engineering", "design", "product"]
+    },
+    {
+      "id": "skills-runtime",
+      "basenames": ["skills"],
+      "remotes": ["Metroids048/skills"],
+      "memory_pack": ["skills-runtime"],
+      "skill_profiles": ["engineering", "agent-runtime", "debugging"]
+    }
   ]
 }

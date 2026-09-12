@@ -1,0 +1,46 @@
+[
+  {
+    "name": "强匹配",
+    "requirements": [
+      {"priority": "must", "weight": 5, "evidence_level": 4, "transfer_factor": 1},
+      {"priority": "core", "weight": 4, "evidence_level": 4, "transfer_factor": 1},
+      {"priority": "preferred", "weight": 2, "evidence_level": 3, "transfer_factor": 1}
+    ],
+    "hard_gates": [{"status": "met"}],
+    "source_completeness": 95,
+    "confidence": 90,
+    "expected": {"min": 85, "label": "建议投"}
+  },
+  {
+    "name": "关键词堆砌",
+    "requirements": [
+      {"priority": "must", "weight": 5, "evidence_level": 1, "transfer_factor": 1},
+      {"priority": "core", "weight": 5, "evidence_level": 1, "transfer_factor": 1}
+    ],
+    "hard_gates": [],
+    "source_completeness": 90,
+    "confidence": 85,
+    "expected": {"max": 25, "label": "谨慎投"}
+  },
+  {
+    "name": "可迁移经验",
+    "requirements": [
+      {"priority": "must", "weight": 4, "evidence_level": 3, "transfer_factor": 0.8},
+      {"priority": "core", "weight": 4, "evidence_level": 3, "transfer_factor": 0.8}
+    ],
+    "hard_gates": [{"status": "partial"}],
+    "source_completeness": 90,
+    "confidence": 80,
+    "expected": {"min": 55, "max": 70, "label": "修改后投"}
+  },
+  {
+    "name": "硬门槛缺失",
+    "requirements": [
+      {"priority": "core", "weight": 5, "evidence_level": 4, "transfer_factor": 1}
+    ],
+    "hard_gates": [{"status": "missing"}],
+    "source_completeness": 95,
+    "confidence": 90,
+    "expected": {"min": 95, "label": "谨慎投"}
+  }
+]

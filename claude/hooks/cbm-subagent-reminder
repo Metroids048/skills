@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# SubagentStart hook: tell subagents to use codebase-memory-mcp tools.
+case "$(uname -s 2>/dev/null)" in
+MINGW*|MSYS*|CYGWIN*)
+  cmd //c "C:/Users/Windows11/.claude/hooks/cbm-subagent-reminder.cmd"
+  exit 0
+  ;;
+esac
+cat << 'REMINDER'
+{"hookSpecificOutput":{"hookEventName":"SubagentStart","additionalContext":"Code discovery: prefer codebase-memory-mcp tools (search_graph, trace_path, get_code_snippet, query_graph, get_architecture, search_code) over grep/file-read for navigating code. Use Grep/Glob/Read for text, configs, and non-code files."}}
+REMINDER

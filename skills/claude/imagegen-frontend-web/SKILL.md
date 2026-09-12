@@ -1,9 +1,8 @@
 ---
-name: "前端工程"
-slug: imagegen-frontend-web
-description: "前端工程：辅助完成相关分析、生成或审查任务"
-disable-model-invocation: true
+name: imagegen-frontend-web
+description: Elite frontend image-direction skill for generating premium, conversion-aware website design references. CRITICAL OUTPUT RULE — generate ONE separate horizontal image FOR EVERY section. A landing page with 8 sections produces 8 images. Never compress multiple sections into one image. Enforces composition variety (not always left-text / right-image), background-image freedom, varied CTAs, varied hero scales (giant / mid / mini minimalist), narrative concept spine, second-read moments, and a single consistent palette across all images. Optimized for landing pages, marketing sites, and product comps that developers or coding models can accurately recreate.
 ---
+
 # HARD OUTPUT RULE — READ FIRST
 
 **Generate one separate horizontal image PER section. Always. No exceptions.**
@@ -986,4 +985,3 @@ Generate frontend reference images that feel:
 - implementation-friendly
 
 The result should look like a top-tier website concept with strong imagery, confident creativity, and generous spacing - not a dense, repetitive AI layout.
-

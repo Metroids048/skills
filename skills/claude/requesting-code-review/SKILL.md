@@ -1,8 +1,6 @@
 ---
-name: "Requesting 代码 审查"
-slug: requesting-code-review
+name: requesting-code-review
 description: "代码审查：质量、模式、安全与可维护性检查"
-disable-model-invocation: true
 ---
 # Requesting Code Review
 
@@ -102,4 +100,3 @@ You: [Fix progress indicators]
 - Request clarification
 
 See template at: requesting-code-review/code-reviewer.md
-

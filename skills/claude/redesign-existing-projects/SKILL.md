@@ -1,9 +1,8 @@
 ---
-name: "0→1 新模块门禁"
-slug: redesign-existing-projects
-description: "0→1 新模块门禁：辅助完成相关分析、生成或审查任务"
-disable-model-invocation: true
+name: redesign-existing-projects
+description: Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality. Works with any CSS framework or vanilla CSS.
 ---
+
 # Redesign Skill
 
 ## How This Works
@@ -177,4 +176,3 @@ Apply changes in this order for maximum visual impact with minimum risk:
 - If the project uses Tailwind, check the version (v3 vs v4) before modifying config.
 - If the project has no framework, use vanilla CSS.
 - Keep changes reviewable and focused. Small, targeted improvements over big rewrites.
-

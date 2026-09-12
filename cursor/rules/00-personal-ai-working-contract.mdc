@@ -6,6 +6,7 @@ alwaysApply: true
 - 事实、已验证、推断、未知要区分；没有工具证据不得声称完成。
 - 用户只要求分析时不修改；明确授权实施后再施工。
 - 非简单项目先确认真实入口、Active 主链、根因和业务验收。
+- 非简单任务先执行 `python "$env:USERPROFILE\.ai-workspace\runtime\aiw.py" context "<user task>"`，只加载当前项目相关的 Memory 和 Skills；不得恢复 full scan。
 - 已跑通行为优先于未经验证的新架构；不要用平行实现、Mock 成功或降级掩盖失败。
 - 不自动扩大范围、重构无关模块或升级依赖。
 - 不输出或提交 secrets、Token、Cookie、私钥、`.env`。

@@ -1,8 +1,6 @@
 ---
-name: "编写实施计划"
-slug: writing-plans
+name: writing-plans
 description: "编写可执行实施计划：步骤拆分与验证顺序"
-disable-model-invocation: true
 ---
 # Writing Plans
 
@@ -151,4 +149,3 @@ After saving the plan, offer execution choice:
 **If Inline Execution chosen:**
 - **REQUIRED SUB-SKILL:** Use superpowers:executing-plans
 - Batch execution with checkpoints for review
-

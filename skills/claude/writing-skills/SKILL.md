@@ -1,8 +1,6 @@
 ---
-name: "测试驱动开发"
-slug: writing-skills
+name: writing-skills
 description: "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E"
-disable-model-invocation: true
 ---
 # Writing Skills
 
@@ -105,7 +103,7 @@ skills/
 
 ```markdown
 ---
-name: Skill-Name-With-Hyphens
+name: writing-skills
 description: Use when [specific triggering conditions and symptoms]
 ---
 
@@ -654,4 +652,3 @@ Same cycle: RED (baseline) → GREEN (write skill) → REFACTOR (close loopholes
 Same benefits: Better quality, fewer surprises, bulletproof results.
 
 If you follow TDD for code, follow it for skills. It's the same discipline applied to documentation.
-

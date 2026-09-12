@@ -1,0 +1,4 @@
+interface:
+  display_name: "Creative Production Local"
+  short_description: "Provider-independent creative production workflow"
+  default_prompt: "Use $creative-production-local to plan this creative asset workflow locally."

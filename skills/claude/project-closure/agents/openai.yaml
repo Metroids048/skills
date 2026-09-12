@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Closure"
+  short_description: "用证据完成严格项目收口"
+  default_prompt: "Use $project-closure to define acceptance evidence and close this task."

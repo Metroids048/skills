@@ -1,0 +1,27 @@
+---
+description: 视频链接/本地视频/视频 SOP 请求 → 强制路由到 video-research-package Skill
+alwaysApply: true
+---
+
+# 视频链接 → 必须调用 video-research-package Skill
+
+对话中一旦出现视频链接（抖音 `v.douyin.com` / `www.douyin.com`、B站 bilibili、YouTube、
+小红书 xiaohongshu、X/Twitter 视频）、抖音分享文案（`4.64 复制打开抖音…`）、
+本地视频文件，或用户说「按视频 SOP 处理」「把视频内容完整拆出来」「分析这几个视频」
+「照着这个视频做」：
+
+**必须先调用 `video-research-package` Skill，不要自行下载或分析视频。**
+
+Skill 位置：`~/.cursor/skills/video-research-package/SKILL.md`
+（同一份也在 `~/.claude/skills/` 与 `~/.codex/skills/`；canonical 在
+`~/.ai-workspace/skills-curated/video-research-package/`）
+
+链路：Acquire → Normalize → Transcript → Visual → Align → Reconstruct →
+Structured Package → Task。
+
+铁律：
+
+- **先查历史 Package**（`vci.ps1 status`），命中就直接复用，绝不重新下载或重新转写
+- 平台拿不到 → 记 `ACQUIRE_BLOCKED` 并索取本地文件；不反复重抓、不换浏览器试 cookie
+- **绝不凭标题、网页描述或想象编造视频内容**；没有媒体就是没有内容
+- VCI Core 已冻结（commit `89747b1`），不要为平台问题改它

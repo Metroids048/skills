@@ -1,0 +1,4 @@
+interface:
+  display_name: "Supabase Local"
+  short_description: "通过 CLI 做安全的 Supabase 本地操作"
+  default_prompt: "Use $supabase-local for a read-only Supabase CLI check."

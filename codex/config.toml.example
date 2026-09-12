@@ -1,199 +1,110 @@
-#:schema https://developers.openai.com/codex/config-schema.json
-# Repaired 2026-06-03: removed macOS notify, stale node_repl paths, and startup-heavy MCP set.
-
-approval_policy = "on-request"
-sandbox_mode = "workspace-write"
-web_search = "live"
-persistent_instructions = "Follow project AGENTS.md. Fuzzy/vibe coding: Read requirement-clarifier + skill-chain-map.md + vibe-coding-bridge.md; ultra-vague use interview-protocol (one Q+GUESS); output Mini-Spec S4.5 + S7 before Write/Edit; multi-file risk use clarification-guardrails.md. User must confirm before execute unless 直接执行. Use MCP when helpful."
 model = "gpt-5.6-terra"
 model_reasoning_effort = "high"
-notify = ['C:\Users\win\AppData\Local\OpenAI\Codex\runtimes\cua_node\a89897d3d9baa117\bin\node_modules\@oai\sky\bin\windows\codex-computer-use.exe', "turn-ended"]
-model_provider = "custom"
-openai_base_url = "http://127.0.0.1:57321/v1"
-model_catalog_json = "model-catalogs/ccs-one-api-1783589315861.json"
-[desktop.open-in-target-preferences]
-global = "cursor"
+http_proxy = "http://127.0.0.1:7892"
 
-[desktop.open-in-target-preferences.perPath]
-'C:\Users\win\Desktop\敖钦储能项目' = "fileManager"
-'C:\Users\win\Desktop\AI--main' = "cursor"
+service_tier = "default"
+notify = [ "C:\\Users\\Windows11\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\b474a88d5d105afa\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe", "turn-ended" ]
+[projects.'%USERPROFILE%\desktop\number signals']
+trust_level = "trusted"
 
-[mcp_servers]
+[projects.'%USERPROFILE%\desktop\alpha']
+trust_level = "trusted"
 
-[mcp_servers.chrome-devtools]
-type = "stdio"
-command = "npx"
-args = ["-y", "chrome-devtools-mcp@latest"]
-startup_timeout_sec = 30
+[projects.'%USERPROFILE%\desktop\demo']
+trust_level = "trusted"
 
-[mcp_servers.context7]
-type = "stdio"
-command = "npx"
-args = ["-y", "@upstash/context7-mcp@latest"]
-startup_timeout_sec = 30
+[projects.'%USERPROFILE%\desktop\量化项目']
+trust_level = "trusted"
 
-[mcp_servers.exa]
-type = "stdio"
-command = "npx"
-args = ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
-startup_timeout_sec = 30
+[projects.'%USERPROFILE%\desktop\pm']
+trust_level = "trusted"
 
-[mcp_servers.fal-ai]
-type = "stdio"
-command = "npx"
-args = ["-y", "fal-ai-mcp-server"]
-startup_timeout_sec = 30
+[projects.'%USERPROFILE%\documents\codex\2026-08-09\codex-plugin-windows-api-skill-windows']
+trust_level = "trusted"
 
-[mcp_servers.filesystem-agent-platform]
-type = "stdio"
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-filesystem", 'C:\Users\win\Desktop\Agent Platform']
-startup_timeout_sec = 30
+[projects.'%USERPROFILE%\documents\codex\2026-08-19\windows-ai-agent-runtime-codex-claude']
+trust_level = "trusted"
 
-[mcp_servers.github]
-type = "stdio"
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-github"]
-startup_timeout_sec = 30
+[projects.'%USERPROFILE%\documents\codex\2026-08-29\zhe']
+trust_level = "trusted"
 
-[mcp_servers.memory]
-type = "stdio"
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-memory"]
-startup_timeout_sec = 30
+[projects.'%USERPROFILE%\documents\codex\2026-08-29\wo']
+trust_level = "trusted"
 
-[mcp_servers.playwright]
-type = "stdio"
-command = "npx"
-args = ["-y", "@playwright/mcp@latest", "--browser", "chrome"]
-startup_timeout_sec = 30
+[projects.'%USERPROFILE%\documents\codex\2026-08-30\wo-x']
+trust_level = "trusted"
 
-[mcp_servers.sequential-thinking]
-type = "stdio"
-command = "npx"
-args = ["-y", "@modelcontextprotocol/server-sequential-thinking"]
-startup_timeout_sec = 30
+[projects.'%USERPROFILE%\documents\codex\2026-08-30\ji-xu']
+trust_level = "trusted"
+
+[projects.'%USERPROFILE%\documents\codex\2026-08-30\qzone-photo-recovery']
+trust_level = "trusted"
+
+[projects.'%USERPROFILE%\documents\chatgpt\video1']
+trust_level = "trusted"
+
+[projects.'%USERPROFILE%\desktop\ai bug bounty researcher']
+trust_level = "trusted"
+
+[projects.'%USERPROFILE%\desktop\全局配置']
+trust_level = "trusted"
+
+[marketplaces.openai-bundled]
+source_type = "local"
+source = '\\?\%USERPROFILE%\.codex\.tmp\bundled-marketplaces\openai-bundled'
+
+[marketplaces.openai-curated]
+source_type = "local"
+source = '\\?\%USERPROFILE%\.codex\.tmp\plugins'
+
+[marketplaces.openai-api-curated]
+source_type = "local"
+source = '\\?\%USERPROFILE%\.codex\.tmp\plugins'
+
+[marketplaces.openai-primary-runtime]
+source_type = "local"
+source = '\\?\%USERPROFILE%\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
 
 [features]
-multi_agent = true
-
-[model_providers.custom]
-name = "One-API"
-requires_openai_auth = false
-supports_websockets = true
-wire_api = "responses"
-base_url = "https://api.tangguo.xin/v1"
-
-[profiles.strict]
-approval_policy = "on-request"
-sandbox_mode = "read-only"
-web_search = "cached"
-
-[profiles.yolo]
-approval_policy = "never"
-sandbox_mode = "workspace-write"
-web_search = "live"
-
-[profiles.hcai]
-model_provider = "hcai"
-model = "gpt-5.5"
-model_reasoning_effort = "medium"
-
-[agents]
-max_threads = 3
-max_depth = 1
-
-[plugins."openai-developers@openai-curated"]
-enabled = true
-
-[plugins."superpowers@openai-api-curated"]
-enabled = true
-
-[plugins."codex-security@openai-curated"]
-enabled = true
-
-[agents.explorer]
-description = "Read-only codebase explorer for gathering evidence before changes are proposed."
-config_file = "agents/explorer.toml"
-
-[plugins."binance@openai-curated"]
-enabled = true
-
-[plugins."hyperframes@openai-api-curated"]
-enabled = true
-
-[agents.reviewer]
-description = "PR reviewer focused on correctness, security, and missing tests."
-config_file = "agents/reviewer.toml"
-
-[agents.docs_researcher]
-description = "Documentation specialist that verifies APIs, framework behavior, and release notes."
-config_file = "agents/docs-researcher.toml"
+js_repl = false
 
 [windows]
 sandbox = "elevated"
 
-[plugins."computer-use@openai-bundled"]
+[plugins."vercel@openai-curated"]
 enabled = true
 
-[hooks.state.'C:\Users\win\.codex\hooks.json:session_start:0:0']
-trusted_hash = "sha256:7d8351580109d1697043b45fa467ce05cd60fa8c024d5fe5f2212d96563c098c"
-
-[plugins."product-design@openai-curated-remote"]
+[plugins."canva@openai-curated"]
 enabled = true
 
-[hooks.state.'C:\Users\win\.codex\hooks.json:user_prompt_submit:0:0']
-trusted_hash = "sha256:175d441a3675a006f20c134fb11398e4759b8e9677be866a374e06d8e4a36d68"
-
-[plugins."creative-production@openai-curated-remote"]
+[plugins."github@openai-curated"]
 enabled = true
 
-[projects.'c:\users\win\desktop\demo']
-trust_level = "trusted"
-
-[plugins."picsart@openai-curated"]
+[plugins."chrome@openai-bundled"]
 enabled = true
 
-[projects.'c:\users\win\desktop\平台项目资料']
-trust_level = "trusted"
-
-[projects.'c:\users\win\desktop\ai--main']
-trust_level = "trusted"
-
-[projects.'c:\users\win\desktop\敖钦储能项目']
-trust_level = "trusted"
-
-[plugins."supabase@openai-curated"]
+[plugins."superpowers@openai-curated"]
 enabled = true
 
-[projects.'c:\users\win\desktop\program1-main-latest']
-trust_level = "trusted"
+[plugins."browser@openai-bundled"]
+enabled = true
 
-[projects.'c:\users\win\desktop\alpha']
-trust_level = "trusted"
+[plugins."visualize@openai-bundled"]
+enabled = true
 
-[marketplaces.openai-primary-runtime]
-last_updated = "2026-07-31T02:14:57Z"
-source_type = "local"
-source = '\\?\C:\Users\win\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
+[plugins."sites@openai-bundled"]
+enabled = true
 
-[marketplaces.openai-curated]
-source_type = "local"
-source = '\\?\C:\Users\win\.codex\.tmp\plugins'
+[plugins."build-web-apps@openai-curated"]
+enabled = true
 
-[marketplaces.openai-api-curated]
-source_type = "local"
-source = '\\?\C:\Users\win\.codex\.tmp\plugins'
-
-[marketplaces.openai-curated-remote]
-source_type = "local"
-source = '\\?\C:\Users\win\.codex\.tmp\plugins-remote'
-
-[marketplaces.openai-bundled]
-source_type = "local"
-source = '\\?\C:\Users\win\.codex\.tmp\bundled-marketplaces\openai-bundled'
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
 
 [plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
 enabled = true
 
 [plugins."spreadsheets@openai-primary-runtime"]
@@ -202,28 +113,37 @@ enabled = true
 [plugins."presentations@openai-primary-runtime"]
 enabled = true
 
-[plugins."figma@openai-curated"]
-enabled = true
-
-[plugins."github@openai-curated"]
-enabled = true
-
-[plugins."hyperframes@openai-curated"]
-enabled = true
-
-[plugins."chrome@openai-bundled"]
-enabled = true
-
-[plugins."pdf@openai-primary-runtime"]
-enabled = true
-
 [plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[plugins."unified-computer-use@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
 enabled = true
 
 [desktop]
 followUpQueueMode = "queue"
-conversationDetailMode = "STEPS_COMMANDS"
-show-context-window-usage = true
 
-[plugins."browser@openai-bundled"]
-enabled = true
+[shell_environment_policy.set]
+
+[mcp_servers]
+
+[mcp_servers.node_repl]
+args = []
+command = '%USERPROFILE%\AppData\Local\OpenAI\Codex\runtimes\cua_node\b474a88d5d105afa\bin\node_repl.exe'
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = '%USERPROFILE%\AppData\Local\OpenAI\Codex\runtimes\cua_node\b474a88d5d105afa\bin\node_modules'
+NODE_REPL_NODE_PATH = '%USERPROFILE%\AppData\Local\OpenAI\Codex\runtimes\cua_node\b474a88d5d105afa\bin\node.exe'
+NODE_REPL_TRUSTED_CODE_PATHS = '%USERPROFILE%\.codex;%USERPROFILE%\AppData\Local\OpenAI\Codex\runtimes\cua_node\b474a88d5d105afa\bin\node_modules'
+CODEX_HOME = '%USERPROFILE%\.codex'
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+BROWSER_USE_TINYSKY_ENABLED = "1"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = ""
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = ""
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.901.51231"
+SKY_CUA_NATIVE_PIPE = "1"

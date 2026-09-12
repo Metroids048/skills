@@ -1,19 +1,15 @@
 {
-    "$schema":  "https://json.schemastore.org/claude-code-settings.json",
-    "disableAllHooks":  true,
-    "includeCoAuthoredBy":  false,
-    "mcpServers":  {
-
-                   },
-    "model":  "sonnet[1m]",
-    "env":  {
-                "ANTHROPIC_AUTH_TOKEN":  "YOUR_SECRET",
-                "ANTHROPIC_BASE_URL":  "https://api.tangguo.xin",
-                "CLAUDE_CODE_ATTRIBUTION_HEADER":  "0",
-                "ENABLE_PROMPT_CACHING_1H":  "1",
-                "PYTHONUTF8":  "1",
-                "PYTHONIOENCODING":  "utf-8",
-                "HEADROOM_REQUIRE_RUST_CORE":  "false",
-                "DISABLE_AUTOUPDATER":  "1"
-            }
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "sk-YOUR_SECRET",
+    "ANTHROPIC_BASE_URL": "https://api.tangguo.xin",
+    "HTTP_PROXY": "http://127.0.0.1:7892",
+    "HTTPS_PROXY": "http://127.0.0.1:7892",
+    "ALL_PROXY": "http://127.0.0.1:7892",
+    "NO_PROXY": "127.0.0.1,localhost,::1,*.local,10.*,192.168.*,172.16.*,172.17.*,172.18.*,172.19.*,172.30.*,172.31.*",
+    "CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
+    "PYTHONUTF8": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "disableAllHooks": true,
+  "theme": "light"
 }

@@ -1,8 +1,6 @@
 ---
-name: "方案脑暴"
-slug: brainstorming
+name: brainstorming
 description: "编码前脑暴：澄清需求、探索方案并确认设计"
-disable-model-invocation: true
 ---
 # Brainstorming Ideas Into Designs
 
@@ -163,4 +161,3 @@ A question about a UI topic is not automatically a visual question. "What does p
 
 If they agree to the companion, read the detailed guide before proceeding:
 `skills/brainstorming/visual-companion.md`
-

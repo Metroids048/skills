@@ -1,0 +1,4 @@
+interface:
+  display_name: "Trading Safety Review"
+  short_description: "只读审查交易执行与资金安全"
+  default_prompt: "Use $trading-safety-review to review this trading change with synthetic evidence only."

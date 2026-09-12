@@ -1,8 +1,6 @@
 ---
-name: "代码 审查 Reception"
-slug: receiving-code-review
+name: receiving-code-review
 description: "代码审查：质量、模式、安全与可维护性检查"
-disable-model-invocation: true
 ---
 # Code Review Reception
 
@@ -212,4 +210,3 @@ When replying to inline review comments on GitHub, reply in the comment thread (
 Verify. Question. Then implement.
 
 No performative agreement. Technical rigor always.
-

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Video Pipeline"
+  short_description: "从脚本到渲染并验证视频"
+  default_prompt: "Use $video-pipeline to render and verify this video safely."

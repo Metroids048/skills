@@ -1,0 +1,20 @@
+{
+  "name": "prototype-screenshot-atlas-importer",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "test:ui": "node ./tests/ui-bundle-smoke.mjs",
+    "test:zip": "node ./tests/zip-smoke.mjs ../../artifacts/prototype-snapshots/figma-import.zip",
+    "verify": "npm run build && npm run test:ui && npm run test:zip"
+  },
+  "dependencies": {
+    "jszip": "3.10.1",
+    "pngjs": "7.0.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.27.2",
+    "typescript": "6.0.2"
+  }
+}

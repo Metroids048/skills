@@ -1,0 +1,224 @@
+{
+  "meta": {
+    "analysis_id": "JFR-20260729-001",
+    "generated_at": "2026-07-29T10:30:00+08:00",
+    "language": "zh-CN",
+    "role_family": "product",
+    "specialty": "AI 产品",
+    "seniority": "高级",
+    "classification_confidence": 92,
+    "source_completeness": 94
+  },
+  "job": {
+    "title": "高级 AI 产品经理",
+    "company": "示例科技",
+    "industry": "企业服务 / AI",
+    "role_goal": "负责企业 AI Agent 产品从问题定义、方案设计到上线评测的完整闭环，在模型能力、用户体验、成本和安全之间做取舍。",
+    "summary": "岗位真正寻找的不是会写提示词的人，而是能把不稳定的模型能力做成可评测、可交付、可持续优化的企业产品负责人。",
+    "hard_gates": [
+      {
+        "requirement": "3 年以上产品经验",
+        "status": "met",
+        "evidence": "简历显示 6 年产品经历",
+        "impact": "满足"
+      },
+      {
+        "requirement": "有 AI 产品落地经验",
+        "status": "met",
+        "evidence": "负责知识库问答产品上线",
+        "impact": "满足"
+      }
+    ]
+  },
+  "scores": {
+    "job_fit": 73,
+    "evidence_completeness": 75,
+    "ats_readability": 78,
+    "analysis_confidence": 90
+  },
+  "recommendation": {
+    "label": "修改后投",
+    "priority": "medium",
+    "rationale": "核心产品闭环证据较强；模型评测和成本治理有表达缺口，补齐后更有竞争力。"
+  },
+  "requirements": [
+    {
+      "id": "R1",
+      "category": "产品闭环",
+      "requirement": "独立负责 AI 产品从 0 到 1",
+      "jd_evidence": "负责 AI Agent 产品从规划到上线",
+      "priority": "must",
+      "weight": 5,
+      "evidence_level": 4,
+      "transfer_factor": 1,
+      "status": "matched",
+      "resume_evidence": "主导企业知识库问答产品，覆盖调研、PRD、交付和上线复盘，首月覆盖 1200 名用户。",
+      "gap_type": "none",
+      "analysis": "场景、本人动作和结果完整。"
+    },
+    {
+      "id": "R2",
+      "category": "AI 产品",
+      "requirement": "建立模型效果评测与数据闭环",
+      "jd_evidence": "设计模型评测体系并持续优化",
+      "priority": "core",
+      "weight": 5,
+      "evidence_level": 2,
+      "transfer_factor": 1,
+      "status": "weak",
+      "resume_evidence": "描述了用户满意度提升，但未说明离线评测集、指标和回归流程。",
+      "gap_type": "evidence",
+      "analysis": "方向相关，关键方法证据不足。"
+    },
+    {
+      "id": "R3",
+      "category": "商业与工程约束",
+      "requirement": "管理模型成本、延迟和稳定性",
+      "jd_evidence": "关注推理成本及线上稳定性",
+      "priority": "core",
+      "weight": 4,
+      "evidence_level": 2,
+      "transfer_factor": 0.8,
+      "status": "transferable",
+      "resume_evidence": "有 SLA 和响应时间优化经历，但未写 token 成本或模型路由。",
+      "gap_type": "expression",
+      "analysis": "已有平台产品经验可迁移，需要补充 AI 场景细节。"
+    },
+    {
+      "id": "R4",
+      "category": "影响力",
+      "requirement": "跨算法、研发、设计和业务推动落地",
+      "jd_evidence": "协调多团队推动项目交付",
+      "priority": "core",
+      "weight": 4,
+      "evidence_level": 4,
+      "transfer_factor": 1,
+      "status": "matched",
+      "resume_evidence": "协调 4 个团队完成 3 个月交付，并建立双周风险评审机制。",
+      "gap_type": "none",
+      "analysis": "范围、动作和机制证据清楚。"
+    },
+    {
+      "id": "R5",
+      "category": "加分项",
+      "requirement": "有 Agent 工具调用或工作流编排经验",
+      "jd_evidence": "有 Agent 开发经验优先",
+      "priority": "preferred",
+      "weight": 2,
+      "evidence_level": 1,
+      "transfer_factor": 0.5,
+      "status": "weak",
+      "resume_evidence": "技能栏仅写 LangChain。",
+      "gap_type": "evidence",
+      "analysis": "只有关键词，不能确认真实应用。"
+    }
+  ],
+  "strengths": [
+    {
+      "title": "端到端产品闭环",
+      "evidence": "从调研、PRD、协作交付到上线复盘均有本人动作和用户规模。",
+      "value": "直接覆盖岗位最重要的 0 到 1 责任。"
+    },
+    {
+      "title": "复杂跨团队推动",
+      "evidence": "协调 4 个团队并建立双周风险评审机制。",
+      "value": "不是泛泛写沟通能力，而是有机制证据。"
+    }
+  ],
+  "gaps": [
+    {
+      "title": "模型评测体系证据不足",
+      "type": "evidence",
+      "priority": "P0",
+      "evidence": "只写满意度结果，未解释评测集和指标。",
+      "impact": "面试官难以判断你是否真正管理过模型质量。",
+      "action": "补充评测样本来源、核心指标、失败切片和回归机制。"
+    },
+    {
+      "title": "成本治理表达过泛",
+      "type": "expression",
+      "priority": "P1",
+      "evidence": "只有 SLA 和响应时间优化。",
+      "impact": "与 AI 产品的 token 成本、路由和降级策略连接不够。",
+      "action": "若有事实，补充成本口径、模型选择和质量—成本取舍；没有则标为学习项。"
+    }
+  ],
+  "resume_changes": [
+    {
+      "title": "强化 AI 产品摘要",
+      "location": "个人摘要",
+      "original": "6 年 B 端产品经验，熟悉 AI 和数据分析。",
+      "suggested": "6 年 B 端产品经验；主导企业知识库问答产品从调研到上线，首月覆盖 1200 名用户，并负责效果与稳定性复盘。",
+      "reason": "把泛化技能词改成可验证的岗位核心证据。",
+      "evidence_status": "已证实",
+      "fabrication_risk": "low"
+    },
+    {
+      "title": "补齐评测方法",
+      "location": "AI 项目第一条",
+      "original": "通过优化提示词提升回答满意度。",
+      "suggested": "待确认：说明评测样本、指标、基线、失败分类以及迭代后的变化。",
+      "reason": "当前结果无法归因，也看不出评测闭环。",
+      "evidence_status": "待用户确认",
+      "fabrication_risk": "high"
+    }
+  ],
+  "interview_questions": [
+    {
+      "question": "你如何定义知识库问答产品的“效果变好”？",
+      "type": "专业深挖",
+      "trigger": "JD 要求模型评测；简历只写满意度提升",
+      "why": "验证是否建立过可复现的评测体系。",
+      "evaluation_points": [
+        "指标与业务目标对应",
+        "评测集构建",
+        "失败切片",
+        "线上线下一致性"
+      ],
+      "answer_structure": "目标—基线—评测设计—迭代—结果—局限",
+      "follow_ups": [
+        "满意度受运营干预时如何归因？",
+        "版本回归怎么做？"
+      ],
+      "risk_note": "不要把一次主观抽样说成完整评测体系。"
+    },
+    {
+      "question": "质量、延迟和成本冲突时，你如何选择模型与降级策略？",
+      "type": "场景题",
+      "trigger": "岗位强调成本与稳定性",
+      "why": "验证产品决策是否覆盖工程和商业约束。",
+      "evaluation_points": [
+        "场景分层",
+        "SLO",
+        "模型路由",
+        "缓存/降级",
+        "成本监控"
+      ],
+      "answer_structure": "约束—方案选项—权衡—监控—复盘",
+      "follow_ups": [
+        "高价值用户和免费用户是否同策略？"
+      ],
+      "risk_note": "没有亲历时明确以方案推演作答。"
+    }
+  ],
+  "action_plan": [
+    {
+      "horizon": "24 小时",
+      "action": "补齐两段核心项目证据",
+      "output": "完成评测体系与成本治理的事实核对清单。"
+    },
+    {
+      "horizon": "3 天",
+      "action": "重写摘要与核心 bullet",
+      "output": "生成一版针对该 JD 的一页简历。"
+    },
+    {
+      "horizon": "7 天",
+      "action": "完成 6 题结构化演练",
+      "output": "每题控制在 3 分钟，并准备两层追问证据。"
+    }
+  ],
+  "limitations": [
+    "示例未提供完整 JD 与完整简历，分数只用于演示报告结构。"
+  ]
+}

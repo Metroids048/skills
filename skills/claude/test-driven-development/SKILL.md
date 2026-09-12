@@ -1,8 +1,6 @@
 ---
-name: "测试驱动开发"
-slug: test-driven-development
+name: test-driven-development
 description: "测试驱动开发：先写测试再实现，覆盖单元/集成/E2E"
-disable-model-invocation: true
 ---
 # Test-Driven Development (TDD)
 
@@ -370,4 +368,3 @@ Otherwise → not TDD
 ```
 
 No exceptions without your human partner's permission.
-

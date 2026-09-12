@@ -1,8 +1,6 @@
 ---
-name: "系统化排错"
-slug: systematic-debugging
+name: systematic-debugging
 description: "系统化排错：先复现与定位根因，再提出修复方案"
-disable-model-invocation: true
 ---
 # Systematic Debugging
 
@@ -295,4 +293,3 @@ From debugging sessions:
 - Random fixes approach: 2-3 hours of thrashing
 - First-time fix rate: 95% vs 40%
 - New bugs introduced: Near zero vs common
-

@@ -1,0 +1,36 @@
+---
+description: UI/页面开发时强制走 frontend-design-stack 技能链，避免跳过 shadcn/Magic UI/审美 skills。
+globs:
+  - "**/*.tsx"
+  - "**/*.jsx"
+  - "**/*.html"
+  - "**/*.css"
+  - "prototype/**"
+alwaysApply: false
+---
+
+# Frontend Skills Routing
+
+当编辑或新建 **用户可见界面**（页面、组件、样式、原型 HTML）时：
+
+## 必须先读（按顺序匹配）
+
+1. **`frontend-design-stack`** — 总编排；回复首行 `Skills: frontend-design-stack, …`
+2. 按 stack 内决策树加载：`design-taste-frontend` → `ui-ux-pro-max` → `shadcn` / `magic-ui` / `aceternity-ui` / `spectrum-ui`
+
+## 触发词（任一即加载 stack）
+
+页面、界面、UI、组件、landing、落地页、dashboard、美化、丑、设计感、shadcn、Magic UI、Aceternity、Spectrum、Tailwind、前端样式
+
+## 禁止
+
+- 未读上述 skill 就直接写 UI 代码
+- 声称「已应用设计规范」但未在回复中列出加载的 skills
+- 用 grep/占位样式代替真实组件库集成（有 `components.json` 时必须走 shadcn）
+
+## 与门禁并存
+
+- 新页面/新模块仍须 `zero-to-one-gate` + `brainstorming`（架构确认）
+- 交付前 `global-delivery-gate` / 项目 verify 不变
+
+索引：[awesome-frontend-skills](https://github.com/finfin/awesome-frontend-skills)

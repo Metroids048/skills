@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visual QA"
+  short_description: "用双视口截图验收真实页面"
+  default_prompt: "Use $visual-qa to perform desktop and mobile visual QA with screenshots."

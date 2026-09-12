@@ -1,9 +1,8 @@
 ---
-name: "性能分析与优化"
-slug: stitch-design-taste
-description: "前端工程：组件、状态、构建与 UI 实现"
-disable-model-invocation: true
+name: stitch-design-taste
+description: Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium, anti-generic UI standards — strict typography, calibrated color, asymmetric layouts, perpetual micro-motion, and hardware-accelerated performance.
 ---
+
 # Stitch Design Taste — Semantic Design System Skill
 
 ## Overview
@@ -12,7 +11,7 @@ This skill generates `DESIGN.md` files optimized for Google Stitch screen genera
 The generated `DESIGN.md` serves as the **single source of truth** for prompting Stitch to generate new screens that align with a curated, high-agency design language. Stitch interprets design through **"Visual Descriptions"** supported by specific color values, typography specs, and component behaviors.
 
 ## Prerequisites
-- Access to Google Stitch via [labs.google.com/stitch](https://labs.google.com/stitch)
+- Access to Google Stitch via [labs.google/stitch](https://labs.google/stitch)
 - Optionally: Stitch MCP Server for programmatic integration with Cursor, Antigravity, or Gemini CLI
 
 ## The Goal
@@ -183,4 +182,3 @@ no generic placeholder names, no broken image links.)
 - Being too vague in atmosphere descriptions
 - Ignoring the anti-pattern list — these are what make the output premium
 - Defaulting to generic "safe" designs instead of enforcing the curated aesthetic
-

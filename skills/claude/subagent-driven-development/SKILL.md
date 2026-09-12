@@ -1,8 +1,6 @@
 ---
-name: "当 到 使用"
-slug: subagent-driven-development
+name: subagent-driven-development
 description: "多 Agent 编排：子任务分发、汇总与验证闭环"
-disable-model-invocation: true
 ---
 # Subagent-Driven Development
 
@@ -278,4 +276,3 @@ Done!
 
 **Alternative workflow:**
 - **superpowers:executing-plans** - Use for parallel session instead of same-session execution
-

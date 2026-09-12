@@ -1,8 +1,6 @@
 ---
-name: "编写可执行实施计划"
-slug: using-git-worktrees
+name: using-git-worktrees
 description: "编写可执行实施计划：辅助完成相关分析、生成或审查任务"
-disable-model-invocation: true
 ---
 # Using Git Worktrees
 
@@ -214,4 +212,3 @@ Ready to implement <feature-name>
 - Verify directory is ignored for project-local
 - Auto-detect and run project setup
 - Verify clean test baseline
-

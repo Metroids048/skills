@@ -39,7 +39,8 @@
     "design-style"
   ],
   "excludeNamePrefixes": [
-    "awesome-"
+    "awesome-",
+    "_broken-"
   ],
   "excludePathPatterns": [
     "skills/space-url2proto/",
@@ -51,7 +52,8 @@
     "skills/vendor/_cache/"
   ],
   "routingExcludeNamePrefixes": [
-    "awesome-"
+    "awesome-",
+    "_broken-"
   ],
   "routingExcludeNames": [
     "most-capable-agent-reference",
@@ -60,11 +62,31 @@
     "frontend-design"
   ],
   "exclusiveGroups": [
-    ["design-taste-frontend", "tactus-design-style", "gpt-taste", "high-end-visual-design", "minimalist-ui", "frontend-design"],
-    ["figma-workflow", "figma2code"],
-    ["requirement-clarifier", "pm-prd-writer"],
-    ["systematic-debugging", "diagnose"],
-    ["ai-delivery-gate", "global-delivery-gate", "verification-before-completion"]
+    [
+      "design-taste-frontend",
+      "tactus-design-style",
+      "gpt-taste",
+      "high-end-visual-design",
+      "minimalist-ui",
+      "frontend-design"
+    ],
+    [
+      "figma-workflow",
+      "figma2code"
+    ],
+    [
+      "requirement-clarifier",
+      "pm-prd-writer"
+    ],
+    [
+      "systematic-debugging",
+      "diagnose"
+    ],
+    [
+      "ai-delivery-gate",
+      "global-delivery-gate",
+      "verification-before-completion"
+    ]
   ],
   "topMatches": 10,
   "alwaysOnSkills": [
@@ -144,7 +166,13 @@
     "pm-image2proto": "Use when converting a screenshot or reference image into an HTML prototype with iterative refinement.",
     "tactus-design-style": "Use when applying Castor6/tactus design-style mapping — pick visual style tokens, palettes, and typography from styles-mapping.json before UI work. Triggers: design style, 设计风格, tactus, 风格映射, style preset. NOT when: generic anti-slop landing without preset（用 design-taste-frontend）。",
     "most-capable-agent-reference": "Read-only reference for fainir most-capable-agent system prompt patterns. Use when studying agent prompt architecture — not for routine coding.",
-    "claude-code-prompts-reference": "Read-only reference for piebald-ai Claude Code built-in prompts. Use when comparing Claude Code prompt structure — not for routine coding."
+    "claude-code-prompts-reference": "Read-only reference for piebald-ai Claude Code built-in prompts. Use when comparing Claude Code prompt structure — not for routine coding.",
+    "bruce-pptx-generator": "用 pptxgenjs 从零生成或编辑可编辑 PPTX；含华为/麦肯锡/苹果等风格预设。用户要做 PPT、幻灯片、pptx、路演 deck 时使用。",
+    "guizang-ppt-skill": "生成单文件 HTML 横向翻页网页 PPT（杂志风/瑞士风）。用户要网页幻灯、发布会风、Swiss Style 时使用。",
+    "html-slide-to-pptx": "HTML 幻灯片转可编辑 PPTX（dom-to-pptx 主路径，截图兜底）。用户说 html转ppt、做一版ppt、网页幻灯时使用。",
+    "revealjs": "用 reveal.js 生成专业 HTML 演示（主题、图表、演讲者备注）。用户要 slides/presentation/deck 时使用。",
+    "huashu-design": "花叔 Design：HTML 高保真原型/幻灯片/动画/五维设计评审。用户说做原型、PPT、设计风格、评审、导出 MP4 时使用。",
+    "impeccable": "【前端审美 Impeccable】设计质量系统：audit/critique/polish/distill/animate 等命令。用户说 UI 丑、改版、polish、audit、设计评审、去掉 AI 味、impeccable 时使用。NOT when: 仅落地页 greenfield 且已锁定 taste dials（可并用 design-taste-frontend）；非 UI/后端任务。"
   },
   "promptKeywordBoosts": {
     "requirement-clarifier": [
@@ -217,9 +245,21 @@
       "做成技能",
       "workflow 固化"
     ],
-    "rezvani-soc2-audit-prep": ["SOC2", "soc 2", "合规审计"],
-    "rezvani-gdpr-audit-prep": ["GDPR", "数据保护", "隐私合规审计"],
-    "rezvani-ai-act-readiness": ["AI Act", "欧盟 AI 法", "人工智能法案"],
+    "rezvani-soc2-audit-prep": [
+      "SOC2",
+      "soc 2",
+      "合规审计"
+    ],
+    "rezvani-gdpr-audit-prep": [
+      "GDPR",
+      "数据保护",
+      "隐私合规审计"
+    ],
+    "rezvani-ai-act-readiness": [
+      "AI Act",
+      "欧盟 AI 法",
+      "人工智能法案"
+    ],
     "design-taste-frontend": [
       "landing page",
       "落地页",
@@ -264,11 +304,8 @@
       "层次不对"
     ],
     "image-to-code": [
-      "image to code",
-      "图转代码",
-      "按设计稿实现",
-      "reference image",
-      "参考图实现"
+      "screenshot to code",
+      "reference image site"
     ],
     "imagegen-frontend-web": [
       "生成网站设计图",
@@ -276,8 +313,19 @@
       "设计稿生成",
       "mockup"
     ],
-    "minimalist-ui": ["minimalist", "极简", "Notion风", "Linear风", "editorial UI"],
-    "high-end-visual-design": ["premium UI", "高端UI", "soft UI", "calm design"],
+    "minimalist-ui": [
+      "minimalist",
+      "极简",
+      "Notion风",
+      "Linear风",
+      "editorial UI"
+    ],
+    "high-end-visual-design": [
+      "premium UI",
+      "高端UI",
+      "soft UI",
+      "calm design"
+    ],
     "figma2code": [
       "figma",
       "设计稿",
@@ -364,10 +412,6 @@
       "resume session",
       "handoff"
     ],
-    "image-to-code": [
-      "screenshot to code",
-      "reference image site"
-    ],
     "tdd-workflow": [
       "tdd",
       "test first",
@@ -381,6 +425,135 @@
       "task_plan.md",
       "progress.md",
       "中文规划"
+    ],
+    "ppt-master": [
+      "做PPT",
+      "幻灯片",
+      "演示文稿",
+      "汇报PPT",
+      "可编辑PPT",
+      "pptx生成",
+      "markdown转PPT",
+      "生成PPT",
+      "原生PPT",
+      "文档转PPT"
+    ],
+    "bruce-pptx-generator": [
+      "做PPT",
+      "生成PPT",
+      "pptx",
+      "幻灯片",
+      "演示文稿",
+      "路演deck",
+      "华为风PPT",
+      "麦肯锡PPT",
+      "pitch deck",
+      "可编辑pptx"
+    ],
+    "guizang-ppt-skill": [
+      "网页PPT",
+      "杂志风PPT",
+      "瑞士风PPT",
+      "横向翻页",
+      "HTML幻灯片",
+      "发布会PPT",
+      "Swiss Style",
+      "horizontal swipe"
+    ],
+    "html-slide-to-pptx": [
+      "html转ppt",
+      "HTML转PPTX",
+      "网页幻灯片",
+      "dom-to-pptx",
+      "截图合成ppt",
+      "做一版ppt",
+      "html slide"
+    ],
+    "revealjs": [
+      "reveal.js",
+      "revealjs",
+      "HTML演示",
+      "幻灯片",
+      "presentation",
+      "deck",
+      "slideshow"
+    ],
+    "huashu-design": [
+      "花叔",
+      "高保真原型",
+      "HTML幻灯片",
+      "设计风格",
+      "设计评审",
+      "导出MP4",
+      "做个好看的",
+      "UI mockup",
+      "动画页面"
+    ],
+    "awesome-ai-ppt": [
+      "AI PPT工具",
+      "PPT工具推荐",
+      "用什么做PPT",
+      "演示工具选型",
+      "awesome-ai-ppt"
+    ],
+    "pptx": [
+      "pptx",
+      "改PPT",
+      "编辑幻灯片",
+      "presentation"
+    ],
+    "frontend-slides": [
+      "HTML幻灯片",
+      "网页演示",
+      "PPT转网页",
+      "frontend slides",
+      "零依赖幻灯片",
+      "View Transitions"
+    ],
+    "anthropic-architect": [
+      "Anthropic架构",
+      "Skill还是Agent",
+      "架构选型"
+    ],
+    "llm-router": [
+      "模型路由",
+      "LLM router",
+      "多提供商"
+    ],
+    "query-expert": [
+      "SQL",
+      "慢查询",
+      "数据库查询"
+    ],
+    "qa-test-planner": [
+      "测试计划",
+      "QA",
+      "测试用例"
+    ],
+    "academic-paper": [
+      "写论文",
+      "学术论文",
+      "学术写作"
+    ],
+    "academic-paper-reviewer": [
+      "审稿",
+      "peer review",
+      "论文评审"
+    ],
+    "impeccable": [
+      "impeccable",
+      "impactable",
+      "audit",
+      "polish",
+      "critique",
+      "distill",
+      "设计评审",
+      "去AI味",
+      "去掉AI味",
+      "审美",
+      "UI丑",
+      "改版",
+      "polish一下"
     ]
   },
   "refinementFiles": {
@@ -388,7 +561,9 @@
   },
   "clarificationGate": {
     "enabled": true,
-    "blockMessageTypes": ["B"],
+    "blockMessageTypes": [
+      "B"
+    ],
     "clearKeywords": [
       "按澄清结果执行",
       "确认执行",

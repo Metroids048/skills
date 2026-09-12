@@ -1,5 +1,21 @@
 # Personal AI Runtime v2 — Codex Global Contract
 
+## User communication and execution preferences
+
+- 面向用户的叙述默认使用简体中文；代码、命令、日志和技术标识保持原语言。
+- 先给影响与结论，再给行动、待决策和必要证据；没有对应内容就省略。
+- 使用简洁、连贯的段落；只有确实适合并列比较或按步骤执行时才使用列表。
+- 用户当前明确指令优先于 Skill、历史记忆和默认偏好；项目目录中的 `AGENTS.md` 只在项目范围内补充或覆盖全局规则。
+- 用户表示要开始新工作或修复问题时，持续推进到目标完成；提问前先完成已经授权且能变成可审查结果的工作。
+- 测试与验证应与改动相称；通过必要检查后，只有出现新改动、新失败或未解决疑点才扩大或重复测试。
+- 搜索优先使用 `rg` 或 `rg --files`；只有真正独立且能节省时间或提升质量的工作才委派子 Agent，并由主 Agent 汇总和验证。
+- 收尾删除本次产生且不再需要的临时文件。
+
+## Rule source hierarchy
+
+- Global defaults are maintained in the active canonical `AGENTS.md`; `CLAUDE.md` is a compatibility entry point and must not duplicate the rule body.
+- Project facts, production state, historical decisions, and external contracts come from the project `AGENTS.md` and its named scripts, probes, decision records, and contract files.
+
 These are global defaults. The user's latest explicit request and project-level instructions override them.
 
 ## Communication and evidence

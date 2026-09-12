@@ -1,7 +1,7 @@
----
-name: "AI 产品 UI 工作流"
+﻿---
+name: "AI 浜у搧 UI 宸ヤ綔娴?
 slug: ai-product-ui-workflow
-description: "AI Coding OS：产品设计、页面设计、UI设计、改版、dashboard、landing page、PRD转界面、AI产品工作流、产品..."
+description: "AI Coding OS锛氫骇鍝佽璁°€侀〉闈㈣璁°€乁I璁捐銆佹敼鐗堛€乨ashboard銆乴anding page銆丳RD杞晫闈€丄I浜у搧宸ヤ綔娴併€佷骇鍝?.."
 disable-model-invocation: true
 ---
 # AI Product UI Workflow
@@ -10,7 +10,7 @@ Use this skill as the routing entry for AIOS product and UI work.
 
 ## Source
 
-Read `C:\Users\win\.ai-workspace\ai-coding-os\AGENTS.md` first.
+Read `C:\Users\Windows11\.ai-workspace\ai-coding-os\AGENTS.md` first.
 
 Then read only the files needed for the current task:
 

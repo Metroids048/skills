@@ -10,5 +10,5 @@ $mapEvent = switch ($HookEvent) {
     'UserPromptSubmit' { 'UserPromptSubmit' }
     default { 'Plain' }
 }
-& 'C:\Users\win\.ai-workspace\scripts\scan-global-skills.ps1' -OutputFormat $OutputFormat -HookEvent $mapEvent -StartDir $StartDir
+& 'C:\Users\Windows11\.ai-workspace\scripts\scan-global-skills.ps1' -OutputFormat $OutputFormat -HookEvent $mapEvent -StartDir $StartDir
 exit $LASTEXITCODE

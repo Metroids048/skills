@@ -1,9 +1,8 @@
 ---
-name: "完整输出约束"
-slug: full-output-enforcement
-description: "前端工程：组件、状态、构建与 UI 实现"
-disable-model-invocation: true
+name: full-output-enforcement
+description: Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaustive, unabridged output.
 ---
+
 # Full-Output Enforcement
 
 ## Baseline
@@ -48,4 +47,3 @@ Before finalizing any response, verify:
 - Every item the user requested is present and finished
 - Code blocks contain actual runnable code, not descriptions of what code would do
 - Nothing was shortened to save space
-

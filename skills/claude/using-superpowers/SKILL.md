@@ -1,8 +1,6 @@
 ---
-name: "编码前脑暴"
-slug: using-superpowers
+name: using-superpowers
 description: "0→1 新模块门禁：先架构/方案确认，再写实现"
-disable-model-invocation: true
 ---
 # Using Skills (Cursor)
 
@@ -46,4 +44,3 @@ If you used skills, one short line at reply start: `Skills: name-a, name-b`.
 ## Conflicts
 
 If two skills disagree, prefer the **more specific** skill. **zero-to-one-gate (strict)** wins over fast-delivery shortcuts.
-

@@ -1,8 +1,6 @@
 ---
-name: "验证 在完成之前使用"
-slug: verification-before-completion
+name: verification-before-completion
 description: "完成前验证：重读验收标准并附 fresh 命令输出"
-disable-model-invocation: true
 ---
 # Verification Before Completion
 
@@ -138,4 +136,3 @@ From 24 failure memories:
 Run the command. Read the output. THEN claim the result.
 
 This is non-negotiable.
-

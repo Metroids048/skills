@@ -1,0 +1,4 @@
+interface:
+  display_name: "Binance Public Data"
+  short_description: "读取无凭据公开行情数据"
+  default_prompt: "Use $binance-public-market-data for a public read-only market-data query."

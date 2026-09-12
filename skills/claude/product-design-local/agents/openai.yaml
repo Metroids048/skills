@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Design Local"
+  short_description: "Provider-independent product design workflow"
+  default_prompt: "Use $product-design-local to turn this brief into a reviewable product design workflow."

@@ -1,0 +1,7 @@
+interface:
+  display_name: "外部用户视角（eval）"
+  short_description: "用隔离的真实使用轨迹校正当前工作，并按用户授权持续改进"
+  default_prompt: "使用 $eval，从相关外部用户视角真实验证这个目标，并按我的授权停在反馈或继续改进。"
+
+policy:
+  allow_implicit_invocation: false

@@ -1,8 +1,6 @@
 ---
-name: "开发分支收尾"
-slug: finishing-a-development-branch
+name: finishing-a-development-branch
 description: "开发分支收尾：辅助完成相关分析、生成或审查任务"
-disable-model-invocation: true
 ---
 # Finishing a Development Branch
 
@@ -250,4 +248,3 @@ git worktree prune  # Self-healing: clean up any stale registrations
 - Clean up worktree for Options 1 & 4 only
 - `cd` to main repo root before worktree removal
 - Run `git worktree prune` after removal
-

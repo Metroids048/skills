@@ -1,6 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # SessionStart hook: remind agent to use codebase-memory-mcp tools.
-# Installed by codebase-memory-mcp. Fires on startup/resume/clear/compact.
+case "$(uname -s 2>/dev/null)" in
+MINGW*|MSYS*|CYGWIN*)
+  cmd //c "C:/Users/Windows11/.claude/hooks/cbm-session-reminder.cmd"
+  exit 0
+  ;;
+esac
 cat << 'REMINDER'
 CRITICAL - Code Discovery Protocol:
 1. ALWAYS use codebase-memory-mcp tools FIRST for ANY code exploration:

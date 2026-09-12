@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Local"
+  short_description: "通过 gh CLI 进行安全的 GitHub 本地工作流"
+  default_prompt: "Use $github-local for a read-only GitHub operation through gh CLI."

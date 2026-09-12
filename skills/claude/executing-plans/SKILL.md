@@ -1,8 +1,6 @@
 ---
-name: "执行实施计划"
-slug: executing-plans
+name: executing-plans
 description: "按已写好的实施计划分步执行，并在检查点复盘"
-disable-model-invocation: true
 ---
 # Executing Plans
 
@@ -69,4 +67,3 @@ After all tasks complete and verified:
 - **superpowers:using-git-worktrees** - Ensures isolated workspace (creates one or verifies existing)
 - **superpowers:writing-plans** - Creates the plan this skill executes
 - **superpowers:finishing-a-development-branch** - Complete development after all tasks
-
